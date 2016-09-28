@@ -6,7 +6,7 @@ USER root
 # COPY jeus50-unix-generic.bin /
 ADD resources/jeus5 /root/jeus5
 ADD resources/jdk1.6 /usr/java/jdk1.6
-ADD run.sh /run.sh
+ADD resources/run.sh /run.sh
 
 ENV JAVA_HOME /usr/java/jdk1.6
 ENV PATH ${PATH}:${JAVA_HOME}/bin
