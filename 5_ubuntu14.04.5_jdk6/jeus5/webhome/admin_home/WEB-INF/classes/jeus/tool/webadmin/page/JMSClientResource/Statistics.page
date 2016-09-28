@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JMSClientResource.StatisticsPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JMSClientResource Statistics"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@JMSCLIENTRESOURCE_NAMES"/>
+    </component>
+
+    <component id="refreshButton" type="Any">
+        <binding name="element" value="literal:input"/>
+        <binding name="value" value="message:common.label.refresh"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:clr.statistics.title"/>
+        
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="instanceExist" type="If">
+        <binding name="condition" value="instanceExist"/>
+    </component>
+
+    <component id="instanceNotExist" type="Else">
+    </component>
+
+    <component id="noInstanceForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:clr.statistics.title"/>
+        <!--<message-binding name="description" key="clr.statistics.description"/>-->
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="noInstance" type="Insert">
+        <binding name="value" value="message:clr.statistics.statistic.instanceNotFound"/>
+    </component>
+    
+    <component id="name" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:clr.statistics.name.label"/>
+        <binding name="value" value="ognl:client.name"/>
+    </component>
+
+    <component id="host_address" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:clr.statistics.host_address.label"/>
+        <binding name="value" value="ognl:client.hostAddress"/>
+    </component>
+
+    <component id="port" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:clr.statistics.port.label"/>
+        <binding name="value" value="ognl:client.port"/>
+    </component>
+
+    <component id="transaction_count" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:clr.statistics.transaction_count.label"/>
+        <binding name="value" value="ognl:client.transactionCount"/>
+    </component>
+
+    <component id="commit_count" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:clr.statistics.commit_count.label"/>
+        <binding name="value" value="ognl:client.commitCount"/>
+    </component>
+
+    <component id="rollback_count" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:clr.statistics.rollback_count.label"/>
+        <binding name="value" value="ognl:client.rollbackCount"/>
+    </component>
+</page-specification>

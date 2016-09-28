@@ -1,0 +1,1 @@
+javac -classpath .\;..\;%JEUS_HOME%\lib\system\jeus.jar TestClient.java

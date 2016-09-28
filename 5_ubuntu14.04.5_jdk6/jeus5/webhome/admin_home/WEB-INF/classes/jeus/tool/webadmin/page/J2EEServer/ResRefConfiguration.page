@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.J2EEServer.ResRefConfigurationPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:URL Resource Configuration"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{'J2EEServer_ResRefConfiguration'}"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:containerc.res_ref.configuration.title"/>
+        <binding name="listener" value="listeners.onOk"/>
+    </component>
+
+    <component id="ref_name" type="jeus:Field">
+        <binding name="required" value="true"/>
+        <binding name="field" value="components.ref_nameField"/>
+    </component>
+
+    <component id="ref_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="jndiInfo"/>
+        <binding name="elementName" value="literal:refName"/>
+        <binding name="validators" value="validators:required,$pattern"/>
+    </component>
+
+    <component id="export_name" type="jeus:Field">
+        <binding name="required" value="true"/>
+        <binding name="field" value="components.export_nameField"/>
+    </component>
+
+    <component id="export_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="jndiInfo"/>
+        <binding name="elementName" value="literal:exportName"/>
+        <binding name="validators" value="validators:required,$pattern"/>
+    </component>
+
+    <bean name="pattern" class="org.apache.tapestry.form.validator.Pattern">
+    	<set name="pattern" value="literal:[a-zA-Z0-9]*"/>
+    	<set name="message" value="message:common.exception.0066"/>
+    </bean>
+
+</page-specification>

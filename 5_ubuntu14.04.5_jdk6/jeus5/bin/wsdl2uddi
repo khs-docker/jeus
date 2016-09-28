@@ -1,0 +1,19 @@
+#!/bin/sh
+
+. jeus.properties
+
+BOOT_PARAMETER=$*
+
+WSDL2UDDI_OPTS=
+
+${JAVA_HOME}/bin/java -classpath ${BOOTSTRAP_CLASSPATH} ${TOOL_OPTION} \
+     -Djeus.home=${JEUS_HOME}                                            \
+     -Djava.naming.factory.initial=jeus.jndi.JEUSContextFactory          \
+     -Djava.naming.factory.url.pkgs=jeus.jndi.jns.url                    \
+     -Djeus.baseport=${JEUS_BASEPORT}                                    \
+     -Djava.util.logging.config.file=${JEUS_HOME}/bin/logging.properties \
+     ${WSDL2UDDI_OPTS} 													 \
+     ${JAVA_ARGS}                                                        \
+     ${BOOTSTRAPPER}                                                     \
+ 	 jeus.webservices.tools.wsdl2uddi.Wsdl2Uddi $*
+

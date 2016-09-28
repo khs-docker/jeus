@@ -1,0 +1,17 @@
+#!/bin/sh
+
+. jeus-quickstart.properties
+
+BOOT_PARAMETER=$*
+
+${JAVA_HOME}/bin/java -classpath ${BOOTSTRAP_CLASSPATH} ${TOOL_OPTION}   \
+     -Djeus.home=${JEUS_HOME}                                            \
+     -Djava.library.path=${JEUS_LIBPATH}                                 \
+     -Djava.naming.factory.initial=jeus.jndi.JEUSContextFactory          \
+     -Djava.naming.factory.url.pkgs=jeus.jndi.jns.url                    \
+     -Djeus.baseport=${JEUS_BASEPORT}                                    \
+     -Djeus.config.home=${JEUS_HOME}/samples/quickstart/config           \
+     -Djava.util.logging.config.file=${JEUS_HOME}/bin/logging.properties \
+     ${JAVA_ARGS}                                                        \
+     ${BOOTSTRAPPER}                                                     \
+	  jeus.server.manager.JeusCommander ${BOOT_PARAMETER}

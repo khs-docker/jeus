@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="GB2312"?>
+<description>                                                
+    <text key="portInfoType.wsdl-port"><![CDATA[
+                            [Description]: 表示与<port-info>相连接的WSDL port。
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="portInfoType.service-endpoint-interface"><![CDATA[
+                            [Description]: 表示WSDL port的服务End point 接口class。
+                                与<service-ref>中<port-component-ref>的<service-endpoint-interface>。
+                            [Dependency]:/web-app/service-ref/port-component-ref/service-endpoint-interface
+                            			 /ejb-jar/enterprise-beans/session/service-ref/port-component-ref/service-endpoint-interface
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-webservices-client-ddType.service-client"><![CDATA[
+                            [Description]: 表示分配Web Service客户端所需的设置。
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="nameValueType.name"><![CDATA[
+                            [Description]: 表示javax.xml.rpc.Stub或javax.xml.rpc.Call中设置Pro putty所需的
+                                key名称。
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="serviceClientType.service-ref-name"><![CDATA[
+                            [Description]: 与WSDL文件相关的Web Service endpoint名称。
+                                <service-ref-name>相当于标准分配记述者或web.xml 、ejb-jar.xml的
+                                <service-ref-name>。
+                            [Dependency]:/web-app/service-ref/service-ref-name
+                            			 /ejb-jar/enterprise-beans/session/service-ref/service-ref-name
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="portInfoType.security"><![CDATA[
+                            [Description]: Web Service的安全(WS-Security)所需的Web Service客户端设置。
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="serviceClientType.port-info"><![CDATA[
+                            [Description]: 表示所分配Web Service 客户端呼叫的 Web Service端口信息。
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="portInfoType.call-property"><![CDATA[
+                            [Description]: 表示特定port使用的javax.xml.rpc.Call对象中设置的
+                                property。
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="serviceClientType.call-property"><![CDATA[
+                            [Description]: 表示WSDL service使用的所有javax.xml.rpc.Call对象中设置的
+                                property。
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="serviceClientType.service-qname"><![CDATA[
+                            [Description]: 表示WSDL的WSDL service定义。
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="serviceClientType.wsdl-override"><![CDATA[
+                            [Description]: 代替<service-ref>的<wsdl-file> 所需的 WSDL文件位置。 
+                                表示的位置应是有效URL。
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="portInfoType.stub-property"><![CDATA[
+                            [Description]: 表示特定port中使用的javax.xml.rpc.Stub 对象所设置的
+                                property。
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="webservice-securityType.response-receiver"><![CDATA[
+[Description]: Web Service应答消息中 应用安全时， 处理所需的设置。
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="webservice-securityType.request-sender"><![CDATA[
+                            [Description]: 呼叫Web Service的消息中适应安全所需的设置。
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="serviceClientType.require-dynamic-proxy"><![CDATA[[Description]: 在使用port component link 时，说明在 ServiceReferenceFactory中使用的 dynamic proxy。]]>                                                
+    </text>
+                                                         
+    <text key="nameValueType.value"><![CDATA[
+                            [Description]: javax.xml.rpc.Stub或javax.xml.rpc.Call中设置Pro putty所需的
+                                key有关值(value)。
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="serviceClientType.service-impl-class"><![CDATA[
+[Description]: 表示Web Service 客户端所需的服务。
+                                 分配时自动生成，Web Service分配者无需进行设置。
+                        ]]>                                                
+    </text>
+ </description>

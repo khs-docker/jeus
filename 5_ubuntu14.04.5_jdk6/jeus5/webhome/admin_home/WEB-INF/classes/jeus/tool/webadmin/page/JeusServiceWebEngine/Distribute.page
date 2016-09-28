@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceWebEngine.DistributePage">
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Distribute WEBMain.xml"/>        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@JEUSSERVICE_WEBENGINE_NAMES"/>
+    </component>
+
+    <component id="distributeForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:web.distribute.title"/>
+<!--        <binding name="success" value="listener:onOk"/>
+        <binding name="useDefaultButtons" value="model.nodeNames.length &gt; 0"/>-->
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="general_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:session.config.ok.label"/>
+        <binding name="message" value="message:web.distribute.confirm.label"/>
+        <binding name="listener" value="listener:onOk"/>
+    </component>
+
+    <component id="general_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+    
+
+    <component id="targets" type="jeus:Field">
+        <binding name="layout" value="ognl:@jeus.tool.webadmin.component.Field@EXTENDED_LAYOUT"/>
+        <binding name="label" value="message:web.distribute.targets.label"/>
+    </component>
+
+    <component id="targetsField" type="jeus:TargetExplorer">
+        <binding name="model" value="ognl:model"/>
+        <binding name="selectionModel" value="ognl:selectionModel"/>
+    </component>
+
+    <component id="condHasTargets" type="If">
+        <binding name="condition" value="ognl:model.nodeNames.length &gt; 0"/>
+    </component>
+
+    <component id="condHasNoTargets" type="If">
+        <binding name="condition" value="ognl:model.nodeNames.length == 0"/>
+    </component>
+
+    <component id="unavailable_message" type="Insert">
+        <binding name="value" value="message:web.distribute.unavail.label"/>
+    </component>
+
+</page-specification>

@@ -1,0 +1,2085 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description>   
+    <text key="application"><![CDATA[
+                [Description]: This is the element of jeus-application-dd.xml.
+            ]]>          
+    </text>          
+    <text key="jmxmp-connectorType.jmxmp-connector-port"><![CDATA[
+                        [Description]: Listen port of JEUSMP Connector used for getting an access to JMX of Engine Container from other process.
+										If this value is 0 or is not set, public port of Jeus will be used without generating listen port seperately.
+								       	For getting access to JMXMP protocol without using JMX RemoteAPI of JEUS in other Runtime, this element should be set as false.
+						[Defined Value]: [0]: public port of jeus is used.
+                    ]]>             
+    </text>
+               
+    <text key="invocationType.invocation-type"><![CDATA[
+                      [Description]: Setting the time to be called by this method.
+                    ]]>             
+    </text>
+               
+    <text key="web-componentType.uri"><![CDATA[
+                        [Description]: URI name related to configuration on this web component.
+                        [Value Description]: In case of EAR or COMPONENT type, it ends up with .war. In case of EXPLODED type, the name of related directory will be placed.
+                        [Example]: &lt;uri>web.war&lt;/uri>
+                    ]]>             
+    </text>
+               
+    <text key="tmax-connection-poolType.pooling"><![CDATA[
+                        [Description]: Pool Configuration.
+                    ]]>             
+    </text>
+               
+    <text key="mail-entryType.export-name"><![CDATA[
+                        [Description]: Client uses the name registered in the service. This is to bind as export name from client descriptor. The name is binded as java.mail.Session object.
+                    ]]>             
+    </text>
+               
+    <text key="session-router-configType.backup-trigger"><![CDATA[
+                            [Description]: This element determines on whether to provide backup for updated session objects as backup session server when object is updated.
+										    It will take a task of backup when session object has been updated in local session server for the number which has been set in this configuration.
+                    ]]>             
+    </text>
+               
+    <text key="databaseType.network-protocol"><![CDATA[
+                        [Description]: The protocol used for connecting to Database.
+                        [Value Description]: For Sybase, it is "Tds" and is dependent on JDBC vendor.
+                    ]]>             
+    </text>
+               
+    <text key="tmax-securityType.domain-name"><![CDATA[
+                        [Description]: Domain name is required to be set for user authentication when domain registered in Tmax Server is connected to Tmax server.
+                        [Value Description]: a domain name
+                        [Example]:&lt;domain-name>tmaxadm&lt;/domain-name>
+                    ]]>             
+    </text>
+               
+    <text key="rmi-connectorType.export-name"><![CDATA[
+                        [Description]: Export name is used for setting different export name of JEUS. This export name is placed in URL path of JMXServiceURL.
+                    ]]>             
+    </text>
+               
+    <text key="engine-containerType.res-ref"><![CDATA[
+                        [Description]: Resrouce References to register in JNDI of this Engine Container.
+                    ]]>             
+    </text>
+               
+    <text key="jeus-nodeType.sequential-start"><![CDATA[
+                        [Description]: If it is set as "true", this option will make all the engine containers boot in a sequence, one after the other.
+										By default, all engine conteiners are booted at the same time but this might cause problems in some cases
+                    ]]>             
+    </text>
+               
+    <text key="backup-session-routerType.container-base-port"><![CDATA[                                [Description]: This is used in case where user configures base port when using listen port according to container. 				When this value is 0, retain default listen port by using listen port.				In case of default container, it should not be configured since listen port of JEUS Manager is used.                    ]]>          
+    </text>
+            
+    <text key="webt-file-handlerType.valid-day"><![CDATA[
+                        [Description]: Specify the update frequency for the name of log file, if using log file.
+                        If set to 0 or negative number, only one file will be used.
+                        The file name will be created by following rule, unless otherwise specified.
+                        webt.log -> webt_MMddyyyy.log
+                        [Value Description]: a number of days
+                        [Example]: <valid-day>1</valid-day>
+                    ]]>          
+    </text>
+           
+    <text key="jtmax-beans-serviceType.name"><![CDATA[
+                        [Description]: Name of the corresponding service. This must be unique within Jtmax context.
+                        [Example]: <name>TOUPPER</name>
+                    ]]>          
+    </text>
+           
+    <text key="databaseType.database-name"><![CDATA[
+                [Description]: Name of Database. For Oracle, SID of database
+            ]]>          
+    </text>
+            
+    <text key="tmaxClusterType.tmax-delegation-source"><![CDATA[
+                [Description]: This element defines export name of Tmax to be involved in this clustering.
+                [Example]: &lt;tmax-delegation-source>webtdatasource1&lt;/tmax-delegation-source>
+                           &lt;tmax-delegation-source>webtdatasource2&lt;/tmax-delegation-source>
+            ]]>          
+    </text>
+            
+    <text key="app-targetType.engine-container-name"><![CDATA[
+                [Description]: Configuring this application to deploy target as the engine container name.
+                [Example]: &lt;engine-container-name>MyNode_container1&lt;/engine-container-name>
+                ]]>          
+    </text>
+            
+    <text key="tmaxType.fair-provision"><![CDATA[
+                [Description]: Specifies policy of connection acquiring from connection pool.
+                If true, connection is provided fairly in-order.
+                [Value Description]: connection provisioning policy
+                [Example]:&lt;fair-provision>true&lt;/fair-provision>
+            ]]>          
+    </text>
+            
+    <text key="jmsSourceType.queueManager"><![CDATA[
+                [Description]: IBM MQ except T type is used. For additional information, please refer to IBM MQ Manual.
+            ]]>          
+    </text>
+            
+    <text key="applicationType.ejb-component"><![CDATA[
+                [Description]: This element is used for special setting on ejb-component in this application.
+            ]]>          
+    </text>
+            
+    <text key="application-propertyGroup.deployment-target"><![CDATA[
+                [Description]: Configure the target for this application to be deployed.
+            ]]>          
+    </text>
+            
+    <text key="session-managerType.passivation-to"><![CDATA[
+               [Description]: This element sets the "passivation timeout" value of the session manager.
+                                Sessions that are not accessed for this amount of time are passivated and transfered from runtime cache memory to permanent storage.
+          [Value Description]:Generally, increase this value for better performance but more wasteful use of system memory.
+                                       Use "-"1 for best performance (time-consuming passivation will never occur).
+            ]]>          
+    </text>
+            
+    <text key="engine-containerType.user-class-path"><![CDATA[
+                [Description]: A classpath to add to the JVM that will execute the engines inside this engine container.
+                [Value Description]: A number of classpath items separated by ";"(in Unix ":").
+                [Example]: &lt;user-class-path>c:\mylib\classes;c:\mylib\lib\mylib.jar&lt;/user-class-path>
+            ]]>          
+    </text>
+            
+    <text key="session-router-configType.thread-pool"><![CDATA[
+                        [Description]: Thread pool will be set for processing socket conection requested by Jeus system listener port ($JEUS_BASEPORT).
+            ]]>          
+    </text>
+            
+    <text key="jeus-systemType.naming-server"><![CDATA[
+                [Description]: The naming-server element contains the information of the JEUS naming servers.
+            ]]>          
+    </text>
+            
+    <text key="rmi-connectorType.ref-export-name"><![CDATA[
+                [Description]: This element is used for setting jndi name to get the connector as different name besides default jndi name.
+                          Through using lookup as this export name, JMXConnector object can be obtained.
+            ]]>          
+    </text>
+            
+    <text key="external-sourceType.jms-source"><![CDATA[
+                [Description]: This element is set for having interaction betwen JEUS Transation Manager and IBM MQ Please refer to IBM MQ Manaul for detail information on the setting.
+            ]]>          
+    </text>
+            
+    <text key="jmsSourceType.resource-type"><![CDATA[
+                [Description]: jms source type
+            ]]>          
+    </text>
+            
+    <text key="ejb-componentType.ejb-jar"><![CDATA[
+                [Description]: Configuring path of ejb-jar.xml of this ejb component. This is used for supporting on packaging the JEUS 4.x.
+                [Example]: d:\jeus\config\node_ejb_engine1\ejb-jar_modulename.xml
+            ]]>          
+    </text>
+            
+    <text key="session-router-configType.check-to"><![CDATA[
+                    [Description]: This element determines the time interval to provide backup procedure. This will investigate the existence of updated session object in the configured time interval for this configuration.  If session object exists, it will take a task of backup.
+            ]]>          
+    </text>
+            
+    <text key="client-componentType.deployment-target"><![CDATA[
+                [Description]: Confiuring target to deploy this client component.
+            ]]>          
+    </text>
+            
+    <text key="ejb-componentType.java-security-permission"><![CDATA[
+                [Description]: Configuring J2SE security permission given to this ejb component.
+            ]]>          
+    </text>
+            
+    <text key="engine-containerType.invocation-manager-action"><![CDATA[
+                [Description]: The method invocation manager traces and reports the use of external resources used during method invocations on stateless services in the engine container
+                                (i.e. Servlet/JSP methods, stateless EJB methods and MDB methods).
+                [Performance Recommendation]: The "NoAction" should theoretically be the best option for optimal performance.
+                                                The other options should be considered only if the application code appears to be "buggy" and un-reliable.
+            ]]>          
+    </text>
+            
+    <text key="applicationType.client-component"><![CDATA[
+                [Description]: This element is used for setting for client-component in this application.
+            ]]>          
+    </text>
+            
+    <text key="session-managerType.removal-to"><![CDATA[
+            [Description]: Session instances that are not accessed for this specified time are removed permanently.  This value cannot be smaller than the session timeout.
+                [Value Description]: When the value is set as -1, it will not be deleted from file-db.
+                                    When the value is set as more than 0, session object which is passed over set time will be deleted.
+                                    The unit is in msec. The default value is -1.
+            ]]>          
+    </text>
+            
+    <text key="applicationType.web-component"><![CDATA[
+                [Description]: This element is used for special setting on web-component in this application.
+            ]]>          
+    </text>
+            
+    <text key="snmp-adaptorType.trap-demon"><![CDATA[
+                [Description]: Configure TRAP Message to be sent in case of system failure. Several configurations are enabled and message is sent to all ip addresses.
+            ]]>          
+    </text>
+            
+    <text key="engine-containerType.jmx-manager"><![CDATA[
+                [Description]: This is the JMX Manager element which contains all of the settings for JMX
+            ]]>          
+    </text>
+            
+    <text key="databaseType.service-name"><![CDATA[
+                [Description]: SID of Oralce DB set for related setting in only i-net JDBC driver.
+            ]]>          
+    </text>
+            
+    <text key="engine-commandType.system-logging"><![CDATA[
+                [Description]: This is the setting of logger recording error log of this Engine.
+            ]]>          
+    </text>
+            
+    <text key="applicationType.path"><![CDATA[
+                [Description]: Configuring the path of this application. Directory path will be used as common in case of archive file , file path and the director EAR, COMPONENT.
+                                In case where it is file name or directory name instead of absolute path, it is considered as APP_HOME.
+            ]]>          
+    </text>
+            
+    <text key="fileDbType.startup-clear-to"><![CDATA[
+                    [Description]: When moving WebContainer, session objects stored in set file are recovered. If the value set in this setting is greater than time difference of last modified time, it will clear up entire file content without attempting to recover it.
+            ]]>          
+    </text>
+            
+    <text key="snmp-adaptorType.snmp-security"><![CDATA[
+                [Description]: It determines whether anonymous incoming messages to be processed or not. Note that only SNMPv3 can set this ??true???.
+            ]]>          
+    </text>
+            
+    <text key="tm-configType.uncompleted-timeout"><![CDATA[
+                [Description]: A server transaction manager manages a list of global transactions for which the responses for 'commit' signal are not gathered completely.
+                                The list will be used in recovery procedure. After the time given by this element has passed, the entry for the transaction is removed from the list.
+                [Value Description]: A time period in milliseconds.
+            ]]>          
+    </text>
+            
+    <text key="databaseType.export-name"><![CDATA[
+                [Description]: JNDI name of DataSource. This value is used for registering datasource in Naming Server.
+            ]]>          
+    </text>
+            
+    <text key="jeus-systemType.resource"><![CDATA[
+                [Description]: This element contains information about any external resources to be integrated with the JEUS server.
+                                Resources include, for example, databases, TP monitors and other EISs accessed through the connector architecture.
+            ]]>          
+    </text>
+            
+    <text key="jeusmain-session-serverType.session-manager"><![CDATA[
+                            [Description]: Configures administrator storing session and providing service of session object in WebContainer/EJB.
+            ]]>          
+    </text>
+            
+    <text key="engine-containerType.engine-command"><![CDATA[
+                [Description]: An engine serves as a runtime environment where J2EE applications will run.
+                                An engine can be compared to a container in terms of the J2EE spec. Every engine to be started when the engine container boots should be declared within an element of this type.
+                                The types of avalible engines are: Web/Servlet engine, EJB engine, JMS engine and WS engine (JEUS Web Server).
+            ]]>          
+    </text>
+            
+    <text key="tmax-securityType.user-name"><![CDATA[
+                [Description]: User name is required to be set for user authentication when user registered in Tmax Server is connected to Tmax server.
+                [Value Description]: a user name
+                [Example]:&lt;user-name>admin&lt;/user-name>
+            ]]>          
+    </text>
+            
+    <text key="jeusmain-session-serverType.connect-timeout"><![CDATA[
+                    [Description]: Timeout value applied when generating socket connection between session servers existing in Manager.
+            ]]>          
+    </text>
+            
+    <text key="jeus-systemType.node"><![CDATA[
+                [Description]: A JEUS "node" is basically equivalent to a JEUS server instance running on one physical machine (host). In JEUSMain.xml, there must be one node XML element
+                                 for each JEUS node/server that should be a part of the overall JEUS system/cluster. Each server will keep a copy of this JEUSMain.xml file and can thus learn about
+                                the other nodes of the system. Apart from starting an actual JEUS server for each configured node element, there will also be a JEUS manager instance created for each node.
+            ]]>          
+    </text>
+            
+    <text key="session-router-configType.read-timeout"><![CDATA[
+                    [Description]: Maximum number of time taken for reading the data from Session Server.
+            ]]>          
+    </text>
+            
+    <text key="engine-containerType.name"><![CDATA[
+                [Description]: Engine Container Name.
+                [Value Description]: Enter proper name. Through combining name of inserted node, actual Engine Container name will be generated.
+                                    Ex) The name written by "mycontainer" from "johan_mycontainer".
+                [Defined Value]: [default]: When using Engine Container Name, Engine Container operates with JEUSManager in identical JVM.
+                                      Engine Container is operated as new JVM process for different name
+            ]]>          
+    </text>
+            
+    <text key="snmp-adaptorType.pooling"><![CDATA[
+                [Description]: It configures the thread to process the request from SNMP Server. Configures pool which manages this thread.
+            ]]>          
+    </text>
+            
+    <text key="session-routerType.backup-session-router"><![CDATA[
+                    [Description]: session-router to use in-memory backup of session-router.
+            ]]>          
+    </text>
+           
+    <text key="session-routerType.file-db"><![CDATA[
+                    [Description]: It is equivalent to "default-file-db".
+                                   But, applied only for the corresponding WebContainer(session-router).
+                                   It has higher priority than "default-file-db".
+            ]]>          
+    </text>
+            
+    <text key="tmax-propertyType.value"><![CDATA[
+                [Description]: Value when adding user property in WebT Service.
+                [Example]: &lt;value>GenericServlet&lt;/value>
+            ]]>          
+    </text>
+            
+    <text key="tmaxType.header-type"><![CDATA[
+                [Description]: Specifies communication header type
+                [Value Description]: tmax header type
+                [Example]: &lt;header-type>extendedV4&lt;/header-type>
+            ]]>          
+    </text>
+            
+    <text key="jeus-nodeType.remote-webtob-list"><![CDATA[
+                [Description]:
+                                ]]>          
+    </text>
+            
+    <text key="snmp-adaptorType.snmp-max-packet-size"><![CDATA[
+                [Description]: It is the maximum size of a SNMP packet and must be at least 256(unit in byte).
+            ]]>          
+    </text>
+            
+    <text key="url-sourceType.url-entry"><![CDATA[
+                [Description]: Each entry is mapping actual URL address and JNDI name. This means that URL is binded in Naming Server.
+            ]]>          
+    </text>
+            
+    <text key="jmsSourceType.queue"><![CDATA[
+                [Description]: It will be used when resource-type is Q . For additional information, please refer to IBM MQ or Sonic MQ manual
+            ]]>          
+    </text>
+            
+    <text key="web-context-groupType.virtual-host-name"><![CDATA[                      [Description]: Configure virtual host name to be used when web module is deployed within this application.                      [Value Description]: This should contain virtual host configured within this context group.                     ]]>          
+    </text>
+            
+    <text key="applicationType.deploy-when-booting"><![CDATA[
+                [Description]: When booting JEUS, it represents availability of deploying.
+    If it is not configured, it becomes true.
+            ]]>          
+    </text>
+            
+    <text key="mail-entryType.mail-property"><![CDATA[
+                [Description]: This is used for enabling to have an access or configuring mail host.
+            ]]>          
+    </text>
+            
+    <text key="database-connection-poolType.dba-timeout"><![CDATA[
+                [Description]: The DBA mode is available on Oracle and Sybase type databases.
+                                DBA mode represents a privileged connection to a database that allows a low-level
+                                "kill" signal to be sent from the application server to the database in case a problem
+                                is detected on the database side (such as a deadlock). This element, the dba-timeout,
+                                allows a user to configure the maximum amount of time that should be allowed to pass
+                                between a call to getConnection() and the return of the connection to the connection pool
+                                before such a "kill" signal should be sent, forcefully terminating the connection.
+                                This option is only valid for Oracle and Sybase DBMS.
+                [Value Description]: Unit of millisecond
+            ]]>          
+    </text>
+            
+    <text key="app-targetType.node-name"><![CDATA[
+                [Description]: Configuring engine container to be deployed in the set node name.
+                [Example]: &lt;node-name>MyNode&lt;/node-name>
+                ]]>          
+    </text>
+            
+    <text key="backup-session-routerType.servlet-engine-name"><![CDATA[
+                    [Description]: Engine name of WebContainer which participates on session clustering.
+            ]]>          
+    </text>
+            
+    <text key="application-propertyGroup.fast-deploy"><![CDATA[
+                [Description]: Set to "true" if the .ear file already contains the required compiled stub classes and compilation is not necessary.
+                                This will cause the .ear file to just be exploded and the contained files to be copied to their proper location.
+                                This configuration sets jeus.application.fastdeploy.system property.
+            ]]>          
+    </text>
+            
+    <text key="connector-componentType.uri"><![CDATA[
+                [Description]: URI name related to this connector component.
+                [Value Description]: In case of EAR or COMPONENT type, it ends up with .rar. In case of EXPLODED type, the name of related directory is placed.
+                [Example]: &lt;uri>connector.rar&lt;/uri>
+            ]]>          
+    </text>
+            
+    <text key="jeusmain-session-serverType.read-timeout"><![CDATA[
+                    [Description]: Maximum number of time taken for reading the data from Session Server.
+            ]]>          
+    </text>
+            
+    <text key="tm-configType.active-timeout"><![CDATA[
+                [Description]: A transaction automatically rolls back after the transaction has been active without commiting for the amount of time set here.
+                [Value Description]: A time period in milliseconds.
+            ]]>          
+    </text>
+            
+    <text key="jaxr-entryType.lifeCycle-manager-URL"><![CDATA[
+                [Description]: URL for life cycle manager service of Target registry provider.  Publishing URL of UDDI Registry. It is identical with queryManagerURL if it has not been stated.
+            ]]>          
+    </text>
+            
+    <text key="engine-containerType.id"><![CDATA[
+                [Description]: Engine Container ID
+                [Value Description]: Set the integer value between 0 and 127 which used in this Engine Container.
+            ]]>          
+    </text>
+            
+    <text key="engine-containerType.use-MEJB"><![CDATA[
+                [Description]: Setting whether MEJB in J2EE Management Spec has been set or not. If it is not used, MEJB will not be deployed.
+            ]]>          
+    </text>
+            
+    <text key="jeus-nodeType.webadmin-config"><![CDATA[                        [Description]: Configure JEUS WebAdmin.                    ]]>          
+    </text>
+            
+    <text key="tm-configType.pooling"><![CDATA[
+                [Description]: TM pool is constructed as thread processing transaction. The element listed below is used for setting pool to manage thread.
+            ]]>          
+    </text>
+            
+    <text key="enable-interopType.interop-ssl-config"><![CDATA[                        [Description]: Configure keystore/truststore file.                    ]]>          
+    </text>
+        
+    <text key="session-router-configType.check-level"><![CDATA[
+            [Description]: It inspects on standard in which updated session object to execute backup using backup session server exists.
+    ]]>      
+    </text>
+        
+    <text key="jeus-nodeType.enable-jnlp"><![CDATA[
+        [Description]: Determines whether to enable or disable the JNLP Service.
+    ]]>      
+    </text>
+            
+    <text key="jtmax-beans-serviceType.property"><![CDATA[
+                        [Description]: Specify the property of Beans that you want to use.
+                    ]]>          
+    </text>
+           
+           
+    <text key="mail-propertyType.name"><![CDATA[
+        [Description]: Name of mail property. property name follows JavaMail 1.2 specification
+        [Defined Value]:    [mail.user]: User name reconiged in server.
+                            [mail.host]: IP address of mail server.
+                            [mail.from]: E-mail of Sender.
+                            [mail.transport.protocol]: Mail protocol to use.
+    ]]>          
+    </text>
+            
+    <text key="jeusmain-session-serverType.thread-pool"><![CDATA[
+                [Description]: Thread pool will be set for processing socket conection requested by Jeus system listener port ($JEUS_BASEPORT).
+    ]]>          
+    </text>
+            
+    <text key="resourceType.jaxr-source"><![CDATA[
+        [Description]: Defining xml-registery source to be used in JAXR application.
+    ]]>          
+    </text>
+            
+    <text key="tmaxType.host-name"><![CDATA[
+        [Description]: Name or IP address of Tmax server.
+        [Value Description]: a valid IP address
+        [Example]: &lt;host-name>111.111.111.1&lt;/host-name>
+    ]]>          
+    </text>
+            
+           
+    <text key="auto-deployType.auto-deploy-check-interval"><![CDATA[
+        [Description]: Configuring time cycle to check when application has been updated.
+        [Performance Recommendation]: It can be set for needed time period since too frequent checking can reduce the performance.
+    ]]>          
+    </text>
+            
+    <text key="tmax-securityType.encryption"><![CDATA[
+        [Description]: Specifies whether to use SSL communication with Tmax
+        [Example]:&lt;encryption>true&lt;/encryption>
+    ]]>          
+    </text>
+            
+    <text key="databaseType.user"><![CDATA[
+        [Description]: For processing transaction as DB user ID, user should have proficient system authority.
+    ]]>          
+    </text>
+            
+    <text key="jtmaxType.ejb-service"><![CDATA[
+                        [Description]: Match the service name forwarded by TMAX with EJB method.
+                    ]]>          
+    </text>
+           
+    <text key="invocationType.invocation-method"><![CDATA[
+      [Description]: Setting the method to be used in this invocation.
+    ]]>          
+    </text>
+            
+    <text key="session-router-configType.use-nio"><![CDATA[
+        [Description]: This element checks if distributed-session-server communicates using Nonblocking I/O.
+    ]]>          
+    </text>
+            
+    <text key="jeus-nodeType.system-logging"><![CDATA[
+        [Description]: This element defines logging behavior for the system log file.
+    ]]>          
+    </text>
+            
+    <text key="engine-commandType.name"><![CDATA[
+        [Description]: Engine Name.
+        [Value Description]: Insert proper name. This name is used after being updated as &lt;node_name>_&lt;engine_type>&lt;engine_name>
+                            Ex) "johan_servlet_Engine1" is EJB Engine named as "Engine1".
+        ]]>          
+    </text>
+            
+    <text key="jns-serverType.use-nio"><![CDATA[
+        [Description]: This element checks if JNSServer communicates using Nonblocking I/O.
+        [Performance Recommendation]: In case of using several number of Engine Containers and clients, Nonblocking I/O will be more efficent to use.
+                                        In case of using small number of clients through using JNDI, Blocking I/O will be more efficent.
+        ]]>          
+    </text>
+            
+    <text key="client-componentType.uri"><![CDATA[
+        [Description]: URI name related to this client component configuration.
+        [Value Description]: EXPLODED form ending with .jar in case of EAR or COMPONENT type, the name of related directory will be placed.
+        [Example]: &lt;uri>client.jar&lt;/uri>
+        ]]>          
+    </text>
+            
+    <text key="databaseType.data-source-class-name"><![CDATA[
+            [Description]: Datasource class name of JDBC driver.
+            [Example]: &lt;data-source-class-name>oracle.jdbc.pool.OracleConnectionPoolDataSource&lt;/data-source-class-name>
+        ]]>          
+    </text>
+            
+    <text key="resourceType.mail-source"><![CDATA[
+            [Description]: Mail Source sets several SMTP hosts used for sending mail from client application.
+        ]]>          
+    </text>
+            
+    <text key="jaxr-sourceType.jaxr-entry"><![CDATA[
+            [Description]: This element contains the value of ConnectionFactory for constructing JAXR Connection.
+        ]]>          
+    </text>
+            
+    <text key="tm-configType.capacity"><![CDATA[
+            [Description]: Hint given to transaction managers to optimize sizing of their inner data structure.
+                    Transaction Manager sets the value after considering on the number of global transactions simultaneously.
+            [Performance Recommendation]: The number of simulaneous transactions to be processed by Transaction Manager should be nearly set.
+        ]]>          
+    </text>
+            
+    <text key="snmp-adaptorType.snmp-adaptor-port"><![CDATA[
+            [Description]: Listener port of SNMP adaptor
+        ]]>          
+    </text>
+            
+    <text key="auto-deployType.check-absolute-path"><![CDATA[
+                        [Description]: Specify the absolute-path of applications in JEUSMain.xml. This enables
+                        automatic deployment and undeployment of the applications those are added and deleted at the path.
+                    ]]>          
+    </text>
+           
+    <text key="jtmaxType.listen-port"><![CDATA[
+                        [Description]: Specify the service port of Jtmax listener.
+                        [Example]: <listen-port>9800</listen-port>
+                    ]]>          
+    </text>
+           
+    <text key="rmi-connectorType.rmi-connector-port"><![CDATA[
+            [Description]: An rmi adaptor port for JEUS JMX to listen at. This port number must be available. If set -1, rmi adaptor will not run.
+            [Defined Value]: [0]: Port will be set as random.
+        ]]>          
+    </text>
+            
+    <text key="databaseType.password"><![CDATA[
+            [Description]: This is the password of DB user. According to &lt;cipher-algorithm> setting, the value can be Base64.
+        ]]>          
+    </text>
+            
+    <text key="database-connection-poolType.stmt-fetch-size"><![CDATA[
+            [Description]: Fetch size of statement made from Connection.
+        ]]>          
+    </text>
+            
+    <text key="typePropertyType.name"><![CDATA[
+                        [Description]: Property name.
+                    ]]>          
+    </text>
+           
+    <text key="cluster-dsType.data-source"><![CDATA[
+            [Description]: The export name of DB for this clustering is written through segmenting as ','. First DB of the list operates as the main DB.
+            [Example]: &lt;data-source>datasource1&lt;/data-source>
+                       &lt;data-source>datasource2&lt;/data-source>
+        ]]>          
+    </text>
+            
+    <text key="jtmax-ejb-serviceType.export-name"><![CDATA[
+                    [Description]: JNDI binding name of the EJB that you want to call.
+                    [Example]: <export-name>StringServices</export-name>
+                    ]]>          
+    </text>
+           
+    <text key="tmaxSourceType.default-charset"><![CDATA[
+                        [Description]: Specify the character set to use for the contents in TMAX buffer. If it is not specified, the default value of JDK will be applied.
+                        [Value Description]: an encoding name
+                        [Example]: <default-charset>euc-kr</default-charset>
+                    ]]>          
+    </text>
+           
+    <text key="applicationType.absolute-ejb-jar"><![CDATA[
+                    	[Description]: Specify the absolute path where system can find the ejb-jar.xml for sub-EJB-stand-alone module.
+                        This provides the compatibility with the EJB modules in JEUS version 4.x. Please refer to the JEUS server manual for further details.
+                    ]]>          
+    </text>
+           
+    <text key="databaseType.server-name"><![CDATA[
+            [Description]: Server name for Database to be executed.
+        ]]>          
+    </text>
+            
+    <text key="engine-containerType.base-port"><![CDATA[                        [Description]: According to container, when using listen port, value of base port + 15 + containerID * 10 			is used as base port of container. This value will be directly configured.                                                   [Value Description]:Value of listen port that this Engine Container is using. 			  Since this value is used for generating transaction ID,  			  			  Since this value is used when Transaction Manager generates transaction ID, this value should			  be the same for prior to failure and after failure.  			  This value is used when Transaction Manager generates transaction ID. In the recovery, this value should 			  be identical prior to and after failure. Once, it is duplicated with EngineContainer, container boot will fail. 			                      ]]>          
+    </text>
+            
+    <text key="jns-serverType.backlog-size"><![CDATA[
+    [Description]: Backlog-size element is used for setting the limited size of back log of connecting other Naming Server.
+    ]]>          
+    </text>
+            
+    <text key="session-managerType.name"><![CDATA[
+    [Description]: Set the name of session. Set the unique value in jeus clustering system.
+    ]]>          
+    </text>
+            
+    <text key="tmaxType.backup-host-name"><![CDATA[
+    [Description]: This element sets the IP address value of Backup Tmax Server set for the service when facing the failover of Main Tmax Server.
+    [Value Description]: a valid IP address
+    [Example]: &lt;backup-addresss>111.111.111.2&lt;/backup-address>
+    ]]>          
+    </text>
+            
+    <text key="tmaxSourceType.jtmax"><![CDATA[
+                        [Description]: Specify the Jtmax listener that TMAX uses to call EJB.
+                    ]]>          
+    </text>
+           
+    <text key="tmaxType.port"><![CDATA[
+    [Description]: Value identical with value set in Tmax server environmental file should be configured.
+    [Value Description]: a port number
+    [Example]: &lt;port>8888&lt;/port>
+    ]]>          
+    </text>
+            
+    <text key="web-componentType.java-security-permission"><![CDATA[
+    [Description]: Configuring J2SE security permission for this web component.
+    ]]>          
+    </text>
+            
+    <text key="fileDbType.packing-rate"><![CDATA[
+    [Description]: When operating file-db, the size of file can become larger than what it needs to be.
+    When the number of file I/O exceeds the set ratio comparing to current number of session objects, it will prevent from enlarging file size than it needs through executing file packing.
+    ]]>          
+    </text>
+            
+    <text key="jeus-nodeType.enable-webadmin"><![CDATA[
+    [Description]: Determines whether to enable or disable the Web Admin server on the node. The Web Admin server is used to manage the JEUS system through HTTP using a Web browser. It is a substitute for the GUI admin tool.
+    ]]>          
+    </text>
+            
+    <text key="session-managerType.backup-name"><![CDATA[
+    [Description]: Configuring name of session-manager to be used as backup of this session-manager.
+    ]]>          
+    </text>
+            
+    <text key="resourceType.url-source"><![CDATA[
+    [Description]: URL Source is used for binding URL address in JNDI name of Naming Server for client to enable to provide an access to URL resource in JNDI lookup mode.
+    ]]>          
+    </text>
+            
+    <text key="jmsSourceType.export-name"><![CDATA[
+    [Description]: The name of service registered in JNDI.
+    ]]>          
+    </text>
+            
+    <text key="engine-containerType.system-logging"><![CDATA[
+    [Description]: Logger to be used in this Engine Container is set. Error messages occurred will be displayed for this logger.
+    ]]>          
+    </text>
+            
+    <text key="jtmaxType.webt-logging"><![CDATA[
+                        [Description]: Specify logging type for Jtmax listener.
+                    ]]>          
+    </text>
+           
+    <text key="jaxr-entryType.export-name"><![CDATA[
+        [Description]: JNDI name of JAXR ConnectionFactory. This value will be used for registering ConnectionFactory in Naming Server.
+    ]]>          
+    </text>
+            
+    <text key="trap-demonType.port"><![CDATA[
+    [Description]: port of Demon
+    [Value Description]: a port number
+    [Example]: &lt;port>8888&lt;/port>
+    ]]>          
+    </text>
+            
+    <text key="engine-containerType.user-logging"><![CDATA[
+    [Description]: This element sets on how to process generated log using jeus.util.UserLogger class.
+    ]]>          
+    </text>
+            
+    <text key="tmaxMonitorType.monitor-interval"><![CDATA[
+                        [Description]: Monitoring interval for TMAX data source.
+                        [Value Description]: millisecond
+                        [Example]: <monitor-interval>600000</monitor-interval>
+                    ]]>          
+    </text>
+           
+    <text key="all-targetsType.web-context-group"><![CDATA[                    [Description]: Configure web context group of target to deploy this application.                    ]]>          
+    </text>
+            
+    <text key="databaseType.property"><![CDATA[
+    [Description]: Properties needed for configuring DataSource in case where vendor type is other.
+    ]]>          
+    </text>
+            
+    <text key="tmaxSourceType.tmax"><![CDATA[
+    [Description]: This element is used for exporting Tmax TP monitor existing in JEUS JNDI namespec. Please refer to Tmax Manual related to using Tmax Solution.
+    ]]>          
+    </text>
+            
+    <text key="tmaxType.default-charset"><![CDATA[
+    [Description]: Default character for the application can be set for this field. Basically, it is identical with action of WebtSystem.setDefaultCharset(java.lang.String charset)
+    [Value Description]: a encoding name
+    [Example]: &lt;default-charset>euc-kr&lt;/default-charset>
+    ]]>          
+    </text>
+            
+    <text key="snmp-adaptorType.snmp-version"><![CDATA[
+    [Description]: 1,2 or 3 can be set for SNMP version.
+    ]]>          
+    </text>
+            
+    <text key="cluster-dsType.export-name"><![CDATA[
+    [Description]: export name of datasource cluster
+    ]]>          
+    </text>
+            
+    <text key="jtmax-ejb-serviceType.name"><![CDATA[
+                        [Description]: Name of the corresponding service. This must be unique within Jtmax context
+                        [Example]: <name>TOUPPER</name>
+                    ]]>          
+    </text>
+           
+    <text key="application-propertyGroup.role-permission"><![CDATA[
+    [Description]: It is used for setting entire module of this application using principal - role mapping.
+    ]]>          
+    </text>
+            
+    <text key="application-propertyGroup.classloading"><![CDATA[
+    [Description]: This application selects the method of classloading. If it is not set, it uses value set in jeus.classloading system property.
+    ]]>          
+    </text>
+            
+    <text key="database-connection-poolType.check-query-period"><![CDATA[                        [Description]: In case of configuration of certain DB, connection closing will occur after certain period			of time by configuring firewall between JEUS and DB. Thus, 			you should do operation of recreating by checking connection for a specific time period.                        Overhead of the performance can occur since it is applied for entire current idle connection.                        [Value Description]: Time taken for check-query. (Unit: msec)                        [Example]: <check-query-period>200000</check-query-period>                    ]]>          
+    </text>
+            
+    <text key="tmaxType.check-acquired"><![CDATA[
+    [Description]: Specifies whether to do liveness-check of connection acquired from connection pool or not before returning to client
+    [Value Description]: liveness-check for acquired connection from pool
+    [Example]:&lt;check-acquired>true&lt;/check-acquired>
+    ]]>          
+    </text>
+            
+    <text key="database-connection-poolType.check-query-class"><![CDATA[
+    [Description]:
+    [Value Description]:
+    [Example]: &lt;check-query-class>foo.bar.ABCheckConnection&lt;/check-query-class>
+    [Performance Recommendation]:
+    ]]>          
+    </text>
+            
+    <text key="tmaxType.backup-port"><![CDATA[
+    [Description]: Identical value with "PORT" value in environment file of Backup Tmax Server is set.
+    [Value Description]: a port number
+    [Example]: &lt;backup-port>8889&lt;/backup-port>
+    ]]>          
+    </text>
+            
+    <text key="jns-serverType.export-cos-naming"><![CDATA[
+    [Description]: Export-cos-naming element determines whether to operate JEUS as COS Naming Server (tnameserver). If it is set as true, tnameserver will start to execute through using %JEUS_BASEPORT%+4 port.
+    ]]>          
+    </text>
+            
+    <text key="ejb-componentType.keep-generated"><![CDATA[
+    [Description]: When generating stub classes of this ejb component, it determines whether to leave java source file. If it has not been configured, &lt;application> element will be used.
+    ]]>          
+    </text>
+            
+    <text key="resourceType.data-source"><![CDATA[
+    [Description]: Datasource to be used in applciation is defined.
+    ]]>          
+    </text>
+            
+    <text key="deployment-targetType.target"><![CDATA[
+    [Description]: Set the target to deploy this application.
+    ]]>          
+    </text>
+            
+    <text key="jmx-managerType.mlet-url"><![CDATA[
+    [Description]: The URL of MLet to be registered in MBeanServer of this Engine Container is set.
+    ]]>          
+    </text>
+            
+    <text key="database-connection-poolType.max-use-count"><![CDATA[
+    [Description]: A connection is exchanged according to the number of this element.
+    [Defined Value]: [0]: It means unlimitation. Thus, it keeps on using Connection obtained at once.
+    ]]>          
+    </text>
+            
+    <text key="tmaxType.service-timeout"><![CDATA[
+    [Description]: This element stops for requesting related service when service is not performed in certain amount of time through requesting service from Tmax Server.
+    [Value Description]: millisecond
+    [Example]: &lt;service-timeout>60000&lt;/service-timeout>
+    ]]>          
+    </text>
+            
+    <text key="tmaxSourceType.fdl-file"><![CDATA[
+                        [Description]: Specify the location of the field table in which you want to use the TMAX FDL buffer.
+                        [Value Description]: a tmax fdl filename
+                        [Example]: <fdl-file>/home/tmax/fdl/tmax.fdl</fdl-file>
+                    ]]>          
+    </text>
+           
+    <text key="applicationType.absolute-path"><![CDATA[
+                    	[Description]: Specify the absolute path where the sub-applications are located. If not, system will search the application
+                    	  in application home directory for each container.
+                    ]]>          
+    </text>
+           
+    <text key="applicationType.deployment-type"><![CDATA[
+    [Description]: Configuring type for this application to be deployed.
+    ]]>          
+    </text>
+            
+    <text key="tm-configType.use-nio"><![CDATA[
+    [Description]: This element is used to determine whether to use Nonblocking I/O for communication between TM.
+    [Performance Recommendation]: In case of using a number of Engine Containers and clients, Nonblocking I/O will be more efficent to be used.
+    However, for using small number of JVM processes, blocking I/O will be more efficent to be used.
+    ]]>          
+    </text>
+            
+    <text key="fileDbType.path"><![CDATA[
+    [Description]: Set the file name to store backup session(Absolute Path). The default value is $(JEUS_HOME)/sessiondb/&lt;servlet_engine_name>_1.fdb.
+    ]]>          
+    </text>
+            
+    <text key="jeus-nodeType.session-server"><![CDATA[
+    [Description]: This element is configuration for server providing a centralized session clustering.
+    This element enables to provide HttpSession Clustering and EJB Session Clustering used in Servlet/JSP.
+    ]]>          
+    </text>
+            
+    <text key="jmx-managerType.html-adaptor-port"><![CDATA[
+    [Description]: Port of HTML adaptor among adapters of JMX is set. Web Browser is connected as the set value for this field.
+    ]]>          
+    </text>
+            
+    <text key="naming-serverType.server"><![CDATA[
+    [Description]: The server element specifies the resources that the JNS server use to manage the connections with another JNS servers and its JNSLocals.
+    ]]>          
+    </text>
+            
+    <text key="jaxr-entryType.connection-factory-class-name"><![CDATA[
+    [Description]: JAXR ConnectionFactory Class Name.
+    [Example]: &lt;connection-factory-class-name>jeus.webservices.registry.ConnectionFactoryImpl&lt;/connection-factory-class-name>
+    ]]>          
+    </text>
+            
+    <text key="backup-session-routerType.node-name"><![CDATA[
+    [Description]: The node name of existing node backup in which session-router exists.
+    ]]>          
+    </text>
+            
+    <text key="databaseType.port-number"><![CDATA[
+    [Description]: Port number of Database listener.
+    ]]>          
+    </text>
+            
+    <text key="jtmax-ejb-serviceType.method-name"><![CDATA[
+                    [Description]: The name of the method that will get called.
+                    [Example]: <method-name>toupper</method-name>
+                    ]]>          
+    </text>
+           
+    <text key="fileDbType.min-hole"><![CDATA[
+    [Description]: When operating file-db, the size of file can become larger than what it needs to be.
+    After setting for min-hole, it will prevent from enlarging file size than it needs through executing file packing for set number when file I/O takes place.
+    ]]>          
+    </text>
+            
+    <text key="jeus-system"><![CDATA[
+    [Description]: This is the top-level XML element for configuring an entire JEUS system (cluster). This element and all its sub-elements exist in the file
+    JEUSMain.xml directly below the node directory of each JEUS server/node/machine that is to be a part of the JEUS system/cluster.
+    The node directory is JEUS_HOME/config/[node name], where "node name" is the same as the name of the physical machine (host).
+    ]]>          
+    </text>
+            
+    <text key="session-managerType.packing-rate"><![CDATA[
+    [Description]: In case of operating file-db for a certain time period, the file size can be increased to the extent of what it is needed.
+    When the number of file I/O according to the number of session objects exceeds the set ratio, it will prevent increased file size from being more than what it is needed.
+    ]]>          
+    </text>
+            
+    <text key="webt-file-handlerType.file-name"><![CDATA[
+    [Description]: WebT log file path and name to be generated are defined. When Operation system is Windows, file classfier should be '\\' instead of '\'
+    [Example]: &lt;file-name>/home/jeus/log/webt.log&lt;/file-name>
+    ]]>          
+    </text>
+            
+    <text key="engine-containerType.scheduler"><![CDATA[
+    [Description]:	This element contains configuration related to JEUS Scheduler.
+    ]]>          
+    </text>
+            
+    <text key="tmaxType.fdl-file"><![CDATA[
+    [Description]: Location of tmax fdl file is set.
+    [Value Description]: a tmax fdl filename
+    [Example]: &lt;fdl-file>/home/tmax/fdl/tmax.fdl&lt;/fdl-file>
+    ]]>          
+    </text>
+            
+    <text key="session-managerType.operation-to"><![CDATA[
+    [Description]: Configuring timeout to be applied for read operation between session-manager and Web Container (This means only when RMI is used.)
+    ]]>          
+    </text>
+            
+    <text key="jmsSourceType.factory-class-name"><![CDATA[
+    [Description]: Factory class name of  jms source driver.
+    ]]>          
+    </text>
+            
+    <text key="engine-containerType.command-option"><![CDATA[
+    [Description]: Write JVM option included in JVM of Engine Container.
+    [Example]: &lt;command-option>-Xms64m -Xmx128m&lt;/command-option>
+    ]]>          
+    </text>
+            
+    <text key="engine-containerType.enable-interop"><![CDATA[
+    [Description]: If this setting is done, this engine container can interact with entire ORB to use IIOP protocol.
+    For this case, two special listener interface is deployed in engine container (CSI listener and OTS listener).
+    This interface reconigzes and manupulates IIOP message header containing Security(ex: "principal" and Transaction(ex: GTID).
+    For activating this function, security parameter should be defined in JVM of engine container.
+    For additional information, please refer to "Security Interoperability" Chapter.
+    ]]>          
+    </text>
+            
+    <text key="jtmax-beans-serviceType.create-per-invoke"><![CDATA[
+                    [Description]: Specify whether to create new object whenever invoking service.
+                    [Example]: <create-per-invoke>true</create-per-invoke>
+                    ]]>          
+    </text>
+           
+    <text key="remote-webtobType.remote-addr"><![CDATA[
+    [Description]:
+    [Hidden]: true
+    ]]>          
+    </text>
+            
+    <text key="external-sourceType.tmax-source"><![CDATA[
+    [Description]: This element is used for exporting Tmax TP monitor server in JEUS JNDI namespace. Please refer to Tmax Manaul for usage on Tmax product.
+    ]]>          
+    </text>
+            
+    <text key="wait-free-connectionType.wait-time"><![CDATA[
+    [Description]: This element specifies the maximum wait-time that a client request will remain in the wait queue.
+    If this time expires, the request will be rejected and an exception will be thrown.
+    [Value Description]: A time period in milliseconds.
+    ]]>          
+    </text>
+            
+    <text key="engine-commandType.type"><![CDATA[
+    [Description]: Enging type contained in Engine Container.
+    ]]>          
+    </text>
+            
+    <text key="engine-containerType.sequential-start"><![CDATA[
+    [Description]: If "true", this option will make all the engines boot in a sequence, one after the other.
+    By default, all engines are booted at the same time but this might cause problems in some cases. The engine booting is done in the order they are specified in JEUSMain.xml.
+    [Performance Recommendation]: If this option is enabled, the engine container's startup time will be longer but possibly more reliable.
+    ]]>          
+    </text>
+            
+    <text key="jmsSourceType.vendor"><![CDATA[
+    [Description]: Vendor name of jms source driver.
+    ]]>          
+    </text>
+            
+    <text key="jaxr-entryType.query-manager-URL"><![CDATA[
+    [Description]: URL for query manager service of Target registry provider. Inquiry URL of UDDI Registry.
+    ]]>          
+    </text>
+            
+    <text key="databaseType.data-source-name"><![CDATA[
+    [Description]: Name of DataSource. It is generally identical with DataSourceClassName and dependent on driver vendor.
+    ]]>          
+    </text>
+            
+    <text key="jeusmain-session-serverType.use-nio"><![CDATA[
+    [Description]: This element checks if central-session-server communicates using Nonblocking I/O.
+    ]]>          
+    </text>
+            
+    <text key="typePropertyType.value"><![CDATA[
+    [Description]: Value of Property.
+    ]]>          
+    </text>
+            
+    <text key="databaseType.connection-pool"><![CDATA[
+    [Description]: This element contains information for Connection Pool.
+    ]]>          
+    </text>
+            
+    <text key="mail-sourceType.mail-entry"><![CDATA[
+    [Description]: Each mail entry is E-mail host using JNDI naming lookup. Please refer to JavaMail 1.2 Specification for more information in this function.
+    ]]>          
+    </text>
+            
+    <text key="jaxr-entryType.jaxr-property"><![CDATA[
+    [Description]: Configuration properties are used for configuring ConnectionFactory.
+    ]]>          
+    </text>
+            
+    <text key="databaseType.driver-type"><![CDATA[
+    [Description]: For Oracle driver, type of JDBC driver is set.
+    [Example]: &lt;driver-type>thin&lt;/driver-type>
+    ]]>          
+    </text>
+            
+    <text key="jeus-nodeType.scheduler"><![CDATA[
+    [Description]:	This element contains configuration related to JEUS Scheduler.
+    ]]>          
+    </text>
+            
+    <text key="remote-webtobType.control-port"><![CDATA[                        [Description]: Listen prot of webtob Admin Daemon                         [Hidden]: true                    ]]>          
+    </text>
+            
+    <text key="tmaxMonitorType.enable-failback"><![CDATA[
+                        [Description]: By enabling this option, you can set the data source with specified backup address to use the service in main server, Once the problems are resolve.
+                    ]]>          
+    </text>
+           
+    <text key="jaxr-propertyType.name"><![CDATA[
+    [Description]: Name of jaxr configuration property. property name should follow JAXR 1.0 Specification.
+    [Standard Properties]:    [javax.xml.registry.uddi.maxRows]: Maximum value to return on find operation from UDDI Provider.
+    [javax.xml.registry.postalAddressScheme]: ClassificationScheme id in which Default postal address scheme is used for this connection.
+    ]]>          
+    </text>
+            
+    <text key="data-sourceType.cluster-ds"><![CDATA[
+    [Description]: Datasource clustering is used for providing FailOver function of Database in the perspective of Application Server.
+    Datasource clustering is datasource instance containing one JNDI export name.
+    This instance takes a role of delivering to several DB(actual datasource) after receiving call from DB.
+    If main DB is in down mode, requested matters of application will be processed by another DB of clustering.
+    ]]>          
+    </text>
+            
+    <text key="jtmax-beans-serviceType.class-name"><![CDATA[
+                    [Description]: The FQCN of the beans to use.
+                    The class must implement tmax.jtmax.JtmaxService and provide default constructor.
+                    [Example]: <class-name>com.tmax.service.EJBInvoker</class-name>
+                    ]]>          
+    </text>
+           
+    <text key="wait-free-connectionType.enable-wait"><![CDATA[
+    [Description]: If this option is set to "true", client requests arriving when all connections have already been assigned,
+    will be put in a "queue" and wait for a connection to be freed and return to the pool.
+    ]]>          
+    </text>
+            
+    <text key="jeus-systemType.security-manager"><![CDATA[                        [Description]: security-manager element is a description of JEUS security information management.                    ]]>          
+    </text>
+            
+    <text key="jmx-connectorType.jmxmp-connector"><![CDATA[
+    [Description]: Use JMXMP Connector as JMX Connector.
+    ]]>          
+    </text>
+            
+    <text key="application-propertyGroup.keep-generated"><![CDATA[
+    [Description]: Keep-generated will be applied for modules in this application. Therefore, this application contains generated class in the deploying process.
+    If it has not been set, the value set in jeus.application.keepgenerated system property will be used.
+    ]]>          
+    </text>
+            
+    <text key="tmaxClusterType.export-name"><![CDATA[
+    [Description]: export name of Tmax-sources cluster
+    ]]>          
+    </text>
+            
+    <text key="deployment-targetType.all-targets"><![CDATA[
+    [Description]: This is the target for entire engine container.
+    ]]>          
+    </text>
+            
+    <text key="jndi-propertyGroup.pooling"><![CDATA[
+    [Description]: pooling element sets the thread pool construction of JNSServer for maintaining load-balance.
+    ]]>          
+    </text>
+            
+    <text key="tmaxType.export-name"><![CDATA[
+    [Description]: This is name of service registered in JNDI.
+    [Value Description]: a JNDI export name
+    [Example]: &lt;export-name>webtResource&lt;/export-name>
+    ]]>          
+    </text>
+            
+    <text key="mail-propertyType.value"><![CDATA[
+    [Description]: Value of mail property.
+    ]]>          
+    </text>
+            
+    <text key="session-managerType.file-db-name"><![CDATA[
+    [Description]: file-db name will be configured.
+    [Value Description]: The default value uses name configuration of session-manager.
+    ]]>          
+    </text>
+            
+    <text key="jeus-nodeType.jmx-manager"><![CDATA[
+    [Description]: This is the JMX Manager element which contains all of the settings for JMX
+    ]]>          
+    </text>
+            
+    <text key="resourceType.external-source"><![CDATA[
+    [Description]:This element is used for connecting to IBM MQ or Tmax.
+    ]]>          
+    </text>
+            
+    <text key="tmaxType.support-xa"><![CDATA[
+    [Description]: Specifies whether to use XA transaction or not. If true, main and backup address must be designated to JEUSGW address.
+    In the use of XA transaction, RQ or dialogue type service is prohibited (throws exception).
+    [Value Description]: xa transaction support
+    [Example]:&lt;support-xa>true&lt;/support-xa>
+    ]]>          
+    </text>
+            
+    <text key="tmaxType.connect-timeout"><![CDATA[
+    [Description]: In case of requesting to connect to Tmax Server, it will stop to connect when connection has not been made within the set time period.
+    [Value Description]: millisecond.
+    [Example]: &lt;connect-timeout>5000&lt;/connect-timeout>
+    ]]>          
+    </text>
+            
+    <text key="ejb-componentType.uri"><![CDATA[
+    [Description]: URI name for this ejb component configuration.
+    [Value Description]: In case of EAR or COMPONENT type, it ends up with .rar. In case of EXPLODED type, the name of related directory is placed.
+    [Example]: &lt;uri>ejb.jar&lt;/uri>
+    ]]>          
+    </text>
+            
+    <text key="lifecycle-invocationType.invocation"><![CDATA[
+    [Description]: This element configures detail information on invocation within this class.
+    ]]>          
+    </text>
+            
+    <text key="tmaxType.security"><![CDATA[
+    [Description]: This element defines security authority when communicating wiht Tmax server.
+    [Example]: &lt;securityType> ... &lt;/securityType>
+    ]]>          
+    </text>
+            
+    <text key="tmaxMonitorType.check-alive"><![CDATA[
+                        [Description]: Check the status of connections via liveness check according to specified monitoring frequency.
+                    ]]>          
+    </text>
+           
+    <text key="url-entryType.url"><![CDATA[
+    [Description]: URL is mapped to JNDI name of binded JNDI Server.
+    [Example]: &lt;url>http://www.foo.com&lt;/url>
+    ]]>          
+    </text>
+            
+    <text key="jeus-nodeType.engine-container"><![CDATA[
+    [Description]: The engine container is a logical construct that groups several JEUS engines together in manageable units.
+    ]]>          
+    </text>
+            
+    <text key="trap-demonType.ip-address"><![CDATA[
+    [Description]: IP address of Demon
+    [Value Description]: a valid IP address
+    [Example]: &lt;host-name>111.111.111.1&lt;/host-name>
+    ]]>          
+    </text>
+            
+    <text key="application-propertyGroup.class-ftp-unit"><![CDATA[
+    [Description]: When transferring class of EJB module included in this application as remote, it sets whether to transfer JAR file itself or one class.
+    ]]>          
+    </text>
+            
+    <text key="tmaxType.tmax-connection-pool"><![CDATA[
+    [Description]: This element sets connection pool with Tmax server.
+    [Example]: &lt;tmax-connection-pool> ... &lt;/tmax-connection-pool>
+    ]]>          
+    </text>
+            
+    <text key="tm-configType.recovery-timeout"><![CDATA[
+    [Description]: This value is used during recovery procedure. A transaction manager in recovery tries to get information related to the transactions to be recovered.
+    If it fails to get the information from other transaction managers in the time given by this element, it will rollback the transaction or just leave it dependant on the value of &lt;heuristic-rollback> element.
+    [Value Description]: A time period in milliseconds.
+    ]]>          
+    </text>
+            
+    <text key="listenerType.thread-pool"><![CDATA[
+    [Description]: Thread pool will be set for processing socket conection requested by Jeus system listener port ($JEUS_BASEPORT).
+    ]]>          
+    </text>
+            
+    <text key="database-connection-poolType.pooling"><![CDATA[
+    [Description]: This element contains information on DB Connection Pooling.
+    ]]>          
+    </text>
+            
+    <text key="jeus-nodeType.session-router-config"><![CDATA[
+    [Description]: This is the setting for server which provides distributed session clustering. This server provides the service for HttpSession Clustering used in Servlet/JSP.
+    ]]>          
+    </text>
+            
+    <text key="jeus-nodeType.backup-node"><![CDATA[
+    [Description]: This element gives the node name of an identically configured backup node that should take over in case this node goes down.
+    [Value Description]: The name of a node that should be used as a backup.
+    ]]>          
+    </text>
+            
+    <text key="tmaxType.enable-autoclose"><![CDATA[
+                        [Description]: Automatically return the uncloseconnection to pool.It is valid only for the servlet/jsp.
+                        [Value Description]: returns unclosed connection to pool automatically
+                        [Example]:<enable-autoclose>true</enable-autoclose>
+                    ]]>          
+    </text>
+           
+    <text key="jtmaxType.context-name"><![CDATA[
+                        [Description]: Specify the context name for Jtmax listener.
+                        The specified name is to be used as the name of MBean, and must be unique in <tmax-source> tag.
+                        [Example]: <context-name>JTMAX1</context-name>
+                    ]]>          
+    </text>
+           
+    <text key="jeus-nodeType.name"><![CDATA[
+    [Description]: Node Name.
+    [Value Description]: By using "uname -n", actual machine name in which JEUS is normally operated can be searched.
+    This element is identical with computer name in	[System Registration Information]-[Network Distingushment] in Windows.
+    ]]>          
+    </text>
+            
+    <text key="databaseType.data-source-type"><![CDATA[
+    [Description]: Type of DataSource.
+    ]]>          
+    </text>
+            
+    <text key="ejb-componentType.client-view-path"><![CDATA[
+    [Description]: Configuring directory in which stub class of this ejb component exists.
+    ]]>          
+    </text>
+            
+    <text key="session-managerType.min-hole"><![CDATA[
+    [Description]: In case of operating file-db for a certain time period, the file size can be increased to the extent of what it is needed.
+    If the fdb files are accessed for MinHole number of times, then the fdb files will be re-organized.
+    ]]>          
+    </text>
+            
+    <text key="jeus-systemType.application"><![CDATA[
+    [Description]: When JEUS is executed, appication to be deployed is selected.
+    ]]>          
+    </text>
+            
+    <text key="session-router-configType.connect-timeout"><![CDATA[
+    [Description]: Timeout value applied when generating socket connection between session servers existing in WebContainer.
+    ]]>          
+    </text>
+            
+    <text key="typePropertyType.type"><![CDATA[
+                        [Description]: The value type of property.
+                        [Value Description]: Valid value types include primitive type,java.lang.String, and Primitive Wrapper Class, etc.
+			  If it is set to java.util.Properties type. the value will be assigned to the property.
+                        [Example]: <type>java.lang.Integer</type>
+                    ]]>          
+    </text>
+           
+    <text key="invocationType.invocation-argument"><![CDATA[
+    [Description]: Setting the argument to be used when calling the method.
+    ]]>          
+    </text>
+            
+    <text key="session-router-configType.default-file-db"><![CDATA[
+    [Description]: For Backup for updated local session object, backup method for local file system can be used besides method of backup for session server.
+    This setting provides the backup for updated session object in local file system. Actually, file backup will be executed by WebContainer.
+    This setting is applied for entire WebContainers(session-router) participating in session clustering.
+    When "file-db" is set as lower level of element, this setting(default-file-db) will be ignored and "file-db" setting will be applied
+    ]]>          
+    </text>
+            
+    <text key="tmaxSourceType.tmax-cluster"><![CDATA[
+    [Description]: Datasource clustering is used for providing FailOver function of Database in perspective of applciation server.
+    Data source clustering is data souroce instance containing a single JNDI export name.
+    ]]>          
+    </text>
+            
+    <text key="jeusmain-session-serverType.resolution"><![CDATA[
+    [Description]: Set the activation time cycle for doing operation including session removal, and session passivation.
+    ]]>          
+    </text>
+            
+    <text key="remote-webtobType.config-file-name"><![CDATA[
+    [Description]:
+    [Hidden]: true
+    ]]>          
+    </text>
+            
+    <text key="jaxr-entryType.authentication-method"><![CDATA[
+    [Description]: Authentication Method for obtaining Registry Provider authenticaiton.
+    [Example]: &lt;authenticationMethod>UDDI_GET_AUTHTOKEN&lt;/authenticationMethod>
+    ]]>          
+    </text>
+            
+    <text key="webt-file-handlerType.buffer-size"><![CDATA[
+                        [Description]: Specify the buffer size for log generating.
+                        [Value Description]: bytes
+                        [Example]: <buffer-size>1024</buffer-size>
+                    ]]>          
+    </text>
+           
+    <text key="databaseType.description"><![CDATA[
+    [Description]: This is the element to explain on DataSource.
+    [Example]: &lt;description>This Datasource uses Oracle XA.&lt;/description>
+    ]]>          
+    </text>
+            
+    <text key="tmaxType.transaction-block-timeout"><![CDATA[
+    [Description]: This element stops for requested service when commit service is not terminated in normal way of requesting Transaction commit service to Tmax Server.
+    [Value Description]: millisecond.
+    [Example]: &lt;transaction-block-timeout>60000&lt;/transaction-block-timeout>
+    ]]>          
+    </text>
+            
+    <text key="database-connection-poolType.check-query"><![CDATA[
+    [Description]: Some databases does not correctly report when there is an error when aqcuiring a new database connection with the getConnection() command.
+    For such databases, JEUS may be configured to send a "check query" in order to learn about the status of the connection.
+    The check query is a simple SQL sentence which should yield some simple, valid result.
+    This query will be sent to the database whenever connection status needs to be known by JEUS.
+    This tag should NOT be used for databases that does not have problems to report an error condition via the call to setAutoCommit().
+    Such databases include Oracle, Sybase and MSSQL Server.
+    [Value Description]: A simple SQL sentence that will be sent to the database.
+    [Example]: &lt;check-query>SELECT check FROM checktable;&lt;/check-query>
+    [Performance Recommendation]: Do NOT use this feature with Oracle, Sybase and MSSQL as it will imply a poorer performance.
+    ]]>          
+    </text>
+            
+    <text key="enable-interopType.use-OTS"><![CDATA[
+    [Description]: Determine to use interoperability as ORB to support OTS. If it is false, it acts in the mode which doesn't support OTS.
+    ]]>          
+    </text>
+            
+    <text key="jmx-managerType.jmx-connector"><![CDATA[
+    [Description]: JMX Connector used for having access to JMX of this Engine Container from other process JMX Connector is set for this field. JEUS Connector is used as a default.
+    ]]>          
+    </text>
+            
+    <text key="applicationType.name"><![CDATA[
+    [Description]: This element configures name of this application.
+    Without setting module name as archive file or directory name, it is used for giving specific name.
+    When deploying or undeploying it, this element can be used instead of archive file or directory name.
+    ]]>          
+    </text>
+            
+    <text key="engine-containerType.application-path"><![CDATA[
+    [Description]: The directory for putting application archive files is set. If it is relative path, it becomes the relative path of JEUS_HOME path. Application will be searched through the order of this element.
+    default : Path set as jeus.apphome system property or webhome/app_home
+    ]]>          
+    </text>
+            
+    <text key="webadmin-configType.allowed-server"><![CDATA[
+    [Description]: Set the host-lists which are allowed webadmin connections.
+    [Example]: &lt;allowed-server>10.10.*.*&lt;/allowed-server>
+    ]]>          
+    </text>
+            
+    <text key="applicationType.auto-deploy"><![CDATA[
+    [Description]: Make sure whether the auto-deploy function is applied for this application
+    ]]>          
+    </text>
+            
+    <text key="session-routerType.servlet-engine-name"><![CDATA[
+        [Description]: Engine name of WebContainer for attending in distributed session clustering.
+        [Example]: engine1 or myNode_servlet_engine1
+    ]]>          
+    </text>
+            
+    <text key="engine-containerType.tm-config"><![CDATA[
+        [Description]: The transaction manager starts and terminates global transactions.
+        Upon terminating a transaction, the TM (transaction manager) communicates with the RM (resource manager) and decides whether to commit or roll back.
+        By doing so, the TM meets global transaction atomicity.
+        If there is system failure, TM enables RMs to restore back to where they were before the failure The sub-elements of this element are mainly used to configure timeout settings for the TM.
+    ]]>          
+    </text>
+            
+    <text key="applicationType.connector-component"><![CDATA[
+       [Description]: This element is used for configuring specialized settings on connector-component in this application
+    ]]>          
+    </text>
+            
+    <text key="jmx-managerType.snmp-adaptor"><![CDATA[
+        [Description]: SNMP adapter which is one of adapters of JMX is set.
+    ]]>          
+    </text>
+            
+    <text key="url-entryType.export-name"><![CDATA[
+       [Description]: JNDI name is used for binding URL in Naming Server.
+       [Example]: &lt;export-name>MYURL&lt;/export-name>
+    ]]>          
+    </text>
+            
+    <text key="engine-containerType.lifecycle-invocation"><![CDATA[
+     [Description]: Method to call various lifecycle events of Engine Container can be set.
+    ]]>          
+    </text>
+            
+    <text key="databaseType.auto-commit"><![CDATA[
+        [Description]:
+        [Example]: &lt;auto-commit>true&lt;/auto-commit>
+    ]]>          
+    </text>
+            
+    <text key="tm-configType.commit-timeout"><![CDATA[
+        [Description]: A root coordinator should receive responses for 'commit' or 'rollback' signal from its sub coordinators and transactional resource managers before the time given by this element has passed.
+        [Value Description]: A time period in milliseconds.
+    ]]>          
+    </text>
+            
+    <text key="ejb-componentType.jeus-ejb-dd"><![CDATA[
+        [Description]: It enables to configure the path of jeus-ejb-dd.xml file of this ejb component. This is used for supporting on packaging the JEUS 4.x.
+        [Example]: d:\jeus\config\node_ejb_engine1\jeus-ejb-dd_modulename.xml
+    ]]>          
+    </text>
+            
+    <text key="app-targetType.web-context-group"><![CDATA[
+        [Description]: Configure web context group of target to deploy this application.                    ]]>          
+    </text>
+            
+    <text key="database-connection-poolType.delegation-datasource"><![CDATA[
+        [Description]:This setting is used for parsing global/local transaction of current XA DataSource. In this case, set connection of datasource is used.
+        [Value Description]: export name of datasource to replace.
+    ]]>          
+    </text>
+            
+    <text key="tmax-propertyType.name"><![CDATA[
+        [Description]: Key Value when adding user property in WebT Service.
+        [Example]: &lt;name>eventHandler&lt;/name>
+    ]]>          
+    </text>
+            
+    <text key="jmsSourceType.property"><![CDATA[
+        [Description]: Describing properties needed for jms source configuration.
+    ]]>          
+    </text>
+            
+    <text key="web-componentType.deployment-target"><![CDATA[
+        [Description]: This web component configures the target to deploy this web component.
+    ]]>          
+    </text>
+            
+    <text key="jaxr-propertyType.value"><![CDATA[
+        [Description]: Value of jaxr property.
+    ]]>          
+    </text>
+            
+    <text key="tmaxType.webt-logging"><![CDATA[
+        [Description]: Configuring error log left in Webt module.
+        [Example]: &lt;webt-logging> ... &lt;/webt-logging>
+    ]]>          
+    </text>
+            
+    <text key="security-sslType.port"><![CDATA[
+        [Description]: JEUS Security system sets Listen port to use in SSL connection.
+        [Value Description]: The default value is $JEUS_BASEPORT + 1.
+    ]]>          
+    </text>
+            
+    <text key="naming-serverType.local"><![CDATA[
+        [Description]: The local element specifies the resources that the JNSLocal uses to connect to the JNS server and to get the contents of the JNDI tree.
+    ]]>          
+    </text>
+            
+    <text key="session-managerType.check-to"><![CDATA[
+        [Description]: Interval between checking if session data backup is necessary.
+        Check if session object exists with set time period in this setting and performs the backup if updated object exists.
+    ]]>          
+    </text>
+            
+    <text key="listenerType.backlog"><![CDATA[
+        [Description]: Backlog value on JEUS system listener port set as $JEUS_BASEPORT will be set.
+    ]]>          
+    </text>
+            
+    <text key="databaseType.vendor"><![CDATA[
+        [Description]: Vendor name of JDBC Driver.
+    ]]>          
+    </text>
+            
+    <text key="tmaxType.transaction-timeout"><![CDATA[
+        [Description]: This element stops for requesting Transaction service when service is not performed in certain amount of time through requesting service from Tmax Server.
+        [Value Description]: millisecond.
+        [Example]: &lt;transaction-timeout>60000&lt;/transaction-timeout>
+    ]]>          
+    </text>
+            
+    <text key="session-router-configType.session-router"><![CDATA[
+        [Description]: This element is the configuration for server which provides distributed session clustering. Varoius properties can be set for serssion server to run WebContainer participating in session clustering.
+    ]]>          
+    </text>
+            
+    <text key="tmaxType.tmax-property"><![CDATA[
+        [Description]: This element defines property value to define additionally when user communicates with Tmax besides general properties.
+        [Example]: &lt;tmax-property> ... &lt;/tmax-property>
+    ]]>          
+    </text>
+            
+    <text key="database-connection-poolType.delegation-dba"><![CDATA[
+        [Description]: You may specify a special &lt;database> connection element with information about a so-called "DBA" level connection.
+        Such connections are "administrator" connections and contains a special privileged user id and password.
+        These "powerful" DBA connections may be used by the JEUS server in case of a problem with a DB connection.
+        For example, if the JEUS server attempts to forcibly close a DB connection by calling con.close() but if this call throws an exception,
+        the server may attempt to issue a low-level "kill" signal to forcibly close the connection instead.
+        Such "kill" signals requires a special dedicated DBA connection. This element specifies the export name of such a DBA data source connection.
+        The DBA data source will be used in case a "kill" signal must be sent. This element only applies to Oracle and Sybase type databases.
+        [Value Description]: JNDI export name of DBA database connection construction.
+    ]]>          
+    </text>
+            
+    <text key="jmx-connectorType.rmi-connector"><![CDATA[
+        [Description]: RMI Connector is used as JMX Connector. If it is set as jmxmp-connector, jmxmp-connector is used for internal JEUS system.
+        For this case, ref-export-name of rmi-connector should be seperately set. Exception will occur when this name is not set as a default name
+        to use.
+    ]]>          
+    </text>
+            
+    <text key="session-managerType.file-db-path"><![CDATA[
+        [Description]: The path will be set in file-db.
+        [Value Description]: Representing absolute path. The default value is $JEUS_HOME/.workspace.
+    ]]>          
+    </text>
+            
+    <text key="jtmaxType.beans-service"><![CDATA[
+                        [Description]: Match the service name forwarded by TMAX with Java Beans.
+                    ]]>          
+    </text>
+           
+    <text key="remote-webtob-listType.remote-webtob"><![CDATA[
+        [Description]:
+        [Hidden]: true
+    ]]>          
+    </text>
+            
+    <text key="tm-configType.prepared-timeout"><![CDATA[
+        [Description]: The limit of time in which a sub-coordinator should receive the next message after it sends a reply to the root-coordinator for the prepare message.
+        After the time limit, the sub-coordinator sends a replyCompletion message to the root-coordinator to request the next message.
+        [Value Description]: A time period in milliseconds.
+    ]]>          
+    </text>
+            
+    <text key="web-context-groupType.name"><![CDATA[
+        [Description]: Configure context group name to be used when web module is deployed within this application.                      [Value Description]: Servlet Engine of target to deploy this application should containe context group.                     ]]>          
+    </text>
+            
+    <text key="web-componentType.jeus-web-dd"><![CDATA[
+        [Description]: Configures the path of jeus-web-dd.xml file+ on this web component.  This is used for supporting JEUS 4.x packaging
+        [Example]: d:\jeus\config\node_servlet_engine1\jeus-web-dd_modulename.xml
+    ]]>          
+    </text>
+            
+    <text key="tm-configType.recovery-log-file"><![CDATA[
+        [Description]: Configure logging file to be used in TM recovery.		]]>          
+    </text>
+            
+    <text key="jeus-nodeType.listener"><![CDATA[
+        [Description]: Necessary property needed for processing connection request Various properties needed for processing socket listener and socket connection request process.
+        ]]>          
+    </text>
+            
+    <text key="jmsSourceType.topic"><![CDATA[
+        [Description]: It is used when resource-type is T. For additional information, please refer to IBM MQ or Sonic MQ Manual.
+        ]]>          
+    </text>
+            
+    <text key="fileDbType.passivation-to"><![CDATA[
+        [Description]: When session object existed in memory is not used for certain time period, it will delete it and use object stored in file-db.
+        [Value Description]: If the vaue is -1, passivation will not be executed.
+        If time period is set over 0, session object in the memory which is not used for set time will be passivated. The unit is msec.  The default value is -1.
+        ]]>          
+    </text>
+            
+    <text key="lifecycle-invocationType.class-name"><![CDATA[
+        [Description]: Fully qualified class name in which callback method of lifecycle event exists is set.
+        [Example]: com.tmax.event.EngineContainerHandler
+        ]]>          
+    </text>
+            
+    <text key="jtmaxType.pooling"><![CDATA[
+                        [Description]: Specify the thread pool which is internally used by Jtmax.
+                    ]]>          
+    </text>
+           
+    <text key="remote-webtobType.name"><![CDATA[
+        [Description]:
+        [Hidden]: true
+        ]]>          
+    </text>
+            
+           
+    <text key="application-propertyGroup.java-security-permission"><![CDATA[
+        [Description]: When JEUS uses J2SE security, J2SE permission to allow application can be set.
+        ]]>          
+    </text>
+            
+    <text key="tmax-securityType.domain-password"><![CDATA[
+        [Description]: Domain password is required to be set for user authentication when domain registered in Tmax Server is connected to Tmax server.
+        [Value Description]: a domain password
+        [Example]:&lt;domain-password>tmaxadm&lt;/domain-password>
+        ]]>          
+    </text>
+            
+    <text key="applicationType.absolute-jeus-ejb-dd"><![CDATA[
+                    	[Description]: Specify the absolute path where system can find the jeus-ejb-dd.xml for sub-EJB-stand-alone  module.
+                        This provides the compatibility with the EJB modules in JEUS version 4.x. Please refer to the JEUS server manual for further details.
+                    ]]>          
+    </text>
+           
+    <text key="application-propertyGroup.security-domain-name"><![CDATA[
+        [Description]: Configuring security doamin to apply to this applicaiton. If it has not been set, DEFAULT_APPLICATION_DOMAIN will be used.
+        ]]>          
+    </text>
+            
+    <text key="tmax-securityType.user-password"><![CDATA[
+        [Description]: User password is required to be set for user authentication when user registered in Tmax Server is connected to Tmax server.
+        [Value Description]: a password string
+        [Example]:&lt;user-password>tmax&lt;/user-password>
+        ]]>          
+    </text>
+            
+    <text key="web-componentType.keep-generated"><![CDATA[
+        [Description]: When this web component includes Web Service or Web Service Client, it determines whether to leave java source file of Tie and Web Service Client Stub.
+        If this has not been set, it will use the configuration of &lt;application>
+        ]]>          
+    </text>
+            
+    <text key="listenerType.ssl"><![CDATA[
+        [Description]: SSL property related to Jeus Security system is set. When element is set, SSL will be applied to entire socket connection using Jeus Security system.
+        ]]>          
+    </text>
+            
+    <text key="tm-configType.prepare-timeout"><![CDATA[
+        [Description]: The limit of time in which a reply should be made for the prepare message in the Two-Phase Commit protocol.
+        In case no reply is made within the time limit, the related RM returns an error.
+        [Value Description]: A time period in milliseconds.
+        ]]>          
+    </text>
+            
+    <text key="data-sourceType.database"><![CDATA[
+        [Description]: JDBC drvier contains essential characteristics for constructing DataSource.
+        ]]>          
+    </text>
+            
+    <text key="tmaxSourceType.tmax-monitor"><![CDATA[
+                        [Description]: Specify monitoring frequency and type to check the status of connection pool which exists in TMAX data source.
+                    ]]>          
+    </text>
+           
+    <text key="database-connection-poolType.wait-free-connection"><![CDATA[
+        [Description]: This element sets the method of handling connection pool when there is other request in the middle of using connection.
+        ]]>          
+    </text>
+            
+    <text key="jtmax-ejb-serviceType.method-signiture"><![CDATA[
+                    [Description]: Specify argument type to the method that will get called.
+                    [Example]: <method-signiture>String,String</method-signiture>
+                    ]]>          
+    </text>
+           
+    <text key="cluster-dsType.is-pre-conn"><![CDATA[
+        [Description]: If this function is used, datasource clustering enables DB Connection to be opened from entire DB. This is efficient in terms of its performance.
+        However, this is not efficient in terms of saving resource If it is set as true, total number of generated Connection is identical with value of &lt;connection-pool> &lt;pooling> &lt;min>.
+        [Performance Recommendation]: For peformance improvement, sets it as "true" and for saving resource, sets it as "false."
+        ]]>          
+    </text>
+            
+    <text key="session-managerType.backup-trigger"><![CDATA[
+        [Description]: Session in local session manager
+        If the number of session objects that are not backed up exceeds the number set here, those sessions will be backed up.
+        ]]>          
+    </text>
+            
+    <text key="ejb-componentType.deployment-target"><![CDATA[
+        [Description]: Configuring this ejb component to be deployed.
+        ]]>          
+    </text>
+           
+    <text key="engine-containerType.start-on-boot"><![CDATA[
+                        [Description]: Determine whether to boot the container when starting the system.
+                                       If it is set to false, the container will not be booted.
+                    ]]>          
+    </text>
+
+    <text key="invocation-typeType.BOOT"><![CDATA[
+                        [Description]: This is the time period in which Engine Container is started and before application in Engine Container is to be deployed.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="invocation-typeType.BEFORE_DEPLOY"><![CDATA[
+                        [Description]: This is the time period in which Engine Container is started and before application in Engine Container is to be deployed.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="invocation-typeType.AFTER_DEPLOY"><![CDATA[
+                        [Description]: This is the time period after Engine Container is running and selected application is deployed from this Engine Container.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="invocation-typeType.BEFORE_UNDEPLOY"><![CDATA[
+                        [Description]: Time period in where Engine Container receives down command and before applications operated in Engine Container are undeployed.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="invocation-typeType.AFTER_UNDEPLOY"><![CDATA[
+                        [Description]: Time period in where Engine Container receives down command and after applications operated in Engine Container are undeployed.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="engine-typeType.ejb"><![CDATA[
+                        [Description]: EJB engine
+                    ]]>                                   
+    </text>
+                                         
+    <text key="engine-typeType.servlet"><![CDATA[
+                        [Description]: Servlet/Web engine
+                    ]]>                                   
+    </text>
+                                         
+    <text key="engine-typeType.jms"><![CDATA[
+                        [Description]: JMS engine
+                    ]]>                                   
+    </text>
+                                         
+    <text key="engine-typeType.ws"><![CDATA[
+                        [Description]: JEUS Web Server engine (Default Web Server of JEUS).
+                    ]]>                                   
+    </text>
+                                         
+    <text key="invocation-manager-actionType.NoAction"><![CDATA[
+                        [Description]: It does not do any operation.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="invocation-manager-actionType.Warning"><![CDATA[
+                        [Description]: When the resource has been used but it is not closed when terminating it, it records the log on Container log.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="invocation-manager-actionType.AutoClose"><![CDATA[
+                        [Description]: In case where resource is used and it has not been closed, it enables to automatically close resource to be used.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="jmsVendorType.ibmmq"><![CDATA[
+                        [Description]: ibm mq driver
+                    ]]>                                   
+    </text>
+                                         
+    <text key="jmsVendorType.sonicmq"><![CDATA[
+                        [Description]: sonic mq driver
+                    ]]>                                   
+    </text>
+                                         
+    <text key="jmsVendorType.others"><![CDATA[
+                        [Description]: Other jms source drivers
+                    ]]>                                   
+    </text>
+                                         
+    <text key="typeResourceType.QCF"><![CDATA[
+                        [Description]: Please refer to IBM MQ or Sonic MQ Manual.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="typeResourceType.TCF"><![CDATA[
+                        [Description]: Please refer to IBM MQ or Sonic MQ Manual.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="typeResourceType.Q"><![CDATA[
+                        [Description]: Please refer to IBM MQ or Sonic MQ Manual.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="typeResourceType.T"><![CDATA[
+                        [Description]: Please refer to IBM MQ or Sonic MQ Manual.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="typeResourceType.XAQCF"><![CDATA[
+                        [Description]: Please refer to IBM MQ or Sonic MQ Manual.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="typeResourceType.XATCF"><![CDATA[
+                        [Description]: Please refer to IBM MQ or Sonic MQ Manual.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="typeResourceType.LOCALXAQCF"><![CDATA[
+                        [Description]: Please refer to IBM MQ or Sonic MQ Manual.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="typeResourceType.LOCALXATCF"><![CDATA[
+                        [Description]: Please refer to IBM MQ or Sonic MQ Manual.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="webt-headerType.default"><![CDATA[
+                        [Description]: Uses general Tmax header type
+                    ]]>                                   
+    </text>
+                                         
+    <text key="webt-headerType.extendedV2"><![CDATA[
+                        [Description]: Used for some specific function of Tmax 3.11.x
+                    ]]>                                   
+    </text>
+                                         
+    <text key="webt-headerType.extendedV3"><![CDATA[
+                        [Description]: Used for some specific function of Tmax 3.14.5
+                    ]]>                                   
+    </text>
+                                         
+    <text key="webt-headerType.extendedV4"><![CDATA[
+                        [Description]: Used for some specific function of Tmax 4.x
+                                       This must be setted when using SYS-MASTER(TM)
+                    ]]>                                   
+    </text>
+                                         
+    <text key="transportType.BIND"><![CDATA[
+                        [Description]: Please refer to IBM MQ Manual.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="transportType.CLIENT"><![CDATA[
+                        [Description]: Please refer to IBM MQ Manual.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="data-source-typeType.DataSource"><![CDATA[
+                        [Description]: Basic DataSource reterning Connection.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="data-source-typeType.ConnectionPoolDataSource"><![CDATA[
+                        [Description]: Return Connection from Connection Pool.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="data-source-typeType.LocalXADataSource"><![CDATA[
+                        [Description]: Return connnection of taking a role of Local Transaction from XA integrated Pool.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="data-source-typeType.XADataSource"><![CDATA[
+                        [Description]: Return Connection which takes a role of distributed/entire Transaction  from XA Connection Pool.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="classloadingType.ISOLATED"><![CDATA[
+[Description]: Classloader of this application can not use other classes since it is seperated by classloader of other applications.
+										It can be used only when application packaging for J2EE spec is done.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="classloadingType.SHARED"><![CDATA[
+                        [Description]: Classloader of this application can share other classes since it is seperated by classloader of other applications.
+										It can be used only when application packaging for J2EE spec is done.  When application has been developed prior to the version of JEUS 4.x, this configuration should be used.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="class-ftp-unitType.JAR"><![CDATA[
+                        [Description]: Send in the JAR File Unit when sending the class remotely in this application.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="class-ftp-unitType.CLASS"><![CDATA[
+                        [Description]: It sends in the unit of class file when sending the class in this application remotely. This is the configuration when EJB is developed as DIR mode in JEUS 4.x.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="deployment-typeType.EAR"><![CDATA[
+                        [Description]: Archive file type of EAR form.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="deployment-typeType.COMPONENT"><![CDATA[
+                        [Description]: Archive file type of standalone application in (.jar, .war, .rar) form.
+                    ]]>                                   
+    </text>
+
+    <text key="check-levelType"><![CDATA[
+                                 [Description]: This element checks whether backup is needed for used session as remote web container or local file db.
+									This configuration determines on finding the need for backup. When used session is invalidated, it will have backup based on configuration standard.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="check-levelType.set"><![CDATA[
+                                 [Description]: setAttribute/putValue/removeAttribute/removeValue function of related session. It considers as "updated" when there is a call. Thus, it will provide backup for this condition.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="check-levelType.get"><![CDATA[
+                                [Description]: setAttribute/putValue/removeAttribute/removeValue/getAttribute/getValue function of related session. It considers as "updated" when there is a call. Thus, it will provide backup for this condition.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="check-levelType.all"><![CDATA[
+                                [Description]: This element provides backup for used sessions without condition. It provides backup for specific session object thorugh considering it as updated when calling session object as HttpServletRequest.getSession() API.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="webt-levelType.none"><![CDATA[
+                        [Description]: Log message is not left.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="webt-levelType.info"><![CDATA[
+                        [Description]: Non-critical message can be additionally viewed except for other log message.
+                    ]]>                                   
+    </text>
+                                         
+    <text key="webt-levelType.debug"><![CDATA[
+                        [Description]: Entire log message inforamtion can be searched for debugging.
+                    ]]>                                   
+    </text>
+    
+        <text key="jeus-nodeType.class-ftp"><![CDATA[
+                        [Description]: Class FTP transfers the EJB stub via FTP. If you don't use Class FTP,
+                        you will need to manually copy the relevant file. If this is not set to true,
+                        Class FTP will typically remain inactive.
+                    ]]>          
+    </text>
+
+    <text key="webt-file-handlerType.level"><![CDATA[
+                        [Description]: Specifies the log level. You can select from none, info, debug, and dev.
+                        [Value Description]: none/info/debug
+                        [Defined Value]:
+                        [none]: No log messages.
+                        [info]: Logs initial settings and abnormal events.
+                        [debug]: Logs all events that occur within WebT.
+                        [dev]: Outputs all potential logs, including network packets.
+                        [Example]: <level>debug</level>
+                    ]]>          
+    </text>
+
+    <text key="databaseType.stmt-query-timeout"><![CDATA[
+                        [Description]: Specifies the query timeout that will be used in Statements (in milliseconds).
+                    ]]>          
+    </text>
+
+    <text key="database-connection-poolType.stmt-caching-size"><![CDATA[
+                        [Description]: When an application calls prepareStatement(), the SQL statement will be pre-processed and 
+                        PreparedStatement will be sent to the DB. To avoid PreparedStatement from being recreated each time it is called, 
+                        JEUS can internally cache PreparedStatement. This element specifies the number of PreparedStatements
+                        that can be cached at once. Only the most frequently used PreparedStatements will be stored in the cache.
+                        The user should be aware of several restrictions when using this option:
+                        As the connection remains open when Statement Caching is activated, the driver will not be able to clean up processes.
+                        For example, if you are using Oracle JDBC with auto-commit mode turned on and you try to close
+                        the connection, the transaction should be committed even without the commit or rollback process.
+                        However, with this option the transaction cannot be committed. To avoid these restrictions, it is recommended that the Statement Caching function provided by the driver be used.
+                      
+  [Performance Recommendation]: This element can be used to improve performance. For applications that call Connection.prepareStatement(), this element should be set to 10 or above.
+                      
+                    ]]>          
+    </text>
+           
+    <text key="database-connection-poolType.stmt-fetch-size"><![CDATA[
+                        [Description]: Specifies the fetch size of the connection statement.
+                    ]]>          
+    </text>
+           
+    <text key="database-connection-poolType.keep-connection-handle-open"><![CDATA[
+                        [Description]: This option should be specified if an XA data source is used.
+                         If this option is set to true, the connection handle (or logical connection) will remain open after an application returns the XA connection to the pool.
+                         This option is needed for the DB2 universal driver.
+                         The user should be aware of some restrictions when using this option:
+                         As the connection will remain open, the driver will not be able to clean up processes.
+                         For example, if you are using Oracle JDBC with auto-commit mode turned on and you try to close
+                         the connection, the transaction should be committed even without the commit or rollback process.
+                         However, with this option the transaction cannot be committed.
+                    ]]>          
+    </text>
+
+    <text key="web-componentType.context-root"><![CDATA[
+            			[Description]: Specifies the context root of the web component. 
+            				This item is also specified as the context-root within application.xml and as the context path within jeus-web-dd.xml.
+            				If different settings are used, they are prioritized in the order of JEUSMain.xml(jeus-application-dd.xml), application.xml, jeus-web-dd.xml.            			     
+        			]]>          
+    </text>
+
+    <text key="web-componentType.session-timeout"><![CDATA[
+                        [Description]: Specifies the timeout value for the session object.  
+                        The session will be removed if it has been inactive for longer than the specified period.
+                        This setting overrides the time-out value specified within web.xml.
+                        [Value Description]: The timeout interval is specified in minutes. 
+                        [Value Type Description]: Integer
+                        [Defined Value]: [-1]: If this value is used, session timeout checking will not be implemented.
+                    ]]>          
+    </text>
+
+    <text key="invocation-typeType.READY"><![CDATA[
+                        [Description]: Makes the service ready to be implemented after starting up the Engine Container and 
+                        deploying the specified applications to the Engine Container. 
+             
+                    ]]>          
+    </text>
+
+    <text key="deployment-typeType.COMPONENT"><![CDATA[
+                        [Description]: stand-alone application (.jar, war, .rar) type of archive file.
+                    ]]>          
+    </text>
+           
+    <text key="check-levelType.set"><![CDATA[
+                                 [Description]: Backs up a session object only when setAttribute/putValue/removeAttribute/removeValue was called to the
+                                 session object.
+                                    
+                    ]]>          
+    </text>
+           
+    <text key="check-levelType.get"><![CDATA[
+                                [Description]: Backs up a session object only when setAttribute/putValue/removeAttribute/removeValue/getAttribute/getValue
+                                    was called to the session object. 
+                    ]]>          
+    </text>
+           
+    <text key="check-levelType.all"><![CDATA[
+                                [Description]: Backs up all sessions.
+                                When a session object is called via HttpServletRequest.getSession(), it will be marked as updated and will then be backed up.
+                    ]]>          
+    </text>
+                                         
+    <ref key="jns-serverType">jndi-propertyGroup</ref>
+           
+    <ref key="localType">jndi-propertyGroup</ref>
+           
+    <ref key="applicationType">application-propertyGroup</ref>
+</description>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC 
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="jeus.tool.webadmin.component.Applet" allow-body="yes" allow-informal-parameters="yes">
+	<parameter name="archive" required="yes"/>
+
+	<parameter name="code" required="yes"/>
+
+    <reserved-parameter name="code"/>
+    <reserved-parameter name="archive"/>
+</component-specification>

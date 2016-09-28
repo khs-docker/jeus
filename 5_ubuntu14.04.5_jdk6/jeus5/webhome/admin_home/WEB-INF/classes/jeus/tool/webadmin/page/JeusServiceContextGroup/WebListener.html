@@ -1,0 +1,31 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="webserver_connectionForm">
+            <table width="100%" cellpadding="0" cellspacing="0" class="table" border="1">
+                <tr>
+                    <td class="table_columns"><span jwcid="id_column"/></td>
+                    <td class="table_columns"><span jwcid="type_column"/></td>
+                    <td class="table_columns"><span jwcid="port_column"/></td>
+                    <td class="table_columns"><span jwcid="actions_column"/></td>
+                    <td class="table_columns" width="20">&nbsp;</td>
+                </tr>
+                <tr jwcid="eachListener">
+                    <td class="table_values"><a jwcid="wcLink"><span jwcid="id_value"/></a></td>
+                    <td class="table_values"><span jwcid="type_value"/></td>
+                    <td class="table_values"><span jwcid="port_value"/></td>
+                    <td class="table_values" align="center">
+                        <span jwcid="condWebtob">
+                            <a jwcid="suspendLink"></a><input jwcid="suspend" class="form_button" onclick="window.location.href=previousSibling.href;"/><a jwcid="resumeLink"></a><input jwcid="resume" class="form_button" onclick="window.location.href=previousSibling.href;"/>
+                        </span>
+                    </td>
+                    <td class="table_values" width="20" align="center">
+                        <span jwcid="condXml">
+                            <a jwcid="deleteListenerLink"><img jwcid="delete" align="absmiddle"/></a>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+            <p style="text-align:right;"><a jwcid="createWcListenerLink"><img jwcid="create" align="absmiddle"/>&nbsp;<span jwcid="createWcListener"/></a></p>
+        </form>
+    </span>
+</html>

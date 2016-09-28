@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+
+<input-symbol key="source" required="yes"/>
+<input-symbol key="id" required="yes"/>
+<input-symbol key="targets" required="yes"/>
+
+<let key="funcName" unique="yes">onExtendedCheckbox</let>
+
+<body>
+function ${funcName}(){
+	var form = document.getElementById("${source.form.name}");
+	var checked = !form.${id}.checked;
+	<foreach key="target" expression="targets">
+	form.${target.id}.disabled=checked;		
+	</foreach>
+	return true; 
+}
+</body>
+<initialization>
+${funcName}();
+document.getElementById("${source.form.name}").${id}.onclick=${funcName};
+</initialization>
+
+</script>

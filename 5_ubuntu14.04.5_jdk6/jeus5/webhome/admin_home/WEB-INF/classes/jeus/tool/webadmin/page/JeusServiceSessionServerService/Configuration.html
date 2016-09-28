@@ -1,0 +1,73 @@
+<html jwcid="mainBorder" >
+<!--
+    <span jwcid="condSet">
+-->
+        <span jwcid="tabPanel">
+            <span jwcid="general">
+                <form jwcid="generalForm">
+                    <span jwcid="resolution">
+                        <input jwcid="resolutionField"/>
+                    </span>
+                    <span jwcid="use_nio">
+                        <input jwcid="use_nioField"/>
+                    </span>
+                    <span jwcid="connect_timeout">
+                        <input jwcid="connect_timeoutField"/>
+                    </span>
+                    <span jwcid="read_timeout">
+                        <input jwcid="read_timeoutField"/>                        
+                    </span>
+                    <span jwcid="note">
+                        <input jwcid="noteField" style="width:98%; font-size:12px;" rows="3"/>
+                    </span>
+                    <div class="form_button_layer">
+                        <input jwcid="ok" class="form_button" style="width:100px;"/>&nbsp;<input jwcid="reset" class="form_button" style="width:100px;"/>
+                    </div>
+                </form>
+            </span>
+            <span jwcid="pooling">
+                <form jwcid="poolingForm">
+                    <span jwcid="min">
+                        <input jwcid="minField"/>
+                    </span>
+                    <span jwcid="max">
+                        <input jwcid="maxField"/>
+                    </span>
+                    <span jwcid="period">
+                        <input jwcid="periodField"/>
+                    </span>
+                    <div class="form_button_layer">
+                        <input jwcid="ok2" class="form_button" style="width:100px;"/>&nbsp;<input jwcid="cancel2" class="form_button" style="width:100px;"/>
+                    </div>
+                </form>
+            </span>
+            <span jwcid="session_manager">
+                <form jwcid="session_managerForm"></form>
+                <table width="100%" cellpadding="0" cellspacing="0" class="table" border="1">
+                    <tr>
+                        <td class="table_columns"><span jwcid="name_column"/></td>
+                        <td class="table_columns"><span jwcid="min_hole_column"/></td>
+                        <td class="table_columns"><span jwcid="packing_rate_column"/></td>
+                        <td class="table_columns" width="20">&nbsp;</td>
+                    </tr>
+                    <tr jwcid="eachSessionManager">
+                        <td class="table_values"><a jwcid="sessionManagerLink"><span jwcid="name_value"/></a></td>
+                        <td class="table_values"><span jwcid="min_hole_value"/></td>
+                        <td class="table_values"><span jwcid="packing_rate_value"/></td>
+                        <td class="table_values" width="20" align="center"><a jwcid="deleteLink"><img jwcid="delete" align="absmiddle"/></a></td>
+                    </tr>
+                </table>
+                <p style="text-align:right;"><a jwcid="createSessionManagerLink"><img jwcid="create" align="absmiddle"/>&nbsp;<span jwcid="createSessionManager"/></a></p>
+            </span>
+        </span>
+<!--
+    </span>
+    <span jwcid="condNoSet">
+        <span jwcid="tabPanel2">
+            <form jwcid="form">
+                <span jwcid="information_message" class="form_fail_message"/>
+            </form>
+        </span>
+    </span>
+-->
+</html>

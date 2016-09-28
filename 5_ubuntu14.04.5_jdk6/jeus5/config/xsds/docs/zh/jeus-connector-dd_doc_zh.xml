@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="GB2312"?>
+<description>                                                
+    <text key="worker-poolType.submit-timeout"><![CDATA[
+                    [Description]: 对于客户端的请求，在指定的时间内无法开始工作时，作业被拒绝。用户根据服务请求方式，收到Exception或event。
+                    [Value Description]: 时间值msec为单位。设为0时，直到开始作业为止，继续处于等待状态。
+                    [Example]: <submit-timeout>5000</submit-timeout>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="wait-connectionType.wait-connection"><![CDATA[
+                    [Description]: 设定是否要为了获取连接而等待。 
+                    [Example]: <wait-connection>true</wait-connection>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="pool-managementType.disposable-connection"><![CDATA[
+                    [Description]: 未获取连接时是否要使用临时连接的设定。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="connection-poolType.dissociation-timeout"><![CDATA[
+                    [Description]: 设定适用dissociation的时间值。在该资源适配器不支持该功能时被忽视。
+                    [Value Description]: 时间值msec为单位。设为0时不使用dissociation。
+                    [Example]: <dissociation-timeout>0</dissociation-timeout>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-connector-ddType.module-name"><![CDATA[
+                    [Description]: Connector模块的名称。存在于Application内的模块时，要在application内具有唯一性，服务器模块时，要在整个JEUS系统中具有唯一性。用于Message Driven Bean中指定inflow target。
+                    [Example]: <module-name>whitebox-xa</module-name>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-connector-ddType.worker-pool"><![CDATA[
+                    [Description]: 进行Work Manager相关的设置。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="connection-poolType.skip-connection-matching"><![CDATA[
+               [Description]: 省略connection认证所需的连接匹配过程。 
+                    [Example]: <skip-connection-matching>false</skip-connection-matching>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="worker-poolType.step"><![CDATA[
+                    [Description]: 需要增加thread数量时，一次性增加的thread个数。总thread数量不能超过以上设定的最大值。
+                    [Example]: <max>1</max>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="pool-managementType.min"><![CDATA[
+                    [Description]: Connection pool所管理的连接个数的最小值。                    存在比设定值更少的连接时，根据用户的请求立即生成新的连接。存在比设定值更多的连接时，从pool中去除在一定时间内未使用的连接。
+                    [Example]: <min>0</min>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="connection-poolType.export-name"><![CDATA[
+                    [Description]: 该connection pool捆绑（binding）到JNDI Naming System的名称。
+                [Value Description]: 可以任意指定，并且应在相关模块中具有唯一性。
+                    [Example]: <export-name>datasource1</export-name>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="worker-poolType.min"><![CDATA[
+                    [Description]: Work Manager所管理thread个数的最小值。            存在比这个设定值更少的thread时，Work Manager按照用户的请求立即增加thread。                    存在比这个设定值更多的thread时，开始减少一段时间内未使用的thread，维持最少数量的thread。
+                    [Example]: <min>3</min>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="connection-poolType.log-file"><![CDATA[
+                        [Description]: 指定该connection pool 的 managed connection factory使用的log file的设定.
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="connection-poolType.use-wrapper"><![CDATA[
+                    [Description]: 为了附加功能，利用connection wrapper。具体内容请参照手册。
+                    [Example]: <use-wrapper>true</use-wrapper>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="worker-poolType.shutdown-timeout"><![CDATA[
+                    [Description]: 在Work Manager结束的瞬间，存在正在进行的作业时，最长等待到在此设定的时间。
+                    [Value Description]: 时间值msec为单位。设为0时不等待，设为-1时继续等到作业结束。正在作业中的thread将受到Interrupt。
+                    [Example]: <shutdown-timeout>-1</shutdown-timeout>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="disposable-connectionType.allow-disposable-connection"><![CDATA[
+                    [Description]: 设定未能获取连接时是否要使用临时连接。
+                    [Example]: <allow-disposable-connection>true</allow-disposable-connection>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="worker-poolType.release-timeout"><![CDATA[
+                    [Description]: 作业开始后超过该时间为止没有结束时，Work Manager对于该作业，呼叫release() method。
+                    [Value Description]: 时间值msec为单位。设为0时，不呼叫release() method。
+                    [Example]: <release-timeout>60000</release-timeout>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="connection-poolType.user"><![CDATA[
+                    [Description]: 在container管理security的情况下，为了生成连接而使用的用户名。
+                    [Example]: <user>scott</user>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="connection-poolType.property"><![CDATA[
+                    [Description]: 添加要适用到ManagedConnectionFactory的属性。优先于ra.xml上设定的值。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="pool-managementType.pooled-timeout"><![CDATA[
+                    [Description]: Connection pool内存在比最小值更多的连接时，从pool中去除在设定的时间内未使用的连接。
+                  [Value Description]: 时间值msec为单位。设为0时连接不会被去除。
+                    [Example]: <pooled-timeout>600000</pooled-timeout>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="connection-poolType.validation-timeout"><![CDATA[
+                    [Description]: 设置resource adapter验证 connection pool 里　 connection 的时间单位. 如果resource adapter的 ManagedConnectionFactory 实现了　ValidatingManagedConnectionFactory 接口， invalid connection按时间单位从connection pool里删除掉。
+                    [Value Description]: 如果时间值 msec 单位为 0 ，就不使用 validation 。
+                    [Example]: <validation-timeout>0</validation-timeout>
+                    
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-connector-ddType.use-workmanager"><![CDATA[
+                    [Description]: 设定是否要使用Work Manager。True时，开始(start)资源适配之前根据设置被初始化。
+                    [Example]: <use-workmanager>true</use-workmanager>
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="wait-connectionType.max-wait-trial"><![CDATA[
+                  [Description]: 连接匹配失败次数达到该值时，当作是获取连接失败。
+                    [Example]: <max-waiter-trial>5</max-waiter-trial>
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="log-fileType.buffer-size"><![CDATA[
+                        [Description]: 指定connection pool在log file里输出时使用的 buffer 大小.
+                        [Value Description]: byte 单位.
+                        [Performance Recommandation]: 这个值越大，在file里输出的 message会延迟，但logging 性能会越好.
+                        [Example]: &lt;buffer-size>512&lt;/buffer-size>
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="pool-managementType.max"><![CDATA[
+                    [Description]: Connection pool所管理的连接个数的最大值。
+                    [Example]: <max>20</max>
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="connection-poolType.invalidation-timeout"><![CDATA[
+                    [Description]: 设定要适用invalidation的时间值。超过该时间仍然不回到connnection pool的connection被强行去除。
+                    [Value Description]: 时间值msec为单位。设为0时不使用invalidation。
+                    [Example]: <invalidation-timeout>0</invalidation-timeout>
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="worker-poolType.pooled-timeout"><![CDATA[
+                    [Description]: Work Manager内存在的thread数量超过最小值时，从pool中去除在设定的时间内未使用的thread。
+                    [Value Description]: 时间值msec为单位。如果为0，就不去除。
+                    [Example]: <pooled-timeout>600000</pooled-timeout>
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="log-fileType.file-name"><![CDATA[
+                        [Description]: 设定connection pool 使用的 log file name.
+                        [Example]: &lt;file-name>C:\logs\mylog.log&lt;/file-name>
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="wait-connectionType.wait-timeout"><![CDATA[
+                    [Description]: 在此时间内仍未获取连接时，当作是获取连接失败。
+                    [Example]: <wait-timeout>10000</wait-timeout>
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="jeus-connector-ddType.connection-pool"><![CDATA[
+                    [Description]: 进行Connection Pool相关的设置。
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="pool-managementType.wait-connection"><![CDATA[
+                    [Description]: 需要从Connection Pool获取连接而等待时，与此相关的设定。
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="disposable-connectionType.max-disposable-count"><![CDATA[
+                [Description]: 临时连接的最多数量。临时连接在使用完后自动被去除。
+                    [Example]: <max-disposable-count>3</max-disposable-count>
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="connection-poolType.pool-management"><![CDATA[
+                    [Description]: 设定connection pool相关的值。
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="connection-poolType.password"><![CDATA[
+                    [Description]: 在container管理security的情况下，为了生成连接而使用的密码。
+                    [Example]: <password>tiger</password>
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="worker-poolType.max"><![CDATA[
+                    [Description]: Work Manager所管理thread个数的最大值。Thread的数量不超过该值。
+                    [Example]: <max>10</max>
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="connection-poolType.transaction-support"><![CDATA[
+                    [Description]: 设定该connection pool所支持的transaction type。在此设定的值优先于ra.xml上设定的值。
+                    [Value Description]: 设定NoTransaction、LocalTransaction、XATransaction、XATransactionOnly 四个之一。
+                    [Example]: <transaction-support>XATransaction</transaction-support>
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="jeus-connector-dd"><![CDATA[
+            [Description]: 单一JEUS Connector模块的最上级element。各个jeus-connector-dd.xml文件内必须存在该tag。
+		    ]]>                                                    
+    </text>
+                                                             
+    <text key="worker-poolType.pre-allocation"><![CDATA[
+                    [Description]: Work Manager被初始化时，事先制作最小值上所设定数量的thread。
+                    [Example]: <pre-allocation>true</pre-allocation>
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="log-fileType.valid-day"><![CDATA[
+                      [Description]: log file换成日期单位时使用. 设置1 以上的值 ，log file name 后自动显示 file使用的日期.
+                      [Value Description]: day
+                      [Example]: &lt;valid-day>1&lt;/valid-day>
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="wait-connectionType.max-waiter-count"><![CDATA[
+                    [Description]: 为了获取连接而等待的客户端最大数。超过这个数量时当作是失败。
+                    [Example]: <max-waiter-count>5</max-waiter-count>
+                    ]]>                                                    
+    </text>
+   
+</description>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <servlet>
+        <servlet-name>SubmitBookService</servlet-name>
+        <servlet-class>sample.datahandleronly.service.SubmitBookImpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SubmitBookService</servlet-name>
+        <url-pattern>/SubmitBookService</url-pattern>
+    </servlet-mapping>
+</web-app>
+

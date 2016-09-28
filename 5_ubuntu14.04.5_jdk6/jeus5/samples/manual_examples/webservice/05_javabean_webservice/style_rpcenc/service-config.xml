@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-services-config xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+	<service>
+		<service-name>RpcEncEchoService</service-name>
+		<target-namespace>urn:RpcEncService</target-namespace>
+		<output-wsdl-file>RpcEncEchoService.wsdl</output-wsdl-file>
+		<output-jaxrpc-mapping-file>RpcEncEchoService-mapping.xml</output-jaxrpc-mapping-file>
+		<style>rpc</style>
+		<use>encoded</use>
+		<interface>
+			<endpoint-interface-class>jeustest.webservices.java2wsdl.rpcenc.Echo</endpoint-interface-class>
+			<operation>
+			    <java-method-name>echoString</java-method-name>
+			    <!--wsdl-name>echoWsdlString</wsdl-name-->
+                <soap-action>hokeAction</soap-action>
+			    <one-way>false</one-way>
+			</operation>
+		</interface>
+	</service>
+</web-services-config>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<application xmlns="http://java.sun.com/xml/ns/j2ee" version="1.4">
+  <display-name>EJBSamples</display-name>
+  <!--
+  <module>
+    <ejb>book11.jar</ejb>
+  </module>
+  -->
+  <module>
+    <ejb>book20.jar</ejb>
+  </module>
+  <module>
+    <ejb>calc.jar</ejb>
+  </module>
+  <module>
+    <ejb>counter.jar</ejb>
+  </module>
+  <module>
+    <ejb>product.jar</ejb>
+  </module>
+</application>

@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+
+<project name="simpleApplet" default="all" basedir=".">
+   <!-- set global properties for this build -->
+   <property file="../../../sample.properties"/>
+   <property file="./db.properties"/>
+
+   <property name="source" value="."/>
+   <property name="build" value="${source}/build"/>
+   <property name="dist" value="${source}/dist"/>
+   <property name="ejb.name" value="simpleBean"/>
+   <property name="pkg.name" value="simpleBean"/>
+   <property name="app.name" value="simpleBean"/>
+
+   <property name="client.base" value="${source}/client"/>
+   <property name="client.build" value="${client.base}/build"/>
+   <property name="client.dist" value="${client.base}/dist"/>
+   <property name="client.appname" value="SalaryAppletClient"/>  
+   
+  <import file="${jeus.home}/samples/common.xml"/>
+
+  <target name="all" depends="clean, init, make.ejb, move.jar, deploy, move.stub"/>
+  
+  <target name="init">
+   	<echo>app_home: ${jeus.apphome}</echo>
+	<mkdir dir="${build}"/>
+	<mkdir dir="${build}/META-INF"/>
+	<mkdir dir="${dist}"/>
+	<copy todir="${build}/META-INF" file="ejb-jar.xml"/>
+	<copy todir="${build}/META-INF" file="jeus-ejb-dd.xml"/>
+
+	<mkdir dir="${client.base}"/>
+        <mkdir dir="${client.build}"/>
+	<mkdir dir="${client.build}/META-INF"/>
+	<mkdir dir="${client.dist}"/>
+	<!-- miere^^	 <copy todir="${client.build}/META-INF" file="application-client.xml"/>-->
+	<copy todir="${client.build}/META-INF" file="jeus-client-dd.xml"/>
+   </target>
+
+<!-- Create table for Entity Bean. Database access information is in db.properties file -->
+   <target name="createtable">
+		<sql driver="${db.driver}"
+				url="${db.url}"
+				userid="${db.userid}"
+				password="${db.password}">
+<!--
+		DROP TABLE SALARY;
+-->
+		CREATE TABLE SALARY (id VARCHAR(20), first INTEGER, last INTEGER);
+
+		<classpath>
+			<fileset dir="${jeus.home}/lib/datasource">
+				<include name="**/*.jar"/>				
+				<include name="**/*.zip"/>
+			</fileset>
+		</classpath>		   
+		</sql>
+	</target>
+
+<!-- Compile ejb classes into the build directory and make .jar file -->
+   <target name="make.ejb">
+   	<javac
+   		fork 	    = "true"
+   		srcdir	    ="${source}"
+   		destdir	    ="${build}"
+   		includes    ="*.java"
+   		debug       = "true"
+   		debuglevel  = "source,lines,vars"
+   		classpath   ="${jeus.libraries}">
+   		<classpath refid="jeus.libraries"/>
+   	</javac>
+   	<jar jarfile="${dist}/${ejb.name}.jar"
+   	   basedir="${build}"
+   	   update="yes">
+   	</jar>
+   </target>
+
+<!-- Move .jar file to the app_home directory -->
+   <target name="move.jar">
+   	<copy todir="${jeus.apphome}" file="${dist}/${app.name}.jar"/>
+   </target>
+
+   <target name="deploy">
+   	<distribute
+   		deployURI="deployer:Jeus:example"
+   		user="${jeus.username}"
+   		password="${jeus.password}"
+   		targetNames="${jeus.target}"
+   		modulePath="${jeus.apphome}/${app.name}.jar"
+   		fastdeploy="false" />
+   
+   	<modulecommand
+   		deployURI="deployer:Jeus:example"
+   		command="start"
+   		moduleName="${app.name}"
+   		moduleType="EJBModule"
+   		targetNames="${jeus.target}"
+   		user="${jeus.username}"
+   		password="${jeus.password}" />
+   </target>
+ 
+   <target name="undeploy">
+   	<modulecommand
+      		deployURI="deployer:Jeus:example"
+      		command="undeploy"
+      		modulename="${app.name}"
+      		moduletype="EJBModule"
+      		targetNames="${jeus.target}"
+      		user="${jeus.username}"
+      		password="${jeus.password}" />
+   </target>
+
+   <target name="move.stub">
+   	<copy todir="${jeus.home}/webhome/client_home/" file="${jeus.home}/webhome/${jeus.target}/${app.name}_jar/${app.name}.jar" />
+   </target>
+
+  <target name="clean">
+   	<delete dir="${build}"/>
+   	<delete dir="${dist}"/>
+   	<delete dir="${client.base}"/>
+   	<delete file="${jeus.apphome}/${app.name}.jar"/>
+   </target>
+
+</project>
+

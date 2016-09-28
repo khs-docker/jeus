@@ -1,0 +1,198 @@
+<html jwcid="mainBorder" >
+    <span jwcid="condFound">
+        <span jwcid="tabPanel">
+            <!-- general, storage, thread_pool, cluster, backup, primary -->
+            <span jwcid="notFound">
+                &nbsp;
+            </span>
+            <span jwcid="properties">
+                <form jwcid="propertiesForm">
+                        <!-- always required -->
+                        <span jwcid="vendor"/>
+                        <span jwcid="mq_factory_class_name"/>
+                        <span jwcid="mq_resource_type"/>
+                        <span jwcid="export_name"/>
+
+                        <span jwcid="condQueueType">
+                            <span jwcid="queue">
+                                <input jwcid="queueField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condQueueManager">
+                            <span jwcid="queue_manager">
+                                <input jwcid="queue_managerField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condTopicType">
+                            <span jwcid="topic">
+                                <input jwcid="topicField"/>
+                            </span>
+                        </span>
+                        <span jwcid="additional_properties">
+                            <input jwcid="additional_propertiesField" style="width:98%;" rows="10" nowrap="true"/>
+                        </span>
+
+    <!--
+
+                        <span jwcid="condDatabaseName">
+                            <span jwcid="database_name">
+                                <input jwcid="database_nameField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condRequiredDatabaseName">
+                            <span jwcid="required_database_name">
+                                    <input jwcid="required_database_nameField"/>
+                            </span>
+                        </span>
+
+                        <span jwcid="condDataSourceName">
+                            <span jwcid="data_source_name">
+                                <input jwcid="data_source_nameField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condRequiredDataSourceName">
+                            <span jwcid="required_data_source_name">
+                                    <input jwcid="required_data_source_nameField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condServiceName">
+                            <span jwcid="service_name">
+                                <input jwcid="service_nameField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condRequiredServiceName">
+                            <span jwcid="required_service_name">
+                                    <input jwcid="required_service_nameField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condNetworkProtocol">
+                            <span jwcid="network_protocol">
+                                <input jwcid="network_protocolField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condRequiredNetworkProtocol">
+                            <span jwcid="required_network_protocol">
+                                    <input jwcid="required_network_protocolField"/>
+                            </span>
+                        </span>
+
+                        <span jwcid="condPortNumber">
+                            <span jwcid="port_number">
+                                <input jwcid="port_numberField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condRequiredPortNumber">
+                            <span jwcid="required_port_number">
+                                    <input jwcid="required_port_numberField"/>
+                            </span>
+                        </span>
+
+                        <span jwcid="condServerName">
+                            <span jwcid="server_name">
+                                <input jwcid="server_nameField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condRequiredServerName">
+                            <span jwcid="required_server_name">
+                                    <input jwcid="required_server_nameField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condUser">
+                            <span jwcid="user">
+                                <input jwcid="userField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condRequiredUser">
+                            <span jwcid="required_user">
+                                    <input jwcid="required_userField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condPassword">
+                            <span jwcid="password">
+                                <input jwcid="passwordField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condRequiredPassword">
+                            <span jwcid="required_password">
+                                    <input jwcid="required_passwordField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condDriverType">
+                            <span jwcid="driver_type">
+                                <input jwcid="driver_typeField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condRequiredDriverType">
+                            <span jwcid="required_driver_type">
+                                    <input jwcid="required_driver_typeField"/>
+                            </span>
+                        </span>
+                        <span jwcid="additional_properties">
+                            <input jwcid="additional_propertiesField" style="width:98%;" rows="4"/>
+                        </span>
+                        <span jwcid="description">
+                                <input jwcid="descriptionField" style="width:98%;"/>
+                        </span>
+                </form>
+            </span>
+            <span jwcid="pool">
+                <form jwcid="poolForm">
+                    <span jwcid="condPool">
+                        <span jwcid="poolingSection"/>
+                        <span jwcid="min">
+                            <input jwcid="minField"/>
+                        </span>
+                        <span jwcid="max">
+                            <input jwcid="maxField"/>
+                        </span>
+                         <span jwcid="pool_blind">
+                                <span jwcid="step">
+                                    <input jwcid="stepField"/>
+                                </span>
+                                <span jwcid="period">
+                                    <input jwcid="periodField"/>
+                                </span>
+
+                                <span jwcid="operation_to">
+                                    <input jwcid="operation_toField"/>
+                                </span>
+
+                                <span jwcid="condXA">
+                                    <span jwcid="delegation_datasource">
+                                        <input jwcid="delegation_datasourceField"/>
+                                    </span>
+                                </span>
+
+                                <span jwcid="max_use_count">
+                                    <input jwcid="max_use_countField"/>
+                                </span>
+
+                                <span jwcid="condDba">
+                                    <span jwcid="delegation_dba">
+                                        <input jwcid="delegation_dbaField"/>
+                                    </span>
+                                </span>
+
+                                <span jwcid="wait_free_connectionSection"/>
+                                <span jwcid="enable_wait">
+                                    <input jwcid="enable_waitField"/>
+                                </span>
+
+                                <span jwcid="wait_time">
+                                    <input jwcid="wait_timeField"/>
+                                </span>
+                        </span>
+                    </span>
+    -->
+                </form>
+            </span>
+        </span>
+    </span>
+    <span jwcid="condNotFound">
+        <span jwcid="tabPanel2">
+            <form jwcid="dsForm">
+            </form>
+            <span jwcid="no_datasource" class="field_label"/>
+        </span>
+    </span>
+</html>

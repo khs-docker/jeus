@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description>   <document>     <key>/jtmax-server/webt-config/log-level/    </key>     <documentation><![CDATA[
+                    [Description]: This elements sets the log level of Webt logger.
+                                   The valid values are NONE, INFO and DEBUG. The default value is NONE.
+                ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/formatter-property/    </key>     <documentation><![CDATA[
+                        [Description]: Property to parse to formatter when handler is generated.
+							            This properties are delivered to formatter through using JeusFormatter.setProperty() method stored in Map object.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/from-address/    </key>     <documentation><![CDATA[
+                        [Description]: The address of sender for email is set for this field. 
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/console-handler/level/    </key>     <documentation><![CDATA[
+                      [Description]: The level of this handler will be set for this field. In case where level of message going through logger is included in this handler level, the message will be displayed through this handler.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/level/    </key>     <documentation><![CDATA[
+                      [Description]: The level of this handler will be set for this field. In case where level of message going through logger is included in this handler level, the message will be displayed through this handler.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/handler-class/    </key>     <documentation><![CDATA[
+                        [Description]: Fully qualified class name in which user has created is set. This class inherits java.util.logging.Handler and jeus.util.logging.JeusHandler will be constructed. 
+                        [Example]: &lt;handler-class>com.tmax.logging.handler.MyHandler&lt;/handler-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/filter-class/    </key>     <documentation><![CDATA[
+                        [Description]: Fully qualified class name of filer class set in this handler is set for this field.  
+                        [Example]: &lt;filter-class>com.tmax.logging.filter.MyFilter&lt;/filter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/service/method-name/    </key>     <documentation><![CDATA[
+	                    [Description]:This element configures method to call.
+					]]>    </documentation>  </document>   <document>     <key>/jtmax-server/    </key>     <documentation><![CDATA[
+			[Description]:  This is the top level element. This element should exist in jtmaxMain.xml.
+		]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/    </key>     <documentation><![CDATA[
+                  [Description]: Handler to use in logger is set for this field.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/service/arg-types/    </key>     <documentation><![CDATA[
+						[Description]:This element configures argument of mehtod.
+							      If there is no argument used, this element is not necessary.
+                                  Avaliable argument types are :
+                                   short,char,int,long,double,float,String,bytes,webt
+							      Ex). &lt;input-args>int,int,String&lt;/input-args>
+					]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/level/    </key>     <documentation><![CDATA[
+                      [Description]: The level of this handler will be set for this field. In case where level of message going through logger is included in this handler level, the message will be displayed through this handler.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/service/ejb-name/    </key>     <documentation><![CDATA[
+						[Description]:This is ejb-name of EJB module to be deployed and it is identical with ejb-name of ejb-jar.xml which is DD file of module.
+					]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/console-handler/    </key>     <documentation><![CDATA[
+                      [Description]: This handler will be used when logging is left in the screen.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/level/    </key>     <documentation><![CDATA[
+                  [Description]: Level of logging is set for this field. Please refer to Level class of logging API of J2SE.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/send-for-all-messages/    </key>     <documentation><![CDATA[
+                        [Description]: When messages enter into this handler through using log() method of logger registered in this handler,
+										it determines whether to consider it as the sender object of email. If it has been set
+										as false, messages which are only called through using specific send() method are transmitted. 
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/formatter-property/property/    </key>     <documentation><![CDATA[
+                        [Description]: Property to be delivered to handler is set.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/name/    </key>     <documentation><![CDATA[
+                      [Description]: The name of handler will be set. At this moment, this name should be set as unique in a logger. This name is used for refering handler including tool.
+                      [Example]: &lt;name>handler1&lt;/name>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/name/    </key>     <documentation><![CDATA[
+                      [Description]: The name of handler will be set. At this moment, this name should be set as unique in a logger. This name is used for refering handler including tool.
+                      [Example]: &lt;name>handler1&lt;/name>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/    </key>     <documentation><![CDATA[
+                      [Description]: This is the handler to use when sending logging to email.
+                      [Performance Recommandation]: There is a warning when a huge amount of email exist without proper filter.  
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/listener/backlog/    </key>     <documentation><![CDATA[
+						[Description]:This element determines backlog value of Socket to be conected by JeusGW.
+					]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/valid-day/    </key>     <documentation><![CDATA[
+                          [Description]: File in which this handler uses will be used and updated frequently for certain set amount of time . 
+										  This setting is used for changing file as unit of day. In this case, used date will be followed right after file name. 
+                          [Value Description]: day
+                          [Example]: &lt;valid-day>1&lt;/valid-day>
+                        ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/file-name/    </key>     <documentation><![CDATA[
+                        [Description]: File name in which this handler uses will be set for this field.
+										If user has not set for this field, default file name of each logger will be used. 
+										Please refer to JEUS Server Manual for each default file name.
+                        [Example]: &lt;file-name>C:\logs\mylog.log&lt;/file-name>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/maxThreadPoolSize/    </key>     <documentation><![CDATA[
+						[Description]: This element sets the maximum size of the thread pool which process the request of Tmax client.
+					]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/    </key>     <documentation><![CDATA[
+                      [Description]: This element is handler used for sending to socket in which logging is set. 
+                      [Performance Recommandation]: The performance will be decreased without using proper filter since logging message is transmitted as one Socket. 
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/filter-class/    </key>     <documentation><![CDATA[
+                  [Description]: Fully qualified class name of filter class set in this logger is set for this field.
+                  [Example]: &lt;filter-class>com.tmax.logging.filter.MyFilter&lt;/filter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/webt-config/default-charset/    </key>     <documentation><![CDATA[
+						[Description]:This element sets the charset. If not specified, the charset of webt property is used.
+						]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/encoding/    </key>     <documentation><![CDATA[
+                      [Description]: Encoding in which this handler leaves message is set for this field. 
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/bcc-address/    </key>     <documentation><![CDATA[
+                        [Description]: The bcc-address of receiver is set for this field.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/level/    </key>     <documentation><![CDATA[
+                      [Description]: The level of this handler will be set for this field. In case where level of message going through logger is included in this handler level, the message will be displayed through this handler.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/filter-class/    </key>     <documentation><![CDATA[
+                        [Description]: Fully qualified class name of filer class set in this handler is set for this field.  
+                        [Example]: &lt;filter-class>com.tmax.logging.filter.MyFilter&lt;/filter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/buffer-size/    </key>     <documentation><![CDATA[
+                        [Description]: The size of buffer is set when diplaying of this handler as file. 
+                        [Value Description]: The unit in byte.
+                        [Performance Recommandation]: The logging performance will be improved as this value is bigger even though message will be displayed with delay.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/formatter-property/property/key/    </key>     <documentation><![CDATA[
+                        [Description]: This element is the key value of property.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/name/    </key>     <documentation><![CDATA[
+                      [Description]: The name of handler will be set. At this moment, this name should be set as unique in a logger. This name is used for refering handler including tool.
+                      [Example]: &lt;name>handler1&lt;/name>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/handler-property/    </key>     <documentation><![CDATA[
+                        [Description]: When handler is generated, property to parse is set. These properties are delivered to 
+										handler as being stored in Map object as key-value through JeusHandler.setProperty() method.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/console-handler/name/    </key>     <documentation><![CDATA[
+                      [Description]: The name of handler will be set. At this moment, this name should be set as unique in a logger. This name is used for refering handler including tool.
+                      [Example]: &lt;name>handler1&lt;/name>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/webt-config/    </key>     <documentation><![CDATA[
+						[Description]: This element defines the webt configuration.
+						]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/address/    </key>     <documentation><![CDATA[
+                        [Description]: IP address of sending messages when generating this handler.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/    </key>     <documentation><![CDATA[
+                      [Description]: In case of using handler in which user has created according to J2SE logging API, this setting
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/handler-property/property/    </key>     <documentation><![CDATA[
+                        [Description]: Property to be delivered to handler is set.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/name/    </key>     <documentation><![CDATA[
+                      [Description]: The name of handler will be set. At this moment, this name should be set as unique in a logger. This name is used for refering handler including tool.
+                      [Example]: &lt;name>handler1&lt;/name>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/use-parent-handlers/    </key>     <documentation><![CDATA[
+                  [Description]: This determines whether handlers of parent logger will be used for this logger.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/encoding/    </key>     <documentation><![CDATA[
+                      [Description]: Encoding in which this handler leaves message is set for this field. 
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/filter-class/    </key>     <documentation><![CDATA[
+                        [Description]: Fully qualified class name of filer class set in this handler is set for this field.  
+                        [Example]: &lt;filter-class>com.tmax.logging.filter.MyFilter&lt;/filter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/formatter-property/property/value/    </key>     <documentation><![CDATA[
+                        [Description]: The value of property.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/console-handler/filter-class/    </key>     <documentation><![CDATA[
+                        [Description]: Fully qualified class name of filer class set in this handler is set for this field.  
+                        [Example]: &lt;filter-class>com.tmax.logging.filter.MyFilter&lt;/filter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/append/    </key>     <documentation><![CDATA[
+                        [Description]: In case where file in which this handler uses already exists, this element will be used for determining
+										whether to be written after the file name. If it has been set as flase, existing file will be deleted.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/port/    </key>     <documentation><![CDATA[
+                        [Description]: Port of sending messages when generating this handler. 
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/    </key>     <documentation><![CDATA[
+                      [Description]: This is the handler to be used in case of displaying logging as file.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/handler-property/property/value/    </key>     <documentation><![CDATA[
+                        [Description]: The value of property.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/service/name/    </key>     <documentation><![CDATA[
+						[Description]:This is service name called in Tmax.
+					]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/smtp-host-address/    </key>     <documentation><![CDATA[
+                        [Description]: The address of Smtp server to send email is set for this field.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/    </key>     <documentation><![CDATA[
+						[Description]:This element defines error log and user log
+						]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/console-handler/encoding/    </key>     <documentation><![CDATA[
+                      [Description]: Encoding in which this handler leaves message is set for this field. 
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/cc-address/    </key>     <documentation><![CDATA[
+                        [Description]: The cc-address of receiver is set for this field.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/listener/port/    </key>     <documentation><![CDATA[
+						[Description]:Port number in which JeusGW is connected to be operated in Tmax System.
+					]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/formatter-class/    </key>     <documentation><![CDATA[
+                        [Description]: Fully qualified class name of formatter in which this handler is used.
+										This class inherits java.util.logging.Formatter and jeus.util.logging.JeusFormatter will be constructed.
+                        [Example]: &lt;formatter-class>com.tmax.logging.handler.MyHandler&lt;/formatter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/encoding/    </key>     <documentation><![CDATA[
+                      [Description]: Encoding in which this handler leaves message is set for this field. 
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/filter-class/    </key>     <documentation><![CDATA[
+                        [Description]: Fully qualified class name of filer class set in this handler is set for this field.  
+                        [Example]: &lt;filter-class>com.tmax.logging.filter.MyFilter&lt;/filter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/encoding/    </key>     <documentation><![CDATA[
+                      [Description]: Encoding in which this handler leaves message is set for this field. 
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/valid-hour/    </key>     <documentation><![CDATA[
+                          [Description]: In case of using and updating frequently on the file in which this handler uses for a certain amount of time. This setting is used for updating time unit. 
+										In this case, used date and time will be automaticallly followed right after file name in which this handler uses. 
+                          [Value Description]: This represents in unit of hour and it should get divisor of 24 + N*24(n is integer greater than 0).
+                          [Example]: &lt;valid-hour>3&lt;/valid-hour>
+                        ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/service/    </key>     <documentation><![CDATA[
+						[Description]: This element defined the information about EJB which is called by Tmax.
+						]]>    </documentation>  </document>   <document>     <key>/jtmax-server/fdl-file/    </key>     <documentation><![CDATA[
+                         [Description]:This element is absolute path of FieldKey file defined for data communication with Tmax.
+                         If this value does not exist, it will find $JEUS_HOME/lib/system/tmax/fdl.
+				]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/handler-property/property/key/    </key>     <documentation><![CDATA[
+                        [Description]: This element is the key value of property.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/level/    </key>     <documentation><![CDATA[
+                      [Description]: The level of this handler will be set for this field. In case where level of message going through logger is included in this handler level, the message will be displayed through this handler.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/listener/    </key>     <documentation><![CDATA[
+						[Description]: This element defines the configuration of JTmaxServer listener which is connected by JeusGW of Tmax.
+						]]>    </documentation>  </document>   <document>     <key>/jtmax-server/webt-config/inbuffer-size/    </key>     <documentation><![CDATA[
+						[Description]:This element configures received buffer size of WebT to get data.
+                                      If configured buffer size is over 4096, this value will be used.
+                                      If it is below 4096, value of 4096  will be configured. (minimum value>4096)
+                        ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/to-address/    </key>     <documentation><![CDATA[
+                        [Description]: The address of receiver of email is set for this field.
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/webt-config/outbuffer-size/    </key>     <documentation><![CDATA[
+						[Description]:This element configures received buffer size of WebT to get data.
+                                      If configured buffer size is over 1024, this value will be used.
+                                 	  If it is below 1024, value of 1024 will be configured. (minimum value>4096)
+                    ]]>    </documentation>  </document></description>

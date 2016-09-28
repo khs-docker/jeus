@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://tapestry.apache.org/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="jeus.tool.webadmin.component.PopupMainBorder" allow-body="yes" allow-informal-parameters="yes">
+    <parameter name="title" required="yes"/>
+    <parameter name="refresh"/>
+
+    <inject property="pageService" object="engine-service:page"/>
+   	<inject property="visit" type="state" object="visit"/>
+    	
+    <component id="shell" type="Shell">
+        <binding name="stylesheets" value="{assets.tundra_css, assets.dojo_css, assets.form_css}"/>
+        <binding name="title" value="title"/>
+        <inherited-binding name="refresh" parameter-name="refresh"/>
+    </component>
+
+    <asset name="tundra_css" path="context:/js/JeusDojo/release/dojo/dijit/themes/tundra/tundra.css"/>
+    <asset name="dojo_css" path="context:/js/JeusDojo/release/dojo/dojo/resources/dojo.css"/>
+    <asset name="form_css" path="context:/css/form.css"/>
+
+</component-specification>

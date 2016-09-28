@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="Shift-JIS"?>
+<description>        
+    <text key="SubjectType.group-principal"><![CDATA[
+                        [Description]: 該当のSubjectに対するgroup identifyを定義します。Subjectが属しているグループを定義します。
+                    ]]>        
+    </text>
+         
+    <text key="SubjectType.principal"><![CDATA[
+                        [Description]: 該当のSubjectに対するuser identifyを定義します。"primary" identifyとしてユニークしなければなりません。
+                    ]]>        
+    </text>
+         
+    <text key="CredentialType.classname"><![CDATA[
+                        [Description]: jeus.security.base.CredentialFactoryインタフェースを実現したJavaクラス名
+                                       どんなパラメーターも持たないpublic生成子を提供しなければなりません。
+                        [Value Description]: Javaクラス名
+                        [Example]: &lt;classname>mypackage.MyPasswordFactory&lt;/classname>
+                    ]]>        
+    </text>
+         
+    <text key="SubjectType.credential"><![CDATA[
+                        [Description]: Subjectに対するCredentialを定義します。
+                    ]]>        
+    </text>
+         
+    <text key="CredentialType.property"><![CDATA[
+                        [Description]: オプションでCredential Factoryに渡すname-valueペアの属性値を定義します。属性に対する詳しい情報は、Credential Factory関連クラスのドキュメントを参照してください。
+                    ]]>        
+    </text>
+         
+    <text key="subjects"><![CDATA[
+                        [Description]: Subject(users)を定義します。
+            ]]>        
+    </text>
+         
+    <text key="SubjectType.description"><![CDATA[
+                        [Description]: Subjecに対する説明
+                        [Value Description]: 任意の説明文
+                        [Example]: &lt;description>A really nide guy!&lt;/description>
+                    ]]>        
+    </text>
+         
+    <text key="credential-propertyType.value"><![CDATA[
+                        [Description]: オプションで属性に対する具体的な値
+                        [Value Description]: 属性　 "password"の属性値は、Base 64にエンコーディングされなければなりません。
+                        [Example]: &lt;value>bXlwYXNzd29yZA==&lt;/value>
+                    ]]>        
+    </text>
+         
+    <text key="PrincipalType.classname"><![CDATA[
+                        [Description]: java.security.Principalインタフェースを実現したJavaクラス名。このクラスはStringタイプのPrincipal名を受け取るpublic生成子を必ず持っている必要がありませう。
+                        [Value Description]: Javaクラス名
+                        [Example]: &lt;classname>mypackage.MyPrincipalImpl&lt;/classname>
+                    ]]>        
+    </text>
+         
+    <text key="PrincipalType.name"><![CDATA[
+                        [Description]: 該当のPrincipal名　(例えば、ユーザ名またはそのグループ名)
+                        [Value Description]: A String id.
+                        [Example]: &lt;name>johan&lt;/name>
+                    ]]>        
+    </text>
+         
+    <text key="credential-propertyType.name"><![CDATA[
+                        [Description]: 属性名
+                        [Value Description]: 属性名
+                        [Example]: &lt;name>password&lt;/name>
+                    ]]>        
+    </text>
+         
+    <text key="SubjectsType.subject"><![CDATA[
+                        [Description]: Subjectを定義します。
+                    ]]>        
+    </text>
+ </description>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusServiceSecurityDomain.UserConfigurationPage">
+    <inject property="jaxbSource" type="state" object="JAXBSource"/>
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Security Domain Configuration"/>
+
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{'JeusServiceSecurityDomain_UserConfiguration'}"/>
+    </component>
+
+    <component id="repositoryConfigUserForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.accounts.repository.user.label"/>
+        <binding name="listener" value="listeners.onRepositoryUserOk"/>
+    </component>
+
+    <component id="user_name" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="user"/>
+        <binding name="elementName" value="literal:name"/>
+    </component>
+
+    <!--<component id="user_password" type="jeus:Field">
+        <binding name="field" value="components.user_passwordField"/>
+    </component>
+
+    <component id="user_passwordField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="user"/>
+        <binding name="elementName" value="literal:password"/>
+    </component>-->
+
+    <component id="user_password" type="jeus:Field">
+        <binding name="field" value="components.user_passwordField"/>
+    </component>
+
+    <component id="user_algorithmField" type="jeus:PropertySelection">
+        <binding name="value" value="userPasswordAlgorithm"/>
+        <binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@JEUS_CIPHER_ALGORITHM"/>
+    </component>
+
+    <component id="user_passwordField" type="jeus:JAXBAlgorithmField">
+        <binding name="hidden" value="true"/>
+        <binding name="parentElement" value="user"/>
+        <binding name="elementName" value="literal:password"/>
+        <binding name="algorithm" value="userPasswordAlgorithm"/>
+    </component>
+
+    <component id="user_group" type="jeus:Field">
+        <binding name="field" value="components.user_groupField"/>
+        <binding name="label" value="'Group'"/>
+    </component>
+
+    <component id="user_groupField" type="contrib:Palette">
+        <binding name="model" value="groupModel"/>
+        <binding name="selected" value="userGroupSelected"/>
+        <binding name="selectedTitleBlock" value="components.nullBlock"/>
+        <binding name="availableTitleBlock" value="components.nullBlock"/>
+    </component>
+
+    <component id="user_description" type="jeus:Field">
+        <binding name="field" value="components.user_descriptionField"/>
+    </component>
+
+    <component id="user_descriptionField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="user"/>
+        <binding name="elementName" value="literal:description"/>
+    </component>
+
+    <bean name="requiredValidator" class="org.apache.tapestry.valid.StringValidator">
+        <set name="required" value="true"/>
+    </bean>
+
+    <!--<property-specification name="userGroupSelected" type="java.util.List"/>-->
+    <property name="userPasswordAlgorithm" persist="session"/>
+
+</page-specification>

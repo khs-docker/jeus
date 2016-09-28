@@ -1,0 +1,123 @@
+<HTML>
+<link href="styles/jm.css" rel="stylesheet" type="text/css">
+	<script language="javascript">
+	        var docSrc = "wm/wm-01.htm";
+
+		var query = location.search;
+		if(query != null && query.length > 1){
+			docSrc = unescape(unescape(query.substring(1)));
+		}
+
+		var preload = new Object();
+		if(document.images){
+			preload["prev_out"] = new Image();
+			preload["prev_over"] = new Image();
+			
+			preload["next_out"] = new Image();
+			preload["next_over"] = new Image();
+
+			preload["top_out"] = new Image();
+			preload["top_over"] = new Image();
+
+			preload["prev_out"].src = "images/b_prev.gif";
+			preload["prev_over"].src = "images/b_prev_up.gif";
+
+			preload["next_out"].src = "images/b_next.gif";
+			preload["next_over"].src = "images/b_next_up.gif";
+
+			preload["top_out"].src = "images/b_top.gif";
+			preload["top_over"].src = "images/b_top_up.gif";
+		}
+
+		var nextHref ='#';
+		var prevHref ='#';
+		
+		function swapImage(id, key){
+			var element = document.getElementById(id);
+			if(element){
+				var image =	preload[key];			
+				if(image)
+					element.src = image.src;
+			}
+		}
+
+		function setProperties(t, p, n){
+			var element = document.getElementById("title");
+			if(document.all)
+				element.innerText = t;
+			else
+				element.childNodes[0].nodeValue = t;
+
+			prevHref = p;			
+			var prevlink = document.getElementById("prevlink");
+
+			if(p == '#'){
+				prevlink.style.display = "none";
+			}else{
+				prevlink.style.display = "inline";				
+				prevlink.href = "wm/"+prevHref;
+			}
+
+			nextHref = n;
+			var nextlink = document.getElementById("nextlink");
+
+			if(n == '#'){
+				nextlink.style.display = "none";	
+			}else{
+				nextlink.style.display = "inline";
+				nextlink.href = "wm/"+nextHref;
+			}
+
+		}
+
+		function goTop(){
+			doc.location.hash = "#top";
+		}
+
+
+	</script>
+	<BODY style="margin:0px;overflow=hidden;border:0px none;" >
+		<TABLE cellspacing="0" cellpadding="0" border="0" width="100%" height="100%" id="wrapper">
+			<TR >
+				<TD height="30" valign="middle" style="background-color:#EAE8E4;border-bottom:1px solid #CCCCCC;padding-left:15px;">
+					<a href="#" onmouseover="swapImage('prev', 'prev_over');" onmouseout="swapImage('prev', 'prev_out');" id="prevlink" target="doc" style="display:inline;">
+						<img src="images/b_prev.gif" id="prev" width="64" height="17" border="0"></a>
+
+					<a href="javascript:goTop();" onmouseover="swapImage('top', 'top_over');" onmouseout="swapImage('top', 'top_out');">
+						<img src="images/b_top.gif" width="64" height="17" border="0" id="top"></a>
+
+					<a href="#" onmouseover="swapImage('next', 'next_over');" onmouseout="swapImage('next', 'next_out');" id="nextlink" target="doc" style="display:inline;">
+						<img src="images/b_next.gif" id="next" width="64" height="17" border="0"></a>
+				</TD>
+				<td class="navbar-title" style="background-color:#EAE8E4;border-bottom:1px solid darkgrey;padding-right:15px;" align="right" id="title">
+					&nbsp;
+				</td>
+			</TR>
+			<TR>
+				<TD colspan="2">
+					<script language="javascript">
+						document.write("<iframe id='doc' name='doc' height='100%' width='100%' src='"+docSrc+"' frameborder='0'/>");
+					</script>
+				</TD>
+			</TR>
+		</TABLE>
+	</BODY>
+	<script language="javascript">
+		function redraw(){
+	                var wrapper = document.getElementById("wrapper");
+        	        wrapper.height = window.innerHeight;
+	                var doc = document.getElementById("doc");
+        	        doc.height = window.innerHeight - 30;
+
+        	}
+
+	            var ns = !document.all;
+        	    if(ns){
+                	redraw();
+	                window.resize = redraw();
+        	    }
+
+        </script>
+
+
+</HTML>

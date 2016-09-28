@@ -1,0 +1,96 @@
+<html jwcid="popupMainBorder">
+<span jwcid="tabPanel">
+    <span jwcid="handler">
+        <span jwcid="condOnLine">
+            <form jwcid="handlerForm">
+                <span jwcid="condHasFileHandlers">
+                    <span jwcid="handler_owner"/>
+                    <table width="100%" cellpadding="0" cellspacing="0" class="table" border="1">
+                        <!-- table header -->
+                        <tr>
+                            <td class="table_columns"><span jwcid="name_column"/></td>
+                            <td class="table_columns"><span jwcid="pattern_column"/></td>
+                            <td class="table_columns"><span jwcid="level_column"/></td>
+                            <td class="table_columns"><span jwcid="actions_column"/></td>
+                            <!--<td class="table_columns"><span jwcid="actions_column"/></td> -->
+                        </tr>
+                        <!-- table body -->
+                        <tr jwcid="eachFileHandler">
+                            <td class="table_values" align="center"><span jwcid="name_value"/></td>
+                            <td class="table_values"><input jwcid="pattern_value" size="35"/></td>
+                            <td class="table_values" align="center"><span jwcid="level_value"/></td>
+                            <td class="table_values" align="center" width="230">
+                                <a jwcid="analysisLink"></a><input jwcid="analysis" class="form_button" onclick="window.location = previousSibling.href;" style="width:100px;"/>
+                                <span jwcid="condIE55">
+                                    <a jwcid="stack_traceLink"></a><input jwcid="stack_trace" class="form_button" style="width:100px;" onclick="parent.rule.location.href = previousSibling.href;"/>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </span>
+                <span jwcid="condNotHasFileHandlers">
+                    <span jwcid="noHandler" class="field_label"/>
+                </span>
+            </form>
+        </span>
+        <span jwcid="condOffLine">
+            <span jwcid="dynamite"/>
+            <form jwcid="offLineForm">
+                <span jwcid="file_pattern">
+                    <input jwcid="file_patternField" style="width:98%"/>
+                </span>
+                <span jwcid="formatter_class_name">
+                    <input jwcid="formatter_class_nameField" style="width:98%"/>
+                </span>
+                <span jwcid="log_record_class_name">
+                    <input jwcid="log_record_class_nameField" style="width:98%"/>
+                </span>
+            </form>
+        </span>
+    </span>
+    <span jwcid="status">
+        <form jwcid="statusForm">
+            <table class="table">
+                <tr>
+                    <th><span jwcid="status_name_column"/></th>
+                    <th><span jwcid="status_column"/></th>
+                    <th><span jwcid="delete_column"/></th>
+                </tr>
+                <span jwcid="eachTask">
+                <tr>
+                    <td width="40" align="center">
+                        <span jwcid="condCompleted">
+                            <a jwcid="resultLink" target="main" class="running_node"><span jwcid="taskName"/></a>
+                        </span>
+                        <span jwcid="condUncompleted">
+                            <span jwcid="taskName2" class="normal_node"/>
+                        </span>
+                    </td>
+                    <td width="20" align="center">
+                        <span jwcid="condRunning">
+                            <img jwcid="runningIcon" align="middle"/>
+                        </span>
+                        <span jwcid="condFailed">
+                            <img jwcid="failedIcon" align="middle"/>
+                        </span>
+                        <span jwcid="condCompleted2">
+                            <img jwcid="completedIcon" align="middle"/>
+                        </span>
+                    </td>
+                    <td width="20" align="center">
+                        <span jwcid="condStopped">
+                            <a jwcid="removeLink" ><img jwcid="removeIcon" align="middle"/></a>
+                        </span>
+                    </td>
+                </tr>
+                <span jwcid="condHasNext">
+                    <tr>
+                        <td jwcid="@Any" element="td" background="ognl:assets.dot" colspan="3" height="3"></td>
+                    </tr>
+                </span>
+                </span>
+            </table>
+        </form>
+    </span>
+</span>
+</html>

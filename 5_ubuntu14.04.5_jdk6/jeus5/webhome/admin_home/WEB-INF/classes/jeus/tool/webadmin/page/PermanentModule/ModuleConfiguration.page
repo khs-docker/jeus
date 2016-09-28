@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.PermanentModule.ModuleConfigurationPage">
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Permanent Module Configuration"/>        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="{'PermanentModule_ModuleConfiguration'}"/>
+    </component>
+
+    <component id="componentsForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="title" value="message:pm.options.title"/>        
+    </component>
+
+    <component id="components" type="Insert">
+        <binding name="value" value="message:pm.options.components.label"/>
+    </component>
+
+    <component id="componentsField" type="jeus:ModuleInnerTabPanel">
+        <binding name="model" value="tabModel"/>
+        <binding name="sessionSave" value="false"/>
+    </component>
+
+    <component id="ejb_component" type="Block"/>
+    <component id="web_component" type="Block"/>
+    <component id="connector_component" type="Block"/>
+    <component id="client_component" type="Block"/>
+
+	<component id="ejb_componentFormSection" type="jeus:FormSection">
+        <binding name="title" value="message:pm.options.ejb_component.title"/>
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:ejb-component"/>
+	</component>
+    
+	<component id="clientViewPath" type="jeus:Field">
+        <binding name="field" value="component:clientViewPathField"/>
+    </component>
+
+    <component id="clientViewPathField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="component"/>
+        <binding name="elementName" value="literal:clientViewPath"/>
+    </component>
+
+    <component id="keep_generated" type="jeus:Field">
+        <binding name="field" value="component:keep_generatedField"/>
+    </component>
+
+    <component id="keep_generatedField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="component"/>
+        <binding name="elementName" value="literal:keepGenerated"/>
+    </component>
+
+	<component id="web_componentFormSection" type="jeus:FormSection">
+        <binding name="title" value="message:pm.options.web_component.title"/>
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:web-component"/>
+	</component>
+
+    <component id="contextRoot" type="jeus:Field">
+    	<binding name="field" value="component:contextRootField"/>
+    </component>
+    
+    <component id="contextRootField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="component"/>
+        <binding name="elementName" value="literal:contextRoot"/>
+    </component>
+
+	<component id="client_componentFormSection" type="jeus:FormSection">
+        <binding name="title" value="message:pm.options.client_component.title"/>
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:client-component"/>
+	</component>
+
+	<component id="connector_componentFormSection" type="jeus:FormSection">
+        <binding name="title" value="message:pm.options.connector_component.title"/>
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:connector-component"/>
+	</component>
+
+ 	<component id="check_java_security_permission" type="jeus:ExtendedCheckbox">
+		<binding name="value" value="javaSecurityPermissionCheck"/>
+		<binding name="parentElement" value="component"/>
+        <binding name="elementName" value="literal:javaSecurityPermission"/>
+		<binding name="targets" value="{components.security_permission_descriptionField, components.security_permission_specField}"/>
+	</component>
+	
+    <component id="security_permission_description" type="jeus:Field">
+        <binding name="field" value="component:security_permission_descriptionField"/>
+    </component>
+
+    <component id="security_permission_descriptionField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="javaSecurityPermission"/>
+        <binding name="elementName" value="literal:description"/>
+        <binding name="disabled" value="!javaSecurityPermissionCheck"/>        
+    </component>
+
+    <component id="security_permission_spec" type="jeus:Field">
+        <binding name="field" value="component:security_permission_specField"/>
+    </component>
+
+    <component id="security_permission_specField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="javaSecurityPermission"/>
+        <binding name="elementName" value="literal:securityPermissionSpec"/>
+        <binding name="validators" value="validators:required"/>
+        <binding name="disabled" value="!javaSecurityPermissionCheck"/>                
+    </component>
+
+    <component id="uri" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="component"/>
+        <binding name="elementName" value="literal:uri"/>
+    </component>
+
+    <component id="ok" type="jeus:ConfirmSubmit">
+    	<binding name="listener" value="listener:onPermanentDeployOk"/>
+	    <binding name="value" value="message:amd.deploy.deploy.label"/>
+	    <binding name="message" value="message:JEUSForm.ok.confirm"/>
+	</component>
+
+    <property name="application" persist="session"/>
+    <property name="tabModel" persist="session"/>
+
+</page-specification>

@@ -1,0 +1,125 @@
+// Created by Microsoft (R) C/C++ Compiler Version 12.00.8168.0 (8a05764c).
+//
+// d:\tmaxsoft\jeus5\samples\cas\examples\vc\debug\comaccount_Account.tlh
+//
+// C++ source equivalent of Win32 type library D:\j2ee-cas-com-bridge\doc\guide\examples\typelib\comaccount_Account.tlb
+// compiler-generated file created 04/04/05 at 15:36:54 - DO NOT EDIT!
+
+#pragma once
+#pragma pack(push, 8)
+
+#include <comdef.h>
+
+namespace comaccount_Account_Lib {
+
+//
+// Forward references and typedefs
+//
+
+struct __declspec(uuid("2caf56e8-c15c-4e99-6826-c8f77d99cafe"))
+/* dispinterface */ comaccount_Account;
+struct __declspec(uuid("4e6a1dac-970e-46e7-6796-ebb7b485cafe"))
+/* dispinterface */ comaccount_Account_Statics;
+
+//
+// Smart pointer typedef declarations
+//
+
+_COM_SMARTPTR_TYPEDEF(comaccount_Account, __uuidof(IDispatch));
+_COM_SMARTPTR_TYPEDEF(comaccount_Account_Statics, __uuidof(IDispatch));
+
+//
+// Type library items
+//
+
+struct __declspec(uuid("2caf56e8-c15c-4e99-6826-c8f77d99cafe"))
+comaccount_Account : IDispatch
+{
+    //
+    // Property data
+    //
+
+    __declspec(property(get=GetEJBHome))
+    IDispatchPtr EJBHome;
+    __declspec(property(get=GetAccountId))
+    _bstr_t AccountId;
+    __declspec(property(get=GetBalance,put=PutBalance))
+    double Balance;
+    __declspec(property(get=GetCreditLimit,put=PutCreditLimit))
+    double CreditLimit;
+    __declspec(property(get=GetFirstName,put=PutFirstName))
+    _bstr_t FirstName;
+    __declspec(property(get=GetHandle))
+    IDispatchPtr Handle;
+    __declspec(property(get=GetLastName,put=PutLastName))
+    _bstr_t LastName;
+    __declspec(property(get=GetPrimaryKey))
+    _variant_t PrimaryKey;
+    __declspec(property(get=GetType,put=PutType))
+    _bstr_t Type;
+
+    //
+    // Wrapper methods for error-handling
+    //
+
+    // Methods:
+    HRESULT credit (
+        double param1 );
+    HRESULT debit (
+        double param1 );
+    _bstr_t getAccountId ( );
+    double getBalance ( );
+    double getCreditLimit ( );
+    IDispatchPtr getEJBHome ( );
+    _bstr_t getFirstName ( );
+    IDispatchPtr getHandle ( );
+    _bstr_t getLastName ( );
+    _variant_t getPrimaryKey ( );
+    _bstr_t getType ( );
+    VARIANT_BOOL isIdentical (
+        IDispatch * EJBObject1 );
+    HRESULT remove ( );
+    HRESULT setBalance (
+        double param1 );
+    HRESULT setCreditLimit (
+        double param1 );
+    HRESULT setFirstName (
+        _bstr_t String1 );
+    HRESULT setLastName (
+        _bstr_t String1 );
+    HRESULT setType (
+        _bstr_t String1 );
+    void PutBalance (
+        double _arg1 );
+    void PutCreditLimit (
+        double _arg1 );
+    void PutFirstName (
+        _bstr_t _arg1 );
+    void PutLastName (
+        _bstr_t _arg1 );
+    void PutType (
+        _bstr_t _arg1 );
+    _bstr_t GetType ( );
+    _variant_t GetPrimaryKey ( );
+    _bstr_t GetLastName ( );
+    IDispatchPtr GetHandle ( );
+    _bstr_t GetFirstName ( );
+    double GetCreditLimit ( );
+    double GetBalance ( );
+    _bstr_t GetAccountId ( );
+    IDispatchPtr GetEJBHome ( );
+};
+
+struct __declspec(uuid("4e6a1dac-970e-46e7-6796-ebb7b485cafe"))
+comaccount_Account_Statics : IDispatch
+{};
+
+//
+// Wrapper method implementations
+//
+
+#include "d:\tmaxsoft\jeus5\samples\cas\examples\vc\debug\comaccount_Account.tli"
+
+} // namespace comaccount_Account_Lib
+
+#pragma pack(pop)

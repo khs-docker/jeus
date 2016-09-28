@@ -1,0 +1,53 @@
+<html jwcid="shell">
+    <body jwcid="@Body">
+		<table class="elemdoc">
+			<tr>
+				<td class="elemdoc_label"><span jwcid="@Insert" value="message:elemdoc.name.label"/></td>
+				<td><span jwcid="@Insert" value="ognl:elemdoc.name"/></td>
+			</tr>
+			<tr jwcid="@If" condition="ognl:elemdoc.description != null" element="tr">
+				<td class="elemdoc_label"><span jwcid="@Insert" value="message:elemdoc.description.label"/></td>
+				<td><span jwcid="@Insert" value="ognl:elemdoc.description"/></td>
+			</tr>
+			<tr jwcid="@If" condition="ognl:elemdoc.valueDescription != null" element="tr">
+				<td class="elemdoc_label"><span jwcid="@Insert" value="message:elemdoc.valueDescription.label"/></td>
+				<td><span jwcid="@Insert" value="ognl:elemdoc.valueDescription"/></td>
+			</tr>
+			<tr jwcid="@If" condition="ognl:elemdoc.valueType != null" element="tr">
+				<td class="elemdoc_label"><span jwcid="@Insert" value="message:elemdoc.value_type.label"/></td>
+				<td><span jwcid="@Insert" value="ognl:elemdoc.valueType"/></td>
+			</tr>
+			<tr jwcid="@If" condition="ognl:elemdoc.valueTypeDescription != null" element="tr">
+				<td class="elemdoc_label"><span jwcid="@Insert" value="message:elemdoc.value_type_description.label"/></td>
+				<td><span jwcid="@Insert" value="ognl:elemdoc.valueTypeDescription"/></td>
+			</tr>
+			<tr jwcid="@If" condition="ognl:elemdoc.defaultValue != null" element="tr">
+				<td class="elemdoc_label"><span jwcid="@Insert" value="message:elemdoc.default_value.label"/></td>
+				<td><span jwcid="@Insert" value="ognl:elemdoc.defaultValue"/></td>
+			</tr>
+			<tr jwcid="@If" condition="ognl:elemdoc.definedValues != null and !elemdoc.definedValues.empty" element="tr">
+				<td class="elemdoc_label"><span jwcid="@Insert" value="message:elemdoc.defined_values.label"/></td>
+				<td>
+					<table class="definedValues">
+						<tr jwcid="@For" source="ognl:elemdoc.definedValues" value="ognl:definedValue" element="tr">
+		  					<td class="elemdoc_label"><span jwcid="@Insert" value="ognl:definedValue.value"/></td>
+							<td><span jwcid="@Insert" value="ognl:definedValue.description"/></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr jwcid="@If" condition="ognl:elemdoc.deprecated" element="tr">
+				<td class="elemdoc_label"><span jwcid="@Insert" value="message:elemdoc.deprecated.label"/></td>
+				<td><span jwcid="@Insert" value="ognl:elemdoc.deprecated"/></td>
+			</tr>
+			<tr jwcid="@If" condition="ognl:elemdoc.performanceRecommendation != null" element="tr">
+				<td class="elemdoc_label"><span jwcid="@Insert" value="message:elemdoc.performance_recommendation.label"/></td>
+				<td><span jwcid="@Insert" value="ognl:elemdoc.performanceRecommendation"/></td>
+			</tr>
+			<tr jwcid="@If" condition="ognl:elemdoc.example != null" element="tr">
+				<td class="elemdoc_label"><span jwcid="@Insert" value="message:elemdoc.example.label"/></td>
+				<td><span jwcid="@Insert" value="ognl:elemdoc.example" raw="ognl:true"/></td>
+			</tr>
+		</table>
+    </body>
+</html>

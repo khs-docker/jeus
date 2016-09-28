@@ -1,0 +1,64 @@
+<HTML>
+	<HEAD>
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+		<SCRIPT language="javascript">
+			var bgcolor = "#FFFFFF";
+			var documents = "JEUS 웹관리자 안내서";
+			var docnames = "wm"
+			var action = "";
+			var docroot = "";
+			var target = "tableFrame";
+			var debug = "false";
+			var initdocskey = "";
+			if( parent !=  null ){
+				var query = parent.location.search;
+				if( query != null ) 
+					initdocskey = query.substring(1);
+			}
+			
+			document.writeln("<HTML>");
+			document.writeln("	<HEAD>");
+			document.writeln("		<TITLE>Overview</TITLE>");
+			document.writeln("	</HEAD>");
+			document.writeln("	<BODY style=\"margin:0px 0px 0px 0px;\">");
+			document.writeln("      <TABLE width=\"100%\"  height=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"border-collapse:collap			se;\">");
+
+			if( location.protocol != "file:"  ){
+				document.writeln("          <TR>");
+				document.writeln("              <TD width=\"156\" bgcolor=\"#ECECEC\" style=\"border-top-width:1px; border-top-color:#000000; border-top-style:solid;\"> <img src=\"images/search-tab.gif\" width=\"156\" height=\"15\"  border=\"0\"></td>");
+				document.writeln("          </TR>");
+				document.writeln("          <TR>");
+				document.writeln("              <TD >");
+				document.writeln("                  <APPLET WIDTH=\"100%\" HEIGHT=\"75\" CODEBASE=\"applet\" CODE=\"SearchApplet.class\">");
+				document.writeln("                      <PARAM NAME=\"BGCOLOR\" VALUE=\""+bgcolor+"\"/>");
+				document.writeln("                      <PARAM NAME=\"DOCUMENTS\" VALUE=\""+"All|"+documents+"\"/>");
+				document.writeln("                      <PARAM NAME=\"ACTION\" VALUE=\""+action+"\"/>");
+				document.writeln("                      <PARAM NAME=\"TARGET\" VALUE=\""+target+"\"/>");
+				document.writeln("                      <PARAM NAME=\"DOCROOT\" VALUE=\""+docroot+"\"/>");
+				document.writeln("                      </APPLET>");
+				document.writeln("              </TD>");
+				document.writeln("          </TR>");
+			}
+			document.writeln("          <TR>");
+			document.writeln("              <TD width=\"156\" bgcolor=\"#ECECEC\" style=\"border-top-width:1px; border-top-color:#000000; border-top-style:solid;\"> <IMG src=\"images/list-of-documents-tab.gif\" width=\"156\" height=\"15\" border=\"0\">");
+			document.writeln("              </TD>");
+			document.writeln("          </TR>");
+			document.writeln("          <TR valign=\"top\">");
+			document.writeln("              <TD height=\"100%\">");
+			document.writeln("                  <APPLET NAME=\"dlapplet\" codebase = \"applet\"   code = \"DocumentListApplet.class\" WIDTH=\"100%\" height=\"100%\">");
+			document.writeln("                      <PARAM name = \"DOCUMENTS\" value = \""+documents+"\">");
+			document.writeln("                      <PARAM name = \"DOCNAMES\" value = \""+docnames+"\">");
+			document.writeln("                      <PARAM name=\"DEBUG\" value=\""+debug+"\">");
+			document.writeln("                      <PARAM name=\"INITDOCSKEY\" value=\""+initdocskey+"\">");
+			document.writeln("                  </APPLET>");
+			document.writeln("              </TD>");
+			document.writeln("          </TR>");
+			document.writeln("      <TABLE>");
+			document.writeln("  </BODY>");
+			document.writeln("</HTML>");
+		</SCRIPT>
+	</HEAD>
+</HTML>
+
+
+

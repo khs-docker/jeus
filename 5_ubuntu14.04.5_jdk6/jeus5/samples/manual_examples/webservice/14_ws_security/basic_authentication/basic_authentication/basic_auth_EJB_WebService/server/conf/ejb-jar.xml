@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar version="2.1" xmlns="http://java.sun.com/xml/ns/j2ee">
+	<display-name>AddressEjb</display-name>
+	<enterprise-beans>
+		<session>
+			<display-name>AddressEJB</display-name>
+			<ejb-name>AddressEJB</ejb-name>
+			<service-endpoint>address.AddressBookIF</service-endpoint>
+			<ejb-class>address.AddressBookEJB</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
+	</enterprise-beans>
+    <assembly-descriptor>
+        <security-role>
+            <role-name>Administrator</role-name>
+        </security-role>
+        <method-permission>
+            <role-name>Administrator</role-name>
+            <method>
+                <ejb-name>AddressEJB</ejb-name>
+                <method-intf>ServiceEndpoint</method-intf>
+                <method-name>listAll</method-name>
+            </method>
+        </method-permission>
+    </assembly-descriptor>
+</ejb-jar>

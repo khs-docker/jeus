@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns1:application version="1.4" xmlns:ns1="http://java.sun.com/xml/ns/j2ee">
+    <ns1:module>
+        <ns1:ejb>AddressBook.jar</ns1:ejb>
+    </ns1:module>
+</ns1:application>
+

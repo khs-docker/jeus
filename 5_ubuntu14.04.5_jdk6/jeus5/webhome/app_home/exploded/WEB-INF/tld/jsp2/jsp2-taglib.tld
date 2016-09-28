@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+    <description>A SimpleTag handlers</description>
+    <tlib-version>1.0</tlib-version>
+    <short-name>SimpleTagLibrary</short-name>
+    <uri>/SimpleTagLibrary</uri>
+    <tag>
+	<description>TmaxSoft</description>
+        <name>simpletag</name>
+	<tag-class>jsp2.simpletag.SimpleTag</tag-class>
+	<body-content>empty</body-content>
+    </tag>
+    <function>
+        <description>Reverses Function</description>
+        <name>reverse</name>
+	<function-class>jsp2.function.Functions</function-class>
+	<function-signature>java.lang.String reverse( java.lang.String )</function-signature>
+    </function>
+    <function>
+        <description>Counts the number</description>
+        <name>countNum</name>
+	<function-class>jsp2.function.Functions</function-class>
+	<function-signature>java.lang.String countNum( java.lang.String )</function-signature>
+    </function>
+    <function>
+	<description>Converts the string to all caps</description>
+        <name>toupper</name>
+	<function-class>jsp2.function.Functions</function-class>
+	<function-signature>java.lang.String toupper( java.lang.String )</function-signature>
+    </function>
+    <function>
+	<description>Converts the string to all caps</description>
+        <name>tolower</name>
+	<function-class>jsp2.function.Functions</function-class>
+	<function-signature>java.lang.String tolower( java.lang.String )</function-signature>
+    </function>
+</taglib>
+

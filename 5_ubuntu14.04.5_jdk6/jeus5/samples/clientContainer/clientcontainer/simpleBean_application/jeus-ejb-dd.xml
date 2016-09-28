@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jeus-ejb-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+	<beanlist>
+		<jeus-bean>
+			<ejb-name>simpleBean</ejb-name>
+			<export-name>Salary</export-name>
+			<persistence-optimize>
+				<engine-type>EXCLUSIVE_ACCESS</engine-type>
+				<non-modifying-method>
+					<method-name>calculateSalary</method-name>
+					<method-params>
+						<method-param>int</method-param>
+						<method-param>int</method-param>
+						<method-param>int</method-param>
+					</method-params>
+				</non-modifying-method>				
+			</persistence-optimize>
+		</jeus-bean>
+	</beanlist>
+</jeus-ejb-dd>

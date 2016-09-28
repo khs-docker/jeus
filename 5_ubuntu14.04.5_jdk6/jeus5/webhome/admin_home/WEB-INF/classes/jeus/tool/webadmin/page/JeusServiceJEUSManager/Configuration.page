@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusServiceJEUSManager.ConfigurationPage">
+
+	<inject property="webadminStateObject" type="state" object="WebadminStateObject"/>
+	<inject property="externalService" object="engine-service:external"/>
+	
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JDBC Data Source Service Configuration"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@JEUSSERVICE_JEUSMANAGER_NAMES"/>
+        <binding name="subtabNames" value="{'general', 'listener', 'services', 'logging', 'security'}"/>
+    </component>
+
+    <component id="general" type="Block"/>
+    <component id="listener" type="Block"/>
+    <component id="listener_general" type="Block"/>
+    <component id="ssl" type="Block"/>
+    <component id="pooling" type="Block"/>
+    <component id="services" type="Block"/>
+    <component id="logging" type="Block"/>
+    <component id="security" type="Block"/>
+
+    <component id="link_icon" type="Image">
+        <binding name="image" value="asset:link"/>
+    </component>
+
+    <component id="link_icon2" copy-of="link_icon"/>
+
+    <component id="jnditreeLink" type="Any">
+        <binding name="element" value="literal:a"/>
+        <!--<binding name="href" value="literal:#"/>-->
+        <binding name="onclick" value="'javascript:window.open(\''+(@jeus.tool.webadmin.util.WebUtils@createExternalLink(externalService, 'Etc_JNDITreeFrameSet', objectName)).absoluteURL+'\', \'Remote_JNDITree\', \'width=1050,height=700,toolbars=no,resizable=yes,scrollbars=yes\');'"/>
+    </component>
+
+    <component id="jnditree" type="Insert">
+        <binding name="value" value="message:NodeTree.JeusService.JeusManager.jnditree"/>
+    </component>
+
+    <component id="tmonitorLink" type="ExternalLink">
+        <binding name="page" value="literal:Etc_TroubleMonitor"/>
+        <binding name="parameters" value="objectName.canonicalName"/>
+    </component>
+
+    <component id="tmonitor" type="Insert">
+        <binding name="value" value="message:NodeTree.JeusService.JeusManager.tmonitor"/>
+    </component>
+
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jm.configuration.general.title"/>
+        <binding name="listener" value="listener:onGeneralOk"/>
+        <binding name="parentElement" value="node"/>
+    </component>
+
+    <component id="name" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="node"/>
+        <binding name="elementName" value="literal:name"/>
+    </component>
+
+    <component id="general_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="backup_node" type="jeus:Field">
+        <binding name="field" value="components.backup_nodeField"/>
+    </component>
+
+    <component id="backup_nodeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="node"/>
+        <binding name="elementName" value="literal:backupNode"/>
+    </component>
+
+    <component id="sequential_start" type="jeus:Field">
+        <binding name="field" value="components.sequential_startField"/>
+    </component>
+
+    <component id="sequential_startField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="node"/>
+        <binding name="elementName" value="literal:sequentialStart"/>
+    </component>
+
+    <component id="note" type="jeus:Field">
+        <binding name="parent" value="node"/>
+        <binding name="element" value="literal:name"/>
+        <binding name="field" value="components.noteField"/>
+        <binding name="label" value="message:common.message.note.label"/>
+    </component>
+
+    <component id="noteField" type="jeus:NoteIO">
+        <binding name="parent" value="node"/>
+        <binding name="element" value="literal:name"/>
+        <binding name="pageName" value="literal:JeusServiceJEUSManager_Configure"/>
+        <binding name="value" value="note"/>
+        <binding name="displayName" value="literal:"/>
+        <binding name="validators" value="validators:$noteValidator"/>
+    </component>
+
+    <component id="listenerForm" type="jeus:JEUSForm">
+        <binding name="title"  value="message:jm.configuration.listener.title"/>
+        <binding name="useForm" value="false"/>
+        <binding name="parentElement" value="node"/>
+        <binding name="elementName" value="literal:listener"/>
+    </component>
+
+    <component id="listener_tab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'jm.configuration.listener.general.label', 'jm.configuration.listener.ssl.label', 'jm.configuration.listener.pooling.label'}, new java.lang.String[]{'listener_general', 'ssl', 'pooling'})"/>
+    </component>
+
+    <component id="listener_generalForm" type="jeus:JEUSForm">
+        <binding name="listener" value="listeners.onListenerGeneralOk"/>
+        <binding name="parentElement" value="listener"/>
+    </component>
+
+    <component id="backlog" type="jeus:Field">
+        <binding name="field" value="components.backlogField"/>
+    </component>
+
+    <component id="backlogField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="listener"/>
+        <binding name="elementName" value="literal:backlog"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+    
+    <component id="sslForm" type="jeus:JEUSForm">
+        <binding name="listener" value="listeners.onSslOk"/>
+        <binding name="parentElement" value="listener"/>
+        <binding name="elementName" value="literal:ssl"/>
+    </component>
+
+    <component id="ssl_port" type="jeus:Field">
+        <binding name="field" value="component:ssl_portField"/>
+    </component>
+
+    <component id="ssl_portField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ssl"/>
+        <binding name="elementName" value="literal:port"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="poolingForm" type="jeus:JEUSForm">
+        <!--<binding name="title"  value="message:ejc.timer_service.pooling.title"/>-->
+        <binding name="listener" value="listeners.onPoolingOk"/>
+        <binding name="mbean" value="true"/>
+        <binding name="objectName" value="@jeus.tool.webadmin.util.JMXUtils@getThreadPoolObjectName(objectName, 'jeus.util.net.SocketDispatcher')"/>
+        <binding name="parentElement" value="listener"/>
+        <binding name="elementName" value="literal:threadPool"/>
+    </component>
+
+    <component id="min" type="jeus:Field">
+        <binding name="field" value="components.minField"/>
+    </component>
+
+    <component id="minField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="pooling"/>
+        <binding name="elementName" value="literal:min"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="max" type="jeus:Field">
+        <binding name="field" value="components.maxField"/>
+    </component>
+
+    <component id="maxField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="pooling"/>
+        <binding name="elementName" value="literal:max"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="period" type="jeus:Field">
+        <binding name="field" value="components.periodField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="periodField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="pooling"/>
+        <binding name="elementName" value="literal:period"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="servicesForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jm.configuration.services.title"/>
+        <binding name="listener" value="listeners.onServicesOk"/>
+    </component>
+
+    <component id="class_ftp" type="jeus:Field">
+        <binding name="field" value="components.class_ftpField"/>
+    </component>
+
+    <component id="class_ftpField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="node"/>
+        <binding name="elementName" value="literal:classFtp"/>
+    </component>
+
+    <component id="enable_jnlp" type="jeus:Field">
+        <binding name="field" value="components.enable_jnlpField"/>
+    </component>
+
+    <component id="enable_jnlpField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="node"/>
+        <binding name="elementName" value="literal:enableJnlp"/>
+    </component>
+
+    <component id="webadminSection" type="jeus:FormSection">
+        <binding name="title" value="message:jm.configuration.services.webadmin.config.title"/>
+    </component>
+
+    <component id="enable_webadmin" type="jeus:Field">
+        <binding name="field" value="components.enable_webadminField"/>
+    </component>
+
+    <component id="enable_webadminField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="node"/>
+        <binding name="elementName" value="literal:enableWebadmin"/>
+    </component>
+
+    <component id="webadmin_allowed_server" type="jeus:Field">
+        <binding name="field" value="components.webadmin_allowed_serverField"/>
+    </component>
+
+    <component id="webadmin_allowed_serverField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="webadminConfig"/>
+        <binding name="elementName" value="literal:allowedServer"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+    <component id="logging_tableForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jm.configuration.logging_table.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="parentElement" value="node"/>
+        <binding name="elementName" value="literal:systemLogging"/>
+    </component>
+
+    <component id="eachLogging" type="Foreach">
+        <binding name="source" value="loggings"/>
+        <binding name="value" value="loggingView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="logging_table_name_column" type="Insert">
+        <binding name="value" value="message:jm.configuration.logging_table.name.label"/>
+    </component>
+
+    <component id="logging_table_level_column" type="Insert">
+        <binding name="value" value="message:jm.configuration.logging_table.level.label"/>
+    </component>
+
+    <component id="loggingLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceJEUSManager_EditLogger"/>
+        <binding name="parameters" value="{loggingView.objectName.canonicalName, loggingView.name, 'JeusManager'}"/>
+    </component>
+
+    <component id="logging_table_name" type="Insert">
+        <binding name="value" value="loggingView.name"/>
+    </component>
+
+    <component id="logging_table_level" type="Insert">
+        <binding name="value" value="loggingView.level"/>
+    </component>
+
+    <component id="logging_table_delete" type="Image">
+        <binding name="image" value="assets.delete"/>
+    </component>
+
+    <component id="logging_table_deleteLink" type="DirectLink">
+        <binding name="listener" value="listener:onDeleteLogging"/>
+        <binding name="parameters" value="loggingView.name"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.remove.confirm', loggingView.name)"/>
+    </component>
+
+    <component id="loggingForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jm.configuration.logging.title"/>
+        <binding name="listener" value="listeners.onLoggingOk"/>
+        <binding name="parentElement" value="node"/>
+        <binding name="elementName" value="literal:systemLogging"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+<!--    <component id="logging_panel" type="jeus:Logging">
+        <binding name="logging" value="logging"/>-->
+        <!--<binding name="handlers" value="handlers"/>
+        <binding name="createPage" value="literal:JeusServiceJEUSManager_CreateHandler"/>
+        <binding name="editPage" value="literal:JeusServiceJEUSManager_EditHandler"/>
+        -->
+<!--    </component>
+
+    <component id="handlerForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jm.configuration.handler.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="subform" value="true"/>
+    </component>
+
+    <component id="handler_panel" type="jeus:HandlerList">
+        <binding name="handlers" value="handlers"/>
+        <binding name="createPage" value="literal:JeusServiceJEUSManager_CreateHandler"/>
+        <binding name="editPage" value="literal:JeusServiceJEUSManager_EditHandler"/>
+        <binding name="deleteListener" value="listener:onDeleteHandler"/>
+        <binding name="objectName" value="objectName"/>
+        <binding name="jeusType" value="literal:JeusManager"/>
+    </component>-->
+
+    <component id="create_loggerLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceJEUSManager_CreateLogger"/>
+        <binding name="parameters" value="{objectName.canonicalName, 'JeusManager'}"/>
+    </component>
+
+    <component id="create_logger_label" type="Insert">
+        <binding name="value" value="message:Logging.create_logger.label"/>
+    </component>
+
+    <component id="titleForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jm.configuration.security.title"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="securityForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jm.configuration.security.general.title"/>
+        <binding name="listener" value="listeners.onSecurityOk"/>
+        <binding name="subform" value="true"/>
+    </component>
+
+    <component id="use_nio" type="jeus:Field">
+        <binding name="field" value="components.use_nioField"/>
+    </component>
+
+    <component id="use_nioField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="securityManager"/>
+        <binding name="elementName" value="literal:useNio"/>
+    </component>
+
+    <component id="connect_retries" type="jeus:Field">
+        <binding name="field" value="components.connect_retriesField"/>
+    </component>
+
+    <component id="connect_retriesField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="securityManager"/>
+        <binding name="elementName" value="literal:connectRetries"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="securityDomainForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jm.configuration.security.domain.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="subform" value="true"/>
+    </component>
+
+    <component id="domain_name_column" type="Insert">
+        <binding name="value" value="message:domain.overview.name.label"/>
+    </component>
+
+<!--
+    <component id="accounts_column" type="Insert">
+        <binding name="value" value="message:domain.overview.subjects.label"/>
+    </component>
+-->
+
+    <component id="eachDomain" type="Foreach">
+        <binding name="source" value="domains"/>
+        <binding name="value" value="domain"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="domain_name_value" type="Insert">
+        <binding name="value" value="domain.name"/>
+    </component>
+
+<!--
+    <component id="accounts_value" type="Insert">
+        <binding name="value" value="job.name"/>
+    </component>
+-->
+
+    <component id="domainLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceSecurityDomain_Services"/>
+        <binding name="parameters" value="domain.objectName.canonicalName"/>
+    </component>
+
+     <component id="deleteLink" type="DirectLink">
+        <binding name="parameters" value="domain.name"/>
+        <binding name="listener" value="listener:onDeleteDomain"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.delete.confirm', domain.name)"/>
+    </component>
+    
+    <component id="condNotReserved" type="If">
+        <binding name="condition" value="not @jeus.tool.webadmin.page.JeusServiceSecurityDomain.ReservedDomain@contains(domain.name)"/>
+    </component>
+
+    <component id="delete" type="Image">
+        <binding name="image" value="assets.delete"/>
+    </component>
+
+    <component id="createLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceSecurityDomain_Create"/>
+        <binding name="parameters" value="domainObjectName.canonicalName"/>
+    </component>
+
+    <component id="create" type="Image">
+        <binding name="image" value="assets.create"/>
+    </component>
+    
+    <component id="create2" copy-of="create"/>
+
+    <component id="create_label" type="Insert">
+        <binding name="value" value="message:domain.create.label"/>
+    </component>
+
+    <bean name="listTranslator" class="jeus.tool.webadmin.component.translator.ListTranslator"/>
+
+    <bean name="noteValidator" class="jeus.tool.webadmin.validator.NoteSizeValidator"/>
+
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+    <asset name="duplicate" path="context:/image/mbean/doc.gif"/>
+    <asset name="create" path="context:/image/create.gif"/>
+    <asset name="empty" path="context:/image/empty.gif"/>
+    <asset name="link" path="context:/image/selected_mark.gif"/>
+
+    <property name="econtainer"/>
+    <property name="domain"/>
+	<property name="loggingView"/>
+
+    <property name="note"/>
+</page-specification>

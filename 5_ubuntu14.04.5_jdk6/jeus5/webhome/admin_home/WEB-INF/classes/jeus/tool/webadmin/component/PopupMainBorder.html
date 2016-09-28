@@ -1,0 +1,25 @@
+<html jwcid="shell">
+    <body jwcid="@Body" class="tundra">
+        <script type="text/javascript" src="/webadmin/js/JeusDojo/release/dojo/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+        <script type="text/javascript" src="/webadmin/js/JeusDojo/release/dojo/dojo/jeus.js"></script>
+        <script type="text/javascript">
+            dojo.require("dojo.parser");
+            dojo.require("dijit.form.CheckBox");
+            dojo.require("dijit.form.FilteringSelect");
+            dojo.require("dijit.form.Textarea");
+            dojo.require("dijit.form.TextBox");
+            dojo.require("dijit.form.ValidationTextBox");
+            dojo.require("dijit.Tooltip");
+            dojo.require("dijit.Dialog");
+            dojo.require("dijit.form.Button");
+        </script>
+        <span jwcid="@Dynamite"/>
+        <!-- body here -->
+        <div class="accessTime">
+            <span jwcid="@Insert" value="message:MainBorder.lastAccessTime"/>:<span jwcid="@Insert" value="ognl:time"/>
+        </div>
+        <div id="mainborder_content">
+			<span jwcid="@RenderBody"/>
+		</div>
+   </body>
+</html>

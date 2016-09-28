@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceLogAnalyzerService.RulePage">
+	
+	<inject property="userAgent" type="state" object="UserAgent"/>
+
+    <component id="dynamite" type="jeus:Dynamite"/>
+
+    <component id="popupMainBorder" type="jeus:PopupMainBorder">
+        <binding name="title" value="message:la.handler"/>
+    </component>
+
+    <component id="ruleForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:la.rule.title"/>
+        <binding name="listener" value="ognl:listeners.onOk"/>
+    </component>
+
+    <component id="file_pattern" type="jeus:Field">
+        <binding name="label" value="message:la.rule.file_pattern.label"/>
+        <binding name="field" value="ognl:components.file_patternField"/>
+        <binding name="renderBottom" value="ognl:false"/>
+    </component>
+
+    <component id="file_patternField" type="jeus:DojoTextField">
+        <binding name="value" value="ognl:filePattern"/>
+        <binding name="disabled" value="ognl:true"/>
+    </component>
+
+    <component id="condRule" type="If">
+        <binding name="condition" value="ognl:!completed"/>
+    </component>
+
+    <component id="condCompleted" type="If">
+        <binding name="condition" value="ognl:completed"/>
+    </component>
+
+    <component id="messageForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:la.rule.message.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="message" type="jeus:ErrorMessageBox">
+        <binding name="messageClass" value="literal:exception_message"/>
+        <binding name="message" value="message:la.rule.completed"/>
+    </component>
+
+    <component id="task_name" type="jeus:Field">
+        <binding name="description" value="message:la.rule.task_name.description"/>
+        <binding name="field" value="component:task_nameField"/>
+        <binding name="renderBottom" value="false"/>
+    </component>
+
+    <component id="task_nameField" type="jeus:DojoTextField">
+        <binding name="displayName" value="message:la.rule.task_name.label"/>
+        <binding name="value" value="taskName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="start_date" type="jeus:Field">
+        <binding name="label" value="message:la.rule.start_date.label"/>
+        <binding name="field" value="component:start_dateField"/>
+        <binding name="renderBottom" value="false"/>
+    </component>
+
+    <component id="start_dateField" type="DatePicker">
+        <binding name="value" value="startDate"/>
+        <binding name="translator" value="translator:date,pattern=yyyy-MM-dd"/>
+        <binding name="validators" value="validators:required"/>
+        <binding name="displayName" value="message:la.rule.start_date.label"/>
+    </component>
+
+    <component id="end_date" type="jeus:Field">
+        <binding name="label" value="message:la.rule.end_date.label"/>
+        <binding name="field" value="component:end_dateField"/>
+        <binding name="renderBottom" value="false"/>
+    </component>
+
+    <component id="end_dateField" type="DatePicker">
+        <binding name="value" value="endDate"/>
+        <binding name="translator" value="translator:date,pattern=yyyy-MM-dd"/>
+        <binding name="validators" value="validators:required"/>
+        <binding name="displayName" value="message:la.rule.end_date.label"/>
+    </component>
+
+    <component id="regularExpressionDescription" type="Any">
+        <binding name="element" value="literal:a"/>
+        <binding name="onclick" value="ognl:'window.open(\''+descriptionPage+'\', \'elemdoc\', \'width=600,height=480,toolbars=no,resizable=yes,scrollbars=yes\');'"/>
+    </component>
+
+    <component id="pattern_id" type="Insert">
+        <binding name="value" value="message:la.rule.pattern_id.label"/>
+    </component>
+
+    <component id="pattern_id_help" type="Insert">
+        <binding name="value" value="message:la.rule.pattern_id_help.label"/>
+    </component>
+
+    <component id="name_column" type="Insert">
+        <binding name="value" value="message:la.rule.name.label"/>
+    </component>
+
+    <component id="pattern_column" type="Insert">
+        <binding name="value" value="message:la.rule.pattern.label"/>
+    </component>
+
+    <component id="class_name_column" type="Insert">
+        <binding name="value" value="message:la.rule.class_name.label"/>
+    </component>
+
+    <component id="eachField" type="Foreach">
+        <binding name="source" value="ognl:fields"/>
+        <binding name="value" value="ognl:field"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="include" type="jeus:DojoCheckbox">
+        <binding name="value" value="ognl:field.selected"/>
+    </component>
+
+    <component id="name_value" type="Insert">
+        <binding name="value" value="ognl:field.name"/>
+    </component>
+
+    <component id="pattern" type="jeus:DojoTextField">
+        <binding name="value" value="field.pattern"/>
+        <binding name="displayName" value="message:la.rule.pattern.label"/>
+        <!-- 
+        <binding name="validators" value="validators:required[%la.rule.pattern_error.message]"/>
+        -->
+    </component>
+
+
+    <component id="class_name" type="jeus:DojoTextField">
+        <binding name="value" value="ognl:field.classname"/>
+        <binding name="disabled" value="ognl:loggerType == 'ERROR_LOGGER'"/>
+        <binding name="style" value="ognl:'border:1px solid #AAAAAA;width:100%;' + ( loggerType == 'ERROR_LOGGER' ? 'background-color:#EAEAEA;' : '')"/>
+    </component>
+
+    <component id="enable_buffer_size" type="jeus:Field">
+        <binding name="field" value="ognl:components.enable_buffer_sizeField"/>
+        <binding name="label" value="message:la.rule.enable_buffer_size.label"/>
+    </component>
+
+    <component id="enable_buffer_sizeField" type="jeus:DojoCheckbox">
+        <binding name="value" value="ognl:enableBufferSize"/>
+    </component>
+
+    <component id="buffer_size" type="jeus:Field">
+        <binding name="field" value="ognl:components.buffer_sizeField"/>
+    </component>
+
+    <component id="buffer_sizeField" type="jeus:DojoTextField">
+        <binding name="value" value="bufferSize"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+        <binding name="displayName" value="message:la.rule.buffer_size.label"/>
+    </component>
+
+    <property name="taskName"/>
+    <property name="startDate"/>
+    <property name="endDate"/>
+    <property name="bufferSize" initial-value="8192"/>
+    <property name="enableBufferSize"/>
+    <property name="field"/>
+
+    <property name="formatterClassName" persist="session"/>
+    <property name="logRecordClassName" persist="session"/>
+    <property name="filePattern" persist="session"/>
+    <property name="loggerType" persist="session"/>
+
+</page-specification>

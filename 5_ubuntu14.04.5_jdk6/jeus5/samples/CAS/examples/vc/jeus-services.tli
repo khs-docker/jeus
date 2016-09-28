@@ -1,0 +1,61 @@
+// Created by Microsoft (R) C/C++ Compiler Version 12.00.8168.0 (45356f7b).
+//
+// jeus-services.tli
+//
+// Wrapper implementations for Win32 type library D:\TMAXSOFT\JEUS5\samples\CAS\jeus-services.dll
+// compiler-generated file created 04/04/05 at 15:51:47 - DO NOT EDIT!
+
+#pragma once
+
+//
+// interface IEnterpriseServices wrapper method implementations
+//
+
+inline _bstr_t IEnterpriseServices::GetProviderURL ( ) {
+    BSTR _result;
+    HRESULT _hr = get_ProviderURL(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline void IEnterpriseServices::PutProviderURL ( _bstr_t pVal ) {
+    HRESULT _hr = put_ProviderURL(pVal);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+}
+
+inline _bstr_t IEnterpriseServices::GetSecurityPrincipal ( ) {
+    BSTR _result;
+    HRESULT _hr = get_SecurityPrincipal(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline void IEnterpriseServices::PutSecurityPrincipal ( _bstr_t pVal ) {
+    HRESULT _hr = put_SecurityPrincipal(pVal);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+}
+
+inline _bstr_t IEnterpriseServices::GetSecurityCredentials ( ) {
+    BSTR _result;
+    HRESULT _hr = get_SecurityCredentials(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline void IEnterpriseServices::PutSecurityCredentials ( _bstr_t pVal ) {
+    HRESULT _hr = put_SecurityCredentials(pVal);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+}
+
+inline IDispatchPtr IEnterpriseServices::LookupEjbHome ( _bstr_t jndiName, _bstr_t homeClassName ) {
+    IDispatch * _result;
+    HRESULT _hr = raw_LookupEjbHome(jndiName, homeClassName, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return IDispatchPtr(_result, false);
+}
+
+inline HRESULT IEnterpriseServices::StopJvm ( ) {
+    HRESULT _hr = raw_StopJvm();
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}

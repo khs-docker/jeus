@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceJeusLogService.AnalysisPage">
+
+    <component id="shell" type="Shell">
+        <binding name="title" value="message:log.control.title"/>
+        <binding name="stylesheets" value="{assets.form_css, assets.tundra_css, assets.dojo_css}"/>
+    </component>
+
+    <component id="logger" type="Any">
+        <binding name="element" value="literal:iframe"/>
+        <binding name="src" value="ognl:loggerURL"/>
+    </component>
+
+    <component id="handler" type="Any">
+        <binding name="element" value="literal:iframe"/>
+        <binding name="src" value="ognl:handlerURL"/>
+    </component>
+
+    <component id="condAvailable" type="If">
+        <binding name="condition" value="ognl:logger != null"/>
+    </component>
+
+    <component id="condUnavailable" type="If">
+        <binding name="condition" value="ognl:logger == null"/>
+    </component>
+
+    <component id="logo" type="Image">
+        <binding name="image" value="ognl:assets.logo"/>
+    </component>
+
+    <asset name="logo" path="context:/image/log/log.gif"/>
+
+    <asset name="form_css" path="context:/css/form.css"/>
+    <asset name="tundra_css" path="context:/js/JeusDojo/release/dojo/dijit/themes/tundra/tundra.css"/>
+    <asset name="dojo_css" path="context:/js/JeusDojo/release/dojo/dojo/resources/dojo.css"/>
+
+</page-specification>

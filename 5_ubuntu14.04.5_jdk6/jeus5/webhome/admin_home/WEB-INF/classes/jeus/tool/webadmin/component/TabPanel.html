@@ -1,0 +1,61 @@
+<span jwcid="$content$">
+    <link href="ognl:assets.tabpanel_css" jwcid="@Any" element="link" type="text/css" rel="stylesheet"/>
+    <div class="tab_panel" >
+        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td valign="top" class="tab_bottom" >
+                    <table border="0" cellspacing="0" cellpadding="0"  style="border-collapse:collapse;">
+                        <span jwcid="@Foreach" source="ognl:pageNames" value="ognl:pageName" index="ognl:index">
+                            <!-- selected tab -->
+                            <span jwcid="@If" condition="ognl:pageName.equals(page.pageName)" renderTag="ognl:false">
+                             <tr>
+                                <!-- tab left -->
+                                <td height="25" class="selected_tab_left"><img jwcid="@Image" image="ognl:assets.selected_tab_left" height="25"/></td>
+                                <!-- tab label -->
+                                <td height="25" class="selected_tab_label" nowrap="true">
+                                    <span jwcid="@Insert" value="ognl:getMessage(pageName)"/>
+                                </td>
+                                <!-- selected mark -->
+                                <td height="25" class="selected_mark">
+                                    <div style="position:relative;width:6px;height:25px;background-color:#FFFFFF;left:2px;"><img jwcid="@Image" image="ognl:assets.empty" width="4" border="0"/></div>
+                                </td>
+                            </tr>
+                            <span jwcid="subtabs"/>
+                            </span>
+                            <!-- unselected tab -->
+                            <span jwcid="@Else">
+                             <tr>
+                                <!-- tab left -->
+                                <td height="25" class="unselected_tab_left">
+                                    <img jwcid="@Image" image="ognl:assets.unselected_tab_left" height="25"/>
+                                </td>
+                                <!-- tab label -->
+                                <td  height="25" class="unselected_tab_label" nowrap="true" >
+                                    <a id="ognl:messages.getMessage(pageName)" jwcid="@ExternalLink" page="ognl:pageName" parameters="ognl:page.objectName" class="tab_link">
+                                        <span jwcid="@Insert" value="ognl:messages.getMessage(pageName)"/>
+                                    </a>
+                                    <div dojoType="dijit.Tooltip" connectId="ognl:messages.getMessage(pageName)" label="ognl:messages.getMessage(pageName)" jwcid="@Any"></div>
+                                </td>
+                                <!-- selected mark -->
+                                <td height="25" width="4" class="unselected_mark" >
+                                    <img jwcid="@Image" image="ognl:assets.empty" width="4" border="0"/>
+                                </td>
+                            </tr>
+                            </span>
+                        </span>
+                    </table>
+                    &nbsp;
+                </td>
+                <!-- tab view -->
+                <td jwcid="@Any" class="tab_view" width="99%" valign="top">
+                    <span jwcid="@RenderBody">
+                    </span>
+                    <span jwcid="@If" condition="ognl:hasSubtabs" renderTag="ognl:false">
+                        <span jwcid="@RenderBlock" block="ognl:activeBlock"/>
+                        <span jwcid="help_script"/>
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</span>

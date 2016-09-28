@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+
+<input-symbol key="form_id" class="java.lang.String" required="yes"/>
+<input-symbol key="id" class="java.lang.String" required="yes"/>
+<input-symbol key="nodeCheck_id" class="java.lang.String"  required="yes"/>
+<input-symbol key="containerCheck_id" class="java.lang.String"  required="yes"/>
+<input-symbol key="allCheck_id" class="java.lang.String"  required="yes"/>
+<input-symbol key="nodeIDs" class="java.util.List"  required="yes"/>
+<input-symbol key="containerIDsMap" class="java.util.Hashtable"  required="yes"/>
+
+<let key="init">
+    ${id}_init
+</let>
+
+<let key="onClick_nodeCheck">
+    onClick_${id}_${nodeCheck_id}
+</let>
+
+<let key="onClick_containerCheck">
+    onClick_${id}_${containerCheck_id}
+</let>
+
+<let key="onClick_allCheck">
+    onClick_${id}_all
+</let>
+
+<let key="clearContainerCBs">
+    clearContainerCBs_${id}
+</let>
+
+<let key="checkContainerCBs">
+    checkContainerCBs_${id}
+</let>
+
+<body>
+    var ns = !document.all;
+
+    var ${id}_nodeCBs = new Array();
+    var ${id}_nodeCBsMap = new Object();
+    var ${id}_containerCBsMap = new Object();
+    var ${id}_allCB;
+
+    function ${onClick_nodeCheck}(e){
+        var checkbox = ns ? e.target : window.event.srcElement;
+        if(checkbox.checked)
+            ${checkContainerCBs}(${id}_containerCBsMap[checkbox.name]);
+        else
+            ${clearContainerCBs}(${id}_containerCBsMap[checkbox.name]);
+
+        ${id}_allCB.checked = false;
+    }
+
+    function ${clearContainerCBs}(containerCBs){
+        for(var i = 0; i &lt; containerCBs.length ; i++){
+            containerCBs[i].checked = false;
+        }
+    }
+
+    function ${checkContainerCBs}(containerCBs){
+        for(var i = 0; i &lt; containerCBs.length; i++){
+            containerCBs[i].checked = true;
+        }
+    }
+
+    function ${onClick_containerCheck}(e){
+        var checkbox = ns ? e.target : window.event.srcElement;
+        ${id}_nodeCBsMap[checkbox.name].checked = false;
+        ${id}_allCB.checked = false;
+    }
+
+    function ${onClick_allCheck}(e){
+        var checkbox = ns ? e.target : window.event.srcElement;
+        if(checkbox.checked){
+            for(var i = 0; i &lt; ${id}_nodeCBs.length; i++){
+                ${id}_nodeCBs[i].checked = true;
+                ${checkContainerCBs}(${id}_containerCBsMap[${id}_nodeCBs[i].name]);
+            }
+        }else{
+            for(var i = 0; i &lt; ${id}_nodeCBs.length; i++){
+                ${id}_nodeCBs[i].checked = false;
+                ${clearContainerCBs}(${id}_containerCBsMap[${id}_nodeCBs[i].name]);
+            }
+        }
+    }
+
+    function ${init}(){
+    
+    	var formsById = document.getElementById("${form_id}");
+        <foreach key="nodeID" expression="nodeIDs">
+            var ${id}_${nodeID}_containerCBs = new Array();
+            <foreach key="containerID" expression="containerIDsMap.get(nodeID)">
+                ${id}_${nodeID}_containerCBs[${id}_${nodeID}_containerCBs.length] = formsById.${containerID};
+                formsById.${containerID}.onclick = ${onClick_containerCheck};
+                ${id}_nodeCBsMap["${containerID}"] = formsById.${nodeID};
+            </foreach>
+
+            ${id}_containerCBsMap["${nodeID}"] = ${id}_${nodeID}_containerCBs;
+            ${id}_nodeCBs[${id}_nodeCBs.length] = formsById.${nodeID};
+            formsById.${nodeID}.onclick = ${onClick_nodeCheck};
+        </foreach>
+
+        ${id}_allCB = formsById.${allCheck_id};
+        ${id}_allCB.onclick = ${onClick_allCheck};
+    }
+</body>
+<initialization>
+${init}();
+</initialization>
+
+</script>

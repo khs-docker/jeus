@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC 
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="jeus.tool.webadmin.component.Blind" allow-body="yes" allow-informal-parameters="no">
+	<inject property="script" type="script" object="Blind.script"/>
+    <parameter name="title" required="yes"/>
+
+    <parameter name="titleClass" default-value="'blind_bar'"/>
+
+    <parameter name="panelClass" default-value="'blind_panel'"/>
+
+    <parameter name="bodyClass" default-value="'blind_body'"/>
+
+    <parameter name="openedImage" default-value="asset:opened"/>
+
+    <parameter name="closedImage" default-value="asset:closed"/>
+
+    <parameter name="initOpen" default-value="true"/>
+
+    <asset name="opened" path="context:/image/opened.gif"/>
+    <asset name="closed" path="context:/image/closed.gif"/>
+    <asset name="cookie" path="context:/js/cookie.js"/>
+
+    <!-- Just for debug -->
+    <property name="border" initial-value="0"/>
+</component-specification>

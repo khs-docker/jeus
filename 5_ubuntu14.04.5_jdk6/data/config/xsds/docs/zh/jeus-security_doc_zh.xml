@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="GB2312"?>
+<description>                                                
+    <text key="auditType.custom-audit-service"><![CDATA[                        [Description]: 定义custom audit service。                    ]]>                                                
+    </text>
+    <text key="security-manager"><![CDATA[
+                        [Description]: security-manager element是JEUS安全信息管理相关的说明。
+                    ]]>                                             
+    </text>    
+                                                         
+    <text key="security-domainsType.security-domain"><![CDATA[
+                            [Description]: 设置JEUS要使用的security domain。
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="x509-credential-mappingType.truststore-path"><![CDATA[
+                        [Description]: 定义要适用于目前DOMAIN的truststore file路径。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="config-fileType.filename"><![CDATA[
+          [Description]: 包括user/group security信息的xml configuration file名称
+                           ]]>                                                
+    </text>
+                                                         
+    <text key="security-managerType.security-domains"><![CDATA[
+                        [Description]: 设置该JEUS Manager中使用的security domain。详细内容请参考JEUS Security 指南。
+                     ]]>                                                
+    </text>
+                                                         
+    <text key="x509-identity-assertionType.config-file"><![CDATA[
+                                        [Description]: 定义X509Certificate 文件路径
+                                    ]]>                                                
+    </text>
+                                                         
+    <text key="SecurityServices.subject-validation"><![CDATA[
+                            [Description]: 定义subject valdation service。 
+                        ]]>          
+    </text>
+                                                                       
+    <text key="database-repositoryType.dbdriver-config"><![CDATA[
+                           [Description]: 为db authentication repository service设置 db export-name .
+                       
+                    ]]>                                                                        
+    </text>
+                                                                                      
+    <text key="security-domainType.cache-manager"><![CDATA[
+                        [Description]: 在JEUS Security Framwrok中适用的cache相关设置。
+                    ]]>                                                                                
+    </text>
+                                                                                 
+    <text key="subject-validationType.default-subject-validation-service"><![CDATA[
+                        [Description]: 定义default subject-validation service.
+                    
+                    ]]>                                                                        
+    </text>
+                                                                                          
+    <text key="login-moduleType.control-flag"><![CDATA[                                        [Description]: authentication适用方式相关的定义。                                    ]]>                                                                                    
+    </text>
+                                                                                             
+    <text key="default-user-mapperType.cert-attr-type"><![CDATA[                                        [Description]: 映射credential所需的相关信息，定义为属性值。                                    ]]>                                                                                    
+    </text>
+                                                                                             
+    <text key="credential-verificationType.custom-credential-verification-service"><![CDATA[                        [Description]: 定义custom credential verification service。                    ]]>                                                                                    
+    </text>
+                                                                                             
+    <text key="authorizationType.jacc-service"><![CDATA[                        [Description]: 定义JACC Service的使用与否。                    ]]>                                                                                    
+    </text>
+                                                                                             
+    <text key="authorizationType.custom-authorization-service"><![CDATA[
+                        [Description]: 定义custom authorization service。.
+                    ]]>                                                                                    
+    </text>
+                                                                                             
+    <text key="SecurityServices.authorization"><![CDATA[
+                            [Description]: 定义authorizaiton service。
+                        ]]>                                                                                    
+    </text>
+                                                                                             
+    <text key="credential-mappingType.default-credential-mapping-service"><![CDATA[
+                        [Description]: 定义default credential mapping service。
+                    ]]>                                                                                    
+    </text>
+                                                                                 
+    <text key="subject-validationType.custom-subject-validation-service"><![CDATA[
+                        [Description]: 定义custom subject-validation service。
+                    
+                    ]]>                                                                        
+    </text>
+                                                                                             
+    <text key="authorizationType.repository-service"><![CDATA[
+                        [Description]: 定义default repository service。
+                    ]]>                                                                                        
+    </text>
+                                                                                                 
+    <text key="authenticationType.custom-authentication-service"><![CDATA[                        [Description]: 定义custom authentication service。                    ]]>                                                                                        
+    </text>
+                                                                                                 
+    <text key="SecurityServices.login"><![CDATA[                            
+                            [Description]: 定义Login service。
+                    ]]>                                                                                        
+    </text>
+                                                                                                 
+    <text key="cache-serviceType.min"><![CDATA[
+                           [Description]: 使用于authentication service的 cache min size值
+                       ]]>                                                                                        
+    </text>
+                                                                                                 
+    <text key="SecurityServices.credential-verification"><![CDATA[
+                                [Description]: 定义credential verification service。
+                         ]]>                                                                                        
+    </text>
+                                                                                                 
+    <text key="default-credential-mapping-serviceType.x509-credential-mapping"><![CDATA[                           [Description]: 设定对X509Certificate的Identity Assertion Service。                       ]]>                                                                                        
+    </text>
+                                                                                                 
+    <text key="dbdriver-configType.vendor"><![CDATA[
+
+                           [Description]: 为db authentication repository service设置db vendor.
+                       
+                    ]]>   
+    </text>                                                                                                                
+    <text key="repository-serviceType.custom-repository"><![CDATA[
+                        [Description]: 定义custom repository service。
+                    ]]>                                                                                                                    
+    </text>
+                                                                                                                             
+    <text key="jaas-login-configType.login-module"><![CDATA[                                            [Description]: 设定login module。                                        ]]>                                                                                                                    
+    </text>
+                                                                                                                             
+    <text key="identity-assertionType.default-identity-assertion-service"><![CDATA[                           
+                               [Description]: 在目前domain中使用为default的Identity Assertion Service设置。
+    		    ]]>                                                                                                                    
+    </text>
+                                                                                                                             
+    <text key="dbdriver-configType.url"><![CDATA[
+
+                           [Description]: 为db authentication repository service设置 db url。
+                       
+                    ]]>   
+    </text>                                                                                                                                              
+    <text key="login-serviceType.custom-login-service"><![CDATA[                        [Description]: 定义custom login service。                    ]]>                                                                                                                                                
+    </text>
+                                                                                                                                                         
+    <text key="default-audit-serviceType.config-file"><![CDATA[                           [Description]: 定义audit log文件信息                       ]]>                                                                                                                                                
+    </text>
+                                                                                                                                                         
+    <text key="cache-serviceType.max"><![CDATA[
+                  [Description]: 适用于authentication service的cache max size值
+                       ]]>                                                                                                                                                
+    </text>
+                                                                                                                                                         
+    <text key="default-credential-verification-serviceType.jeus-certificate-verification"><![CDATA[
+                           [Description]: 对X509Certificate的credential verification 设置。
+                       ]]>                                                                                                                                                
+    </text>
+                                                                                                                                                         
+    <text key="custom-propertyType.property"><![CDATA[                                        [Description]: 映射credential所需的相关信息，定义为属性值。                                    ]]>                                                                                                                                                
+    </text>
+                                                                                                                                                         
+    <text key="default-user-mapperType.attribute-value-delimiter"><![CDATA[                                        [Description]: 映射credential所需的相关信息，定义为属性值。                                    ]]>                                                                                                                                                
+    </text>
+                                                                                                                                                         
+    <text key="login-moduleType.option"><![CDATA[
+                                        [Description]: 定义LoginModule 初始化时使用的属性。
+                                    ]]>                                                                                                                                                
+    </text>
+                                                                                                                                                         
+    <text key="x509-identity-assertionType.default-user-mapper"><![CDATA[
+                                        [Description]:对X509Certificate token进行user mapping所需的信息定义
+                                    ]]>                                                                                                                                                
+    </text>
+                                                                                                                                                         
+    <text key="SecurityServices.credential-mapping"><![CDATA[                            [Description]: 定义credential mapping service。                        ]]>                                                                                                                                                
+    </text>
+                                                                                                                                                         
+    <text key="SecurityServices.identity-assertion"><![CDATA[                            
+                           [Description]: 定义identity assertion service。                        
+                       ]]>                                                                                                                                                
+    </text>
+                                                                                                                                 
+    <text key="dbdriver-configType.password"><![CDATA[
+                           [Description]: 为db authentication repository service设置启动 db connection时使用的 password。
+                       
+                    ]]>                                                                                                                        
+    </text>
+                                                                                                                                                         
+    <text key="xml-file-repositoryType.config-file"><![CDATA[
+                           [Description]: xml repository 文件信息定义
+                       ]]>                                                                                                                                                    
+    </text>
+                                                                                                                                                             
+    <text key="repository-serviceType.xml-file-repository"><![CDATA[ 
+                           [Description]: authentication service所需的xml repository service相关定义。
+                           ]]>                                                                                                                                                    
+    </text>
+                                                                                                                                                             
+    <text key="authenticationType.repository-service"><![CDATA[
+                        [Description]: 定义repository service。
+                    ]]>                                                                                                                                                    
+    </text>
+                                                                                                                                                             
+    <text key="cache-serviceType.timeout"><![CDATA[                           [Description]: 要适用于authentication service的cache timeout size值。                       ]]>                                                                                                                                                    
+    </text>
+                                                                                                                                                             
+    <text key="default-identity-assertionType.x509-identity-assertion"><![CDATA[                           [Description]: 设定对X509Certificate的Identity Assertion Service。                       ]]>                                                                                                                                                    
+    </text>
+                                                                                                                                                             
+    <text key="authenticationType.cache-service"><![CDATA[
+                        [Description]: 在JEUS Security Framwrok中适用的cache相关设置。
+                    ]]>                                                                                                                                                    
+    </text>
+                                                                                                                                 
+    <text key="dbdriver-configType.driver"><![CDATA[
+                           [Description]: 为db authentication repository service设置 db driver .
+                       
+                    ]]>                                                                                                                        
+    </text>
+                                                                                                                                                             
+    <text key="jaas-login-configType.callback-handler-classname"><![CDATA[                                            [Description]: JAAS callback handler factory class name。                                            ]]>                                                                                                                                                        
+    </text>
+                                                                                                                                                                 
+    <text key="auditType.default-audit-service"><![CDATA[                        [Description]: 定义default audit service。                    ]]>                                                                                                                                                        
+    </text>
+                                                                                                                                                                 
+    <text key="config-fileType.filepath"><![CDATA[                               [Description]: 包括user/group security信息的xml configuration file 路径。                           ]]>                                                                                                                                                        
+    </text>
+                                                                                                                                                                 
+    <text key="repository-serviceType.database-repository"><![CDATA[
+                        [Description]: authentication service所需的db repository service相关定义
+                    ]]>                                                                                                                                                        
+    </text>
+                                                                                                                                 
+    <text key="database-repositoryType.datasource-export-name"><![CDATA[
+                           [Description]: 为db authentication repository service设置要使用的 db export-name。
+                       
+                    ]]>                                                                                                                        
+    </text>
+                                                                                                                                                                   
+    <text key="authorizationType.cache-service"><![CDATA[
+                        [Description]: 在JEUS Security Framwrok中适用的cache相关设置。
+                    ]]>                                                                                                                                                            
+    </text>
+                                                                                                                                                                     
+    <text key="optionType.value"><![CDATA[                                        [Description]: LoginModule的初始化时适用的属性值。                                    ]]>                                                                                                                                                            
+    </text>
+                                                                                                                                                                     
+    <text key="default-user-mapperType.attribute-type"><![CDATA[                                        [Description]: 映射credential所需的相关信息，定义为属性值。                                    ]]>                                                                                                                                                            
+    </text>
+                                                                                                                                                                     
+    <text key="SecurityServices.authentication"><![CDATA[
+                            [Description]: 定义authenticaiton service。
+                        ]]>                                                                                                                                                            
+    </text>
+                                                                                                                                                                     
+    <text key="security-domainType.name"><![CDATA[
+                            [Description]: 设置Domain名称。
+                        ]]>                                                                                                                                                            
+    </text>
+                                                                                                                                                                     
+    <text key="credential-mappingType.custom-credential-mapping-service"><![CDATA[                        [Description]: 定义custom credential mapping service。                    ]]>                                                                                                                                                            
+    </text>
+                                                                                                                                                                     
+    <text key="credential-verificationType.default-credential-verification-service"><![CDATA[                        [Description]: 定义default credential verification service。                    ]]>                                                                                                                                                            
+    </text>
+                                                                                                                                                                     
+    <text key="default-credential-verification-serviceType.password-verification"><![CDATA[                           [Description]: 对PasswordFactory class的credential verification设定。                       ]]>                                                                                                                                                            
+    </text>
+                                                                                                                                                                     
+    <text key="security-domainType.keystore-manager"><![CDATA[                        [Description]: 进行对keystore/truststore file的设定。                    ]]>                                                                                                                                                            
+    </text>
+                                                                                                                                                                     
+    <text key="security-managerType.connect-retries"><![CDATA[
+                        [Description]: 指定Security Network service中的 connection retry count值。
+                     ]]>                                                                                                                                                            
+    </text>
+                                                                                                                                                                     
+    <text key="dbdriver-configType.username"><![CDATA[
+
+                           [Description]: 为db authentication repository service设置启用 db connection时使用的 username
+                       
+                    ]]>   
+    </text>
+    
+    <text key="SecurityServices.audit"><![CDATA[
+                        [Description]: 定义default audit service。
+                        ]]>                                                                                                                                                                                        
+    </text>
+                                                                                                                                                                                                 
+    <text key="optionType.name"><![CDATA[
+                              [Description]: LoginModule初始化时要使用的属性名
+                                    ]]>                                                                                                                                                                                        
+    </text>
+                                                                                                                                                                                                 
+    <text key="x509-identity-assertionType.custom-user-mapper"><![CDATA[
+                                        [Description]: X509Certificate token有关的user mapping所需附加属性定义
+                                    ]]>                                                                                                                                                                                        
+    </text>
+                                                                                                                                                                                                 
+    <text key="x509-credential-mappingType.truststore-password"><![CDATA[                        [Description]: 定义要适用于目前domain的truststore file密码。                    ]]>                                                                                                                                                                                        
+    </text>
+                                                                                                                                                                                                 
+    <text key="login-serviceType.jaas-login-config"><![CDATA[
+                            [Description]: jaas 定义Login service。
+                           ]]>                                                                                                                                                                                        
+    </text>
+                                                                                                                                                                                                 
+    <text key="default-audit-serviceType.audit-level"><![CDATA[
+                           [Description]: audit log level
+                       ]]>                                                                                                                                                                                        
+    </text>
+                                                                                                                                                                                                 
+    <text key="security-managerType.use-nio"><![CDATA[
+                        [Description]: 使用security manager Nonblocking I/O，指定通信情况。
+                        [Performance Recommendation]: 使用更多Engine Container及client时，Nonblocking I/O显示更好的效果。若使用security manager的客户端数少，Blocking I/O更有效。
+                    ]]>                                                                                                                                                                                        
+    </text>
+                                                                                                                                                                                                 
+    <text key="identity-assertionType.custom-identity-assertion-service"><![CDATA[                           [Description]: 定义certificate和user之间映射信息的configuration文件路径。                       ]]>                                                                                                                                                                                        
+    </text>
+                                                                                                                                                                                                 
+    <text key="security-domainType.custom-service"><![CDATA[
+
+                        [Description]: 不管此 domain里的 JEUS Security Framework提供的服务的属性
+                                       可以在执行JEUS Security SPI的服务属性注册　别的安全服务。
+                   
+                    ]]>   
+    </text>                                                                                                                                                                                                                
+    <text key="login-moduleType.login-module-classname"><![CDATA[                                        [Description]: 对LoginModule进行implements的package包括在内的class name。                                    ]]>                                                                                                                                                                                                                    
+    </text>
+    <text key="SecurityServicePropertyType.name"><![CDATA[
+                        [Description]: 属性名
+                        [Value Description]: 属性名
+                        [Example]: <name>filename</name>
+                    
+                    ]]>                                                
+    </text>    
+                                                     
+    <ref key="security-domainType">SecurityServices</ref>
+<text key="control-flagType.required"><![CDATA[
+                                        [Description]: 要注册成功的话需要此 LoginModule的许可。 LoginModule 执行成功或失败时继续将LoginModule List按顺序执行。
+                                    ]]>                                        
+    </text>
+                                               
+    <text key="control-flagType.requisite"><![CDATA[
+                                        [Description]: 要注册成功的话需要此 LoginModule的许可。 LoginModule 执行成功的话继续将 LoginModule List按顺序执行，要是失败的话，不执行之后的 LoginModule List，给 application返回 control。
+                                    ]]>                                        
+    </text>
+                                               
+    <text key="control-flagType.sufficient"><![CDATA[
+                                        [Description]: 注册成功不需要此 LoginModule的许可. 要是成功的话不执行 LoginModule List，给application返回 control，要是失败的话对于下一个 LoginModule List继续执行 authentication。
+                                    ]]>                                        
+    </text>
+                                               
+    <text key="control-flagType.optional"><![CDATA[
+                                        [Description]: 注册成功不需要此 LoginModule的许可. 要是成功或是失败都对 LoginModule List继续执行authentication。
+                                    ]]>                                        
+    </text>
+                                                                                                                                                                   
+</description>

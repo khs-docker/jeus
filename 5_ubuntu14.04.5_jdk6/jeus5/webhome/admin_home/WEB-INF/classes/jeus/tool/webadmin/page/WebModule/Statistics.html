@@ -1,0 +1,60 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <span jwcid="general">
+        <form jwcid="generalForm">
+            <span jwcid="context_group">
+                <a jwcid="context_groupLink"><span jwcid="context_group_name" class="normal_text"/></a>
+            </span>
+            <span jwcid="request_count"/>
+            <span jwcid="processing_time"/>
+            <span jwcid="all_session_size"/>
+            <span jwcid="active_session_size"/>
+            <span jwcid="passivate_session_size"/>
+            <span jwcid="local_session_size"/>
+        </form>
+        </span>
+
+        <span jwcid="servlets">
+        <form jwcid="statisticsForm"/>
+            <span jwcid="condHasServlets">
+                <span jwcid="condNotExistWebservice">
+                    <span jwcid="servlet_tab1">
+                        <span jwcid="@RenderBlock" block="ognl:components.generalServlet"/>
+                    </span>
+                </span>
+                <span jwcid="condExistWebservice">
+                    <span jwcid="servlet_tab2">
+                        <span jwcid="@RenderBlock" block="ognl:components.generalServlet"/>
+                        <span jwcid="@RenderBlock" block="ognl:components.webserviceServlet"/>
+                    </span>
+                </span>
+                <span jwcid="generalServlet@Block">
+                    <br/>
+                    <form jwcid="generalServletForm">
+                        <table border="1" cellpadding="3" width="100%" jwcid="servletStatsTable"/>
+                        <span jwcid="wm_statistics_servlet_name_labelColumnValue@Block">
+                            <a jwcid="servletLink"><span jwcid="servletName"/></a>
+                        </span>
+                        <span jwcid="wm_statistics_actions_labelColumnValue@Block">
+                            <a jwcid="suspendLink"></a><input jwcid="suspend" class="form_button" onclick="window.location.href=previousSibling.href;"/><a jwcid="resumeLink"></a><input jwcid="resume" class="form_button" onclick="window.location.href=previousSibling.href;"/><a jwcid="terminateLink"></a><input jwcid="terminate" class="form_button" onclick="window.location.href=previousSibling.href;"/><a jwcid="restartLink"></a><input jwcid="restart" class="form_button" onclick="window.location.href=previousSibling.href;"/>
+                        </span>
+                        <div class="form_button_layer">
+                            <a jwcid="@PageLink" page="ognl:pageName"></a><input jwcid="@Button" class="form_button" onclick="window.location = previousSibling.href;" label="message:common.label.refresh"/>
+                        </div>
+                    </form>
+                </span>
+                <span jwcid="webserviceServlet@Block">
+                    <br/>
+                    <form jwcid="webserviceServletForm">
+                        <table border="1" cellpadding="3" width="100%" jwcid="webserviceMetricsTable"/>
+                        <span jwcid="wm_statistics_webservice_name_labelColumnValue@Block">
+                        </span>
+                        <div class="form_button_layer">
+                            <a jwcid="@PageLink" page="ognl:pageName"></a><input jwcid="@Button" class="form_button" onclick="window.location = previousSibling.href;" label="message:common.label.refresh"/>
+                       </div>
+                    </form>
+                </span>
+            </span>
+        </span>
+    </span>
+</html>

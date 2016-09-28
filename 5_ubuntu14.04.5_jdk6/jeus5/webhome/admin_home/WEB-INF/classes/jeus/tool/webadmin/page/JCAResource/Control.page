@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JCAResource.ControlPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JCAResource Control"/>        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@JCARESOURCE_NAMES"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:jca.control.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="jca_control_actions_labelColumnValue" type="Block"/>
+
+    <component id="enable_disableLink" type="DirectLink">
+        <binding name="listener" value="ognl:listeners.onEnableDisable"/>
+        <binding name="parameters" value="ognl:currentConnectionPoolView.connectionFactoryObjectName.canonicalName"/>
+    </component>
+
+    <component id="resyncLink" type="DirectLink">
+        <binding name="listener" value="ognl:listeners.onResync"/>
+        <binding name="parameters" value="ognl:currentConnectionPoolView.connectionFactoryObjectName.canonicalName"/>
+    </component>
+
+    <component id="shrinkLink" type="DirectLink">
+        <binding name="listener" value="ognl:listeners.onShrink"/>
+        <binding name="parameters" value="ognl:currentConnectionPoolView.connectionFactoryObjectName.canonicalName"/>
+    </component>
+
+    <component id="enable_disable" type="Button">
+        <binding name="label" value="ognl:getMessage('jca.control.'+(enable? 'disable': 'enable')+'.label')"/>
+    </component>
+
+    <component id="resync" type="Button">
+        <binding name="label" value="message:jca.control.resync.label"/>
+    </component>
+
+    <component id="shrink" type="Button">
+        <binding name="label" value="message:jca.control.shrink.label"/>
+    </component>
+
+    <component id="connectionPoolTable" type="jeus:JEUSTable">
+        <binding name="source" value="ognl:connectionPools"/>
+        <binding name="columns" value="literal:jca.control.cf_name.label:connectionFactoryName, jca.control.create_count.label:createCount, jca.control.close_count.label:closeCount, jca.control.free_pool_size.label:freePoolSize, jca.control.pool_size.label:poolSize, jca.control.waiting_thread_count.label:waitingThreadCount, !jca_control_actions_label"/>
+        <binding name="row" value="ognl:currentConnectionPoolView"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+    </component>
+
+    <property name="currentConnectionPoolView"/>
+</page-specification>

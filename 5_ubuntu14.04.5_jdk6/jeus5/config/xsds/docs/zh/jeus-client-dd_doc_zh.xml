@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="GB2312"?>
+<description>                                                
+    <text key="client-module-infoType.app-argument"><![CDATA[
+	                    [Description]: 指定运行客户端应用程序时使用的application argument。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-client-ddType.res-ref"><![CDATA[
+	                    [Description]: resource 相关信息
+	                ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-client-ddType.res-env-ref"><![CDATA[
+	                    [Description]: resource environment相关信息
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="security-infoType.provider-node-name"><![CDATA[
+	                    [Description]: 指定运行客户端应用程序时认证security所需的server。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-client-ddType.scheduler"><![CDATA[
+                        [Description]: 设置Client Container中使用的scheduler。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-client-dd"><![CDATA[
+    	        [Description]: 是JEUS Client模块的最上级element。各个jeus-client-dd.xml文件中必须存在tag。
+            ]]>                                                
+    </text>
+                                                         
+    <text key="client-module-infoType.app-main-class"><![CDATA[
+	 	               [Description]: 客户端应用程序的Main class的fully qualified class name。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-client-ddType.ejb-ref"><![CDATA[
+	                    [Description]: 与EJB reference有关的信息
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="client-module-infoType.module-name"><![CDATA[
+	 	               [Description]: 客户端应用程序中指定的module名称
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="security-infoType.user"><![CDATA[
+	                    [Description]: 指定运行客户端应用程序时使用的security context的 user name。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-client-ddType.module-info"><![CDATA[
+	                    [Description]:与客户端应用程序（application）有关的信息
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-client-ddType.env"><![CDATA[
+	                    [Description]: 与environment entry有关信息
+	                ]]>                                                
+    </text>
+                                                         
+    <text key="security-infoType.passwd"><![CDATA[
+			[Description]: 指定客户端应用程序运行时使用的security context密码。
+			               在此指定以base64编码的值。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-client-ddType.security-info"><![CDATA[
+	                    [Description]: 设置运行客户端应用程序时认证security 所需明的各种信息。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-client-ddType.system-logging"><![CDATA[
+	                    [Description]: 设置客户端应用程序container使用的logger。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-client-ddType.service-ref"><![CDATA[
+                 [Description]: JEUS web服务客户端设定文件的根元素(root element).
+                        ]]>                                                
+    </text>
+ </description>

@@ -1,0 +1,28 @@
+// Created by Microsoft (R) C/C++ Compiler Version 12.00.8168.0 (c0484eef).
+//
+// java_util_Iterator.tli
+//
+// Wrapper implementations for Win32 type library D:\j2ee-cas-com-bridge\doc\guide\examples\typelib\java_util_Iterator.tlb
+// compiler-generated file created 04/04/05 at 15:51:47 - DO NOT EDIT!
+
+#pragma once
+
+//
+// dispinterface java_util_Iterator wrapper method implementations
+//
+
+inline VARIANT_BOOL java_util_Iterator::hasNext ( ) {
+    VARIANT_BOOL _result;
+    _com_dispatch_method(this, 0xa, DISPATCH_METHOD, VT_BOOL, (void*)&_result, NULL);
+    return _result;
+}
+
+inline _variant_t java_util_Iterator::next ( ) {
+    VARIANT _result;
+    _com_dispatch_method(this, 0xb, DISPATCH_METHOD, VT_VARIANT, (void*)&_result, NULL);
+    return _variant_t(_result, false);
+}
+
+inline HRESULT java_util_Iterator::remove ( ) {
+    return _com_dispatch_method(this, 0xc, DISPATCH_METHOD, VT_EMPTY, NULL, NULL);
+}

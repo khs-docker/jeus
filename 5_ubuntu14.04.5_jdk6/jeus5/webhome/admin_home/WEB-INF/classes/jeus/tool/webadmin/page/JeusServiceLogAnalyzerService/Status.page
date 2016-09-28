@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceLogAnalyzerService.StatusPage">
+
+	<inject property="settings" type="state" object="Settings"/>
+
+    <component id="popupMainBorder" type="jeus:PopupMainBorder">
+        <binding name="title" value="message:la.handler"/>
+    </component>
+
+    <component id="name_column" type="Insert">
+        <binding name="value" value="message:container.overview.name.label"/>
+    </component>
+
+    <component id="dynamite" type="jeus:Dynamite"/>
+
+    <component id="eachTask" type="Foreach">
+        <binding name="source" value="ognl:tasks"/>
+        <binding name="value" value="ognl:task"/>
+        <binding name="index" value="ognl:index"/>
+    </component>
+
+    <component id="condRunning" type="If">
+        <binding name="condition" value="ognl:task.status.toString() == 'running'"/>
+    </component>
+
+    <component id="condFailed" type="If">
+        <binding name="condition" value="ognl:task.status.toString() == 'failed'"/>
+    </component>
+
+    <component id="condCompleted" type="If">
+        <binding name="condition" value="ognl:task.status.toString() == 'completed'"/>
+    </component>
+
+    <component id="condCompleted2" copy-of="condCompleted"/>
+    
+    <component id="condStopped" type="If">
+        <binding name="condition" value="ognl:task.status.toString() != 'running'"/>
+    </component>
+
+    <component id="condUncompleted" type="If">
+        <binding name="condition" value="ognl:task.status.toString() != 'completed'"/>
+    </component>
+
+    <component id="resultLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceLogAnalyzerService_Result"/>
+        <binding name="parameters" value="ognl:{objectName.canonicalName, task.name}"/>
+    </component>
+
+    <component id="removeLink" type="jeus:DirectLink">
+        <binding name="listener" value="ognl:listeners.onRemoveOk"/>
+        <binding name="parameters" value="ognl:task.name"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="message:la.status.remove.message"/>
+    </component>
+
+    <component id="taskName" type="Insert">
+        <binding name="value" value="ognl:task.name"/>
+    </component>
+
+    <component id="taskName2" copy-of="taskName"/>
+
+    <component id="runningIcon" type="Image">
+        <binding name="image" value="ognl:assets.running_icon"/>
+    </component>
+
+    <component id="failedIcon" type="Image">
+        <binding name="image" value="ognl:assets.failed_icon"/>
+    </component>
+
+    <component id="completedIcon" type="Image">
+        <binding name="image" value="ognl:assets.completed_icon"/>
+    </component>
+
+    <component id="removeIcon" type="Image">
+        <binding name="image" value="ognl:assets.remove_icon"/>
+    </component>
+
+    <component id="condHasNext" type="If">
+        <binding name="condition" value="ognl:tasks.length - 1 &gt; index"/>
+    </component>
+
+    <bean name="cacheControlRender" class="jeus.tool.webadmin.component.CacheControlRender"/>
+    
+    <asset name="running_icon" path="context:/image/log/analysis_running.gif"/>
+    <asset name="completed_icon" path="context:/image/log/analysis_completed.gif"/>
+    <asset name="failed_icon" path="context:/image/log/analysis_failed.gif"/>
+    <asset name="remove_icon" path="context:/image/table/delete.gif"/>
+    
+    <asset name="dot" path="context:/image/dot.gif"/>
+    <asset name="background" path="context:/image/log/logo_background.gif"/>
+    <asset name="css" path="context:/css/form.css"/>
+
+    <property name="task"/>
+    <property name="index"/>
+
+</page-specification>

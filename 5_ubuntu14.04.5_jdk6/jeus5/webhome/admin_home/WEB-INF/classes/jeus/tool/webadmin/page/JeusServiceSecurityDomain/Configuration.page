@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusServiceSecurityDomain.ConfigurationPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Security Domain Configuration"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{'JeusServiceSecurityDomain_Configuration'}"/>
+    </component>
+
+    <component id="customServiceForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.configuration.title"/>
+        <binding name="listener" value="listener:onOk"/>
+    </component>
+
+    <component id="classname" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="service"/>
+        <binding name="elementName" value="literal:classname"/>
+    </component>
+
+    <component id="properties" type="jeus:Field">
+        <binding name="field" value="component:propertiesField"/>
+        <binding name="label" value="message:domain.services.properties.label"/>
+    </component>
+
+    <component id="propertiesField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="service"/>
+        <binding name="elementName" value="literal:property"/>
+        <binding name="translator" value="bean:securityServicePropertyTranslator"/>
+    </component>
+
+    <bean name="securityServicePropertyTranslator" class="jeus.tool.webadmin.component.translator.SecurityServicePropertyTranslator"/>
+</page-specification>

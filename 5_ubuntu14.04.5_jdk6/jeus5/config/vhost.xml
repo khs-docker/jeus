@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<virtual-hosts xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <enable>true</enable>
+    <host>
+      <name>jeus5:9736</name>
+      <virtual-name>jeus5</virtual-name>
+    </host>
+    <host>
+      <name>jeus5:2100</name>
+      <virtual-name>example</virtual-name>
+    </host>
+</virtual-hosts>

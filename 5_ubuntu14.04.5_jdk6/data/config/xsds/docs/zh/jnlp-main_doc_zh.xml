@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="GB2312"?>
+<description>                                           
+    <text key="jnlp-resourceType.rsc-path"><![CDATA[
+                    [Description]: 指定JNLPServer所提供资源文件的实际物理路径信息。
+                    例) <rsc-path>c:\jeus50\webhome\client_home\HelloJeus\HelloJeus.jar</rsc-path>
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="jnlp-resourceType.arch"><![CDATA[
+                    [Description]: 指定要使用资源项目的硬件结构。
+                    该属性值与系统参数os.arch的开头部分相同时，资源项目可以使用。 
+                    如果未指定该属性时，在所有硬件中都可以使用。
+                    该值的叙述形式与<os-name>相同。
+				
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="jnlp-resourceType.rsc-name"><![CDATA[
+                    [Description]: JNLPServer所提供的资源名称。客户端在请求该资源时，将rsc-name使用到URL。 
+                    例) http://localhost:9744/jnlp/HelloJeus/rsc-name
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="jnlp-resource-config"><![CDATA[
+            [Description]: JNLPMain.xml的设定项目中最上级element。JNLPServer所提供资源相关的所有设定，都编写到该element内。JNLPMain.xml文件内必须存在该element。
+            ]]>                                           
+    </text>
+                                                   
+    <text key="jnlp-resourceType.os-name"><![CDATA[
+                    [Description]: 指定资源要考虑的操作系统。如果该值为JVM的系统参数os.name的prefix时，可以使用资源。如果未指定该属性时，就可以在所有操作系统中使用。
+                    该值应该与Java的系统属性os.name一致。 <os-name>, <arch>, <locale>值输入复数个时，用空白区分。如果空白构成值的一部分时，在空白前加"\"。例如，"Windows\ 95 Windows\ 2000"表示，支持"Windows 95"和"Windows 2000"。在这里为了在"95"和 "2000"之前加空白而使用了"\"。
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="jnlp-resourceType.version"><![CDATA[
+                    [Description]: 指定该资源的版本。只有与客户端系统需要的版本一致时，才能使用该资源，没有指定值时，可以在所有客户端系统中使用。
+					
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="jnlp-resourceType.locale"><![CDATA[
+                    [Description]: 指定该项目是在特定地区依赖的资源。
+                    如果指定该值时，只能在以指定的locale信息为默认值的JNLP 客户端内使用资源项目。 
+                    如果未指定该值，就可以在所有客户端内使用。
+                    该值的叙述形式与<os-name>相同。
+			
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="jnlp-resource-configType.jnlp-resource"><![CDATA[
+                    [Description]: 提供JNLPServer所提供资源相关的信息。资源相关的具体信息编写到该element内。
+                    ]]>                                           
+    </text>
+</description>

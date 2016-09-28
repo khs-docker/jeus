@@ -1,0 +1,88 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="MQForm">
+            <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                <tr>
+                    <td class="table_columns">
+                        <span jwcid="export_name_column"/>
+                    </td>
+                    <td class="table_columns">
+                        <span jwcid="vendor_column"/>
+                    </td>
+                    <td class="table_columns">
+                        <span jwcid="class_name_column"/>
+                    </td>
+                    <td class="table_columns">
+                        <span jwcid="resource_type_column"/>
+                    </td>
+                    <td class="table_columns">
+                        <span jwcid="actions_column"/>
+                    </td>
+                    <td  class="table_columns" width="20">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr jwcid="eachMQ">
+                    <td class="table_values">
+                        <a jwcid="MQLink"><span jwcid="export_name_value"/></a>
+                    </td>
+                    <td class="table_values">
+                        <span jwcid="vendor_value"/>
+                    </td>
+                    <td class="table_values">
+                        <span jwcid="class_name_value"/>
+                    </td>
+                    <td class="table_values">
+                        <span jwcid="resource_type_value"/>
+                    </td>
+                    <td class="table_values" align="center">
+                        <a jwcid="bindLink"></a><input jwcid="bind" onclick="window.location = previousSibling.href;" class="form_button"/>
+                    </td>
+                    <td class="table_values" align="center">
+                        <a jwcid="deleteLink"><img jwcid="delete" border="0"/></a>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+            <span jwcid="condDuplicate">
+                <span jwcid="duplicate_message" class="field_warning"/>
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns">
+                            <span jwcid="export_name_column2"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="vendor_column2"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="class_name_column2"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="resource_type_column2"/>
+                        </td>
+                        <td  class="table_columns" width="20">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr jwcid="eachDuplicatedMQ">
+                        <td class="table_values">
+                            <span jwcid="export_name_value2"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="vendor_value2"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="class_name_value2"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="resource_type_value2"/>
+                        </td>
+                        <td class="table_values" align="center">
+                        </td>
+                    </tr>
+                </table>
+            </span>
+            <p style="text-align:right;"><a jwcid="createLink"><img jwcid="create" align="absmiddle"/>&nbsp;<span jwcid="create_label"/></a></p>
+        </form>
+    </span>
+</html>

@@ -1,0 +1,25 @@
+<span jwcid="$content$">
+    <fieldset>
+		<legend class="field_label"><span jwcid="@RenderBlock" block="component:labelBlock"/><span jwcid="selection"/></legend>
+		<span jwcid="condShowDescription">
+			<span jwcid="@If" condition="ognl:description != null" renderTag="ognl:false">
+		        <p jwcid="@Insert" value="ognl:description" class="fieldset_description"/>
+		    </span>
+	        <span jwcid="@If" condition="ognl:usage != null" renderTag="ognl:false">
+	            <p class="fieldset_description"><span jwcid="@Insert" value="message:common.label.usage"/> : <span jwcid="@Insert" value="ognl:usage"/></p>
+	        </span>
+		</span>
+        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+        <span jwcid="@RenderBody"/>
+        </table>
+    </fieldset>
+
+    <span jwcid="labelBlock@Block">
+	    <span jwcid="condHasElemdocHref">
+	        <a jwcid="elemdocLink"><span jwcid="label"/></a>
+	    </span>
+	    <span jwcid="@Else">
+	        <span jwcid="label2"/>
+	    </span>
+    </span>
+</span>

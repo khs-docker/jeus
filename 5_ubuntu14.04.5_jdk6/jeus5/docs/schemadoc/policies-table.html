@@ -1,0 +1,165 @@
+<html><header><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></header><body><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(1) <b>&lt;policies&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">JEUS의 권한 체크와 관련된 Policy들을 정의한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(2)policy*<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(2) 
+		&lt;policies&gt;
+	<b>&lt;policy&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">JEUS의 Policy를 정의한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(3)role-permissions?<br>
+		(11)resource-permissions*<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(3) 
+		&lt;policies&gt;
+	
+		&lt;policy&gt;
+	<b>&lt;role-permissions&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">해당 Policy에 대한 principal-role 매핑들을 정의한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(4)role-permission*<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(4) 
+		&lt;policies&gt;
+	
+		&lt;policy&gt;
+	
+		&lt;role-permissions&gt;
+	<b>&lt;role-permission&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">해당 Policy에 대한 principal-role 매핑을 정의한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(5)principal+<br>
+		(6)role<br>
+		(7)actions?<br>
+		(8)classname?<br>
+		(9)excluded?<br>
+		(10)unchecked?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(5) 
+		&lt;policies&gt;
+	
+		&lt;policy&gt;
+	
+		&lt;role-permissions&gt;
+	
+		&lt;role-permission&gt;
+	<b>&lt;principal&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">role에 해당하는 user principal을 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">security의 subjects.xml에서 지정되어 있는 principal 이름</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(6) 
+		&lt;policies&gt;
+	
+		&lt;policy&gt;
+	
+		&lt;role-permissions&gt;
+	
+		&lt;role-permission&gt;
+	<b>&lt;role&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">principal들에게 부여할 role 이름을 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(7) 
+		&lt;policies&gt;
+	
+		&lt;policy&gt;
+	
+		&lt;role-permissions&gt;
+	
+		&lt;role-permission&gt;
+	<b>&lt;actions&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 role permission 객체에 대한 action을 정의한다. default로 사용되는
+                        role permission은 정해진 action이 없다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(8) 
+		&lt;policies&gt;
+	
+		&lt;policy&gt;
+	
+		&lt;role-permissions&gt;
+	
+		&lt;role-permission&gt;
+	<b>&lt;classname&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">사용할 role permission class name을 지정한다. 지정하지 않으면 JEUS에서
+                    기본적으로 제공하는 class가 사용된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(9) 
+		&lt;policies&gt;
+	
+		&lt;policy&gt;
+	
+		&lt;role-permissions&gt;
+	
+		&lt;role-permission&gt;
+	<b>&lt;excluded&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">role을 사용하지 못하도록 만든다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;excluded/&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(10) 
+		&lt;policies&gt;
+	
+		&lt;policy&gt;
+	
+		&lt;role-permissions&gt;
+	
+		&lt;role-permission&gt;
+	<b>&lt;unchecked&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">아무런 체크없이 role을 사용가능하도록 만든다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;unchecked/&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(11) 
+		&lt;policies&gt;
+	
+		&lt;policy&gt;
+	<b>&lt;resource-permissions&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">해당 Policy에 대한 role-resource 매핑들을 정의한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(12)context-id?<br>
+		(13)resource-permission*<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(12) 
+		&lt;policies&gt;
+	
+		&lt;policy&gt;
+	
+		&lt;resource-permissions&gt;
+	<b>&lt;context-id&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">role-resource 매핑이 적용 되는 context id(보통 이 태그는 사용되지 않는다).</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">context id 값</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">default</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;context-id&gt;MyContext&lt;/context-id&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(13) 
+		&lt;policies&gt;
+	
+		&lt;policy&gt;
+	
+		&lt;resource-permissions&gt;
+	<b>&lt;resource-permission&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">해당 Policy에 대한 role-resource 매핑을 정의한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(14)role*<br>
+		(15)resource<br>
+		(16)actions?<br>
+		(17)classname?<br>
+		(18)excluded?<br>
+		(19)unchecked?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(14) 
+		&lt;policies&gt;
+	
+		&lt;policy&gt;
+	
+		&lt;resource-permissions&gt;
+	
+		&lt;resource-permission&gt;
+	<b>&lt;role&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">해당 Resource에 매핑되는 Role</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Role명</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;role&gt;Administrator&lt;/role&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(15) 
+		&lt;policies&gt;
+	
+		&lt;policy&gt;
+	
+		&lt;resource-permissions&gt;
+	
+		&lt;resource-permission&gt;
+	<b>&lt;resource&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Role을 맵핑하는 Resource.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Resource명.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;resource&gt;jeus.server.*&lt;/resource&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(16) 
+		&lt;policies&gt;
+	
+		&lt;policy&gt;
+	
+		&lt;resource-permissions&gt;
+	
+		&lt;resource-permission&gt;
+	<b>&lt;actions&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">선택적인 값으로 resource permission클래스의 생성자에 넘길 actions 값</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">resource permission class에 넘길 actions 데이터 값.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;actions&gt;boot,down&lt;/actions&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(17) 
+		&lt;policies&gt;
+	
+		&lt;policy&gt;
+	
+		&lt;resource-permissions&gt;
+	
+		&lt;resource-permission&gt;
+	<b>&lt;classname&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">java.security.Permission을 상속한 Java 클래스명.
+                                       이 클래스는 resource permission에 사용된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Java 클래스명</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">jeus.security.resource.ResourcePermission</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;classname&gt;jeus.security.resource.TimeConstrainedResourcePermission&lt;/classname&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(18) 
+		&lt;policies&gt;
+	
+		&lt;policy&gt;
+	
+		&lt;resource-permissions&gt;
+	
+		&lt;resource-permission&gt;
+	<b>&lt;excluded&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">만약 이 태그가 있으면, 해당 Resource는 배제된다(누구도 해당 Resource에 접근할 수 없다).</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">어떤  값도 설정되지 않는다. empty  타입.</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(19) 
+		&lt;policies&gt;
+	
+		&lt;policy&gt;
+	
+		&lt;resource-permissions&gt;
+	
+		&lt;resource-permission&gt;
+	<b>&lt;unchecked&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">만약 이 태그가 있으면, 해당 Resource는 체크되지 않는다(누구나 이 Resource에 접근할 수 있다).</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">어떤 값도 설정되지 않는다. empty  타입.</td></tr></table></body></html>

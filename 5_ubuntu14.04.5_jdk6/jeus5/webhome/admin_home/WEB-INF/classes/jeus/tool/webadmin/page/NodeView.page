@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.NodeViewPage">
+
+	<inject property="userAgent" type="state" object="UserAgent"/>
+	<inject property="treeNodeSpecSource" type="state" object="TreeNodeSpecSource"/>
+    <inject property="settings" type="state" object="Settings"/>
+
+    <component id="shell" type="Shell">
+        <binding name="title" value="literal:nodeStructure.title"/>
+        <binding name="refresh" value="settings.clusterInterval"/>
+        <binding name="delegate" value="bean:cacheControlRender"/>
+        <binding name="stylesheets" value="{assets.tundra_css, assets.dojo_css, assets.jeus_css}"/>
+        <binding name="doctype" value="literal:"/>
+    </component>
+   
+    <property name="selected" persist="session"/>
+
+    <bean name="cacheControlRender" class="jeus.tool.webadmin.component.CacheControlRender"/>
+
+    <inject property="webadminStateObject" type="state" object="WebadminStateObject"/>   
+
+    <asset name="refresh" path="context:/image/refresh_out.gif"/>
+
+    <asset name="menuCss" path="context:/css/menu.css"/>
+    <asset name="tundra_css" path="context:/js/JeusDojo/release/dojo/dijit/themes/tundra/tundra.css"/>
+    <asset name="dojo_css" path="context:/js/JeusDojo/release/dojo/dojo/resources/dojo.css"/>
+    <asset name="jeus_css" path="context:/css/jeus.css"/>
+</page-specification>

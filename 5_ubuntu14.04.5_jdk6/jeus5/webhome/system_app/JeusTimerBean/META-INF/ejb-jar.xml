@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar version="2.1" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/ejb-jar_2_1.xsd">
+  <display-name>JeusTimerBean</display-name>
+  <enterprise-beans>
+    <entity>
+	<!-- comment -->
+      <display-name>JeusTimerBean</display-name>
+      <ejb-name>JeusTimerBean</ejb-name>
+      <local-home>jeus.ejb.timer.containers.TimerLocalHome</local-home>
+      <local>jeus.ejb.timer.containers.TimerLocal</local>
+      <ejb-class>jeus.ejb.timer.containers.TimerBean</ejb-class>
+      <persistence-type>Container</persistence-type>
+      <prim-key-class>jeus.ejb.timer.containers.TimerPrimaryKey</prim-key-class>
+      <reentrant>false</reentrant>
+      <cmp-version>2.x</cmp-version>
+      <abstract-schema-name>Timer</abstract-schema-name>
+      <cmp-field>
+        <field-name>blob</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>ownerId</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>containerId</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>creationTimeRaw</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>lastExpirationRaw</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>intervalDuration</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>initialExpirationRaw</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>timerId</field-name>
+      </cmp-field>
+      <security-identity>
+        <description></description>
+        <use-caller-identity></use-caller-identity>
+      </security-identity>
+      <query>
+        <description></description>
+        <query-method>
+          <method-name>ejbSelectTimerIdsByContainer</method-name>
+          <method-params>
+            <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
+          </method-params>
+        </query-method>
+        <ejb-ql>SELECT t.timerId FROM Timer t WHERE t.containerId = ?1 AND t.ownerId = ?2</ejb-ql>
+      </query>
+      <query>
+        <description></description>
+        <query-method>
+          <method-name>ejbSelectAllTimers</method-name>
+          <method-params>
+            <method-param>java.lang.String</method-param>
+          </method-params>
+        </query-method>
+        <ejb-ql>SELECT OBJECT(t) FROM Timer t WHERE t.ownerId = ?1</ejb-ql>
+      </query>
+      <query>
+        <description></description>
+        <query-method>
+          <method-name>ejbSelectAllTimerIds</method-name>
+          <method-params>
+            <method-param>java.lang.String</method-param>
+          </method-params>
+        </query-method>
+        <ejb-ql>SELECT t.timerId FROM Timer t WHERE t.ownerId = ?1</ejb-ql>
+      </query>
+      <query>
+        <description></description>
+        <query-method>
+          <method-name>ejbSelectTimersByContainer</method-name>
+          <method-params>
+            <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
+          </method-params>
+        </query-method>
+        <ejb-ql>SELECT OBJECT(t) FROM Timer t WHERE t.containerId = ?1 AND t.ownerId = ?2</ejb-ql>
+      </query>
+    </entity>
+  </enterprise-beans>
+  <assembly-descriptor>
+    <container-transaction>
+      <method>
+        <ejb-name>TimerBean</ejb-name>
+        <method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+  </assembly-descriptor>
+</ejb-jar>
+

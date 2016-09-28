@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.RemoteWebtobControlService.CreatePage">
+    <component id="mainBorder" type="jeus:WebtobMainBorder">
+        <binding name="title" value="message:dsc.title"/>
+        
+    </component>
+
+    <component id="wizTabPanel" type="jeus:WizardTabPanel">
+        <binding name="tabNames" value="ognl:new java.lang.String[]{'create'}"/>
+    </component>
+
+    <component id="create" type="Block"/>
+
+    <component id="createForm" type="jeus:JEUSForm">
+        <binding name="title" value="ognl:messages.getMessage('webtob.create.title')"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="name" type="jeus:Field">
+        <binding name="field" value="ognl:components.nameField"/>
+
+    </component>
+
+    <component id="nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:remoteWebtob"/>
+        <binding name="elementName" value="literal:name"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="config_file_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.config_file_nameField"/>
+
+    </component>
+
+    <component id="config_file_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:remoteWebtob"/>
+        <binding name="elementName" value="literal:configFileName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="remote_addr" type="jeus:Field">
+        <binding name="field" value="ognl:components.remote_addrField"/>
+
+    </component>
+
+    <component id="remote_addrField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:remoteWebtob"/>
+        <binding name="elementName" value="literal:remoteAddr"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="control_port" type="jeus:Field">
+        <binding name="field" value="ognl:components.control_portField"/>
+
+    </component>
+
+    <component id="control_portField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:remoteWebtob"/>
+        <binding name="elementName" value="literal:controlPort"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:required,min=1"/>
+    </component>
+
+    <component id="createOk" type="Submit">
+        <binding name="value" value="message:common.label.create"/>
+        <binding name="listener" value="ognl:listeners.onCreateOk"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+</page-specification>

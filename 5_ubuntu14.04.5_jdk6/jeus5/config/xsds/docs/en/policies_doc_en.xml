@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description>        
+    <text key="policies"><![CDATA[
+                        [Description]: Defines JEUS authority check and related policies. 
+            ]]>        
+    </text>
+         
+    <text key="ResourcePermissionType.actions"><![CDATA[
+                        [Description]: Actions value to be passed to generator of resource permission class as selected value. 
+                        [Value Description]: Actions data value to be passed to resource permission class.
+                        [Example]: &lt;actions>boot,down&lt;/actions>
+                    ]]>        
+    </text>
+         
+    <text key="RolePermissionsType.role-permission"><![CDATA[
+                        [Description]: Defines principal-role mapping on related Policy. 
+                    ]]>        
+    </text>
+         
+    <text key="ResourcePermissionsType.resource-permission"><![CDATA[
+                        [Description]: Defines role-resource mapping on related Policy. 
+                    ]]>        
+    </text>
+         
+    <text key="PoliciesType.policy"><![CDATA[
+                        [Description]: Defines Policy of JEUS.
+                    ]]>        
+    </text>
+         
+    <text key="PolicyType.resource-permissions"><![CDATA[
+                        [Description]: Defines role-resource mappings on related Policy. 
+                    ]]>        
+    </text>
+         
+    <text key="ResourcePermissionType.role"><![CDATA[
+                        [Description]: Role being mapped with related Resource. 
+                        [Value Description]: Role Name
+                        [Example]: &lt;role>Administrator&lt;/role>
+                    ]]>        
+    </text>
+         
+    <text key="ResourcePermissionType.resource"><![CDATA[
+                        [Description]: Resource being mapped with Role.
+                        [Value Description]: Resource Name.
+                        [Example]: &lt;resource>jeus.server.*&lt;/resource>
+                    ]]>        
+    </text>
+         
+    <text key="ResourcePermissionType.classname"><![CDATA[
+                        [Description]: Java class name inherited java.security.Permission.
+                                      This class is used for resource permission. 
+                        [Value Description]: Java Class name 
+                        [Example]: &lt;classname>jeus.security.resource.TimeConstrainedResourcePermission&lt;/classname>
+                    ]]>        
+    </text>
+         
+    <text key="ResourcePermissionsType.context-id"><![CDATA[
+                        [Description]: context id applied for role-resource mapping(This tag is not commonly used).
+                        [Value Description]: context id value
+                        [Example]: &lt;context-id>MyContext&lt;/context-id>
+                    ]]>        
+    </text>
+         
+    <text key="PolicyType.role-permissions"><![CDATA[
+                        [Description]: Defines principal-role mappings on the related Policy. 
+                    ]]>        
+    </text>
+         
+    <text key="ResourcePermissionType.unchecked"><![CDATA[
+                        [Description]: If this tag exists, the related Resource will not be checked. (Access is allowed for everyone).
+                        [Value Description]: No value is not set. . empty  Type.
+                    ]]>        
+    </text>
+         
+    <text key="ResourcePermissionType.excluded"><![CDATA[
+                        [Description]: If this tag exists, the related Resource will be eliminated. (Access is not allowed for anyone).
+                        [Value Description]: For this field, No value is set. Empty type. 
+                    ]]>        
+    </text>
+ </description>

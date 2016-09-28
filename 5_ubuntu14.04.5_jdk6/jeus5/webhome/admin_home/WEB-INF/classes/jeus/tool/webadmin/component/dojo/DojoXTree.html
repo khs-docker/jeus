@@ -1,0 +1,32 @@
+<span jwcid="$content$">
+    <script type="text/javascript" src="/webadmin/js/JeusDojo/release/dojo/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+    <script type="text/javascript" src="/webadmin/js/JeusDojo/release/dojo/dijit/tests/_testCommon.js"></script>
+    <script type="text/javascript" src="/webadmin/js/JeusDojo/release/dojo/dojo/jeus.js"></script>
+    <script language="JavaScript" type="text/javascript">
+        dojo.require("dojo.data.ItemFileReadStore");
+        dojo.require("dijit.Tree");
+    </script>
+
+    <div dojoType="dojo.data.ItemFileReadStore" jsId="ognl:id + 'Store'" jwcid="@Any" url="ognl:URL"></div>
+    <div dojoType="dijit.tree.TreeStoreModel" jsId="ognl:id + 'Model'" jwcid="@Any" store="ognl:id + 'Store'" childrenAttrs="children"></div>
+
+    <div dojoType="dijit.Tree" id="ognl:id +'Tree'" jwcid="@Any" model="ognl:id + 'Model'" style="background:#FFF;">
+        <script type="dojo/method" event="onClick" args="item">
+            var store = this.model.store;
+            var target = store.getValue(item, "target");
+            var action = store.getValue(item, "action");
+            if(!!action){
+                if(!!target){
+                    window.open(action, target);
+                }else
+                    window.location.href = action;
+            }
+        </script>
+        <script type="dojo/method" event="getIconClass" args="item, opened">
+           var store = this.model.store;
+           return (!item || store.getValue(item, "type") == "NotLeaf") ?
+                   (opened ? "customFolderOpenedIcon" : "customFolderClosedIcon") :
+                    "noteIcon";
+		</script>
+    </div>
+</span>

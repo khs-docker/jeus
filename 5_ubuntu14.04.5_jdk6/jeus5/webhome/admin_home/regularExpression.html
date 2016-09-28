@@ -1,0 +1,159 @@
+<HTML>
+	<HEAD>
+		<TITLE>JEUS 웹관리자 - 정규 표현식 설명</TITLE>
+		<LINK HREF="re.css" REL="stylesheet" TYPE="text/css">
+		<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+	</HEAD>
+	<BODY>
+
+		<P CLASS="JMHeading2">정규 표현식 (Regular Expression)</P>
+
+		<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CLASS="normal">
+			<TR>
+				<TD ALIGN="CENTER" CLASS="thead">Character</TD>
+				<TD ALIGN="CENTER" CLASS="thead">의 미</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">\</TD>
+				<TD WIDTH="70%" CLASS="normal">
+				\ 다음에 나오는 특수 문자를 문자열로 인식
+				<BR>예) /라는 특수문자는 일반적으로 프로그램 상에서 나누기로 인식하게 되어있습니다. 이것을 나누기가 아닌 그냥 문자열 / 로 인식시키려면 \/ 로 써주면 됩니다.
+				</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">^</TD>
+				<TD WIDTH="70%" CLASS="normal">
+				라인의 처음과 패턴과 매치
+				<BR>예) ^A 라고 써주면 검색하고자 하는 문장의 시작 문자가 A인지를 검사하는 것입니다. 
+				</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">$</TD>
+				<TD WIDTH="70%" CLASS="normal">
+				라인의 끝과 패턴과 매치
+				<BR>예) $A 라고 써주면 검색하고자 하는 문장의 마지막 문자가 A인지를 검사하는 것입니다. 
+				</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">*</TD>
+				<TD WIDTH="70%" CLASS="normal">0개 이상의 문자와 매치(모든것이라는 의미)</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">+</TD>
+				<TD WIDTH="70%" CLASS="normal">1개 이상의 문자와 매치, {1,}와 같은 의미임</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">?</TD>
+				<TD WIDTH="70%" CLASS="normal">
+				0 또는 1개의 문자 의미
+				<BR>예) A?b 라면 A라는 문자와 b라는 문자 사이에 문자가 0개 또는 1개 가 들어갈 수 있다는 말입니다. 즉, Ab, Aab, Acb등과 같은..
+				</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">.</TD>
+				<TD WIDTH="70%" CLASS="normal">1개의 문자와 일치</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">()</TD>
+				<TD WIDTH="70%" CLASS="normal">
+				한번 match를 수행해서 나온 결과를 기억함
+				<BR>예) /(foo)/ 는 foo라는 단어를 검색한 후, 그 단어를 배열 등과 같은 저장 장소에 남겨두어 나중에 다시 호출할 수 있도록 합니다.
+				</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">|</TD>
+				<TD WIDTH="70%" CLASS="normal">or</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">{n}</TD>
+				<TD WIDTH="70%" CLASS="normal">
+				정확히 n개의 문자
+				<BR>예) a{2} 는 a 문자 두 개, 즉, aa를 의미합니다.
+				</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">{n,}</TD>
+				<TD WIDTH="70%" CLASS="normal">n개 이상의 문자</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">{n,m}</TD>
+				<TD WIDTH="70%" CLASS="normal">n이상 m이하의 문자</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">[xyz]</TD>
+				<TD WIDTH="70%" CLASS="normal">
+				문자들의 set를 의미
+				<BR>예) [a-z]라면 a부터 z까지의 모든 문자와 매치하는 것으로 []안의 -는 범위를 나타냅니다.
+				</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">[^xyz]</TD>
+				<TD WIDTH="70%" CLASS="normal">네가티브(-) 캐릭터 셋</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">[\b]</TD>
+				<TD WIDTH="70%" CLASS="normal">백스페이스와 매치</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">\b</TD>
+				<TD WIDTH="70%" CLASS="normal">단어의 시작 또는 끝에서 빈 문자열과 매치</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">\B</TD>
+				<TD WIDTH="70%" CLASS="normal">단어의 시작 또는 끝이 아닌 곳에서의 빈 문자열과 매치</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">\c<VAR>X</TD>
+				<TD WIDTH="70%" CLASS="normal">control 문자와 매치</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">\d</TD>
+				<TD WIDTH="70%" CLASS="normal">0부터 9까지의 아라비아 숫자와 매치. [0-9]과 같은 의미</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">\f</TD>
+				<TD WIDTH="70%" CLASS="normal">form-feed와 매치</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">\n</TD>
+				<TD WIDTH="70%" CLASS="normal">linefeed와 매치</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">\r</TD>
+				<TD WIDTH="70%" CLASS="normal">캐리지 리턴과 매치</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">\s</TD>
+				<TD WIDTH="70%" CLASS="normal">화이트스페이스 문자와 매치. [\t\n\r\f\v]과 같은 의미</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">\S</TD>
+				<TD WIDTH="70%" CLASS="normal">\s가 아닌 문자들과 매치. [^ \t\n\r\f\v]과 같은 의미</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">\t</TD>
+				<TD WIDTH="70%" CLASS="normal">탭 의미</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">\v</TD>
+				<TD WIDTH="70%" CLASS="normal">수직 탭 의미</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">\w</TD>
+				<TD WIDTH="70%" CLASS="normal">w는 문자가 아닌 0, 1, 2, 3 ... 등과 같은 숫자를 의미</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">\W</TD>
+				<TD WIDTH="70%" CLASS="normal">W는 문자가 아닌 요소, 즉 % 등과 같은 특수 문자를 의미함</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">\<VAR>n</TD>
+				<TD WIDTH="70%" CLASS="normal">n은 마지막 일치하는 문장</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="CENTER" WIDTH="30%" CLASS="normal">\o <VAR>octal<BR>\x <VAR>hex</TD>
+				<TD WIDTH="70%" CLASS="normal">8(octal)진수, 10(hex)진수 값</TD>
+			</TR>
+		</TABLE>
+	</BODY>
+</HTML>

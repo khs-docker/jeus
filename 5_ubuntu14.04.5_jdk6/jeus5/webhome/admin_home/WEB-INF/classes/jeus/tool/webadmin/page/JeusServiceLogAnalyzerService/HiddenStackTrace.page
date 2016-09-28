@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceLogAnalyzerService.HiddenStackTracePage">
+    <component id="update" type="Script">
+        <binding name="script" value="literal:/jeus/tool/webadmin/page/JeusServiceLogAnalyzerService/HiddenStackTrace.script"/>
+        <binding name="symbols" value="ognl:symbols"/>
+    </component>
+
+    <component id="trace" type="Insert">
+        <binding name="value" value="ognl:trace"/>
+        <binding name="raw" value="ognl:true"/>
+    </component>
+
+    <property name="pattern"/>
+    <property name="fileName"/>
+    <property name="startPos"/>
+
+</page-specification>

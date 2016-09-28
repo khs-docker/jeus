@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <servlet>
+        <servlet-name>EchoServlet</servlet-name>
+        <servlet-class>jeustest.webservices.java2wsdl.doclit.EchoImpl</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EchoServlet</servlet-name>
+        <url-pattern>/DocLitEchoService</url-pattern>
+    </servlet-mapping>
+</web-app>
+

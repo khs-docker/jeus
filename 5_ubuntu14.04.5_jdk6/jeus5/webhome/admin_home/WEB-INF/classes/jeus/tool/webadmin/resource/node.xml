@@ -1,0 +1,1679 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<node-specification>
+<!--
+<node-specification xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+	-->
+
+    <node j2ee-type="JeusService" jeus-type="JeusManager"
+        page="JeusServiceJEUSManager_Configuration" target="main">
+        <asset state="running" path="/image/mbean/node_running.gif"/>
+        <asset state="stopped" path="/image/mbean/node_stopped.gif"/>
+        <asset state="xml" path="/image/mbean/node_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/node_failed.gif"/>
+
+        <function key="NodeTree.JeusService.JeusManager.conf"           page="JeusServiceJEUSManager_Configuration" target="main"/>
+        <function key="NodeTree.JeusService.JeusManager.control"           page="JeusServiceJEUSManager_Control" target="main"/>
+        <function key="NodeTree.JeusService.JeusManager.cluster"           page="JeusServiceJEUSManager_Cluster" target="main"/>
+        <function key="NodeTree.JeusService.JeusManager.distribute"     page="JeusServiceJEUSManager_Distribute" target="main"/>
+        <function key="separator"/>
+        <function key="NodeTree.JeusService.JeusManager.tmonitor"      page="Etc_TroubleMonitor" target="main" enable-states="running failed stopped"/>
+        <function key="NodeTree.JeusService.JeusManager.jnditree"       page="Etc_JNDITreeFrameSet" popup-name="remote_JNDITree" popup="width=1050,height=700,toolbars=no,resizable=yes,scrollbars=yes" enable-states="running failed stopped"/>
+    </node>
+
+    <!-- =========================================================================================================== -->
+    <!-- Handler                                                                                                     -->
+    <!-- =========================================================================================================== -->
+    <node j2ee-type="Handler" jeus-type="JeusManager">
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+    </node>
+
+    <node j2ee-type="Handler" jeus-type="J2EEServer" >
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+    </node>
+
+    <node j2ee-type="Handler" jeus-type="UserJ2EEServer" >
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+    </node>
+
+    <node j2ee-type="Handler" jeus-type="SystemJ2EEServer" >
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+    </node>
+
+    <node j2ee-type="Handler" jeus-type="EJBEngine" >
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+    </node>
+
+    <node j2ee-type="Handler" jeus-type="WebEngine" >
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+    </node>
+
+    <node j2ee-type="Handler" jeus-type="JMSEngine" >
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+    </node>
+
+    <node j2ee-type="Handler" jeus-type="JMSEngineErrorLog" >
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+    </node>
+
+    <node j2ee-type="Handler" jeus-type="JMSEngineAccessLog" >
+        <delegator j2ee-type="JeusService" jeus-type="JMSEngine"/>
+    </node>
+
+    <node j2ee-type="Handler" jeus-type="ContextGroupUserLog" >
+        <delegator j2ee-type="JeusService" jeus-type="WebEngine"/>
+    </node>
+
+    <node j2ee-type="Handler" jeus-type="ContextGroupAccessLog" >
+        <delegator j2ee-type="JeusService" jeus-type="WebEngine"/>
+    </node>
+
+    <node j2ee-type="Handler" jeus-type="WebEngineErrorLog" >
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+    </node>
+
+    <node j2ee-type="Handler" jeus-type="WebEngineUserLog" >
+        <delegator j2ee-type="JeusService" jeus-type="WebEngine"/>
+    </node>
+
+    <node j2ee-type="Handler" jeus-type="WebEngineAccessLog" >
+        <delegator j2ee-type="JeusService" jeus-type="WebEngine"/>
+    </node>
+    
+    <node j2ee-type="JeusService" jeus-type="WebListenerWebTobBackup" >
+        <delegator j2ee-type="JeusService" jeus-type="WebEngine"/>
+    </node>       
+
+    <!-- =========================================================================================================== -->
+    <!-- JeusManager                                                                                                 -->
+    <!-- =========================================================================================================== -->
+    <node j2ee-type="Folder" jeus-type="J2EEServer"
+        page="J2EEServer_Overview" target="main"
+        key="NodeTree.Folder.J2EEServer"
+        static="true">
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+        <parent j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+
+        <function key="NodeTree.Folder.J2EEServer.overview" page="J2EEServer_Overview" target="main"/>
+        <function key="NodeTree.Folder.J2EEServer.create"   page="J2EEServer_Create" parameters="New" target="main"/>
+    </node>
+
+    <node j2ee-type="J2EEServer"
+        jaxb-path="node[name=='${JeusManager}']/engineContainer"
+        name-element="'${JeusManager}_'+name"
+        page="J2EEServer_Statistics" target="main">
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+        <parent j2ee-type="Folder"  jeus-type="J2EEServer"/>
+
+        <asset state="running" path="/image/mbean/container_running.gif"/>
+        <asset state="xml" path="/image/mbean/container_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/container_failed.gif"/>
+
+        <function key="NodeTree.J2EEServer.conf" page="J2EEServer_Configuration" target="main"/>
+        <function key="NodeTree.J2EEServer.stat" page="J2EEServer_Statistics" target="main" enable-states="running failed"/>
+        <function key="NodeTree.J2EEServer.duplicate" page="J2EEServer_Create" parameters="Duplicate" target="main"/>
+        <function key="separator"/>
+        <function key="NodeTree.JeusService.JeusManager.jnditree" page="Etc_JNDITreeFrameSet" popup-name="local_JNDITree" popup="width=1050,height=700,toolbars=no,resizable=yes,scrollbars=yes" enable-states="running failed"/>
+    </node>
+
+	<node j2ee-type="Folder" jeus-type="ResourceService"
+		key="NodeTree.Folder.ResourceService"
+        page="JeusServiceResourceService_Info" target="main"
+        static="true">
+        <parent j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+    </node>
+
+	<node j2ee-type="Folder" jeus-type="JeusService"
+		key="NodeTree.Folder.JeusService"
+        page="JeusServiceJeusService_Info" target="main"
+        static="true">
+        <parent j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+	</node>
+
+    <node j2ee-type="Folder" jeus-type="ApplicationModuleDeploy"
+        key="NodeTree.Folder.ApplicationModuleDeploy"
+        page="FolderApplicationModule_Deploy" target="main"
+        parameters="New"
+        static="true">
+        <!--hide="objectName.domain=='XML' or objectName.keyPropertyList.name=='__DEFAULT_CONTEXT__'">-->
+        <parent j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+
+        <function key="NodeTree.Folder.ApplicationModule.deploy" page="FolderApplicationModule_Deploy" parameters="New" target="main"/>
+    </node>
+
+    <node j2ee-type="Folder" jeus-type="PermanentModule"
+        key="NodeTree.Folder.PermanentModule"
+        page="PermanentModule_Configuration" target="main"
+        static="true">
+        <parent j2ee-type="Folder" jeus-type="ApplicationModuleDeploy"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+    </node>
+
+    <node j2ee-type="Folder" jeus-type="JeusMonitoring"
+        key="NodeTree.Folder.JeusMonitoring"
+        page="JeusServiceJeusMonitoring_Info" target="main"
+        static="true">
+        <parent j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+    </node>
+
+<!--
+    <node j2ee-type="Folder" jeus-type="PermanentModule"
+		page="PermanentModule_Overview" target="main"
+		key="NodeTree.Folder.PermanentModule" static="true">
+        <parent j2ee-type="JeusService" jeus-type="JeusManager"/>
+		<delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+    </node>
+-->
+
+<!--
+    <node j2ee-type="Folder" jeus-type="PermanentModule" key="NodeTree.Folder.PermanentModule" static="true">
+        <parent j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+    </node>
+-->
+
+<!--
+    <node j2ee-type="Folder" jeus-type="RemoteWebtob"
+        page="RemoteWebtobControlService_Overview" target="main"
+        key="NodeTree.Folder.RemoteWebtob" static="true">
+        <parent j2ee-type="JeusService" jeus-type="JeusManager"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+
+        <function key="NodeTree.Folder.RemoteWebtobControlService.overview" page="RemoteWebtobControlService_Overview" target="main"/>
+    </node>
+-->
+
+    <!-- =========================================================================================================== -->
+    <!-- J2EEServer                                                                                                  -->
+    <!-- =========================================================================================================== -->
+    <node j2ee-type="Folder" jeus-type="Engine"
+        key="NodeTree.Folder.Engine"
+        page="JeusServiceEngine_Overview" target="main"
+        static="true">
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+        <parent j2ee-type="J2EEServer"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+
+        <function key="NodeTree.Folder.Engine.overview" page="JeusServiceEngine_Overview" parameters="New" target="main"/>
+    </node>
+
+
+    <node j2ee-type="Folder" jeus-type="ApplicationModule"
+        key="NodeTree.Folder.ApplicationModule"
+        page="JeusServiceApplicationModule_Info" target="main"
+        static="true" hide="objectName.domain=='XML' or objectName.keyPropertyList.name=='__DEFAULT_CONTEXT__'">
+        <parent j2ee-type="J2EEServer"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+    </node>
+<!--
+    <node j2ee-type="Folder" jeus-type="ApplicationModule" key="NodeTree.Folder.ApplicationModule" page="FolderApplicationModule_Deploy" target="main" parameters="New"
+        static="true" hide="objectName.domain=='XML' or objectName.keyPropertyList.name=='__DEFAULT_CONTEXT__'">
+        <parent j2ee-type="J2EEServer"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+
+        <function key="NodeTree.Folder.ApplicationModule.deploy" page="FolderApplicationModule_Deploy" parameters="New" target="main"/>
+    </node>
+-->
+
+
+    <node j2ee-type="Folder" jeus-type="Resource"
+        key="NodeTree.Folder.Resource"
+        page="JeusServiceResource_Info" target="main"
+        static="true">
+        <parent j2ee-type="J2EEServer"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+    </node>
+
+    <node j2ee-type="Folder" jeus-type="Service" 
+    	key="NodeTree.Folder.Service"
+    	page="JeusServiceService_Info" target="main"
+    	static="true">        <parent j2ee-type="J2EEServer"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+    </node>
+
+
+    <!-- =========================================================================================================== -->
+    <!-- Engine                                                                                                      -->
+    <!-- =========================================================================================================== -->
+    <node j2ee-type="JeusService" jeus-type="EJBEngine"
+        jaxb-path="/node[name=='${JeusManager}']/engineContainer['${JeusManager}_'+name=='${J2EEServer}']/engineCommand[type=='ejb']"
+        name-element="'${JeusManager}_ejb_'+name"
+        key="NodeTree.JeusService.EJBEngine"
+        page="JeusServiceEJBEngine_Configuration" target="main">
+        <parent j2ee-type="Folder" jeus-type="Engine"/>
+
+        <asset state="running" path="/image/mbean/ejb_engine_running.gif"/>
+        <asset state="xml" path="/image/mbean/ejb_engine_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ejb_engine_failed.gif"/>
+
+        <function key="NodeTree.JeusService.EJBEngine.conf" page="JeusServiceEJBEngine_Configuration" target="main"/>
+        <function key="NodeTree.JeusService.EJBEngine.stat" page="JeusServiceEJBEngine_Statistics" target="main" enable-states="running failed"/>
+        <function key="NodeTree.JeusService.EJBEngine.distribute" page="JeusServiceEJBEngine_Distribute" target="main"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="WebEngine"
+        jaxb-path="/node[name=='${JeusManager}']/engineContainer['${JeusManager}_'+name=='${J2EEServer}']/engineCommand[type=='servlet']"
+        name-element="'${JeusManager}_servlet_'+name"
+        key="NodeTree.JeusService.WebEngine"
+        page="JeusServiceWebEngine_Configuration" target="main">
+        <parent j2ee-type="Folder" jeus-type="Engine"/>
+
+        <asset state="running" path="/image/mbean/web_engine_running.gif"/>
+        <asset state="xml" path="/image/mbean/web_engine_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/web_engine_failed.gif"/>
+
+        <function key="NodeTree.JeusService.WebEngine.conf" page="JeusServiceWebEngine_Configuration" target="main"/>
+        <!--<function key="NodeTree.JeusService.WebEngine.stat" page="JeusServiceWebEngine_Statistics" target="main" enable-states="running failed"/>-->
+        <function key="NodeTree.JeusService.WebEngine.distribute" page="JeusServiceWebEngine_Distribute" target="main"/>
+        <function key="separator"/>
+        <function key="NodeTree.JeusService.WebEngine.createContextGroup" page="JeusServiceContextGroup_Create" parameters="New" target="main"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="JMSEngine"
+        jaxb-path="/node[name=='${JeusManager}']/engineContainer['${JeusManager}_'+name=='${J2EEServer}']/engineCommand[type=='jms']"
+        name-element="'${JeusManager}_jms_'+name"
+        key="NodeTree.JeusService.JMSEngine"
+        page="JeusServiceJMSEngine_Configuration" target="main">
+        <parent j2ee-type="Folder" jeus-type="Engine"/>
+
+        <asset state="running" path="/image/mbean/jms_engine_running.gif"/>
+        <asset state="xml" path="/image/mbean/jms_engine_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/jms_engine_failed.gif"/>
+
+        <function key="NodeTree.JeusService.JMSEngine.conf" page="JeusServiceJMSEngine_Configuration" target="main"/>
+        <function key="NodeTree.JeusService.JMSEngine.distribute" page="JeusServiceJMSEngine_Distribute" target="main"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="ServerChannel">
+        <parent j2ee-type="JeusService" jeus-type="JMSEngine"/>
+        <delegator j2ee-type="JeusService" jeus-type="JMSEngine"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="WSEngine"
+        jaxb-path="/node[name=='${JeusManager}']/engineContainer['${JeusManager}_'+name=='${J2EEServer}']/engineCommand[type=='ws']"
+        name-element="'${JeusManager}_ws_'+name"
+        key="NodeTree.JeusService.WSEngine"
+        page="JeusServiceWSEngine_Configuration" target="main">
+        <parent j2ee-type="Folder" jeus-type="Engine"/>
+
+        <asset state="running" path="/image/mbean/ws_engine_running.gif"/>
+        <asset state="xml" path="/image/mbean/ws_engine_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ws_engine_failed.gif"/>
+
+        <function key="NodeTree.JeusService.WSEngine.conf" page="JeusServiceWSEngine_Configuration" target="main"/>
+        <function key="NodeTree.JeusService.WSEngine.stat" page="JeusServiceWSEngine_Statistics" target="main" enable-states="running failed"/>
+    </node>
+    <!--
+    <node j2ee-type="JeusService" jeus-type="RelayDestination">
+        <parent j2ee-type="JeusService" jeus-type="JMSEngine"/>
+        <delegator j2ee-type="JeusService" jeus-type="JMSEngine"/>
+    </node>
+    -->
+    <!-- =========================================================================================================== -->
+    <!-- WEB Engine                                                                                                  -->
+    <!-- =========================================================================================================== -->
+    <node j2ee-type="JeusService" jeus-type="ContextGroup"
+        jaxb-path="contextGroup"
+        name-element="groupName"
+        page="JeusServiceContextGroup_Configuration" target="main">
+
+        <parent j2ee-type="JeusService" jeus-type="WebEngine"/>
+        <delegator j2ee-type="JeusService" jeus-type="WebEngine"/>
+
+        <asset state="running" path="/image/mbean/context_group_running.gif"/>
+        <asset state="stopped" path="/image/mbean/context_group_stopped.gif"/>
+        <asset state="xml" path="/image/mbean/context_group_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/context_group_failed.gif"/>
+
+        <function key="NodeTree.JeusService.ContextGroup.conf" page="JeusServiceContextGroup_Configuration" target="main"/>
+        <function key="NodeTree.JeusService.ContextGroup.stat" page="JeusServiceContextGroup_Statistics" target="main" enable-states="running failed"/>
+        <function key="separator"/>
+        <function key="NodeTree.JeusService.ContextGroup.createWebListener" page="JeusServiceWebListener_Create" target="main" parameters="New"/>
+        <function key="NodeTree.JeusService.ContextGroup.createVirtualHost" page="JeusServiceVirtualHost_Create" target="main" parameters="New"/>
+    </node>
+
+    <!-- =========================================================================================================== -->
+    <!-- Context Group                                                                                               -->
+    <!-- =========================================================================================================== -->
+    <node j2ee-type="JeusService" jeus-type="WebListener"
+        jaxb-path="/contextGroup[groupName=='${name}']/webserverConnection/webtobListenerOrHttpListenerOrTcpListener"
+        name-element="listenerId"
+        page="JeusServiceWebListener_Configuration" target="main">
+        <parent j2ee-type="JeusService" jeus-type="ContextGroup"/>
+        <delegator j2ee-type="JeusService" jeus-type="WebEngine"/>
+
+        <asset state="running" path="/image/mbean/web_listener_running.gif"/>
+        <asset state="stopped" path="/image/mbean/web_listener_stopped.gif"/>
+        <asset state="xml" path="/image/mbean/web_listener_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/web_listener_failed.gif"/>
+
+        <function key="NodeTree.JeusService.WebListener.conf" page="JeusServiceWebListener_Configuration" target="main"/>
+        <function key="NodeTree.JeusService.WebListener.stat" page="JeusServiceWebListener_Statistics" target="main" enable-states="running failed"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="SessionContainer"
+        key="NodeTree.JeusService.SessionContainer"
+        page="JeusServiceSessionContainer_Statistics" target="main"
+        hide="(parentName.keyPropertyList.jeusType=='WebEngine' and objectName.keyPropertyList.ContextGroup != null) or (parentName.keyPropertyList.jeusType=='ContextGroup' and objectName.keyPropertyList.ContextGroup == null)">
+        <parent j2ee-type="JeusService" jeus-type="ContextGroup"/>
+        <parent j2ee-type="JeusService" jeus-type="WebEngine"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="running" path="/image/mbean/session_server_running.gif"/>
+        <asset state="xml" path="/image/mbean/session_server_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/session_server_failed.gif"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="SessionContainerCentral"
+        key="NodeTree.JeusService.SessionContainer"
+        page="JeusServiceSessionContainer_Statistics" target="main"
+        hide="(parentName.keyPropertyList.jeusType=='WebEngine' and objectName.keyPropertyList.ContextGroup != null) or (parentName.keyPropertyList.jeusType=='ContextGroup' and objectName.keyPropertyList.ContextGroup == null)">
+        <parent j2ee-type="JeusService" jeus-type="ContextGroup"/>
+        <parent j2ee-type="JeusService" jeus-type="WebEngine"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="running" path="/image/mbean/session_server_running.gif"/>
+        <asset state="xml" path="/image/mbean/session_server_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/session_server_failed.gif"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="SessionContainerP2P"
+        key="NodeTree.JeusService.SessionContainer"
+        page="JeusServiceSessionContainer_Statistics" target="main"
+        hide="(parentName.keyPropertyList.jeusType=='WebEngine' and objectName.keyPropertyList.ContextGroup != null) or (parentName.keyPropertyList.jeusType=='ContextGroup' and objectName.keyPropertyList.ContextGroup == null)">
+        <parent j2ee-type="JeusService" jeus-type="ContextGroup"/>
+        <parent j2ee-type="JeusService" jeus-type="WebEngine"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="running" path="/image/mbean/session_server_running.gif"/>
+        <asset state="xml" path="/image/mbean/session_server_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/session_server_failed.gif"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="VirtualHost">
+        <delegator j2ee-type="JeusService" jeus-type="WebEngine"/>
+    </node>
+
+    <!-- =========================================================================================================== -->
+    <!-- Application Module                                                                                          -->
+    <!-- =========================================================================================================== -->
+    <node j2ee-type="J2EEApplication"
+        page="J2EEApplication_Configuration" target="main">
+        <parent j2ee-type="Folder" jeus-type="ApplicationModule"/>
+
+        <asset state="running" path="/image/mbean/ear_running.gif"/>
+        <asset state="stopped" path="/image/mbean/ear_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ear_failed.gif"/>
+
+        <function key="NodeTree.J2EEApplication.conf" page="J2EEApplication_Configuration" target="main"/>
+        <function key="separator"/>
+        <function key="NodeTree.J2EEApplication.start" page="J2EEApplication_Control" parameters="0" target="main" enable-states="stopped"/>
+        <function key="NodeTree.J2EEApplication.stop" page="J2EEApplication_Control" parameters="1" target="main" enable-states="running failed"/>
+        <function key="NodeTree.J2EEApplication.undeploy" page="J2EEApplication_Control" parameters="2" target="main"/>
+    </node>
+
+    <node j2ee-type="EJBModule"
+        page="EJBModule_Statistics" target="main"
+        query-properties="J2EEApplication=null" helper="jeus.tool.webadmin.nimodel.EJBModuleHelper">
+        <parent j2ee-type="Folder" jeus-type="ApplicationModule"/>
+
+        <asset state="running" path="/image/mbean/ejb_module_running.gif"/>
+        <asset state="stopped" path="/image/mbean/ejb_module_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ejb_module_failed.gif"/>
+
+        <function key="NodeTree.EJBModule.conf" page="EJBModule_Configuration" target="main"/>
+        <function key="NodeTree.EJBModule.stat" page="EJBModule_Statistics" target="main"/>
+        <function key="separator"/>
+        <function key="NodeTree.EJBModule.start" page="EJBModule_Control" parameters="0" target="main" enable-states="stopped"/>
+        <function key="NodeTree.EJBModule.stop" page="EJBModule_Control" parameters="1" target="main" enable-states="running"/>
+        <function key="NodeTree.EJBModule.undeploy" page="EJBModule_Control" parameters="2" target="main"/>
+    </node>
+
+    <node j2ee-type="EJBModule"
+        page="EJBModule_Statistics" target="main"
+        helper="jeus.tool.webadmin.nimodel.EJBModuleHelper">
+        <parent j2ee-type="J2EEApplication"/>
+
+        <asset state="running" path="/image/mbean/ejb_module_running.gif"/>
+        <asset state="stopped" path="/image/mbean/ejb_module_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ejb_module_failed.gif"/>
+
+        <function key="NodeTree.EJBModule.conf" page="EJBModule_Configuration" target="main"/>
+        <function key="NodeTree.EJBModule.stat" page="EJBModule_Statistics" target="main"/>
+        <function key="separator"/>
+        <function key="NodeTree.EJBModule.start" page="EJBModule_Control" parameters="0" target="main" enable-states="stopped failed"/>
+        <function key="NodeTree.EJBModule.stop" page="EJBModule_Control" parameters="1" target="main" enable-states="running failed"/>
+    </node>
+
+    <node j2ee-type="StatelessSessionBean"
+        page="EJB_Statistics" target="main">
+        <parent j2ee-type="EJBModule"/>
+        <delegator j2ee-type="EJBModule"/>
+
+        <asset state="running" path="/image/mbean/ejb_stateless_running.gif"/>
+        <asset state="stopped" path="/image/mbean/ejb_stateless_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ejb_stateless_failed.gif"/>
+
+        <function key="NodeTree.EJB.conf" page="EJB_Configuration" target="main"/>
+        <function key="NodeTree.EJB.stat" page="EJB_Statistics" target="main"/>
+    </node>
+
+    <node j2ee-type="StatelessSessionBean"
+        page="EJB_Statistics" target="main">
+        <parent j2ee-type="EJBModule" query-properties="J2EEApplication=null"/>
+        <delegator j2ee-type="EJBModule"/>
+
+        <asset state="running" path="/image/mbean/ejb_stateless_running.gif"/>
+        <asset state="stopped" path="/image/mbean/ejb_stateless_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ejb_stateless_failed.gif"/>
+
+        <function key="NodeTree.EJB.conf" page="EJB_Configuration" target="main"/>
+        <function key="NodeTree.EJB.stat" page="EJB_Statistics" target="main"/>
+    </node>
+
+    <node j2ee-type="StatefulSessionBean"
+        page="EJB_Statistics" target="main">
+        <parent j2ee-type="EJBModule"/>
+        <delegator j2ee-type="EJBModule"/>
+
+        <asset state="running" path="/image/mbean/ejb_stateful_running.gif"/>
+        <asset state="stopped" path="/image/mbean/ejb_stateful_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ejb_stateful_failed.gif"/>
+
+        <function key="NodeTree.EJB.conf" page="EJB_Configuration" target="main"/>
+        <function key="NodeTree.EJB.stat" page="EJB_Statistics" target="main"/>
+    </node>
+
+    <node j2ee-type="StatefulSessionBean"
+        page="EJB_Statistics" target="main">
+        <parent j2ee-type="EJBModule" query-properties="J2EEApplication=null"/>
+        <delegator j2ee-type="EJBModule"/>
+
+        <asset state="running" path="/image/mbean/ejb_stateful_running.gif"/>
+        <asset state="stopped" path="/image/mbean/ejb_stateful_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ejb_stateful_failed.gif"/>
+
+        <function key="NodeTree.EJB.conf" page="EJB_Configuration" target="main"/>
+        <function key="NodeTree.EJB.stat" page="EJB_Statistics" target="main"/>
+    </node>
+
+    <node j2ee-type="EntityBean"
+        page="EJB_Statistics" target="main">
+        <parent j2ee-type="EJBModule"/>
+        <delegator j2ee-type="EJBModule"/>
+
+        <asset state="running" path="/image/mbean/ejb_entity_running.gif"/>
+        <asset state="stopped" path="/image/mbean/ejb_entity_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ejb_entity_failed.gif"/>
+
+        <function key="NodeTree.EJB.conf" page="EJB_Configuration" target="main"/>
+        <function key="NodeTree.EJB.stat" page="EJB_Statistics" target="main"/>
+    </node>
+
+    <node j2ee-type="EntityBean"
+        page="EJB_Statistics" target="main">
+        <parent j2ee-type="EJBModule" query-properties="J2EEApplication=null"/>
+        <delegator j2ee-type="EJBModule"/>
+
+        <asset state="running" path="/image/mbean/ejb_entity_running.gif"/>
+        <asset state="stopped" path="/image/mbean/ejb_entity_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ejb_entity_failed.gif"/>
+
+        <function key="NodeTree.EJB.conf" page="EJB_Configuration" target="main"/>
+        <function key="NodeTree.EJB.stat" page="EJB_Statistics" target="main"/>
+    </node>
+
+    <node j2ee-type="MessageDrivenBean"
+        page="EJB_Statistics" target="main">
+        <parent j2ee-type="EJBModule"/>
+        <delegator j2ee-type="EJBModule"/>
+
+        <asset state="running" path="/image/mbean/ejb_message_running.gif"/>
+        <asset state="stopped" path="/image/mbean/ejb_message_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ejb_message_failed.gif"/>
+
+        <function key="NodeTree.EJB.conf" page="EJB_Configuration" target="main"/>
+        <function key="NodeTree.EJB.stat" page="EJB_Statistics" target="main"/>
+    </node>
+
+    <node j2ee-type="MessageDrivenBean"
+        page="EJB_Statistics" target="main">
+        <parent j2ee-type="EJBModule" query-properties="J2EEApplication=null"/>
+        <delegator j2ee-type="EJBModule"/>
+
+        <asset state="running" path="/image/mbean/ejb_message_running.gif"/>
+        <asset state="stopped" path="/image/mbean/ejb_message_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ejb_message_failed.gif"/>
+
+        <function key="NodeTree.EJB.conf" page="EJB_Configuration" target="main"/>
+        <function key="NodeTree.EJB.stat" page="EJB_Statistics" target="main"/>
+    </node>
+
+    <node j2ee-type="WebModule"
+        page="WebModule_Statistics" target="main">
+        <parent j2ee-type="J2EEApplication"/>
+
+        <asset state="running" path="/image/mbean/web_module_running.gif"/>
+        <asset state="stopped" path="/image/mbean/web_module_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/web_module_failed.gif"/>
+
+        <function key="NodeTree.WebModule.conf" page="WebModule_Configuration" target="main"/>
+        <function key="NodeTree.WebModule.stat" page="WebModule_Statistics" target="main"/>
+        <function key="separator"/>
+        <function key="NodeTree.WebModule.start" page="WebModule_Control" parameters="0" target="main" enable-states="stopped"/>
+        <function key="NodeTree.WebModule.stop" page="WebModule_Control" parameters="1" target="main" enable-states="running failed"/>
+    </node>
+
+    <node j2ee-type="WebModule"
+        page="WebModule_Statistics" target="main"
+        query-properties="J2EEApplication=null">
+        <parent j2ee-type="Folder" jeus-type="ApplicationModule"/>
+
+        <asset state="running" path="/image/mbean/web_module_running.gif"/>
+        <asset state="stopped" path="/image/mbean/web_module_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/web_module_failed.gif"/>
+
+        <function key="NodeTree.WebModule.conf" page="WebModule_Configuration" target="main"/>
+        <function key="NodeTree.WebModule.stat" page="WebModule_Statistics" target="main"/>
+        <function key="separator"/>
+        <function key="NodeTree.WebModule.start" page="WebModule_Control" parameters="0" target="main" enable-states="stopped"/>
+        <function key="NodeTree.WebModule.stop" page="WebModule_Control" parameters="1" target="main" enable-states="running failed"/>
+        <function key="NodeTree.WebModule.undeploy" page="WebModule_Control" parameters="2" target="main"/>
+    </node>
+
+    <node j2ee-type="ResourceAdapterModule"
+        page="ResourceAdapterModule_Statistics" target="main"
+        query-properties="J2EEApplication=null">
+        <parent j2ee-type="Folder" jeus-type="ApplicationModule"/>
+
+        <asset state="running" path="/image/mbean/ra_module_running.gif"/>
+        <asset state="stopped" path="/image/mbean/ra_module_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ra_module_failed.gif"/>
+
+        <function key="NodeTree.ResourceAdapterModule.conf" page="ResourceAdapterModule_Configuration" target="main"/>
+        <function key="NodeTree.ResourceAdapterModule.stat" page="ResourceAdapterModule_Statistics" target="main"/>
+        <function key="separator"/>
+        <function key="NodeTree.ResourceAdapterModule.start" page="ResourceAdapterModule_Control" parameters="0" target="main" enable-states="stopped"/>
+        <function key="NodeTree.ResourceAdapterModule.stop" page="ResourceAdapterModule_Control" parameters="1" target="main" enable-states="running failed"/>
+        <function key="NodeTree.ResourceAdapterModule.undeploy" page="ResourceAdapterModule_Control" parameters="2" target="main"/>
+    </node>
+
+    <node j2ee-type="ResourceAdapterModule"
+        page="ResourceAdapterModule_Statistics" target="main">
+        <parent j2ee-type="J2EEApplication"/>
+
+        <asset state="running" path="/image/mbean/ra_module_running.gif"/>
+        <asset state="stopped" path="/image/mbean/ra_module_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ra_module_failed.gif"/>
+
+        <function key="NodeTree.ResourceAdapterModule.conf" page="ResourceAdapterModule_Configuration" target="main"/>
+        <function key="NodeTree.ResourceAdapterModule.stat" page="ResourceAdapterModule_Statistics" target="main"/>
+        <function key="separator"/>
+        <function key="NodeTree.ResourceAdapterModule.start" page="ResourceAdapterModule_Control" parameters="0" target="main" enable-states="stopped"/>
+        <function key="NodeTree.ResourceAdapterModule.stop" page="ResourceAdapterModule_Control" parameters="1" target="main" enable-states="running failed"/>
+    </node>
+
+
+    <node j2ee-type="ResourceAdapter">
+        <parent j2ee-type="ResourceAdapterModule"/>
+        <asset state="running" path="/image/mbean/ra_running.gif"/>
+        <asset state="stopped" path="/image/mbean/ra_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ra_failed.gif"/>
+    </node>
+
+    <node j2ee-type="ResourceAdapter">
+        <parent j2ee-type="ResourceAdapterModule" query-properties="J2EEApplication=null"/>
+        <asset state="running" path="/image/mbean/ra_running.gif"/>
+        <asset state="stopped" path="/image/mbean/ra_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ra_failed.gif"/>
+    </node>
+
+    <!--
+    <node j2ee-type="Servlet">
+        <parent j2ee-type="WebModule"/>
+        <delegator j2ee-type="WebModule"/>
+
+        <asset state="running" path="/image/mbean/servlet_running.gif"/>
+        <asset state="stopped" path="/image/mbean/servlet_running.gif"/>
+    </node>
+
+    <node j2ee-type="Servlet">
+        <parent j2ee-type="WebModule" query-properties="J2EEApplication=null"/>
+        <asset state="running" path="/image/mbean/servlet_running.gif"/>
+        <asset state="stopped" path="/image/mbean/servlet_running.gif"/>
+    </node>
+    -->
+
+    <node j2ee-type="AppClientModule"
+        page="AppClientModule_Configuration" target="main">
+        <parent j2ee-type="J2EEApplication"/>
+
+        <asset state="running" path="/image/mbean/ca_module_running.gif"/>
+        <asset state="stopped" path="/image/mbean/ca_module_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ca_module_failed.gif"/>
+
+        <function key="NodeTree.AppClientModule.conf" page="AppClientModule_Configuration" target="main"/>
+        <function key="separator"/>
+        <function key="NodeTree.AppClientModule.start" page="AppClientModule_Control" parameters="0" target="main" enable-states="stopped"/>
+        <function key="NodeTree.AppClientModule.stop" page="AppClientModule_Control" parameters="1" target="main" enable-states="running failed"/>
+    </node>
+
+    <node j2ee-type="AppClientModule"
+        page="AppClientModule_Configuration" target="main"
+        query-properties="J2EEApplication=null">
+        <parent j2ee-type="Folder" jeus-type="ApplicationModule"/>
+
+        <asset state="running" path="/image/mbean/ca_module_running.gif"/>
+        <asset state="stopped" path="/image/mbean/ca_module_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ca_module_failed.gif"/>
+
+        <function key="NodeTree.AppClientModule.conf" page="AppClientModule_Configuration" target="main"/>
+        <function key="separator"/>
+        <function key="NodeTree.AppClientModule.start" page="AppClientModule_Control" parameters="0" target="main" enable-states="stopped"/>
+        <function key="NodeTree.AppClientModule.stop" page="AppClientModule_Control" parameters="1" target="main" enable-states="running failed"/>
+        <function key="NodeTree.AppClientModule.undeploy" page="AppClientModule_Control" parameters="2" target="main" enable-states="running failed"/>
+    </node>
+
+    <!-- =========================================================================================================== -->
+    <!-- Resource                                                                                                    -->
+    <!-- =========================================================================================================== -->
+    <node j2ee-type="Folder" jeus-type="JDBCDataSource"
+        key="NodeTree.Folder.JDBCDataSource"
+        page="JDBCDataSource_Overview" target="main"
+        static="true"
+        hide="objectName.domain=='XML'">
+        <parent j2ee-type="Folder" jeus-type="Resource"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+    </node>
+
+    <node j2ee-type="Folder" jeus-type="JMSResource"
+        key="NodeTree.Folder.JMSResource"
+        page="JeusServiceJMSResource_Info" target="main"
+        static="true"
+        hide="@jeus.tool.webadmin.util.EngineUtils@getEngines(objectName, stateObject).jms == null">
+        <parent j2ee-type="Folder" jeus-type="Resource"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+    </node>
+
+    <node j2ee-type="Folder" jeus-type="JCAResource"
+        key="NodeTree.Folder.JCAResource"
+        page="JeusServiceJCAResource_Info" target="main"
+        static="true"
+        hide="objectName.domain=='XML'">
+        <parent j2ee-type="Folder" jeus-type="Resource"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+    </node>
+
+    <node j2ee-type="JCAResource"
+        page="JCAResource_Statistics" target="main">
+        <parent j2ee-type="Folder" jeus-type="JCAResource"/>
+
+        <asset state="running" path="/image/mbean/jca_running.gif"/>
+        <asset state="stopped" path="/image/mbean/jca_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/jca_failed.gif"/>
+    </node>
+
+    <node j2ee-type="JCAConnectionFactory">
+        <parent j2ee-type="JCAResource"/>
+        <asset state="running" path="/image/mbean/jca_cf_running.gif"/>
+        <asset state="stopped" path="/image/mbean/jca_cf_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/jca_cf_failed.gif"/>
+    </node>
+
+    <node j2ee-type="JCAManagedConnectionFactory">
+        <parent j2ee-type="JCAConnectionFactory"/>
+        <asset state="running" path="/image/mbean/jca_mcf_running.gif"/>
+        <asset state="stopped" path="/image/mbean/jca_mcf_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/jca_mcf_failed.gif"/>
+
+    </node>
+
+    <node j2ee-type="Folder" jeus-type="WebtDataSource"
+        key="NodeTree.Folder.WebtDataSource"
+        page="JeusServiceWebtDataSource_Overview" target="main"
+        static="true"
+        hide="objectName.domain=='XML'">
+        <parent j2ee-type="Folder" jeus-type="Resource"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="WebtDataSource">
+        <parent j2ee-type="Folder" jeus-type="WebtDataSource"/>
+
+        <asset state="running" path="/image/mbean/webt_datasource_running.gif"/>
+        <asset state="xml" path="/image/mbean/webt_datasource_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/webt_datasource_failed.gif"/>
+    </node>
+
+    <!--
+        @todo MQ Resource
+    -->
+
+    <node j2ee-type="JTAResource"
+        key="NodeTree.JTAResource"
+        page="JTAResource_Statistics" target="main"
+        static="true">
+        <parent j2ee-type="Folder" jeus-type="Resource"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="running" path="/image/mbean/jta_running.gif"/>
+        <asset state="xml" path="/image/mbean/jta_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/jta_failed.gif"/>
+
+        <function key="NodeTree.JTAResource.conf" page="JTAResource_Configuration" target="main"/>
+        <function key="NodeTree.JTAResource.stat" page="JTAResource_Statistics" target="main" enable-states="running failed"/>
+    </node>
+
+    <!-- =========================================================================================================== -->
+    <!-- J2EEServer Service                                                                                          -->
+    <!-- =========================================================================================================== -->
+    <node j2ee-type="JeusService" jeus-type="SchedulerService"
+        key="NodeTree.JeusService.SchedulerService"
+        page="JeusServiceSchedulerService_Configuration" target="main"
+        static="true">
+        <parent j2ee-type="Folder" jeus-type="Service"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="running" path="/image/mbean/scheduler_running.gif"/>
+        <asset state="xml" path="/image/mbean/scheduler_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/scheduler_failed.gif"/>
+
+        <function key="job.create.label" page="JeusServiceSchedulerJob_Create" target="main"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="SchedulerJob">
+        <parent j2ee-type="JeusService" jeus-type="SchedulerService"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+    </node>
+
+
+    <node j2ee-type="JeusService" jeus-type="JMXExportService"
+        key="NodeTree.JeusService.JMXExportService"
+        page="JeusServiceJMXExportService_Configuration" target="main"
+        static="true"
+        hide="objectName.keyPropertyList.J2EEServer.endsWith('_default')">
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+        <parent j2ee-type="Folder" jeus-type="Service"/>
+
+        <asset state="running" path="/image/mbean/jmx_running.gif"/>
+        <asset state="xml" path="/image/mbean/jmx_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/jmx_failed.gif"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="SnmpAgentService"
+        key="NodeTree.JeusService.SnmpAgentService">
+        <parent j2ee-type="Folder" jeus-type="Service"/>
+
+        <asset state="running" path="/image/mbean/snmp_running.gif"/>
+        <asset state="xml" path="/image/mbean/snmp_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/snmp_failed.gif"/>
+
+    </node>
+
+    <!-- =========================================================================================================== -->
+    <!-- Data Source                                                                                                 -->
+    <!-- =========================================================================================================== -->
+    <node j2ee-type="JDBCDataSource"
+        page="JDBCDataSource_Statistics" target="main">
+        <parent j2ee-type="Folder" jeus-type="JDBCDataSource"/>
+
+        <asset state="running" path="/image/mbean/jdbc_datasource_running.gif"/>
+        <asset state="stopped" path="/image/mbean/jdbc_datasource_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/jdbc_datasource_failed.gif"/>
+
+        <function key="NodeTree.JDBCDataSource.open"     page="JDBCDataSource_Statistics" target="main"/>
+        <function key="NodeTree.JDBCDataSource.reconfig" page="JDBCDataSource_Reconfigure" target="main"/>
+    </node>
+
+    <!-- =========================================================================================================== -->
+    <!-- JMS Resource Folder                                                                                         -->
+    <!-- =========================================================================================================== -->
+    <node j2ee-type="Folder" jeus-type="JMSConnectionFactoryResource"
+        key="NodeTree.Folder.JMSConnectionFactoryResource"
+        page="JMSConnectionFactoryResource_Overview" target="main"
+        static="true"
+        helper="jeus.tool.webadmin.nimodel.JMSResourceHelper">
+        <parent j2ee-type="Folder" jeus-type="JMSResource"/>
+        <delegator j2ee-type="JMSResource"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+
+        <function key="NodeTree.Folder.JMSConnectionFactoryResource.open" page="JMSConnectionFactoryResource_Overview" target="main"/>
+        <function key="separator"/>
+        <function key="NodeTree.Folder.JMSConnectionFactoryResource.createTopic" page="JMSConnectionFactoryResource_Create" target="main" parameters="New"/>
+<!--
+        <function key="NodeTree.Folder.JMSConnectionFactoryResource.createTopic" page="JMSConnectionFactoryResource_Create" target="main" parameters="topic"/>
+        <function key="NodeTree.Folder.JMSConnectionFactoryResource.createQueue" page="JMSConnectionFactoryResource_Create" target="main" parameters="queue"/>
+-->
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="JMSConnectionFactoryResource"
+        jaxb-path="connectionFactory"
+        name-element="name"
+        page="JMSConnectionFactoryResource_Configuration" target="main">
+        <parent j2ee-type="Folder" jeus-type="JMSConnectionFactoryResource"/>
+        <delegator j2ee-type="JMSResource"/>
+
+        <asset state="running" path="/image/mbean/cf_running.gif"/>
+        <asset state="stopped" path="/image/mbean/cf_running.gif"/>
+        <asset state="xml" path="/image/mbean/cf_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/cf_failed.gif"/>
+    </node>
+
+
+    <!--node j2ee-type="JeusService" jeus-type="JMSConnectionFactoryResource"
+        jaxb-path="connectionFactory[type == null or type=='xa' or type=='nonxa']"
+        name-element="name"
+        page="JMSConnectionFactoryResource_Configuration" target="main">
+        <parent j2ee-type="Folder" jeus-type="JMSConnectionFactoryResource"/>
+        <delegator j2ee-type="JMSResource"/>
+
+        <asset state="running" path="/image/mbean/cf_running.gif"/>
+        <asset state="stopped" path="/image/mbean/cf_running.gif"/>
+        <asset state="xml" path="/image/mbean/cf_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/cf_failed.gif"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="JMSQueueConnectionFactoryResource"
+        jaxb-path="connectionFactory[type=='queue' or type=='xaqueue']"
+        name-element="name"
+        page="JMSConnectionFactoryResource_Configuration" target="main">
+        <parent j2ee-type="Folder" jeus-type="JMSConnectionFactoryResource"/>
+        <delegator j2ee-type="JMSResource"/>
+
+        <asset state="running" path="/image/mbean/cf_running.gif"/>
+        <asset state="stopped" path="/image/mbean/cf_running.gif"/>
+        <asset state="xml" path="/image/mbean/cf_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/cf_failed.gif"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="JMSTopicConnectionFactoryResource"
+        jaxb-path="connectionFactory[type=='topic' or type=='xatopic']"
+        name-element="name"
+        page="JMSConnectionFactoryResource_Configuration" target="main">
+        <parent j2ee-type="Folder" jeus-type="JMSConnectionFactoryResource"/>
+        <delegator j2ee-type="JMSResource"/>
+
+        <asset state="running" path="/image/mbean/cf_running.gif"/>
+        <asset state="stopped" path="/image/mbean/cf_running.gif"/>
+        <asset state="xml" path="/image/mbean/cf_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/cf_failed.gif"/>
+    </node-->
+
+<!--
+    <node j2ee-type="JeusService" jeus-type="JMSTopicConnectionFactoryResource"
+        page="JMSConnectionFactoryResource_Configuration" target="main"
+        jaxb-path="connectionFactory[type.equalsIgnoreCase('topic')]"
+        name-element="name">
+        <parent j2ee-type="Folder" jeus-type="JMSConnectionFactoryResource"/>
+        <delegator j2ee-type="JMSResource"/>
+
+        <asset state="running" path="/image/mbean/topic_cf_running.gif"/>
+        <asset state="xml" path="/image/mbean/topic_cf_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/topic_cf_failed.gif"/>
+    </node>
+-->
+
+    <node j2ee-type="Folder" jeus-type="JMSDestinationResource"
+        key="NodeTree.Folder.JMSDestinationResource"
+        page="JMSDestinationResource_Overview" target="main"
+        static="true"
+        helper="jeus.tool.webadmin.nimodel.JMSResourceHelper">
+        <delegator j2ee-type="JMSResource"/>
+        <parent j2ee-type="Folder" jeus-type="JMSResource"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+
+        <function key="NodeTree.Folder.JMSDestinationResource.open" page="JMSDestinationResource_Overview" target="main"/>
+        <function key="separator"/>
+        <function key="NodeTree.Folder.JMSDestinationResource.createTopic" page="JMSDestinationResource_Create" target="main" parameters="topic"/>
+        <function key="NodeTree.Folder.JMSDestinationResource.createQueue" page="JMSDestinationResource_Create" target="main" parameters="queue"/>
+    </node>
+
+    <node j2ee-type="Folder" jeus-type="JMSClientResource"
+        key="NodeTree.Folder.JMSClientResource"
+        page="JMSClientResource_Overview" target="main"
+        static="true"
+        hide="@jeus.tool.webadmin.util.EngineUtils@getRunningEngines(objectName, stateObject).jms == null">
+        <parent j2ee-type="Folder" jeus-type="JMSResource"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+
+        <function key="NodeTree.Folder.JMSClientResource.open" page="JMSClientResource_Overview" target="main"/>
+    </node>
+
+	<node j2ee-type="JeusService" jeus-type="JMSDestinationResource"
+        jaxb-path="destination"
+        name-element="name"
+        page="JMSDestinationResource_Configuration" target="main">
+        <parent j2ee-type="Folder" jeus-type="JMSDestinationResource"/>
+        <delegator j2ee-type="JMSResource"/>
+
+        <asset state="running" path="/image/mbean/dest_running.gif"/>
+        <asset state="stopped" path="/image/mbean/dest_stopped.gif"/>
+        <asset state="xml" path="/image/mbean/dest_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/dest_failed.gif"/>
+    </node>
+
+	<!--
+    <node j2ee-type="JeusService" jeus-type="JMSTopicDestinationResource"
+        jaxb-path="destination[type.equalsIgnoreCase('topic')]"
+        name-element="name"
+        page="JMSDestinationResource_Configuration" target="main"
+        helper="jeus.tool.webadmin.util.JMSResourceHelper">
+        <parent j2ee-type="Folder" jeus-type="JMSDestinationResource"/>
+        <delegator j2ee-type="JMSResource"/>
+
+        <asset state="running" path="/image/mbean/topic_dest_running.gif"/>
+        <asset state="xml" path="/image/mbean/topic_dest_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/topic_dest_failed.gif"/>
+
+        <function key="NodeTree.JMSDestinationResource.open" page="JMSDestinationResource_Configuration" target="main"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="JMSQueueDestinationResource"
+        jaxb-path="destination[type.equalsIgnoreCase('queue')]"
+        name-element="name"
+        page="JMSDestinationResource_Configuration" target="main"
+        helper="jeus.tool.webadmin.util.JMSResourceHelper">
+        <parent j2ee-type="Folder" jeus-type="JMSDestinationResource"/>
+        <delegator j2ee-type="JMSResource"/>
+
+        <asset state="running" path="/image/mbean/queue_dest_running.gif"/>
+        <asset state="xml" path="/image/mbean/queue_dest_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/queue_dest_failed.gif"/>
+
+        <function key="NodeTree.JMSDestinationResource.open" page="JMSDestinationResource_Configuration" target="main"/>
+	</node>
+	-->
+
+	<node j2ee-type="JeusService" jeus-type="JMSDurableSubscriberResource"
+        page="JMSDurableSubscriberResource_Statistics" target="main">
+        <parent j2ee-type="JeusService" jeus-type="JMSDestinationResource"/>
+        <delegator j2ee-type="JMSResource"/>
+
+        <asset state="running" path="/image/mbean/dest_running.gif"/>
+        <asset state="stopped" path="/image/mbean/dest_stopped.gif"/>
+        <asset state="xml" path="/image/mbean/dest_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/dest_failed.gif"/>        
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="JMSClientResource"
+        page="JMSClientResource_Statistics" target="main">
+        <parent j2ee-type="Folder" jeus-type="JMSClientResource"/>
+
+        <asset state="running" path="/image/mbean/jms_client_running.gif"/>
+        <asset state="stopped" path="/image/mbean/jms_client_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/jms_client_failed.gif"/>
+    </node>
+
+    <!-- =========================================================================================================== -->
+    <!-- Jeus Service                                                                                                -->
+    <!-- =========================================================================================================== -->
+    <node j2ee-type="JeusService" jeus-type="JNDIResourceService"
+        key="NodeTree.JeusService.JNDIResourceService"
+        page="JeusServiceJNDIResourceService_Configuration" target="main">
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+
+        <asset state="running" path="/image/mbean/jndi_running.gif"/>
+        <asset state="xml" path="/image/mbean/jndi_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/jndi_failed.gif"/>
+    </node>
+
+    <!--
+    <node j2ee-type="JeusService" jeus-type="SessionRouterManagerService"
+        key="NodeTree.JeusService.SessionRouterManagerService"
+        page="JeusServiceSessionRouterManagerService_Configuration" target="main" static="true">
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+
+        <function key="NodeTree.JeusService.SessionRouterManagerService.open" page="JeusServiceSessionRouterManagerService_Configuration" target="main"/>
+        <function key="separator"/>
+        <function key="NodeTree.JeusService.SessionRouterManagerService.create" page="JeusServiceSessionRouterNode_Create" target="main" parameters="New"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="SessionRouterNode"
+        page="JeusServiceSessionRouterNode_Configuration" target="main"
+        jaxb-path="/sessionRouterConfig/sessionRouterNode" name-element="nodeName">
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+        <parent j2ee-type="JeusService" jeus-type="SessionRouterManagerService"/>
+
+        <function key="NodeTree.JeusService.SessionRouterNode.open" page="JeusServiceSessionRouterNode_Configuration" target="main"/>
+        <function key="separator"/>
+        <function key="NodeTree.JeusService.SessionRouterNode.create" page="JeusServiceSessionRouter_Create" target="main" parameters="New" />
+    </node>
+    -->
+
+    <node j2ee-type="JeusService" jeus-type="P2PSessionServerService"
+        key="NodeTree.JeusService.P2PSessionServerService"
+        page="JeusServiceP2PSessionServerService_Configuration" target="main"
+        static="true"
+        hide="@jeus.util.Runner@getLicenseEdition() == @jeus.util.Runner@LIC_EDITION_STANDARD">
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+
+        <asset state="running" path="/image/mbean/session_server_running.gif"/>
+        <asset state="stopped" path="/image/mbean/session_server_stopped.gif"/>
+        <asset state="xml" path="/image/mbean/session_server_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/session_server_failed.gif"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="SessionServerService"
+        key="NodeTree.JeusService.SessionServerService"
+        page="JeusServiceSessionServerService_Configuration" target="main"
+        hide="@jeus.util.Runner@getLicenseEdition() == @jeus.util.Runner@LIC_EDITION_STANDARD">
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+
+        <asset state="running" path="/image/mbean/session_server_running.gif"/>
+        <asset state="stopped" path="/image/mbean/session_server_stopped.gif"/>
+        <asset state="xml" path="/image/mbean/session_server_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/session_server_failed.gif"/>
+
+        <function key="NodeTree.JeusService.SessionServerService.open" page="JeusServiceSessionServerService_Configuration" target="main"/>
+        <function key="separator"/>
+        <function key="NodeTree.JeusService.SessionServerService.create" page="JeusServiceSessionManager_Create" parameters="New" target="main"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="SessionManager"
+        jaxb-path="/node[name=='${JeusManager}']/sessionServer/sessionManager"
+        name-element="name"
+        page="JeusServiceSessionManager_Configuration" target="main">
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+        <parent j2ee-type="JeusService" jeus-type="SessionServerService"/>
+
+        <asset state="running" path="/image/mbean/session_manager_running.gif"/>
+        <asset state="xml" path="/image/mbean/session_manager_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/session_manager_failed.gif"/>
+
+        <function key="NodeTree.JeusService.SessionManager.open" page="JeusServiceSessionManager_Configuration" target="main"/>
+    </node>
+
+
+    <node j2ee-type="JeusService" jeus-type="JMXExportService"
+        key="NodeTree.JeusService.JMXExportService"
+        page="JeusServiceJMXExportService_Configuration" target="main"
+        static="true"
+        query-properties="J2EEServer=null">
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+
+        <asset state="running" path="/image/mbean/jmx_running.gif"/>
+        <asset state="xml" path="/image/mbean/jmx_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/jmx_failed.gif"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="SnmpAgentService"
+        key="NodeTree.JeusService.SnmpAgentService"
+        query-properties="J2EEServer=null">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+
+        <asset state="running" path="/image/mbean/snmp_running.gif"/>
+        <asset state="xml" path="/image/mbean/snmp_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/snmp_failed.gif"/>
+
+    </node>
+
+<!--
+    <node j2ee-type="JeusService" jeus-type="ClassFTPService"
+        key="NodeTree.JeusService.ClassFTPService">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+
+        <asset state="running" path="/image/mbean/ftp_running.gif"/>
+        <asset state="xml" path="/image/mbean/ftp_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/ftp_failed.gif"/>
+    </node>
+-->
+
+
+    <node j2ee-type="JeusService" jeus-type="SchedulerService"
+        key="NodeTree.JeusService.SchedulerService"
+        page="JeusServiceSchedulerService_Configuration" target="main"
+        static="true"
+        query-properties="J2EEServer=null">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="running" path="/image/mbean/scheduler_running.gif"/>
+        <asset state="xml" path="/image/mbean/scheduler_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/scheduler_failed.gif"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="SchedulerJob">
+        <parent j2ee-type="JeusService" jeus-type="SchedulerService" query-properties="J2EEServer=null"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="running" path="/image/mbean/scheduler_running.gif"/>
+        <asset state="xml" path="/image/mbean/scheduler_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/scheduler_failed.gif"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="SecurityService"
+        key="NodeTree.JeusService.SecurityManagerService"
+        page="JeusServiceSecurityDomain_Overview"  target="main">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="running" path="/image/mbean/security_running.gif"/>
+        <asset state="xml" path="/image/mbean/security_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/security_failed.gif"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="SecurityDomain"
+        page="JeusServiceSecurityDomain_Services" target="main">
+        <parent j2ee-type="JeusService" jeus-type="SecurityService"/>
+
+		<asset state="running" path="/image/mbean/domain_running.gif"/>
+        <asset state="xml" path="/image/mbean/domain_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/domain_failed.gif"/>
+
+        <function key="NodeTree.JeusService.SecurityDomain.services" page="JeusServiceSecurityDomain_Services" target="main"/>
+        <function key="NodeTree.JeusService.SecurityDomain.accounts" page="JeusServiceSecurityDomain_Accounts" target="main"/>
+        <function key="NodeTree.JeusService.SecurityDomain.policies" page="JeusServiceSecurityDomain_Policies" target="main"/>
+	</node>
+
+	<!--
+	<node j2ee-type="SecurityDomain" jeus-type="AccountService"
+		key="domain.accounts.accounts.label"
+		page="JeusServiceSecurityDomain_Accounts" target="main"
+		static="true">
+        <parent j2ee-type="JeusService" jeus-type="SecurityDomain"/>
+
+		<asset state="running" path="/image/mbean/domain_running.gif"/>
+        <asset state="xml" path="/image/mbean/domain_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/domain_failed.gif"/>
+
+        <function key="NodeTree.JeusService.SecurityDomain.services" page="JeusServiceSecurityDomain_Services" target="main"/>
+        <function key="NodeTree.JeusService.SecurityDomain.accounts" page="JeusServiceSecurityDomain_Accounts" target="main"/>
+        <function key="NodeTree.JeusService.SecurityDomain.policies" page="JeusServiceSecurityDomain_Policies" target="main"/>
+	</node>
+
+	<node j2ee-type="SecurityDomain" jeus-type="PolicyService"
+		key="domain.accounts.accounts.label"
+		page="JeusServiceSecurityDomain_Policies" target="main"
+		static="true">
+        <parent j2ee-type="JeusService" jeus-type="SecurityDomain"/>
+
+		<asset state="running" path="/image/mbean/domain_running.gif"/>
+        <asset state="xml" path="/image/mbean/domain_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/domain_failed.gif"/>
+
+        <function key="NodeTree.JeusService.SecurityDomain.services" page="JeusServiceSecurityDomain_Services" target="main"/>
+        <function key="NodeTree.JeusService.SecurityDomain.accounts" page="JeusServiceSecurityDomain_Accounts" target="main"/>
+        <function key="NodeTree.JeusService.SecurityDomain.policies" page="JeusServiceSecurityDomain_Policies" target="main"/>
+	</node>
+	-->
+    <!-- =========================================================================================================== -->
+    <!-- ResourceService                                                                                             -->
+    <!-- =========================================================================================================== -->
+    <node j2ee-type="Folder" jeus-type="JDBCDataSourceService"
+        key="NodeTree.Folder.JDBCDataSourceService"
+        page="JeusServiceJDBCDataSourceService_Overview" target="main"
+        static="true">
+        <parent j2ee-type="Folder" jeus-type="ResourceService"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+
+        <function key="NodeTree.Folder.JDBCDataSourceService.overview" page="JeusServiceJDBCDataSourceService_Overview" target="main"/>
+        <function key="separator"/>
+        <function key="NodeTree.Folder.JDBCDataSourceService.create" page="JeusServiceJDBCDataSourceService_Create" target="main" parameters="New"/>
+        <function key="NodeTree.Folder.JDBCClusterDataSourceService.create" page="JeusServiceJDBCClusterDataSourceService_Create" target="main" parameters="New"/>
+    </node>
+
+
+    <node j2ee-type="Folder" jeus-type="URLResourceService"
+        key="NodeTree.Folder.URLResourceService"
+        page="URLResource_Overview" target="main"
+        static="true">
+        <parent j2ee-type="Folder" jeus-type="ResourceService"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+    </node>
+
+    <node  j2ee-type="URLResource"
+        jaxb-path="/resource/urlSource/urlEntry"
+        name-element="exportName"
+        page="URLResource_Configuration" target="main">
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+        <parent j2ee-type="Folder" jeus-type="URLResourceService"/>
+
+        <asset state="running" path="/image/mbean/url_running.gif"/>
+        <asset state="xml" path="/image/mbean/url_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/url_failed.gif"/>
+    </node>
+
+    <node j2ee-type="Folder" jeus-type="JavaMailResourceService"
+        key="NodeTree.Folder.JavaMailResourceService"
+        page="JavaMailResource_Overview" target="main"
+        static="true">
+        <parent j2ee-type="Folder" jeus-type="ResourceService"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+
+    </node>
+
+    <node j2ee-type="JavaMailResource"
+        jaxb-path="resource/mailSource/mailEntry"
+        name-element="exportName"
+        page="JavaMailResource_Configuration" target="main">
+        <parent j2ee-type="Folder" jeus-type="JavaMailResourceService"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="running" path="/image/mbean/java_mail_running.gif"/>
+        <asset state="xml" path="/image/mbean/java_mail_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/java_mail_failed.gif"/>
+    </node>
+
+    <node j2ee-type="Folder" jeus-type="TmaxExtResourceService"
+        key="NodeTree.Folder.TmaxExtResourceService"
+        page="JeusServiceTmaxExtResourceService_Overview" target="main"
+        static="true">
+        <parent j2ee-type="Folder" jeus-type="ResourceService"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+
+        <function page="JeusServiceTmaxExtResourceService_Overview" parameters="New" target="main" key="NodeTree.Folder.TmaxExtResourceService.overview"/>
+        <function key="separator"/>
+        <function page="JeusServiceTmaxExtResourceService_Create" parameters="New" target="main" key="NodeTree.Folder.TmaxExtResourceService.create"/>
+        <!--<function page="JeusServiceTmaxClusterExtResourceService_Create" parameters="New" target="main"
+            key="NodeTree.Folder.TmaxClusterExtResourceService.create" enable-states="clusterTmaxes.size > 0"/>-->
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="TmaxExtResourceService"
+        jaxb-path="resource/externalSource/tmaxSource/tmax"
+        name-element="exportName"
+        page="JeusServiceTmaxExtResourceService_Configuration" target="main">
+
+        <asset state="running" path="/image/mbean/webt_datasource_running.gif"/>
+        <asset state="xml" path="/image/mbean/webt_datasource_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/webt_datasource_failed.gif"/>
+
+        <parent j2ee-type="Folder" jeus-type="TmaxExtResourceService"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+	</node>
+
+    <node j2ee-type="JeusService" jeus-type="TmaxClusterExtResourceService"
+        jaxb-path="resource/externalSource/tmaxSource/tmaxCluster"
+        name-element="exportName"
+        page="JeusServiceTmaxClusterExtResourceService_Configuration" target="main">
+
+        <asset state="running" path="/image/mbean/cluster_webt_datasource_running.gif"/>
+        <asset state="xml" path="/image/mbean/cluster_webt_datasource_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/cluster_webt_datasource_failed.gif"/>
+
+        <parent j2ee-type="Folder" jeus-type="TmaxExtResourceService"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+	</node>
+
+	<node j2ee-type="Folder" jeus-type="MQExtResourceService"
+        key="NodeTree.Folder.MQExtResourceService"
+        page="JeusServiceMQExtResourceService_Overview" target="main"
+        static="true">
+        <parent j2ee-type="Folder" jeus-type="ResourceService"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="opened" path="/image/mbean/folder_open.png"/>
+        <asset state="closed" path="/image/mbean/folder_close.png"/>
+
+        <function page="JeusServiceMQExtResourceService_Create" parameters="New" target="main" key="NodeTree.Folder.MQExtResourceService.create"/>
+	</node>
+
+    <node j2ee-type="JeusService" jeus-type="MQExtResourceService"
+        jaxb-path="resource/externalSource/jmsSource" name-element="exportName"
+        page="JeusServiceMQExtResourceService_Configuration" target="main">
+
+        <asset state="running" path="/image/mbean/mq_running.gif"/>
+        <asset state="xml" path="/image/mbean/mq_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/mq_failed.gif"/>
+
+        <parent j2ee-type="Folder" jeus-type="MQExtResourceService"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+	</node>
+
+    <!-- =========================================================================================================== -->
+    <!-- Folder JDBCDataSourceService                                                                                -->
+    <!-- =========================================================================================================== -->
+    <node j2ee-type="JeusService" jeus-type="JDBCDataSourceService"
+        jaxb-path="resource/dataSource/database"
+        name-element="exportName"
+        page="JeusServiceJDBCDataSourceService_Configuration" target="main">
+        <parent j2ee-type="Folder" jeus-type="JDBCDataSourceService"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="running" path="/image/mbean/jdbc_datasource_running.gif"/>
+        <asset state="xml" path="/image/mbean/jdbc_datasource_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/jdbc_datasource_failed.gif"/>
+
+        <function key="NodeTree.JeusService.JDBCDataSourceService.open" page="JeusServiceJDBCDataSourceService_Configuration" target="main"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="JDBCClusterDataSourceService"
+          jaxb-path="resource/dataSource/clusterDs"
+          name-element="exportName"
+          page="JeusServiceJDBCClusterDataSourceService_Configuration" target="main">
+        <parent j2ee-type="Folder" jeus-type="JDBCDataSourceService"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="running" path="/image/mbean/cluster_jdbc_datasource_running.gif"/>
+        <asset state="xml" path="/image/mbean/cluster_jdbc_datasource_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/cluster_jdbc_datasource_failed.gif"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="JeusLogService"
+        key="NodeTree.JeusService.JeusLogService"
+        page="JeusServiceJeusLogService_Frameset"
+        popup-name="Jeus_Logger"
+        popup="width=1024,height=768,toolbars=no,resizable=yes,scrollbars=yes">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+
+        <asset state="running" path="/image/mbean/log_running.gif"/>
+        <asset state="xml" path="/image/mbean/log_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/log_failed.gif"/>
+        <function key="NodeTree.JeusService.JeusLogService.open" page="JeusServiceJeusLogService_Frameset" popup-name="Jeus_Logger" popup="width=1000,height=700,toolbars=no,resizable=yes,scrollbars=yes"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="VirtualNode"
+        key="NodeTree.JeusService.VirtualNode"
+        page="JeusServiceVirtualNode_Configuration" target="main"
+        static="true">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+
+        <asset state="running" path="/image/mbean/virtual_host_running.gif"/>
+        <asset state="xml" path="/image/mbean/virtual_host_stopped.gif"/>
+        <asset state="failed" path="/image/mbean/virtual_host_failed.gif"/>
+
+        <function key="NodeTree.JeusService.VirtualNode.open"     page="JeusServiceVirtualNode_Configuration" target="main"/>
+        <function key="NodeTree.JeusService.VirtualNode.distribute"     page="JeusServiceVirtualNode_Distribute" target="main"/>
+    </node>
+
+	<node j2ee-type="JeusService" jeus-type="JNLPService"
+        key="NodeTree.JeusService.JNLPService"
+        page="JeusServiceJNLPService_Overview" target="main"
+        static="true">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+
+        <asset state="running" path="/image/mbean/jnlp_service.gif"/>
+        <asset state="xml" path="/image/mbean/jnlp_service.gif"/>
+        <asset state="failed" path="/image/mbean/jnlp_service.gif"/>
+
+        <!--<function key="jnlp.create.label" page="JeusServiceJNLPService_Create" target="main"/>-->
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="JNLPResource"
+        jaxb-path="jnlpResource"
+        name-element="rscName"
+        page="JeusServiceJNLPService_Configuration" target="main">
+        <parent j2ee-type="JeusService" jeus-type="JNLPService"/>
+        <delegator j2ee-type="JeusService" jeus-type="JNLPService"/>
+
+        <asset state="running" path="/image/mbean/jnlp_resource.gif"/>
+        <asset state="xml" path="/image/mbean/jnlp_resource.gif"/>
+        <asset state="failed" path="/image/mbean/jnlp_resource.gif"/>
+
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="LogAnalyzerService"
+        key="NodeTree.JeusService.LogAnalyzerService"
+        page="JeusServiceLogAnalyzerService_Frameset"
+        popup-name="log_Analysis"
+        popup="width=1000,height=700,toolbars=no,resizable=yes,scrollbars=yes">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+
+        <asset state="running" path="/image/mbean/log_analyzer_running.gif"/>
+        <asset state="failed" path="/image/mbean/log_analyzer_failed.gif"/>
+        <function key="NodeTree.JeusService.LogAnalyzerService.open" page="JeusServiceLogAnalyzerService_Frameset" popup-name="log_Analysis" popup="width=1000,height=700,toolbars=no,resizable=yes,scrollbars=yes"/>
+    </node>
+    <!--
+    <node j2ee-type="JeusService" jeus-type="ClassFTPService" key="NodeTree.JeusService.ClassFTPService">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="EmailNotificationService" key="NodeTree.JeusService.EmailNotificationService">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+    </node>
+    <node j2ee-type="JeusService" jeus-type="ClusterService" key="NodeTree.JeusService.ClusterService">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+    </node>
+    <node j2ee-type="JeusService" jeus-type="ContainerManagerService" key="NodeTree.JeusService.ContainerManagerService">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+    </node>
+    <node j2ee-type="JeusService" jeus-type="ContainerMonitorService" key="NodeTree.JeusService.ContainerMonitorService">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+    </node>
+    <node j2ee-type="JeusService" jeus-type="ExternalResourceService" key="NodeTree.JeusService.ExternalResourceService">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+    </node>
+    <node j2ee-type="JeusService" jeus-type="JavaMailResourceService" key="NodeTree.JeusService.JavaMailResourceService">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+    </node>
+    <node j2ee-type="JeusService" jeus-type="JDBCResourceService" key="NodeTree.JeusService.JDBCResourceService">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+    </node>
+    <node j2ee-type="JeusService" jeus-type="JMXExportService" key="NodeTree.JeusService.JMXExportService">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+    </node>
+    <node j2ee-type="JeusService" jeus-type="JNDIResourceService" key="NodeTree.JeusService.JNDIResourceService">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="LogAnalyzerService" key="NodeTree.JeusService.LogAnalyzerService">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+    </node>
+
+    <node j2ee-type="JeusService" jeus-type="NodeControllerService" key="NodeTree.JeusService.NodeControllerService">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+    </node>
+    <node j2ee-type="JeusService" jeus-type="SchedulerService" key="NodeTree.JeusService.SchedulerService">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+    </node>
+    <node j2ee-type="JeusService" jeus-type="SecurityService" key="NodeTree.JeusService.SecurityService">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+    </node>
+    <node j2ee-type="JeusService" jeus-type="SessionServerService" key="NodeTree.JeusService.SessionServerService">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+    </node>
+    <node j2ee-type="JeusService" jeus-type="SystemEngineService" key="NodeTree.JeusService.SystemEngineService">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+    </node>
+    <node j2ee-type="JeusService" jeus-type="URLResourceService" key="NodeTree.JeusService.URLResourceService">
+        <parent j2ee-type="Folder" jeus-type="JeusService"/>
+    </node>
+    -->
+
+<!-- =========================================================================================================== -->
+<!-- Folder Permanent Module                                                                                     -->
+<!-- =========================================================================================================== -->
+<!--
+    <node j2ee-type="PermanentJ2EEApplication"
+        jaxb-path="application
+                 [instanceCondition =='jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$DeploymentTypeImpl',
+                  instanceValue == 'EAR',
+                  instanceSelected == {'jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$NameImpl',
+                                       'jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$PathImpl'} ]"
+        name-element="value"
+        page="PermanentModule_Overview" target="main">
+        <parent j2ee-type="Folder" jeus-type="PermanentModule"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+        //name-element="@jeus.deploy.JeusDeploymentManager@getNamesFromPath(#root)"
+        <asset state="xml" path="/image/mbean/ear_running.gif"/>
+
+        <function key="NodeTree.PermanentModule.conf" page="PermanentModule_Configuration" target="main"/>
+        <function key="NodeTree.PermanentModule.undeploy" page="PermanentModule_Undeploy" target="main"/>
+    </node> //[class == 'jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$DeploymentTypeImpl']
+
+    <node j2ee-type="PermanentEJBModule"
+        jaxb-path="application
+                 [instanceCondition =='jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$DeploymentTypeImpl',
+                  instanceValue == 'COMPONENT',
+                  instanceSelected == {'jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$NameImpl',
+                                       'jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$PathImpl'}
+                  instanceHas == 'jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$EjbComponentImpl']"
+        name-element="value"
+        page="PermanentModule_Overview" target="main">
+        <parent j2ee-type="Folder" jeus-type="PermanentModule"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="xml" path="/image/mbean/ejb_module_running.gif"/>
+
+        <function key="NodeTree.PermanentModule.conf" page="PermanentModule_Configuration" target="main"/>
+        <function key="NodeTree.PermanentModule.undeploy" page="PermanentModule_Undeploy" target="main"/>
+    </node>
+
+    <node j2ee-type="PermanentWebModule"
+        jaxb-path="application
+                 [instanceCondition =='jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$DeploymentTypeImpl',
+                  instanceValue == 'COMPONENT',
+                  instanceSelected == {'jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$NameImpl',
+                                       'jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$PathImpl'}
+                  instanceHas == 'jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$WebComponentImpl']"
+        name-element="value"
+        page="PermanentModule_Overview" target="main">
+        <parent j2ee-type="Folder" jeus-type="PermanentModule"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="xml" path="/image/mbean/web_module_running.gif"/>
+
+        <function key="NodeTree.PermanentModule.conf" page="PermanentModule_Configuration" target="main"/>
+        <function key="NodeTree.PermanentModule.undeploy" page="PermanentModule_Undeploy" target="main"/>
+    </node>
+
+    <node j2ee-type="PermanentResourceAdapterModule"
+        jaxb-path="application
+                 [instanceCondition =='jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$DeploymentTypeImpl',
+                  instanceValue == 'COMPONENT',
+                  instanceSelected == {'jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$NameImpl',
+                                       'jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$PathImpl'}
+                  instanceHas == 'jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$ConnectorComponentImpl']"
+        name-element="value"
+        page="PermanentModule_Overview" target="main">
+        <parent j2ee-type="Folder" jeus-type="PermanentModule"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="xml" path="/image/mbean/ra_module_running.gif"/>
+
+        <function key="NodeTree.PermanentModule.conf" page="PermanentModule_Configuration" target="main"/>
+        <function key="NodeTree.PermanentModule.undeploy" page="PermanentModule_Undeploy" target="main"/>
+    </node>
+
+    <node j2ee-type="PermanentAppClientModule"
+        jaxb-path="application
+                 [instanceCondition =='jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$DeploymentTypeImpl',
+                  instanceValue == 'COMPONENT',
+                  instanceSelected == {'jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$NameImpl',
+                                       'jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$PathImpl'}
+                  instanceHas == 'jeus.xml.binding.jeusDD.impl.ApplicationTypeImpl$ClientComponentImpl']"
+        name-element="value"
+        page="PermanentModule_Overview" target="main">
+        <parent j2ee-type="Folder" jeus-type="PermanentModule"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="xml" path="/image/mbean/ca_module_running.gif"/>
+
+        <function key="NodeTree.PermanentModule.conf" page="PermanentModule_Configuration" target="main"/>
+        <function key="NodeTree.PermanentModule.undeploy" page="PermanentModule_Undeploy" target="main"/>
+	</node>
+-->
+<!-- =========================================================================================================== -->
+<!-- JEUS Monitoring Service                                                                                     -->
+<!-- =========================================================================================================== -->
+    <node j2ee-type="Folder" jeus-type="ThreadMonitoringService"
+        key="NodeTree.JeusMonitoring.ThreadMonitoringService"
+		page="JeusMonitoringThreadMonitoringService_Overview" target="main"
+		static="true">
+        <parent j2ee-type="Folder" jeus-type="JeusMonitoring"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="opened" path="/image/mbean/thread_monitor.gif"/>
+        <asset state="closed" path="/image/mbean/thread_monitor.gif"/>
+        
+        <!-- 
+        <asset state="running" path="/image/mbean/thread_monitor.gif"/>
+        <asset state="xml" path="/image/mbean/thread_monitor.gif"/>
+        <asset state="failed" path="/image/mbean/thread_monitor.gif"/>
+         -->
+	</node>
+
+
+	<node j2ee-type="TransactionMonitoringService"
+        key="NodeTree.JeusMonitoring.TransactionMonitoringService"
+		page="JeusMonitoringTransactionMonitoringService_Overview" target="main"
+		static="true">
+        <parent j2ee-type="Folder" jeus-type="JeusMonitoring"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="running" path="/image/mbean/transaction_monitor.gif"/>
+        <asset state="xml" path="/image/mbean/transaction_monitor.gif"/>
+        <asset state="failed" path="/image/mbean/transaction_monitor.gif"/>
+	</node>
+
+    <node j2ee-type="MBeanMonitoringService"
+        key="NodeTree.JeusMonitoring.MBeanMonitoringService"
+		page="JeusMonitoringMBeanMonitoringService_Frameset"
+		popup-name="mbean_Monitor"
+        popup="width=1050,height=700,toolbars=no,resizable=yes,scrollbars=yes"
+		static="true">
+        <parent j2ee-type="Folder" jeus-type="JeusMonitoring"/>
+        <delegator j2ee-type="JeusService" jeus-type="JeusManager"/>
+
+        <asset state="running" path="/image/mbean/but_monitor.gif"/>
+        <asset state="xml" path="/image/mbean/but_monitor.gif"/>
+        <asset state="failed" path="/image/mbean/but_monitor.gif"/>
+	</node>
+     
+</node-specification>

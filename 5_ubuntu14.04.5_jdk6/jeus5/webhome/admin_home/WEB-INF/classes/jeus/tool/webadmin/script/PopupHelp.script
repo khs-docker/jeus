@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+
+<input-symbol key="contextPath" required="yes"/>
+
+<body>
+    <![CDATA[
+        function popupHelp(){
+                var helpURL = document.helpURL;
+                var src = null;
+
+                if(helpURL){
+                    src = "${contextPath}"  + "/help/index.htm" +"?"+"${contextPath}" + escape(helpURL);
+                }else{
+                    src = "${contextPath}"  + "/help/index.htm";
+                }
+
+                window.open(src , "help", "width=800,height=600,scrollbars=yes,toolbars=no,resizable=yes");
+	        }
+    ]]>
+</body>
+</script>

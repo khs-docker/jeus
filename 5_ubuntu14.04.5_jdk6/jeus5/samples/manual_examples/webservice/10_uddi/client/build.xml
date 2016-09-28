@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="UDDIClient" default="all" basedir=".">
+	<description>UDDIClient Samples</description>
+	<target name="help">
+		<echo message="Usage: ant [-Dsrc=&lt;source file>] [target]" />
+		<echo message="" />
+		<echo message="Target List:" />
+		<echo message="    all" />
+		<echo message="    clean" />
+		<echo message="    compile" />
+		<echo message="    run" />
+		<echo message="    FindTModelSample" />
+		<echo message="    SaveBusinessSample" />
+		<echo message="    FindBusinessSample" />
+		<echo message="    DeleteBusinessSample" />
+		<echo message="" />
+		<echo message="Ex:" />
+		<echo message="ant -Dsrc=FindBusinessSample compile" />
+		<echo message="ant -Dsrc=FindBusinessSample run" />
+		<echo message="ant -Dsrc=FindBusinessSample compile run" />
+		<echo message="ant FindBusinessSample" />
+	</target>
+
+	<property name="src.dir" location="${basedir}" />
+	<property name="build.dir" location="${basedir}" />
+	<property file="../../../../sample.properties"/>
+	<import file="${jeus.home}/samples/common.xml"/>
+
+
+	<path id="classpath">
+		<pathelement location="." />
+		<path refid="jeus.libraries" />
+	</path>
+
+	<target name="clean">
+		<delete>
+			<fileset dir="${basedir}" includes="**/*.class" />
+		</delete>
+	</target>
+
+	<available file="${src}.java" property="src.present" />
+
+	<target name="prepare" unless="src.present">
+		<echo message="Not Found '${src}.java'" />
+	</target>
+
+	<target name="compile" depends="prepare" if="src.present">
+		<javac srcdir="${src.dir}" destdir="${build.dir}" fork="true" debug="on">
+			<classpath refid="classpath" />
+			<include name="${src}.java" />
+		</javac>
+	</target>
+
+	<target name="compileAll">
+		<javac srcdir="${src.dir}" destdir="${build.dir}" fork="true" debug="on">
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+
+	<target name="run">
+		<java classname="${src}" fork="true">
+			<classpath refid="classpath" />
+		</java>
+	</target>
+   <!-- Move .ear file to the app_home directory -->
+   <target name="move.ear">
+   	<copy todir="${jeus.apphome}" file="${build.dir}/${app.name}.ear"/>
+   </target>
+    <target name="deploy">
+      <distribute
+	   deployURI="deployer:Jeus:example"
+	   user="${jeus.username}"
+	   password="${jeus.password}"
+	   targetNames="${jeus.target}"
+	   modulePath="${jeus.home}/webhome/uddi/jeusuddi_v2c.ear"
+	   fastdeploy="false" />
+      <modulecommand
+	   deployURI="deployer:Jeus:example"
+	   command="start"
+	   modulename="jeusuddi_v2c"
+	   moduletype="J2EEApplication"
+	   targetNames="${jeus.target}"
+	   user="${jeus.username}"
+	   password="${jeus.password}" />
+    </target>
+    <target name="undeploy">
+	    <modulecommand
+       deployURI="deployer:Jeus:example"
+       command="undeploy"
+       modulename="jeusuddi_v2c"
+       moduletype="J2EEApplication"
+       targetNames="${jeus.target}"
+       user="${jeus.username}"
+       password="${jeus.password}" />
+    </target>
+
+    	<target name="all" depends="clean, deploy, all-client, undeploy"/>
+
+	<target name="all-client">
+		<antcall target="FindTModelSample" />
+
+		<!-- Pre Find -->
+		<antcall target="FindBusinessSample" />
+		<antcall target="SaveBusinessSample" />
+		<!-- Post Find -->
+		<antcall target="FindBusinessSample" />
+		<antcall target="DeleteBusinessSample" />
+	</target>
+
+	<target name="FindTModelSample">
+		<property name="src" value="FindTModelSample" />
+		<antcall target="compile" />
+		<antcall target="run" />
+	</target>
+
+	<target name="SaveBusinessSample">
+		<property name="src" value="SaveBusinessSample" />
+		<antcall target="compile" />
+		<antcall target="run" />
+	</target>
+
+	<target name="FindBusinessSample">
+		<property name="src" value="FindBusinessSample" />
+		<antcall target="compile" />
+		<antcall target="run" />
+	</target>
+
+	<target name="DeleteBusinessSample">
+		<property name="src" value="DeleteBusinessSample" />
+		<antcall target="compile" />
+		<antcall target="run" />
+	</target>
+</project>

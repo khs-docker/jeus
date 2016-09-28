@@ -1,0 +1,820 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 28 로그 분석 서비스 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('28 로그 분석 서비스', 'wm-27.htm', 'wm-29.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left">28 로그 분석 서비스
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMHeading2"><A NAME="la_intro"></A>28.1 소개
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMNormalText">로그 분석 서비스는 JEUS 내에서 제공하는 Log service에 대한 분석 서비스를 제공한다.
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMNormalText">JEUS에서 제공하는 로그 서비스에는 Error Log Filtering Service와 Access Log Analysis Service, Log 
+Message StackTrace Service, Off-Line Log Analysis Service가 있다. </P>
+<A NAME="1004"></A>
+<P CLASS="JMNormalText">Error Log Filtering Service는 JEUS 내에 존재하는 모듈에서 남기는 ErrorLog Message를 추려서 살펴볼 수 있도록 
+해 준다.
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMNormalText">Access Log Analysis Service 는 AccessFormatter에 의해서 존재하는 데이터에 대해서 분석한 통계 정보를 살펴 볼 
+수 있다.
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMNormalText">Log Message StackTrace Service 는 Runtime시에 현 logger에 적용되고 있는 log message를 통계할 수 있다. 
+
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMNormalText">Off-Line Log Analaysis Service Off-Line 환경에서JEUS가 제공하는 Logger Type (ERROR_LOGGER, 
+ACCESS_LOGGER)을 준수하여 사용자가 등록한 Fomatter와 LogRecord로남겨진 로그 메시지에 대해서 각각의 Error Log Filtering 
+Service 와 Access Log Analysis Service 를제공한다.
+ </P>
+<A NAME="1008"></A>
+<P CLASS="JMHeading3">28.1.1 화면 구성
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMNormalText">LogAnalysis Explorer 화면은 크게
+ <SPAN CLASS="JMEmphasizeChar">Logger Tree View, Handler View(or Off-Line View), Status View, Rule View(or Report 
+View or StackTracke View)
+ </SPAN>4부분으로 나누어 진다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="504" SRC="images/image267.jpg" HEIGHT="353"></P>
+
+<P CLASS="JMCaption">그림 230LogAnalyzer Exploere Main Page
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMNormalText">&middot; Logger Tree View: 현재Runtime에 JEUS내에 적용되고 있는 Logger 목록을 보여주는 화면이다. 좌측 상단에 
+위치한 갱신버튼(
+ <IMG BORDER="0" WIDTH="15" SRC="images/image005.gif" HEIGHT="15">)을 클릭하면 노드 목록이 갱신된다.
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMNormalText">&middot; Handler View: Handler View는 Logger Tree View에서 특정 Logger 이름이 선택되면 해당 Logger에 
+적용되고 있는 File Handler에 대한 내용이 나타나는 화면이다. File Handler List별로 Analysis와 Stack Tracke 
+Service를할 수 있이 화면 역시 Cluster View와 마찬가지로 좌측 상단에 위치한 갱신 버튼을 누르면 전체 트리가 갱신된다. 트리에 사용된 
+아이콘들에 대한 설명은 
+ <A HREF="wm-32.htm#appendix_b">부록B 아이콘
+ </A>을참조하라.
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMNormalText">&middot; Rule View: Rule View는 Handler View에서 특정 File Handler 정보의 Analysis를 버튼을 클릭을 
+하면 나타나는 화면이다. 실제Analysis 작업을 이루어 지기 위한 분석 Rule을 정의할 수 있다.
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMNormalText">&middot; Status View: Status View는Analysis Task의 실제 분석이 종료되었거나 분석 진행 중 혹은 분석 실패와 
+같은 상태 정보를 리스트 형태로 나타나는 화면이다. 이 화면 역시 Logger Tree View와 마찬가지로 좌측 상단에 위치한 갱신 버튼을 누르면 
+분석 Task 리스트가 갱신된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="516" SRC="images/image268.jpg" HEIGHT="361"></P>
+
+<P CLASS="JMCaption">그림 231Off-Line Setting View
+ </P>
+<A NAME="1014"></A>
+<P CLASS="JMNormalText">&middot; Off-Line View: Off-Line View는Off-Line환경에서Logger Tree에서 최상의 노드(Logger)를 선택한 
+경우에는 Handler View에 사용자가 직접 File Handler 정보를 등록할 수 있는 화면이다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="504" SRC="images/image269.jpg" HEIGHT="353"></P>
+
+<P CLASS="JMCaption">그림 232Report View
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMNormalText">&middot; Report View: Status View에서 특정 Analysis Task를 선택한 경우 해당 분석 결과 내용을 나타내주는 화면이다.
+ 
+</P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="516" SRC="images/image270.jpg" HEIGHT="373"></P>
+
+<P CLASS="JMCaption">그림 233StackTrace View
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMNormalText">&middot; StackTrace View: Handler View에서 특정 File Handler의 Stack Trace 버튼을 클릭하면 해당 
+패턴에 일치하는 로그 파일의 메시지Stack Trace나타나는 화면이다.
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMHeading3">28.1.2 시작
+ </P>
+<A NAME="1018"></A>
+<P CLASS="JMNormalText"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="#la">로그 분석 서비스
+ </A>&gt; 시작
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMNormalText">JEUS 5 에서는 Jeus Service type에 Log 분석을 할 수 있는 Mbean 이 존재한다. JEUS Web Administration 
+Tool에서 JEUS Service 에 등록된 LogAnalyzer Service를 이용해서 JEUS Log분석을 시작할 수 있다. </P>
+<A NAME="1020"></A>
+<P CLASS="JMNormalText">LogAnalyzer에서 Error Log Filtering Service, Access Log Analysis Service, Log Message 
+StackTrace Service를 제공한다. 각각이 이용 방법에 차이가 있으므로 이것에 대해서는 해당 단계를 설명할 때 자세히 알아 볼 것이다.
+ 
+</P>
+<A NAME="1021"></A>
+<P CLASS="JMNormalText">&middot; 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">JEUS Services
+ </SPAN>폴더를 클릭하면 JEUS Service type으로 등록된 LogAnalyzer Mbeam 노드가 보인다. 
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="248" SRC="images/image271.jpg" HEIGHT="318"></P>
+
+<P CLASS="JMCaption">그림 234LogAnalyzer 선택
+ </P>
+<A NAME="1022"></A>
+<P CLASS="JMNormalText">&middot; LogAnalyzer 노드 아이콘을 클릭하면 이래와 같이LogAnalyzer windown 팝업창이 뜬다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="504" SRC="images/image272.jpg" HEIGHT="364"></P>
+
+<P CLASS="JMCaption">그림 235 LogAnalyzer Main Window
+ </P>
+<A NAME="1023"></A>
+<P CLASS="JMHeading3">28.1.3 종료
+ </P>
+<A NAME="1024"></A>
+<P CLASS="JMNormalText">LogAnalysis Explorer를 close한다.
+ </P>
+<A NAME="1025"></A>
+<P CLASS="JMHeading2">28.2 로그분석
+ </P>
+<A NAME="1026"></A>
+<P CLASS="JMHeading3">28.2.1 온라인 에러 로그분석
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="#la">로그 분석 서비스
+ </A>&gt;Logger &gt; ERROR_LOGGER TYPE의 Logger Name
+ </P>
+<A NAME="1027"></A>
+<P CLASS="JMNormalText">JEUS LogAnalyzer에서 JEUS 에서 내에서 출력하는 Error Log Message를 Filtering해서 보여주는 서비스를 제공한다. 
+
+ </P>
+<A NAME="1028"></A>
+<P CLASS="JMNormalText">다음은 간단한 에러 로그에 대한 Filtering Service를 단계별로 알아보도록 하자. 
+ </P>
+<A NAME="1029"></A>
+<P CLASS="JMNormalText">&middot; Logger Tree에서 ERROR_LOGGERtype의 logger name을 선택한다. 
+ <SPAN CLASS="JMGUIWidget">Handler Explorer
+ </SPAN>에서 선택된 logger에 적용되고 있는 File Handler 리스트 정보를 보여준다. 현 Handler List가적용되고 있는 logger에 
+대한 정보와 해당 logger에 등록된 file handler 의 이름과 로그 파일 패턴, 로그 레벨 정보, Action 버튼들이 보여준다.
+ 
+</P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMGUIWidget"><IMG BORDER="0" WIDTH="492" SRC="images/image273.jpg" HEIGHT="383"></SPAN></P>
+
+<P CLASS="JMCaption">그림 236Error Log Filter Service - 1단계 Logger Name 선택
+ </P>
+<A NAME="1030"></A>
+<P CLASS="JMNormalText">&middot; 분석하고자 하는 File Handler의 
+ <SPAN CLASS="JMGUIWidget">Analysis 
+ </SPAN>버튼을 선택한다. 
+ <SPAN CLASS="JMGUIWidget">Rule Explorer
+ </SPAN>에선택한 File Handler에 적용되고 있는 Log File Pattern에 대한 일반적인 선택 사항을 입력한다.
+ </P>
+<A NAME="1031"></A>
+<P CLASS="JMNormalText">- Task Name: 로그 분석시 unique한 단위 이름.
+ </P>
+<A NAME="1032"></A>
+<P CLASS="JMNormalText">- Start Date: 로그 파일의 분석 시작 날짜.
+ </P>
+<A NAME="1033"></A>
+<P CLASS="JMNormalText">- End Date: 로그 파일의 분석 종료 날짜.
+ </P>
+<A NAME="1034"></A>
+<P CLASS="JMNormalText">- Pattern Identifiers: 해당 File Handler에 적용되고 있는 메시지 Formatter에 대한 Regular Expression을 
+선택적으로 정의 할 수 있다. 로그 메시지 Format에서Pattern Identifiers 에서 정의된 Regular Expression에매칭되는 
+로그 메시지만 Filtering해서 보여준다. ERROR_LOGGER Type Pattern은 28.2.6의 Log Format Pattern를 
+참조한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="504" SRC="images/image274.jpg" HEIGHT="383"></P>
+
+<P CLASS="JMCaption">그림 237. Error Log Fileter Service - 2 단계Analysis Rule 정의
+ </P>
+<A NAME="1035"></A>
+<P CLASS="JMNormalText">&middot; 하단의 버퍼 사용 유무와 버퍼 크기를 설정하여 분석시에 적용할 수 있다.
+ </P>
+<A NAME="1036"></A>
+<P CLASS="JMNormalText">&middot; <SPAN CLASS="JMGUIWidget">Rule Explorer
+ </SPAN>항목들을 적절히 설정한 후에
+ <SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다. 
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="504" SRC="images/image275.jpg" HEIGHT="383"></P>
+
+<P CLASS="JMCaption">그림 238Error Log Filter Service - 3단계 Analysis Successfully Started
+ </P>
+<A NAME="1037"></A>
+<P CLASS="JMHeading3">28.2.2 온라인 엑세스 로그 분석
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="#la">로그 분석 서비스
+ </A>&gt;Logger &gt; ACCESS_LOGGER TYPE의 Logger Name
+ </P>
+<A NAME="1038"></A>
+<P CLASS="JMNormalText">JEUS LogAnalyzer에서WebContainer에서 내에서 출력하는 Access Log Message에 대한 Filtering 서비스와 대략적인 
+통계 정보 서비스를 제공한다. 다음은 간단한 Access 로그에 대한 서비스를 단계별로 알아보도록 하자. 
+ </P>
+<A NAME="1039"></A>
+<P CLASS="JMNormalText">&middot; Logger Tree에서 ACCESS_LOGGERtype의 logger name을 선택한다. 
+ <SPAN CLASS="JMGUIWidget">Handler Explorer
+ </SPAN>에서 28.2.1 ERROR_LOGGER type 분석시와 동일한 정보를 보여준다.
+ </P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMGUIWidget"><IMG BORDER="0" WIDTH="504" SRC="images/image276.jpg" HEIGHT="360"></SPAN></P>
+
+<P CLASS="JMCaption">그림 239Access Log Analysis Service - 1단계Logger Name 선택
+ </P>
+<A NAME="1040"></A>
+<P CLASS="JMNormalText">&middot; 분석하고자 하는 File Handler의 
+ <SPAN CLASS="JMGUIWidget">Analysis 
+ </SPAN>버튼을 선택한다. 
+ <SPAN CLASS="JMGUIWidget">Rule Explorer
+ </SPAN>에선택한 File Handler에 적용되고 있는 Log File Pattern에 대한 일반적인 선택 사항을 입력한다.
+ </P>
+<A NAME="1041"></A>
+<P CLASS="JMNormalText">- Task Name: 로그 분석시 unique한 단위 이름.
+ </P>
+<A NAME="1042"></A>
+<P CLASS="JMNormalText">- Start Date: 로그 파일의 분석 시작 날짜.
+ </P>
+<A NAME="1043"></A>
+<P CLASS="JMNormalText">- End Date: 로그 파일의 분석 종료 날짜.
+ </P>
+<A NAME="1044"></A>
+<P CLASS="JMNormalText">- Pattern Identifiers: 해당 File Handler에 적용되고 있는 메시지 Formatter에 대한 Regular Expression을 
+선택적으로 정의 할 수 있다. 로그 메시지 Format에서Pattern Identifiers 에서 정의된 Regular Expression에매칭되는 
+로그 메시지만 Filtering해서 보여준다. ACCESS_LOGGER Type Pattern 설명은 28.2.6을참조한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="515" SRC="images/image277.jpg" HEIGHT="275"></P>
+
+<P CLASS="JMCaption">그림 240Access Log Analysis Service - 2단계 Analysis Rule 정의
+ </P>
+<A NAME="1045"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMGUIWidget">&middot; </SPAN><SPAN CLASS="JMGUIWidget">위의
+ </SPAN><SPAN CLASS="JMGUIWidget">Statistic Class 
+ </SPAN><SPAN CLASS="JMGUIWidget">항목에
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">나타나는
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">클래스
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">명은
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">실제
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">해당
+ </SPAN><SPAN CLASS="JMGUIWidget">Pattern
+ </SPAN><SPAN CLASS="JMGUIWidget">에
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">대한
+ </SPAN><SPAN CLASS="JMGUIWidget">hit
+ </SPAN><SPAN CLASS="JMGUIWidget">수와
+ </SPAN><SPAN CLASS="JMGUIWidget">hit Rate
+ </SPAN><SPAN CLASS="JMGUIWidget">값에
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">대한
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">기본
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">통계치를
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">구현한
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">클래스
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">명이다
+ </SPAN><SPAN CLASS="JMGUIWidget">. Default
+ </SPAN><SPAN CLASS="JMGUIWidget">값은
+ </SPAN><SPAN CLASS="JMGUIWidget">-Dloganalyzer.properties=webaccess.properties
+ </SPAN><SPAN CLASS="JMGUIWidget">경로
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">설정된
+ </SPAN><SPAN CLASS="JMGUIWidget">webaccess.properties
+ </SPAN><SPAN CLASS="JMGUIWidget">파일에서
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">정의된
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">값이다
+ </SPAN><SPAN CLASS="JMGUIWidget">.
+ </SPAN></P>
+
+<P CLASS="JMCaption">표4 webaccess.properties sample
+ </P>
+<A NAME="1046"></A>
+<P CLASS="JMNormalText">
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" CLASS="normal" ALIGN="left">
+	<TR>
+		<TD CLASS="thead"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal"></TD>
+		<TD CLASS="normal">
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" CLASS="normal">
+	<TR>
+		<TD CLASS="thead">remoteIP=jeus.loganalyzer.pattern.RemoteIP localIP=jeus.loganalyzer.pattern.LocalIP 
+contentLength=jeus.loganalyzer.pattern.ContentLength protocol=jeus.loganalyzer.pattern.Protocol 
+remoteUser=jeus.loganalyzer.pattern.RemoteUser serverName=jeus.loganalyzer.pattern.ServerName 
+serverPort=jeus.loganalyzer.pattern.ServerPort method=jeus.loganalyzer.pattern.Method 
+status=jeus.loganalyzer.pattern.Status queryString=jeus.loganalyzer.pattern.QueryString 
+requestURL=jeus.loganalyzer.pattern.RequestURL sessionId=jeus.loganalyzer.pattern.SessionId 
+processingTime=jeus.loganalyzer.pattern.ProcessingTime millis=jeus.loganalyzer.pattern.millis 
+
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+</TD>
+	</TR>
+</DIV>
+</TABLE>
+<SPAN CLASS="JMGUIWidget"></SPAN></P>
+<A NAME="1047"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMGUIWidget"></SPAN></P>
+<A NAME="1048"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMGUIWidget"></SPAN></P>
+<A NAME="1049"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMGUIWidget"></SPAN></P>
+<A NAME="1050"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMGUIWidget"></SPAN></P>
+<A NAME="1051"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMGUIWidget"></SPAN></P>
+<A NAME="1052"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMGUIWidget"></SPAN></P>
+<A NAME="1053"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMGUIWidget"></SPAN></P>
+<A NAME="1054"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMGUIWidget"></SPAN></P>
+<BR><A NAME="1055"></A>
+<P CLASS="JMNormalText">&middot; <SPAN CLASS="JMGUIWidget">Rule Explorer
+ </SPAN>항목들을 적절히 설정한다. Access Log Pattern ID중에 headerValues, cookieValue, requestAttributes, 
+sessionAttributes 속성은 하나 이상을 로그 포맷으로 정의가 가능하기 때문에 Expression과 Statisitic Class 명을 
+순차적으로 아래와 같은 형태로 설정 해야 한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="515" SRC="images/image278.jpg" HEIGHT="84"></P>
+
+<P CLASS="JMCaption">그림 241 로그 포맷 <SPAN CLASS="JMGUIWidget">%{Content-Type}i %{J
+ </SPAN><SPAN CLASS="JMGUIWidget">세션
+ </SPAN><SPAN CLASS="JMGUIWidget">ID}c %{test1}r %{test2}r %{sess1}s %{sess2}s 
+ </SPAN>regular expression정의
+ <SPAN CLASS="JMGUIWidget"></SPAN></P>
+<A NAME="1056"></A>
+<P CLASS="JMNormalText">&middot; <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다. 
+ </P>
+<A NAME="1057"></A>
+<P CLASS="JMNormalText">&middot; 이 후 결과 내용을 확인 하는 과정은 28.2.1에설명한 것과 동일하므로 생략한다.
+ </P>
+<A NAME="1058"></A>
+<P CLASS="JMHeading3">28.2.3 오프라인 에러-엑세스 로그 분석
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="#la">로그 분석 서비스
+ </A>&gt; Logger
+ </P>
+<A NAME="1059"></A>
+<P CLASS="JMNormalText">Off-Line환경에서 User가 정의한 로그 포맷에 관하여 Log Analysis Service를제공한다.
+ </P>
+<A NAME="1060"></A>
+<P CLASS="JMNormalText">&middot; Logger Tree Explorer 에서 최상의 root인 Logger Node를클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="504" SRC="images/image279.jpg" HEIGHT="360"></P>
+
+<P CLASS="JMCaption">그림 242 Logger node선택
+ </P>
+<A NAME="1061"></A>
+<P CLASS="JMNormalText">&middot; Off-Line Settings Explorer에 다음의 항목을 설정한 다음 확인 버튼을 누른다.
+ </P>
+<A NAME="1062"></A>
+<P CLASS="JMNormalText">- File Pattern: 사용자가 분석하고자 하는 File Name Pattern을 정의한다.
+ </P>
+<A NAME="1063"></A>
+<P CLASS="JMNormalText">- Formatter Class Name: 사용자가 등록한 패키지 명을 포함한Formatter 클래스이름을 정의한다. 정의된Formatter 클래스는 
+java.util.logging.Formatter를상속하고, jeus.util.logging.JeusFormatter interface를 implements해야 
+한다.
+ </P>
+<A NAME="1064"></A>
+<P CLASS="JMNormalText">- Log Record Class Name: JEUS 엔진에 대한 에러 로그 분석을 하는 경우에는 jeus.util.logging.ErrorLogRecord 
+클래스를 상속하고 WebContainer의 엑세스 로그 분석을 하고자 하는 경우에는 jeus.util.logging.JeusAccessRecord를상속한 
+패키지 명을 포함한 클래스 이름을 정의한다.
+ </P>
+<A NAME="1065"></A>
+<P CLASS="JMNormalText">&middot; 이 후 과정은 Log Record 클래스가 jeus.util.logging.ErrorLogRecord클래스를 상속하는 경우에는 28.2.1, 
+jeus.util.logging.JeusAccessRecord 클래스를 상속하는 경우에는 28.2.2과동일하므로 생략한다.
+ </P>
+<A NAME="1066"></A>
+<P CLASS="JMHeading3">28.2.4 에러 로그 분석 결과 보기
+ </P>
+<A NAME="1067"></A>
+<P CLASS="JMNormalText">&middot; <SPAN CLASS="JMGUIWidget">Analysis Status Explore
+ </SPAN>에서 Analysis status가 분석 종료인 task name list 중에 결과를 확인하고 싶은 에러 로그를 분석한 task name 명을 
+클릭한다. 
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="516" SRC="images/image280.jpg" HEIGHT="357"></P>
+
+<P CLASS="JMCaption">그림 243Analysis Status Task Name List 선택
+ </P>
+<A NAME="1068"></A>
+<P CLASS="JMNormalText">&middot; <SPAN CLASS="JMGUIWidget">Analysis Result Explore
+ </SPAN>에서 분석 결과를 확인하고 싶은 Report항목을 선택한다.
+ </P>
+<A NAME="1069"></A>
+<P CLASS="JMNormalText">&middot; Page Size: 한 페이지에 display 할 결과 메시지 rows를 정한다
+ </P>
+<A NAME="1070"></A>
+<P CLASS="JMNormalText">.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="504" SRC="images/image281.jpg" HEIGHT="349"></P>
+
+<P CLASS="JMCaption">그림 244Report Display
+ </P>
+<A NAME="1071"></A>
+<P CLASS="JMHeading3">28.2.5 엑세스 로그 분석 결과 보기
+ </P>
+<A NAME="1072"></A>
+<P CLASS="JMNormalText">&middot; <SPAN CLASS="JMGUIWidget">Status Explore
+ </SPAN>에서 Analysis status가 분석 종료인 task name list 중에 결과를 확인하고 싶은 Access Log 파일을 분석한task name 
+명을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">Analysis Result Explore
+ </SPAN>에서 분석 결과를 확인하고 싶은 Report항목을 선택한다
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="516" SRC="images/image282.jpg" HEIGHT="357"></P>
+
+<P CLASS="JMCaption">그림 245 Result Report List 선택
+ </P>
+<A NAME="1073"></A>
+<P CLASS="JMNormalText">&middot; <SPAN CLASS="JMGUIWidget">Analysis Result Explore
+ </SPAN>에서 분석 결과를 확인하고 싶은 Report항목을 선택한다.
+ </P>
+<A NAME="1074"></A>
+<P CLASS="JMNormalText">&middot; <SPAN CLASS="JMGUIWidget">Access Log 
+ </SPAN><SPAN CLASS="JMGUIWidget">파일을
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">분석한
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">경우
+ </SPAN><SPAN CLASS="JMGUIWidget">Error Log
+ </SPAN><SPAN CLASS="JMGUIWidget">파일
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">분석시에
+ </SPAN><SPAN CLASS="JMGUIWidget">Filtering 
+ </SPAN><SPAN CLASS="JMGUIWidget">분석
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">결과
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">외의
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">기본적인
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">통계
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">정보를
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">일부
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">제공해
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">준다
+ </SPAN><SPAN CLASS="JMGUIWidget">.
+ </SPAN></P>
+<A NAME="1075"></A>
+<P CLASS="JMNormalText">- CLIENT_통계: client ip별로 분석된 로그파일의 히트수, 히트률, 요청수, 에러수, 페이지 성공률, 평균 수행시간 통계치 정보를 알려준다.
+ 
+</P>
+<A NAME="1076"></A>
+<P CLASS="JMNormalText">- REQUEST_통계: request url별로 분석된 로그파일의 히트수, 히트률, 요청수, 에러수, 페이지 성공률, 평균 수행시간 통계치 정보를 
+알려준다.
+ </P>
+<A NAME="1077"></A>
+<P CLASS="JMNormalText">- YEAR_통계: 년도별로 분석된 로그파일의 히트수, 히트률, 요청수, 에러수, 페이지 성공률, 평균 수행시간 통계치 정보를 알려준다.
+ </P>
+<A NAME="1078"></A>
+<P CLASS="JMNormalText">- MONTH_통계: 월별로 분석된 로그파일의 히트수, 히트률, 요청수, 에러수, 페이지 성공률, 평균 수행시간 통계치 정보를 알려준다.
+ </P>
+<A NAME="1079"></A>
+<P CLASS="JMNormalText">- DAY_통계: 날짜별로 분석된 로그파일의 히트수, 히트률, 요청수, 에러수, 페이지 성공률, 평균 수행시간 통계치 정보를 알려준다.
+ </P>
+<A NAME="1080"></A>
+<P CLASS="JMNormalText">- WEEK_통계: 요일별로 분석된 로그파일의 히트수, 히트률, 요청수, 에러수, 페이지 성공률, 평균 수행시간 통계치 정보를 알려준다.
+ </P>
+<A NAME="1081"></A>
+<P CLASS="JMNormalText">- TIME_통계: 시간별로 분석된 로그파일의 히트수, 히트률, 요청수, 에러수, 페이지 성공률, 평균 수행시간 통계치 정보를 알려준다.
+ </P>
+<A NAME="1082"></A>
+<P CLASS="JMNormalText">- PATTERN_ID_ATTRIBUTES: JEUS WebContainer에서 제공하는 혹은 사용자가 등록한Pattern ID Attribute에대한 
+hit수와 hit rate정보를 Pattern ID별로 보여준다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="516" SRC="images/image283.jpg" HEIGHT="357"></P>
+
+<P CLASS="JMCaption">그림 246Report Display
+ </P>
+<A NAME="1083"></A>
+<P CLASS="JMHeading3">28.2.6 Log Format Pattern
+ </P>
+<A NAME="1084"></A>
+<P CLASS="JMNormalText">&middot; <SPAN CLASS="JMGUIWidget">LogAnalyzer
+ </SPAN>에서 로그 메시지 분석시에 해당 메시지에 대한 Filtering 기능을 하기위해서 각각의 적용되고 있는 Formatter에 어떤 attribute 
+요소가 있는지 파악해야 한다. 28.2.1, 28.2.2에서 살펴보았듯이 Rule Explorer에서 정의할 수 있는 Pattern Identifier 
+는 다음의 크게 두 부분으로 나뉜다.
+ </P>
+<A NAME="1085"></A>
+<P CLASS="JMNormalText">- Error Log Format: JEUS 내에서 출력하는 에러 로그 메시지 Pattern.ID Attribute.
+ </P>
+
+<P CLASS="JMCaption">표5 Error Log Format의 Pattern Attribute
+ </P>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" CLASS="normal">
+	<TR>
+		<TD CLASS="thead">Pattern Attribute 
+ </TD>
+		<TD CLASS="thead">설명 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">level 
+ </TD>
+		<TD CLASS="normal">handler의 level. level의 값으로는 logging API의 level인 SEVERE, WARNING, INFO, CONFIG, FINE, 
+FINER, FINEST가 올수 있다. 기본 설정은 INFO이다 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">message 
+ </TD>
+		<TD CLASS="normal">JEUS내에서 정의된 로그 메시지 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">threadID 
+ </TD>
+		<TD CLASS="normal">해당 메시지를 출력하는 고유threadID 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">appName 
+ </TD>
+		<TD CLASS="normal">WebContainer에서 출력하는 메시지인 경우 해당 ContextGroup과 context별 구분을 하기 위한 이름 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">jvmId 
+ </TD>
+		<TD CLASS="normal">로그를 출력하는 jvm이 엔진 컨테이너경우에는 container name, manager인 경우에는 manager name을 의미 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">messageNumber 
+ </TD>
+		<TD CLASS="normal">로그 메시지의 고유 number 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">sourceModuleName 
+ </TD>
+		<TD CLASS="normal">해당 로그 메시지를 출력한 JEUS 내의 모듈명 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+<A NAME="1086"></A>
+<P CLASS="JMNormalText">- Access Log Format: WebContainer의 Access Log 메시지 Pattern ID Attribute..
+ </P>
+
+<P CLASS="JMCaption">표6 Access Log Format의 Pattern Attribute
+ </P>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" CLASS="normal">
+	<TR>
+		<TD CLASS="thead">Pattern Attribute 
+ </TD>
+		<TD CLASS="thead">Pattern ID 
+ </TD>
+		<TD CLASS="thead">설명 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">remoteIP 
+ </TD>
+		<TD CLASS="normal">%a 
+ </TD>
+		<TD CLASS="normal">Remote IP address 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">localIP 
+ </TD>
+		<TD CLASS="normal">%A 
+ </TD>
+		<TD CLASS="normal">로컬 IP address 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">contentLength 
+ </TD>
+		<TD CLASS="normal">%b 
+ </TD>
+		<TD CLASS="normal">Bytes sent, excluding HTTP headers, or '-' if zero 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">protocol 
+ </TD>
+		<TD CLASS="normal">%H 
+ </TD>
+		<TD CLASS="normal">Request protocol 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">remoteUser 
+ </TD>
+		<TD CLASS="normal">%l 
+ </TD>
+		<TD CLASS="normal">Remote logical username from identd (always returns '-') 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">method 
+ </TD>
+		<TD CLASS="normal">%m 
+ </TD>
+		<TD CLASS="normal">Request method (GET, POST, etc.) 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">serverPort 
+ </TD>
+		<TD CLASS="normal">%p 
+ </TD>
+		<TD CLASS="normal">local port on which this request was received, or '-' if none and it doesn't follows 
+%U 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">queryString 
+ </TD>
+		<TD CLASS="normal">%q 
+ </TD>
+		<TD CLASS="normal">Query string (prepended with a '?' if it exists) 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">status 
+ </TD>
+		<TD CLASS="normal">%s 
+ </TD>
+		<TD CLASS="normal">HTTP status code of the response 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">sessionId 
+ </TD>
+		<TD CLASS="normal">%S 
+ </TD>
+		<TD CLASS="normal">User Session ID 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">millis 
+ </TD>
+		<TD CLASS="normal">%t 
+ </TD>
+		<TD CLASS="normal">Date and time, in Common Log Format 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">remoteUser 
+ </TD>
+		<TD CLASS="normal">%u 
+ </TD>
+		<TD CLASS="normal">Remote user that was authenticated (if any), else '-' 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">requestURL 
+ </TD>
+		<TD CLASS="normal">%U 
+ </TD>
+		<TD CLASS="normal">Requested URL path 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">serverName 
+ </TD>
+		<TD CLASS="normal">%v 
+ </TD>
+		<TD CLASS="normal">Local server name 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">processionTime 
+ </TD>
+		<TD CLASS="normal">%D 
+ </TD>
+		<TD CLASS="normal">Time taken to process the request, in millis 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">headerValues 
+ </TD>
+		<TD CLASS="normal">%{xxx}i 
+ </TD>
+		<TD CLASS="normal">for incoming headers 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">cookieValues 
+ </TD>
+		<TD CLASS="normal">%{xxx}c 
+ </TD>
+		<TD CLASS="normal">for a specific cookie 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">requestAttributes 
+ </TD>
+		<TD CLASS="normal">%{xxx}r 
+ </TD>
+		<TD CLASS="normal">xxx is an attribute in the Servlet Request 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">sessionAttributes 
+ </TD>
+		<TD CLASS="normal">%{xxx}s 
+ </TD>
+		<TD CLASS="normal">xxx is an attribute in the HttpSession 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">dateFormat 
+ </TD>
+		<TD CLASS="normal">%{xxx}t 
+ </TD>
+		<TD CLASS="normal">xxx is JDK standard DateFormat String which replaces default log date and time. 
+ 
+</TD>
+	</TR>
+</DIV>
+</TABLE>
+<A NAME="1087"></A>
+<P CLASS="JMHeading2">28.3 Log Message Monitoring Service
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="#la">로그 분석 서비스
+ </A>&gt; Logger &gt; Logger Name 선택 &gt; Handler List Table
+ </P>
+<A NAME="1088"></A>
+<P CLASS="JMNormalText">Runtime시에 JEUS 엔진에서 출력되고 있는 Log Message들을 브라우저를 통해서 실시간으로 통계 할 수 있는 서비스를 제공한다. 
+ 
+</P>
+<A NAME="1089"></A>
+<P CLASS="JMNormalText">&middot; <SPAN CLASS="JMGUIWidget">Logger Tree Explorer 
+ </SPAN>에서 로그 메시지를 RunTime시에 확인하고자 하는 Logger Name을 선택한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="506" SRC="images/image284.jpg" HEIGHT="90"></P>
+
+<P CLASS="JMCaption">그림 247StackTrace Service &ndash; 1단계 Logger Name 선택
+ </P>
+<A NAME="1090"></A>
+<P CLASS="JMNormalText">&middot; 해당 Logger에 등록된 File Handler List 중에서 실시간으로 로그 메시지를 통계하고자 하는 File Handler의 
+Stack Trace 버튼을 클릭한다. 해당 File Handler에 적용되고 있는 Log File Pattern에 매칭되어 현재 로그 메시지가 
+출력되고 있는 로그 파일의 메시지가 현 시점을 시작으로 주기적으로 메시지가 Stack Trace 
+ <SPAN CLASS="JMGUIWidget">Explorer 
+ </SPAN><SPAN CLASS="JMGUIWidget">에 
+ </SPAN>업데이트가 된다.
+ </P>
+<A NAME="1091"></A>
+<P CLASS="JMNormalText">- Refresh: 주기적으로 Stack Trace Explorer에로그 메시지가 업데이트 되는 주기(초단위).
+ </P>
+<A NAME="1092"></A>
+<P CLASS="JMNormalText">- Buffer Size: Refresh 주기별로 로그 메시지를 업데이트 할 때 적용되는 Buffer Size값.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="516" SRC="images/image285.jpg" HEIGHT="357"></P>
+
+<P CLASS="JMCaption">그림 248StackTrace Service - 2단계 FileHandler의 StackTrace 버튼 선택
+ </P>
+<A NAME="1093"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMGUIWidget"></SPAN></P>
+<!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

@@ -1,0 +1,252 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="policiesForm"/>
+        <span jwcid="policiesTab">
+            <span jwcid="memory">
+                <form jwcid="memoryForm">
+                    <span jwcid="policies">
+                        <input jwcid="policiesField" size="5" style="width:100%"/>
+                    </span>
+                    <div class="form_button_layer">
+                        <input jwcid="modify" class="form_button" style="width:100px;"/>
+                        <input jwcid="remove" class="form_button" style="width:100px;"/>
+                        <input jwcid="create" class="form_button" style="width:100px;"/>
+                    </div>
+                </form>
+
+                <span jwcid="condModify">
+                    <span jwcid="policy_tab"/>
+                </span>
+
+                <span jwcid="condCreate">
+                    <form jwcid="createForm">
+                        <span jwcid="context_id">
+                            <input jwcid="context_idField"/>
+                        </span>
+                    </form>
+                </span>
+
+                <span jwcid="role">
+                    <form jwcid="roleForm">
+                        <input jwcid="hidden_policy_id"/>
+                        <span jwcid="roles">
+                            <input jwcid="rolesField" size="5" style="width:100%"/>
+                        </span>
+                        <div class="form_button_layer">
+                            <input jwcid="modify_role" class="form_button" style="width:100px;"/>
+                            <input jwcid="remove_role" class="form_button" style="width:100px;"/>&nbsp;
+                            <input jwcid="create_role" class="form_button" style="width:100px;"/>
+                         </div>
+                    </form>
+                    <span jwcid="condModifyRole">
+                        <form jwcid="modify_roleForm">
+                            <input jwcid="hidden_policy_id3"/>
+                            <input jwcid="hidden_role"/>
+                            <span jwcid="role_name"/>
+                            <span jwcid="role_classname"/>
+                            <span jwcid="role_actions"/>
+                            <span jwcid="role_principals">
+                                <input jwcid="role_principalsField"/>
+                            </span>
+                            <span jwcid="role_unchecked">
+                                <input jwcid="role_uncheckedField"/>
+                            </span>
+                            <span jwcid="role_excluded">
+                                <input jwcid="role_excludedField"/>
+                            </span>
+                        </form>
+                    </span>
+                    <span jwcid="condCreateRole">
+                        <form jwcid="create_roleForm">
+                            <input jwcid="hidden_policy_id5"/>
+                            <span jwcid="create_role_name">
+                                <input jwcid="create_role_nameField" style="width:98%"/>
+                            </span>
+                            <span jwcid="create_role_classname">
+                                <input jwcid="create_role_classnameField" style="width:98%"/>
+                            </span>
+                            <span jwcid="create_role_actions">
+                                <input jwcid="create_role_actionsField" style="width:98%"/>
+                            </span>
+                            <span jwcid="create_role_principals">
+                                <input jwcid="create_role_principalsField"/>
+                            </span>
+                            <span jwcid="create_role_unchecked">
+                                <input jwcid="create_role_uncheckedField"/>
+                            </span>
+                            <span jwcid="create_role_excluded">
+                                <input jwcid="create_role_excludedField"/>
+                            </span>
+                        </form>
+                    </span>
+                </span>
+
+                <span jwcid="resource">
+                    <form jwcid="resourceForm">
+                        <input jwcid="hidden_policy_id2"/>
+                        <span jwcid="resources">
+                            <input jwcid="resourcesField" size="5" style="width:100%"/>
+                        </span>
+                        <div class="form_button_layer">
+                            <input jwcid="modify_resource" class="form_button" style="width:100px;"/>
+                            <input jwcid="remove_resource" class="form_button" style="width:100px;"/>&nbsp;
+                            <input jwcid="create_resource" class="form_button" style="width:100px;"/>
+                        </div>
+                    </form>
+                    <span jwcid="condModifyResource">
+                        <form jwcid="modify_resourceForm">
+                            <input jwcid="hidden_policy_id4"/>
+                            <input jwcid="hidden_resource"/>
+                            <span jwcid="resource_name"/>
+                            <span jwcid="resource_classname"/>
+                            <span jwcid="resource_actions"/>
+                            <span jwcid="resource_roles">
+                                <input jwcid="resource_rolesField"/>
+                            </span>
+                            <span jwcid="resource_unchecked">
+                                <input jwcid="resource_uncheckedField"/>
+                            </span>
+                            <span jwcid="resource_excluded">
+                                <input jwcid="resource_excludedField"/>
+                            </span>
+                        </form>
+                    </span>
+                    <span jwcid="condCreateResource">
+                        <form jwcid="create_resourceForm">
+                            <input jwcid="hidden_policy_id6"/>
+                            <span jwcid="create_resource_name">
+                                <input jwcid="create_resource_nameField" style="width:98%"/>
+                            </span>
+                            <span jwcid="create_resource_classname">
+                                <input jwcid="create_resource_classnameField" style="width:98%"/>
+                            </span>
+                            <span jwcid="create_resource_actions">
+                                <input jwcid="create_resource_actionsField" style="width:98%"/>
+                            </span>
+                            <span jwcid="create_resource_roles">
+                                <input jwcid="create_resource_rolesField"/>
+                            </span>
+                            <span jwcid="create_resource_unchecked">
+                                <input jwcid="create_resource_uncheckedField"/>
+                            </span>
+                            <span jwcid="create_resource_excluded">
+                                <input jwcid="create_resource_excludedField"/>
+                            </span>
+                        </form>
+                    </span>
+                </span>
+
+                <span jwcid="nullBlock@Block"/>
+            </span>
+
+            <span jwcid="repository">
+                <form jwcid="repositoryForm"/>
+                <input jwcid="roleTableLabel" class="field_label"/>
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <!--<td class="table_columns"></td>-->
+                        <td class="table_columns"><span jwcid="repository_role_name_column"/></td>
+                        <td class="table_columns"><span jwcid="repository_role_principal_column"/></td>
+                        <td class="table_columns"><span jwcid="repository_role_actions_column"/></td>
+                        <td class="table_columns"><span jwcid="repository_role_classname_column"/></td>
+                        <td class="table_columns"><span jwcid="repository_role_excluded_column"/></td>
+                        <td class="table_columns"><span jwcid="repository_role_unchecked_column"/></td>
+                        <td  class="table_columns" width="20">&nbsp;</td>
+                    </tr>
+                    <tr jwcid="eachRole">
+                        <!--<td class="table_values"><span jwcid="repository_role_seq_value"/></td>-->
+                        <td class="table_values"><a jwcid="roleLink"><span jwcid="repository_role_name_value"/></a></td>
+                        <td class="table_values">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr jwcid="eachRolePrincipal">
+                                    <td class="table_values_noborder"><span jwcid="repository_role_principal_value"/></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="table_values"><span jwcid="repository_role_actions_value"/></td>
+                        <td class="table_values"><span jwcid="repository_role_classname_value"/></td>
+                        <td class="table_values"><span jwcid="repository_role_excluded_value"/></td>
+                        <td class="table_values"><span jwcid="repository_role_unchecked_value"/></td>
+                        <td class="table_values" align="center"><a jwcid="roleDeleteLink"><img jwcid="delete" border="0"/></a></td>
+                    </tr>
+                </table>
+                <br/>
+                <input jwcid="resourceTableLabel" class="field_label"/>
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <!--<td class="table_columns"></td>-->
+                        <td class="table_columns"><span jwcid="repository_resource_ctxid_column"/></td>
+                        <td class="table_columns"><span jwcid="repository_resource_name_column"/></td>
+                        <td class="table_columns"><span jwcid="repository_resource_role_column"/></td>
+                        <td class="table_columns"><span jwcid="repository_resource_actions_column"/></td>
+                        <td class="table_columns"><span jwcid="repository_resource_classname_column"/></td>
+                        <td class="table_columns"><span jwcid="repository_resource_excluded_column"/></td>
+                        <td class="table_columns"><span jwcid="repository_resource_unchecked_column"/></td>
+                        <td  class="table_columns" width="20">&nbsp;</td>
+                    </tr>
+                    <tr jwcid="eachResource">
+                        <!--<td class="table_values"><span jwcid="repository_resource_seq_value"/></td>-->
+                        <td class="table_values"><a jwcid="ctxidLink"><span jwcid="repository_resource_ctxid_value"/></a></td>
+                        <td class="table_values"><a jwcid="resourceLink"><span jwcid="repository_resource_name_value"/></a></td>
+                        <td class="table_values">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr jwcid="eachResourceRole">
+                                    <td class="table_values_noborder"><span jwcid="repository_resource_role_value"/></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="table_values"><span jwcid="repository_resource_actions_value"/></td>
+                        <td class="table_values"><span jwcid="repository_resource_classname_value"/></td>
+                        <td class="table_values"><span jwcid="repository_resource_excluded_value"/></td>
+                        <td class="table_values"><span jwcid="repository_resource_unchecked_value"/></td>
+                        <td class="table_values" align="center"><a jwcid="resourceDeleteLink"><img jwcid="delete2" border="0"/></a></td>
+                    </tr>
+                </table>
+                <br/><br/>
+                <form jwcid="repositoryConfigRoleForm">
+                    <span jwcid="repository_role_name">
+                        <input jwcid="repository_role_nameField"/>
+                    </span>
+                    <span jwcid="repository_role_classname">
+                        <input jwcid="repository_role_classnameField" style="width:98%"/>
+                    </span>
+                    <span jwcid="repository_role_actions">
+                        <input jwcid="repository_role_actionsField" style="width:98%"/>
+                    </span>
+                    <span jwcid="repository_role_principals">
+                        <input jwcid="repository_role_principalsField"/>
+                    </span>
+                    <span jwcid="repository_role_unchecked">
+                        <input jwcid="repository_role_uncheckedField"/>
+                    </span>
+                    <span jwcid="repository_role_excluded">
+                        <input jwcid="repository_role_excludedField"/>
+                    </span>
+                </form>
+                <form jwcid="repositoryConfigResourceForm">
+                    <span jwcid="repository_resource_ctxid">
+                        <input jwcid="repository_resource_ctxidField"/>
+                    </span>
+                    <span jwcid="repository_resource_name">
+                        <input jwcid="repository_resource_nameField"/>
+                    </span>
+                    <span jwcid="repository_resource_classname">
+                        <input jwcid="repository_resource_classnameField" style="width:98%"/>
+                    </span>
+                    <span jwcid="repository_resource_actions">
+                        <input jwcid="repository_resource_actionsField" style="width:98%"/>
+                    </span>
+                    <span jwcid="repository_resource_roles">
+                        <input jwcid="repository_resource_rolesField"/>
+                    </span>
+                    <span jwcid="repository_resource_unchecked">
+                        <input jwcid="repository_resource_uncheckedField"/>
+                    </span>
+                    <span jwcid="repository_resource_excluded">
+                        <input jwcid="repository_resource_excludedField"/>
+                    </span>
+                </form>
+            </span>
+        </span>
+    </span>
+</html>

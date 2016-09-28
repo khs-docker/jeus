@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <servlet>
+        <servlet-name>EchoServlet</servlet-name>
+        <servlet-class>jeustest.webservices.java2wsdl.doclit.EchoImpl</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EchoServlet</servlet-name>
+        <url-pattern>/BA_DocLitEchoService</url-pattern>
+    </servlet-mapping>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>MySecureBit</web-resource-name>
+            <url-pattern>/BA_DocLitEchoService</url-pattern>
+            <http-method>POST</http-method>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>Administrator</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>   
+    
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>default</realm-name>
+    </login-config>    
+</web-app>
+

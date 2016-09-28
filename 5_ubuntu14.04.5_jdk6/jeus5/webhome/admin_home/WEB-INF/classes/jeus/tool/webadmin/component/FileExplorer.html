@@ -1,0 +1,24 @@
+<span jwcid="$content$">
+    <link href="ognl:assets.file_explorer_css.buildURL()" jwcid="@Any" element="link" type="text/css" rel="stylesheet"/>
+    <table jwcid="@Any" element="table" cellspacing="0" cellpadding="0" border="0" width="100%" class="ognl:viewClass">
+        <tr>
+            <td colspan="2">
+                <a jwcid="rootLink" class="ognl:pathClass"><span jwcid="node"/></a> :
+                <span jwcid="eachDirectory"><a jwcid="directoryLink" class="ognl:pathClass"><span jwcid="directory"/></a><span jwcid="@Any" element="span" class="ognl:pathClass">/</span></span><span jwcid="currentDirectory" class="ognl:currentClass"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                    <tr jwcid="eachFile">
+                        <td>
+                            <span jwcid="condNotDeployable">
+                                <img jwcid="icon" align="absmiddle"/>&nbsp;<a jwcid="fileLink" class="ognl:fileClass"><span jwcid="file"/></a>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</span>

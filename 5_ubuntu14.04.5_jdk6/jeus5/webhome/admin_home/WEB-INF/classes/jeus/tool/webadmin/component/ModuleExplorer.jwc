@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC 
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<component-specification    class="jeus.tool.webadmin.component.ModuleExplorer"  allow-body="no" allow-informal-parameters="yes">
+    <parameter name="model" required="yes"/>
+
+    <parameter name="selectedModel" required="yes"/>
+
+    <component id="eachModule" type="For">
+        <binding name="source" value="model.moduleInfos"/>
+        <binding name="value" value="moduleView"/>
+        <binding name="index" value="moduleIndex"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="moduleNameColumn" type="Insert">
+        <binding name="value" value="message:ModuleExplorer.module_name.label"/>
+    </component>
+
+    <component id="modulePathColumn" type="Insert">
+        <binding name="value" value="message:ModuleExplorer.module_path.label"/>
+    </component>
+
+    <component id="deployedIconColumn" type="Image">
+        <binding name="image" value="asset:deployed"/>
+    </component>
+
+    <component id="moduleName" type="TextField">
+        <binding name="value" value="moduleView.moduleInfo.moduleName"/>
+    </component>
+
+    <component id="modulePath" type="Insert">
+        <binding name="value" value="moduleView.moduleInfo.modulePath"/>
+    </component>
+
+    <component id="condDeployed" type="If">
+        <binding name="condition" value="moduleView.moduleInfo.deployed"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="deployedIcon" type="Image">
+        <binding name="image" value="asset:deployed"/>
+    </component>
+
+    <component id="deployedIcon2" copy-of="deployedIcon"/>
+    <component id="convention" type="Insert">
+        <binding name="value" value="message:ModuleExplorer.deployed.label"/>
+    </component>
+
+    <component id="moduleIcon" type="Image">
+        <binding name="image" value="model.getModuleIcon(moduleView.moduleInfo.moduleType)"/>
+    </component>
+
+<!--    <component id="moduleRadioGroup" type="RadioGroup">
+        <binding name="selected" value="selected"/>
+    </component>-->
+
+    <component id="moduleCheck" type="DojoCheckbox">
+        <binding name="value" value="selected"/>
+        <binding name="disabled" value="moduleView.moduleInfo.deployed"/>
+    </component>
+
+    <property name="moduleView"/>
+    <property name="moduleIndex"/>
+    <property name="moduleName"/>
+    <asset name="deployed" path="context:/image/check.gif"/>
+</component-specification>

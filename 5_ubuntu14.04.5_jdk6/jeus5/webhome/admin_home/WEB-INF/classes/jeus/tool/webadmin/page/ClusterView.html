@@ -1,0 +1,11 @@
+<span jwcid="viewBorder">
+	<ul id="titlebar">
+		<li><span jwcid="@Insert" value="message:clusterview.title" class="cluster"/></li>
+		<li id="titlebar_refresh"><a jwcid="@DirectLink" listener="listener:onRefresh"><img jwcid="@Image" image="asset:refresh" alt="refresh"/></a></li>
+	</ul>
+	<ul jwcid="nodelist@Any" id="nodelist">
+		<li jwcid="node@For" source="ognl:nodeList" value="ognl:node" class="ognl:nodestate" element="li">
+        <a jwcid="@ExternalLink" parameters="ognl:node.objectName" target="nodeTree" page="NodeTree"  disabled="ognl:nodestate == 'exited'"><span jwcid="@Insert" value="ognl:node.name"/></a>
+        </li>
+	</ul>
+</span>

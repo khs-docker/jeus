@@ -1,0 +1,250 @@
+body{
+    background-color:white;
+}
+
+.JMTitleHeading {
+	font-family: "Times New Roman", "Times", "serif";
+	font-size: 36px;
+	font-style: italic;
+	font-weight: bold;
+	color: #000000;
+	margin-bottom: 30px;
+
+}
+
+.JMHeading1{
+	font-family: "Times New Roman";
+	font-size: 20px;
+	font-weight: bold;
+	color: #000000;
+	padding-bottom: 3px;
+	text-indent: 0px;
+}
+
+.JMHeading2{
+	font-family: "Verdana";
+	font-size: 12px;
+	font-weight: bold;
+	color: #1E5388;
+	background-color: #E9F0F8;
+	padding-top: 5px;
+	padding-bottom: 3px;
+	margin-top: 30px;
+}
+
+.JMHeading3{
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	font-weight: bold;
+	color: #1E5388;
+}
+
+.JMHeading4{
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	font-weight: bold;
+	text-indent:12px;
+	margin-top: 20px;
+	margin-bottom: 0px;
+	color: #000000;
+}
+
+.JMNormalText{
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	line-height: 130%;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	margin-left:12px;
+}
+
+.JMNormalTextNoIndent{
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	text-indent: 0px;
+	line-height: 130%;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+
+.JMJavaCode, .JMXML, .JMJavaCodeNoIndent, JMXMLNoIndent {
+	font-family: "Courier New", "Courier", "mono";
+	font-size: 12px;
+	line-height: 130%;
+	color: #666666;
+	background-color: #F6F6F6;
+	white-space: nowrap;
+	padding: 10px;
+	border: 1px solid #000000;
+	margin-bottom: 5px;
+	text-indent:0px;
+	margin-top: 5px;
+}
+
+.JMXMLNoBox, JMJavaNoBox {
+	font-family: "Courier New", "Courier", "mono";
+	font-size: 12px;
+	line-height: 130%;
+	color: #666666;
+	background-color: #F6F6F6;
+	white-space: nowrap;
+	padding: 10px;
+	margin-bottom: 5px;
+	text-indent:0px;
+	margin-top: 5px;
+}
+
+.JMNoteWarning {
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	line-height: 130%;
+	margin: 20px 0px 10px 0px;
+	color: #000000;
+	border-top: 2px solid #000000;
+	border-bottom: 1px solid #000000;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.JMFileNameReference {
+	font-family: "Times New Roman";
+	font-style: italic;
+	font-size: 14px;
+	margin-bottom: 0px;
+	text-align: center;
+}
+
+.JMCaption{
+	font-family: "Times New Roman";
+	font-size: 14px;
+	font-style: italic;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	text-indent:0px;
+	text-align: center;
+}
+
+.JMFigure {
+	text-indent:0px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+
+.JMConsoleText {
+	font-family: "Fixedsys", "Courier New";
+	font-size: 12px;
+	line-height: 140%;
+	color: #FFFFFF;
+	background-color: #000000;
+	padding: 10px;
+	width: 100%;
+	border: 4px ridge #FFFFFF;
+	text-indent: 0px;
+}
+
+
+BODY {
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	line-height: 150%;
+}
+
+LI{
+	margin-top: 6px;
+}
+
+
+
+TABLE.normal {
+	font-family: "Verdana";
+	font-size: 12px;
+	border-collapse: collapse;
+	text-indent:0px;
+	margin-bottom: 5px;
+	margin-top: 10px;
+	border: 1px solid #646420;
+}
+
+TD.normal {
+	font-family: "Verdana";
+	font-size: 12px;
+	text-indent:0px;
+	padding: 5px;
+	border: 1px solid #646420;
+}
+
+
+TD.thead {
+	font-family: "Verdana";
+	font-size: 12px;
+	background-color: #F8F8E9;
+	color: #646420;
+	font-weight: bold;
+	border: 1px solid #646420;
+	padding: 5px;
+}
+
+
+
+TABLE.topnavbar{
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	border-width:1px 0px 0px 0px;
+	border-bottom: 1px solid #666666;
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+}
+
+TABLE.botnavbar{
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	border-width:1px 0px 0px 0px;
+	border-top: 1px solid #666666;
+	margin-top: 10px;
+	padding-top: 5px;
+}
+
+
+.JMEmphasize{
+	color: red;
+}
+
+.JMGUIWidget {
+	font-weight:bold;
+}
+
+.JMPath {
+}
+
+.JMNoteWarningChar {
+	font-weight:bold;
+	font-style:italic;
+}
+
+.nwi-emphasize{
+	font-weight: bold;
+}
+
+.navbar-title{
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	color: #AAAAAA;
+	font-weight: bold;
+	text-align: right;
+}
+
+.deadlink {
+	color:#bbbbbb;
+}
+
+a:visited, a:link {
+	color: #1E5388;
+	text-decoration:none;
+}
+
+a:hover, a:active {
+	color: #FF0080;
+	text-decoration:underline;
+}
+

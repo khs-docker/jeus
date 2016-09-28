@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceJeusLogService.HandlerPage">
+
+    <component id="shell" type="Shell">
+        <binding name="stylesheets" value="{assets.tundra_css, assets.dojo_css, assets.form_css}"/>
+        <binding name="title" value="message:la.handler"/>
+    </component>
+
+    <component id="handlerListForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:log.control.handler.section.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="hidden_logger_name" type="Hidden">
+        <binding name="value" value="ognl:loggerName"/>
+    </component>
+
+    <component id="logger_name_column" type="Insert">
+        <binding name="value" value="message:log.control.handler.logger_name.label"/>
+    </component>
+
+    <component id="handler_type_column" type="Insert">
+        <binding name="value" value="message:log.control.handler.handler_type.label"/>
+    </component>
+
+    <component id="handler_name_column" type="Insert">
+        <binding name="value" value="message:log.control.handler.handler_name.label"/>
+    </component>
+
+    <component id="handler_level_column" type="Insert">
+        <binding name="value" value="message:log.control.handler.handler_level.label"/>
+    </component>
+
+    <component id="eachHandler" type="Foreach">
+        <binding name="source" value="ognl:handlers"/>
+        <binding name="value" value="ognl:handler"/>
+        <binding name="index" value="ognl:index"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="condParentHandler" type="If">
+        <binding name="condition" value="ognl:handler.loggerName != loggerName"/>
+    </component>
+
+    <component id="condNotParentHandler" type="If">
+        <binding name="condition" value="ognl:handler.loggerName == loggerName"/>
+    </component>
+
+    <component id="logger_name_value" type="Insert">
+        <binding name="value" value="ognl:((handler.loggerName != loggerName) ? (handler.loggerName + ' (parent logger)') : handler.loggerName)"/>
+    </component>
+
+    <component id="handler_type_value" type="Insert">
+        <binding name="value" value="ognl:handler.handlerType"/>
+    </component>
+
+    <component id="handler_name_value" type="Insert">
+        <binding name="value" value="ognl:handler.handlerName"/>
+    </component>
+
+    <component id="handler_name_value2" copy-of="handler_name_value"/>
+
+    <component id="handlerLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceJeusLogService_Configuration"/>
+        <binding name="parameters" value="ognl:{objectName.canonicalName, handler.loggerName, handler.handlerName, systemLogging, handler.handlerType}"/>
+        
+    </component>
+
+    <component id="handler_level_value" type="Insert">
+        <binding name="value" value="ognl:handler.handlerLevel"/>
+    </component>
+
+    <component id="createLink" type="ExternalLink">
+        <binding name="page" value="ognl:'JeusServiceJeusLogService_Create'"/>
+        <binding name="parameters" value="ognl:{objectName.canonicalName, loggerName, systemLogging}"/>    </component>
+
+    <component id="create" type="Image">
+        <binding name="image" value="ognl:assets.create"/>
+    </component>
+
+    <component id="create_label" type="Insert">
+        <binding name="value" value="message:log.handler.create.label"/>
+    </component>
+
+    <component id="deleteLink" type="jeus:DirectLink">
+        <binding name="listener" value="ognl:listeners.onDelete"/>
+        <binding name="parameters" value="{handler.loggerName, handler.handlerName, handler.handlerType}"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="ognl:messages.format('common.message.remove.confirm', handler.handlerName)"/>
+    </component>
+
+    <component id="delete" type="Image">
+        <binding name="image" value="ognl:assets.delete"/>
+    </component>
+
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+    <asset name="create" path="context:/image/create.gif"/>
+
+    <asset name="tundra_css" path="context:/js/JeusDojo/release/dojo/dijit/themes/tundra/tundra.css"/>
+    <asset name="dojo_css" path="context:/js/JeusDojo/release/dojo/dojo/resources/dojo.css"/>
+    <asset name="form_css" path="context:/css/form.css"/>
+
+    <property name="loggerName"/>
+    <property name="handlerLoggerName"/>
+    <property name="handlerName"/>
+    <property name="handlerLevel"/>
+    <property name="index"/>
+    <property name="handler"/>
+</page-specification>

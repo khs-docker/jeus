@@ -1,0 +1,678 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 11 웹 서버 리스너 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('11 웹 서버 리스너', 'wm-10.htm', 'wm-12.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left"><A NAME="lsnr"></A>11 웹 서버 리스너
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMNormalText">웹 서버 리스너는 일반적으로 웹 서버나 HTTP클라이언트가 직접 접근 할 수 있는 서블릿 엔진쪽의 소켓이라고 생각할 수 있다. 이 리스너(소켓)는 
+웹 서버(또는HTTP클라이언트)로부터 요청을 받고 서블릿 엔진에서 처리한 정적 혹은 동적인 내용을 반환한다.
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMNormalText">서블릿 엔진에서는 모두 8종류의 웹서버 리스너를 제공한다.
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMNormalText">1. HTTP: HTTP 리스너는 서블릿 엔진이 자체적으로 가지고 있는 최소 규모의 &ldquo;웹서버&rdquo;라고 할 수 있다. 이것은 정적인 
+내용과 JSP/서블릿에 대한 기본 HTTP 요청을 받고 처리할 수 있는 기능을 가진다. 
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMNormalText">2. Secure: Secure 리스너는 HTTP 리스너와 동일하지만 SSL(HTTPS)도 지원한다는 것이 다르다. 
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMNormalText">3. TCP: TCP 리스너는 일반적인 리스너에 맞춤 프로토콜(HTTP를 사용하지 않음)을 사용하는 리스너이다. 
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMNormalText">4. UDP: UDP 리스너는 TCP 리스너와 동일하나 UDP 프로토콜을 사용한다.
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMNormalText">5. Apache: Apache 리스너는 앞단의 아파치 서버와 연동을 가능하게 한다. 
+ </P>
+<A NAME="1008"></A>
+<P CLASS="JMNormalText">6. WebtoB: WebtoB는 JEUS 웹어플리케이션 서버의 기본 웹 서버다. 
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMNormalText">7. Tmax: Tmax 리스너는 TP-Monitor인 Tmax와의 연동을 가능하게 한다. 기본적인 설정은 WebtoB 리스너와 유사하다.
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMNormalText">8. AJP13: 이 리스너는 AJP 1.3 protocol을사용하는데, Apache 리스너가 AJP 1.2 protocol을 사용하는 것을 제외하고는 
+Apache 리스너와 동일하게 동작한다.
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMNormalText">이 장에서는 웹 서버 리스너의 구성과 설정 및 제어, 모니터링에 대해서 알아 볼 것이다.
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMHeading2">11.1 웹서버 리스너 구성
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMHeading3"><A NAME="lsnr_create"></A>11.1.1 웹서버 리스너 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-10.htm#servleteng_ctxgrp">컨텍스트 그룹 개요
+ </A>&gt; 
+ <A HREF="wm-10.htm#ctxgrp">컨텍스트 그룹
+ </A>&gt; 
+ <A HREF="wm-11.htm#lsnr">웹 서버 리스너
+ </A>&gt; 새 웹 서버 리스너 생성
+ </P>
+<A NAME="1014"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">트리
+ </SPAN>에서 
+ <SPAN CLASS="JMGUIWidget">컨텍스트 
+ </SPAN><SPAN CLASS="JMGUIWidget">그룹
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">리스너
+ </SPAN>탭을 선택한 후 
+ <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">리스너 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성링크
+ </SPAN>를클릭하거나 컨텍스트 그룹의 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">리스너 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>을택한다.
+ </P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMGUIWidget"><IMG BORDER="0" WIDTH="288" SRC="images/image092.jpg" HEIGHT="310"></SPAN></P>
+
+<P CLASS="JMCaption">그림 77 새 웹 서버 리스너 생성 선택
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMNormalText">2. 리스너 종류: 추가하고자 하는 웹 서버 리스너의 종류를 선택한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="508" SRC="images/image093.jpg" HEIGHT="115"></P>
+
+<P CLASS="JMCaption">그림 78 웹서버 리스너 추가 - 1단계 리스너 종류
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMNormalText">3. 기본 설정: 기본적인 설정을 입력한다. 포트는 다른 리스너와 중복이 되지 않도록 입력해야한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="364" SRC="images/image094.jpg" HEIGHT="193"></P>
+
+<P CLASS="JMCaption">그림 79 웹 서버 리스너 추가 - 2 단계 기본 설정
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMNormalText">4. 쓰레드 풀: 이 설정은 각 리스너의 작업 쓰레드 풀의 크기와 행동 방식을 결정짓는다. 
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="464" SRC="images/image095.jpg" HEIGHT="456"></P>
+
+<P CLASS="JMCaption">그림 80 웹 서버 리스너 추가 - 3단계 쓰레드 풀
+ </P>
+<A NAME="1018"></A>
+<P CLASS="JMNormalText">5. 기타: 기타 항목들에 대해서 입력을 한다. 이 설정 부분은 리스너 타입에 따라 다소 차이가 난다. 각 타입별 설정은 서블릿 안내서를 참고하기 
+바란다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="454" SRC="images/image096.jpg" HEIGHT="136"></P>
+
+<P CLASS="JMCaption">그림 81 웹 서버 리스너 추가 - 4단계 기타 설정
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMNormalText">6. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1020"></A>
+<P CLASS="JMNormalText">7. 웹 서버 리스너가 생성되면 노드 트리에서 컨텍스트 그룹 밑에 웹 서버 리스너 아이콘(
+ <IMG BORDER="0" WIDTH="16" SRC="images/image097.gif" HEIGHT="16">)이 비활성 상태로 추가되며 웹 서버 리스너 페이지에 웹 서버 리스너가 추가되어 나타난다.
+ </P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMNoteWarningChar"><IMG BORDER="0" WIDTH="248" SRC="images/image098.jpg" HEIGHT="190"></SPAN></P>
+
+<P CLASS="JMCaption">그림 82 웹 서버 리스너 lsnr2가 추가된 후 노드 트리
+ </P>
+<A NAME="1021"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMNoteWarningChar">참고
+ </SPAN><SPAN CLASS="JMNoteWarningChar">:
+ </SPAN>비록 웹 서버 리스너가 추가되더라도 서블릿 엔진을 다시 시작하지 않으면 동작하지 않는다.
+ </P>
+<A NAME="1022"></A>
+<P CLASS="JMHeading3"><A NAME="lsnr_remove"></A>11.1.2 웹서버 리스너 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-10.htm#servleteng_ctxgrp">컨텍스트 그룹 개요
+ </A>&gt; 
+ <A HREF="wm-10.htm#ctxgrp">컨텍스트 그룹
+ </A>&gt; 
+ <A HREF="wm-11.htm#lsnr">웹 서버 리스너
+ </A>&gt; 새 웹 서버 리스너 삭제
+ </P>
+<A NAME="1023"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">컨텍스트
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">그룹을
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">클릭한
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">후
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">리스너
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN>탭을 선택한다.
+ </P>
+<A NAME="1024"></A>
+<P CLASS="JMNormalText">2. 웹 서버 리스너 목록에서 삭제하고자 하는 웹 서버 리스너의 
+ <A HREF="http://localhost:9744/webadmin/application?service=direct/1/JeusServiceContextGroup_WebListener/deleteListenerLink&amp;sp=Slsnr2"><IMG BORDER="0" WIDTH="11" SRC="images/image033.gif" HEIGHT="13"></A>를 클릭한다.
+ </P>
+<A NAME="1025"></A>
+<P CLASS="JMNormalText">3. 웹 서버 리스너가 삭제되면 노드 트리에서 삭제되고 웹 서버 리스너 페이지에서 사라진다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="428" SRC="images/image099.jpg" HEIGHT="162"></P>
+
+<P CLASS="JMCaption">그림 83 웹 서버 리스너 삭제
+ </P>
+<A NAME="1026"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMNoteWarningChar">참고
+ </SPAN><SPAN CLASS="JMNoteWarningChar">:
+ </SPAN>비록 웹 서버 리스너가 삭제되어도 서블릿 엔진을 다시 시작해야 실제적으로 삭제가 된다.
+ </P>
+<A NAME="1027"></A>
+<P CLASS="JMHeading3"><A NAME="lsnrback_create"></A>11.1.3 WebToB 리스너 백업 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-10.htm#servleteng_ctxgrp">컨텍스트 그룹 개요
+ </A>&gt; 
+ <A HREF="wm-10.htm#ctxgrp">컨텍스트 그룹
+ </A>&gt; WebToB 리스너 &gt; 백업 추가
+ </P>
+<A NAME="1028"></A>
+<P CLASS="JMNormalText">WebToB 백업은 주 서버가 심각한 장애 상태에 들어갔을 때 두 번째 WebtoB 서버에 연결하기 위한 연결 정보를 정의한다. 여기서 주의할 것은 
+백업 서버에 쓰레드 풀에 대한 설정이 없다면 주 WebtoB 리스너의 설정에서 상속 받는다는 것이다. 
+ </P>
+<A NAME="1029"></A>
+<P CLASS="JMNormalText">WebToB 백업 추가하는 방법은 WebToB 리스너 추가하는 방법과 유사하다.
+ </P>
+<A NAME="1030"></A>
+<P CLASS="JMHeading3"><A NAME="lsnrback_remove"></A>11.1.4 WebToB 리스너 백업 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-10.htm#servleteng_ctxgrp">컨텍스트 그룹 개요
+ </A>&gt; 
+ <A HREF="wm-10.htm#ctxgrp">컨텍스트 그룹
+ </A>&gt; WebToB 리스너 &gt; 삭제
+ </P>
+<A NAME="1031"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">WebToB 
+ </SPAN><SPAN CLASS="JMGUIWidget">리스너
+ </SPAN>를클릭 한 후 
+ <SPAN CLASS="JMGUIWidget">백업탭
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1032"></A>
+<P CLASS="JMNormalText">2. WebToB 백업목록에서 삭제하고자 하는 WebToB 백업의 
+ <IMG BORDER="0" WIDTH="11" SRC="images/image033.gif" HEIGHT="13">를클릭한다.
+ </P>
+<A NAME="1033"></A>
+<P CLASS="JMNormalText">3. WebToB 백업이 삭제되면서 목록에서 사라진다.
+ </P>
+<A NAME="1034"></A>
+<P CLASS="JMHeading2"><A NAME="lsnr_conf"></A>11.2 웹서버 리스너 설정
+ </P>
+<A NAME="1035"></A>
+<P CLASS="JMHeading3"><A NAME="lsnr_conf_general"></A>11.2.1 기본 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-10.htm#servleteng_ctxgrp">컨텍스트 그룹 개요
+ </A>&gt; 
+ <A HREF="wm-10.htm#ctxgrp">컨텍스트 그룹
+ </A>&gt; 
+ <A HREF="wm-11.htm#lsnr">웹 서버 리스너
+ </A>&gt; 
+ <A HREF="wm-11.htm#lsnr_conf">설정
+ </A>&gt; 기본 설정
+ </P>
+<A NAME="1036"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">변경하고지
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">하는
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">웹
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">서버
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">리스너
+ </SPAN>를클릭 하거나 컨텍스트 그룹의 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">리스너
+ </SPAN>탭의 웹 서버 리스너 목록에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">리스너
+ </SPAN>링크를 클릭한다.
+ </P>
+<A NAME="1037"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">기본 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image100.jpg" HEIGHT="310"></P>
+
+<P CLASS="JMCaption">그림 84 웹 서버 리스너 기본 설정
+ </P>
+<A NAME="1038"></A>
+<P CLASS="JMNormalText">3. 각 항목의 값을 입력한다. Postdata Read Timeout값을 제외한 값은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1039"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1040"></A>
+<P CLASS="JMHeading3"><A NAME="lsnr_conf_thrdpool"></A>11.2.2 쓰레드 풀 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-10.htm#servleteng_ctxgrp">컨텍스트 그룹 개요
+ </A>&gt; 
+ <A HREF="wm-10.htm#ctxgrp">컨텍스트 그룹
+ </A>&gt; 
+ <A HREF="wm-11.htm#lsnr">웹 서버 리스너
+ </A>&gt; 
+ <A HREF="wm-11.htm#lsnr_conf">설정
+ </A>&gt; 쓰레드 풀
+ </P>
+<A NAME="1041"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 변경하고지 하는 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">리스너
+ </SPAN>를클릭 하거나 컨텍스트 그룹의 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">리스너
+ </SPAN>탭의 웹 서버 리스너 목록에서 웹 서버 리스너 링크를 클릭한다.
+ </P>
+<A NAME="1042"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">쓰레드 
+ </SPAN><SPAN CLASS="JMGUIWidget">풀
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1043"></A>
+<P CLASS="JMNormalText">3. 각 항목의 값을 입력한다. Thread State Notification을제외한 모든 값은 런타임시에 적용된다.
+ </P>
+<A NAME="1044"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="493" SRC="images/image101.jpg" HEIGHT="608"></P>
+
+<P CLASS="JMCaption">그림 85 웹 서버 리스너 쓰레드 풀 설정
+ </P>
+<A NAME="1045"></A>
+<P CLASS="JMHeading3"><A NAME="lsnr_conf_misc"></A>11.2.3 기타 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-10.htm#servleteng_ctxgrp">컨텍스트 그룹 개요
+ </A>&gt; 
+ <A HREF="wm-10.htm#ctxgrp">컨텍스트 그룹
+ </A>&gt; 
+ <A HREF="wm-11.htm#lsnr">웹 서버 리스너
+ </A>&gt; 
+ <A HREF="wm-11.htm#lsnr_conf">설정
+ </A>&gt; 기타
+ </P>
+<A NAME="1046"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 변경하고지 하는 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">리스너
+ </SPAN>를클릭 하거나 컨텍스트 그룹의 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">리스너
+ </SPAN>탭의 웹 서버 리스너 목록에서 웹 서버 리스너 링크를 클릭한다.
+ </P>
+<A NAME="1047"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">기타 
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1048"></A>
+<P CLASS="JMNormalText">3. 각 항목의 값을 입력한다. 변경 내용은 다음 부트시에 적용된다. 
+ </P>
+<A NAME="1049"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1050"></A>
+<P CLASS="JMHeading2"><A NAME="lsnr_control"></A>11.3 웹 서버 리스너 제어
+ </P>
+<A NAME="1051"></A>
+<P CLASS="JMNormalText">일반적으로 웹 서버 리스너의 제어는 허용되지 않는다. 다만WebToB 리스너의 경우에는
+ <SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">정지
+ </SPAN>와
+ <SPAN CLASS="JMEmphasizeChar">계속
+ </SPAN>이 존재한다.
+ </P>
+<A NAME="1052"></A>
+<P CLASS="JMHeading3"><A NAME="lsnr_control_suspend"></A>11.3.1 WebToB 리스너 정지(Suspend)
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-10.htm#servleteng_ctxgrp">컨텍스트 그룹 개요
+ </A>&gt; 
+ <A HREF="wm-10.htm#ctxgrp">컨텍스트 그룹
+ </A>&gt; 
+ <A HREF="wm-11.htm#lsnr">웹 서버 리스너
+ </A>&gt; 
+ <A HREF="wm-11.htm#lsnr_control">제어
+ </A>&gt; 정지
+ </P>
+<A NAME="1053"></A>
+<P CLASS="JMNormalText">이 명령은 임시적으로 WebToB 리스너를 종료한다. 임시 종료된 WebToB 리스너 는클라이언트 요청을 서비스하지 못한다.
+ </P>
+<A NAME="1054"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">컨텍스트 
+ </SPAN><SPAN CLASS="JMGUIWidget">그룹
+ </SPAN>을클릭하여 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">리스너
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1055"></A>
+<P CLASS="JMNormalText">2. 웹 서버 리스너 목록에서 정지하고자 하는WebToB 리스너의 
+ <SPAN CLASS="JMGUIWidget">정지
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1056"></A>
+<P CLASS="JMNormalText">3. 정지가 실행되고 
+ <SPAN CLASS="JMGUIWidget">계속
+ </SPAN>버튼이 활성화 된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="469" SRC="images/image102.jpg" HEIGHT="184"></P>
+
+<P CLASS="JMCaption">그림 86WebToB 리스너 정지
+ </P>
+<A NAME="1057"></A>
+<P CLASS="JMHeading3">11.3.2 WebToB 리스너 계속(Resume)
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-10.htm#servleteng_ctxgrp">컨텍스트 그룹 개요
+ </A>&gt; 
+ <A HREF="wm-10.htm#ctxgrp">컨텍스트 그룹
+ </A>&gt; 
+ <A HREF="wm-11.htm#lsnr">웹 서버 리스너
+ </A>&gt; 
+ <A HREF="wm-11.htm#lsnr_control">제어
+ </A>&gt; 계속
+ </P>
+<A NAME="1058"></A>
+<P CLASS="JMNormalText">임시적으로 종료된 WebToB 리스너를 다시 시작한다. 
+ </P>
+<A NAME="1059"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">트리
+ </SPAN>에서 
+ <SPAN CLASS="JMGUIWidget">컨텍스트 
+ </SPAN><SPAN CLASS="JMGUIWidget">그룹
+ </SPAN>을클릭하여 웹 서버 리스너탭을 선택한다.
+ </P>
+<A NAME="1060"></A>
+<P CLASS="JMNormalText">2. 웹 서버 리스너 목록에서 서비스를 계속하고자 하는WebToB 리스너의 
+ <SPAN CLASS="JMGUIWidget">계속
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1061"></A>
+<P CLASS="JMNormalText">3. 서비스가 다시 시작되고 
+ <SPAN CLASS="JMGUIWidget">정지
+ </SPAN>버튼이 활성화 된다.
+ </P>
+<A NAME="1062"></A>
+<P CLASS="JMHeading2"><A NAME="lsnr_stats"></A>11.4 웹서버 리스너 통계
+ </P>
+<A NAME="1063"></A>
+<P CLASS="JMNormalText">웹 서버 리스너에는 요청을 처리하는 작업 쓰레드(Worker Thread)들을 가지고 있다. 따라서 웹서버 리스너에서는 이 쓰레드 풀의 현재 상태를 
+모니터링한다. 일반적으로 쓰레드 풀은 각 웹 서버 리스너 마다 하나씩 존재하며 WebToB의 경우는 여러 개가 올 수 있다.
+ </P>
+<A NAME="1064"></A>
+<P CLASS="JMHeading3">11.4.1 쓰레드 풀 전체 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-10.htm#servleteng_ctxgrp">컨텍스트 그룹 개요
+ </A>&gt; 
+ <A HREF="wm-10.htm#ctxgrp">컨텍스트 그룹
+ </A>&gt; 
+ <A HREF="wm-11.htm#lsnr">웹 서버 리스너
+ </A>&gt; 통계 
+ </P>
+<A NAME="1065"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">리스너
+ </SPAN>를선택한 후 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">통계
+ </SPAN>를 선택하거나 컨텍스트 메뉴에서 확인하려는 리스너 이름의 
+ <SPAN CLASS="JMGUIWidget">통계
+ </SPAN>를 선택한다.
+ </P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMGUIWidget"><IMG BORDER="0" WIDTH="260" SRC="images/image103.jpg" HEIGHT="322"></SPAN></P>
+
+<P CLASS="JMCaption">그림 87 웹 서버 리스너 통계 선택
+ </P>
+<A NAME="1066"></A>
+<P CLASS="JMNormalText">2. 모든 쓰레드 풀의 모니터링 정보가 출력된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="469" SRC="images/image104.jpg" HEIGHT="191"></P>
+
+<P CLASS="JMCaption">그림 88 웹 서버 리스너 모니터링
+ </P>
+<A NAME="1067"></A>
+<P CLASS="JMHeading3">11.4.2 쓰레드 풀 개별 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-10.htm#servleteng_ctxgrp">컨텍스트 그룹 개요
+ </A>&gt; 
+ <A HREF="wm-10.htm#ctxgrp">컨텍스트 그룹
+ </A>&gt; 
+ <A HREF="wm-11.htm#lsnr">웹 서버 리스너
+ </A>&gt; 
+ <A HREF="wm-11.htm#lsnr_stats">통계
+ </A>&gt; 쓰레드 풀
+ </P>
+<A NAME="1068"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">트리
+ </SPAN>에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">리스너탭
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1069"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">통계
+ </SPAN>를 선택한다.
+ </P>
+<A NAME="1070"></A>
+<P CLASS="JMNormalText">3. 구체적인 모니터링 정보를 볼 쓰레드 풀을 선택한다.
+ </P>
+<A NAME="1071"></A>
+<P CLASS="JMNormalText">4. 선택된 쓰레드 풀의 모니터링 정보가 출력된다. 
+ <SPAN CLASS="JMGUIWidget">상태
+ </SPAN>는현재 상태를 나타내면 다음 4가지가 있다.
+ </P>
+
+<P CLASS="JMCaption">표3 웹서버 리스너 쓰레드 풀의 쓰레드 상태종류
+ </P>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" CLASS="normal">
+	<TR>
+		<TD CLASS="thead">상태 
+ </TD>
+		<TD CLASS="thead">설명 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Active 
+ </TD>
+		<TD CLASS="normal">현재 요청을 처리하는 상태 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Blocked 
+ </TD>
+		<TD CLASS="normal">요청을 처리를 하던중 블럭된 상태 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Reconnection 
+ </TD>
+		<TD CLASS="normal">웹 서버에 연결을 다시 맺는 중 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Waiting 
+ </TD>
+		<TD CLASS="normal">요청을 대기 하는 중 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="417" SRC="images/image105.jpg" HEIGHT="300"></P>
+
+<P CLASS="JMCaption">그림 89 웹서버 리스너의쓰레드 풀 모니터링
+ </P>
+<!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

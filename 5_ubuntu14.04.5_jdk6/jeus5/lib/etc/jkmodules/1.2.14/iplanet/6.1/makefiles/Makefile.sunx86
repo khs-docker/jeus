@@ -1,0 +1,62 @@
+# Defines for example NSAPI programs running under SOLARIS
+
+SUITSPOT_HOME=/home/iplanet61/plugins
+CC_CMD=/opt/SUNWspro/bin/cc -DNET_SSL -DSOLARIS -D_REENTRANT -DXP_UNIX \
+	-DMCC_HTTPD -DSPAPI20 \
+	-KPIC
+LD_SHAREDCMD=/usr/ccs/bin/ld -G
+
+all:
+
+prepare:
+
+OS_TYPE=solaris
+INCLUDEDIR=$(SUITSPOT_HOME)/include
+JAVA_INCLUDE=$(JAVA_HOME)/include
+JK_DIR=../common
+VPATH=.:$(JK_DIR)
+
+JK_SRCS=$(JK_DIR)/jk_ajp12_worker.c \
+        $(JK_DIR)/jk_ajp13.c \
+        $(JK_DIR)/jk_ajp13_worker.c \
+        $(JK_DIR)/jk_ajp14.c \
+        $(JK_DIR)/jk_ajp14_worker.c \
+        $(JK_DIR)/jk_ajp_common.c \
+        $(JK_DIR)/jk_connect.c \
+        $(JK_DIR)/jk_context.c \
+        $(JK_DIR)/jk_jni_worker.c \
+        $(JK_DIR)/jk_lb_worker.c \
+        $(JK_DIR)/jk_map.c \
+        $(JK_DIR)/jk_md5.c \
+        $(JK_DIR)/jk_msg_buff.c \
+        $(JK_DIR)/jk_nwmain.c \
+        $(JK_DIR)/jk_pool.c \
+        $(JK_DIR)/jk_shm.c \
+        $(JK_DIR)/jk_sockbuf.c \
+        $(JK_DIR)/jk_status.c \
+        $(JK_DIR)/jk_uri_worker_map.c \
+        $(JK_DIR)/jk_util.c \
+        $(JK_DIR)/jk_worker.c
+
+JK_OBJS = $(JK_SRCS:.c=.o)
+
+#JK_SRCS = $(shell ls $(JK_DIR)/*.c)
+#JK_OBJS = $(patsubst $(JK_DIR)/%.c,%.o,$(JK_SRCS))
+
+PLUGIN_OBJ = jk_nsapi_plugin.o
+
+INCLUDE_FLAGS=	-I$(JK_DIR) -I$(INCLUDEDIR) -I$(INCLUDEDIR)/base \
+		-I$(INCLUDEDIR)/frame -I$(JAVA_INCLUDE) -I$(JAVA_INCLUDE)/$(OS_TYPE)
+
+all: nsapi_redirector.so 
+
+
+nsapi_redirector.so: $(JK_OBJS) $(PLUGIN_OBJ)
+	cp *.o $(JK_DIR)
+	$(LD_SHAREDCMD) $(JK_OBJS) $(PLUGIN_OBJ) -o nsapi_redirector.so $(EXTRA_LDDEFINES)
+
+clean:
+	rm -f *.o nsapi_redirector.so $(JK_DIR)/*.o
+
+%.o : %.c
+	$(CC_CMD) $(INCLUDE_FLAGS) -c $< 

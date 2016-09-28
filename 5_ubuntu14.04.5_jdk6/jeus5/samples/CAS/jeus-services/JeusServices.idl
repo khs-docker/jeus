@@ -1,0 +1,39 @@
+// JeusServices.idl : IDL source for JeusServices.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (JeusServices.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "enterpriseservices.idl";
+	[
+		object,
+		uuid(422801D8-9B42-49f9-BE23-01B35CC13CB9),
+		dual,
+		helpstring("IJeusServices Interface"),
+		pointer_default(unique)
+	]
+	interface IJeusServices : IEnterpriseServices
+	{
+	};
+
+[
+	uuid(E8C2EDEB-E251-4e03-8DF5-02EECF136ED0),
+	version(1.0),
+	helpstring("J2EECAS JeusServices 1.0 Type Library")
+]
+library ComBridgeJeusServices
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(9478E828-10AF-487d-AAB0-2580357B0E02),
+		helpstring("JeusServices Class")
+	]
+	coclass JeusServices
+	{
+		[default] interface IJeusServices;
+	};
+};

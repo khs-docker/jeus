@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<application xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+  <!-- JeusTimerBean is deployed as exploded form to change jeus-ejb-dd.xml
+	  in deployment time, therefore the path is directory -->
+  <path>JeusTimerBean</path>
+  <deployment-type>COMPONENT</deployment-type>
+  <classloading>ISOLATED</classloading>
+  <fast-deploy>true</fast-deploy>
+  <deployment-target>
+	<all-targets/>
+  </deployment-target>
+  <ejb-component/>
+</application>
+               

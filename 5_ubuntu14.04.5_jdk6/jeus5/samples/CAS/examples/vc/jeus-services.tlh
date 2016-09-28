@@ -1,0 +1,107 @@
+// Created by Microsoft (R) C/C++ Compiler Version 12.00.8168.0 (45356f7b).
+//
+// jeus-services.tlh
+//
+// C++ source equivalent of Win32 type library D:\TMAXSOFT\JEUS5\samples\CAS\jeus-services.dll
+// compiler-generated file created 04/04/05 at 15:51:47 - DO NOT EDIT!
+
+#pragma once
+#pragma pack(push, 8)
+
+#include <comdef.h>
+
+namespace ComBridgeJeusServices {
+
+//
+// Forward references and typedefs
+//
+
+struct /* coclass */ JeusServices;
+struct __declspec(uuid("422801d8-9b42-49f9-be23-01b35cc13cb9"))
+/* dual interface */ IJeusServices;
+struct __declspec(uuid("1814779a-ee1a-447a-9af3-75b3c565c28c"))
+/* dual interface */ IEnterpriseServices;
+
+//
+// Smart pointer typedef declarations
+//
+
+_COM_SMARTPTR_TYPEDEF(IEnterpriseServices, __uuidof(IEnterpriseServices));
+_COM_SMARTPTR_TYPEDEF(IJeusServices, __uuidof(IJeusServices));
+
+//
+// Type library items
+//
+
+struct __declspec(uuid("9478e828-10af-487d-aab0-2580357b0e02"))
+JeusServices;
+    // [ default ] interface IJeusServices
+
+struct __declspec(uuid("1814779a-ee1a-447a-9af3-75b3c565c28c"))
+IEnterpriseServices : IDispatch
+{
+    //
+    // Property data
+    //
+
+    __declspec(property(get=GetProviderURL,put=PutProviderURL))
+    _bstr_t ProviderURL;
+    __declspec(property(get=GetSecurityPrincipal,put=PutSecurityPrincipal))
+    _bstr_t SecurityPrincipal;
+    __declspec(property(get=GetSecurityCredentials,put=PutSecurityCredentials))
+    _bstr_t SecurityCredentials;
+
+    //
+    // Wrapper methods for error-handling
+    //
+
+    _bstr_t GetProviderURL ( );
+    void PutProviderURL (
+        _bstr_t pVal );
+    _bstr_t GetSecurityPrincipal ( );
+    void PutSecurityPrincipal (
+        _bstr_t pVal );
+    _bstr_t GetSecurityCredentials ( );
+    void PutSecurityCredentials (
+        _bstr_t pVal );
+    IDispatchPtr LookupEjbHome (
+        _bstr_t jndiName,
+        _bstr_t homeClassName );
+    HRESULT StopJvm ( );
+
+    //
+    // Raw methods provided by interface
+    //
+
+    virtual HRESULT __stdcall get_ProviderURL (
+        BSTR * pVal ) = 0;
+    virtual HRESULT __stdcall put_ProviderURL (
+        BSTR pVal ) = 0;
+    virtual HRESULT __stdcall get_SecurityPrincipal (
+        BSTR * pVal ) = 0;
+    virtual HRESULT __stdcall put_SecurityPrincipal (
+        BSTR pVal ) = 0;
+    virtual HRESULT __stdcall get_SecurityCredentials (
+        BSTR * pVal ) = 0;
+    virtual HRESULT __stdcall put_SecurityCredentials (
+        BSTR pVal ) = 0;
+    virtual HRESULT __stdcall raw_LookupEjbHome (
+        BSTR jndiName,
+        BSTR homeClassName,
+        IDispatch * * ppHome ) = 0;
+    virtual HRESULT __stdcall raw_StopJvm ( ) = 0;
+};
+
+struct __declspec(uuid("422801d8-9b42-49f9-be23-01b35cc13cb9"))
+IJeusServices : IEnterpriseServices
+{};
+
+//
+// Wrapper method implementations
+//
+
+#include "jeus-services.tli"
+
+} // namespace ComBridgeJeusServices
+
+#pragma pack(pop)

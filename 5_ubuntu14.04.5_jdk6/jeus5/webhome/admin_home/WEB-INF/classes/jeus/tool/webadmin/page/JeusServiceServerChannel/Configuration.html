@@ -1,0 +1,52 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="form">
+            <span jwcid="name">
+            </span>
+            <span jwcid="typeSelection">
+           		<span jwcid="@If" condition="ognl:serviceConfigType == 'server-url'">
+					<span jwcid="serverUrl">
+      		            	<input jwcid="serverUrlField"/>
+                	</span>
+				</span>
+				<span jwcid="@Else">
+	                <span jwcid="server_address">
+	                    <input jwcid="server_addressField"/>
+	                </span>
+		            <span jwcid="port">
+		                <input jwcid="portField"/>
+		            </span>
+				</span>
+            </span>
+            <span jwcid="general_blind">
+                <span jwcid="client_limit">
+                    <input jwcid="client_limitField"/>
+                </span>
+                <span jwcid="backlog_size">
+                    <input jwcid="backlog_sizeField"/>
+                </span>
+                <span jwcid="blocking_socket">
+                    <input jwcid="blocking_socketField"/>
+                </span>
+                <!--span jwcid="directByteBuffer">
+                	<input jwcid="directByteBufferField"/>
+                </span-->                
+                <span jwcid="read_buffer_size">
+                    <input jwcid="read_buffer_sizeField"/>
+                </span>
+                <span jwcid="write_buffer_size">
+                    <input jwcid="write_buffer_sizeField"/>
+                </span>
+                <span jwcid="connection_timeout">
+                    <input jwcid="connection_timeoutField"/>
+                </span>
+                <span jwcid="client_keepalive_timeout">
+                    <input jwcid="client_keepalive_timeoutField"/>
+                </span>
+                <span jwcid="check_security">
+                    <input jwcid="check_securityField"/>
+                </span>
+            </span>
+        </form>
+    </span>
+</html>

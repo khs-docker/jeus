@@ -1,0 +1,11 @@
+#!/bin/sh
+
+. jeus.properties
+
+ANT_HOME=${JEUS_HOME}/lib/etc/ant
+CLASSPATH=${TOOL_CLASSPATH}
+ANT_OPTS="-Djeus.log.level=fatal -Djeus.home=${JEUS_HOME} ${JAVA_ARGS}"
+
+export ANT_HOME CLASSPATH ANT_OPTS
+
+sh "${ANT_HOME}/bin/ant" $*

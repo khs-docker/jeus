@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+
+	
+<project name="jeus5.0 web samples" default="deploy" basedir=".">
+
+	<property name="jeus.home" value="D:/Jeus50b"/>
+	<property name="jeus.deploy.home" value="${jeus.home}/webhome/app_home"/>
+	<property name="jeus.lib.home" value="${jeus.home}/lib/system"/>
+
+
+  	<path id="sm.classpath">
+    	<pathelement path="${jeus.lib.home}/jeus.jar"/>
+  	</path>
+		
+    <!-- Delete all the targets -->
+    <target name="clean">
+        <delete includeEmptyDirs="false">
+          <fileset dir="module" />
+          <fileset dir="classes" />
+	    </delete>
+   </target>
+
+	<target name="compile" depends="clean">
+		<javac srcdir="../src"
+			destdir="classes"
+           	deprecation="on"
+	   		debug="on"
+	   		includes="**/*.java">
+	   		<classpath refid="sm.classpath"/>
+	   	</javac>	    
+   </target>
+   
+	<target name="war" depends="compile">
+		<war destfile="module/webSample.war" 
+			webxml="../web-sample/WEB-INF/web.xml"
+			update="no">
+			<zipfileset dir="../web-sample"/>
+		</war>
+	</target>		
+
+	<target name="ear" depends="war">
+		<ear destfile="module/webSample.ear" 
+			appxml="META-INF/application-web.xml" 
+			update="no">
+			<fileset dir="module" includes="*.war"/>
+		</ear>
+	</target>		
+			
+	<target name="deploy" depends="ear">
+		<copy file="module/webSample.ear" todir="${jeus.deploy.home}" overwrite="true" />
+	</target>
+	
+  </project>
+

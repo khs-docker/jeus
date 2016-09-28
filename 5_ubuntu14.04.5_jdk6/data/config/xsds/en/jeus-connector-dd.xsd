@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    attributeFormDefault="unqualified" 
+    elementFormDefault="qualified" 
+    targetNamespace="http://www.tmaxsoft.com/xml/ns/jeus" version="5.0" 
+    xmlns="http://www.tmaxsoft.com/xml/ns/jeus" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">      
+    <xs:include schemaLocation="jeus-common.xsd"/>      
+    <xs:element name="jeus-connector-dd" type="jeus-connector-ddType">         
+        <xs:annotation>             
+            <xs:documentation><![CDATA[
+            [Description]: This is the top level element of JEUS Connector module. For each jeus-connector-dd.xml file, this tag should exist.
+		    ]]>
+            </xs:documentation>         
+        </xs:annotation>     
+    </xs:element>      
+    <xs:complexType name="jeus-connector-ddType">         
+        <xs:sequence>             
+            <xs:element minOccurs="1" name="module-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: This element is Connector module name. 
+								    This should be unique within application in case of being a module within application.
+								    This should be unique within entire JEUS system in case of being server module. 
+								    This element is used for setting inflow target within Message Driven Bean.
+                    [Example]: &lt;module-name>whitebox-xa&lt;/module-name>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="use-workmanager" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+            [Description]: This element configures whether to use Work Manager. If it is true, this will be initialized prior to start resource adoptor.
+            [Example]: &lt;use-workmanager>true&lt;/use-workmanager>
+            ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="worker-pool" type="worker-poolType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: This element is related to Work Manager.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="connection-pool" type="connection-poolType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+    [Description]: This element configuers Connection Pool.
+    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="worker-poolType">         
+        <xs:sequence>             
+            <xs:element default="3" minOccurs="0" name="min" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Minimum number of threads being managed by Work Manager.
+                    				When thread less than configured value exists, Work Manager will immediately enhance user request.
+								    This element maintains min number of threads by starting to reduece thread which has not been used for a certain time period in case where the number of thread which is larger than set value exists. 
+                    [Example]: &lt;min>3&lt;/min>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="10" minOccurs="0" name="max" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+    [Description]: Maximum value of number of threads in which Work Manager manages. The number of threads should not exceed this value.
+    [Example]: &lt;max>10&lt;/max>
+    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="1" minOccurs="0" name="step" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: In case where the number of thread increases, this is the number of thread with single increment. 
+                    				The number of total threads should not exceed configured max value. 
+                    [Example]: &lt;max>1&lt;/max>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="true" minOccurs="0" name="pre-allocation" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+    [Description]: The configured number of threads will be generated when Work Manager is initialized as min value.
+    [Example]: &lt;pre-allocation>true&lt;/pre-allocation>
+    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element default="5000" minOccurs="0" name="submit-timeout" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: The operation will be rejected when operation can not be started for configured time period on client request. 
+								    User receives event or exception according to service request mode. 
+                    [Value Description]:Time period in msec unit. In case of setting as 0, it will be in waiting mode until operation will be started. 
+                    [Example]: &lt;submit-timeout>5000&lt;/submit-timeout>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="60000" minOccurs="0" name="release-timeout" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                [Description]: If operation is not terminated after operation starts, Work Manager calls release() method.
+                [Value Description]: Time period in mesc unit. In case where it is set as 0, release() method will not be called.
+                [Example]: &lt;release-timeout>60000&lt;/release-timeout>
+                ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="-1" minOccurs="0" name="shutdown-timeout" type="xs:long">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                [Description]: When Work Manager is terminated, it will wait for maximum set time period.
+                [Value Description]: Time period in msec unit. If it is 0, it won't wait.
+                                        If it is set as -1, it will wait until operation is terminated.
+                                        Threads in operation will get Interrupt.
+                [Example]: &lt;shutdown-timeout>-1&lt;/shutdown-timeout>
+                ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="600000" minOccurs="0" name="pooled-timeout" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+        [Description]: In case where the number of threads exceeding min value in Work Manager, it will be removed from thread pool which has not been used for set time period.
+        [Value Description]: Time period in msec unit. If it is 0, it won't be removed.
+        [Example]: &lt;pooled-timeout>600000&lt;/pooled-timeout>
+        ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="connection-poolType">         
+        <xs:sequence>             
+            <xs:element minOccurs="0" name="export-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Name to be binded to JNDI Naming System for related connection pool. 
+                    [Value Description]: This should be unique name in related module. 
+                    [Example]: &lt;export-name>datasource1&lt;/export-name>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="log-file" type="log-fileType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Specify the log file which is to be used by the managed connection factory of the corresponding connection pool.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="transaction-support" type="transaction-supportType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+            [Description]: This element configures transaction type supported by related connection pool.
+                            Value set in this field should be more priotized than value configured in ra.xml.
+            [Value Description]: Select one of NoTransaction, LocalTransaction, XATransaction or XATransactionOnly.
+            [Example]: &lt;transaction-support>XATransaction&lt;/transaction-support>
+            ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="user" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                [Description]: In case of managing security in container, this is user name used for generating connection.
+                [Example]: &lt;user>scott&lt;/user>
+                ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="password" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+    [Description]: In case of managing security, this is password used for generating connection.
+    [Example]: &lt;password>tiger&lt;/password>
+    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="true" minOccurs="0" name="use-wrapper" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                [Description]: For additional function, connection wrapper is used. For additional infomation, please refer to Connector Manual.
+                [Example]: &lt;use-wrapper>true&lt;/use-wrapper>
+                ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="0" minOccurs="0" name="dissociation-timeout" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: This element configures applied time period for dissociation. This will be ignored when this function is not supported in related resource adoptor. 
+                    [Value Description]: Time period value in msec unit. If it is 0, dissociation is not used. 
+                    [Example]: &lt;dissociation-timeout>0&lt;/dissociation-timeout>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="0" minOccurs="0" name="invalidation-timeout" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+        [Description]: This element configures applied time for invalidation. Connection which is not retunred will be abruptly removed even though it passes this time period.
+        [Value Description]: Time period value in msec unit. If it is 0, invalidation will not be used.
+        [Example]: &lt;invalidation-timeout>0&lt;/invalidation-timeout>
+        ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="0" minOccurs="0" name="validation-timeout" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Specify timeout interval for validating the connections in connection pool by resource adapter. After ManagedConnectionFactory of the resource adapter implements the ValidatingManagedConnectionFactory interface, invalid connections will be removed from connection pool according to the specified time.
+                    [Value Description]: Time value msec. If you don't want validation, then the value must be 0.
+                    [Example]: <validation-timeout>0</validation-timeout>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="skip-connection-matching" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Connection matching procedure will be ommitted for connection authenticaiton. 
+                    [Example]: &lt;skip-connection-matching>false&lt;/skip-connection-matching>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="pool-management" type="pool-managementType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+    [Description]: This element configures related value on connection pool.
+    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="property" type="connectorPropertyType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                [Description]: This element adds property to be applied in ManagedConnectionFactory. This value should be priotized than value set in ra.xml.
+                ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="log-fileType">         
+        <xs:sequence>             
+            <xs:element name="file-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Specify the log file name which is to be used by connection pool.
+                        [Example]: <file-name>C:\logs\mylog.log</file-name>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="512" minOccurs="0" name="buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Specify the size of buffer that connection pool uses to print out log file.
+                        [Value Description]: The basic unit is 'byte'
+                        [Performance Recommendation]: The higher numbers for this value will delay the message output to the file, but improve the logging performance.
+                        [Example]: <buffer-size>512</buffer-size>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="valid-day" type="off-intType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                      [Description]: Specify the frequency at which JEUS creates new log file. setting it to  1 or over will automatically insert the creation date in the end of file name.
+                      [Value Description]: day
+                      [Example]: <valid-day>1</valid-day>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:simpleType name="transaction-supportType">         
+        <xs:restriction base="xs:string">             
+            <xs:enumeration value="NoTransaction"/>             
+            <xs:enumeration value="LocalTransaction"/>             
+            <xs:enumeration value="XATransaction"/>             
+            <xs:enumeration value="XATransactionOnly"/>         
+        </xs:restriction>     
+    </xs:simpleType>      
+    <xs:complexType name="pool-managementType">         
+        <xs:sequence>             
+            <xs:element default="0" minOccurs="0" name="min" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: The minimum value on the number of connections managed by Connection pool.
+                    				When connection which is less than this configured value, new connection will be immediately generated according to user request.
+                    				In case where larger number of connections exist, it will remove connection which has not been used for a certain period from connection pool. 
+                    [Example]: &lt;min>0&lt;/min>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="20" minOccurs="0" name="max" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+        [Description]: Maximum value of the number of connection managed by Connection pool.
+        [Example]: &lt;max>20&lt;/max>
+        ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="600000" minOccurs="0" name="pooled-timeout" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                [Description]: When Connection which is larger than min value exists in Connection pool, it will remove Connection which has not been user for a certain time from Connection Pool.
+                [Example]: &lt;pooled-timeout>600000&lt;/pooled-timeout>
+                ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="wait-connection" type="wait-connectionType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+    [Description]: In case where there is no need to wait for obtaining Connection in Connection Pool, this is configuration for it.
+    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="disposable-connection" type="disposable-connectionType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: This element is configuration whether to use temporary conection in case where Connection is not obtained.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="wait-connectionType">         
+        <xs:sequence>             
+            <xs:element default="true" minOccurs="0" name="wait-connection" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: This element configures wheter to wait for obtaining Connection. 
+                    [Example]: &lt;wait-connection>true&lt;/wait-connection>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="5" minOccurs="0" name="max-waiter-count" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+            [Description]: Maximum number of clients waiting for obtaining connection. It will be considered as "failed" when it exceeds the set value.
+            [Example]: &lt;max-waiter-count>5&lt;/max-waiter-count>
+            ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="5" minOccurs="0" name="max-wait-trial" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+            [Description]: If connection matching fails for the set time period, it is considered as failure for receiving Connection.
+            [Example]: &lt;max-waiter-trial>5&lt;/max-waiter-trial>
+            ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="10000" minOccurs="0" name="wait-timeout" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+    [Description]: It is considered as "failed" to receive Connection if it does not obtain Connection even though it has waited for a certain time period.
+    [Example]: &lt;wait-timeout>10000&lt;/wait-timeout>
+    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="disposable-connectionType">         
+        <xs:sequence>             
+            <xs:element default="true" minOccurs="0" name="allow-disposable-connection" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                [Description]: In case where it can not receive Connnection, it will configure whether to use temporary connection.
+                [Example]: &lt;allow-disposable-connection>true&lt;/allow-disposable-connection>
+                ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="3" minOccurs="0" name="max-disposable-count" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+    [Description]: Maximum number of temporary Connections. Temporary connection will be automatically removed after being used.
+    [Example]: &lt;max-disposable-count>3&lt;/max-disposable-count>
+    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="connectorPropertyType">         
+        <xs:sequence>             
+            <xs:element name="name" type="xs:token"/>             
+            <xs:element name="type" type="xs:token"/>             
+            <xs:element name="value" type="xs:token"/>         
+        </xs:sequence>     
+    </xs:complexType> 
+</xs:schema>

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+
+<input-symbol key="explorerModel"  class="jeus.tool.webadmin.component.ITargetExplorerModel" required="yes"/>
+<input-symbol key="nodeName" class="java.lang.String" required="yes"/>
+<input-symbol key="containerName" class="java.lang.String" required="yes"/>
+<let key="init">
+    initDeployTargets
+</let>
+
+<body>
+    var nodeNames = new Object();
+    var containerNames = null;
+    var cgNames = null;
+    var vhostNames = null;
+
+    ${init}();
+
+    function ${init}(){
+        <foreach key="nodes" expression="explorerModel.nodeNames">
+            containerNames = new Array();
+            <foreach key="containers" expression="explorerModel.getContainerNames(nodes)">
+                cgNames = new Array();
+                <foreach key="contextGroups" expression="explorerModel.getContextGroupNames(containers)">
+                    vhostNames = new Array();
+                    <foreach key="virtualHosts" expression="explorerModel.getVirtualHostNames(contextGroups)">
+                        <if expression="'${virtualHosts}' != null">
+                            vhostNames[vhostNames.length] = "${virtualHosts}";
+                        </if>
+                    </foreach>
+                    cgNames["${contextGroups}"] = vhostNames;
+                </foreach>
+                containerNames["${containers}"] = cgNames;
+            </foreach>
+            nodeNames["${nodes}"] = containerNames;
+        </foreach>
+    }
+
+    function onChangeContextGroup(list, nodeName, containerName, contextGroups){
+        var cons = nodeNames[nodeName];
+        var cgs = cons[containerName];
+        var vhosts = cgs[contextGroups];
+        var length = list.length;
+        for(var k = length - 1; k >= 0; k--)
+            list.options[k] = null;
+
+        if( !vhosts )
+            return;
+
+        for(var k = 0; k &lt; vhosts.length; k++){
+            list.options[k] = new Option(vhosts[k], k);
+        }
+    }
+
+</body>
+
+</script>

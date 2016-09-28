@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+
+<input-symbol key="specifications"  class="jeus.tool.webadmin.mq.IMQResourceSpecifications" required="yes"/>
+<let key="init">
+    initMQResources
+</let>
+
+<body>
+    var vendors = new Object();
+    ${init}();
+
+    function ${init}(){
+        var mqresources = null;
+        var mqresource = null;
+        <foreach key="mq" expression="specifications.mqList">
+             mqresources = new Array();
+            <foreach key="spec" expression="specifications.getSpecificationsByMq(mq)">
+                mqresource = new Object();
+                mqresource.id = "${spec.id}";
+                mqresource.label = "${spec.label}"
+                mqresources[mqresources.length]=mqresource;
+            </foreach>
+            vendors["${mq}"] = mqresources;
+       </foreach>
+   }
+
+    function onChangeVendor(list, mq){
+        var drivers = vendors[mq];
+        var length = list.length;
+        for(var i = length - 1; i >= 0; i--)
+            list.options[i] = null;
+
+        if( !drivers )
+            return;
+
+        for(var i = 0; i &lt; drivers.length; i++){
+            list.options[i] = new Option(drivers[i].label, drivers[i].id);
+        }
+    }
+
+</body>
+
+</script>

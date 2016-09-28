@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<project name="common" default="all" basedir=".">
+	<path id="jeus.libraries">
+		<fileset dir="${jeus.home}/lib/system">
+			<include name="**/*.jar"/>
+		</fileset>
+		<fileset dir="${jeus.home}/lib/datasource">
+		   <include name="**/*.jar"/>
+		   <include name="**/*.zip"/>
+		</fileset>
+		<fileset dir="${jeus.home}/lib/application">
+		   <include name="**/*.jar"/>
+		   <include name="**/*.zip"/>
+		</fileset>
+		<pathelement path="${jeus.home}/lib/application"/>
+
+		<pathelement path="${build}"/>
+	</path>
+
+	<taskdef resource="jeus/util/ant/jeusant.properties">
+	   <classpath>
+	   	<path refid="jeus.libraries"/>
+	   </classpath>
+	</taskdef>
+</project>

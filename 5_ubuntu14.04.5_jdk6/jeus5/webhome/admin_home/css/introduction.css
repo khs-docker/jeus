@@ -1,0 +1,64 @@
+#introduction{
+	margin: 0;
+	padding: 10px;
+	min-width: 750px;
+	
+} 
+
+#introduction dl{
+	width: 100%;
+	display: block;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 15px;
+	#margin-bottom: 5px;
+	margin-right: -1px;
+	border-right: 1px solid #AAAAAA;
+	border-bottom: 1px solid #AAAAAA;
+	float: left;
+	overflow: hidden;
+
+}
+
+#introduction dt{
+	margin: 0;
+	padding: 7px 5px;
+	text-align: center;
+	font-weight:bold;
+	width: 161px;
+	float: left;
+	border-right: 1px solid #AAAAAA;
+	background: #EFEFEF url("../image/off_bg.gif") no-repeat top left;
+}
+
+#introduction dd{
+	margin: 0;
+	padding: 0;
+}
+
+#introduction .img{
+	clear: both;
+	float: left;
+	padding: 2px 5px;;
+	width: 160px;
+	text-align: center;
+	border: 1px solid #AAAAAA;
+	border-bottom: 0px;
+	height: 100%;
+}
+
+#introduction .description{
+	border-top: 1px solid #AAAAAA;
+	padding: 1em 15px 0px 185px;
+
+}
+
+#introduction .description span{
+	margin-top: 16px;
+	padding: 1px;
+	display: block;
+	border-top: 1px dotted #AAAAAA;	
+}
+
+
+

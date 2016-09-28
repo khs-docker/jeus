@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusServiceEngine.OverviewPage">
+	<inject property="stateObject" type="state" object="WebadminStateObject"/>
+    <inject property="externalService" object="engine-service:external"/>
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Engine Overview"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{'JeusServiceEngine_Overview'}"/>
+    </component>
+
+    <component id="enginesForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:engine.overview.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="name_column" type="Insert">
+        <binding name="value" value="message:engine.overview.name.label"/>
+    </component>
+
+    <component id="type_column" type="Insert">
+        <binding name="value" value="message:engine.overview.type.label"/>
+    </component>
+
+    <component id="status_column" type="Insert">
+        <binding name="value" value="message:engine.overview.status.label"/>
+    </component>
+
+    <component id="actions_column" type="Insert">
+        <binding name="value" value="message:engine.overview.actions.label"/>
+    </component>
+
+    <component id="eachEngine" type="For">
+        <binding name="source" value="engines"/>
+        <binding name="value" value="eng"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="engineLink" type="ExternalLink">
+        <binding name="page" value="eng.page"/>
+        <binding name="parameters" value="eng.objectName.canonicalName"/>
+    </component>
+
+    <component id="name_value" type="Insert">
+        <binding name="value" value="eng.name"/>
+    </component>
+
+    <component id="type_value" type="Insert">
+        <binding name="value" value="eng.type"/>
+    </component>
+
+    <component id="status_value" type="Insert">
+        <binding name="value" value="eng.status"/>
+    </component>
+
+    <component id="startLink" type="DirectLink">
+        <binding name="listener" value="listener:onStart"/>
+        <binding name="parameters" value="eng.name"/>
+    </component>
+
+    <component id="start" type="Button">
+        <binding name="label" value="message:engine.overview.start.label"/>
+        <binding name="disabled" value="eng.running or objectName.domain=='XML'"/>
+    </component>
+
+    <component id="downLink" type="DirectLink">
+        <binding name="listener" value="listener:onDown"/>
+        <binding name="parameters" value="eng.name"/>
+    </component>
+
+    <component id="down" type="Button">
+        <binding name="label" value="message:engine.overview.down.label"/>
+        <binding name="disabled" value="!eng.running or objectName.domain=='XML'"/>
+    </component>
+
+    <component id="condDeleted" type="If">
+        <binding name="condition" value="!eng.running and engines.size() > 1"/>
+    </component>
+
+    <component id="deleteLink" type="DirectLink">
+        <binding name="listener" value="listener:onDeleteEngine"/>
+        <binding name="parameters" value="eng.name"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.delete.confirm', eng.name)"/>
+    </component>
+
+    <component id="delete" type="Image">
+        <binding name="image" value="asset:delete"/>
+    </component>
+
+    <component id="create_ejbLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceEngine_Create"/>
+        <binding name="parameters" value="{objectName.canonicalName, 'ejb'}"/>
+    </component>
+
+    <component id="create_ejb_label" type="Insert">
+        <binding name="value" value="message:engine.overview.create_ejb.label"/>
+    </component>
+
+    <component id="create_webLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceEngine_Create"/>
+        <binding name="parameters" value="{objectName.canonicalName, 'servlet'}"/>
+    </component>
+
+    <component id="create_web_label" type="Insert">
+        <binding name="value" value="message:engine.overview.create_web.label"/>
+    </component>
+
+    <component id="create_jmsLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceEngine_Create"/>
+        <binding name="parameters" value="{objectName.canonicalName, 'jms'}"/>
+    </component>
+
+    <component id="create_jms_label" type="Insert">
+        <binding name="value" value="message:engine.overview.create_jms.label"/>
+    </component>
+
+    <component id="create_wsLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceEngine_Create"/>
+        <binding name="parameters" value="{objectName.canonicalName, 'ws'}"/>
+    </component>
+
+    <component id="create_ws_label" type="Insert">
+        <binding name="value" value="message:engine.overview.create_ws.label"/>
+    </component>
+
+    <component id="condEJB" type="If">
+        <binding name="condition" value="engines.{?name.indexOf('_ejb_') > 0}.empty"/>
+    </component>
+    <component id="condWEB" type="If">
+        <binding name="condition" value="engines.{?name.indexOf('_servlet_') > 0}.empty"/>
+    </component>
+    <component id="condJMS" type="If">
+        <binding name="condition" value="engines.{?name.indexOf('_jms_') > 0}.empty"/>
+    </component>
+    <component id="condWS" type="If">
+        <binding name="condition" value="engines.{?name.indexOf('_ws_') > 0}.empty and !alreadyExistWSEngine"/>
+    </component>
+
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+
+    <property name="eng"/>
+
+</page-specification>

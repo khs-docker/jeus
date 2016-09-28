@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceVirtualNode.ConfigurationPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Virtual Node Configuration"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@JEUSSERVICE_VIRTUALNODE_NAMES"/>
+    </component>
+
+    <component id="vnodeForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:vnode.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>        
+    </component>
+
+    <component id="ok" type="jeus:ConfirmSubmit">
+        <binding name="label" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:vnode.node.message"/>
+        <binding name="listener" value="ognl:listeners.onOk"/>
+    </component>
+
+    <component id="cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="enable" type="jeus:Field">
+        <binding name="field" value="ognl:components.enableField"/>
+        <binding name="description" value="message:vnode.enable.description"/>
+    </component>
+
+    <component id="enableField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:vnode"/>
+        <binding name="elementName" value="literal:enable"/>
+    </component>
+
+    <component id="node" type="jeus:Field">
+        <binding name="field" value="ognl:components.nodeField"/>
+        <binding name="description" value="message:vnode.node.description"/>
+    </component>
+
+    <component id="nodeField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:vnode"/>
+        <binding name="elementName" value="literal:host"/>
+        <binding name="translator" value="bean:nodeTranslator"/>
+    </component>
+
+    <bean name="nodeTranslator" class="jeus.tool.webadmin.component.translator.NodeTranslator"/>
+</page-specification>

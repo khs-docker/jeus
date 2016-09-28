@@ -1,0 +1,71 @@
+<html><header><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></header><body><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(1) <b>&lt;trouble-monitor&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">장애 모니터링 설정 파일의 루트 요소. 장애 모니터링에 관한 모든 설정을 이 요소 아래에 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(2)mbean*<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(2) 
+		&lt;trouble-monitor&gt;
+	<b>&lt;mbean&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">장애 모니터링 대상이 되는 MBean과 제약 값들을 설정하는 요소이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(3)j2ee-type<br>
+		(4)jeus-type?<br>
+		(5)property*<br>
+		(8)constraint*<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(3) 
+		&lt;trouble-monitor&gt;
+	
+		&lt;mbean&gt;
+	<b>&lt;j2ee-type&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">MBean의 j2eeType 키값을 입력한다. 모든 MBean은 j2eeType을 가지고 있다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(4) 
+		&lt;trouble-monitor&gt;
+	
+		&lt;mbean&gt;
+	<b>&lt;jeus-type&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">MBean의 jeusType 키값을 입력한다. 보통 j2eeType이 JeusService일 경우 jeusType이 반드시 존재한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(5) 
+		&lt;trouble-monitor&gt;
+	
+		&lt;mbean&gt;
+	<b>&lt;property&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">MBean의 j2eeType과 jeusType을 제외한 추가 속성을 지정한다. 이 값을 설정하면 특정 MBean에 대한 설정이 가능하다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">이 예제는 tmax_servlet_engine1이라는 WebEngine에만 적용되는 설정이다.
+                        &lt;j2ee-type&gt;JeusService&lt;/j2ee-type&gt;
+                        &lt;j2ee-type&gt;WebEngine&lt;/j2ee-type&gt;
+                        &lt;property&gt;
+                            &lt;key&gt;name&lt;/key&gt;
+                            &lt;value&gt;tmax_servlet_engine1&lt;/value&gt;
+                        &lt;/property&gt;</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(6)key<br>
+		(7)value<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(6) 
+		&lt;trouble-monitor&gt;
+	
+		&lt;mbean&gt;
+	
+		&lt;property&gt;
+	<b>&lt;key&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">property의 key값이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(7) 
+		&lt;trouble-monitor&gt;
+	
+		&lt;mbean&gt;
+	
+		&lt;property&gt;
+	<b>&lt;value&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">property의 value값이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(8) 
+		&lt;trouble-monitor&gt;
+	
+		&lt;mbean&gt;
+	<b>&lt;constraint&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">모니터링할 제약사항을 입력한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;constraint&gt;
+                            &lt;key&gt;servlet-session-session-count&lt;/key&gt;
+                            &lt;value&gt;10000&lt;/value&gt;                    
+                        &lt;/constraint&gt;</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(9)key<br>
+		(10)value<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(9) 
+		&lt;trouble-monitor&gt;
+	
+		&lt;mbean&gt;
+	
+		&lt;constraint&gt;
+	<b>&lt;key&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">property의 key값이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(10) 
+		&lt;trouble-monitor&gt;
+	
+		&lt;mbean&gt;
+	
+		&lt;constraint&gt;
+	<b>&lt;value&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">property의 value값이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table></body></html>

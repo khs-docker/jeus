@@ -1,0 +1,73 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="form">
+            <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                <tr>
+                    <td class="table_columns">
+                        <span jwcid="export_name_column"/>
+                    </td>
+                    <td class="table_columns">
+                        <span jwcid="host_name_column"/>
+                    </td>
+                    <td class="table_columns">
+                        <span jwcid="port_column"/>
+                    </td>
+                    <td class="table_columns" width="100">
+                        <span jwcid="actions_column"/>
+                    </td>
+                    <td  class="table_columns" width="20">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr jwcid="eachTmax">
+                    <td class="table_values">
+                        <a jwcid="tmaxLink"><span jwcid="export_name_value"/></a>
+                    </td>
+                    <td class="table_values">
+                        <span jwcid="host_name_value"/>
+                    </td>
+                    <td class="table_values">
+                        <span jwcid="port_value"/>
+                    </td>
+                    <td class="table_values" align="center">
+                        <a jwcid="bindLink"></a><input jwcid="bind_button" class="form_button"  onclick="window.location.href=previousSibling.href"/>
+                    </td>
+                    <td class="table_values" align="center">
+                        <a jwcid="deleteLink"><img jwcid="delete" border="0"/></a>
+                    </td>
+                </tr>
+            </table>
+            <p style="text-align:right;"><a jwcid="createLink"><img jwcid="create" align="absmiddle"/>&nbsp;<span jwcid="create_label"/></a></p>
+        </form>
+
+        <span jwcid="condTCS">
+            <form jwcid="tcsForm">
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns">
+                            <span jwcid="tcs_export_name_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="tcs_actions_column"/>
+                        </td>
+                        <td  class="table_columns" width="20">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr jwcid="eachClusterTmax">
+                        <td class="table_values">
+                            <a jwcid="tcs_datasourceLink"><span jwcid="tcs_export_name_value"/></a>
+                        </td>
+                        <td class="table_values" align="center">
+                            <a jwcid="tcs_bindLink"></a><input jwcid="tcs_bind" onclick="window.location = previousSibling.href;" class="form_button"/>
+                        </td>
+                        <td class="table_values" align="center">
+                            <a jwcid="tcs_deleteLink"><img jwcid="delete2" border="0"/></a>
+                        </td>
+                    </tr>
+                </table>
+                <p style="text-align:right;"><a jwcid="tcs_createLink"><img jwcid="create2" align="absmiddle"/>&nbsp;<span jwcid="tcs_create_label"/></a></p>
+    </form>
+        </span>
+    </span>
+</html>

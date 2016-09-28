@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceJMSEngine.ActionsPage">
+	
+	<component id="mainBorder" type="jeus:MainBorder">
+		<binding name="title" value="literal:JMS Actions"/>
+	</component>
+
+	<component id="tabPanel" type="jeus:TabPanel">
+		<binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@JEUSSERVICE_JMSENGINE_NAMES"/>
+		<binding name="subtabNames" value="{'takeover'}"/>
+	</component>
+	
+	<component id="recover" type="Block"/>
+	<component id="detach" type="Block"/>
+	<component id="takeover" type="Block"/>
+	
+	<component id="takeover_form" type="jeus:JEUSForm">
+		<binding name="title" value="message:jms.takeover.title"/>
+		<binding name="listener" value="listener:takeover_formSubmit"/>
+		<binding name="useDefaultButtons" value="takeover_enabled"/>
+		<binding name="description" value="message:jms.takeover.description"/>
+	</component>
+	
+	<component id="takeover_brokernames" type="jeus:Field">
+		<binding name="layout" value="@jeus.tool.webadmin.component.Field@EXTENDED_LAYOUT"/>
+		<binding name="label" value="message:jms.takeover.targets.label"/>
+	</component>
+	
+	<component id="takeover_brokernames_field" type="jeus:PropertySelection">
+		<binding name="model" value="takeoverModel"/>
+		<binding name="value" value="takeover_brokerName"/>
+	</component>
+
+</page-specification>

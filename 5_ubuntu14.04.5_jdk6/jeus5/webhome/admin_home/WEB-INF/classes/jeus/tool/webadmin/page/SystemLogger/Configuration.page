@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.SystemLogger.ConfigurationPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Logger Service Configuration"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{pageName}"/>
+    </component>
+
+    <component id="loggingForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:configuration.logging.title"/>
+        <binding name="listener" value="listeners.onSystemLoggingOk"/>
+    </component>
+
+    <component id="logging_panel" type="jeus:Logging">
+        <binding name="logging" value="logging"/>
+		<binding name="modify" value="'modify'"/>
+    </component>
+
+    <component id="handlerForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jm.configuration.handler.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="subform" value="true"/>
+    </component>
+
+    <component id="handler_panel" type="jeus:HandlerList">
+        <binding name="handlers" value="handlers"/>
+        <binding name="createPage" value="literal:JeusServiceJEUSManager_CreateHandler"/>
+        <binding name="editPage" value="literal:JeusServiceJEUSManager_EditHandler"/>
+        <binding name="deleteListener" value="listeners.onDeleteHandler"/>
+        <binding name="objectName" value="objectName"/>
+        <binding name="jeusType" value="literal:JeusManager"/>
+        <binding name="loggerName" value="loggerName"/>
+        <binding name="loggerType" value="'list'"/>
+    </component>
+</page-specification>

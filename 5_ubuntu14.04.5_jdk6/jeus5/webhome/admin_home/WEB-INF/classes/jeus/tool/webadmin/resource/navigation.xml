@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navigation-tree>
+    <navigation page="JeusServiceJEUSManager_Configuration" j2ee-type="JeusService" jeus-type="JeusManager"/>
+    <navigation page="JeusServiceJEUSManager_Control" j2ee-type="JeusService" jeus-type="JeusManager"/>
+    <navigation page="JeusServiceJEUSManager_Cluster" j2ee-type="JeusService" jeus-type="JeusManager"/>
+    <navigation page="JeusServiceJEUSManager_Distribute" j2ee-type="JeusService" jeus-type="JeusManager"/>
+    <navigation page="JeusServiceJEUSManager_EditHandler" j2ee-type="Handler" jeus-type="JeusManager" parent-page="JeusServiceJEUSManager_Configuration"/>
+    <navigation page="JeusServiceJEUSManager_CreateHandler" j2ee-type="JeusService" jeus-type="JeusManager" key="Handler.create.title" parent-page="JeusServiceJEUSManager_Configuration"/>
+    <navigation page="JeusServiceJEUSManager_EditLogger" j2ee-type="Logger" jeus-type="JeusManager" parent-page="JeusServiceJEUSManager_Configuration"/>
+    <navigation page="JeusServiceJEUSManager_CreateLogger" j2ee-type="JeusService" jeus-type="JeusManager" key="configuration.logging.title" parent-page="JeusServiceJEUSManager_Configuration"/>
+    <navigation page="J2EEServer_Overview" j2ee-type="Folder" jeus-type="J2EEServer" key="NodeTree.Folder.J2EEServer" parent-page="JeusServiceJEUSManager_Configuration"/>
+    <navigation page="J2EEServer_Create" j2ee-type="Folder" jeus-type="J2EEServer" key="NodeTree.Folder.J2EEServer.create" parent-page="J2EEServer_Overview"/>
+    <navigation page="J2EEServer_Configuration" j2ee-type="J2EEServer" parent-page="J2EEServer_Overview" null-parent-page="JeusServiceJEUSManager_Configuration"/>
+    <navigation page="J2EEServer_Statistics" j2ee-type="J2EEServer" parent-page="J2EEServer_Overview"/>
+    <navigation page="J2EEServer_CreateUserHandler" j2ee-type="J2EEServer" key="Handler.create.title" parent-page="J2EEServer_Configuration"/>
+    <navigation page="J2EEServer_EditUserHandler" j2ee-type="Handler" jeus-type="J2EEServer" parent-page="J2EEServer_Configuration"/>
+    <navigation page="J2EEServer_CreateSystemHandler" j2ee-type="J2EEServer" key="Handler.create.title" parent-page="J2EEServer_Configuration"/>
+    <navigation page="J2EEServer_EditSystemHandler" j2ee-type="Handler" jeus-type="J2EEServer" parent-page="J2EEServer_Configuration"/>
+    <navigation page="J2EEServer_CreateLogger" j2ee-type="Logger" key="configuration.logging.title" parent-page="J2EEServer_Configuration"/>
+    <navigation page="J2EEServer_EditLogger" j2ee-type="Logger" jeus-type="J2EEServer" parent-page="J2EEServer_Configuration"/>    
+
+    <navigation page="Etc_TroubleMonitor" key="NodeTree.JeusService.JeusManager.tmonitor2"/>
+
+    <navigation page="JeusServiceEngine_Overview" j2ee-type="Folder" jeus-type="Engine" key="NodeTree.Folder.Engine" parent-page="J2EEServer_Configuration"/>
+    <navigation page="JeusServiceEngine_Create" j2ee-type="Folder" jeus-type="Engine" key="engine.create.title" parent-page="JeusServiceEngine_Overview"/>
+    <navigation page="JeusServiceEJBEngine_Configuration" j2ee-type="JeusService" jeus-type="EJBEngine" parent-page="JeusServiceEngine_Overview"/>
+    <navigation page="JeusServiceEJBEngine_Distribute" j2ee-type="JeusService" jeus-type="EJBEngine" parent-page="JeusServiceEngine_Overview"/>
+    <navigation page="JeusServiceEJBEngine_CreateHandler" j2ee-type="JeusService" jeus-type="EJBEngine" key="Handler.create.title" parent-page="JeusServiceEJBEngine_Configuration"/>
+    <navigation page="JeusServiceEJBEngine_EditHandler"  j2ee-type="Handler" jeus-type="EJBEngine" parent-page="JeusServiceEJBEngine_Configuration"/>
+    <navigation page="JeusServiceEJBEngine_Statistics" j2ee-type="JeusService" jeus-type="EJBEngine" parent-page="JeusServiceEngine_Overview"/>
+
+    <navigation page="JeusServiceWebEngine_Configuration" j2ee-type="JeusService" jeus-type="WebEngine" parent-page="JeusServiceEngine_Overview"/>
+    <navigation page="JeusServiceWebEngine_Session" j2ee-type="JeusService" jeus-type="WebEngine" parent-page="JeusServiceEngine_Overview"/>
+    <navigation page="JeusServiceWebEngine_ContextGroup" j2ee-type="JeusService" jeus-type="WebEngine" parent-page="JeusServiceEngine_Overview"/>
+    <navigation page="JeusServiceWebEngine_Distribute" j2ee-type="JeusService" jeus-type="WebEngine" parent-page="JeusServiceEngine_Overview"/>
+    <navigation page="JeusServiceWebEngine_CreateErrorLogHandler" j2ee-type="JeusService" jeus-type="WebEngineErrorLog" key="Handler.create.title" parent-page="JeusServiceWebEngine_Configuration"/>
+    <navigation page="JeusServiceWebEngine_EditErrorLogHandler"  j2ee-type="Handler" jeus-type="WebEngineErrorLog" parent-page="JeusServiceWebEngine_Configuration"/>
+    <navigation page="JeusServiceWebEngine_CreateAccessLogHandler" j2ee-type="JeusService" jeus-type="WebEngineAccessLog" key="Handler.create.title" parent-page="JeusServiceWebEngine_Configuration"/>
+    <navigation page="JeusServiceWebEngine_EditAccessLogHandler"  j2ee-type="Handler" jeus-type="WebEngineAccessLog" parent-page="JeusServiceWebEngine_Configuration"/>
+    <navigation page="JeusServiceWebEngine_CreateUserLogHandler" j2ee-type="JeusService" jeus-type="WebEngineUserLog" key="Handler.create.title" parent-page="JeusServiceWebEngine_Configuration"/>
+    <navigation page="JeusServiceWebEngine_EditUserLogHandler"  j2ee-type="Handler" jeus-type="WebEngineUserLog" parent-page="JeusServiceWebEngine_Configuration"/>
+
+    <navigation page="JeusServiceContextGroup_Configuration" j2ee-type="JeusService" jeus-type="ContextGroup" parent-page="JeusServiceWebEngine_Configuration"/>
+    <navigation page="JeusServiceContextGroup_WebListener" j2ee-type="JeusService" jeus-type="ContextGroup"  parent-page="JeusServiceWebEngine_Configuration"/>
+    <navigation page="JeusServiceContextGroup_Statistics" j2ee-type="JeusService" jeus-type="ContextGroup" parent-page="JeusServiceWebEngine_Configuration"/>
+    <navigation page="JeusServiceContextGroup_Create" j2ee-type="JeusService" jeus-type="WebEngine" key="NodeTree.JeusService.WebEngine.createContextGroup"  parent-page="JeusServiceWebEngine_Configuration"/>
+    <navigation page="JeusServiceContextGroup_CreateAccessLogHandler" j2ee-type="JeusService" jeus-type="ContextGroup"  key="Handler.create.title"  parent-page="JeusServiceContextGroup_Configuration"/>
+    <navigation page="JeusServiceContextGroup_EditAccessLogHandler" j2ee-type="Handler" jeus-type="ContextGroupAccessLog"  parent-page="JeusServiceContextGroup_Configuration"/>
+    <navigation page="JeusServiceContextGroup_CreateUserLogHandler" j2ee-type="JeusService" jeus-type="ContextGroup"  key="Handler.create.title"  parent-page="JeusServiceContextGroup_Configuration"/>
+    <navigation page="JeusServiceContextGroup_EditUserLogHandler" j2ee-type="Handler" jeus-type="ContextGroupUserLog"  parent-page="JeusServiceContextGroup_Configuration"/>
+
+    <navigation page="JeusServiceVirtualHost_Configuration" j2ee-type="JeusService" jeus-type="VirtualHost" parent-page="JeusServiceContextGroup_Configuration"/>
+    <navigation page="JeusServiceVirtualHost_Create" j2ee-type="JeusService" jeus-type="ContextGroup" key="cgc.virtual_host.create.label" parent-page="JeusServiceContextGroup_Configuration"/>
+
+    <navigation page="JeusServiceSessionContainer_Statistics" j2ee-type="JeusService" jeus-type="SessionContainer" parent-page="JeusServiceContextGroup_Configuration"/>
+    <navigation page="JeusServiceWebListener_Configuration" j2ee-type="JeusService" jeus-type="WebListener" parent-page="JeusServiceContextGroup_Configuration"/>
+    <navigation page="JeusServiceWebListener_Statistics" j2ee-type="JeusService" jeus-type="WebListener" parent-page="JeusServiceContextGroup_Statistics"/>
+    <navigation page="JeusServiceWebListener_Create" j2ee-type="JeusService" jeus-type="ContextGroup" key="NodeTree.JeusService.ContextGroup.createWebListener" parent-page="JeusServiceContextGroup_Configuration"/>
+    <navigation page="JeusServiceWebtobBackup_Create" j2ee-type="JeusService" jeus-type="WebListenerWebTobBackup" key="wlc.backup.create_backup.label" parent-page="JeusServiceWebListener_Configuration"/>
+    <navigation page="JeusServiceWebtobBackup_Configuration" j2ee-type="JeusService" jeus-type="WebListenerWebTobBackup" key="JeusServiceWebtobBackup_Configuration.navigation" parent-page="JeusServiceWebListener_Configuration"/>
+    <navigation page="JeusServiceThreadPool_Statistics" j2ee-type="JeusService" jeus-type="ThreadPool" parent-page="JeusServiceWebListener_Configuration"/>
+
+    <navigation page="JeusServiceJMSEngine_Configuration" j2ee-type="JeusService" jeus-type="JMSEngine" parent-page="JeusServiceEngine_Overview"/>
+    <navigation page="JeusServiceJMSEngine_Actions" j2ee-type="JeusService" jeus-type="JMSEngine" parent-page="JeusServiceEngine_Overview"/>
+    <navigation page="JeusServiceJMSEngine_Distribute" j2ee-type="JeusService" jeus-type="JMSEngine" parent-page="JeusServiceEngine_Overview"/>
+    <navigation page="JeusServiceJMSEngine_CreateErrorLogHandler" j2ee-type="JeusService" jeus-type="JMSEngine" key="Handler.create.title" parent-page="JeusServiceJMSEngine_Configuration"/>
+    <navigation page="JeusServiceJMSEngine_EditErrorLogHandler"  j2ee-type="Handler" jeus-type="JMSEngine" parent-page="JeusServiceJMSEngine_Configuration"/>
+    <navigation page="JeusServiceJMSEngine_CreateAccessLogHandler" j2ee-type="JeusService" jeus-type="JMSEngine" key="Handler.create.title" parent-page="JeusServiceJMSEngine_Configuration"/>
+    <navigation page="JeusServiceJMSEngine_EditAccessLogHandler"  j2ee-type="Handler" jeus-type="JMSEngine" parent-page="JeusServiceJMSEngine_Configuration"/>
+    <navigation page="JeusServiceServerChannel_Create" j2ee-type="JeusService" jeus-type="ServerChannel" parent-page="JeusServiceJMSEngine_Configuration" key="channel.create.label"/>
+    <navigation page="JeusServiceServerChannel_Configuration" j2ee-type="JeusService" jeus-type="ServerChannel" parent-page="JeusServiceJMSEngine_Configuration"/>
+
+    <navigation page="JeusServiceWSEngine_Configuration" j2ee-type="JeusService" jeus-type="WSEngine" parent-page="JeusServiceEngine_Overview"/>
+    <navigation page="JeusServiceWSEngine_Statistics" j2ee-type="JeusService" jeus-type="WSEngine" parent-page="JeusServiceEngine_Overview"/>
+    <navigation page="JeusServiceWSNode_Create" j2ee-type="JeusService" jeus-type="WSEngine" key="ws.node.create.node" parent-page="JeusServiceWSEngine_Configuration"/>
+    <navigation page="JeusServiceWSNode_Configuration" j2ee-type="JeusService" jeus-type="WSEngine" parent-page="JeusServiceEngine_Configuration"/>
+    <navigation page="JeusServiceWSVirtualHost_Configuration" j2ee-type="JeusService" jeus-type="WSEngine" parent-page="JeusServiceEngine_Configuration"/>
+    <navigation page="JeusServiceWSVirtualHost_Create" j2ee-type="JeusService" jeus-type="WSEngine" parent-page="JeusServiceEngine_Configuration"/>
+
+    <navigation page="FolderApplicationModule_Deploy" j2ee-type="Folder" jeus-type="ApplicationModule" key="NodeTree.Folder.ApplicationModuleDeploy" parent-page="JeusServiceJEUSManager_Configuration"/>
+
+    <navigation page="JeusServiceApplicationModule_Info" j2ee-type="Folder" jeus-type="ApplicationModule" key="NodeTree.Folder.ApplicationModule" parent-page="J2EEServer_Configuration"/>
+
+    <navigation page="J2EEApplication_Configuration" j2ee-type="J2EEApplication" parent-page="JeusServiceApplicationModule_Info"/>
+    <navigation page="J2EEApplication_Control" j2ee-type="J2EEApplication" parent-page="JeusServiceApplicationModule_Info"/>
+    <navigation page="AppClientModule_Configuration" j2ee-type="J2EEApplication" parent-page="JeusServiceApplicationModule_Info"/>
+    <navigation page="AppClientModule_Control" j2ee-type="J2EEApplication" parent-page="JeusServiceApplicationModule_Info"/>
+    <navigation page="EJBModule_Statistics" j2ee-type="EJBModule" parent-page="JeusServiceApplicationModule_Info"/>
+    <navigation page="EJBModule_Configuration" j2ee-type="EJBModule" parent-page="JeusServiceApplicationModule_Info"/>
+    <navigation page="EJBModule_Control" j2ee-type="EJBModule" parent-page="JeusServiceApplicationModule_Info"/>
+    <navigation page="WebModule_Statistics" j2ee-type="WebModule" parent-page="JeusServiceApplicationModule_Info"/>
+    <navigation page="WebModule_Configuration" j2ee-type="WebModule" parent-page="JeusServiceApplicationModule_Info"/>
+    <navigation page="WebModule_Control" j2ee-type="WebModule" parent-page="JeusServiceApplicationModule_Info"/>
+    <navigation page="ResourceAdapterModule_Statistics" j2ee-type="ResourceAdapterModule" parent-page="JeusServiceApplicationModule_Info"/>
+    <navigation page="ResourceAdapterModule_Configuration" j2ee-type="ResourceAdapterModule" parent-page="JeusServiceApplicationModule_Info"/>
+    <navigation page="ResourceAdapterModule_Control" j2ee-type="ResourceAdapterModule" parent-page="JeusServiceApplicationModule_Info"/>
+    <navigation page="EJB_Statistics" types="StatelessSessionBean,StatefulSessionBean,EntityBean,MessageDrivenBean" parent-page="EJBModule_Statistics"/>
+    <navigation page="EJB_Configuration" types="StatelessSessionBean,StatefulSessionBean,EntityBean,MessageDrivenBean" parent-page="EJBModule_Configuration"/>
+
+    <navigation page="JeusServiceJeusLogService_Control" j2ee-type="JeusService" jeus-type="JeusLogService" key="NodeTree.JeusService.JeusLogService" parent-page="J2EEServer_Configuration"/>
+
+    <navigation page="JeusServiceService_Info" j2ee-type="Folder" jeus-type="Service" key="NodeTree.Folder.Service" parent-page="J2EEServer_Configuration"/>
+    <navigation page="JeusServiceSchedulerService_Configuration" j2ee-type="JeusService" jeus-type="Scheduler" key="NodeTree.JeusService.SchedulerService" parent-page="JeusServiceService_Info"/>
+    <navigation page="JeusServiceSchedulerJob_Create" j2ee-type="JeusService" jeus-type="Scheduler" key="job.create.label" parent-page="JeusServiceSchedulerService_Configuration"/>
+    <navigation page="JeusServiceSchedulerJob_Configuration" j2ee-type="JeusService" jeus-type="SchedulerJob" parent-page="JeusServiceSchedulerService_Configuration"/>
+    <navigation page="JeusServiceJMXExportService_Configuration" j2ee-type="JeusService" jeus-type="JMXExportService" key="NodeTree.JeusService.JMXExportService" parent-page="JeusServiceService_Info"/>    
+
+    <navigation page="JeusServiceResource_Info" j2ee-type="Folder" jeus-type="Resource" key="NodeTree.Folder.Resource" parent-page="J2EEServer_Configuration"/>
+    <navigation page="JTAResource_Configuration" j2ee-type="JTAResource" key="NodeTree.JTAResource" parent-page="JeusServiceResource_Info"/>
+    <navigation page="JTAResource_Statistics" j2ee-type="JTAResource" key="NodeTree.JTAResource" parent-page="JeusServiceResource_Info"/>
+
+    <navigation page="JDBCDataSource_Overview" key="NodeTree.Folder.JDBCDataSource" j2ee-type="JDBCDataSource" parent-page="JeusServiceResource_Info"/>
+    <navigation page="JDBCDataSource_Statistics" j2ee-type="JDBCDataSource" parent-page="JDBCDataSource_Overview"/>
+    <navigation page="JDBCDataSource_Reconfigure" j2ee-type="JDBCDataSource" parent-page="JDBCDataSource_Overview"/>
+
+  	<navigation page="JeusServiceJCAResource_Info" j2ee-type="Folder" jeus-type="JCAResource" key="NodeTree.Folder.JCAResource" parent-page="JeusServiceResource_Info"/>
+    <navigation page="JCAResource_Statistics" j2ee-type="JCAResource" parent-page="JeusServiceJCAResource_Info"/>
+    <navigation page="JCAResource_Control" j2ee-type="JCAResource" parent-page="JeusServiceJCAResource_Info"/>
+    
+    <navigation page="JeusServiceWebtDataSource_Overview" j2ee-type="Folder" jeus-type="WebtDataSource" key="NodeTree.Folder.WebtDataSource" parent-page="JeusServiceResource_Info"/>
+
+    <navigation page="JeusServiceResourceService_Info" j2ee-type="Folder" jeus-type="ResourceService" key="NodeTree.Folder.ResourceService" parent-page="JeusServiceJEUSManager_Configuration"/>
+    <navigation page="JeusServiceJDBCDataSourceService_Overview" j2ee-type="Folder" jeus-type="JDBCDataSourceService" key="NodeTree.Folder.JDBCDataSourceService" parent-page="JeusServiceResourceService_Info"/>
+    <navigation page="JeusServiceJDBCDataSourceService_Create" j2ee-type="Folder" jeus-type="JDBCDataSourceService" key="jds.create.label" parent-page="JeusServiceJDBCDataSourceService_Overview"/>
+    <navigation page="JeusServiceJDBCDataSourceService_Configuration" j2ee-type="JeusService" jeus-type="JDBCDataSourceService" parent-page="JeusServiceJDBCDataSourceService_Overview"/>
+    <navigation page="JeusServiceJDBCClusterDataSourceService_Create" j2ee-type="Folder" jeus-type="JDBCDataSourceService" key="jdss.overview.cds.create.label" parent-page="JeusServiceJDBCDataSourceService_Overview"/>
+    <navigation page="JeusServiceJDBCClusterDataSourceService_Configuration" j2ee-type="JeusService" jeus-type="JDBCClusterDataSourceService" parent-page="JeusServiceJDBCDataSourceService_Overview"/>
+    <navigation page="URLResource_Overview" j2ee-type="Folder" jeus-type="URLResourceService" key="NodeTree.Folder.URLResourceService" parent-page="JeusServiceResourceService_Info"/>
+    <navigation page="URLResource_Configuration" j2ee-type="JeusService" jeus-type="URLResourceService" parent-page="URLResource_Overview"/>
+    <navigation page="JavaMailResource_Overview" j2ee-type="Folder" jeus-type="JavaMailResourceService" key="NodeTree.Folder.JavaMailResourceService" parent-page="JeusServiceResourceService_Info"/>
+    <navigation page="JavaMailResource_Configuration" j2ee-type="JeusService" jeus-type="JavaMailResourceService" parent-page="JavaMailResource_Overview"/>
+    <navigation page="JeusServiceTmaxExtResourceService_Overview" j2ee-type="Folder" jeus-type="TmaxExtResourceService" key="NodeTree.Folder.TmaxExtResourceService" parent-page="JeusServiceResourceService_Info"/>
+    <navigation page="JeusServiceTmaxExtResourceService_Configuration" j2ee-type="JeusService" jeus-type="TmaxExtResourceService" parent-page="JeusServiceTmaxExtResourceService_Overview"/>
+    <navigation page="JeusServiceTmaxExtResourceService_Create" j2ee-type="Folder" jeus-type="TmaxExtResourceService"  key="webt.overview.create.label" parent-page="JeusServiceTmaxExtResourceService_Overview"/>
+    <navigation page="JeusServiceMQExtResourceService_Overview" j2ee-type="Folder" jeus-type="MQExtResourceService" key="NodeTree.Folder.MQExtResourceService" parent-page="JeusServiceResourceService_Info"/>
+    <navigation page="JeusServiceMQExtResourceService_Configuration" j2ee-type="JeusService" jeus-type="MQExtResourceService" parent-page="JeusServiceMQExtResourceService_Overview"/>
+    <navigation page="JeusServiceMQExtResourceService_Create" key="JeusServiceMQExtResourceService_Create" j2ee-type="JeusService" jeus-type="MQExtResourceService" parent-page="JeusServiceMQExtResourceService_Overview"/>         
+
+    <navigation page="JeusServiceJeusService_Info" j2ee-type="Folder" jeus-type="JeusService" key="NodeTree.Folder.JeusService" parent-page="JeusServiceJEUSManager_Configuration"/>
+    <navigation page="JeusServiceJNDIResourceService_Configuration" j2ee-type="JeusService" jeus-type="JNDIResourceService" key="NodeTree.JeusService.JNDIResourceService" parent-page="JeusServiceJeusService_Info"/>
+    <navigation page="JeusServiceP2PSessionServerService_Configuration" j2ee-type="JeusService" jeus-type="P2PSessionServerService" key="NodeTree.JeusService.P2PSessionServerService" parent-page="JeusServiceJeusService_Info"/>
+    <navigation page="JeusServiceSessionServerService_Configuration" j2ee-type="JeusService" jeus-type="SessionServerService" key="NodeTree.JeusService.SessionServerService" parent-page="JeusServiceJeusService_Info"/>
+    <navigation page="JeusServiceSecurityDomain_Overview" key="domain.overview.title" j2ee-type="JeusService" jeus-type="SecurityService" parent-page="JeusServiceJeusService_Info"/>
+    <navigation page="JeusServiceSecurityDomain_Services" j2ee-type="JeusService" jeus-type="SecurityDomain" parent-page="JeusServiceSecurityDomain_Overview"/>
+    <navigation page="JeusServiceSecurityDomain_Accounts" j2ee-type="JeusService" jeus-type="SecurityDomain" parent-page="JeusServiceSecurityDomain_Overview"/>
+    <navigation page="JeusServiceSecurityDomain_Policies" j2ee-type="JeusService" jeus-type="SecurityDomain" parent-page="JeusServiceSecurityDomain_Overview"/>
+    <navigation page="JeusServiceSecurityDomain_Cache" j2ee-type="JeusService" jeus-type="SecurityDomain" parent-page="JeusServiceSecurityDomain_Overview"/>
+    <navigation page="JeusServiceSecurityDomain_Keystore" j2ee-type="JeusService" jeus-type="SecurityDomain" parent-page="JeusServiceSecurityDomain_Overview"/>
+    <navigation page="JeusServiceSecurityDomain_Create" j2ee-type="JeusService" jeus-type="SecurityDomain" parent-page="JeusServiceSecurityDomain_Overview"/>
+    <navigation page="JeusServiceSecurityDomain_Configuration" j2ee-type="JeusService" jeus-type="SecurityDomain" parent-page="JeusServiceSecurityDomain_Overview"/>
+    <navigation page="JeusServiceSecurityDomain_UserConfiguration" j2ee-type="JeusService" jeus-type="SecurityDomain" parent-page="JeusServiceSecurityDomain_Accounts"/>
+    <navigation page="JeusServiceSecurityDomain_GroupConfiguration" j2ee-type="JeusService" jeus-type="SecurityDomain" parent-page="JeusServiceSecurityDomain_Accounts"/>
+    <navigation page="JeusServiceSecurityDomain_RoleConfiguration" j2ee-type="JeusService" jeus-type="SecurityDomain" parent-page="JeusServiceSecurityDomain_Policies"/>
+    <navigation page="JeusServiceSecurityDomain_ResourceConfiguration" j2ee-type="JeusService" jeus-type="SecurityDomain" parent-page="JeusServiceSecurityDomain_Policies"/>
+    <navigation page="JeusServiceVirtualNode_Configuration" j2ee-type="JeusService" jeus-type="VirtualNode" key="NodeTree.JeusService.VirtualNode" parent-page="JeusServiceJeusService_Info"/>
+    <navigation page="JeusServiceVirtualNode_Distribute" j2ee-type="JeusService" jeus-type="VirtualNode" key="NodeTree.JeusService.VirtualNode" parent-page="JeusServiceJEUSManager_Configuration"/>
+    <navigation page="JeusServiceJNLPService_Overview" j2ee-type="Folder" jeus-type="JNLPService" key="NodeTree.JeusService.JNLPService" parent-page="JeusServiceJeusService_Info"/>
+    <navigation page="JeusServiceJNLPService_Configuration" j2ee-type="JeusServicer" jeus-type="JNLPService" parent-page="JeusServiceJNLPService_Overview"/>
+
+    <navigation page="JeusServiceSessionManager_Create" j2ee-type="JeusService" jeus-type="SessionServerService" key="sss.session_manager.create.label" parent-page="JeusServiceSessionServerService_Configuration"/>
+    <navigation page="JeusServiceSessionManager_Configuration" j2ee-type="JeusService" jeus-type="SessionManager" parent-page="JeusServiceSessionServerService_Configuration"/>
+
+	<navigation page="JeusServiceJMSResource_Info" j2ee-type="Folder" jeus-type="JMSResource" key="NodeTree.Folder.JMSResource" parent-page="JeusServiceResource_Info"/>
+    <navigation page="JMSConnectionFactoryResource_Overview" j2ee-type="Folder" jeus-type="JMSConnectionFactoryResource"  key="NodeTree.Folder.JMSConnectionFactoryResource" parent-page="JeusServiceJMSResource_Info"/>
+    <navigation page="JMSConnectionFactoryResource_Create" j2ee-type="Folder" jeus-type="JMSConnectionFactoryResource"  key="JMSConnectionFactoryResource_Create.navigation" parent-page="JMSConnectionFactoryResource_Overview"/>
+    <navigation page="JMSConnectionFactoryResource_Configuration" types="JeusService.JMSTopicConnectionFactoryResource,JeusService.JMSQueueConnectionFactoryResource"  parent-page="JMSConnectionFactoryResource_Overview"/>
+
+    <navigation page="JMSDestinationResource_Overview" j2ee-type="Folder" jeus-type="JMSDestinationResource"  key="NodeTree.Folder.JMSDestinationResource" parent-page="JeusServiceJMSResource_Info"/>
+    <navigation page="JMSDestinationResource_Create" j2ee-type="Folder" jeus-type="JMSDestinationResource"  key="JMSDestinationResource_Create.navigation" parent-page="JMSDestinationResource_Overview"/>
+    <navigation page="JMSDestinationResource_Configuration" types="JeusService.JMSTopicDestinationResource,JeusService.JMSQueueDestinationResource"  parent-page="JMSDestinationResource_Overview"/>
+    <navigation page="JMSDestinationResource_Messages" types="JeusService.JMSQueueDestinationResource"  parent-page="JMSDestinationResource_Overview"/>
+    <navigation page="JMSDestinationResource_DurableSubscriber" types="JeusService.JMSTopicDestinationResource"  parent-page="JMSDestinationResource_Overview"/>
+    <navigation page="JMSDestinationResource_Consumers" types="JeusService.JMSTopicDestinationResource,JeusService.JMSQueueDestinationResource"  parent-page="JMSDestinationResource_Overview"/>
+    <navigation page="JMSDurableSubscriberResource_Statistics" types="JeusService.JMSDurableSubscriberResource"  parent-page="JMSDestinationResource_DurableSubscriber"/>
+
+    <navigation page="JMSClientResource_Overview" j2ee-type="Folder" jeus-type="JMSClientResource" key="NodeTree.Folder.JMSClientResource" parent-page="JeusServiceJMSResource_Info"/>
+    <navigation page="JMSClientResource_Statistics" j2ee-type="JeusService" jeus-type="JMSClinetResource" parent-page="JMSClientResource_Overview"/>
+    <navigation page="JMSClientResource_Connections" j2ee-type="JeusService" jeus-type="JMSClientResource" parent-page="JMSClientResource_Overview"/>
+
+    <navigation page="JMSConnectionResource_Statistics" j2ee-type="JeusService" jeus-type="JMSConnectionResource" parent-page="JMSClientResource_Connections"/>
+    <navigation page="JMSConnectionResource_Sessions" j2ee-type="JeusService" jeus-type="JMSConnectionResource" parent-page="JMSClientResource_Connections"/>
+
+    <navigation page="JMSSessionResource_Statistics" j2ee-type="JeusService" jeus-type="JMSSessionResource" parent-page="JMSConnectionResource_Sessions"/>
+    <navigation page="JMSSessionResource_Consumers" j2ee-type="JeusService" jeus-type="JMSSessionResource" parent-page="JMSConnectionResource_Sessions"/>
+
+    <navigation page="PermanentModule_Overview" key="NodeTree.Folder.PermanentModule" j2ee-type="PermanentModule" parent-page="FolderApplicationModule_Deploy"/>
+    <navigation page="PermanentModule_Configuration" key="NodeTree.Folder.PermanentModule" j2ee-type="PermanentModule" parent-page="FolderApplicationModule_Deploy"/>
+    
+    <navigation page="PermanentModule_AppConfiguration" key="PermanentModule_AppConfiguration.title" j2ee-type="PermanentModule" parent-page="PermanentModule_Configuration"/>
+    <navigation page="PermanentModule_ModuleConfiguration" key="PermanentModule_ModuleConfiguration.title" j2ee-type="PermanentModule" parent-page="PermanentModule_Configuration"/>
+
+    <navigation page="JeusServiceJeusMonitoring_Info" j2ee-type="Folder" jeus-type="JeusMonitoring" key="NodeTree.Folder.JeusMonitoring" parent-page="JeusServiceJEUSManager_Configuration"/>
+	<navigation page="JeusMonitoringThreadMonitoringService_Overview" j2ee-type="Folder" jeus-type="ThreadMonitoringService" key="NodeTree.JeusMonitoring.ThreadMonitoringService" parent-page="JeusServiceJeusMonitoring_Info"/>
+	<navigation page="JeusMonitoringThreadMonitoringService_Infos" j2ee-type="Folder" jeus-type="ThreadMonitoringService" key="JeusMonitoringThreadMonitoringService_Infos" parent-page="JeusMonitoringThreadMonitoringService_Overview"/>
+	<navigation page="JeusMonitoringTransactionMonitoringService_Overview" j2ee-type="TransactionMonitoringService" key="NodeTree.JeusMonitoring.TransactionMonitoringService" parent-page="JeusServiceJeusMonitoring_Info"/>
+
+</navigation-tree>

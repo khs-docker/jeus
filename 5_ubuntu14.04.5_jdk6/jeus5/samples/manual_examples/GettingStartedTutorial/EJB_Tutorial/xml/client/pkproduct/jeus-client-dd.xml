@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jeus-client-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <module-info>
+        <module-name>ProductClient</module-name>
+        <app-main-class>pkproduct.ProductClient</app-main-class>
+    </module-info>
+<!--
+    <scheduler>false</scheduler>
+-->
+    <ejb-ref>
+        <jndi-info>
+            <ref-name>product</ref-name>
+            <export-name>ProductBean</export-name>
+        </jndi-info>
+    </ejb-ref>
+</jeus-client-dd>

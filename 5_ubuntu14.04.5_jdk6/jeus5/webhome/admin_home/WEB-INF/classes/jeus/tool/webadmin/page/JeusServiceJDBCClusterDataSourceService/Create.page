@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceJDBCClusterDataSourceService.CreatePage">
+
+	<inject property="visit" type="state" object="visit"/>
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Clustered JDBC Data Source Service Create"/>
+        
+    </component>
+
+    <component id="wizTabPanel" type="jeus:WizardTabPanel">
+        <binding name="tabNames" value="ognl:new java.lang.String[]{'general','data_source_name_block','create'}"/>
+    </component>
+
+    <component id="nullBlock" type="Block"/>
+    <component id="general" type="Block"/>
+    <component id="data_source_name_block" type="Block"/>
+    <component id="create" type="Block"/>
+
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cdsc.general.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="export_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.export_nameField"/>
+    </component>
+
+    <component id="export_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="clusterDs"/>
+        <binding name="elementName" value="literal:exportName"/>
+		<binding name="translator" value="bean:exportNameTranslator"/>        
+        <binding name="validators" value="validators:required,$exportNameValidator"/>
+    </component>
+
+    <component id="is_pre_conn" type="jeus:Field">
+        <binding name="field" value="ognl:components.is_pre_connField"/>
+    </component>
+
+    <component id="is_pre_connField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:clusterDs"/>
+        <binding name="elementName" value="literal:isPreConn"/>
+    </component>
+
+    <component id="general_next" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="ognl:listeners.onGeneralNext"/>
+    </component>
+
+    <component id="data_source_nameForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cdsc.data_source_name_block.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="data_source_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.data_source_nameField"/>
+        <binding name="label" value="message:cds.data_source_name.label"/>
+    </component>
+
+    <component id="data_source_nameField" type="contrib:Palette">
+        <binding name="model" value="ognl:datasourceModel"/>
+        <binding name="selected" value="ognl:dataSourceName"/>
+        <binding name="selectedTitleBlock" value="ognl:components.nullBlock"/>
+        <binding name="availableTitleBlock" value="ognl:components.nullBlock"/>
+        <binding name="sort" value="ognl:@org.apache.tapestry.contrib.palette.SortMode@USER"/>
+    </component>
+
+    <component id="data_source_name_previous" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="ognl:listeners.onDataSourceNamePrevious"/>
+    </component>
+
+    <component id="data_source_name_next" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="ognl:listeners.onDataSourceNameNext"/>
+    </component>
+
+
+    <component id="createForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cdsc.create.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="condBooted" type="If">
+        <binding name="condition" value="ognl:@jeus.tool.webadmin.util.NodeUtils@isBooted(visit)"/>
+    </component>
+
+    <component id="bind_now" type="jeus:Field">
+        <binding name="field" value="ognl:components.bind_nowField"/>
+        <binding name="label" value="message:cdsc.create.bind_now.label"/>
+    </component>
+
+    <component id="bind_nowField" type="jeus:DojoCheckbox">
+        <binding name="value" value="ognl:bindNow"/>
+    </component>
+
+    <component id="create_previous" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="ognl:listeners.onCreatePrevious"/>
+    </component>
+
+    <component id="createOk" type="Submit">
+        <binding name="value" value="message:common.label.create"/>
+        <binding name="listener" value="ognl:listeners.onCreateOk"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+    <bean name="exportNameValidator" class="jeus.tool.webadmin.page.JeusServiceJDBCDataSourceService.ExportNameValidator">
+        <set name="jeusSystem" value="jaxbInstance"/>
+    </bean>
+    
+	<bean name="exportNameTranslator" class="jeus.tool.webadmin.translator.DefaultStringTranslator">
+		<set name="default" value="beans.exportNameValidator.generateName()"/>
+	</bean>        
+
+    <property name="bindNow"/>
+    <property name="clusterDs" persist="session"/>
+</page-specification>

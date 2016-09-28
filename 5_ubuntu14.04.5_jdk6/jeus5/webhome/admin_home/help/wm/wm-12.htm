@@ -1,0 +1,731 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 12 JMS 엔진 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('12 JMS 엔진', 'wm-11.htm', 'wm-13.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left"><A NAME="jmseng"></A>12 JMS 엔진
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMNormalText">JMS 엔진은 Enterprise Messaging System에접근하기 위해서 필요한 하위 컴포넌트들을 포함하고 있는 엔진이다. JMS 엔진은 
+또한 JEUS내의 다른 엔진들과 함께 연동이 가능하다. 예를 들어 Message Driven Bean (JEUS WAS EJB 엔진에서 배치 됨)은 
+JEUS JMS 을 이용한다.
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMNormalText">이번 장에서는 JMS 엔진의 구성과 설정 및 제어에 대해서 알아 볼 것이다. JMS의 컨넥션 팩토리와 데스터네이션및 클라이언트에 관한 것은 JMS 
+리소스 장에서 자세히 알아보고 이번장에서는 JMS 엔진에 관한 것에 대해서만 알아볼 것이다.
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMHeading2">12.1 JMS 엔진 구성
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMHeading3"><A NAME="jmseng_create"></A>12.1.1 JMS 엔진 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 새 JMS엔진 추가
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">컨테이너
+ </SPAN>밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMNormalText">2. 하단의 
+ <SPAN CLASS="JMGUIWidget">새 JMS 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>을클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="454" SRC="images/image106.jpg" HEIGHT="195"></P>
+
+<P CLASS="JMCaption">그림 90JMS 엔진 추가 선택
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMNormalText">3. JMS 엔진생성 페이지가 나타나면 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>이름 필드에 추가하고자 JMS 엔진의 이름을 입력하고 기존에 같은 이름으로 존재하는 설정파일을 그대로 사용하고 싶을 경우는 
+ <SPAN CLASS="JMGUIWidget">기존 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정 
+ </SPAN><SPAN CLASS="JMGUIWidget">사용
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1008"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMNormalText">5. JMS 엔진이 생성되면 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 JMS 엔진 아이콘(
+ <IMG BORDER="0" WIDTH="17" SRC="images/image107.gif" HEIGHT="16">)이 비활성 상태로 추가되며 엔진 개요 페이지에 JMS 엔진이 추가되어 나타난다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="460" SRC="images/image108.jpg" HEIGHT="225"></P>
+
+<P CLASS="JMCaption">그림 91JMS 엔진 추가
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMHeading3"><A NAME="jmseng_remove"></A>12.1.2 JMS 엔진 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 새 JMS엔진 삭제
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">컨테이너
+ </SPAN>밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMNormalText">2. 엔진 목록에서 &ldquo;jms&rdquo; 타입의 엔진의 
+ <A HREF="http://localhost:9744/webadmin/application?service=direct/1/JeusServiceEngine_Overview/deleteLink&amp;sp=Stmax_jms_engine1"><IMG BORDER="0" WIDTH="11" SRC="images/image033.gif" HEIGHT="13"></A>를 클릭한다.
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMNormalText">3. JMS 엔진이 삭제되면 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 JMS 엔진 아이콘이 삭제되고 엔진 페이지의 엔진 목록에서도 삭제된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="494" SRC="images/image109.jpg" HEIGHT="189"></P>
+
+<P CLASS="JMCaption">그림 92JMS 엔진 삭제
+ </P>
+<A NAME="1014"></A>
+<P CLASS="JMHeading2"><A NAME="jmseng_conf"></A>12.2 JMS 엔진 설정
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMHeading3"><A NAME="jmseng_conf_general"></A>12.2.1 기본 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng">JMS 엔진
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng_conf">설정
+ </A>&gt;기본 설정
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">JMS 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">JMS 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="273" SRC="images/image110.jpg" HEIGHT="269"></P>
+
+<P CLASS="JMCaption">그림 93JMS 엔진 설정 선택
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMNormalText">2. 하위 탭 패널에서 
+ <SPAN CLASS="JMGUIWidget">기본 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1018"></A>
+<P CLASS="JMNormalText">3. 각 항목의 값을 입력한다. 설정된 값은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image111.jpg" HEIGHT="273"></P>
+
+<P CLASS="JMCaption">그림94 JMS 엔진기본 설정
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image112.jpg" HEIGHT="530"></P>
+
+<P CLASS="JMCaption">그림 95JMS 엔진 기본 설정 &ndash; 고급 선택사항
+ </P>
+<A NAME="1020"></A>
+<P CLASS="JMHeading3"><A NAME="jmseng_conf_errlog"></A>12.2.2 에러 로그 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng">JMS 엔진
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng_conf">설정
+ </A>&gt;에러 로그
+ </P>
+<A NAME="1021"></A>
+<P CLASS="JMNormalText">에러 로그 관련 설정은 24.5 로그 서비스에서 설명할 것이다.
+ </P>
+<A NAME="1022"></A>
+<P CLASS="JMHeading3">12.2.3 엑세스 로그 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng">JMS 엔진
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng_conf">설정
+ </A>&gt;엑세스 로그
+ </P>
+<A NAME="1023"></A>
+<P CLASS="JMNormalText">엑세스 로그 관련 설정은 24.5 로그 서비스에서 설명할 것이다.
+ </P>
+<A NAME="1024"></A>
+<P CLASS="JMHeading3"><A NAME="jmseng_conf_storage"></A>12.2.4 스토리지 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng">JMS 엔진
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng_conf">설정
+ </A>&gt;스토리지
+ </P>
+<A NAME="1025"></A>
+<P CLASS="JMNormalText">JMS 서버가 다운이 될 경우에, 백업 이나 복구기능을 제공하기 위한 설정이다. 파일이나 데이터베이스에서 하나를 설정해야 한다.
+ </P>
+<A NAME="1026"></A>
+<P CLASS="JMNormalText">다음은 데이터베이스일 경우 설정 방법이다.
+ </P>
+<A NAME="1027"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는 JMS 엔진을 클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">JMS 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1028"></A>
+<P CLASS="JMNormalText">2. 하위 탭 패널에서 
+ <SPAN CLASS="JMGUIWidget">스토리지
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1029"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">스토리지 
+ </SPAN><SPAN CLASS="JMGUIWidget">종류
+ </SPAN>에서 
+ <SPAN CLASS="JMGUIWidget">DBStorage
+ </SPAN>를선택한다.
+ </P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMGUIWidget"><IMG BORDER="0" WIDTH="520" SRC="images/image113.jpg" HEIGHT="200"></SPAN></P>
+
+<P CLASS="JMCaption">그림 96DBStorage 선택
+ </P>
+<A NAME="1030"></A>
+<P CLASS="JMNormalText">4. <SPAN CLASS="JMGUIWidget">DataSource
+ </SPAN>에서 적절한 데이터 소스 이름을 선택한다. 그리고 각테이블 이름을 지정한다.
+ </P>
+<A NAME="1031"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMGUIWidget"><IMG BORDER="0" WIDTH="520" SRC="images/image114.jpg" HEIGHT="470"></SPAN></P>
+
+<P CLASS="JMCaption">그림97 DataSource선택
+ </P>
+<A NAME="1032"></A>
+<P CLASS="JMNormalText">다음은 파일일 경우 설정 방법이다.
+ </P>
+<A NAME="1033"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">JMS 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">JMS 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1034"></A>
+<P CLASS="JMNormalText">2. 하위 탭 패널에서 
+ <SPAN CLASS="JMGUIWidget">스토리지
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1035"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">스토리지 
+ </SPAN><SPAN CLASS="JMGUIWidget">종류
+ </SPAN>에서 
+ <SPAN CLASS="JMGUIWidget">FileStorage
+ </SPAN>을선택한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image115.jpg" HEIGHT="200"></P>
+
+<P CLASS="JMCaption">그림 98FileStorage 선택
+ </P>
+<A NAME="1036"></A>
+<P CLASS="JMNormalText">4. 각 항목의 값을 입력한다. 설정된 값은 다음 부트시에 적용된다. 
+ </P>
+<A NAME="1037"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image116.jpg" HEIGHT="412"></P>
+
+<P CLASS="JMCaption">그림 99FileStorage 설정
+ </P>
+<A NAME="1038"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMNoteWarningChar">참고
+ </SPAN><SPAN CLASS="JMNoteWarningChar">:
+ </SPAN>스토리지 설정을 초기화 하기 위해서는 
+ <SPAN CLASS="JMGUIWidget">재설정
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1039"></A>
+<P CLASS="JMHeading3"><A NAME="jmseng_conf_thrdpool"></A>12.2.5 쓰레드 풀 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng">JMS 엔진
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng_conf">설정
+ </A>&gt;쓰레드 풀
+ </P>
+<A NAME="1040"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">JMS 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">JMS 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1041"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">쓰레드 
+ </SPAN><SPAN CLASS="JMGUIWidget">풀
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1042"></A>
+<P CLASS="JMNormalText">3. 각 항목의 값을 입력한다. 변경된 항목은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1043"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image117.jpg" HEIGHT="262"></P>
+
+<P CLASS="JMCaption">그림 100JMS 엔진 - 쓰레드 풀설정
+ </P>
+<A NAME="1044"></A>
+<P CLASS="JMHeading3">12.2.6 클러스터 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng">JMS 엔진
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng_conf">설정
+ </A>&gt;클러스터
+ </P>
+<A NAME="1045"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는
+ <SPAN CLASS="JMGUIWidget">JMS 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을 클릭하거나컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">JMS 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을 선택한다.
+ </P>
+<A NAME="1046"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">클러스터
+ </SPAN>를 선택한다.
+ </P>
+<A NAME="1047"></A>
+<P CLASS="JMNormalText">3. 각 항목의 값을 입력한다. 변경된 항목은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1048"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">추가
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1049"></A>
+<P CLASS="JMNormalText">5. 클러스터가추가 되면 설정 페이지맨 위의테이블에 설정된 클러스터의 내용이 표시된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image118.jpg" HEIGHT="423"></P>
+
+<P CLASS="JMCaption">그림 101 JMS 엔진 - 클러스터 설정
+ </P>
+<A NAME="1050"></A>
+<P CLASS="JMHeading3">12.2.7 듀러블 서브스크라이버 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng">JMS 엔진
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng_conf">설정
+ </A>&gt;듀러블 서브스크라이버
+ </P>
+<A NAME="1051"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는
+ <SPAN CLASS="JMGUIWidget">JMS 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을 클릭하거나컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">JMS 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을 선택한다.
+ </P>
+<A NAME="1052"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">듀러블 
+ </SPAN><SPAN CLASS="JMGUIWidget">서브스크라이버
+ </SPAN>를 선택한다.
+ </P>
+<A NAME="1053"></A>
+<P CLASS="JMNormalText">3. 각 항목의 값을 입력한다. 변경된 항목은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1054"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">추가
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1055"></A>
+<P CLASS="JMNormalText">5. 듀러블 서브스크라이버가 추가되면 설정 페이지 맨위의 테이블에 설정된 듀러블 서브스크라이버의내용이 표시된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image119.jpg" HEIGHT="268"></P>
+
+<P CLASS="JMCaption">그림 102JMS 엔진 - 듀러블 서브스크라이버 설정
+ </P>
+<A NAME="1056"></A>
+<P CLASS="JMHeading3">12.2.8 큐 클러스터 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng">JMS 엔진
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng_conf">설정
+ </A>&gt;큐 클러스터
+ </P>
+<A NAME="1057"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는
+ <SPAN CLASS="JMGUIWidget">JMS 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을 클릭하거나컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">JMS 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을 선택한다.
+ </P>
+<A NAME="1058"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">큐 
+ </SPAN><SPAN CLASS="JMGUIWidget">클러스터
+ </SPAN>를 선택한다.
+ </P>
+<A NAME="1059"></A>
+<P CLASS="JMNormalText">3. 각 항목의 값을 입력한다. 변경된 항목은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1060"></A>
+<P CLASS="JMNormalText">주의 : target 항목의 값은 필수이므로 반드시 값을입력해야 한다. 또한 이 값은반드시 클러스터에 참여하는 broker name이어야한다.
+ 
+</P>
+<A NAME="1061"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">추가
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1062"></A>
+<P CLASS="JMNormalText">5. 추가된 큐 클러스터의내용은 상단의 테이블에 표시된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image120.jpg" HEIGHT="326"></P>
+
+<P CLASS="JMCaption">그림103 JMS 엔진 - 큐 클러스터설정
+ </P>
+<A NAME="1063"></A>
+<P CLASS="JMHeading3">12.2.9 토픽 클러스터 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng">JMS 엔진
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng_conf">설정
+ </A>&gt;토픽 클러스터
+ </P>
+<A NAME="1064"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는
+ <SPAN CLASS="JMGUIWidget">JMS 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을 클릭하거나컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">JMS 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을 선택한다.
+ </P>
+<A NAME="1065"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">토픽 
+ </SPAN><SPAN CLASS="JMGUIWidget">클러스터
+ </SPAN>를 선택한다.
+ </P>
+<A NAME="1066"></A>
+<P CLASS="JMNormalText">3. 각 항목의 값을 입력한다. 변경된 항목은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1067"></A>
+<P CLASS="JMNormalText">주의 : target 항목의 값은 필수이므로 반드시 값을입력해야 한다. 또한 이 값은반드시 클러스터에 참여하는 broker name이어야한다.
+ 
+</P>
+<A NAME="1068"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">추가
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1069"></A>
+<P CLASS="JMNormalText">5. 추가된 토픽 클러스터의 내용은 상단의테이블에 표시된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image121.jpg" HEIGHT="259"></P>
+
+<P CLASS="JMCaption">그림104 JMS 엔진 &ndash; 토픽 클러스터 설정
+ </P>
+<A NAME="1070"></A>
+<P CLASS="JMHeading2"><A NAME="jmseng_control"></A>12.3 JMS 엔진 제어
+ </P>
+<A NAME="1071"></A>
+<P CLASS="JMHeading3"><A NAME="jmseng_control_start"></A>12.3.1 JMS 엔진 시작
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng">JMS 엔진
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng_control">제어
+ </A>&gt; 시작
+ </P>
+<A NAME="1072"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1073"></A>
+<P CLASS="JMNormalText">2. 엔진 목록에서 타입이 &ldquo;jms&rdquo;인엔진의 
+ <SPAN CLASS="JMGUIWidget">시작
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1074"></A>
+<P CLASS="JMNormalText">3. 잠시 후 JMS 엔진이 시작되고 노드 트리의 JMS 엔진 아이콘(
+ <IMG BORDER="0" WIDTH="17" SRC="images/image122.gif" HEIGHT="16">)이 활성화 된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="466" SRC="images/image123.jpg" HEIGHT="205"></P>
+
+<P CLASS="JMCaption">그림 105JMS 엔진 시작
+ </P>
+<A NAME="1075"></A>
+<P CLASS="JMHeading3">12.3.2 JMS 엔진 다운
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng">JMS 엔진
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng_control">제어
+ </A>&gt; 다운
+ </P>
+<A NAME="1076"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1077"></A>
+<P CLASS="JMNormalText">2. 엔진 목록에서 타입이 &ldquo;jms&rdquo;인엔진의 
+ <SPAN CLASS="JMGUIWidget">다운
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1078"></A>
+<P CLASS="JMNormalText">3. 잠시 후 JMS 엔진이 다운되고 노드 트리의 JMS 엔진 아이콘(
+ <IMG BORDER="0" WIDTH="17" SRC="images/image107.gif" HEIGHT="16">)이 비활성화 된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="464" SRC="images/image124.jpg" HEIGHT="202"></P>
+
+<P CLASS="JMCaption">그림 106JMS엔진 다운
+ </P>
+<A NAME="1079"></A>
+<P CLASS="JMHeading2"><A NAME="jmseng_distribute"></A>12.4 JMSMain.xml 분배
+ </P>
+<A NAME="1080"></A>
+<P CLASS="JMNormalText">JMSMain.xml 분배는 현재 선택된 노드의 
+ <SPAN CLASS="JMFileNameReferenceChar">JMSMain.xml
+ </SPAN>을 전체 JMS 엔진에 동일하게 복사하는 것을 말한다. 이 기능은 JMS 엔진을 시작하기 전에 분배를 통해서 동일한 설정을 적용 할 경우에만 사용하는것으로 
+JMS 엔진들이 이미 시작되었을 경우에는 사용하지 않는 것이 좋다.
+ </P>
+<A NAME="1081"></A>
+<P CLASS="JMNormalText">JMS 엔진의 경우 JMS 엔진 Port가포함되어 있으므로 분배후에는 동일한 노드에 존재하는 JMS 엔진의 경우 JMS 엔진 Port가 중복되지 
+않게 설정해주어야 한다.
+ </P>
+<A NAME="1082"></A>
+<P CLASS="JMHeading3">12.4.1 JMSMain.xml 분배
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-12.htm#jmseng">JMS 엔진
+ </A>&gt; 분배
+ </P>
+<A NAME="1083"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 JMS 엔진을 클릭한 후 주 화면에서 
+ <SPAN CLASS="JMGUIWidget">분배
+ </SPAN>탭을 선택하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">JMSMain.xml 
+ </SPAN><SPAN CLASS="JMGUIWidget">분배
+ </SPAN>를선택한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="278" SRC="images/image125.jpg" HEIGHT="281"></P>
+
+<P CLASS="JMCaption">그림 107JMSMain.xml 분배 선택
+ </P>
+<A NAME="1084"></A>
+<P CLASS="JMNormalText">2. 화면의 
+ <SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">탐색기
+ </SPAN>에서 분배하고자 하는 JMS 엔진들을 선택한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="476" SRC="images/image126.jpg" HEIGHT="186"></P>
+
+<P CLASS="JMCaption">그림 108JMS 엔진 선택
+ </P>
+<A NAME="1085"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">분배
+ </SPAN>버튼을 클릭한다.
+ </P>
+<!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

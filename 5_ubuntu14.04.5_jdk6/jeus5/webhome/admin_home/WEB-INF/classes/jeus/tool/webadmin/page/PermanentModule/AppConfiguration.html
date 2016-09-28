@@ -1,0 +1,64 @@
+<html jwcid="mainBorder" >
+	<span jwcid="tabPanel">
+      	<span jwcid="targets@Block">
+            <span jwcid="condNoTarget">
+                <form jwcid="noTargetsForm">
+                    <span jwcid="noTarget" class="field_label"/>
+                </form>
+            </span>
+            <span jwcid="@Else">
+                <form jwcid="targetsForm">
+                    <span jwcid="_targets">
+                        <span jwcid="targetsField"/>
+                    </span>
+                </form>
+            </span>
+        </span>
+        <span jwcid="options@Block">
+            <form jwcid="optionsForm">
+            	<span jwcid="condAbsolutePath">
+            		<span jwcid="readOnlyAbsolutePath"/>
+            	</span>
+            	<span jwcid="@Else">
+            		<span jwcid="absolutePath">
+            			<span jwcid="absolutePathField"/>
+            		</span>
+            	</span>
+                <span jwcid="fast_deploy">
+                    <input jwcid="fast_deployField"/>
+                </span>
+                <span jwcid="deploy_when_booting">
+                    <input jwcid="deploy_when_bootingField"/>
+                </span>
+                <span jwcid="classloading">
+                    <input jwcid="classloadingField"/>
+                </span>
+                <span jwcid="class_ftp_unit">
+                    <input jwcid="class_ftp_unitField"/>
+                </span>
+                <span jwcid="security_domain_name">
+                    <input jwcid="security_domain_nameField"/>
+                </span>
+				<span jwcid="app_keep_generated">
+                	<span jwcid="app_keep_generatedField"/>
+				</span>
+               	<span jwcid="check_autodeploy">
+	               	<span jwcid="check_absolute_path">
+	                    <input jwcid="check_absolute_pathField"/>
+	                </span>
+	                <span jwcid="auto_deploy">
+	                    <input jwcid="auto_deployField"/>
+	                </span>
+               	</span>
+                <span jwcid="check_java_security_permission">
+                	<span jwcid="security_permission_description">
+                    	<input jwcid="security_permission_descriptionField" style="width:98%;" rows="4"/>
+					</span>
+					<span jwcid="security_permission_spec">
+                       	<input jwcid="security_permission_specField" style="width:98%;" rows="6"/>
+					</span>
+				</span>
+            </form>
+        </span>
+    </span>
+</html>

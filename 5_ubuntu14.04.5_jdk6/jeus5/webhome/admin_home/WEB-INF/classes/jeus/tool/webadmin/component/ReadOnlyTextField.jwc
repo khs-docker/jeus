@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://tapestry.apache.org/dtd/Tapestry_4_0.dtd">
+
+<component-specification allow-body="no" allow-informal-parameters="yes">
+	<parameter name="label"/>
+
+	<parameter name="description"/>
+
+	<parameter name="unit"/>
+
+	<parameter name="value"/>
+
+    <parameter name="raw" default-value="false"/>
+    
+    <parameter name="parentElement"/>
+    <parameter name="elementName"/>
+
+    <component id="wrapper" type="Field" inherit-informal-parameters="yes">
+        <inherited-binding name="label" parameter-name="label"/>
+        <inherited-binding name="descriptioin" parameter-name="description"/>
+        <inherited-binding name="unit" parameter-name="unit"/>
+        <binding name="field" value="component:value"/>
+    </component>
+
+    <component id="value" type="JAXBInsert">
+        <inherited-binding name="value" parameter-name="value"/>
+		<inherited-binding name="parentElement" parameter-name="parentElement"/>
+        <inherited-binding name="elementName" parameter-name="elementName"/>
+        <inherited-binding name="raw" parameter-name="raw"/>
+    </component>
+
+</component-specification>

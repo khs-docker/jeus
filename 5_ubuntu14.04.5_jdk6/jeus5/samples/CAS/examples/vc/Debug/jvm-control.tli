@@ -1,0 +1,230 @@
+// Created by Microsoft (R) C/C++ Compiler Version 12.00.8168.0 (fe13709e).
+//
+// d:\tmaxsoft\jeus5\samples\cas\examples\vc\debug\jvm-control.tli
+//
+// Wrapper implementations for Win32 type library D:\j2ee-cas-com-bridge\bin\jvm-control.dll
+// compiler-generated file created 04/04/05 at 15:28:19 - DO NOT EDIT!
+
+#pragma once
+
+//
+// interface IJvmControl wrapper method implementations
+//
+
+inline _bstr_t IJvmControl::GetClasspath ( ) {
+    BSTR _result;
+    HRESULT _hr = get_Classpath(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline void IJvmControl::PutClasspath ( _bstr_t pVal ) {
+    HRESULT _hr = put_Classpath(pVal);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+}
+
+inline _bstr_t IJvmControl::GetBootclasspath ( ) {
+    BSTR _result;
+    HRESULT _hr = get_Bootclasspath(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline void IJvmControl::PutBootclasspath ( _bstr_t pVal ) {
+    HRESULT _hr = put_Bootclasspath(pVal);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+}
+
+inline _bstr_t IJvmControl::GetPrependClasspath ( ) {
+    BSTR _result;
+    HRESULT _hr = get_PrependClasspath(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline void IJvmControl::PutPrependClasspath ( _bstr_t pVal ) {
+    HRESULT _hr = put_PrependClasspath(pVal);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+}
+
+inline _bstr_t IJvmControl::GetPrependBootclasspath ( ) {
+    BSTR _result;
+    HRESULT _hr = get_PrependBootclasspath(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline void IJvmControl::PutPrependBootclasspath ( _bstr_t pVal ) {
+    HRESULT _hr = put_PrependBootclasspath(pVal);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+}
+
+inline _bstr_t IJvmControl::GetAppendClasspath ( ) {
+    BSTR _result;
+    HRESULT _hr = get_AppendClasspath(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline void IJvmControl::PutAppendClasspath ( _bstr_t pVal ) {
+    HRESULT _hr = put_AppendClasspath(pVal);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+}
+
+inline _bstr_t IJvmControl::GetAppendBootclasspath ( ) {
+    BSTR _result;
+    HRESULT _hr = get_AppendBootclasspath(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline void IJvmControl::PutAppendBootclasspath ( _bstr_t pVal ) {
+    HRESULT _hr = put_AppendBootclasspath(pVal);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+}
+
+inline _bstr_t IJvmControl::GetJvmProperties ( ) {
+    BSTR _result;
+    HRESULT _hr = get_JvmProperties(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline void IJvmControl::PutJvmProperties ( _bstr_t pVal ) {
+    HRESULT _hr = put_JvmProperties(pVal);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+}
+
+inline _bstr_t IJvmControl::GetJvmOptions ( ) {
+    BSTR _result;
+    HRESULT _hr = get_JvmOptions(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline void IJvmControl::PutJvmOptions ( _bstr_t pVal ) {
+    HRESULT _hr = put_JvmOptions(pVal);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+}
+
+inline _bstr_t IJvmControl::GetJvmPath ( ) {
+    BSTR _result;
+    HRESULT _hr = get_JvmPath(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline void IJvmControl::PutJvmPath ( _bstr_t pVal ) {
+    HRESULT _hr = put_JvmPath(pVal);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+}
+
+inline _bstr_t IJvmControl::GetNotSpecified ( ) {
+    BSTR _result;
+    HRESULT _hr = get_NotSpecified(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline HRESULT IJvmControl::RemoveAllProperties ( ) {
+    HRESULT _hr = raw_RemoveAllProperties();
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT IJvmControl::AddProperty ( _bstr_t propertyName, _bstr_t propertyValue ) {
+    HRESULT _hr = raw_AddProperty(propertyName, propertyValue);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT IJvmControl::RemoveProperty ( _bstr_t propertyName ) {
+    HRESULT _hr = raw_RemoveProperty(propertyName);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline long IJvmControl::GetPropertyCount ( ) {
+    long _result;
+    HRESULT _hr = raw_GetPropertyCount(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t IJvmControl::GetPropertyName ( long propertyIndex ) {
+    BSTR _result;
+    HRESULT _hr = raw_GetPropertyName(propertyIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t IJvmControl::GetPropertyValue ( _bstr_t propertyName ) {
+    BSTR _result;
+    HRESULT _hr = raw_GetPropertyValue(propertyName, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline HRESULT IJvmControl::Load ( _bstr_t filename ) {
+    HRESULT _hr = raw_Load(filename);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT IJvmControl::Save ( _bstr_t filename ) {
+    HRESULT _hr = raw_Save(filename);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT IJvmControl::AddOption ( _bstr_t option ) {
+    HRESULT _hr = raw_AddOption(option);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT IJvmControl::RemoveOption ( _bstr_t option ) {
+    HRESULT _hr = raw_RemoveOption(option);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline long IJvmControl::GetOptionCount ( ) {
+    long _result;
+    HRESULT _hr = raw_GetOptionCount(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t IJvmControl::GetOption ( long optionIndex ) {
+    BSTR _result;
+    HRESULT _hr = raw_GetOption(optionIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline HRESULT IJvmControl::RemoveAllOptions ( ) {
+    HRESULT _hr = raw_RemoveAllOptions();
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline IDispatchPtr IJvmControl::GetJvmStarter ( ) {
+    IDispatch * _result;
+    HRESULT _hr = raw_GetJvmStarter(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return IDispatchPtr(_result, false);
+}
+
+inline IDispatchPtr IJvmControl::StartJvm ( ) {
+    IDispatch * _result;
+    HRESULT _hr = raw_StartJvm(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return IDispatchPtr(_result, false);
+}
+
+inline HRESULT IJvmControl::ClearAll ( ) {
+    HRESULT _hr = raw_ClearAll();
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}

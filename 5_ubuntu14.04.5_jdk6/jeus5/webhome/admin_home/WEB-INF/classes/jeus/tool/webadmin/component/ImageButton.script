@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+
+<input-symbol key="upImageURL"   class="java.lang.String" required="yes"/>
+<input-symbol key="downImageURL" class="java.lang.String" required="yes"/>
+<input-symbol key="overImageURL" class="java.lang.String" required="yes"/>
+<input-symbol key="outImageURL" class="java.lang.String" required="yes"/>
+<input-symbol key="imageName" class="java.lang.String" required="yes"/>
+
+<let key="onMouseOverName">
+	onMouseOver_${imageName}
+</let>
+<let key="onMouseOutName">
+	onMouseOut_${imageName}
+</let>
+<let key="onMouseUpName">
+	onMouseUp_${imageName}
+</let>
+<let key="onMouseDownName">
+	onMouseDown_${imageName}
+</let>
+
+<let key="attribute">
+	document.${imageName}.src
+</let>
+<body>
+
+function ${onMouseOverName}()
+{
+  if (document.images)
+    ${attribute} = ${overImageURL};
+}
+
+function ${onMouseOutName}()
+{
+  if (document.images)
+    ${attribute} = ${outImageURL};
+}
+
+function ${onMouseUpName}()
+{
+  if (document.images)
+    ${attribute} = ${upImageURL};
+}
+
+function ${onMouseDownName}()
+{
+  if (document.images)
+    ${attribute} = ${downImageURL};
+}
+</body>
+
+</script>

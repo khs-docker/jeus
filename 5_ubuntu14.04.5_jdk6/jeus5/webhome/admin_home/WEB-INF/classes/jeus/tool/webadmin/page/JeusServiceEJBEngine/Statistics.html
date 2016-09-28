@@ -1,0 +1,34 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <!--
+        <span jwcid="module_list">
+            <form jwcid="module_listForm">
+                <table border="1" cellpadding="3" width="100%" jwcid="moduleTable"/>
+                <span jwcid="ejm_module_list_name_labelColumnValue@Block">
+                    <a jwcid="moduleLink"><span jwcid="moduleName"/></a>
+                </span>
+            </form>
+        </span>
+        -->
+<!--        <span jwcid="statistics"> -->
+            <form jwcid="statisticsForm">
+                <span jwcid="condHasEJBModules">
+                    <table border="1" cellpadding="3" width="100%" jwcid="statisticsTable"/>
+                    <!-- render module name column -->
+                    <span jwcid="ejm_statistics_module_name_labelColumnValue@Block">
+                        <a jwcid="moduleLink2"><span jwcid="moduleName2"/></a>
+                    </span>
+                    <span jwcid="ejm_statistics_bean_name_labelColumnValue@Block">
+                        <a jwcid="beanLink"><span jwcid="beanName"/></a>
+                    </span>
+                    <div class="form_button_layer">
+                        <input jwcid="refreshButton" type="button" class="form_button" onclick="window.location.reload();"/>
+                    </div>
+                </span>
+                <span jwcid="condHasNoEJBModules">
+                    <span jwcid="no_modules" class="field_label"/>
+                </span>
+            </form>
+        <!--</span>-->
+    </span>
+</html>

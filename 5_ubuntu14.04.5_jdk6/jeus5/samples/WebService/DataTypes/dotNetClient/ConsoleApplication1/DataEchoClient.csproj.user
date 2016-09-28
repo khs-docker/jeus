@@ -1,0 +1,12 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="">
+    <LastOpenVersion>8.0.40607</LastOpenVersion>
+    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectTrust>0</ProjectTrust>
+    <PublishUrlHistory>http://localhost/DataEchoClient||||</PublishUrlHistory>
+    <InstallUrlHistory>||||</InstallUrlHistory>
+    <SupportUrlHistory>||||</SupportUrlHistory>
+    <UpdateUrlHistory>||||</UpdateUrlHistory>
+    <BootstrapperUrlHistory>||||</BootstrapperUrlHistory>
+  </PropertyGroup>
+</Project>

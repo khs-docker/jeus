@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jeus-application-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+   <name>EJBSamples</name>
+   <deployment-type>EAR</deployment-type>
+   <path>EJBSamples.ear</path>
+   <!--
+   <ejb-component>
+      <uri>book11.jar</uri>
+      <fast-deploy>false</fast-deploy>
+   </ejb-component>
+   -->
+   <ejb-component>
+      <uri>book20.jar</uri>
+      <fast-deploy>false</fast-deploy>
+   </ejb-component>
+   <ejb-component>
+      <uri>calc.jar</uri>
+      <fast-deploy>false</fast-deploy>
+   </ejb-component>
+   <ejb-component>
+      <uri>counter.jar</uri>
+      <fast-deploy>false</fast-deploy>
+   </ejb-component>
+   <ejb-component>
+      <uri>product.jar</uri>
+      <fast-deploy>false</fast-deploy>
+   </ejb-component>
+</jeus-application-dd>

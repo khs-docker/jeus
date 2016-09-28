@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+<description>          
+    <text key="accounts"><![CDATA[
+                        [Description]: 계정에 대한 설정을 정의한다. 이 안에서 user들과 group들을 정의할 수 있다.
+            ]]>          
+    </text>
+           
+    <text key="accountsType.users"><![CDATA[
+                                [Description]: user들을 정의한다.
+                    ]]>          
+    </text>
+           
+    <text key="accountsType.groups"><![CDATA[
+                                [Description]: group들을 정의한다.
+                    ]]>          
+    </text>
+           
+    <text key="usersType.user"><![CDATA[
+                        [Description]: User를 정의한다.
+                    ]]>          
+    </text>
+           
+    <text key="userType.description"><![CDATA[
+                        [Description]: User에 대한 설명.
+                        [Value Description]: 임의의 설명문
+                        [Example]: <description>A really nice guy!</description>
+                    ]]>          
+    </text>
+           
+    <text key="userType.name"><![CDATA[
+                        [Description]: 해당 User에 대한 user name을 정의한다. "primary" identify로서 유일해야 한다.
+                    ]]>          
+    </text>
+           
+    <text key="userType.password"><![CDATA[
+                            [Description]: User에 대한 Password를 설정한다.
+                    ]]>          
+    </text>
+           
+    <text key="userType.group"><![CDATA[
+                        [Description]: 해당 User에 대한 group identify를 정의한다. User가 속한 group을 정의한다. 이때의 group은 <groups><group><name></name></group></groups>에 정의되어 있어야 한다.
+                    ]]>          
+    </text>
+           
+    <text key="groupsType.group"><![CDATA[
+                        [Description]: Group을 정의한다.
+                    ]]>          
+    </text>
+           
+    <text key="groupType.description"><![CDATA[
+                        [Description]: Group에 대한 설명.
+                        [Value Description]: 임의의 설명문
+                    ]]>          
+    </text>
+           
+    <text key="groupType.name"><![CDATA[
+                        [Description]: 해당 Group에 대한 group name을 정의한다. group의 "primary" identify로서 유일해야 한다.
+                    ]]>          
+    </text>
+           
+    <text key="groupType.subgroup"><![CDATA[
+                        [Description]: 자신의 하위 group을 정의한다. 이때의 group은 <groups><group><name></name></group></groups>에 정의되어 있어야 한다.
+                    ]]>          
+    </text>
+</description>

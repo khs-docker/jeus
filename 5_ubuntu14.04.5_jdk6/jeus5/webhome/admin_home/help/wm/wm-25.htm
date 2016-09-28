@@ -1,0 +1,1062 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 25 보안 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('25 보안', 'wm-24.htm', 'wm-26.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left"><A NAME="security"></A>25 보안
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMHeading2"><A NAME="domain"></A>25.1 도메인
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMNormalText">도메인이란 보안 서비스 인스턴스의 집합이라 할 수 있다. 하나의 보안 시스템에 여러 개의 도메인이 동시에 있을 수 있다. 
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMNormalText">도메인 개념의 배경에는 서로 다른 어플리케이션이나 JEUS 하위 시스템이 각각 별도의 보안 서비스를 사용할 수 있도록 하자는데 있다. 도메인은 보안 
+서비스를 각 어플리케이션별로 분리하는 역할을 한다.
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMHeading3"><A NAME="domain_create"></A>25.1.1 도메인 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 추가
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">보안
+ </SPAN>를 클릭한 후 도메인목록 하단에 위치한 
+ <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">보안 
+ </SPAN><SPAN CLASS="JMGUIWidget">도메인 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>을클릭한다.
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMNormalText">2. 기존에 존재하는 도메인설정을 그대로 복사하고 싶을 경우 
+ <SPAN CLASS="JMGUIWidget">원본 
+ </SPAN><SPAN CLASS="JMGUIWidget">도메인 
+ </SPAN><SPAN CLASS="JMGUIWidget">이름
+ </SPAN>에서 도메인을 선택한다.
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">도메인 
+ </SPAN><SPAN CLASS="JMGUIWidget">이름
+ </SPAN>에생성하고자 하는 도메인 이름을 입력한다. 
+ <SPAN CLASS="JMEmphasizeChar">SYSTEM_DOMAIN
+ </SPAN>은이미 존재하므로 생성 할 수가 없다.
+ </P>
+<A NAME="1008"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>를 클릭한다.
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMNormalText">5. 생성된 도메인의 아이콘(
+ <IMG BORDER="0" WIDTH="16" SRC="images/image243.gif" HEIGHT="16">)이노드 트리에 나타난다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="513" SRC="images/image244.gif" HEIGHT="181"></P>
+
+<P CLASS="JMCaption">그림 208 새 보안 도메인 추가
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMHeading3"><A NAME="domain_remove"></A>25.1.2 도메인 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 삭제
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">보안
+ </SPAN>을 클릭한다.
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMNormalText">2. 삭제하고자 하는 도메인을 선택한 후 
+ <A HREF="http://localhost:9744/webadmin/application?service=direct/1/JeusServiceSecurityDomain_Overview/deleteLink&amp;sp=SMY_DOMAIN"><IMG BORDER="0" WIDTH="11" SRC="images/image033.gif" HEIGHT="13"></A>을 클릭한다.
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMNormalText">3. 도메인이 삭제되고 노드 트리에서 도메인 아이콘(
+ <IMG BORDER="0" WIDTH="16" SRC="images/image243.gif" HEIGHT="16">)이 사라진다.
+ </P>
+<A NAME="1014"></A>
+<P CLASS="JMHeading2"><A NAME="securitysvc"></A>25.2 보안 서비스
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMNormalText">보안 시스템의 각 기능들을 구현하고 있는 클래스들을 서비스라고 한다. 다시 말해 서비스란 특정 보안 기능 - 인증, 권한 부여, 네트워킹, 기타 
+- 을 제공하는 SPI(Service Provider Interface)를구현한 클래스이다.
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMHeading3"><A NAME="securitysvc_create"></A>25.2.1 서비스 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#securitysvc">서비스
+ </A>&gt; 추가
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 서비스를 추가하고자 하는 도메인을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">서비스
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1018"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">마스터
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1020"></A>
+<P CLASS="JMNormalText">4. 각 입력 항목을 입력한다. 속성에는 서비스의 속성들을 &ldquo;키=값&rdquo; 형식으로 입력한다.
+ </P>
+<A NAME="1021"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1022"></A>
+<P CLASS="JMNormalText">6. 서비스 목록에 서비스가 추가된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image245.jpg" HEIGHT="384"></P>
+
+<P CLASS="JMCaption">그림 209 서비스 추가
+ </P>
+<A NAME="1023"></A>
+<P CLASS="JMHeading3"><A NAME="securitysvc_remove"></A>25.2.2 서비스 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#securitysvc">서비스
+ </A>&gt; 삭제
+ </P>
+<A NAME="1024"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 서비스를 추가하고자 하는 도메인을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">서비스
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1025"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">마스터
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1026"></A>
+<P CLASS="JMNormalText">3. 삭제하고자 하는 서비스를 선택한 후 
+ <SPAN CLASS="JMGUIWidget">삭제
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1027"></A>
+<P CLASS="JMNormalText">4. 서비스 목록에서 서비스가 삭제된다.
+ </P>
+<A NAME="1028"></A>
+<P CLASS="JMHeading3"><A NAME="securitysvc_modify"></A>25.2.3 서비스 수정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#securitysvc">서비스
+ </A>&gt; 수정
+ </P>
+<A NAME="1029"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 서비스를 추가하고자 하는 도메인을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">서비스
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1030"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">마스터
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1031"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">수정
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1032"></A>
+<P CLASS="JMNormalText">4. 각 입력 항목을 입력한다. 
+ </P>
+<A NAME="1033"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1034"></A>
+<P CLASS="JMNormalText">6. 서비스 목록에 서비스가 추가된다.
+ </P>
+<A NAME="1035"></A>
+<P CLASS="JMHeading2"><A NAME="subject"></A>25.3 서브젝트
+ </P>
+<A NAME="1036"></A>
+<P CLASS="JMNormalText">Subject 설정에는 기본 설정과 전문가 설정으로 나뉘어져 있다. 기본 설정에서는 
+ <SPAN CLASS="JMJavaCodeChar">패스워드
+ </SPAN><SPAN CLASS="JMJavaCodeChar"></SPAN><SPAN CLASS="JMJavaCodeChar">설정을
+ </SPAN><SPAN CLASS="JMJavaCodeChar">jeus.security.resource.PasswordFactory
+ </SPAN><SPAN CLASS="JMJavaCodeChar">을
+ </SPAN><SPAN CLASS="JMJavaCodeChar"></SPAN><SPAN CLASS="JMJavaCodeChar">이용해서
+ </SPAN><SPAN CLASS="JMJavaCodeChar"></SPAN><SPAN CLASS="JMJavaCodeChar">하는
+ </SPAN><SPAN CLASS="JMJavaCodeChar"></SPAN><SPAN CLASS="JMJavaCodeChar">경우
+ </SPAN><SPAN CLASS="JMJavaCodeChar"></SPAN><SPAN CLASS="JMJavaCodeChar">즉
+ </SPAN><SPAN CLASS="JMJavaCodeChar">, BASE64 
+ </SPAN><SPAN CLASS="JMJavaCodeChar">인코딩을
+ </SPAN><SPAN CLASS="JMJavaCodeChar"></SPAN><SPAN CLASS="JMJavaCodeChar">사용하여
+ </SPAN><SPAN CLASS="JMJavaCodeChar"></SPAN><SPAN CLASS="JMJavaCodeChar">패스워드를
+ </SPAN><SPAN CLASS="JMJavaCodeChar"></SPAN><SPAN CLASS="JMJavaCodeChar">만드는
+ </SPAN><SPAN CLASS="JMJavaCodeChar"></SPAN><SPAN CLASS="JMJavaCodeChar">경우
+ </SPAN><SPAN CLASS="JMJavaCodeChar"></SPAN><SPAN CLASS="JMJavaCodeChar">사용된다
+ </SPAN><SPAN CLASS="JMJavaCodeChar">. 
+ </SPAN>전문가 설정은 좀더 세밀하게 입력할 경우 사용된다.
+ </P>
+<A NAME="1037"></A>
+<P CLASS="JMHeading3"><A NAME="subject_create"></A>25.3.1 기본 설정에서의 서브젝트 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#subject">서브젝트
+ </A>&gt; 기본 설정&gt; 추가
+ </P>
+<A NAME="1038"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 Subject를 추가하고자 하는 도메인을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">서브젝트
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1039"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">기본 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1040"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1041"></A>
+<P CLASS="JMNormalText">4. 각 항목을 입력한다.
+ </P>
+<A NAME="1042"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1043"></A>
+<P CLASS="JMNormalText">6. Subject 목록에 방금 생성한 서브젝트가 추가된다.
+ </P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMGUIWidget"><IMG BORDER="0" WIDTH="489" SRC="images/image246.gif" HEIGHT="167"></SPAN></P>
+
+<P CLASS="JMCaption">그림 210 서브젝트 추가
+ </P>
+<A NAME="1044"></A>
+<P CLASS="JMHeading3"><A NAME="subject_modify"></A>25.3.2 기본 설정에서의 서브젝트 수정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#subject">서브젝트
+ </A>&gt; 기본 설정&gt; 수정
+ </P>
+<A NAME="1045"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 서브젝트를 추가하고자 하는 도메인을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">서브젝트
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1046"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">기본 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1047"></A>
+<P CLASS="JMNormalText">3. 수정하고자 하는 서브젝트를 선택한 후 
+ <SPAN CLASS="JMGUIWidget">수정
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1048"></A>
+<P CLASS="JMNormalText">4. 암호를 새로 입력한다.
+ </P>
+<A NAME="1049"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1050"></A>
+<P CLASS="JMHeading3"><A NAME="subject_create2"></A>25.3.3 서브젝트 생성
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#subject">서브젝트
+ </A>&gt; 전문가 설정&gt; 생성
+ </P>
+<A NAME="1051"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 Subject를 추가하고자 하는 도메인을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">서브젝트
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1052"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">전문가 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1053"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다. 
+ </P>
+<A NAME="1054"></A>
+<P CLASS="JMNormalText">4. 서브젝트 이름을 입력한다.
+ </P>
+<A NAME="1055"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1056"></A>
+<P CLASS="JMNormalText">6. 서브젝트목록에 방금 생성한서브젝트가 추가된다.
+ </P>
+<A NAME="1057"></A>
+<P CLASS="JMHeading3"><A NAME="subject_remove"></A>25.3.4 서브젝트 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#subject">서브젝트
+ </A>&gt; 삭제
+ </P>
+<A NAME="1058"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 삭제하고자 하는 서브젝트를 가진 도메인을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">서브젝트
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1059"></A>
+<P CLASS="JMNormalText">2. 서브젝트 목록에서 삭제하고자 하는 서브젝트를 클릭한다.
+ </P>
+<A NAME="1060"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">삭제
+ </SPAN>버튼을 클릭한다. 
+ </P>
+<A NAME="1061"></A>
+<P CLASS="JMNormalText">4. 서브젝트 목록에서 서브젝트가 삭제된다.
+ </P>
+<A NAME="1062"></A>
+<P CLASS="JMHeading3"><A NAME="subject_save"></A>25.3.5 서브젝트 저장
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#subject">서브젝트
+ </A>&gt; 저장
+ </P>
+<A NAME="1063"></A>
+<P CLASS="JMNormalText">서브젝트에 대한 변경 사항은 메모리 내에서만 이루어진다. 따라서 물리적으로 영구적으로 저장하기 위해서는 이 기능을 사용해야한다.
+ </P>
+<A NAME="1064"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 서브젝트를 저장하고자 하는 도메인을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">서브젝트
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1065"></A>
+<P CLASS="JMNormalText">2. <SPAN CLASS="JMGUIWidget">저장
+ </SPAN>버튼을 클릭한다. 
+ </P>
+<A NAME="1066"></A>
+<P CLASS="JMNormalText">3. 서브젝트들이 저장된다.
+ </P>
+<A NAME="1067"></A>
+<P CLASS="JMHeading3"><A NAME="priciple_create"></A>25.3.6 서브젝트에 Principal생성
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#subject">서브젝트
+ </A>&gt; 전문가 설정 &gt; Principle 생성
+ </P>
+<A NAME="1068"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 Principal을 추가하고자 하는 도메인을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">서브젝트
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1069"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">전문가
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1070"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">수정
+ </SPAN>버튼을 클릭한다. 
+ </P>
+<A NAME="1071"></A>
+<P CLASS="JMNormalText">4. 하단의 탭에서
+ <SPAN CLASS="JMGUIWidget">Principal
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1072"></A>
+<P CLASS="JMNormalText">5. <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1073"></A>
+<P CLASS="JMNormalText">6. 각 항목을 입력한다.
+ </P>
+<A NAME="1074"></A>
+<P CLASS="JMNormalText">7. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1075"></A>
+<P CLASS="JMNormalText">8. 방금 생성한 Principal이 Principal 목록에 추가된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="484" SRC="images/image247.gif" HEIGHT="376"></P>
+
+<P CLASS="JMCaption">그림 211Principal 추가
+ </P>
+<A NAME="1076"></A>
+<P CLASS="JMHeading3"><A NAME="priciple_remove"></A>25.3.7 서브젝트에서 Principal삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#subject">서브젝트
+ </A>&gt; 전문가 설정 &gt; Principle 삭제
+ </P>
+<A NAME="1077"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 Principal을 삭제하고자 하는 도메인을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">서브젝트
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1078"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">전문가
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1079"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">수정
+ </SPAN>버튼을 클릭한다. 
+ </P>
+<A NAME="1080"></A>
+<P CLASS="JMNormalText">4. 하단의 탭에서
+ <SPAN CLASS="JMGUIWidget">Principal
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1081"></A>
+<P CLASS="JMNormalText">5. Principal 목록에서 삭제하고자 하는 Principal을 선택한다. Main Principal &ndash;&rdquo;[main]&rdquo;으로 
+표시된 Principal &ndash;은 삭제가 불가능 하다.
+ </P>
+<A NAME="1082"></A>
+<P CLASS="JMNormalText">6. <SPAN CLASS="JMGUIWidget">삭제
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1083"></A>
+<P CLASS="JMNormalText">7. Princiapal 목록에서 방금 삭제한Principal이 삭제된다.
+ </P>
+<A NAME="1084"></A>
+<P CLASS="JMHeading3"><A NAME="credentialfactory_create"></A>25.3.8 서브젝트에 크리덴셜 팩토리 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#subject">서브젝트
+ </A>&gt; 전문가 설정 &gt; 크리덴셜 팩토리 추가
+ </P>
+<A NAME="1085"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 Credential Factory를추가하고자 하는 도메인을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">서브젝트
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1086"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">전문가
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1087"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">수정
+ </SPAN>버튼을 클릭한다. 
+ </P>
+<A NAME="1088"></A>
+<P CLASS="JMNormalText">4. 하단의 탭에서
+ <SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">크리덴셜 
+ </SPAN><SPAN CLASS="JMGUIWidget">팩토리
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1089"></A>
+<P CLASS="JMNormalText">5. 생성버튼을 클릭한다.
+ </P>
+<A NAME="1090"></A>
+<P CLASS="JMNormalText">6. 각 입력항목을 입력한다. 속성의 값은 &ldquo;키=값&rdquo; 형식으로 입력한다. 만약 값이 한 줄이상이라면 시작 줄은&ldquo;키=[[&rdquo;으로 
+끝나는 줄은&rdquo;]]&rdquo;으로 입력하고 그 중간에 값을 입력하여야 한다.
+ </P>
+<A NAME="1091"></A>
+<P CLASS="JMNormalText">7. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1092"></A>
+<P CLASS="JMNormalText">8. 방금 생성한 크리덴셜 팩토리가 크리덴셜 팩토리 목록에 추가된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="483" SRC="images/image248.gif" HEIGHT="518"></P>
+
+<P CLASS="JMCaption">그림 212Credential Factory 추가
+ </P>
+<A NAME="1093"></A>
+<P CLASS="JMHeading3"><A NAME="credentialfactory_remove"></A>25.3.9 서브젝트에서 크리덴셜 팩토리 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#subject">서브젝트
+ </A>&gt; 전문가 설정 &gt; 크리덴셜 팩토리삭제
+ </P>
+<A NAME="1094"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 크리덴셜 팩토리를 삭제하고자 하는 도메인을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">서브젝트
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1095"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">전문가
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1096"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">수정
+ </SPAN>버튼을 클릭한다. 
+ </P>
+<A NAME="1097"></A>
+<P CLASS="JMNormalText">4. 하단의 탭에서
+ <SPAN CLASS="JMGUIWidget"></SPAN>크리덴셜 팩토리를선택한다.
+ </P>
+<A NAME="1098"></A>
+<P CLASS="JMNormalText">5. 크리덴셜 팩토리 목록에서 삭제하고자 하는 크리덴셜 팩토리 을 선택한다. 
+ </P>
+<A NAME="1099"></A>
+<P CLASS="JMNormalText">6. <SPAN CLASS="JMGUIWidget">삭제
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1100"></A>
+<P CLASS="JMNormalText">7. 크리덴셜 팩토리 목록에서 크리덴셜 팩토리가 삭제된다.
+ </P>
+<A NAME="1101"></A>
+<P CLASS="JMHeading3"><A NAME="credentialfactory_modify"></A>25.3.10 서브젝트에 크리덴셜 팩토리 수정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#subject">서브젝트
+ </A>&gt; 전문가 설정 &gt; 크리덴셜 팩토리 수정
+ </P>
+<A NAME="1102"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 수정하고자 크리덴셜 팩토리를 포함하는 도메인을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">서브젝트
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1103"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">전문가
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1104"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">수정
+ </SPAN>버튼을 클릭한다. 
+ </P>
+<A NAME="1105"></A>
+<P CLASS="JMNormalText">4. 하단의 탭에서
+ <SPAN CLASS="JMGUIWidget"></SPAN>크리덴셜 팩토리를선택한다.
+ </P>
+<A NAME="1106"></A>
+<P CLASS="JMNormalText">5. 크리덴셜 팩토리 목록에서 수정하고자 하는 크리덴셜 팩토리를선택한다. 
+ </P>
+<A NAME="1107"></A>
+<P CLASS="JMNormalText">6. <SPAN CLASS="JMGUIWidget">수정
+ </SPAN>버튼을 클릭한다. 
+ </P>
+<A NAME="1108"></A>
+<P CLASS="JMNormalText">7. 각 입력 항목을 입력한다. 
+ </P>
+<A NAME="1109"></A>
+<P CLASS="JMNormalText">8. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1110"></A>
+<P CLASS="JMHeading2"><A NAME="policy"></A>25.4 정책
+ </P>
+<A NAME="1111"></A>
+<P CLASS="JMHeading3"><A NAME="policy_contextid_create"></A>25.4.1 컨텍스트 식별자 생성
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#policy">정책
+ </A>&gt; 새컨텍스트 식별자 생성
+ </P>
+<A NAME="1112"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 컨텍스트 식별자를 추가하고자 하는 
+ <SPAN CLASS="JMGUIWidget">도메인
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">정책
+ </SPAN>탭을 클릭한다.
+ </P>
+<A NAME="1113"></A>
+<P CLASS="JMNormalText">2. 컨텍스트 식별자 목록 아래의 
+ <SPAN CLASS="JMGUIWidget">생성 
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1114"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">컨텍스트 
+ </SPAN><SPAN CLASS="JMGUIWidget">식별자
+ </SPAN>에입력을 한다.
+ </P>
+<A NAME="1115"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1116"></A>
+<P CLASS="JMNormalText">5. 컨텍스트 식별자가 컨텍스트 식별자 목록에 추가된다.
+ </P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMGUIWidget"><IMG BORDER="0" WIDTH="398" SRC="images/image249.gif" HEIGHT="111"></SPAN></P>
+
+<P CLASS="JMCaption">그림 213 컨텍스트 식별자 생성
+ </P>
+<A NAME="1117"></A>
+<P CLASS="JMHeading3"><A NAME="policy_contextid_remove"></A>25.4.2 컨텍스트 식별자 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#policy">정책
+ </A>&gt; 컨텍스트 식별자 삭제
+ </P>
+<A NAME="1118"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 컨텍스트 식별자를 삭제하고자 하는 
+ <SPAN CLASS="JMGUIWidget">도메인
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">정책
+ </SPAN>탭을 클릭한다.
+ </P>
+<A NAME="1119"></A>
+<P CLASS="JMNormalText">2. 컨텍스트 식별자 목록에서 삭제하고자 하는 컨텍스트 식별자를 선택한다.
+ </P>
+<A NAME="1120"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">삭제
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1121"></A>
+<P CLASS="JMNormalText">4. 컨텍스트 식별자가 컨텍스트 식별자 목록에서 사라진다.
+ </P>
+<A NAME="1122"></A>
+<P CLASS="JMHeading3"><A NAME="policy_save"></A>25.4.3 정책 저장
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#policy">정책
+ </A>&gt; 저장
+ </P>
+<A NAME="1123"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 저장하고자 하는 정책들이 있는 
+ <SPAN CLASS="JMGUIWidget">도메인
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">정책
+ </SPAN>탭을 클릭한다.
+ </P>
+<A NAME="1124"></A>
+<P CLASS="JMNormalText">2. <SPAN CLASS="JMGUIWidget">저장
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1125"></A>
+<P CLASS="JMNormalText">3. 정책들이 저장된다.
+ </P>
+<A NAME="1126"></A>
+<P CLASS="JMHeading3"><A NAME="role_create"></A>25.4.4 역할 생성
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#policy">정책
+ </A>&gt; 역할 생성
+ </P>
+<A NAME="1127"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">도메인
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">정책
+ </SPAN>탭을 클릭한다.
+ </P>
+<A NAME="1128"></A>
+<P CLASS="JMNormalText">2. 컨텍스트 식별자목록에서 역할을 생성하고자하는 컨텍스트 식별자를 선택한다.
+ </P>
+<A NAME="1129"></A>
+<P CLASS="JMNormalText">3. 탭에서 
+ <SPAN CLASS="JMGUIWidget">역할 
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1130"></A>
+<P CLASS="JMNormalText">4. <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다. 
+ </P>
+<A NAME="1131"></A>
+<P CLASS="JMNormalText">5. 각 입력 항목을 입력한다.
+ </P>
+<A NAME="1132"></A>
+<P CLASS="JMNormalText">6. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 입력한다.
+ </P>
+<A NAME="1133"></A>
+<P CLASS="JMNormalText">7. 생성된 역할이 역할 권한 목록에 추가된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="510" SRC="images/image250.jpg" HEIGHT="572"></P>
+
+<P CLASS="JMCaption">그림 214 역할 추가
+ </P>
+<A NAME="1134"></A>
+<P CLASS="JMHeading3"><A NAME="role_remove"></A>25.4.5 역할 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#policy">정책
+ </A>&gt; 역할 삭제
+ </P>
+<A NAME="1135"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">도메인
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">정책 
+ </SPAN>탭을 클릭한다.
+ </P>
+<A NAME="1136"></A>
+<P CLASS="JMNormalText">2. 컨텍스트 식별자 목록에서 삭제하고자 하는 역할이 포함된 컨텍스트 식별자를 선택한다.
+ </P>
+<A NAME="1137"></A>
+<P CLASS="JMNormalText">3. 탭에서 
+ <SPAN CLASS="JMGUIWidget">역할 
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1138"></A>
+<P CLASS="JMNormalText">4. 역할 목록에서 역할을 선택한다.
+ </P>
+<A NAME="1139"></A>
+<P CLASS="JMNormalText">5. <SPAN CLASS="JMGUIWidget">삭제
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1140"></A>
+<P CLASS="JMNormalText">6. 역할이 역할 목록에서 사라진다.
+ </P>
+<A NAME="1141"></A>
+<P CLASS="JMHeading3"><A NAME="role_modify"></A>25.4.6 역할 수정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#policy">정책
+ </A>&gt; 역할 수정
+ </P>
+<A NAME="1142"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">도메인
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">정책 
+ </SPAN>탭을 클릭한다.
+ </P>
+<A NAME="1143"></A>
+<P CLASS="JMNormalText">2. 컨텍스트 식별자 목록에서 수정하고자 하는 역할이 포함된 컨텍스트 식별자를 선택한다.
+ </P>
+<A NAME="1144"></A>
+<P CLASS="JMNormalText">3. 탭에서 
+ <SPAN CLASS="JMGUIWidget">역할 
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1145"></A>
+<P CLASS="JMNormalText">4. 역할 목록에서 역할을 선택한다.
+ </P>
+<A NAME="1146"></A>
+<P CLASS="JMNormalText">5. <SPAN CLASS="JMGUIWidget">수정
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1147"></A>
+<P CLASS="JMNormalText">6. 각 항목을 입력한다. 
+ </P>
+<A NAME="1148"></A>
+<P CLASS="JMNormalText">7. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1149"></A>
+<P CLASS="JMHeading3"><A NAME="resource_create"></A>25.4.7 리소스 생성
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#policy">정책
+ </A>&gt; 리소스 생성
+ </P>
+<A NAME="1150"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">도메인
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">정책 
+ </SPAN>탭을 클릭한다.
+ </P>
+<A NAME="1151"></A>
+<P CLASS="JMNormalText">2. 컨텍스트 식별자 목록에서 리소스를 추가하고자 하는 컨텍스트 식별자를 선택한다.
+ </P>
+<A NAME="1152"></A>
+<P CLASS="JMNormalText">3. 탭에서 
+ <SPAN CLASS="JMGUIWidget">리소스
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1153"></A>
+<P CLASS="JMNormalText">4. <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1154"></A>
+<P CLASS="JMNormalText">5. 각 항목을 입력한다.
+ </P>
+<A NAME="1155"></A>
+<P CLASS="JMNormalText">6. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="499" SRC="images/image251.jpg" HEIGHT="560"></P>
+
+<P CLASS="JMCaption">그림 215Resource 추가
+ </P>
+<A NAME="1156"></A>
+<P CLASS="JMHeading3"><A NAME="resource_remove"></A>25.4.8 리소스 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#policy">정책
+ </A>&gt; 리소스 삭제
+ </P>
+<A NAME="1157"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">도메인
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">정책 
+ </SPAN>탭을 클릭한다.
+ </P>
+<A NAME="1158"></A>
+<P CLASS="JMNormalText">2. 컨텍스트 식별자 목록에서 삭제하고자 하는 리소스가 포함된 컨텍스트 식별자를 선택한다.
+ </P>
+<A NAME="1159"></A>
+<P CLASS="JMNormalText">3. 탭에서 
+ <SPAN CLASS="JMGUIWidget">리소스 
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1160"></A>
+<P CLASS="JMNormalText">4. 리소스 목록에서 리소스를 선택한다.
+ </P>
+<A NAME="1161"></A>
+<P CLASS="JMNormalText">5. <SPAN CLASS="JMGUIWidget">삭제
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1162"></A>
+<P CLASS="JMNormalText">6. 리소스가 리소스목록에서 사라진다.
+ </P>
+<A NAME="1163"></A>
+<P CLASS="JMHeading3"><A NAME="resource_modify"></A>25.4.9 리소스 수정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-25.htm#security">보안
+ </A>&gt;
+ <A HREF="wm-25.htm#domain">도메인
+ </A>&gt; 
+ <A HREF="wm-25.htm#policy">Policy
+ </A>&gt; Resource 수정
+ </P>
+<A NAME="1164"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">도메인
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">Policies
+ </SPAN>탭을 클릭한다.
+ </P>
+<A NAME="1165"></A>
+<P CLASS="JMNormalText">2. Context 목록에서 수정하고자 하는 Resource가포함된 Context를 선택한다.
+ </P>
+<A NAME="1166"></A>
+<P CLASS="JMNormalText">3. 탭에서 
+ <SPAN CLASS="JMGUIWidget">Resource
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1167"></A>
+<P CLASS="JMNormalText">4. Resource 목록에서 Resource를 선택한다.
+ </P>
+<A NAME="1168"></A>
+<P CLASS="JMNormalText">5. <SPAN CLASS="JMGUIWidget">수정
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1169"></A>
+<P CLASS="JMNormalText">6. 각 항목을 입력한다. 
+ </P>
+<A NAME="1170"></A>
+<P CLASS="JMNormalText">7. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

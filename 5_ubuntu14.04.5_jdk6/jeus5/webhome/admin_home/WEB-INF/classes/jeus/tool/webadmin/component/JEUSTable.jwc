@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC 
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<component-specification>
+
+    <parameter name="showCustomize" default-value="true"/>
+
+    <parameter name="tableClass"/>
+    <parameter name="width"/>
+    
+    <parameter name="tableModel"/>
+    <parameter name="source"/>
+    <parameter name="columns"/>
+    
+    <parameter name="pageSize"/>
+    <parameter name="tableSessionStateManager"/>
+    <parameter name="tableSessionStoreManager"/>
+    <parameter name="columnSettingsContainer" default-value="container"/>
+    
+    <parameter name="pagesDisplayed"/>
+    <parameter name="pagesLinkClass"/>
+    <parameter name="currentPageClass"/>
+    <parameter name="pageParameters"/>    
+    
+    <parameter name="columnsClass"/>
+    
+    <parameter name="row"/>
+    <parameter name="index"/>
+    <parameter name="keyExpression"/>
+    <parameter name="fullSource"/>
+    <parameter name="defaultValue"/>
+    <parameter name="converter"/>
+    <parameter name="primaryKeys"/>
+    <parameter name="volatile"/>
+    <parameter name="rowsClass"/>
+    
+    <parameter name="valuesClass"/>
+    
+   	<component id="tableElement" type="Any" inherit-informal-parameters="yes">
+		<inherited-binding name="class" parameter-name="tableClass"/>
+		<inherited-binding name="width" parameter-name="width"/>
+	</component>
+
+	<component id="condPages" type="If">
+		<binding name="condition" value="components.tableView.tableModel.pageCount > 1"/>
+	</component>
+	
+	<component id="tdPages" type="Any">
+        <inherited-binding name="class" parameter-name="pagesClass"/>
+	</component>
+
+	<component id="tableView" type="JEUSTableView">
+		<inherited-binding name="tableModel" parameter-name="tableModel"/>
+		<inherited-binding name="source" parameter-name="source"/>
+		<inherited-binding name="columns" parameter-name="columns"/>
+		<inherited-binding name="pageSize" parameter-name="pageSize"/>		
+		<inherited-binding name="tableSessionStateManager" parameter-name="tableSessionStateManager"/>
+		<inherited-binding name="tableSessionStoreManager" parameter-name="tableSessionStoreManager"/>
+		<inherited-binding name="columnSettingsContainer" parameter-name="columnSettingsContainer"/>
+		<binding name="element">literal:div</binding>
+        <inherited-binding name="showCustomize" parameter-name="showCustomize"/>
+	</component>
+
+<!-- 
+	<component id="tableView" type="TableView">
+		<inherited-binding name="tableModel" parameter-name="tableModel"/>
+		<inherited-binding name="source" parameter-name="source"/>
+		<inherited-binding name="columns" parameter-name="columns"/>
+		<inherited-binding name="pageSize" parameter-name="pageSize"/>
+		<inherited-binding name="initialPage" parameter-name="initialPage"/>
+		<inherited-binding name="initialSortColumn" parameter-name="initialSortColumn"/>
+		<inherited-binding name="initialSortOrder" parameter-name="initialSortOrder"/>
+		<inherited-binding name="tableSessionStateManager" parameter-name="tableSessionStateManager"/>
+		<inherited-binding name="tableSessionStoreManager" parameter-name="tableSessionStoreManager"/>
+		<inherited-binding name="persist" parameter-name="persist"/>
+		<inherited-binding name="columnSettingsContainer" parameter-name="columnSettingsContainer"/>
+		<binding name="element">literal:div</binding>
+	</component>	
+ -->
+ 
+	<component id="tablePages" type="JEUSTablePages">
+		<inherited-binding name="pagesDisplayed" parameter-name="pagesDisplayed"/>
+		<inherited-binding name="pagesLinkClass" parameter-name="pagesLinkClass"/>
+		<inherited-binding name="currentPageClass" parameter-name="currentPageClass"/>
+        <inherited-binding name="additionalParameters" parameter-name="pageParameters"/>
+	</component>
+
+	<component id="tableColumns" type="contrib:TableColumns">
+		<inherited-binding name="class" parameter-name="columnsClass"/>
+        <binding name="arrowUpAsset" value="asset:arrow_up"/>
+        <binding name="arrowDownAsset" value="asset:arrow_down"/>
+	</component>
+
+	<component id="tableRows" type="contrib:TableRows">
+		<inherited-binding name="row" parameter-name="row"/>
+		<inherited-binding name="index" parameter-name="index"/>
+		<inherited-binding name="keyExpression" parameter-name="keyExpression"/>
+		<inherited-binding name="fullSource" parameter-name="fullSource"/>
+		<inherited-binding name="defaultValue" parameter-name="defaultValue"/>
+		<inherited-binding name="converter" parameter-name="converter"/>
+		<inherited-binding name="primaryKeys" parameter-name="primaryKeys"/>
+		<inherited-binding name="volatile" parameter-name="volatile"/>
+		<inherited-binding name="class" parameter-name="rowsClass"/>
+	</component>
+
+	<component id="tableValues" type="contrib:TableValues">
+		<inherited-binding name="class" parameter-name="valuesClass"/>
+	</component>
+	
+	<asset name="arrow_down" path="context:/image/table/arrow_down.gif"/>
+	<asset name="arrow_up" path="context:/image/table/arrow_up.gif"/>
+</component-specification>

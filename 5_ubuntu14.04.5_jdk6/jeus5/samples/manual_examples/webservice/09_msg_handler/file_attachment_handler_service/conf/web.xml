@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <servlet>
+        <servlet-name>FileTransferServlet</servlet-name>
+        <servlet-class>filetransfer.FileTransfer</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FileTransferServlet</servlet-name>
+        <url-pattern>/FileAttachmentService</url-pattern>
+    </servlet-mapping>
+</web-app>
+

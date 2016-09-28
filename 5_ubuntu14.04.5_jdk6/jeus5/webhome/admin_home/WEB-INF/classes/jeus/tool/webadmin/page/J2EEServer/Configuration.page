@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.J2EEServer.ConfigurationPage">
+	<inject property="externalService" object="engine-service:external"/>
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Engine Container Configuration"/>
+    </component>
+
+    <component id="condNotXML" type="If">
+        <binding name="condition" value="objectName.domain != 'XML'"/>
+    </component>
+
+    <component id="link_icon" type="Image">
+        <binding name="image" value="assets.link"/>
+    </component>
+
+    <component id="jnditreeLink" type="Any">
+        <binding name="element" value="literal:a"/>
+        <!-- <binding name="href" value="literal:#"/> -->
+        <binding name="onclick" value="'javascript:window.open(\''+(@jeus.tool.webadmin.util.WebUtils@createExternalLink(externalService, 'Etc_JNDITreeFrameSet', objectName)).absoluteURL+'\', \'Local_JNDITree\', \'width=1050,height=700,toolbars=no,resizable=yes,scrollbars=yes\');'"/>
+    </component>
+
+    <component id="jnditree" type="Insert">
+        <binding name="value" value="message:NodeTree.JeusService.JeusManager.jnditree"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@getJ2EESERVER_NAMES(objectName)"/>
+        <binding name="subtabNames" value="{'general','system_logging', 'user_logging', 'interop', 'lifecycle', 'res_ref', 'miscellaneous'}"/>
+    </component>
+
+    <component id="general" type="Block"/>
+    <component id="system_logging" type="Block"/>
+    <component id="user_logging" type="Block"/>
+    <!--<component id="auto_deploy" type="Block"/>-->
+    <component id="interop" type="Block"/>
+    <component id="res_ref" type="Block"/>
+    <component id="lifecycle" type="Block"/>
+    <component id="miscellaneous" type="Block"/>
+
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:containerc.general.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+        <!--<binding name="listener" value="listeners.onGeneralOk"/>-->
+        <binding name="parentElement" value="node"/>
+        <binding name="elementName" value="literal:engineContainer"/>
+    </component>
+
+    <component id="general_ok" type="Submit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="listener" value="listeners.onGeneralOk"/>
+    </component>
+
+    <component id="general_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="general_reset" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.reset.label"/>
+        <binding name="message" value="message:JEUSForm.reset.confirm"/>
+        <binding name="listener" value="listeners.onGeneralReset"/>
+    </component>
+
+    <component id="name" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="econtainer"/>
+        <binding name="elementName" value="literal:name"/>
+    </component>
+
+    <component id="general_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="id" type="jeus:Field">
+        <binding name="field" value="components.idField"/>
+    </component>
+
+    <component id="idField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="econtainer"/>
+        <binding name="elementName" value="literal:id"/>
+        <binding name="validators" value="validators:$containerIdValidator"/>
+    </component>
+
+    <component id="baseport" type="jeus:Field">
+        <binding name="field" value="components.baseportField"/>
+    </component>
+
+    <component id="baseportField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="econtainer"/>
+        <binding name="elementName" value="literal:basePort"/>
+        <binding name="validators" value="validators:$containerBaseportValidator"/>
+    </component>
+
+    <component id="command_option" type="jeus:Field">
+        <binding name="field" value="components.command_optionField"/>
+    </component>
+
+    <component id="command_optionField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="econtainer"/>
+        <binding name="elementName" value="literal:commandOption"/>
+    </component>
+
+    <component id="user_classpath" type="jeus:Field">
+        <binding name="field" value="components.user_classpathField"/>
+    </component>
+
+    <component id="user_classpathField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="econtainer"/>
+        <binding name="elementName" value="literal:userClassPath"/>
+    </component>
+
+    <component id="note" type="jeus:Field">
+        <binding name="field" value="components.noteField"/>
+        <binding name="label" value="message:common.message.note.label"/>
+    </component>
+
+    <component id="noteField" type="jeus:NoteIO">
+        <binding name="parent" value="econtainer"/>
+        <binding name="element" value="literal:name"/>
+        <binding name="pageName" value="literal:J2EEServer_Configure"/>
+        <binding name="value" value="note"/>
+        <binding name="displayName" value="literal:"/>
+        <binding name="validators" value="validators:$noteValidator"/>
+    </component>
+
+    <component id="eachLogging" type="Foreach">
+        <binding name="source" value="loggings"/>
+        <binding name="value" value="loggingView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="logging_table_name_column" type="Insert">
+        <binding name="value" value="message:containerc.system_logging.logging_table.name.label"/>
+    </component>
+
+    <component id="logging_table_level_column" type="Insert">
+        <binding name="value" value="message:containerc.system_logging.logging_table.level.label"/>
+    </component>
+
+    <component id="loggingLink" type="ExternalLink">
+        <binding name="page" value="literal:J2EEServer_EditLogger"/>
+        <binding name="parameters" value="{loggingView.objectName.canonicalName, loggingView.name, 'J2EEServer'}"/>
+    </component>
+
+    <component id="logging_table_name" type="Insert">
+        <binding name="value" value="loggingView.name"/>
+    </component>
+
+    <component id="logging_table_level" type="Insert">
+        <binding name="value" value="loggingView.level"/>
+    </component>
+
+    <component id="logging_table_delete" type="Image">
+        <binding name="image" value="assets.delete"/>
+    </component>
+
+    <component id="logging_table_deleteLink" type="DirectLink">
+        <binding name="listener" value="listener:onDeleteLogging"/>
+        <binding name="parameters" value="loggingView.name"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.remove.confirm', loggingView.name)"/>
+    </component>
+
+    <component id="system_loggingForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:containerc.system_logging.title"/>
+        <binding name="listener" value="listeners.onSystemLoggingOk"/>
+        <binding name="parentElement" value="econtainer"/>
+        <binding name="elementName" value="literal:systemLogging"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+<!--    <component id="system_logging_panel" type="jeus:Logging">
+        <binding name="logging" value="systemLogging"/>
+    </component>-->
+
+    <component id="create_loggerLink" type="ExternalLink">
+        <binding name="page" value="literal:J2EEServer_CreateLogger"/>
+        <binding name="parameters" value="{objectName.canonicalName, 'J2EEServer'}"/>
+    </component>
+
+    <component id="create_logger_label" type="Insert">
+        <binding name="value" value="message:Logging.create_logger.label"/>
+    </component>
+<!--    <component id="system_handlerForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:containerc.system_handler.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="subform" value="true"/>
+        <binding name="parentElement" value="systemLogging"/>
+        <binding name="elementName" value="literal:handler"/>
+    </component>
+
+    <component id="system_handler_panel" type="jeus:HandlerList">
+        <binding name="handlers" value="systemHandlers"/>
+        <binding name="createPage" value="literal:J2EEServer_CreateSystemHandler"/>
+        <binding name="editPage" value="literal:J2EEServer_EditSystemHandler"/>
+        <binding name="deleteListener" value="listeners.onDeleteSystemHandler"/>
+        <binding name="objectName" value="objectName"/>
+        <binding name="jeusType" value="literal:SystemJ2EEServer"/>
+    </component>-->
+
+    <component id="create" type="Image">
+        <binding name="image" value="asset:create"/>
+    </component>
+
+    <component id="user_loggingForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:containerc.user_logging.title"/>
+        <binding name="listener" value="listeners.onUserLoggingOk"/>
+        <!--<binding name="resetListener" value="listeners.onUserLoggingReset"/>-->
+        <binding name="parentElement" value="econtainer"/>
+        <binding name="elementName" value="literal:userLogging"/>
+    </component>
+
+    <component id="user_logging_panel" type="jeus:Logging">
+        <binding name="logging" value="userLogging"/>
+    </component>
+
+    <component id="user_handlerForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:containerc.user_handler.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="subform" value="true"/>
+        <binding name="parentElement" value="userLogging"/>
+        <binding name="elementName" value="literal:handler"/>
+    </component>
+
+    <component id="user_handler_panel" type="jeus:HandlerList">
+        <binding name="handlers" value="userHandlers"/>
+        <binding name="createPage" value="literal:J2EEServer_CreateUserHandler"/>
+        <binding name="editPage" value="literal:J2EEServer_EditUserHandler"/>
+        <binding name="deleteListener" value="listeners.onDeleteUserHandler"/>
+        <binding name="objectName" value="objectName"/>
+        <binding name="jeusType" value="literal:UserJ2EEServer"/>
+    </component>
+
+    <component id="interopForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:containerc.interop.title"/>
+        <!--<binding name="listener" value="listeners.onInteropOk"/>-->
+        <binding name="parentElement" value="econtainer"/>
+        <binding name="elementName" value="literal:enableInterop"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="interop_ok" type="Submit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="listener" value="listeners.onInteropOk"/>
+    </component>
+
+    <component id="interop_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="interop_reset" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.reset.label"/>
+        <binding name="message" value="message:JEUSForm.reset.confirm"/>
+        <binding name="listener" value="listeners.onInteropReset"/>
+    </component>
+
+    <component id="use_OTS" type="jeus:Field">
+        <binding name="field" value="components.use_OTSField"/>
+    </component>
+
+    <component id="use_OTSField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="interop"/>
+        <binding name="elementName" value="literal:useOTS"/>
+    </component>
+
+    <component id="lifecycleInvocationForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:containerc.lifecycle.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="methods_script" type="Script">
+        <binding name="script" value="literal:/jeus/tool/webadmin/page/J2EEServer/LifecycleMethod.script"/>
+        <binding name="id" value="literal:classname"/>
+        <binding name="lifecycles" value="lifecycles"/>
+    </component>
+
+    <component id="classname" type="jeus:Field">
+        <binding name="field" value="components.classnameField"/>
+        <binding name="label" value="message:containerc.lifecycle.classname.label"/>
+    </component>
+
+    <component id="classnameField" type="jeus:PropertySelection">
+        <binding name="model" value="classNameModel"/>
+        <binding name="value" value="className"/>
+        <binding name="onchange" value="components.methods_script.symbols.onchange+'(methodsField, this.options[selectedIndex].value)'"/>
+    </component>
+
+    <component id="methods" type="jeus:Field">
+        <binding name="field" value="components.methodsField"/>
+        <binding name="label" value="message:containerc.lifecycle.methods.label"/>
+    </component>
+
+    <component id="methodsField" type="jeus:PropertySelection">
+        <binding name="model" value="methodModel"/>
+        <binding name="value" value="method"/>
+    </component>
+
+    <component id="lifecycle_create" type="Submit">
+        <binding name="listener" value="listeners.onCreateMethod"/>
+        <binding name="value" value="message:containerc.lifecycle.create.label"/>
+    </component>
+
+    <component id="lifecycle_modify" type="Submit">
+        <binding name="listener" value="listeners.onModifyMethod"/>
+        <binding name="value" value="message:containerc.lifecycle.modify.label"/>
+    </component>
+
+    <component id="lifecycle_remove" type="Submit">
+        <binding name="listener" value="listeners.onRemoveMethod"/>
+        <binding name="value" value="message:containerc.lifecycle.remove.label"/>
+    </component>
+
+    <component id="condMethodCreateModify" type="If">
+        <binding name="condition" value="methodCreate or methodModify"/>
+    </component>
+
+    <component id="condMethodCreate" type="If">
+        <binding name="condition" value="methodCreate"/>
+    </component>
+
+    <component id="condMethodModify" type="If">
+        <binding name="condition" value="methodModify"/>
+    </component>
+
+    <component id="lifecycle_createModifyForm" type="jeus:JEUSForm">
+        <binding name="title" value="methodCreate ? getMessage('containerc.lifecycle.create.title') : getMessage('containerc.lifecycle.modify.title')"/>
+        <binding name="subform" value="true"/>
+        <binding name="listener" value="listeners.onCreateModifyMethodOk"/>
+    </component>
+
+    <component id="create_classname" type="jeus:Field">
+        <binding name="field" value="components.create_classnameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="condHasLifecycles" type="If">
+        <binding name="condition" value="lifecycles.size() > 0"/>
+    </component>
+
+    <component id="create_classnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="lifecycle"/>
+        <binding name="elementName" value="literal:className"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="create_classname_selectionField" type="jeus:PropertySelection">
+        <binding name="model" value="createClassNameModel"/>
+        <binding name="value" value="temp_className"/>
+    </component>
+
+    <component id="modify_classname" type="jeus:Field">
+        <binding name="field" value="components.modify_classnameField"/>
+    </component>
+
+    <component id="modify_classnameField" type="jeus:JAXBInsert">
+        <binding name="parentElement" value="lifecycle"/>
+        <binding name="elementName" value="literal:className"/>
+    </component>
+
+    <component id="hiddenMethod" type="Hidden">
+        <binding name="value" value="methodValue"/>
+    </component>
+
+    <component id="methodName" type="jeus:Field">
+        <binding name="field" value="components.methodNameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="methodNameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="invocation.invocationMethod"/>
+        <binding name="elementName" value="literal:methodName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="signature" type="jeus:Field">
+        <binding name="field" value="components.signatureField"/>
+        <binding name="label" value="message:containerc.lifecycle.signature.label"/>
+        <binding name="usage" value="message:containerc.lifecycle.signature.usage"/>
+    </component>
+
+    <component id="signatureField" type="jeus:DojoTextArea">
+        <binding name="value" value="signatureValue"/>
+    </component>
+
+    <component id="invocationType" type="jeus:Field">
+        <binding name="field" value="components.invocationTypeField"/>
+    </component>
+
+    <component id="invocationTypeField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="invocation"/>
+        <binding name="elementName" value="literal:invocationType"/>
+        <binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@getPropertySelectionModel(invocation.invocationTypeEnumeration)"/>
+    </component>
+
+    <component id="hiddenMethodCreate" type="Hidden">
+        <binding name="value" value="methodCreate"/>
+    </component>
+
+    <component id="hiddenMethodModify" type="Hidden">
+        <binding name="value" value="methodModify"/>
+    </component>
+
+    <component id="res_refForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:containerc.res_ref.title"/>
+        <binding name="parentElement" value="econtainer"/>
+        <binding name="elementName" value="literal:resRef"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="ref_name_column" type="Insert">
+        <binding name="value" value="message:containerc.res_ref.refName.label"/>
+    </component>
+
+    <component id="export_name_column" type="Insert">
+        <binding name="value" value="message:containerc.res_ref.exportName.label"/>
+    </component>
+
+    <component id="eachJndiInfo" type="Foreach">
+        <binding name="source" value="jndiInfos"/>
+        <binding name="value" value="jndiView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="ref_name_value" type="Insert">
+        <binding name="value" value="jndiView.refName"/>
+    </component>
+
+    <component id="export_name_value" type="Insert">
+        <binding name="value" value="jndiView.exportName"/>
+    </component>
+
+    <component id="refLink" type="ExternalLink">
+        <binding name="page" value="literal:J2EEServer_ResRefConfiguration"/>
+        <binding name="parameters" value="{jndiView.objectName.canonicalName, jndiView.refName}"/>
+    </component>
+
+    <component id="deleteLink" type="DirectLink">
+        <binding name="listener" value="listener:onJndiInfoDelete"/>
+        <binding name="parameters" value="jndiView.refName"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.remove.confirm', jndiView.refName)"/>
+    </component>
+
+    <component id="delete" type="Image">
+        <binding name="image" value="assets.delete"/>
+    </component>
+
+    <component id="jndi_infoForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="ref_name" type="jeus:Field">
+        <binding name="field" value="components.ref_nameField"/>
+    </component>
+
+    <component id="ref_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="jndiInfo"/>
+        <binding name="elementName" value="literal:refName"/>
+        <binding name="validators" value="validators:required,$refNameValidator"/>
+    </component>
+
+    <component id="export_name" type="jeus:Field">
+        <binding name="field" value="components.export_nameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="export_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="jndiInfo"/>
+        <binding name="elementName" value="literal:exportName"/>
+        <binding name="validators" value="validators:required,$exportNameValidator"/>
+    </component>
+
+    <component id="add" type="Submit">
+        <binding name="value" value="message:common.label.add"/>
+        <binding name="listener" value="listeners.onJndiInfoAdd"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+    <component id="miscellaneousForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:containerc.miscellaneous.title"/>
+        <binding name="parentElement" value="node"/>
+        <binding name="elementName" value="literal:engineContainer"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="miscellaneous_ok" type="Submit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="listener" value="listeners.onMiscellaneousOk"/>
+    </component>
+
+    <component id="miscellaneous_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="miscellaneous_reset" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.reset.label"/>
+        <binding name="message" value="message:JEUSForm.reset.confirm"/>
+        <binding name="listener" value="listeners.onMiscellaneousReset"/>
+    </component>
+
+    <component id="sequential_start" type="jeus:Field">
+        <binding name="field" value="components.sequential_startField"/>
+    </component>
+
+    <component id="sequential_startField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="econtainer"/>
+        <binding name="elementName" value="literal:sequentialStart"/>
+    </component>
+    
+    <component id="start_on_boot" type="jeus:Field">
+        <binding name="field" value="component:start_on_bootField"/>
+    </component>
+
+    <component id="start_on_bootField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="econtainer"/>
+        <binding name="elementName" value="literal:startOnBoot"/>
+    </component>
+
+    <component id="invocation_manager_action" type="jeus:Field">
+        <binding name="field" value="components.invocation_manager_actionField"/>
+    </component>
+
+    <component id="invocation_manager_actionField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="econtainer"/>
+        <binding name="elementName" value="literal:invocationManagerAction"/>
+        <binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@getPropertySelectionModel(econtainer.invocationManagerActionEnumeration)"/>
+    </component>
+
+    <component id="use_MEJB" type="jeus:Field">
+        <binding name="field" value="components.use_MEJBField"/>
+    </component>
+
+    <component id="use_MEJBField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="econtainer"/>
+        <binding name="elementName" value="literal:useMEJB"/>
+    </component>
+
+    <component id="application_path" type="jeus:Field">
+        <binding name="field" value="components.application_pathField"/>
+    </component>
+
+    <component id="application_pathField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="econtainer"/>
+        <binding name="elementName" value="literal:applicationPath"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+    <bean name="containerIdValidator" class="jeus.tool.webadmin.page.J2EEServer.ContainerIdValidator">
+        <set name="min" value="0"/>
+        <set name="max" value="127"/>
+        <set name="node" value="node"/>
+    </bean>
+
+    <bean name="containerBaseportValidator" class="jeus.tool.webadmin.page.J2EEServer.ContainerBaseportValidator">
+        <set name="min" value="0"/>
+        <set name="node" value="node"/>
+    </bean>
+
+    <bean name="refNameValidator" class="jeus.tool.webadmin.page.J2EEServer.JndiInfoNameValidator">
+        <set name="resRef" value="resRef"/>
+        <set name="refName" value="true"/>
+    </bean>
+
+    <bean name="exportNameValidator" class="jeus.tool.webadmin.page.J2EEServer.JndiInfoNameValidator">
+        <set name="resRef" value="resRef"/>
+        <set name="exportName" value="true"/>
+    </bean>
+
+    <bean name="listTranslator" class="jeus.tool.webadmin.component.translator.ListTranslator"/>
+
+    <bean name="noteValidator" class="jeus.tool.webadmin.validator.NoteSizeValidator"/>
+
+    <property name="className"/>
+    <property name="temp_className"/>
+    <property name="method"/>
+    <property name="signatureValue"/>
+    <property name="methodModify"/>
+    <property name="methodCreate"/>
+    <property name="methodValue"/>
+    <property name="lifecycle" persist="session"/>
+    <property name="invocation" persist="session"/>
+    <property name="jndiView"/>
+	<property name="loggingView"/>  
+
+    <property name="note"/>
+
+    <asset name="link" path="context:/image/selected_mark.gif"/>
+    <asset name="dot" path="context:/image/dot.gif"/>
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+    <asset name="create" path="context:/image/create.gif"/>
+</page-specification>

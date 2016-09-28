@@ -1,0 +1,162 @@
+<html jwcid="mainBorder" >
+    <span jwcid="wizTabPanel">
+        <span jwcid="create">
+            <form jwcid="createForm">
+                <span jwcid="container_name">
+                    <input jwcid="container_nameField"/>
+                </span>
+                <span jwcid="id">
+                    <input jwcid="idField"/>
+                </span>
+                <span jwcid="baseport">
+                    <input jwcid="baseportField"/>
+                </span>
+                <span jwcid="condDuplicate">
+                    <span jwcid="enginesSection"/>
+                    <span jwcid="engines">
+                        <span jwcid="condEJB">
+                            <span jwcid="ejb_name">
+                                <input jwcid="ejb_nameField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condWEB">
+                            <span jwcid="servlet_name">
+                                <input jwcid="servlet_nameField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condJMS">
+                            <span jwcid="jms_name">
+                                <input jwcid="jms_nameField"/>
+                            </span>
+                        </span>
+                        <span jwcid="condWS">
+                            <span jwcid="ws_name">
+                                <input jwcid="ws_nameField"/>
+                            </span>
+                        </span>
+                    </span>
+                </span>
+                <span jwcid="condCreation">
+                    <span jwcid="enginesCreationSection"/>
+                    <table class="table">
+                        <tr>
+                            <th>
+                                <span jwcid="creationColumn"/>
+                            </th>
+                            <th style="width: 100px;">
+                                <span jwcid="engineTypeColumn"/>
+                            </th>
+                            <th>
+                                <span jwcid="engineNameColumn"/>
+                            </th>
+                            <th>
+                                <span jwcid="Id_or_NameColumn"/>
+                            </th>
+                            <th>
+                                <span jwcid="portColumn"/>
+                            </th>
+                        </tr>
+                        <tr style="height :30px">
+                            <td align="center">
+                                <input jwcid="ejb_engine_createField"/>
+                            </td>
+                            <td>
+                                <span jwcid="ejb_engine_label" class="ejb_engine_label"/>
+                            </td>
+                            <td  align="center">
+                                <span jwcid="@jeus:ErrorField" field="component:ejb_engine_nameField">
+                                    <input jwcid="ejb_engine_nameField"/>
+                                </span>
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr style = "height :30px;">
+                            <td align="center">
+                                <input jwcid="servlet_engine_createField"/>
+                            </td>
+                            <td>
+                                <span jwcid="servlet_engine_label" class="servlet_engine_label"/>
+                            </td>
+                            <td align="center">
+                                <span jwcid="@jeus:ErrorField" field="component:servlet_engine_nameField">
+                                    <input jwcid="servlet_engine_nameField"/>
+                                </span>
+                            </td>
+                            <td align="center">
+                            	<span jwcid="@jeus:ErrorField" field="component:servlet_listener_idField">
+                                	<input jwcid="servlet_listener_idField"/>
+                                </span>
+                            </td>
+                            <td align="center">
+                            	<span jwcid="@jeus:ErrorField" field="component:servlet_listener_portField">
+                                	<input jwcid="servlet_listener_portField"/>
+                                </span>
+                            </td>
+                            <span jwcid="servlet_engine_script"/>
+                        </tr>
+                        <tr style="height :30px;">
+                            <td align="center">
+                                <input jwcid="jms_engine_createField" align="absmiddle"/>
+                            </td>
+                            <td>
+                                <span jwcid="jms_engine_label" class="jms_engine_label"/>
+                            </td>
+                            <td align="center">
+                                <span jwcid="@jeus:ErrorField" field="component:jms_engine_nameField">
+                                	<input jwcid="jms_engine_nameField"/>
+                                </span>
+                            </td>
+                            <td align="center">
+                            	<span jwcid="@jeus:ErrorField" field="component:jms_channel_nameField">
+                                	<input jwcid="jms_channel_nameField"/>
+                                </span>
+                            </td>
+        		    		<td align="center">
+        		    			<span jwcid="@jeus:ErrorField" field="component:jms_channel_portField">
+                                	<input jwcid="jms_channel_portField"/>
+                                </span>
+                            </td>
+                            <span jwcid="jms_engine_script"/> 
+                        </tr>
+                        <span jwcid="condWSNotExist">
+                            <tr height="30">
+                                <td align="center">
+                                    <input jwcid="ws_engine_createField" align="absmiddle"/>
+                                </td>
+                                <td>
+                                    <span jwcid="ws_engine_label" class="ws_engine_label"/>
+                                </td>
+                                <td align="center">
+                                    <span jwcid="@jeus:ErrorField" field="component:ws_engine_nameField">
+                                	    <input jwcid="ws_engine_nameField"/>
+                                    </span>
+                                </td>
+                                <!--
+                                <td align="center">
+                                    <span jwcid="ws_engine_name">
+                                        <input jwcid="ws_engine_nameField"/>
+                                    </span>
+                                </td>
+                                -->
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                            </tr>
+                        </span>
+                    </table>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="createOk" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+        </span>
+    </span>
+</html>

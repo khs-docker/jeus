@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+
+<page-specification class="jeus.tool.webadmin.page.NodeTreePage">
+    <property name="nodeName"/>
+
+	<inject property="webadminStateObject" type="state" object="WebadminStateObject"/>
+	<!--
+	<inject property="request" object="service:tapestry.globals.HttpServletRequest"/>
+	-->
+	<inject property="userAgent" type="state" object="UserAgent"/>
+	<inject property="settings" type="state" object="Settings"/>
+	
+    <component id="shell" type="Shell">
+        <binding name="title" value="literal:NodeTree"/>
+        <binding name="refresh" value="settings.nodeInterval"/>
+        <binding name="delegate" value="bean:cacheControlRender"/>
+        <binding name="stylesheets" value="{assets.tundra_css, assets.dojo_css, assets.nodetree_css}"/>
+        <binding name="doctype" value="literal:"/>
+    </component>
+
+    <component id="treeData" type="contrib:TreeDataView">
+        <binding name="treeView" value='component:treeView'/>
+        <binding name="value" value='value'/>
+    </component>
+
+    <component id="condMSIE55" type="If">
+        <binding name="condition" value="userAgent != null and userAgent.msie and userAgent.version >= 5.5"/>
+    </component>
+
+    <component id="treeNodeView" type="jeus:JeusTreeNodeView">
+        <binding name="nodeRenderFactory" value="nodeRenderFactory"/>
+        <binding name="treeDataView" value="component:treeData"/>
+    </component>
+   
+    <component id="treeView" type="contrib:TreeView">
+        <binding name="treeModel" value="treeModel"/>
+        <binding name="treeStateListener" value="treeStateListener"/>
+    </component>
+
+    <bean name="cacheControlRender" class="jeus.tool.webadmin.component.CacheControlRender"/>
+    
+    <property name="treeStateModel" persist="session"/>
+
+    <asset name="tundra_css" path="context:/js/JeusDojo/release/dojo/dijit/themes/tundra/tundra.css"/>
+    <asset name="dojo_css" path="context:/js/JeusDojo/release/dojo/dojo/resources/dojo.css"/>
+    <asset name="nodetree_css" path="context:/css/nodetree.css"/>
+
+</page-specification>

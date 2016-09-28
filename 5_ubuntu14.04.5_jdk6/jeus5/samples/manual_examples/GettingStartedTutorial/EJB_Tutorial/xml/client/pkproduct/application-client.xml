@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application-client xmlns="http://java.sun.com/xml/ns/j2ee" version="1.4">
+    <display-name>ProductClient</display-name>
+    <ejb-ref>
+        <ejb-ref-name>product</ejb-ref-name>
+        <ejb-ref-type>Entity</ejb-ref-type>
+        <home>pkproduct.ProductHome</home>
+        <remote>pkproduct.Product</remote>
+    </ejb-ref>
+</application-client>

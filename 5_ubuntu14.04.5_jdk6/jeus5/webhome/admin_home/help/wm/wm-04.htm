@@ -1,0 +1,305 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 4 JEUS 매니저 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('4 JEUS 매니저', 'wm-03.htm', 'wm-05.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left"><A NAME="jm"></A>4 JEUS 매니저
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMNormalText">JEUS 매니저는 JEUS의 하위 시스템을 광범위하게 관리하기 위한 하나의 어플리케이션이다. 보통 노드와 JEUS 매니저는 같은 것은 아니지만 매우 
+밀접하게 관련되어 있다. 각 JEUS 매니저는 반드시 한 개의 노드를 관리하고, 각 노드는 반드시 한 개의 JEUS 매니저에 의해서 관리된다. 이런 
+이유로 인해 JEUS 웹 관리자에서의 JEUS 매니저관리는 노드관리까지 포함하고 있다.
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMHeading2"><A NAME="jm_conf"></A>4.1 JEUS 매니저 설정
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMHeading3"><A NAME="jm_conf_general"></A>4.1.1 기본 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-04.htm#jm_conf">설정
+ </A>&gt; 기본 설정
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="262" SRC="images/image011.jpg" HEIGHT="222"></P>
+
+<P CLASS="JMCaption">그림 5JEUS Manager 설정 선택
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMNormalText" ALIGN="left">1. 노드 트리에서 최상위에 위치한 JEUS 매니저를 바로 클릭하거나 컨텍스트 메뉴에서 johan
+ <SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>메뉴를 클릭한다.
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMNormalText">2. 주 화면의 탭에서
+ <SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>의
+ <SPAN CLASS="JMGUIWidget">기본 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정 
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMNormalText">3. 장애시 백업할 노드의 이름과 순차적인 시작을 사용할 것인지 여부에 대한 설정을 한다. 설정된 값들은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="518" SRC="images/image012.jpg" HEIGHT="287"></P>
+
+<P CLASS="JMCaption">그림 6JEUS 매니저의 기본 설정
+ </P>
+<A NAME="1008"></A>
+<P CLASS="JMHeading3"><A NAME="jm_conf_listener"></A>4.1.2 리스너 기본 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-04.htm#jm_conf">설정
+ </A>&gt; 
+ <A HREF="wm-04.htm#jm_conf_listener">리스너
+ </A>&gt; 기본 설정
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 최상위에 위치한 JEUS 매니저를 바로 클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">johan 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>메뉴를 클릭한다.
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMNormalText">2. 주 화면에 나타나는 탭에서
+ <SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>의
+ <SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">리스너 
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMNormalText">3. 화면에 나타난 안쪽 탭에서 
+ <SPAN CLASS="JMGUIWidget">기본 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMNormalText">4. <SPAN CLASS="JMGUIWidget">Backlog
+ </SPAN>값을 설정한다. 설정된 값은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMGUIWidget"><IMG BORDER="0" WIDTH="515" SRC="images/image013.jpg" HEIGHT="204"></SPAN></P>
+
+<P CLASS="JMCaption">그림 7JEUS매니저 리스너의 기본 설정
+ </P>
+<A NAME="1014"></A>
+<P CLASS="JMHeading3"><A NAME="jm_conf_listener_ssl"></A>4.1.3 리스너의SSL 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저 
+ </A>&gt;
+ <A HREF="wm-04.htm#jm_conf">설정
+ </A>&gt;
+ <A HREF="wm-04.htm#jm_conf_listener">리스너
+ </A>&gt; SSL
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 최상위에 위치한 JEUS 매니저를 바로 클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">johan 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>메뉴를 클릭한다.
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMNormalText">2. 주 화면의 탭에서 
+ <SPAN CLASS="JMGUIWidget">설정
+ </SPAN>의
+ <SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">리스너
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMNormalText">3. 화면에 나타난 안쪽 탭에서
+ <SPAN CLASS="JMGUIWidget">SSL
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1018"></A>
+<P CLASS="JMNormalText">4. SSL을사용시 대기할 포트 번호를 입력한다. 설정된 값은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="521" SRC="images/image014.jpg" HEIGHT="213"></P>
+
+<P CLASS="JMCaption">그림 8JEUS 매니저 리스너의 SSL 설정
+ </P>
+<A NAME="1020"></A>
+<P CLASS="JMHeading3"><A NAME="jm_conf_listener_thrdpool"></A>4.1.4 리스너 쓰레드 풀 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt;
+ <A HREF="wm-04.htm#jm_conf">설정
+ </A>&gt;
+ <A HREF="wm-04.htm#jm_conf_listener">리스너
+ </A>&gt; 쓰레드 풀
+ </P>
+<A NAME="1021"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 최상위에 위치한 JEUS 매니저를 바로 클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">johan
+ </SPAN>설정 메뉴를 클릭한다.
+ </P>
+<A NAME="1022"></A>
+<P CLASS="JMNormalText">2. 주 화면의 탭에서
+ <SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>의
+ <SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">리스너
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1023"></A>
+<P CLASS="JMNormalText">3. 화면에 나타난 안쪽의 탭에서
+ <SPAN CLASS="JMGUIWidget">쓰레드 
+ </SPAN><SPAN CLASS="JMGUIWidget">풀
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1024"></A>
+<P CLASS="JMNormalText">4. 쓰레드 풀의 쓰레드들의 최소값과 최대값 그리고 풀내에 존재하는 쓰레드들을 검사할 주기를 입력한다. 
+ <SPAN CLASS="JMEmphasizeChar">최대값과
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">검사
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">주기는
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">런타임에
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">적용되며
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">최소값의
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">설정은
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">런타임시
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">의미가
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">없음으로
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">다음
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">부트시에
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">적용된다
+ </SPAN><SPAN CLASS="JMEmphasizeChar">.
+ </SPAN></P>
+<A NAME="1025"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="504" SRC="images/image015.jpg" HEIGHT="263"></P>
+
+<P CLASS="JMCaption">그림 9JEUS매니저 리스너의 쓰레드 풀 설정
+ </P>
+<A NAME="1026"></A>
+<P CLASS="JMHeading3"><A NAME="jm_conf_services"></A>4.1.5 서비스 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt;
+ <A HREF="wm-04.htm#jm_conf_services">설정
+ </A>&gt; 서비스
+ </P>
+<A NAME="1027"></A>
+<P CLASS="JMNormalText">일반적인 서비스들은 각각 자신을 관리하는 MBean을 가지고 있으며 독립적인 페이지에서 관리되나 JEUS 매니저의 클래스 FTP, JNLP, 웹 
+관리자와 같은 단순한 서비스들은 이 화면에서 관리한다. 
+ </P>
+<A NAME="1028"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 최상위에 위치한 JEUS 매니저를 바로 클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">johan
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>메뉴를 클릭한다.
+ </P>
+<A NAME="1029"></A>
+<P CLASS="JMNormalText">2. 주 화면에 나타난 탭에서 
+ <SPAN CLASS="JMGUIWidget">설정
+ </SPAN>의
+ <SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">서비스
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1030"></A>
+<P CLASS="JMNormalText">3. 각각 서비스들을 사용할 지 여부를 선택한다. 설정된 값은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1031"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image016.jpg" HEIGHT="174"></P>
+
+<P CLASS="JMCaption">그림 10JEUS 매니저 서비스 설정
+ </P>
+<A NAME="1032"></A>
+<P CLASS="JMHeading3"><A NAME="jm_conf_errlog"></A>4.1.6 에러 로그 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-04.htm#jm_conf">설정
+ </A>&gt; 에러 로그
+ </P>
+<A NAME="1033"></A>
+<P CLASS="JMNormalText">에러 로그 관련 설정은 24.5 로그 서비스에서 설명할 것이다.
+ </P>
+<A NAME="1034"></A>
+<P CLASS="JMHeading2"><A NAME="jm_stats"></A>4.2 JEUS 매니저 모니터링
+ </P>
+<A NAME="1035"></A>
+<P CLASS="JMHeading3"><A NAME="jm_stats_trouble"></A><A NAME="jm_tmonitor"></A>4.2.1 장애 모니터링
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 장애 모니터링
+ </P>
+<A NAME="1036"></A>
+<P CLASS="JMNormalText">30장애 모니터링 에서 설명
+ </P>
+<A NAME="1037"></A>
+<P CLASS="JMHeading3"><A NAME="jm_stats_jnditree"></A><A NAME="jm_jnditree"></A>4.2.2 JNDI 트리
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; JNDI 트리
+ </P>
+<A NAME="1038"></A>
+<P CLASS="JMNormalText">이 메뉴는 JEUS 매니저에 원격(Remote)바인딩된 객체들을 보여준다. 일반적으로 각종 리소스나 Remote EJB의 바인딩 여부를 확인할 때 
+사용한다.
+ </P>
+<A NAME="1039"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 최상위에 위치한 JEUS 매니저의 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">JNDI 
+ </SPAN><SPAN CLASS="JMGUIWidget">트리 
+ </SPAN>메뉴를 클릭하거나 설정 화면의 상단에 위치한 
+ <SPAN CLASS="JMGUIWidget">JDNI 
+ </SPAN><SPAN CLASS="JMGUIWidget">트리
+ </SPAN>링크를 클릭한다.
+ </P>
+<A NAME="1040"></A>
+<P CLASS="JMNormalText">2. JEUS 매니저에 바인딩된 객체들의 트리가 나타난다.
+ </P>
+<A NAME="1041"></A>
+<P CLASS="JMNormalText">3. 좌측의 트리에서 노드를 선택하여 클릭하면 바인딩 이름과 클래스 이름, 해시 코드가 출력된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="506" SRC="images/image017.jpg" HEIGHT="381"></P>
+
+<P CLASS="JMCaption">그림 11JNDI 트리
+ </P>
+<!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

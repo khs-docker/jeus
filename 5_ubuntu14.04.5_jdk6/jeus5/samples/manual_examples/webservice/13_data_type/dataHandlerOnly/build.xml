@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<project name="Sample" default="all" basedir=".">	
+    <target name="help">
+        <echo message="Usage: ant [target]" />
+        <echo message="" />
+        <echo message="Target List:" />
+        <echo message="    clean        Cleans a build directory." />
+        <echo message="    gen-service  Generate service artifact from WSDL, compile service-side source codes" />
+        <echo message="                 and create a enterprise application archive" />
+        <echo message="    gen-client   Generate client artifact from WSDL and compile client-side source codes" />
+        <echo message="    run          Execute a web service client" />
+    </target>
+    <property file="../../../../sample.properties"/>
+    <import file="${jeus.home}/samples/common.xml"/>
+
+    <path id="jeus.classpath">
+	<pathelement location="." />
+	<path refid="jeus.libraries"/>
+    </path>
+	
+	<taskdef name="java2wsdl" classname="jeus.util.ant.webservices.Java2WsdlTask"/>
+	<taskdef name="wsdl2java" classname="jeus.util.ant.webservices.Wsdl2JavaTask"/>
+
+    <property name="work.home" value="."/>
+    <property name="app.name" value="sample"/>
+
+
+    <!-- The destination directory for the build -->
+    <property name="build.dir" value="${work.home}/build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+
+    <property name="src" value="${work.home}/src"/>
+    <property name="conf.dir" value="${work.home}/conf"/>
+
+    <property name="service.wsdl" value="${work.home}/wsdl/SubmitBookService.wsdl"/>
+  
+    <path id="build.classpath">
+        <path refid="jeus.classpath"/>
+        <pathelement location="${classes.dir}"/>
+        <pathelement location="${classes.dir}/service"/>
+        <pathelement location="${classes.dir}/client"/>
+    <pathelement location="${src}"/>
+    </path>
+  
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+   
+    <target name="run">
+        <java classname="sample.datahandleronly.client.WSClient" fork="yes">
+            <classpath refid="build.classpath" />
+        </java>
+    </target>
+
+    <target name="gen-client">
+        <mkdir dir="${build.dir}" />
+        <mkdir dir="${classes.dir}"/>    
+        <mkdir dir="${classes.dir}/client"/> 
+
+        <antcall target="wsdl2java">
+            <param name="wsdl2java.wsdl" location="${service.wsdl}"/>
+            <param name="wsdl2java.mode" value="gen:client"/>
+            <param name="wsdl2java.package" value="sample.datahandleronly.stub"/>
+            <param name="wsdl2java.destdir" location="${classes.dir}/client"/>       
+            <param name="wsdl2java.outputmapping" location="${build.dir}/SubmitBookServiceClient-mapping.xml"/>                   
+            <param name="wsdl2java.datanandleronly" value="true"/>
+        </antcall>
+
+        <antcall target="compile">
+            <param name="javac.srcdir" value="${src}"/>
+            <param name="javac.destdir" value="${classes.dir}/client"/>       
+            <param name="javac.include" value="**/sample/datahandleronly/client/**"/>            
+        </antcall>
+
+    </target>
+
+    <target name="gen-service">
+        <mkdir dir="${build.dir}" />
+        <mkdir dir="${classes.dir}"/>    
+        <mkdir dir="${classes.dir}/service"/> 
+
+        <antcall target="wsdl2java">
+            <param name="wsdl2java.wsdl" location="${service.wsdl}"/>
+            <param name="wsdl2java.mode" value="import:server"/>
+            <param name="wsdl2java.package" value="sample.datahandleronly.service"/>
+            <param name="wsdl2java.destdir" location="${classes.dir}/service"/>       
+            <param name="wsdl2java.outputmapping" location="${build.dir}/SubmitBookService-mapping.xml"/>                   
+            <param name="wsdl2java.datanandleronly" value="false"/>
+        </antcall>
+    
+        <antcall target="compile">
+            <param name="javac.srcdir" value="${src}"/>
+            <param name="javac.destdir" value="${classes.dir}/service"/>       
+            <param name="javac.include" value="**/sample/datahandleronly/service/**"/>            
+        </antcall>
+ 
+        <antcall target="archive-service"/>
+    </target>
+    
+    <target name="compile">
+        <javac srcdir="${javac.srcdir}" destdir="${javac.destdir}" debug="on">
+            <classpath refid="build.classpath"/>
+            <include name="${javac.include}"/>
+        </javac>
+    </target>
+
+    <target name="wsdl2java">
+        <wsdl2java wsdl="${wsdl2java.wsdl}" 
+                   mode="${wsdl2java.mode}"
+                   package="${wsdl2java.package}"
+                   destDir="${wsdl2java.destdir}" 
+                   outputMapping="${wsdl2java.outputmapping}"
+                   dataHandlerOnly="${wsdl2java.datanandleronly}"
+                   doCompile="true"
+                   verbose="true">
+            <classpath refid="build.classpath"/>
+        </wsdl2java>
+    </target>
+
+    <target name="archive-service">
+        <mkdir dir="${build.dir}" />
+        <delete file="${build.dir}/sample.war" />
+        <delete file="${build.dir}/sample.ear" />
+
+       <war destfile="${build.dir}/sample.war" webxml="${conf.dir}/web.xml">
+            <webinf dir="${conf.dir}" includes="webservices.xml" />
+            <webinf dir="${conf.dir}" includes="jeus-web-dd.xml" />
+            <webinf dir="${conf.dir}" includes="jeus-webservices-dd.xml" />
+            <zipfileset dir="${work.home}/wsdl" includes="*.wsdl" prefix="WEB-INF/wsdl" />
+            <zipfileset dir="${build.dir}" includes="*Service-mapping.xml" prefix="WEB-INF/mapping" />
+            <classes dir="${classes.dir}/service" includes="**/*.class"/>
+        </war>
+      
+        <ear destfile="${build.dir}/sample.ear" appxml="${conf.dir}/application.xml">
+            <fileset dir="${build.dir}" includes="sample.war" />
+        </ear>
+    </target>
+   <!-- Move .ear file to the app_home directory -->
+   <target name="move.ear">
+   	<copy todir="${jeus.apphome}" file="${build.dir}/${app.name}.ear"/>
+   </target>
+    <target name="deploy">
+      <distribute
+	   deployURI="deployer:Jeus:example"
+	   user="${jeus.username}"
+	   password="${jeus.password}"
+	   targetNames="${jeus.target}"
+	   modulePath="${jeus.apphome}/${app.name}.ear"
+	   fastdeploy="false" />
+      <modulecommand
+	   deployURI="deployer:Jeus:example"
+	   command="start"
+	   modulename="${app.name}"
+	   moduletype="J2EEApplication"
+	   targetNames="${jeus.target}"
+	   user="${jeus.username}"
+	   password="${jeus.password}" />
+    </target>
+    <target name="undeploy">
+	    <modulecommand
+       deployURI="deployer:Jeus:example"
+       command="undeploy"
+       modulename="${app.name}"
+       moduletype="J2EEApplication"
+       targetNames="${jeus.target}"
+       user="${jeus.username}"
+       password="${jeus.password}" />
+    </target>
+ 
+  <target name="all" depends="clean, gen-service, move.ear, deploy, gen-client, run, undeploy" />
+    
+</project>

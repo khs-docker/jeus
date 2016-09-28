@@ -1,0 +1,46 @@
+<html jwcid="shell">
+    <body jwcid="@Body" class="tundra">
+        <script type="text/javascript" src="/webadmin/js/JeusDojo/release/dojo/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+        <script type="text/javascript" src="/webadmin/js/JeusDojo/release/dojo/dojo/jeus.js"></script>
+        <script type="text/javascript">
+            dojo.require("dojo.parser");
+            dojo.require("dijit.form.CheckBox");
+            dojo.require("dijit.form.FilteringSelect");
+            dojo.require("dijit.form.Textarea");
+            dojo.require("dijit.form.TextBox");
+            dojo.require("dijit.form.ValidationTextBox");
+            dojo.require("dijit.Tooltip");
+            dojo.require("dijit.Dialog");
+            dojo.require("dijit.form.Button");
+        </script>
+        <span jwcid="@jeus:Dynamite"/>
+        <div class="mainborderContent">
+            <form jwcid="handlerListForm" style="padding:10px;">
+                <span jwcid="hidden_logger_name"/>
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns"><span jwcid="logger_name_column"/></td>
+                        <td class="table_columns"><span jwcid="handler_type_column"/></td>
+                        <td class="table_columns"><span jwcid="handler_name_column"/></td>
+                        <td class="table_columns"><span jwcid="handler_level_column"/></td>
+                        <td class="table_columns" width="20">&nbsp;</td>
+                    </tr>
+                    <tr jwcid="eachHandler">
+                        <td class="table_values"><span jwcid="logger_name_value"/></td>
+                        <td class="table_values"><span jwcid="handler_type_value"/></td>
+                        <span jwcid="condParentHandler">
+                            <td class="table_values"><span jwcid="handler_name_value"/></td>
+                        </span>
+                        <span jwcid="condNotParentHandler">
+                            <td class="table_values"><a jwcid="handlerLink"><span jwcid="handler_name_value2"/></a></td>
+                        </span>
+                        <td class="table_values"><span jwcid="handler_level_value"/></td>
+                        <td class="table_values" align="center"><a jwcid="deleteLink"><img jwcid="delete" border="0"/></a></td>
+                    </tr>
+                </table>
+                <br/>
+            </form>
+        </div>
+        <p style="text-align:right;"><a jwcid="createLink"><img jwcid="create" align="absmiddle"/>&nbsp;<span jwcid="create_label"/></a></p>
+    </body>
+</html>

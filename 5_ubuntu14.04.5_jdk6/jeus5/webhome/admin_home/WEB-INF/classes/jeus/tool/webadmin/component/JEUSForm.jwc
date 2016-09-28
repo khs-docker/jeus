@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://tapestry.apache.org/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="jeus.tool.webadmin.component.JEUSForm" allow-body="yes" allow-informal-parameters="yes">
+
+  <parameter name="title"/>
+
+  <parameter name="listener"/>
+
+  <parameter name="success"/>
+
+  <parameter name="cancel"/>
+
+  <parameter name="refresh"/>
+
+  <parameter name="useRefreshButton" default-value="true"/>
+
+  <parameter name="subform" default-value="false"/>
+
+  <parameter name="useForm" default-value="true"/>
+
+  <parameter name="objectName" default-value="defaultObjectName"/>
+
+  <component id="refresh" type="ConfirmSubmit">
+    <binding name="value" value="message:JEUSForm.reset.label"/>
+    <binding name="message" value="message:JEUSForm.reset.confirm"/>
+    <binding name="submitType" value="literal:refresh"/>
+    <binding name="listener" value="refresh"/>
+  </component>
+
+  <component id="ok" type="ConfirmSubmit">
+    <binding name="value" value="message:JEUSForm.ok.label"/>
+    <binding name="message" value="message:JEUSForm.ok.confirm"/>
+    <binding name="listener" value="success"/>
+  </component>
+
+<!-- 
+  <component id="cancel" type="Submit">
+	<binding name="submitType" value="literal:cancel"/>
+    <binding name="value" value="message:JEUSForm.cancel.label"/>
+  </component>
+ -->
+    <component id="cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+  <parameter name="useDefaultButtons" default-value="true"/>
+
+  <inject property="xmlSchemaResourceSource" type="state" object="XMLSchemaResourceSource"/>
+  <inject property="settings" type="state" object="Settings"/>
+  <inject property="script" type="script" object="JEUSForm.script"/>
+
+  <parameter name="description" property="descriptionbinding"/>
+  <parameter name="mbean" default-value="false"/>
+
+  <parameter name="parentElement"/>
+  <parameter name="elementName"/>
+
+  <component id="form" type="Form">
+    <binding name="delegate" value="bean:delegate"/>
+    <binding name="listener" value="listener"/>
+    <binding name="refresh" value="useDefaultButtons ? null : refresh"/>
+    <binding name="success" value="useDefaultButtons ? null : success"/>
+    <binding name="cancel" value="cancel"/>
+  </component>
+
+  <component id="mbeanForm" type="MBeanForm">
+    <binding name="delegate" value="bean:delegate"/>
+    <binding name="objectName" value="objectName"/>
+    <binding name="listener" value="listener"/>
+    <binding name="refresh" value="useDefaultButtons ? null : refresh"/>
+    <binding name="success" value="useDefaultButtons ? null : success"/>
+    <binding name="cancel" value="cancel"/>
+  </component>
+
+  <bean name="delegate" class="jeus.tool.webadmin.form.JEUSValidationDelegate"/>
+
+</component-specification>

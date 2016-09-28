@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.J2EEServer.StatisticsPage">
+    <inject property="webadminVisit" type="state" object="visit"/>
+    <inject property="externalService" object="engine-service:external"/>
+    <meta key="alternative.page.name" value="J2EEServer_Configuration"/>
+
+    <component id="condNotXML" type="If">
+        <binding name="condition" value="objectName.domain != 'XML'"/>
+    </component>
+
+    <component id="link_icon" type="Image">
+        <binding name="image" value="assets.link"/>
+    </component>
+
+    <component id="jnditreeLink" type="Any">
+        <binding name="element" value="literal:a"/>
+        <!-- <binding name="href" value="literal:#"/> -->
+        <binding name="onclick" value="'javascript:window.open(\''+(@jeus.tool.webadmin.util.WebUtils@createExternalLink(externalService, 'Etc_JNDITreeFrameSet', objectName)).absoluteURL+'\', \'Local_JNDITree\', \'width=1050,height=700,toolbars=no,resizable=yes,scrollbars=yes\');'"/>
+    </component>
+
+    <component id="jnditree" type="Insert">
+        <binding name="value" value="message:NodeTree.JeusService.JeusManager.jnditree"/>
+    </component>
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:J2EEServer Statistics"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@getJ2EESERVER_NAMES(objectName)"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:server.statistics.title"/>
+        <!--<binding name="description" value="message:jds.statistics.description"/>-->
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <!-- EJBStats -->
+    <component id="vendor" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:server.statistics.vendor.label"/>
+        <binding name="value" value="ognl:view.vendor"/>
+    </component>
+
+    <component id="version" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:server.statistics.version.label"/>
+        <binding name="value" value="ognl:view.version"/>
+    </component>
+
+    <component id="jvmSection" type="jeus:FormSection">
+        <binding name="title" value="message:server.statistics.jvm.title"/>
+    </component>
+
+    <component id="min_heap_size" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:server.statistics.min_heap_size.label"/>
+        <binding name="value" value="ognl:view.minHeapSize"/>
+        <binding name="unit" value="message:common.unit.bytes"/>
+    </component>
+
+    <component id="max_heap_size" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:server.statistics.max_heap_size.label"/>
+        <binding name="value" value="ognl:view.maxHeapSize"/>
+        <binding name="unit" value="message:common.unit.bytes"/>
+    </component>
+
+    <component id="current_heap_size" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:server.statistics.current_heap_size.label"/>
+        <binding name="value" value="ognl:view.currentHeapSize"/>
+        <binding name="unit" value="message:common.unit.bytes"/>
+    </component>
+
+    <component id="up_time" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:server.statistics.up_time.label"/>
+        <binding name="value" value="ognl:view.upTime"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="refreshButton" type="Submit">
+        <binding name="value" value="message:common.label.refresh"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+    <asset name="link" path="context:/image/selected_mark.gif"/>
+</page-specification>

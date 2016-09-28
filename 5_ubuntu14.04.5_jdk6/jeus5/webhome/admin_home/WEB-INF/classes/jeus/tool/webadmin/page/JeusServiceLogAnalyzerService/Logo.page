@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="org.apache.tapestry.html.BasePage">
+    <component id="logo" type="Image">
+        <binding name="image" value="ognl:assets.logo"/>
+    </component>
+
+    <component id="description_top" type="Image">
+        <binding name="image" value="ognl:assets.description_top"/>
+    </component>
+
+    <component id="description_bottom" type="Image">
+        <binding name="image" value="ognl:assets.description_bottom"/>
+    </component>
+
+    <asset name="logo" path="context:/image/log/logo.gif"/>
+    <asset name="description_top" path="context:/image/log/logo_description_top.gif"/>
+    <asset name="description_bottom" path="context:/image/log/logo_description_bottom.gif"/>
+</page-specification>

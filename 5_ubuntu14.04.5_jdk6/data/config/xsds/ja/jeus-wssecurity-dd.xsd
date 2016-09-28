@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="Shift-JIS"?>
+<xs:schema 
+    attributeFormDefault="unqualified" 
+    elementFormDefault="qualified" 
+    targetNamespace="http://www.tmaxsoft.com/xml/ns/jeus" version="5.0" 
+    xmlns="http://www.tmaxsoft.com/xml/ns/jeus" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">  
+    <xs:complexType name="security-receiverType">   
+        <xs:sequence>    
+            <xs:element name="action-list" type="xs:string">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: 受信するメッセージに必要なセキュリティを設定します。        
+                                Timestamp, Encrypt, Signature, UsernameTokenなどが適用できます。
+                                それぞれの項目は、空白で分離します。
+(例:UsernameToken Signature Encrypt) 
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element default="true" minOccurs="0" name="observeActionOrder" type="xs:boolean">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[						[Description]: 送信者が使用した Actionリストの順序と受信者のActionリストの順序を同じにするかどうかを設定します。					]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="password-callback-class" type="xs:string">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: パスワード・コールバック・クラスの名前をプールパッケージの名前で入力します。 
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="timeStamp" type="timeStampType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[						[Description]: timeStampに適用するttl(timeToLive) aberration(誤差)を設定します。					]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="decryption" type="decryptionType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: 受信したメッセージの暗号化された部分を解読するための設定です。
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="signature-verification" type="signature-verificationType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: 受信したメッセージの署名を検証するための設定です。 
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>   
+        </xs:sequence>  
+    </xs:complexType>  
+    <xs:complexType name="decryptionType">   
+        <xs:sequence>    
+            <xs:element name="keystore" type="keystoreType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: メッセージの暗号を解読するためのキーストアの設定です。 
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>   
+        </xs:sequence>  
+    </xs:complexType>  
+    <xs:complexType name="keystoreType">   
+        <xs:sequence>    
+            <xs:element name="key-type" type="xs:string">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: キーストアに保存されるキーのタイプです。 (JKS或いはpkcs12) 
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element name="keystore-password" type="xs:string">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]:キーストアに接近するための暗号設定です。
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element name="keystore-filename" type="xs:string">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: キーストアファイル名前です。ファイルの名前または絶対経路を含むファイルの名前を書き込みます。ファイルの名前のみ書く場合はクラス経路で探すようになります。
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>   
+        </xs:sequence>  
+    </xs:complexType>  
+    <xs:complexType name="signature-verificationType">   
+        <xs:sequence>    
+            <xs:element name="keystore" type="keystoreType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: 署名を検証するためのキーストアの設定です。
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>   
+        </xs:sequence>  
+    </xs:complexType>  
+    <xs:complexType name="security-senderType">   
+        <xs:sequence>    
+            <xs:element name="action-list" type="xs:string">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: どんなセキュリティを適用するかをStringで並べます。        
+                                Timestamp, Encrypt, Signature, UsernameTokenなどが適用できます。
+                                それぞれの項目は、空白で分離します。
+(例：UsernameToken Signature Encrypt) 
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="password-callback-class" type="xs:string">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: パスワードを設定するコールバック・クラスのプールパッケージの名前です。 
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="user" type="xs:string">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: UsernameTokenに入る名前と署名に入るキーの別称を設定します。 
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="timeStamp" type="timeStampType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[						[Description]: timeStampに適用する ttl(timeToLive) aberration(誤差)、署名の可否を設定します。					]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="userNameToken" type="userNameTokenSenderType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: UsernameTokenを設定します。
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="signature-infos" type="signature-infosType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: メッセージに署名をするための設定です。 
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="encryption-infos" type="encryption-infosType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: メッセージを暗号化するための設定です。 
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>   
+        </xs:sequence>  
+    </xs:complexType>  
+    <xs:complexType name="userNameTokenSenderType">   
+        <xs:sequence>    
+            <xs:element minOccurs="0" name="password" type="xs:string">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[[Description]: 使用するパスワードを設定します。]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="passwordType" type="passwordTypeType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: UsernameTokenに使用されるパスワードタイプの設定です。
+                                "PasswordDigest"或いは"PasswordText"を使用することができます。
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="userTokenElements" type="xs:string">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: UsernameTokenに追加されるエレメントの リストです。それぞれの項目は空白で分離されます。"nonce"或いは"created"を使用できます。 
+                                passwordTypeが"PasswordText"の場合に使用できます。
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>   
+        </xs:sequence>  
+    </xs:complexType>  
+    <xs:simpleType name="passwordTypeType">   
+        <xs:restriction base="xs:string">    
+            <xs:enumeration value="PasswordDigest">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>    
+            <xs:enumeration value="PasswordText">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>   
+        </xs:restriction>  
+    </xs:simpleType>  
+    <xs:complexType name="timeStampType">   
+        <xs:sequence>    
+            <xs:element minOccurs="0" name="timeToLive" type="xs:positiveInteger">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[						[Description]: 送信メッセージの有効期間を秒単位で設定します。					]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="aberration" type="xs:integer">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[						[Description]: 標準時との差を設定します。デフォルト値は0秒です。					]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="requireSignature" type="xs:boolean">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[						
+                            [Description]: timestampに署名をするかどうかを設定します。デフォルト値はtrueです。
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="precision" type="xs:positiveInteger">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[						[Description]: システム環境(ネットワーク、処理遅延など)を考慮した余裕時刻を設定します。					]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>   
+        </xs:sequence>  
+    </xs:complexType>  
+    <xs:complexType name="signature-infosType">   
+        <xs:sequence>    
+            <xs:element maxOccurs="unbounded" name="signature-info" type="signature-infoType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: メッセージの署名のため設定です。複数設定ができます。 
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>   
+        </xs:sequence>  
+    </xs:complexType>  
+    <xs:complexType name="signature-infoType">   
+        <xs:sequence>    
+            <xs:element minOccurs="0" name="signatureParts" type="xs:string">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: メッセージの特定部分に署名しようとするときに使用されます。 
+                                "{}{http://schemas.xmlsoap.org/soap/envelope/}Body; Token"のような 
+                                方式で並べられます。基本的に設定しなかった場合にはSOAP全体を署名するようになっています。
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="signatureAlgorithm" type="signatureAlgorithmType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: 署名に使用するアルゴリズムを記述します。
+                                           SHA1withRSA,SHA1WithDSA,HMACSHA1の中の１つを使用します。
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="messageDigestAlogrithm" type="messageDigestAlgorithmType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[[Description]: メッセージダイジェストアルゴリズムを記述します。									SHA1の中の１つを使用します。]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="canonicalization" type="canonicalizationType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[[Description]: 使用されるcanonicalization方法を記述します。									Exclusive XML Canonicalization omit comments,									Exclusive XML Canonicalization with comments,									Inclusive XML Canonicalization omit comments, Inclusive XML Canonicalization with commentsの中の１つを使用します。]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element name="keyIdentifier" type="sigKeyIdentifierType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: 署名に使用されるキーの情報を表現する方式です。 
+                                IssuerSerial, DirectReference, SKIKeyIdentifier, X509KeyIdentifier
+                                の中で1つを使用します。 
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="keystore" type="keystoreType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: メッセージの署名のための個人キーを保存しているキーストアの設定です。 
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>   
+        </xs:sequence>  
+    </xs:complexType>  
+    <xs:simpleType name="sigKeyIdentifierType">   
+        <xs:restriction base="xs:string">    
+            <xs:enumeration value="IssuerSerial">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>    
+            <xs:enumeration value="DirectReference">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>    
+            <xs:enumeration value="SKIKeyIdentifier">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>    
+            <xs:enumeration value="X509KeyIdentifier">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>   
+        </xs:restriction>  
+    </xs:simpleType>  
+    <xs:simpleType name="signatureAlgorithmType">   
+        <xs:restriction base="xs:string">    
+            <xs:enumeration value="http://www.w3.org/2000/09/xmldsig#dsa-sha1">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>    
+            <xs:enumeration value="http://www.w3.org/2000/09/xmldsig#rsa-sha1">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>    
+            <xs:enumeration value="http://www.w3.org/2000/09/xmldsig#hmac-sha1">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>   
+        </xs:restriction>  
+    </xs:simpleType>  
+    <xs:simpleType name="messageDigestAlgorithmType">   
+        <xs:restriction base="xs:string">    
+            <xs:enumeration value="http://www.w3.org/2000/09/xmldsig#sha1">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>   
+        </xs:restriction>  
+    </xs:simpleType>  
+    <xs:simpleType name="canonicalizationType">   
+        <xs:restriction base="xs:string">    
+            <xs:enumeration value="http://www.w3.org/2001/10/xml-exc-c14n#">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>    
+            <xs:enumeration value="http://www.w3.org/2001/10/xml-exc-c14n#WithComments">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>    
+            <xs:enumeration value="http://www.w3.org/TR/2001/REC-xml-c14n-20010315">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>    
+            <xs:enumeration value="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>   
+        </xs:restriction>  
+    </xs:simpleType>  
+    <xs:complexType name="encryption-infosType">   
+        <xs:sequence>    
+            <xs:element maxOccurs="unbounded" name="encryption-info" type="encryption-infoType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: 配置されるウェブサービスクライアントのための設定を表示します。 
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>   
+        </xs:sequence>  
+    </xs:complexType>  
+    <xs:complexType name="encryption-infoType">   
+        <xs:sequence>    
+            <xs:element minOccurs="0" name="encryptionParts" type="xs:string">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: 特定の部分を暗号化するための設定です。  
+                                "{mode}{ns}{localname};{mode}{ns}{localname};…" のような形式です。
+                                基本mode値は、contentです。 
+ 例:{Content}{http://example.org/payment}CreCard;{Element}{}UserName
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="keyTransportAlogrithm" type="keyTransportAlogrithmType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: メッセージダイジェストアルゴリズムを記述します。RSA1.5の中の１つを使用します。
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="encryptionAlgorithm" type="encryptionAlgorithmType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[[Description]: 暗号化アルゴリズムです。									AES_128, AES_256, TRIPLE_DES, AES_192 をサポートします。]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="encryptionUser" type="xs:string">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: 暗号化に使われるキーの別称です。
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element name="keyIdentifier" type="encKeyIdentifierType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: 暗号化に使われるキーの情報を表現する方式です。
+                                IssuerSerial, DirectReference, SKIKeyIdentifier, X509KeyIdentifier
+                                EmbeddedKeyNameの中で1つを使用します。 
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="keystore" type="keystoreType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: 暗号化に使用されるキーのストレッジの設定です。 
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element minOccurs="0" name="embeddedKey" type="embeddedKeyType">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]:  ウェブサービスとウェブサービスクライアントが共有しているキーを
+                                設定します。keyIdentifierが "EmbeddedKeyName"で設定される必要があります。
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>   
+        </xs:sequence>  
+    </xs:complexType>  
+    <xs:simpleType name="encKeyIdentifierType">   
+        <xs:restriction base="xs:string">    
+            <xs:enumeration value="IssuerSerial">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>    
+            <xs:enumeration value="DirectReference">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>    
+            <xs:enumeration value="SKIKeyIdentifier">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>    
+            <xs:enumeration value="X509KeyIdentifier">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>    
+            <xs:enumeration value="EmbeddedKeyName">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>   
+        </xs:restriction>  
+    </xs:simpleType>  
+    <xs:simpleType name="encryptionAlgorithmType">   
+        <xs:restriction base="xs:string">    
+            <xs:enumeration value="http://www.w3.org/2001/04/xmlenc#tripledes-cbc">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>    
+            <xs:enumeration value="http://www.w3.org/2001/04/xmlenc#aes128-cbc">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>    
+            <xs:enumeration value="http://www.w3.org/2001/04/xmlenc#aes192-cbc">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>    
+            <xs:enumeration value="http://www.w3.org/2001/04/xmlenc#aes256-cbc">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>    
+            <xs:enumeration value="http://www.tmaxsoft.com/xml/algorithms/xmlenc#seed-cbc">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>   
+        </xs:restriction>  
+    </xs:simpleType>  
+    <xs:simpleType name="keyTransportAlogrithmType">   
+        <xs:restriction base="xs:string">    
+            <xs:enumeration value="http://www.w3.org/2001/04/xmlenc#rsa-1">     
+                <xs:annotation>      
+                    <xs:documentation/>     
+                </xs:annotation>    
+            </xs:enumeration>   
+        </xs:restriction>  
+    </xs:simpleType>  
+    <xs:complexType name="embeddedKeyType">   
+        <xs:sequence>    
+            <xs:element name="embeddedKeyCallbackClass" type="xs:string">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: セッションキーを使用しようとする場合、キーのバイト情報を持っているコールバッククラスを設定します。
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>    
+            <xs:element name="key-name" type="xs:string">     
+                <xs:annotation>      
+                    <xs:documentation><![CDATA[
+                            [Description]: セッション キーの名前を設定します。
+                        ]]>
+                    </xs:documentation>     
+                </xs:annotation>    
+            </xs:element>   
+        </xs:sequence>  
+    </xs:complexType> 
+</xs:schema>

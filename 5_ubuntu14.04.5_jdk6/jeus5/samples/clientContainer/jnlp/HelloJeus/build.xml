@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+<project name="HelloJeus" default="all" basedir=".">
+
+  <!-- set global properties for this build -->
+  <property file="../../../sample.properties"/>
+  <property name="source" value="."/>
+  <property name="build" value="${source}/build"/>
+  <property name="dist" value="${source}/dist"/>
+  <property name="modulename" value="HelloJeus"/>
+  
+  <import file="${jeus.home}/samples/common.xml"/>
+
+  <target name="all" depends="clean, init, compile,jar,move"/>
+
+  <!-- Create the build directory structure used by compile
+    and copy the deployment descriptors into it-->
+	<target name="init">
+		<mkdir dir="${build}"/>
+		<mkdir dir="${dist}"/>
+    </target>
+
+  <target name="compile" depends="init">
+    <javac srcdir="${source}" destdir="${build}"
+       includes="*.java" classpath="${jeus.libraries}"/>
+  </target>
+ 
+  <target name="jar" depends="compile">
+    <jar jarfile="${dist}/${modulename}.jar"
+      basedir="${build}"  update="yes">
+	</jar>
+  </target>
+
+  <!-- Move files to the appropriate directories-->
+  <target name="move" depends="jar">
+	<copy todir="${jeus.home}/webhome/client_home/${modulename}">
+		<fileset dir="." includes="${modulename}.jnlp"/>
+		<fileset dir="${dist}" includes="${modulename}.jar"/>
+	</copy>
+  </target> 
+
+  <target name="clean">
+    <delete dir="${build}"/>
+	<delete dir="${dist}"/>
+	<delete dir="${jeus.home}/webhome/client_home/${modulename}"/>
+  </target>
+</project>

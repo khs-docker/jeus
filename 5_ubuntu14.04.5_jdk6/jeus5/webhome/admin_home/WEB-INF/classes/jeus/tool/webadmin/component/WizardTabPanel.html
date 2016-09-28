@@ -1,0 +1,23 @@
+<span jwcid="$content$">
+<table class="tabPanel">
+	<tr><td class="nav">
+	<ul>
+		<li jwcid="@For" source="ognl:tabNames" value="ognl:tabName" index="ognl:index" element="li">
+			<span jwcid="@contrib:Choose">		
+			<span jwcid="@contrib:When" condition="ognl:activeStep == index" renderTag="ognl:false">
+				<a class="selected"><span jwcid="@Insert" value="ognl:messages.getMessage(page.pageName+'.'+tabName)"/></a>
+			</span>
+			<span jwcid="@contrib:When" condition="ognl:index lte maxStep" renderTag="ognl:false">
+				<a jwcid="@DirectLink" parameters="ognl:index" listener="listener:onChangeTab"><span jwcid="@Insert" value="ognl:messages.getMessage(page.pageName+'.'+tabName)"/></a>
+			</span>			
+			<span jwcid="@contrib:Otherwise" renderTag="ognl:false">
+				<a><span jwcid="@Insert" value="ognl:messages.getMessage(page.pageName+'.'+tabName)"/></a>
+			</span>
+			</span>
+		</li>			
+	</ul>
+	</td><td class="content">
+		<span jwcid="@RenderBlock" block="ognl:activeBlock"/>
+	</td></tr>
+</table>    
+</span>

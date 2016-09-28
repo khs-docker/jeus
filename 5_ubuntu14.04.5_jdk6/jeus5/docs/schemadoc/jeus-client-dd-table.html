@@ -1,0 +1,1843 @@
+<html><header><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></header><body><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(1) <b>&lt;jeus-client-dd&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">단일 JEUS Client 모듈의 최상위 element. 각각의 jeus-client-dd.xml
+			파일에는 이 태그가 반드시 존재한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(2)module-info<br>
+		(6)system-logging?<br>
+		(59)security-info?<br>
+		(63)scheduler?<br>
+		(82)env*<br>
+		(86)ejb-ref?<br>
+		(90)res-ref?<br>
+		(94)res-env-ref?<br>
+		(98)service-ref?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(2) 
+		&lt;jeus-client-dd&gt;
+	<b>&lt;module-info&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">클라이언트 어플리케이션에 대한 정보</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(3)module-name<br>
+		(4)app-main-class?<br>
+		(5)app-argument?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(3) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;module-info&gt;
+	<b>&lt;module-name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">클라이언트 어플리케이션에 지정되는 module 이름</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(4) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;module-info&gt;
+	<b>&lt;app-main-class&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">클라이언트 어플리케이션의 Main class의 fully qualified class name이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(5) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;module-info&gt;
+	<b>&lt;app-argument&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">클라이언트 어플리케이션이 실행될 때 사용되는 application argument를 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(6) 
+		&lt;jeus-client-dd&gt;
+	<b>&lt;system-logging&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">클라이언트 어플리케이션 컨테이너가 사용하는 logger를 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(7)level?<br>
+		(8)use-parent-handlers?<br>
+		(9)filter-class?<br>
+		(10)handler?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(7) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	<b>&lt;level&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">logging의 level을 설정한다. 각 level의 의미는 J2SE의 logging API의 Level class를
+                  참고하기 바란다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">loggingLevelType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">INFO</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Defined Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">FATAL<br>SEVERE에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>NOTICE<br>WARNING에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>INFORMATION<br>INFO에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>DEBUG<br>FINE에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>SEVERE<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>WARNING<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>INFO<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>CONFIG<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>FINE<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>FINER<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>FINEST<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>ALL<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(8) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	<b>&lt;use-parent-handlers&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">parent logger의 handler들을 이 logger에서도 사용할지를 결정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">boolean</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">false</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(9) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	<b>&lt;filter-class&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">logger에 지정할 filer class의 fully qualified class name을 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;filter-class&gt;com.tmax.logging.filter.MyFilter&lt;/filter-class&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(10) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	<b>&lt;handler&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">logger에서 사용할 handler를 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(11)console-handler<br>
+		(16)file-handler<br>
+		(26)smtp-handler<br>
+		(37)socket-handler<br>
+		(44)user-handler<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(11) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	<b>&lt;console-handler&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">logging을 화면에 남기고자 하는 경우에 사용하는 handler이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(12)name<br>
+		(13)level?<br>
+		(14)encoding?<br>
+		(15)filter-class?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(12) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;console-handler&gt;
+	<b>&lt;name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">handler의 이름을 설정한다. 이때 이 이름은 하나의 logger 내에서만 unique하게
+                      설정되면 된다. 이 이름은 tool 등에서 handler를 지칭할 때 사용한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;name&gt;handler1&lt;/name&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(13) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;console-handler&gt;
+	<b>&lt;level&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler의 level을 설정한다. logger를 통과한 message의 level이 이 handler
+                      level에 포함될 경우에만 이 handler에 의해 출력된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">loggingLevelType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">FINEST</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Defined Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">FATAL<br>SEVERE에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>NOTICE<br>WARNING에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>INFORMATION<br>INFO에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>DEBUG<br>FINE에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>SEVERE<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>WARNING<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>INFO<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>CONFIG<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>FINE<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>FINER<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>FINEST<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>ALL<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(14) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;console-handler&gt;
+	<b>&lt;encoding&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler이 message를 남길때 사용할 encoding을 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(15) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;console-handler&gt;
+	<b>&lt;filter-class&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler에 지정할 filer class의 fully qualified class name을 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;filter-class&gt;com.tmax.logging.filter.MyFilter&lt;/filter-class&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(16) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	<b>&lt;file-handler&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">logging을 file로 출력하고자 하는 경우에 사용하는 handler이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(17)name<br>
+		(18)level?<br>
+		(19)encoding?<br>
+		(20)filter-class?<br>
+		(21)file-name?<br>
+		(22)valid-day<br>
+		(23)valid-hour<br>
+		(24)buffer-size?<br>
+		(25)append?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(17) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;file-handler&gt;
+	<b>&lt;name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">handler의 이름을 설정한다. 이때 이 이름은 하나의 logger 내에서만 unique하게
+                      설정되면 된다. 이 이름은 tool 등에서 handler를 지칭할 때 사용한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;name&gt;handler1&lt;/name&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(18) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;file-handler&gt;
+	<b>&lt;level&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler의 level을 설정한다. logger를 통과한 message의 level이 이 handler
+                      level에 포함될 경우에만 이 handler에 의해 출력된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">loggingLevelType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">FINEST</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Defined Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">FATAL<br>SEVERE에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>NOTICE<br>WARNING에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>INFORMATION<br>INFO에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>DEBUG<br>FINE에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>SEVERE<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>WARNING<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>INFO<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>CONFIG<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>FINE<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>FINER<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>FINEST<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>ALL<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(19) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;file-handler&gt;
+	<b>&lt;encoding&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler이 message를 남길때 사용할 encoding을 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(20) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;file-handler&gt;
+	<b>&lt;filter-class&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler에 지정할 filer class의 fully qualified class name을 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;filter-class&gt;com.tmax.logging.filter.MyFilter&lt;/filter-class&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(21) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;file-handler&gt;
+	<b>&lt;file-name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler가 사용할 file name을 설정한다. 만약 user가 이 설정을 하지 않으면
+                        각 logger의 default file name이 사용된다. 각각의 default file name은 JEUS Server 메뉴얼을
+                        참고하기 바란다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;file-name&gt;C:\logs\mylog.log&lt;/file-name&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(22) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;file-handler&gt;
+	<b>&lt;valid-day&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler가 사용하는 file을 이 설정에서 지정된 기간동안만 사용하고 계속 갱신할
+                          경우에 사용한다. 이 설정은 날짜 단위로 file을 바꿀때 사용한다. 이 경우 handler가 사용하는 file 이름
+                          뒤에 file이 사용된 날짜가 자동으로 붙게 된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">day</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">off-intType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">기본적으로 non-negative int 형이지만 -1인 경우에는 설정을 하지 않은게 된다.즉, off된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;valid-day&gt;1&lt;/valid-day&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(23) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;file-handler&gt;
+	<b>&lt;valid-hour&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler가 사용하는 file을 이 설정에서 지정된 기간동안만 사용하고 계속 갱신할
+                          경우에 사용한다. 이 설정은 시간 단위로 file을 바꿀때 사용한다. 이 경우 handler가 사용하는 file 이름
+                          뒤에 file이 사용된 날짜와 시간이 자동으로 붙게 된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">시간을 나타내며 24의 약수 + n*24 (n은 0이상의 정수)의 값을 가져야 한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">off-intType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">기본적으로 non-negative int 형이지만 -1인 경우에는 설정을 하지 않은게 된다.즉, off된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;valid-hour&gt;3&lt;/valid-hour&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(24) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;file-handler&gt;
+	<b>&lt;buffer-size&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler가 file에 출력할때 사용하는 buffer의 크기를 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">byte 단위이다.
+                        [Performance Recommandation]: 이 값이 클수록 file에 출력되는 message는 지연되어 출력되지만
+                        logging 성능은 좋아진다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeIntType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 int type이다. 즉, int 범위에서
+			   0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">1024</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(25) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;file-handler&gt;
+	<b>&lt;append&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler가 사용하는 file이 이미 존재하는 경우 file 뒤에 덧붙여 쓸지를 결정한다.
+                        false로 설정되어 있다면 기존의 file은 제거된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">boolean</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">true</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(26) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	<b>&lt;smtp-handler&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">logging을 email로 보내고자 하는 경우에 사용하는 handler이다.
+                      [Performance Recommandation]: logging message 하나가 하나의 email로 전송되므로
+                      적절한 filter없이 사용하는 것은 엄청난 양의 email을 발생시켜 아주 위험하므로 주의를 요한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(27)name<br>
+		(28)level?<br>
+		(29)encoding?<br>
+		(30)filter-class?<br>
+		(31)smtp-host-address<br>
+		(32)from-address<br>
+		(33)to-address<br>
+		(34)cc-address?<br>
+		(35)bcc-address?<br>
+		(36)send-for-all-messages?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(27) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;smtp-handler&gt;
+	<b>&lt;name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">handler의 이름을 설정한다. 이때 이 이름은 하나의 logger 내에서만 unique하게
+                      설정되면 된다. 이 이름은 tool 등에서 handler를 지칭할 때 사용한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;name&gt;handler1&lt;/name&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(28) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;smtp-handler&gt;
+	<b>&lt;level&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler의 level을 설정한다. logger를 통과한 message의 level이 이 handler
+                      level에 포함될 경우에만 이 handler에 의해 출력된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">loggingLevelType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">FINEST</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Defined Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">FATAL<br>SEVERE에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>NOTICE<br>WARNING에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>INFORMATION<br>INFO에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>DEBUG<br>FINE에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>SEVERE<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>WARNING<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>INFO<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>CONFIG<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>FINE<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>FINER<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>FINEST<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>ALL<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(29) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;smtp-handler&gt;
+	<b>&lt;encoding&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler이 message를 남길때 사용할 encoding을 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(30) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;smtp-handler&gt;
+	<b>&lt;filter-class&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler에 지정할 filer class의 fully qualified class name을 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;filter-class&gt;com.tmax.logging.filter.MyFilter&lt;/filter-class&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(31) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;smtp-handler&gt;
+	<b>&lt;smtp-host-address&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">email을 보낼 smtp server의 주소를 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(32) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;smtp-handler&gt;
+	<b>&lt;from-address&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">email을 보내는 사람의 address를 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(33) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;smtp-handler&gt;
+	<b>&lt;to-address&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">email을 받는 사람의 address를 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(34) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;smtp-handler&gt;
+	<b>&lt;cc-address&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">email을 참조로 받는 사람의 address를 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(35) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;smtp-handler&gt;
+	<b>&lt;bcc-address&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">email을 숨은 참조로 받는 사람의 address를 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(36) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;smtp-handler&gt;
+	<b>&lt;send-for-all-messages&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler가 등록한 logger의 log() method를 통해 들어온 message들이 이
+                        handler로 들어왔을때 이를 email로 보낼 대상으로 여길지를 설정한다. 만약 false로 설정되어
+                        있으면 logger의 특별한 send() method로 호출된 message들만 email로 전송된다.
+                        즉, 처음부터 email로 보낼 의도로 지정된 message들만 email로 전송된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">boolean</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">false</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(37) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	<b>&lt;socket-handler&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">logging을 지정된 socket으로 보내고자 하는 경우에 사용하는 handler이다.
+                      [Performance Recommandation]: logging message 하나당 Socket으로 전송이 되므로
+                      적절한 filter없이 사용하는 것은 성능 저하를 가져온다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(38)name<br>
+		(39)level?<br>
+		(40)encoding?<br>
+		(41)filter-class?<br>
+		(42)address<br>
+		(43)port<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(38) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;socket-handler&gt;
+	<b>&lt;name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">handler의 이름을 설정한다. 이때 이 이름은 하나의 logger 내에서만 unique하게
+                      설정되면 된다. 이 이름은 tool 등에서 handler를 지칭할 때 사용한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;name&gt;handler1&lt;/name&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(39) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;socket-handler&gt;
+	<b>&lt;level&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler의 level을 설정한다. logger를 통과한 message의 level이 이 handler
+                      level에 포함될 경우에만 이 handler에 의해 출력된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">loggingLevelType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">FINEST</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Defined Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">FATAL<br>SEVERE에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>NOTICE<br>WARNING에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>INFORMATION<br>INFO에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>DEBUG<br>FINE에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>SEVERE<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>WARNING<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>INFO<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>CONFIG<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>FINE<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>FINER<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>FINEST<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>ALL<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(40) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;socket-handler&gt;
+	<b>&lt;encoding&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler이 message를 남길때 사용할 encoding을 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(41) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;socket-handler&gt;
+	<b>&lt;filter-class&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler에 지정할 filer class의 fully qualified class name을 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;filter-class&gt;com.tmax.logging.filter.MyFilter&lt;/filter-class&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(42) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;socket-handler&gt;
+	<b>&lt;address&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler가 생성될때 message들을 보낼 곳의 IP address를 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(43) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;socket-handler&gt;
+	<b>&lt;port&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler가 생성될때 message들을 보낼 곳의 port를 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeIntType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 int type이다. 즉, int 범위에서
+			   0 이상의 값들을 포함한다.</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(44) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	<b>&lt;user-handler&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">User가 J2SE logging API에 따라 만든 handler를 사용할 경우의 설정이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(45)handler-class<br>
+		(46)name<br>
+		(47)level?<br>
+		(48)encoding?<br>
+		(49)filter-class?<br>
+		(50)handler-property?<br>
+		(54)formatter-class?<br>
+		(55)formatter-property?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(45) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;user-handler&gt;
+	<b>&lt;handler-class&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">user가 만든 handler의 fully qualified class name을 설정한다.이 클래스는
+                        java.util.logging.Handler를 상속받고 jeus.util.logging.JeusHandler를 구현해야 한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;handler-class&gt;com.tmax.logging.handler.MyHandler&lt;/handler-class&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(46) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;user-handler&gt;
+	<b>&lt;name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">handler의 이름을 설정한다. 이때 이 이름은 하나의 logger 내에서만 unique하게
+                      설정되면 된다. 이 이름은 tool 등에서 handler를 지칭할 때 사용한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;name&gt;handler1&lt;/name&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(47) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;user-handler&gt;
+	<b>&lt;level&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler의 level을 설정한다. logger를 통과한 message의 level이 이 handler
+                      level에 포함될 경우에만 이 handler에 의해 출력된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">loggingLevelType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">FINEST</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Defined Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">FATAL<br>SEVERE에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>NOTICE<br>WARNING에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>INFORMATION<br>INFO에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>DEBUG<br>FINE에 해당하는 level이다. JEUS 4.x대의 logger의 level로 compatibility를 위해 지원한다.<br><br>SEVERE<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>WARNING<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>INFO<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>CONFIG<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>FINE<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>FINER<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>FINEST<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br>ALL<br>J2SE Logging API의 Level class documentation을 참고하기 바란다.<br><br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(48) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;user-handler&gt;
+	<b>&lt;encoding&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler이 message를 남길때 사용할 encoding을 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(49) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;user-handler&gt;
+	<b>&lt;filter-class&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler에 지정할 filer class의 fully qualified class name을 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;filter-class&gt;com.tmax.logging.filter.MyFilter&lt;/filter-class&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(50) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;user-handler&gt;
+	<b>&lt;handler-property&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">handler가 생성될 때 넘겨줄 property를 설정한다. 이 property들은
+                        key-value로 Map 객체에 저장되어 JeusHandler.setProperty() method를 통해 handler로
+                        전달된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(51)property*<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(51) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;user-handler&gt;
+	
+		&lt;handler-property&gt;
+	<b>&lt;property&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">handler 등에게 전달할 property들을 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(52)key<br>
+		(53)value<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(52) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;user-handler&gt;
+	
+		&lt;handler-property&gt;
+	
+		&lt;property&gt;
+	<b>&lt;key&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">property의 key값이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(53) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;user-handler&gt;
+	
+		&lt;handler-property&gt;
+	
+		&lt;property&gt;
+	<b>&lt;value&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">property의 value값이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(54) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;user-handler&gt;
+	<b>&lt;formatter-class&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 handler가 사용할 formatter의 fully qualified class name을 설정한다.이 클래스는
+                        java.util.logging.Formatter를 상속받고 jeus.util.logging.JeusFormatter를 구현해야 한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">jeus.util.logging.SimpleFormatter</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;formatter-class&gt;com.tmax.logging.handler.MyHandler&lt;/formatter-class&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(55) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;user-handler&gt;
+	<b>&lt;formatter-property&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">handler가 생성될 때 만들어진 formatter에게 넘겨줄 property를 설정한다.
+                        이 property들은 key-value로 Map 객체에 저장되어 JeusFormatter.setProperty() method를 통해
+                        formatter로 전달된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(56)property*<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(56) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;user-handler&gt;
+	
+		&lt;formatter-property&gt;
+	<b>&lt;property&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">handler 등에게 전달할 property들을 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(57)key<br>
+		(58)value<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(57) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;user-handler&gt;
+	
+		&lt;formatter-property&gt;
+	
+		&lt;property&gt;
+	<b>&lt;key&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">property의 key값이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(58) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;system-logging&gt;
+	
+		&lt;handler&gt;
+	
+		&lt;user-handler&gt;
+	
+		&lt;formatter-property&gt;
+	
+		&lt;property&gt;
+	<b>&lt;value&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">property의 value값이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(59) 
+		&lt;jeus-client-dd&gt;
+	<b>&lt;security-info&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">클라이언트 어플리케이션이 실행될 때 security 인증을 위한 여러가지 정보를 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(60)provider-node-name<br>
+		(61)user<br>
+		(62)passwd<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(60) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;security-info&gt;
+	<b>&lt;provider-node-name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">클라이언트 어플리케이션이 실행될 때 security 인증을 수행할 server를 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(61) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;security-info&gt;
+	<b>&lt;user&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">클라이언트 어플리케이션이 실행될 때 사용하는 security context의 user name을 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(62) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;security-info&gt;
+	<b>&lt;passwd&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">클라이언트 어플리케이션이 실행될 때 사용하는 security context의 password를 지정한다.
+				여기에는 base64로 encoding된 값이 지정된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(63) 
+		&lt;jeus-client-dd&gt;
+	<b>&lt;scheduler&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Client Container에서 사용할 scheduler의 설정이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(64)default-lookup-name?<br>
+		(65)thread-pool?<br>
+		(69)job-list?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(64) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;scheduler&gt;
+	<b>&lt;default-lookup-name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">jeus_service/Scheduler로 lookup할때 return할 Scheduler 객체가 존재하는 node나 container의 이름을 지정한다. 지정이 되어 있지 않으면 lookup하는 곳에 존재하는 Scheduler 객체가 사용된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(65) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;scheduler&gt;
+	<b>&lt;thread-pool&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">scheduler에서 multi-thread로 job을 실행할때 사용하는 thread pool을 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(66)min?<br>
+		(67)max?<br>
+		(68)period?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(66) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;scheduler&gt;
+	
+		&lt;thread-pool&gt;
+	<b>&lt;min&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">pooling되는 객체의 최소값을 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeIntType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 int type이다. 즉, int 범위에서
+			   0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">2</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(67) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;scheduler&gt;
+	
+		&lt;thread-pool&gt;
+	<b>&lt;max&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">pooling되는 객체의 최대값을 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeIntType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 int type이다. 즉, int 범위에서
+			   0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">30</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(68) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;scheduler&gt;
+	
+		&lt;thread-pool&gt;
+	<b>&lt;period&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">pooling되는 객체를 정리하는 시간을 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">long</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">3600000</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Performance Recommendation</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 값이 클수록 정리하는 주기가 길어져 server 운영에는 부하가
+                        적게 가해지나 그만큼 메모리가 누수될 수 있으므로 적당한 값으로 지정한다.</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(69) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;scheduler&gt;
+	<b>&lt;job-list&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">scheduler에 등록할 job list을 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(70)job*<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(70) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;scheduler&gt;
+	
+		&lt;job-list&gt;
+	<b>&lt;job&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">scheduler에 등록할 하나의 job을 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(71)class-name<br>
+		(72)name?<br>
+		(73)description?<br>
+		(74)begin-time?<br>
+		(75)end-time?<br>
+		(76)interval?<br>
+		(81)count?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(71) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;scheduler&gt;
+	
+		&lt;job-list&gt;
+	
+		&lt;job&gt;
+	<b>&lt;class-name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">job을 수행하는 class의 fully qualified name이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(72) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;scheduler&gt;
+	
+		&lt;job-list&gt;
+	
+		&lt;job&gt;
+	<b>&lt;name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 job의 이름을 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(73) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;scheduler&gt;
+	
+		&lt;job-list&gt;
+	
+		&lt;job&gt;
+	<b>&lt;description&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 job의 설명을 적을 수 있다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(74) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;scheduler&gt;
+	
+		&lt;job-list&gt;
+	
+		&lt;job&gt;
+	<b>&lt;begin-time&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 job의 시작 시간을 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">dateTime</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(75) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;scheduler&gt;
+	
+		&lt;job-list&gt;
+	
+		&lt;job&gt;
+	<b>&lt;end-time&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 job의 종료 시간을 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">dateTime</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(76) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;scheduler&gt;
+	
+		&lt;job-list&gt;
+	
+		&lt;job&gt;
+	<b>&lt;interval&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 job이 수행되는 주기를 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(77)millisecond<br>
+		(78)minutely<br>
+		(79)hourly<br>
+		(80)daily<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(77) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;scheduler&gt;
+	
+		&lt;job-list&gt;
+	
+		&lt;job&gt;
+	
+		&lt;interval&gt;
+	<b>&lt;millisecond&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">주기를 millisecond 단위로 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">long</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(78) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;scheduler&gt;
+	
+		&lt;job-list&gt;
+	
+		&lt;job&gt;
+	
+		&lt;interval&gt;
+	<b>&lt;minutely&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">주기를 분 단위로 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeIntType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 int type이다. 즉, int 범위에서
+			   0 이상의 값들을 포함한다.</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(79) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;scheduler&gt;
+	
+		&lt;job-list&gt;
+	
+		&lt;job&gt;
+	
+		&lt;interval&gt;
+	<b>&lt;hourly&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">주기를 시간 단위로 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeIntType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 int type이다. 즉, int 범위에서
+			   0 이상의 값들을 포함한다.</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(80) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;scheduler&gt;
+	
+		&lt;job-list&gt;
+	
+		&lt;job&gt;
+	
+		&lt;interval&gt;
+	<b>&lt;daily&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">주기를 날짜 단위로 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeIntType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 int type이다. 즉, int 범위에서
+			   0 이상의 값들을 포함한다.</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(81) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;scheduler&gt;
+	
+		&lt;job-list&gt;
+	
+		&lt;job&gt;
+	<b>&lt;count&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 job이 수행되는 횟수를 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">long</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">-1</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Defined Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">-1<br>수행되는 횟수를 제한하지 않는다.<br><br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(82) 
+		&lt;jeus-client-dd&gt;
+	<b>&lt;env&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">environment entry 에 대한 정보</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(83)type<br>
+		(84)name<br>
+		(85)value<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(83) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;env&gt;
+	<b>&lt;type&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">환경 변수의 자바 타입.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">다음의 자바 타입 중 하나를 선택해야 한다. java.lang.Boolean,
+                        java.lang.String, java.lang.Integer, java.lang.Double, java.lang.Byte, java.lang.Short,
+                        java.lang.Long, java.lang.Float, java.lang.Character.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;type&gt;java.lang.Integer&lt;/type&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(84) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;env&gt;
+	<b>&lt;name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">코드에서 사용하는 환경 변수의 이름.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;name&gt;minAmount&lt;/name&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(85) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;env&gt;
+	<b>&lt;value&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 값은 대응하는 wrapper 클래스 생성자의 파라미터로서 사용 된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;value&gt;100&lt;/value&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(86) 
+		&lt;jeus-client-dd&gt;
+	<b>&lt;ejb-ref&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">EJB reference 에 대한 정보</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(87)jndi-info*<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(87) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;ejb-ref&gt;
+	<b>&lt;jndi-info&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 element는 코드에서 사용하는 EJB 참조를 실제 EJB JNDI 이름으로 bind한다.
+                        예를 들면 실제 JNDI 이름이 "ACCEJB"인 account EJB를 코드상에서
+                        "ejb/account"으로 lookup 할 수 있다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(88)ref-name<br>
+		(89)export-name<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(88) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;ejb-ref&gt;
+	
+		&lt;jndi-info&gt;
+	<b>&lt;ref-name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 element는 소스코드상에서 사용할 수 있는 참조 이름을 선언할 수 있다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">실제 JNDI 이름에 bind될 참조 이름. 이것은 해당하는 J2EE 표준 descriptor element의 ref-name에 대응된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;ref-name&gt;ejb/AccountEJB&lt;/ref-name&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(89) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;ejb-ref&gt;
+	
+		&lt;jndi-info&gt;
+	<b>&lt;export-name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">JEUS DD 에 정의된 실제 JNDI 이름.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;export-name&gt;ACCEJB&lt;/export-name&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(90) 
+		&lt;jeus-client-dd&gt;
+	<b>&lt;res-ref&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">resource 관련 정보</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(91)jndi-info*<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(91) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;res-ref&gt;
+	<b>&lt;jndi-info&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 element는 코드에서 사용하는 EJB 참조를 실제 EJB JNDI 이름으로 bind한다.
+                        예를 들면 실제 JNDI 이름이 "ACCEJB"인 account EJB를 코드상에서
+                        "ejb/account"으로 lookup 할 수 있다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(92)ref-name<br>
+		(93)export-name<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(92) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;res-ref&gt;
+	
+		&lt;jndi-info&gt;
+	<b>&lt;ref-name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 element는 소스코드상에서 사용할 수 있는 참조 이름을 선언할 수 있다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">실제 JNDI 이름에 bind될 참조 이름. 이것은 해당하는 J2EE 표준 descriptor element의 ref-name에 대응된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;ref-name&gt;ejb/AccountEJB&lt;/ref-name&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(93) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;res-ref&gt;
+	
+		&lt;jndi-info&gt;
+	<b>&lt;export-name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">JEUS DD 에 정의된 실제 JNDI 이름.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;export-name&gt;ACCEJB&lt;/export-name&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(94) 
+		&lt;jeus-client-dd&gt;
+	<b>&lt;res-env-ref&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">resource environment 관련 정보</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(95)jndi-info*<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(95) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;res-env-ref&gt;
+	<b>&lt;jndi-info&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 element는 코드에서 사용하는 EJB 참조를 실제 EJB JNDI 이름으로 bind한다.
+                        예를 들면 실제 JNDI 이름이 "ACCEJB"인 account EJB를 코드상에서
+                        "ejb/account"으로 lookup 할 수 있다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(96)ref-name<br>
+		(97)export-name<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(96) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;res-env-ref&gt;
+	
+		&lt;jndi-info&gt;
+	<b>&lt;ref-name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 element는 소스코드상에서 사용할 수 있는 참조 이름을 선언할 수 있다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">실제 JNDI 이름에 bind될 참조 이름. 이것은 해당하는 J2EE 표준 descriptor element의 ref-name에 대응된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;ref-name&gt;ejb/AccountEJB&lt;/ref-name&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(97) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;res-env-ref&gt;
+	
+		&lt;jndi-info&gt;
+	<b>&lt;export-name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">JEUS DD 에 정의된 실제 JNDI 이름.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;export-name&gt;ACCEJB&lt;/export-name&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(98) 
+		&lt;jeus-client-dd&gt;
+	<b>&lt;service-ref&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">JEUS 웹 서비스 클라이언트 설정 문서의 루트 엘리먼트(root element).</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(99)service-client*<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(99) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	<b>&lt;service-client&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">배치되는 웹서비스 클라이언트를 위한 설정들을 표시한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(100)service-ref-name<br>
+		(101)port-info*<br>
+		(154)service-impl-class?<br>
+		(155)wsdl-override?<br>
+		(156)service-qname?<br>
+		(157)call-property*<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(100) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	<b>&lt;service-ref-name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">WSDL 파일에서 관련된 웹서비스 엔드포인트 이름이다. 
+                                &lt;service-ref-name&gt;은 표준 배치 서술자 web.xml 혹은 ejb-jar.xml의 
+                                &lt;service-ref-name&gt;에 상응한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(101) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	<b>&lt;port-info&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">배치되는 웹서비스 클라이언트가 호출하는 웹서비스 포트 정보를 표시한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(102)service-endpoint-interface?<br>
+		(103)wsdl-port?<br>
+		(104)stub-property*<br>
+		(107)call-property*<br>
+		(110)security?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(102) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	<b>&lt;service-endpoint-interface&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">WSDL port의 서비스 엔드포인드 인터페이스를 나타내는 클래스를 표시한다.
+                                &lt;service-ref&gt;에서 &lt;port-component-ref&gt;의 &lt;service-endpoint-interface&gt;에 상응한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(103) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	<b>&lt;wsdl-port&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">&lt;port-info&gt;와 연결된 WSDL port 정의를 표시한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">QName</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(104) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	<b>&lt;stub-property&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">특정 port에서 사용하는 javax.xml.rpc.Stub 객체에 
+                                설정하는 property들을 표시한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(105)name<br>
+		(106)value<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(105) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;stub-property&gt;
+	<b>&lt;name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">javax.xml.rpc.Stub 또는 javax.xml.rpc.Call에 프로퍼티를
+                                설정하기 위한 키(key) 이름을 나타낸다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(106) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;stub-property&gt;
+	<b>&lt;value&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">javax.xml.rpc.Stub 또는 javax.xml.rpc.Call에 프로퍼티를
+                                설정하기 위한 키(key)에 상응하는 값(value)이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(107) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	<b>&lt;call-property&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">특정 port에서 사용하는 javax.xml.rpc.Call 객체에 
+                                설정하는 property들을 표시한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(108)name<br>
+		(109)value<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(108) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;call-property&gt;
+	<b>&lt;name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">javax.xml.rpc.Stub 또는 javax.xml.rpc.Call에 프로퍼티를
+                                설정하기 위한 키(key) 이름을 나타낸다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(109) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;call-property&gt;
+	<b>&lt;value&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">javax.xml.rpc.Stub 또는 javax.xml.rpc.Call에 프로퍼티를
+                                설정하기 위한 키(key)에 상응하는 값(value)이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(110) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	<b>&lt;security&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">웹서비스의 보안(WS-Security)을 위한 웹 서비스 클
+                                라이언트 설정이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(111)request-sender?<br>
+		(140)response-receiver?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(111) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	<b>&lt;request-sender&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">웹서비스를 호출하는 메시지에 보안을 적용하기 위한 설정이
+                                다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(112)action-list<br>
+		(113)password-callback-class?<br>
+		(114)user<br>
+		(115)timeToLive?<br>
+		(116)userNameToken?<br>
+		(119)signature-infos?<br>
+		(127)encryption-infos?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(112) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	<b>&lt;action-list&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">어떤 보안을 적용할 것인지를 String으로 나열한다.        
+                                Timestamp, Encrypt, Signature, UsernameToken이 들어갈수 있다.
+                                각각의 항목은 공백으로 분리한다.(예:UsernameToken Signature Encrypt)</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(113) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	<b>&lt;password-callback-class&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">패스워드를 설정하는 콜백 클래스의 풀 패키지 명이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(114) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	<b>&lt;user&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">UsernameToken에 들어갈 이름과 서명에 들어갈 키의 별칭
+                                을 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(115) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	<b>&lt;timeToLive&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">보내게 될 메시지의 유효기간을 초 단위로 설정한다. 기본값
+                                은 300초이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(116) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	<b>&lt;userNameToken&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">UsernameToken을 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(117)passwordType?<br>
+		(118)userTokenElements?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(117) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;userNameToken&gt;
+	<b>&lt;passwordType&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">UsernameToken에 사용될 패스워드의 타입 설정이다.
+                                "PasswordDigest" 혹은 "PasswordText"를 사용할 수 있다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">passwordTypeType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Defined Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">PasswordDigest<br>UsernameToken에 설정되는 암호가 base64 encoding된 상태
+                                로 메시지에 포함된다.<br><br>PasswordText<br>UsernameToken에 설정되는 암호가 평이한 텍스트로 메시지에
+                                포함된다.<br><br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(118) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;userNameToken&gt;
+	<b>&lt;userTokenElements&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">UsernameToken에 추가될 엘리먼트의 리스트이다. 각 항목은
+                                공백으로 분리된다. "nonce" 혹은 "created"가 사용될 수 있다. 
+                                passwordType이 "PasswordText"일 경우에 사용가능하다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(119) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	<b>&lt;signature-infos&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">메시지에 서명을 하기 위한 설정이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(120)signature-info+<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(120) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;signature-infos&gt;
+	<b>&lt;signature-info&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">메시지의 서명을 위한 설정히다. 복수 설정이 가능하다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(121)signatureParts?<br>
+		(122)keyIdentifier<br>
+		(123)keystore<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(121) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;signature-infos&gt;
+	
+		&lt;signature-info&gt;
+	<b>&lt;signatureParts&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">메시지의 특정 부분을 서명하고자 할 때 사용한다. 
+                                "{}{http://schemas.xmlsoap.org/soap/envelope/}Body; Token"과 같은 
+                                방식으로 열거할 수 있다. 기본적으로 설정하지 않았을 경우에는 SOAP몸체
+                                전체를 서명하게 되어 있다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(122) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;signature-infos&gt;
+	
+		&lt;signature-info&gt;
+	<b>&lt;keyIdentifier&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">서명에 사용될 키의 정보를 표현하는 방식이다. 
+                                IssuerSerial, DirectReference, SKIKeyIdentifier, X509KeyIdentifier
+                                중의 하나를 사용한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">sigKeyIdentifierType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Defined Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">IssuerSerial<br>X509 인증서의 발급 번호를 메시지에 포함하여 서명을 검증하
+                                기 위한 인증서를 지정한다.<br><br>DirectReference<br>X509 인증서를 메시지에 포함하고 그것을 메시지 내부에서 참
+                                조하는 방식이다.<br><br>SKIKeyIdentifier<br>Subject Key Idenfication 방식이다. 
+                                X509 인증서의 버전이 3 이상이어야 한다.<br><br>X509KeyIdentifier<br>메시지에 X509 인증서를 포함하고 서명 검증을 위해 사용하도
+                                록 한다.<br><br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(123) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;signature-infos&gt;
+	
+		&lt;signature-info&gt;
+	<b>&lt;keystore&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">메시지의 서명을 위한 개인키를 저장하고 있는 키스토어의
+                                설정이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(124)key-type<br>
+		(125)keystore-password<br>
+		(126)keystore-filename<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(124) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;signature-infos&gt;
+	
+		&lt;signature-info&gt;
+	
+		&lt;keystore&gt;
+	<b>&lt;key-type&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">키 스토어에 저장되는 키의 타입이다. (JKS 혹은 pkcs12)</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(125) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;signature-infos&gt;
+	
+		&lt;signature-info&gt;
+	
+		&lt;keystore&gt;
+	<b>&lt;keystore-password&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">키 스토어에 접근하기 위한 암호 설정이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(126) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;signature-infos&gt;
+	
+		&lt;signature-info&gt;
+	
+		&lt;keystore&gt;
+	<b>&lt;keystore-filename&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">키 스토어의 파일 이름이다. 파일 이름을 적거나 절대 경로
+                                를 포함하는 파일 이름을 적는다. 파일 이름만 적을 경우, 클래스 경로
+                                에서 찾게 된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(127) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	<b>&lt;encryption-infos&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">메시지를 암호화 하기 위한 설정이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(128)encryption-info+<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(128) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;encryption-infos&gt;
+	<b>&lt;encryption-info&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">배치되는 웹서비스 클라이언트를 위한 설정들을 표시한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(129)encryptionParts?<br>
+		(130)encryptionSymAlgorithm?<br>
+		(131)encryptionUser?<br>
+		(132)keyIdentifier<br>
+		(133)keystore?<br>
+		(137)embeddedKey?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(129) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;encryption-infos&gt;
+	
+		&lt;encryption-info&gt;
+	<b>&lt;encryptionParts&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">특정 부분을 암호화 하기 위한 설정이다.  
+                                "{mode}{ns}{localname};{mode}{ns}{localname};&hellip;" 과 같은 형식이다.
+                                기본 mode 값은 content이다. 
+                                예:{Content}{http://example.org/payment}CreCard;{Element}{}UserName</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(130) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;encryption-infos&gt;
+	
+		&lt;encryption-info&gt;
+	<b>&lt;encryptionSymAlgorithm&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">암호화에 사용하는 알고리즘이다.  
+                                AES_128, AES_256, TRIPLE_DES, AES_192 를 지원한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(131) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;encryption-infos&gt;
+	
+		&lt;encryption-info&gt;
+	<b>&lt;encryptionUser&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">암호화에 사용되는 키의 별칭이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(132) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;encryption-infos&gt;
+	
+		&lt;encryption-info&gt;
+	<b>&lt;keyIdentifier&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">암호화에 사용될 키의 정보를 표현하는 방식이다. 
+                                IssuerSerial, DirectReference, SKIKeyIdentifier, X509KeyIdentifier
+                                EmbeddedKeyName 중의 하나를 사용한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">encKeyIdentifierType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Defined Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">IssuerSerial<br>X509 인증서의 발급 번호를 메시지에 포함하여 서명을 검증하
+                                기 위한 인증서를 지정한다.<br><br>DirectReference<br>X509 인증서를 메시지에 포함하고 그것을 메시지 내부에서 참
+                                조하는 방식이다.<br><br>SKIKeyIdentifier<br>Subject Key Idenfication 방식이다. 
+                                X509 인증서의 버전이 3 이상이어야 한다.<br><br>X509KeyIdentifier<br>메시지에 암호화에 사용된 X509 인증서를 포함한다.<br><br>EmbeddedKeyName<br>웹서비스와 웹서비스 클라이언트가 공유하는 세션키를 
+                                사용할 때 사용한다. 웹서비스와 클라이언트는 키의 이름만을 주고 
+                                받음으로써 어떤 키를 사용했는지를 알 수 있다.<br><br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(133) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;encryption-infos&gt;
+	
+		&lt;encryption-info&gt;
+	<b>&lt;keystore&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">암호화에 사용될 키의 저장소 설정이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(134)key-type<br>
+		(135)keystore-password<br>
+		(136)keystore-filename<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(134) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;encryption-infos&gt;
+	
+		&lt;encryption-info&gt;
+	
+		&lt;keystore&gt;
+	<b>&lt;key-type&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">키 스토어에 저장되는 키의 타입이다. (JKS 혹은 pkcs12)</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(135) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;encryption-infos&gt;
+	
+		&lt;encryption-info&gt;
+	
+		&lt;keystore&gt;
+	<b>&lt;keystore-password&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">키 스토어에 접근하기 위한 암호 설정이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(136) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;encryption-infos&gt;
+	
+		&lt;encryption-info&gt;
+	
+		&lt;keystore&gt;
+	<b>&lt;keystore-filename&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">키 스토어의 파일 이름이다. 파일 이름을 적거나 절대 경로
+                                를 포함하는 파일 이름을 적는다. 파일 이름만 적을 경우, 클래스 경로
+                                에서 찾게 된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(137) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;encryption-infos&gt;
+	
+		&lt;encryption-info&gt;
+	<b>&lt;embeddedKey&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">웹서비스와 웹서비스 클라이언트가 공유하고 있는 키를 
+                                설정한다. keyIdentifier가 "EmbeddedKeyName"으로 설정되어야 사용할 
+                                수 있다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(138)embeddedKeyCallbackClass<br>
+		(139)key-name<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(138) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;encryption-infos&gt;
+	
+		&lt;encryption-info&gt;
+	
+		&lt;embeddedKey&gt;
+	<b>&lt;embeddedKeyCallbackClass&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">세션 키를 사용하려 할 경우, 키의 바이트 정보를 가지고 있
+                                는 콜백 클래스를 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(139) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;request-sender&gt;
+	
+		&lt;encryption-infos&gt;
+	
+		&lt;encryption-info&gt;
+	
+		&lt;embeddedKey&gt;
+	<b>&lt;key-name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">세션 키의 이름을 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(140) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	<b>&lt;response-receiver&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">웹서비스 응답 메시지가 보안 적용이 되어있을 경우, 처리하
+                                기 위한 설정이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(141)action-list<br>
+		(142)password-callback-class?<br>
+		(143)timeToLive?<br>
+		(144)decryption?<br>
+		(149)signature-verification?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(141) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;response-receiver&gt;
+	<b>&lt;action-list&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">받게 되는 메시지가 어떤 보안이 적용되어 있어야 하는지
+                                설정한다.        
+                                Timestamp, Encrypt, Signature, UsernameToken이 들어갈수 있다.
+                                각각의 항목은 공백으로 분리한다.(예:UsernameToken Signature Encrypt)</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(142) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;response-receiver&gt;
+	<b>&lt;password-callback-class&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">패스워드 콜백 클래스의 이름을 풀 패키지 이름으로 입력한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(143) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;response-receiver&gt;
+	<b>&lt;timeToLive&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">받은 메시지의 유효기간을 설정한다(초단위). 기본값은 
+                                생성 시간으로 부터 300초 동안이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(144) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;response-receiver&gt;
+	<b>&lt;decryption&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">받는 메시지의 암호화 된 부분을 해독하기 위한 설정이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(145)keystore<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(145) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;response-receiver&gt;
+	
+		&lt;decryption&gt;
+	<b>&lt;keystore&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">메시지의 암호를 해독하기 위한 키 스토어의 설정이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(146)key-type<br>
+		(147)keystore-password<br>
+		(148)keystore-filename<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(146) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;response-receiver&gt;
+	
+		&lt;decryption&gt;
+	
+		&lt;keystore&gt;
+	<b>&lt;key-type&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">키 스토어에 저장되는 키의 타입이다. (JKS 혹은 pkcs12)</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(147) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;response-receiver&gt;
+	
+		&lt;decryption&gt;
+	
+		&lt;keystore&gt;
+	<b>&lt;keystore-password&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">키 스토어에 접근하기 위한 암호 설정이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(148) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;response-receiver&gt;
+	
+		&lt;decryption&gt;
+	
+		&lt;keystore&gt;
+	<b>&lt;keystore-filename&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">키 스토어의 파일 이름이다. 파일 이름을 적거나 절대 경로
+                                를 포함하는 파일 이름을 적는다. 파일 이름만 적을 경우, 클래스 경로
+                                에서 찾게 된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(149) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;response-receiver&gt;
+	<b>&lt;signature-verification&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">받는 메시지의 서명을 검증하기 위한 설정이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(150)keystore<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(150) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;response-receiver&gt;
+	
+		&lt;signature-verification&gt;
+	<b>&lt;keystore&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">서명을 검증하기 위한 키 스토어 설정이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(151)key-type<br>
+		(152)keystore-password<br>
+		(153)keystore-filename<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(151) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;response-receiver&gt;
+	
+		&lt;signature-verification&gt;
+	
+		&lt;keystore&gt;
+	<b>&lt;key-type&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">키 스토어에 저장되는 키의 타입이다. (JKS 혹은 pkcs12)</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(152) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;response-receiver&gt;
+	
+		&lt;signature-verification&gt;
+	
+		&lt;keystore&gt;
+	<b>&lt;keystore-password&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">키 스토어에 접근하기 위한 암호 설정이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(153) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;port-info&gt;
+	
+		&lt;security&gt;
+	
+		&lt;response-receiver&gt;
+	
+		&lt;signature-verification&gt;
+	
+		&lt;keystore&gt;
+	<b>&lt;keystore-filename&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">키 스토어의 파일 이름이다. 파일 이름을 적거나 절대 경로
+                                를 포함하는 파일 이름을 적는다. 파일 이름만 적을 경우, 클래스 경로
+                                에서 찾게 된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(154) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	<b>&lt;service-impl-class&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">웹서비스 클라이언트를 위한 서비스 구현체를 표시한다. 
+                                배치 시에 자동 생성되므로 웹서비스 배치자가 설정할 필요가 없다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(155) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	<b>&lt;wsdl-override&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">&lt;service-ref&gt;의 &lt;wsdl-file&gt;을 대체하기 위한 WSDL 파일의 위치를 표시한다. 
+                                표시된 위치는 유효한 URL이어야 한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(156) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	<b>&lt;service-qname&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">WSDL의 WSDL service정의를 표시한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">QName</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(157) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	<b>&lt;call-property&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">WSDL service에서 사용하는 모든 javax.xml.rpc.Call 객체에 
+                                설정하는 property들을 표시한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(158)name<br>
+		(159)value<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(158) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;call-property&gt;
+	<b>&lt;name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">javax.xml.rpc.Stub 또는 javax.xml.rpc.Call에 프로퍼티를
+                                설정하기 위한 키(key) 이름을 나타낸다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(159) 
+		&lt;jeus-client-dd&gt;
+	
+		&lt;service-ref&gt;
+	
+		&lt;service-client&gt;
+	
+		&lt;call-property&gt;
+	<b>&lt;value&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">javax.xml.rpc.Stub 또는 javax.xml.rpc.Call에 프로퍼티를
+                                설정하기 위한 키(key)에 상응하는 값(value)이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">string</td></tr></table></body></html>

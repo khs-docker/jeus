@@ -1,0 +1,231 @@
+<html><header><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></header><body><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(1) <b>&lt;ejb-engine&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">[en] This is the root element of EJBMain.xml.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;ejb-engine&gt; ... &lt;/ejb-engine&gt;</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(2)resolution?<br>
+		(3)enable-user-notify?<br>
+		(4)active-management?<br>
+		(13)invoke-http?<br>
+		(16)timer-service?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(2) 
+		&lt;ejb-engine&gt;
+	<b>&lt;resolution&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">EJB 의 비활성화와 Garbage Collection은 이 element에서 정의된 시간 간격으로 시도된다.
+                      EJB 엔진에서 서비스 중인 어떤 빈이 클라이언트로부터 더 이상의 요청이 없을 때
+                      EJB 엔진은 이 빈을 비활성화 한다. 이 작업의 수행 주기를 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">millisecond</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeLongType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 long type이다. 즉, long 범위에서
+               0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">300000</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;resolution&gt;100000&lt;/resolution&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(3) 
+		&lt;ejb-engine&gt;
+	<b>&lt;enable-user-notify&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 특성이 활성화된다면 EJB exception 은 JEUSMain.xml 의 엔진 컨테이너에 정의된 user log에 기록된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">boolean</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">false</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;enable-user-notify&gt;true&lt;/enable-user-notify&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(4) 
+		&lt;ejb-engine&gt;
+	<b>&lt;active-management&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">EJB 엔진을 모니터링하고 오류를 처리하며 그 결과를 전자우편을 통해 관리자에게 통지한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">millisecond</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;resolution&gt;100000&lt;/resolution&gt;
+                      [Performace Recommendation]: 일반적으로 사용자는 EJBMain.xml의 active-management 보다는 Servlet 엔진에 포함된
+                      active-management 을 사용한다( JEUS 웹서버 가이드 참조 ).</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(5)max-blocked-thread?<br>
+		(6)max-idle-time?<br>
+		(7)email-notify?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(5) 
+		&lt;ejb-engine&gt;
+	
+		&lt;active-management&gt;
+	<b>&lt;max-blocked-thread&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 element는 블럭된 thread의 최대 개수를 설정한다. 이 설정 값 보다 EJB에 block 된 Thread 개수가
+                      많을 경우에 Container를 restart 시킨다. 이 값이 작게 설정 되어 있다면 EJB 엔진이 너무 자주 재시작될 수도 있기
+                      때문에 주의가 필요하다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">thread 개수</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">off-intType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">기본적으로 non-negative int 형이지만 -1인 경우에는 설정을 하지 않은게 된다.즉, off된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">-1</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Defined Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">-1<br>이 값은 블럭된 thread 개수에 대한 제한이 없음을 의미한다. 즉 이렇게 설정하면 EJB 엔진은 절대로 블럭된
+                        thread 때문에 재시작 되지는 않는다.<br><br></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;max-blocked-thread&gt;200&lt;/max-blocked-thread&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(6) 
+		&lt;ejb-engine&gt;
+	
+		&lt;active-management&gt;
+	<b>&lt;max-idle-time&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 element는 EJB thread가 블럭되었다고 간주되는 상태를 정의한다. 이 element의 값은 시간을 의미하며
+                      만약 어떤 thread가 이 시간을 초과되도록 idle 상태를 유지한다면 이 thread는 블럭되었다고 간주된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">millisecond</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeLongType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 long type이다. 즉, long 범위에서
+               0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">300000</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;max-idle-time&gt;180000&lt;/max-idle-time&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(7) 
+		&lt;ejb-engine&gt;
+	
+		&lt;active-management&gt;
+	<b>&lt;email-notify&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">active management나 혹은 다른 비정상적인 상태에 의해서 엔진이 재시작 한다면 이 element에서 정의된 곳으로 전자 메일을 보내서 상황을 알린다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(8)smtp-host-address<br>
+		(9)from-address<br>
+		(10)to-address<br>
+		(11)cc-address?<br>
+		(12)bcc-address?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(8) 
+		&lt;ejb-engine&gt;
+	
+		&lt;active-management&gt;
+	
+		&lt;email-notify&gt;
+	<b>&lt;smtp-host-address&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">email을 보낼 smtp server의 주소를 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(9) 
+		&lt;ejb-engine&gt;
+	
+		&lt;active-management&gt;
+	
+		&lt;email-notify&gt;
+	<b>&lt;from-address&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">email을 보내는 사람의 address를 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(10) 
+		&lt;ejb-engine&gt;
+	
+		&lt;active-management&gt;
+	
+		&lt;email-notify&gt;
+	<b>&lt;to-address&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">email을 받는 사람의 address를 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(11) 
+		&lt;ejb-engine&gt;
+	
+		&lt;active-management&gt;
+	
+		&lt;email-notify&gt;
+	<b>&lt;cc-address&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">email을 참조로 받는 사람의 address를 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(12) 
+		&lt;ejb-engine&gt;
+	
+		&lt;active-management&gt;
+	
+		&lt;email-notify&gt;
+	<b>&lt;bcc-address&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">email을 숨은 참조로 받는 사람의 address를 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(13) 
+		&lt;ejb-engine&gt;
+	<b>&lt;invoke-http&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 기능을 설정하면 클라이언트 측의 EJB stub 과 원격지의 RMI 실행환경은
+		      HTTP-RMI 요청 ( Request )으로 통신한다.  이것은 방화벽을 사이에 두고 EJB에 접근할 때 
+		      사용된다. 이 모드( HTTP 호출 모드 )를 사용할 때 클라이언트가  EJB stub에서 메소드를 
+		      호출하면 HTTP-RMI 요청 ( Request )은 이것을 웹 컨테이너로 보낼 웹서버로 발송된다. 
+		      그리고  이것은 RMI Handler Servlet (jeus. rmi.http.ServletHandler )으로 보내지고 여기서 
+		      Handler Servlet은 요청( Request )으로부터 HTTP 헤더를 제거한 뒤 이것을 RMI 실행환경으로 
+		      전송한다. 이 element가 설정되기 앞서  jeus.rmi.http. ServletHandler Servlet은 반드시
+		      JEUS 웹 컨테이너에 Deploy되어 있어야만 한다( JEUS 웹 가이드를 참고한다. ).</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Performance Recommendation</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">HTTP 호출 모드를 사용함으로써 약간의 성능 향상을 기대할 수 있다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(14)url<br>
+		(15)http-port<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(14) 
+		&lt;ejb-engine&gt;
+	
+		&lt;invoke-http&gt;
+	<b>&lt;url&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">HTTP-RMI stub에 의해 호출될 RMI Handler Servlet (jeus.rmi.http.ServletHandler)
+                        의 URI 경로가 반드시 설정되어야 한다. 이 URL은 프로토콜, 웹 서버 IP, 포트번호를 제외하고 오직
+                        Servlet 요청 경로만을 설정해야 한다.  프로토콜은 HTTP, RMI 실행환경과 웹 서버는 같은 IP 주소를
+                        가지고 있다고 가정 한다(이것은 웹 서버와 웹 컨테이너는 반드시 HTTP-RMI 요청을 같은 머신에서
+                        받는다는 것을 의미한다). 포트번호는 다음에 설명할 element(HTTP-port)에서 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">RMI Handler Servlet을 명시한 Servlet 컨텍스트 경로</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;url&gt;/mycontext/RMIHandlerServlet&lt;/url&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(15) 
+		&lt;ejb-engine&gt;
+	
+		&lt;invoke-http&gt;
+	<b>&lt;http-port&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">HTTP-RMI 요청을 받고 처리할 웹 서버의 포트번호를 설정한다. 이 웹 서버/웹
+                        컨테이너에서는 반드시 RMI Handler Servlet이 Deploy되어 있고 이미 실행 중이어야만 한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">HTTP-RMI stub가 연결할 웹 서버의 포트번호.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeIntType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 int type이다. 즉, int 범위에서
+			   0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">80</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(16) 
+		&lt;ejb-engine&gt;
+	<b>&lt;timer-service&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 EJB engine이 제공하는 Timer service에 대한 설정을 한다.Timer Service를
+                      persistence하게 관리하려면 이 설정이 있어야 한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(17)min-delivery-interval?<br>
+		(18)max-redelivery-count?<br>
+		(19)redelivery-interval?<br>
+		(20)thread-pool?<br>
+		(24)durable-setting?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(17) 
+		&lt;ejb-engine&gt;
+	
+		&lt;timer-service&gt;
+	<b>&lt;min-delivery-interval&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 값은 특정 timer가 생성된 후에 timer event가 발생하기까지의 최소 시간이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">millisecond 단위</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeLongType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 long type이다. 즉, long 범위에서
+               0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">7000</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Performance Recommendation</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 값이 작을수록 EJB 엔진에 부하를 줄 수 있으므로 사용하는
+                    timer의 interval에 맞게 크게 설정하면 좋다.</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(18) 
+		&lt;ejb-engine&gt;
+	
+		&lt;timer-service&gt;
+	<b>&lt;max-redelivery-count&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 값은 timer callback 함수에서 exception이 발생하거나 transaction이 rollback되어
+                    재전송이 발생하는 상황에서 최대 재전송 횟수를 나타낸다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">재전송 횟수</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeIntType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 int type이다. 즉, int 범위에서
+			   0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">1</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(19) 
+		&lt;ejb-engine&gt;
+	
+		&lt;timer-service&gt;
+	<b>&lt;redelivery-interval&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 값은 재전송을 해야 할 상황이 발생했을 때부터 재전송하기까지의 시간이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">millisecond 단위이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeLongType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 long type이다. 즉, long 범위에서
+               0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">4000</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(20) 
+		&lt;ejb-engine&gt;
+	
+		&lt;timer-service&gt;
+	<b>&lt;thread-pool&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Timer service가 timeout() method를 실행할때 사용하는 thread pool에 대한 설정이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(21)min?<br>
+		(22)max?<br>
+		(23)period?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(21) 
+		&lt;ejb-engine&gt;
+	
+		&lt;timer-service&gt;
+	
+		&lt;thread-pool&gt;
+	<b>&lt;min&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">pooling되는 객체의 최소값을 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeIntType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 int type이다. 즉, int 범위에서
+			   0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">2</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(22) 
+		&lt;ejb-engine&gt;
+	
+		&lt;timer-service&gt;
+	
+		&lt;thread-pool&gt;
+	<b>&lt;max&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">pooling되는 객체의 최대값을 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeIntType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 int type이다. 즉, int 범위에서
+			   0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">30</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(23) 
+		&lt;ejb-engine&gt;
+	
+		&lt;timer-service&gt;
+	
+		&lt;thread-pool&gt;
+	<b>&lt;period&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">pooling되는 객체를 정리하는 시간을 지정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">long</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">3600000</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Performance Recommendation</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 값이 클수록 정리하는 주기가 길어져 server 운영에는 부하가
+                        적게 가해지나 그만큼 메모리가 누수될 수 있으므로 적당한 값으로 지정한다.</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(24) 
+		&lt;ejb-engine&gt;
+	
+		&lt;timer-service&gt;
+	<b>&lt;durable-setting&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Timer service가 timer들을 persistence하게 관리하기 위해 필요한 설정이다.
+                    이 설정을 하지 않으면 timer가 persistence하게 관리되지 않는다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(25)db-vendor<br>
+		(26)data-source-name<br>
+		(27)engine-type<br>
+		(28)table-name?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(25) 
+		&lt;ejb-engine&gt;
+	
+		&lt;timer-service&gt;
+	
+		&lt;durable-setting&gt;
+	<b>&lt;db-vendor&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Timer service가 persistence를 위해 사용하는 DB의 vendor 설정이다.값은
+                    jeus-ejb-dd.xml의 &lt;schema-info&gt;의 &lt;db-vendor&gt;와 같다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">db-vendorType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Defined Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">oracle<br>Oracle DBMS 인 경우<br><br>informix<br>Informix DBMS 인 경우<br><br>db2<br>IBM DB2 DBMS인 경우<br><br>mssql<br>Microsoft SQL Server DBMS 인 경우<br><br>sybase<br>Sybase DBMS인 경우<br><br>hsql<br>HSQL DBMS 인 경우<br><br>cloudscape<br>Cloudscape DBMS인 경우<br><br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(26) 
+		&lt;ejb-engine&gt;
+	
+		&lt;timer-service&gt;
+	
+		&lt;durable-setting&gt;
+	<b>&lt;data-source-name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Timer service가 persistence를 위해 사용하는 DB의 datasource의 export name 설정이다.
+                    값은 jeus-ejb-dd.xml의 &lt;schema-info&gt;의 &lt;data-source-name&gt;와 같다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(27) 
+		&lt;ejb-engine&gt;
+	
+		&lt;timer-service&gt;
+	
+		&lt;durable-setting&gt;
+	<b>&lt;engine-type&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Timer service가 DB에 접근하는 방식을 설정한다.
+                    값은 jeus-ejb-dd.xml의 &lt;persistence-optimize&gt;의 &lt;engine-type&gt;와 같다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">engineType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Defined Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">EXCLUSIVE_ACCESS<br>각각의 Entity Bean 인스턴스는 그것이 나타내는 데이터베이스의 열과 일대일 관계를 가지고 그에
+                    대해서 독점적인 접근을 한다. 이것은 하나의 인스턴스가 살아있는 동안 다른 Entity Bean은
+                    데이터에 접근하거나 변경할 수 없다는 사실을 의미하기 때문에 EJB 엔진은 ejbLoad() 호출을
+                    모두 생략할 수 있다는 것을 나타낸다. 엔진은 빈이 생성될 때 한 번  ejbLoad() 호출을 실행하고
+                    빈이 살아있는 동안 데이터베이스에 더 이상의 어떤 변화도 없다고 가정하고 ejbLoad() 호출을 하지
+                    않는다. 이 빈은 이것이 클러스터링된 빈의 일부일 때 사용할 수 없다. 데이터베이스는 WAS에
+                    의해서만 변경이 허락된다는 점을 반드시 기억하기 바란다( WAS 가 아닌 접근은 허용되지 않는다).<br><br>SINGLE_OBJECT<br>element의 값을 이것으로 설정한다면 다른 EJB 엔진의 여러 EJB들이 같은 데이터베이스 열에 매핑될
+                    수 있다. ejbLoad()는 Entity Bean으로 요청이 들어오기 앞서서 항상 호출된다.  SINGLE_OBJECT와
+                    MULTIPLE_OBJECT는 같은 종류의 EJB를 클러스터링할 때 필요하다. SINGLE_OBJECT와
+                    MULTIPLE_OBJECT의 차이점은 SINGLE_OBJECT인 경우 각각의 EJB 엔진 안에서 오직 하나의 EJB
+                    Entity Bean이 EJB 클라이언트의 모든 요청을 처리한다. 즉 같은 EJB 엔진으로 다른 EJB
+                    클라이언트의 요청이 도착한다면 먼저 연결을 맺고 있는 다른 클라이언트의 요청이 끝날 때까지
+                    대기상태에 있어야 한다.<br><br>MULTIPLE_OBJECT<br>element의 값을 이것으로 설정한다면 다른 EJB 엔진의 여러 EJB 들이 같은 데이터베이스 열에 매핑될
+                    수 있다. ejbLoad()는 Entity Bean으로 요청이 들어오기 앞서서 항상 호출된다.  SINGLE_OBJECT 과
+                    MULTIPLE_OBJECT는 같은 종류의 EJB를 클러스터링할 때 필요하다. SINGLE_OBJECT와
+                    MULTIPLE_OBJECT의 차이점은 MULTIPLE_OBJECT 인 경우 각각의 EJB 엔진 안에서 모든 EJB
+                    클라이언트의 요청을 동시에 처리할 여러 EJB Entity Bean 인스턴스가 생성된다.즉 SINGLE_OBJECT 모드와
+                    달리 EJB 클라이언트의 요청은 먼저 처리하고 있는 다른 요청이 끝날 때까지 대기하지 않아도 된다.<br><br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(28) 
+		&lt;ejb-engine&gt;
+	
+		&lt;timer-service&gt;
+	
+		&lt;durable-setting&gt;
+	<b>&lt;table-name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Timer service가 사용하는 DB의 Table 이름을 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Jeus_Timer</td></tr></table></body></html>

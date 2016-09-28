@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description>        
+    <text key="SubjectType.group-principal"><![CDATA[
+                        [Description]: This element defines group identifier on related Subject. It defines group in which the subject belongs to.
+                    ]]>        
+    </text>
+         
+    <text key="SubjectType.principal"><![CDATA[
+                        [Description]: Define user identify on related Subject. This should be unique as identifier.
+                    ]]>        
+    </text>
+         
+    <text key="CredentialType.classname"><![CDATA[
+                        [Description]: Java class name implementing jeus.security.base.CredentialFactory interface.
+                                       Provide public generator containing no parameter. 
+                        [Value Description]: Java Class Name
+                        [Example]: &lt;classname>mypackage.MyPasswordFactory&lt;/classname>
+                    ]]>        
+    </text>
+         
+    <text key="SubjectType.credential"><![CDATA[
+                        [Description]: Define Credential on Subject. 
+                    ]]>        
+    </text>
+         
+    <text key="CredentialType.property"><![CDATA[
+                        [Description]: Define property value of name-value pair to be passed to Credential Factory as optional selection. 
+                                              For detail information on property, please refer to class documentation related to Credential Factory. 
+                    ]]>        
+    </text>
+         
+    <text key="subjects"><![CDATA[
+                        [Description]: Define Subject(users).
+            ]]>        
+    </text>
+         
+    <text key="SubjectType.description"><![CDATA[
+                        [Description]: Explaination on Subject.
+                        [Value Description]:Temperary Explaination statement
+                        [Example]: &lt;description>A really nide guy!&lt;/description>
+                    ]]>        
+    </text>
+         
+    <text key="credential-propertyType.value"><![CDATA[
+                        [Description]: Specific value on property as seletive option. 
+                        [Value Description]: Property, "password" property value should be encoded as Base 64. 
+                        [Example]: &lt;value>bXlwYXNzd29yZA==&lt;/value>
+                    ]]>        
+    </text>
+         
+    <text key="PrincipalType.classname"><![CDATA[
+                        [Description]: Java class name implementing java.security.Principal interface. This class contains public generator receiving Principal name of String Type. 
+                        [Value Description]: Java Class Name
+                        [Example]: &lt;classname>mypackage.MyPrincipalImpl&lt;/classname>
+                    ]]>        
+    </text>
+         
+    <text key="PrincipalType.name"><![CDATA[
+                        [Description]: Related Principal Name
+                        [Value Description]: A String id.
+                        [Example]: &lt;name>johan&lt;/name>
+                    ]]>        
+    </text>
+         
+    <text key="credential-propertyType.name"><![CDATA[
+                        [Description]: Property Name
+                        [Value Description]: Property Name
+                        [Example]: &lt;name>password&lt;/name>
+                    ]]>        
+    </text>
+         
+    <text key="SubjectsType.subject"><![CDATA[
+                        [Description]:Define Subject.
+                    ]]>        
+    </text>
+ </description>

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+    <input-symbol key="link"  class="java.lang.String" required="yes"/>
+
+    <body>
+        function set(){
+            parent.document.forms[0].link.value = "${link}";
+
+            if(parent.trace &amp;&amp; parent.trace.document){
+                var tags = document.body.getElementsByTagName('div');
+
+                for(var i = 0 ; i &lt; tags.length; i++){
+                    var div = parent.trace.document.createElement('div');
+                    div.setAttribute('style', 'margin-bottom:5px;');
+
+                    div.appendChild(parent.trace.document.createTextNode(tags[i].innerText));
+
+                    var buffer = parseInt(parent.document.forms[0].buffer.value);
+                    if( parent.trace.document.body.childNodes.length >= buffer ){
+                        var removeSize = parent.trace.document.body.childNodes.length - buffer + 1;
+                        for(var j = 0; j &lt; removeSize; j++)
+                            parent.trace.document.body.removeChild(parent.trace.document.body.firstChild);
+                    }
+
+                    parent.trace.document.body.appendChild(div);
+                }
+            }
+        }
+    </body>
+
+</script>

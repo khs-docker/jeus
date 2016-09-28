@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+"-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.Etc.JNDIListPage">
+    <component id="popupMainBorder" type="jeus:PopupMainBorder">
+        <binding name="title" value="literal:Binding"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@ETC_JNDI_NAMES"/>
+    </component>
+
+   <component id="jNDIListForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:Etc_JNDITree.list.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+        <binding name="description" value="message:Etc_JNDITree.list.description"/>
+    </component>
+
+    <component id="name_column" type="Insert">
+        <binding name="value" value="message:Etc_Binding.name.label"/>
+    </component>
+
+    <component id="location_column" type="Insert">
+        <binding name="value" value="message:Etc_Binding.location.label"/>
+    </component>
+
+    <component id="className_column" type="Insert">
+        <binding name="value" value="message:Etc_Binding.class.label"/>
+    </component>
+
+    <component id="filterTextField" type="jeus:DojoTextField">
+        <binding name="value" value="ognl:filter"/>
+    </component>
+
+    <component id="filterButton" type="Submit">
+        <binding name="value" value="message:Etc_Binding.search.label"/>
+        <binding name="listener" value="ognl:listeners.onFilter"/>
+    </component>
+
+    <component id="eachJNDIList" type="Foreach">
+        <binding name="source" value="ognl:resultList"/>
+        <binding name="value" value="ognl:jNDILists"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="name_value" type="Insert">
+        <binding name="value" value="ognl:jNDILists.name"/>
+    </component>
+
+    <component id="location_value" type="Insert">
+        <binding name="value" value="ognl:jNDILists.location"/>
+    </component>
+
+    <component id="className_value" type="Insert">
+        <binding name="value" value="ognl:jNDILists.className"/>
+    </component>
+
+    <property name="jNDILists"/>
+    <property name="wholeJNDIList"/>
+    <property name="filter"/>
+</page-specification>

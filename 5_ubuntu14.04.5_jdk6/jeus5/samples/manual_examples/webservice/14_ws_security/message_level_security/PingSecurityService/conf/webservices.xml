@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<webservices version="1.1" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <webservice-description>
+        <webservice-description-name>PingSecurityService</webservice-description-name>
+        <wsdl-file>WEB-INF/wsdl/PingSecurityService.wsdl</wsdl-file>
+        <jaxrpc-mapping-file>WEB-INF/PingSecurityService-mapping.xml</jaxrpc-mapping-file>
+        <port-component>
+            <port-component-name>PingPort</port-component-name>
+            <wsdl-port xmlns:ns2="urn:PingSecurityService">ns2:PingPort</wsdl-port>
+            <service-endpoint-interface>ping.Ping</service-endpoint-interface>
+            <service-impl-bean>
+                <servlet-link>PingServlet</servlet-link>
+            </service-impl-bean>
+        </port-component>
+    </webservice-description>
+</webservices>
+

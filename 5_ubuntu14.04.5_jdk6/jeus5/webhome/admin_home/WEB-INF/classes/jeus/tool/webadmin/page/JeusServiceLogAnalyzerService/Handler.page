@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceLogAnalyzerService.HandlerPage">
+
+    <component id="popupMainBorder" type="jeus:PopupMainBorder">
+        <binding name="title" value="message:la.handler"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@JEUSSERVICELOGANALYZERSERVICE_RULE_NAMES"/>
+        <binding name="subtabNames" value="{'handler', 'status'}"/>
+    </component>
+
+    <component id="handler" type="Block"/>
+    <component id="status" type="Block"/>
+
+    <inject property="userAgent" type="state" object="UserAgent"/>
+    <component id="dynamite" type="jeus:Dynamite"/>
+
+    <component id="condOnLine" type="If">
+        <binding name="condition" value="ognl:onLine"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="condOffLine" type="If">
+        <binding name="condition" value="ognl:!onLine"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="condIE55" type="If">
+        <binding name="condition" value="userAgent != null and userAgent.msie and userAgent.version &gt;= 5.5f"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="handlerForm" type="jeus:JEUSForm">
+        <binding name="title" value="ognl:messages.format('la.handler.title', logger)"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="condHasFileHandlers" type="If">
+        <binding name="condition" value="ognl:fileHandlers.length != 0"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="condNotHasFileHandlers" type="If">
+        <binding name="condition" value="ognl:fileHandlers.length == 0"/>
+    </component>
+
+    <component id="noHandler" type="Insert">
+        <binding name="value" value="message:la.handler.nohandler.label"/>
+    </component>
+
+    <component id="handler_owner" type="jeus:ReadOnlyTextField">
+        <binding name="value" value="ognl:fileHandlers[0].owner"/>
+        <binding name="label" value="message:la.handler.handler_owner.label"/>
+    </component>
+
+    <component id="name_column" type="Insert">
+        <binding name="value" value="message:la.handler.name.label"/>
+    </component>
+
+    <component id="pattern_column" type="Insert">
+        <binding name="value" value="message:la.handler.pattern.label"/>
+    </component>
+
+    <component id="level_column" type="Insert">
+        <binding name="value" value="message:la.handler.level.label"/>
+    </component>
+
+    <component id="actions_column" type="Insert">
+        <binding name="value" value="message:la.handler.actions.label"/>
+    </component>
+
+    <component id="eachFileHandler" type="Foreach">
+        <binding name="source" value="ognl:fileHandlers"/>
+        <binding name="value" value="ognl:fileHandler"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="name_value" type="Insert">
+        <binding name="value" value="ognl:fileHandler.name"/>
+    </component>
+
+    <component id="pattern_value" type="jeus:DojoTextField">
+        <binding name="value" value="ognl:fileHandler.pattern"/>
+        <binding name="disabled" value="ognl:true"/>
+    </component>
+
+    <component id="level_value" type="Insert">
+        <binding name="value" value="ognl:fileHandler.level"/>
+    </component>
+
+    <component id="analysisLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceLogAnalyzerService_Rule"/>
+        <binding name="parameters" value="ognl:{logAnalyzerName, fileHandler.pattern, fileHandler.formatterClassName, fileHandler.logRecordClassName, fileHandler.loggerType}"/>
+    </component>
+
+    <component id="analysis" type="Button">
+        <binding name="label" value="message:la.handler.analysis.label"/>
+    </component>
+
+    <component id="stack_trace" type="Button">
+        <binding name="label" value="message:la.handler.stack_trace.label"/>
+    </component>
+
+    <component id="stack_traceLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceLogAnalyzerService_StackTrace"/>
+        <binding name="parameters" value="ognl:{logAnalyzerName, fileHandler.pattern}"/>
+    </component>
+
+    <component id="offLineForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:la.offline.title"/>
+        <binding name="listener" value="ognl:listeners.onOffLineOk"/>
+    </component>
+
+    <component id="file_pattern" type="jeus:Field">
+        <binding name="field" value="ognl:components.file_patternField"/>
+    </component>
+
+    <component id="file_patternField" type="jeus:DojoTextField">
+        <binding name="value" value="filePattern"/>
+        <binding name="displayName" value="message:la.offline.file_pattern.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="formatter_class_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.formatter_class_nameField"/>
+    </component>
+
+    <component id="formatter_class_nameField" type="jeus:DojoTextField">
+        <binding name="value" value="formatterClassName"/>
+        <binding name="displayName" value="message:la.offline.formatter_class_name.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="log_record_class_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.log_record_class_nameField"/>
+    </component>
+
+    <component id="log_record_class_nameField" type="jeus:DojoTextField">
+        <binding name="value" value="ognl:logRecordClassName"/>
+        <binding name="displayName" value="message:la.offline.log_record_class_name.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <property name="fileHandler"/>
+
+    <property name="filePattern" initial-value="@jeus.util.JeusProperties@JEUS_LOG_HOME"/>
+    <property name="formatterClassName" initial-value="'jeus.util.logging.UserAccessFormatter'"/>
+    <property name="logRecordClassName" initial-value="'jeus.util.logging.JeusAccessRecord'"/>
+
+    <asset name="form_css" path="context:/css/form.css"/>
+
+    <bean name="pattern" class="org.apache.tapestry.form.validator.Pattern">
+    	<set name="message" value="message:common.exception.0066"/>
+    </bean>
+
+    <component id="statusForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:la.status.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="eachTask" type="Foreach">
+        <binding name="source" value="ognl:tasks"/>
+        <binding name="value" value="ognl:task"/>
+        <binding name="index" value="ognl:index"/>
+    </component>
+
+    <component id="condRunning" type="If">
+        <binding name="condition" value="ognl:task.status.toString() == 'running'"/>
+    </component>
+
+    <component id="condFailed" type="If">
+        <binding name="condition" value="ognl:task.status.toString() == 'failed'"/>
+    </component>
+
+    <component id="condCompleted" type="If">
+        <binding name="condition" value="ognl:task.status.toString() == 'completed'"/>
+    </component>
+
+    <component id="condCompleted2" copy-of="condCompleted"/>
+
+    <component id="condStopped" type="If">
+        <binding name="condition" value="ognl:task.status.toString() != 'running'"/>
+    </component>
+
+    <component id="condUncompleted" type="If">
+        <binding name="condition" value="ognl:task.status.toString() != 'completed'"/>
+    </component>
+
+    <component id="status_name_column" type="Insert">
+        <binding name="value" value="message:la.status.name.label"/>
+    </component>
+
+    <component id="status_column" type="Insert">
+        <binding name="value" value="message:la.status.status.label"/>
+    </component>
+
+    <component id="delete_column" type="Insert">
+        <binding name="value" value="message:la.status.delete.label"/>
+    </component>
+
+    <component id="resultLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceLogAnalyzerService_Result"/>
+        <binding name="parameters" value="ognl:{analysisObj, task.name}"/>
+    </component>
+
+    <component id="removeLink" type="jeus:DirectLink">
+        <binding name="listener" value="ognl:listeners.onRemoveOk"/>
+        <binding name="parameters" value="ognl:task.name"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="message:la.status.remove.message"/>
+    </component>
+
+    <component id="taskName" type="Insert">
+        <binding name="value" value="ognl:task.name"/>
+    </component>
+
+    <component id="taskName2" copy-of="taskName"/>
+
+    <component id="runningIcon" type="Image">
+        <binding name="image" value="ognl:assets.running_icon"/>
+    </component>
+
+    <component id="failedIcon" type="Image">
+        <binding name="image" value="ognl:assets.failed_icon"/>
+    </component>
+
+    <component id="completedIcon" type="Image">
+        <binding name="image" value="ognl:assets.completed_icon"/>
+    </component>
+
+    <component id="removeIcon" type="Image">
+        <binding name="image" value="ognl:assets.remove_icon"/>
+    </component>
+
+    <component id="condHasNext" type="If">
+        <binding name="condition" value="ognl:tasks.length - 1 &gt; index"/>
+    </component>
+
+    <bean name="cacheControlRender" class="jeus.tool.webadmin.component.CacheControlRender"/>
+
+    <asset name="running_icon" path="context:/image/log/analysis_running.gif"/>
+    <asset name="completed_icon" path="context:/image/log/analysis_completed.gif"/>
+    <asset name="failed_icon" path="context:/image/log/analysis_failed.gif"/>
+    <asset name="remove_icon" path="context:/image/table/delete.gif"/>
+
+    <asset name="dot" path="context:/image/dot.gif"/>
+    <asset name="background" path="context:/image/log/logo_background.gif"/>
+    <asset name="css" path="context:/css/form.css"/>
+
+    <property name="task"/>
+    <property name="index"/>
+
+    <property name="analysisObj" persist="session"/>
+    <property name="logger" persist="session"/>
+    <property name="onLine" persist="session"/>
+
+</page-specification>

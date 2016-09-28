@@ -1,0 +1,54 @@
+<html jwcid="mainBorder" >
+    <form jwcid="remoteWebtobForm">
+    <table width="100%" cellpadding="0" cellspacing="0" class="table" border="1">
+        <tr>
+            <td class="table_columns"><span jwcid="webtob_name_column"/></td>
+            <td class="table_columns"><span jwcid="config_file_name_column"/></td>
+            <td class="table_columns"><span jwcid="webtob_address_column"/></td>
+            <td class="table_columns"><span jwcid="webtob_control_port_column"/></td>
+            <td class="table_columns"><span jwcid="status_column"/></td>
+            <td class="table_columns"><span jwcid="actions_column"/></td>
+            <td class="table_columns"><span jwcid="statistics_column"/></td>
+            <td class="table_columns" width="40">&nbsp;</td>
+        </tr>
+        <tr jwcid="eachWebtob">
+            <td class="table_values"><span jwcid="webtob_name_value"/></td>
+            <td class="table_values"><a jwcid="webtobLink"><span jwcid="config_file_name_value"/></a></td>
+            <td class="table_values"><span jwcid="webtob_address_value"/></td>
+            <td class="table_values"><span jwcid="webtob_control_port_value"/></td>
+            <td class="table_values" align="center"><span jwcid="status_value"/></td>
+            <td class="table_values" align="center">
+                <a jwcid="startLink"></a><input jwcid="start" class="form_button" style="width:50px;" onclick="literal:progress_bar+'();disabled=true;window.location = previousSibling.href;'"/>
+                <a jwcid="downLink"></a><input jwcid="down" class="form_button" style="width:50px;" onclick="literal:progress_bar+'();disabled=true;window.location = previousSibling.href;'"/>
+                <a jwcid="compileLink"></a><input jwcid="compile" class="form_button" style="width:50px;" onclick="literal:progress_bar+'();disabled=true;window.location = previousSibling.href;'"/>
+            </td>
+            <td class="table_values" align="center"><a jwcid="statisticsLink"><span jwcid="statistics_values"/></a></td>
+            <td class="table_values" width="40" align="center">
+                <span jwcid="condStopped">
+                    <a jwcid="deleteLink"><img jwcid="delete" align="absmiddle"/></a>
+                </span>
+                <span jwcid="condRunning">
+                    <img jwcid="empty" align="absmiddle" width="13" height="1"/>
+                </span>
+
+<!--
+                <a jwcid="duplicateLink"><img jwcid="duplicate" align="absmiddle"/></a>
+-->
+            </td>
+        </tr>
+    </table>
+    <br/>
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+<!--
+            <td align="left">
+                <a jwcid="start_allLink"></a><input jwcid="start_all" class="form_button" onclick="ognl:requestCycle.getAttribute(@jeus.tool.webadmin.component.JEUSForm@PROGRESS_FUNCTION)+'();disabled=true;window.location = previousSibling.href;'"/>&nbsp;<a jwcid="down_allLink"></a><input jwcid="down_all" class="form_button" onclick="ognl:requestCycle.getAttribute(@jeus.tool.webadmin.component.JEUSForm@PROGRESS_FUNCTION)+'();disabled=true;window.location = previousSibling.href;'"/>
+            </td>
+-->
+            <td align="right">
+                <a jwcid="createLink"><img jwcid="create" align="absmiddle"/>&nbsp;<span jwcid="create_label"/></a>
+            </td>
+        </tr>
+    </table>
+    </form>
+</html>

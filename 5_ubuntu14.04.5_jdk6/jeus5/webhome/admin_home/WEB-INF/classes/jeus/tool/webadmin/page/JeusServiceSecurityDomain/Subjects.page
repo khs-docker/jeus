@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusServiceSecurityDomain.SubjectsPage">
+	<inject property="webadminVisit" type="state" object="visit"/>
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Security Subjects"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@getJEUSSERVICE_SECURITYDOMAIN_NAMES(objectName)"/>
+        <binding name="subtabNames" value="{'basic', 'expert'}"/>
+    </component>
+
+    <component id="basic" type="Block"/>
+    <component id="expert" type="Block"/>
+
+    <component id="basic_subjectsForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.subjects.basic_subjects.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="expert_subjectsForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.subjects.expert_subjects.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="subjects" type="jeus:Field">
+        <binding name="field" value="components.subjectsField"/>
+        <binding name="label" value="message:domain.subjects.subjects.label"/>
+    </component>
+
+    <component id="subjectsField" type="jeus:PropertySelection">
+        <binding name="model" value="model"/>
+        <binding name="value" value="selectedSubject"/>
+        <binding name="size" value="10"/>
+    </component>
+
+    <component id="modify" type="Submit">
+        <binding name="value" value="message:domain.services.modify.label"/>
+        <binding name="listener" value="listeners.onModify"/>
+    </component>
+
+<!--
+    <component id="remove" type="Submit">
+        <binding name="value" value="message:domain.services.remove.label"/>
+        <binding name="listener" value="listeners.onRemoveOk"/>
+    </component>
+-->
+
+    <component id="remove" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:domain.services.remove.label"/>
+        <binding name="message" value="message:JEUSForm.remove.confirm"/>
+        <binding name="listener" value="listeners.onRemoveOk"/>
+    </component>
+
+    <component id="create" type="Submit">
+        <binding name="value" value="message:domain.services.create.label"/>
+        <binding name="listener" value="listeners.onCreate"/>
+    </component>
+
+    <component id="save" type="Submit">
+        <binding name="value" value="message:domain.services.save.label"/>
+        <binding name="listener" value="listeners.onSave"/>
+    </component>
+
+    <component id="condModify" type="If">
+        <binding name="condition" value="command != null and @jeus.tool.webadmin.page.JeusServiceSecurityDomain.SecurityCommand@MODIFY_COMMAND.equals(command)"/>
+    </component>
+
+    <component id="modifyForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.subjects.modify.title"/>
+        <binding name="subform" value="true"/>
+        <binding name="listener" value="listeners.onModifyOk"/>
+        <binding name="resetListener" value="null"/>
+    </component>
+
+    <component id="hiddenSubject" type="Hidden">
+        <binding name="value" value="selectedSubject"/>
+    </component>
+
+    <component id="modify_name" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:domain.subjects.name.label"/>
+        <binding name="value" value="selectedSubject"/>
+    </component>
+
+    <component id="modify_password" type="jeus:Field">
+        <binding name="field" value="components.modify_passwordField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="modify_passwordField" type="jeus:DojoTextField">
+        <binding name="value" value="password"/>
+        <binding name="hidden" value="true"/>
+        <binding name="displayName" value="message:domain.subjects.password.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="modify_confirm_password" type="jeus:Field">
+        <binding name="field" value="components.confirm_passwordField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="modify_confirm_passwordField" type="jeus:DojoTextField">
+        <binding name="value" value="confirmPassword"/>
+        <binding name="hidden" value="true"/>
+        <binding name="displayName" value="message:domain.subjects.confirm_password.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="condCreate" type="If">
+        <binding name="condition" value="command != null and @jeus.tool.webadmin.page.JeusServiceSecurityDomain.SecurityCommand@CREATE_COMMAND.equals(command)"/>
+    </component>
+
+    <component id="createForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.subjects.create.title"/>
+        <binding name="subform" value="true"/>
+        <binding name="listener" value="listeners.onCreateOk"/>
+    </component>
+
+    <component id="name" type="jeus:Field">
+        <binding name="field" value="components.nameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="nameField" type="jeus:DojoTextField">
+        <binding name="value" value="name"/>
+        <binding name="displayName" value="message:domain.subjects.name.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="password" type="jeus:Field">
+        <binding name="field" value="components.passwordField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="passwordField" type="jeus:DojoTextField">
+        <binding name="value" value="password"/>
+        <binding name="hidden" value="true"/>
+        <binding name="displayName" value="message:domain.subjects.password.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="confirm_password" type="jeus:Field">
+        <binding name="field" value="components.confirm_passwordField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="confirm_passwordField" type="jeus:DojoTextField">
+        <binding name="value" value="confirmPassword"/>
+        <binding name="hidden" value="true"/>
+        <binding name="displayName" value="message:domain.subjects.confirm_password.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="condExpertCreate" copy-of="condCreate"/>
+
+    <component id="expert_createForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.subjects.create.title"/>
+        <binding name="subform" value="true"/>
+        <binding name="listener" value="listeners.onCreateOk"/>
+    </component>
+
+    <component id="expert_name" type="jeus:Field">
+        <binding name="field" value="components.expert_nameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="expert_nameField" type="jeus:DojoTextField">
+        <binding name="value" value="name"/>
+        <binding name="displayName" value="message:domain.subjects.name.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="condExpertModify" copy-of="condModify"/>
+
+    <component id="expertForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.subjects.modify.title"/>
+        <binding name="useForm" value="false"/>
+        <binding name="subform" value="true"/>
+    </component>
+
+
+    <component id="expert_tab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'subject.principals.label','subject.factories.label'}, new java.lang.String[]{'principals', 'factories'})"/>
+        <binding name="listener" value="listeners.onChangeTab"/>
+        <binding name="userParameter" value="selectedSubject"/>
+    </component>
+
+    <component id="principalsForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="hiddenSubject2" copy-of="hiddenSubject"/>
+
+    <component id="principalsField" type="jeus:PropertySelection">
+        <binding name="model" value="principalsModel"/>
+        <binding name="value" value="selectedPrincipal"/>
+        <binding name="size" value="5"/>
+    </component>
+
+    <component id="principal_create" type="Submit">
+        <binding name="value" value="message:domain.services.create.label"/>
+        <binding name="listener" value="listeners.onPrincipalCreate"/>
+    </component>
+
+<!--
+    <component id="principal_remove" type="Submit">
+        <binding name="value" value="message:domain.services.remove.label"/>
+        <binding name="listener" value="listeners.onPrincipalRemoveOk"/>
+    </component>
+-->
+    <component id="principal_remove" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.remove.label"/>
+        <binding name="message" value="message:JEUSForm.remove.confirm"/>
+        <binding name="listener" value="listeners.onPrincipalRemoveOk"/>
+    </component>
+
+    <component id="condPrincipalCreate" type="If">
+        <binding name="condition" value="tabCommand != null and @jeus.tool.webadmin.page.JeusServiceSecurityDomain.SecurityCommand@CREATE_COMMAND.equals(tabCommand)"/>
+    </component>
+
+    <component id="hiddenSubject3" copy-of="hiddenSubject"/>
+    <component id="hiddenPrincipal" type="Hidden">
+        <binding name="value" value="selectedPrincipal"/>
+    </component>
+
+    <component id="principal_createForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:subject.principal.create.title"/>
+        <binding name="subform" value="true"/>
+        <binding name="listener" value="listeners.onPrincipalCreateOk"/>
+    </component>
+
+    <component id="principal_classname" type="jeus:Field">
+        <binding name="field" value="components.principal_classnameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="principal_classnameField" type="jeus:DojoTextField">
+        <binding name="value" value="classname"/>
+        <binding name="displayName" value="message:subject.principal.classname.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="principal_name" type="jeus:Field">
+        <binding name="field" value="components.principal_nameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="principal_nameField" type="jeus:DojoTextField">
+        <binding name="value" value="name"/>
+        <binding name="displayName" value="message:subject.principal.name.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="factoriesForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="hiddenSubject4" copy-of="hiddenSubject"/>
+
+    <component id="factoriesField" type="jeus:PropertySelection">
+        <binding name="model" value="factoriesModel"/>
+        <binding name="value" value="selectedFactory"/>
+        <binding name="size" value="5"/>
+    </component>
+
+    <component id="factory_modify" type="Submit">
+        <binding name="value" value="message:domain.services.modify.label"/>
+        <binding name="listener" value="listeners.onFactoryModify"/>
+    </component>
+
+    <component id="factory_create" type="Submit">
+        <binding name="value" value="message:domain.services.create.label"/>
+        <binding name="listener" value="listeners.onFactoryCreate"/>
+    </component>
+
+<!--
+    <component id="factory_remove" type="Submit">
+        <binding name="value" value="message:domain.services.remove.label"/>
+        <binding name="listener" value="listeners.onFactoryRemoveOk"/>
+    </component>
+-->
+
+    <component id="factory_remove" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.remove.label"/>
+        <binding name="message" value="message:JEUSForm.remove.confirm"/>
+        <binding name="listener" value="listeners.onFactoryRemoveOk"/>
+    </component>
+
+    <component id="condFactoryModify" type="If">
+        <binding name="condition" value="tabCommand != null and @jeus.tool.webadmin.page.JeusServiceSecurityDomain.SecurityCommand@MODIFY_COMMAND.equals(tabCommand)"/>
+    </component>
+
+    <component id="factory_modifyForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:subject.factory.modify.title"/>
+        <binding name="subform" value="true"/>
+        <binding name="listener" value="listeners.onFactoryModifyOk"/>
+    </component>
+
+    <component id="hiddenSubject5" copy-of="hiddenSubject"/>
+    <component id="hiddenFactory" type="Hidden">
+        <binding name="value" value="selectedFactory"/>
+    </component>
+
+    <component id="factory_classname" type="jeus:ReadOnlyTextField">
+        <binding name="value" value="factory != null ? factory.getClass().getName() : null"/>
+        <binding name="label" value="message:subject.factory.classname.label"/>
+    </component>
+
+    <component id="factory_properties" type="jeus:Field">
+        <binding name="field" value="components.factory_propertiesField"/>
+        <binding name="label" value="message:subject.factory.properties.label"/>
+    </component>
+
+    <component id="factory_propertiesField" type="jeus:DojoTextArea">
+        <binding name="value" value="properties"/>
+    </component>
+
+    <component id="factory_createForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:subject.factory.create.title"/>
+        <binding name="subform" value="true"/>
+        <binding name="listener" value="listeners.onFactoryCreateOk"/>
+    </component>
+
+    <component id="hiddenSubject6" copy-of="hiddenSubject"/>
+
+    <component id="create_factory_classname" type="jeus:Field">
+        <binding name="field" value="components.create_factory_classnameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="create_factory_classnameField" type="jeus:DojoTextField">
+        <binding name="value" value="factoryClassname"/>
+        <binding name="displayName" value="message:subject.factory.classname.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="create_factory_properties" type="jeus:Field">
+        <binding name="field" value="components.create_factory_propertiesField"/>
+        <binding name="label" value="message:subject.factory.properties.label"/>
+    </component>
+
+    <component id="create_factory_propertiesField" type="jeus:DojoTextArea">
+        <binding name="value" value="createProperties"/>
+    </component>
+
+    <component id="condFactoryCreate" type="If">
+        <binding name="condition" value="tabCommand != null and @jeus.tool.webadmin.page.JeusServiceSecurityDomain.SecurityCommand@CREATE_COMMAND.equals(tabCommand)"/>
+    </component>
+
+    <property name="selectedSubject"/>
+    <property name="selectedPrincipal"/>
+    <property name="selectedFactory"/>
+
+    <property name="name"/>
+    <property name="password"/>
+    <property name="confirmPassword"/>
+
+    <property name="classname" initial-value="@jeus.security.util.Constants@DEFAULT_GROUP_PRINCIPAL_IMPL_CLASSNAME"/>
+    <property name="factoryClassname" initial-value="@jeus.security.util.Constants@DEFAULT_CREDENTIAL_FACTORY_IMPL_CLASSNAME"/>
+
+    <property name="command"/>
+    <property name="tabCommand"/>
+</page-specification>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="Shift-JIS"?>
+<description>        
+    <text key="userType.group"><![CDATA[
+                        [Description]: 該当ユーザに対するGroup identifyを定義します。ユーザが属しているグループを定義します。このときのグループは &lt;groups>&lt;group>&lt;name>&lt;/name>&lt;/group>&lt;/groups>に定義されている必要があります。
+                    ]]>        
+    </text>
+         
+    <text key="accounts"><![CDATA[
+                        [Description]: アカウントに対する設定を定義します。この中でユーザとグループを定義することができます。
+            ]]>        
+    </text>
+         
+    <text key="usersType.user"><![CDATA[
+                        [Description]:ユーザを定義します。
+                    ]]>        
+    </text>
+         
+    <text key="userType.name"><![CDATA[
+                        [Description]: 該当ユーザに対するユーザ名を定義します。 "primary" identifyとしてユニークである必要があります。
+                    ]]>        
+    </text>
+         
+    <text key="groupType.subgroup"><![CDATA[
+                        [Description]: 自身の下位のグループを定義します。このときの groupは、&lt;groups>&lt;group>&lt;name>&lt;/name>&lt;/group>&lt;/groups>に定義されている必要があります。
+                    ]]>        
+    </text>
+         
+    <text key="accountsType.groups"><![CDATA[
+                                [Description]: グループを定義します。
+                    ]]>        
+    </text>
+         
+    <text key="userType.description"><![CDATA[
+                        [Description]: ユーザに対する説明
+                        [Value Description]: 任意の説明文
+                        [Example]: &lt;description>A really nice guy!&lt;/description>
+                    ]]>        
+    </text>
+         
+    <text key="userType.password"><![CDATA[
+                            [Description]: ユーザに対するパスワードを設定します。
+                    ]]>        
+    </text>
+         
+    <text key="groupsType.group"><![CDATA[
+                        [Description]: グループを定義します。
+                    ]]>        
+    </text>
+         
+    <text key="accountsType.users"><![CDATA[
+                                [Description]: ユーザを定義します。
+                    ]]>        
+    </text>
+         
+    <text key="groupType.name"><![CDATA[
+                        [Description]: 該当グループに対するグループ名を定義します。Groupの "primary" identifyとしてユニークである必要があります。
+                    ]]>        
+    </text>
+         
+    <text key="groupType.description"><![CDATA[
+                        [Description]: グループに対する説明
+                        [Value Description]: 任意の説明文
+                    ]]>        
+    </text>
+ </description>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://tapestry.apache.org/dtd/Tapestry_4_0.dtd">
+
+<component-specification allow-body="yes" allow-informal-parameters="yes">
+    <parameter name="title" required="yes"/>
+
+    <parameter name="renders" required="yes"/>
+
+    <parameter name="description" required="yes"/>
+
+    <parameter name="icon" required="yes"/>
+
+    <component id="title" type="Insert">
+        <binding name="value" value="title"/>
+    </component>
+
+    <component id="description" type="Insert">
+        <binding name="value" value="description"/>
+    </component>
+
+    <component id="eachRender" type="Foreach">
+        <binding name="source" value="renders"/>
+        <binding name="value" value="render"/>
+    </component>
+
+    <component id="render" type="Delegator">
+        <binding name="delegate" value="render"/>
+    </component>
+
+    <component id="icon" type="Image">
+        <binding name="image" value="icon"/>
+    </component>
+
+    <component id="top_line_01" type="Image">
+        <binding name="image" value="asset:top_line_01"/>
+    </component>
+
+    <component id="top_line_02" type="Image">
+        <binding name="image" value="asset:top_line_02"/>
+    </component>
+
+    <component id="top_line_05" type="Image">
+        <binding name="image" value="asset:top_line_05"/>
+    </component>
+
+    <component id="top_line_06" type="Image">
+        <binding name="image" value="asset:top_line_06"/>
+    </component>
+
+    <component id="top_line_07" type="Image">
+        <binding name="image" value="asset:top_line_07"/>
+    </component>
+
+    <component id="top_line_08" type="Image">
+        <binding name="image" value="asset:top_line_08"/>
+    </component>
+
+    <component id="top_line_09" type="Image">
+        <binding name="image" value="asset:top_line_09"/>
+    </component>
+
+    <component id="top_line_10" type="Image">
+        <binding name="image" value="asset:top_line_10"/>
+    </component>
+
+    <component id="point" type="Image">
+        <binding name="image" value="asset:point"/>
+    </component>
+
+    <component id="top_line_back" type="Any">
+        <binding name="element" value="literal:td"/>
+        <binding name="background" value="asset:top_line_back"/>
+    </component>
+
+    <component id="top_line_back2" type="Any">
+        <binding name="element" value="literal:td"/>
+        <binding name="background" value="asset:top_line_back2"/>
+    </component>
+
+    <component id="top_line_back3" type="Any">
+        <binding name="element" value="literal:td"/>
+        <binding name="background" value="asset:top_line_back3"/>
+    </component>
+
+    <component id="top_line_back4" type="Any">
+        <binding name="element" value="literal:td"/>
+        <binding name="background" value="asset:top_line_back4"/>
+    </component>
+
+    <component id="top_line_back5_2" type="Any">
+        <binding name="element" value="literal:td"/>
+        <binding name="background" value="asset:top_line_back5"/>
+    </component>
+
+    <asset name="top_line_01" path="context:/image/intro/top_line_01.gif"/>
+    <asset name="top_line_02" path="context:/image/intro/top_line_02.gif"/>
+    <asset name="top_line_03" path="context:/image/intro/top_line_03.gif"/>
+    <asset name="top_line_05" path="context:/image/intro/top_line_05.gif"/>
+    <asset name="top_line_06" path="context:/image/intro/top_line_06.gif"/>
+    <asset name="top_line_07" path="context:/image/intro/top_line_07.gif"/>
+    <asset name="top_line_08" path="context:/image/intro/top_line_08.gif"/>
+    <asset name="top_line_09" path="context:/image/intro/top_line_09.gif"/>
+    <asset name="top_line_10" path="context:/image/intro/top_line_10.gif"/>
+
+    <asset name="top_line_back" path="context:/image/intro/top_line_back.gif"/>
+    <asset name="top_line_back2" path="context:/image/intro/top_line_back2.gif"/>
+    <asset name="top_line_back3" path="context:/image/intro/top_line_back3.gif"/>
+    <asset name="top_line_back4" path="context:/image/intro/top_line_back4.gif"/>
+    <asset name="top_line_back5" path="context:/image/intro/top_line_back5.gif"/>
+
+    <asset name="point" path="context:/image/intro/point.gif"/>
+
+    <property name="render"/>
+</component-specification>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.EJBModule.ControlPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:EJB Module Control"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@EJB_MODULE_NAMES"/>
+        <binding name="subtabNames" value="objectName.keyPropertyList.J2EEApplication == 'null' ? {'start', 'stop', 'undeploy'} : {'start', 'stop'}"/>
+    </component>
+
+    <component id="start" type="Block"/>
+    <component id="stop" type="Block"/>
+    <component id="undeploy" type="Block"/>
+
+    <component id="start_controller" type="jeus:ModuleController">
+        <binding name="title" value="message:emc.start.title"/>
+        <!--<binding name="description" value="message:emc.start.description"/>-->
+        <binding name="objectName" value="objectName"/>
+        <binding name="state" value="@jeus.management.j2ee.StateManageable@STOPPED"/>
+        <binding name="command" value="@javax.enterprise.deploy.shared.CommandType@START"/>
+    </component>
+
+    <component id="stop_controller" type="jeus:ModuleController">
+        <binding name="title" value="message:emc.stop.title"/>
+        <binding name="objectName" value="objectName"/>
+        <binding name="state" value="@jeus.management.j2ee.StateManageable@RUNNING"/>
+        <binding name="command" value="@javax.enterprise.deploy.shared.CommandType@STOP"/>
+    </component>
+
+    <component id="undeploy_controller" type="jeus:ModuleController">
+        <binding name="title" value="message:emc.undeploy.title"/>
+        <binding name="objectName" value="objectName"/>
+        <binding name="state" value="-1"/> <!-- -1 represents all states -->
+        <binding name="command" value="@javax.enterprise.deploy.shared.CommandType@UNDEPLOY"/>
+    </component>
+
+</page-specification>

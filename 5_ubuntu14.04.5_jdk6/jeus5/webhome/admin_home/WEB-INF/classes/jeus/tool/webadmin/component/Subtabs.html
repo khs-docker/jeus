@@ -1,0 +1,26 @@
+<span jwcid="$content$">
+    <span jwcid="@If" condition="ognl:subtabNames != null and subtabNames.size > 0" renderTag="ognl:false">
+        <tr jwcid="@Foreach" source="ognl:subtabNames" value="ognl:subtabName" element="tr" index="ognl:index">
+            <td></td>
+            <span jwcid="@contrib:Choose">
+                <span jwcid="@contrib:When" condition="ognl:activeTabIndex == index or (index == 0 and activeTabIndex >= subtabNames.size)">
+                    <td height="25" class="selected_subtab" nowrap="true">
+                        <img jwcid="@Image" image="ognl:assets.selected_mark" border="0" align="absmiddle"/>&nbsp;<span jwcid="@Insert" value="ognl:tabLabel"/>
+                    </td>
+                    <td class="selected_subtab_mark">
+                    </td>
+                </span>
+                <span jwcid="@contrib:Otherwise">
+                    <td height="25" class="unselected_subtab" nowrap="true">&nbsp;
+                        <a id="ognl:tabLabel" jwcid="@DirectLink" listener="listener:onSelect" parameters="ognl:index" class="subtab_link">
+                            <span jwcid="@Insert" value="ognl:tabLabel"/>
+                        </a>
+                        <div dojoType="dijit.Tooltip" connectId="ognl:tabLabel" label="ognl:tabLabel" jwcid="@Any"></div>                        
+                    </td>
+                    <td class="unselected_subtab_mark">
+                    </td>
+                </span>
+            </span>
+        </tr>
+    </span>
+</span>

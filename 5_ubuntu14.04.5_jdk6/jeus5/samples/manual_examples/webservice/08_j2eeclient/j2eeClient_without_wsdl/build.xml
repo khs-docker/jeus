@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<project name="Echo" default="all" basedir=".">	
+    <property file="../../../../sample.properties"/>
+    <import file="${jeus.home}/samples/common.xml"/>
+    <path id="jeus.classpath">
+        <path refid="jeus.libraries"/>
+        <pathelement location="${java.home}/lib/tools.jar"/>
+    </path>
+	
+	<taskdef name="java2wsdl" classname="jeus.util.ant.webservices.Java2WsdlTask"/>
+
+  <property name="work.home" value="."/>
+  <property name="app.name" value="EchoJspClient2"/>
+
+  <!-- The destination directory for the build -->
+  <property name="build.dir" value="${work.home}/build"/>
+  <property name="classes.dir" value="${build.dir}/classes"/>
+
+  <property name="src" value="${work.home}/src"/>
+  <property name="build.wardir" value="${build.dir}/war"/>
+  <property name="build.jardir" value="${build.dir}/jar"/>
+  <property name="build.eardir" value="${build.dir}/ear"/>
+  <property name="warfile" value="${build.dir}/EchoJspClient2.war"/>
+  <property name="earfile" value="${build.dir}/EchoJspClient2.ear"/>
+  
+  <property name="web-xml" value="./conf/web.xml"/>
+  <property name="application-xml" value="./conf/application.xml"/>
+  <property name="index-html" value="./src/index.html"/>
+  <property name="jsp-file" value="./src/helloClient.jsp"/>
+  
+  <path id="build.classpath">
+    <path refid="jeus.classpath"/>
+    <pathelement location="${classes.dir}"/>
+  </path>
+  
+  <target name="init">
+    <delete dir="${build.dir}"/>
+    <mkdir dir="${classes.dir}"/>
+  </target>
+  <target name="jspClientWar" depends="init">
+    <delete dir="${build.wardir}" quiet="true"/>
+    <mkdir dir="${build.wardir}"/>
+    <mkdir dir="${build.wardir}/WEB-INF"/>
+    <mkdir dir="${build.wardir}/WEB-INF/wsdl"/>
+    <copy todir="${build.wardir}/WEB-INF/classes">
+        <fileset dir="${classes.dir}">
+           <exclude name="**/*.wsdl"/>
+        </fileset>
+    </copy>
+    
+    <copy file="${web-xml}"  todir="${build.wardir}/WEB-INF" />
+    <copy file="${jsp-file}" todir="${build.wardir}/"/>
+    <copy file="${index-html}" todir="${build.wardir}/"/>
+    <jar jarfile="${warfile}" basedir="${build.wardir}" excludes="cvs">
+       <manifest>
+         <attribute name="Class-Path" value=""/>
+       </manifest>
+    </jar>
+  </target>
+  
+  <target name="wsear" depends="jspClientWar">
+    <mkdir dir="${build.eardir}"/>
+    <mkdir dir="${build.eardir}/META-INF"/>    
+    
+    <copy file="${application-xml}"  todir="${build.eardir}/META-INF" />
+    <copy file="${warfile}"  todir="${build.eardir}/" />
+    
+    <jar jarfile="${earfile}" basedir="${build.eardir}" excludes="cvs">
+       <manifest>
+         <attribute name="Class-Path" value=""/>
+       </manifest>
+    </jar>
+  </target>
+   <!-- Move .ear file to the app_home directory -->
+   <target name="move.ear">
+   	<copy todir="${jeus.apphome}" file="${build.dir}/${app.name}.ear"/>
+   </target>
+    <target name="deploy">
+      <distribute
+	   deployURI="deployer:Jeus:example"
+	   user="${jeus.username}"
+	   password="${jeus.password}"
+	   targetNames="${jeus.target}"
+	   modulePath="${jeus.apphome}/${app.name}.ear"
+	   fastdeploy="false" />
+      <modulecommand
+	   deployURI="deployer:Jeus:example"
+	   command="start"
+	   modulename="${app.name}"
+	   moduletype="J2EEApplication"
+	   targetNames="${jeus.target}"
+	   user="${jeus.username}"
+	   password="${jeus.password}" />
+    </target>
+    <target name="undeploy">
+	    <modulecommand
+       deployURI="deployer:Jeus:example"
+       command="undeploy"
+       modulename="${app.name}"
+       moduletype="J2EEApplication"
+       targetNames="${jeus.target}"
+       user="${jeus.username}"
+       password="${jeus.password}" />
+    </target>
+  
+  <target name="clean">
+    <delete dir="${build.dir}"/>
+  </target>  
+  <target name="all" depends="clean, wsear, move.ear, deploy" />
+
+</project>

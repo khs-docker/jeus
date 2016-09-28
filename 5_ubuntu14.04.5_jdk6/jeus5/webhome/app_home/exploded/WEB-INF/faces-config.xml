@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+    version="1.2">
+
+	<!-- for calculator -->
+	<managed-bean>
+		<managed-bean-name>CalcBean</managed-bean-name>
+		<managed-bean-class>jsf.calculator.CalculatorController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<navigation-rule>
+		<display-name>calculator</display-name>
+		<from-view-id>/jsf/calculator/calculator.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/jsf/calculator/result.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>result</display-name>
+		<from-view-id>/jsf/calculator/result.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>back</from-outcome>
+			<to-view-id>/jsf/calculator/calculator.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+  <!-- for component test -->
+	<navigation-rule>
+		<from-view-id>/jsf/member/input.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/jsf/member/output.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/jsf/member/output.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>restart</from-outcome>
+			<to-view-id>/jsf/member/input.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<managed-bean>
+		<managed-bean-name>memberBean</managed-bean-name>
+		<managed-bean-class>jsf.member.memberBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>firstName</property-name>
+			<value>#{memberForm.firstname}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>lastName</property-name>
+			<value>#{memberForm.lastname}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>userID</property-name>
+			<value>#{memberForm.userid}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>userPW</property-name>
+			<value>#{memberForm.userpw}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>sex</property-name>
+			<value>#{memberForm.sex}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>email</property-name>
+			<value>#{memberForm.email}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>zipCode</property-name>
+			<value>#{memberForm.zipcode}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>address</property-name>
+			<value>#{memberForm.address}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>memo</property-name>
+			<value>#{memberForm.memo}</value>
+		</managed-property>
+	</managed-bean>
+
+	<!-- for internationalization test -->
+	<application>
+		<locale-config>
+			<default-locale>en</default-locale>
+			<supported-locale>en</supported-locale>
+			<supported-locale>de</supported-locale>
+            <supported-locale>fr</supported-locale>
+            <supported-locale>ja</supported-locale>
+			<!--supported-locale>ko</supported-locale-->
+			<supported-locale>zh</supported-locale>
+		</locale-config>
+	</application>
+	<navigation-rule>
+		<from-view-id>/jsf/locale/locale.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>changelocale</from-outcome>
+			<to-view-id>/jsf/locale/locale.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<managed-bean>
+		<managed-bean-name>changeLocale</managed-bean-name>
+		<managed-bean-class>jsf.locale.changeLocale</managed-bean-class>
+		<managed-bean-scope> session </managed-bean-scope>
+	</managed-bean>
+
+	<navigation-rule>  
+	<navigation-case>  
+	<from-outcome>nextPage</from-outcome>  
+	<to-view-id>/test.jsp</to-view-id>  
+	</navigation-case> 
+	</navigation-rule> 
+
+
+<managed-bean>
+    <managed-bean-name>jsfexample</managed-bean-name>
+    <managed-bean-class>jsftags.JSFExampleBean</managed-bean-class>
+    <managed-bean-scope>application</managed-bean-scope>
+     <managed-property>
+      <property-name>address</property-name>
+      <property-class>java.lang.String</property-class>
+      <value></value>
+     </managed-property>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>carBean</managed-bean-name>
+    <managed-bean-class>jsftags.CarBean</managed-bean-class>
+    <managed-bean-scope>application</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>productBean</managed-bean-name>
+    <managed-bean-class>jsftags.ProductBean</managed-bean-class>
+    <managed-bean-scope>application</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>BookStore</managed-bean-name>
+    <managed-bean-class>jsftags.BookStoreBean</managed-bean-class>
+    <managed-bean-scope>application</managed-bean-scope>
+  </managed-bean>
+</faces-config>

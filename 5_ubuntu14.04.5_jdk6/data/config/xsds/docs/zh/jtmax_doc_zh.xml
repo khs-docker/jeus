@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="GB2312"?>
+<description>   <document>     <key>/jtmax-server/webt-config/log-level/    </key>     <documentation><![CDATA[
+                    [Description]:设定Webt logger的级别。NONE, INFO 和 DEBUG 值有效，基本值是NONE。
+                ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/formatter-property/    </key>     <documentation><![CDATA[
+                        [Description]: 向handler被生成时创建的formatter传送的 property进行设置。
+                        该property以key-value方式保存到Map，并通过JeusFormatter.setProperty() method传输到
+                        formatter。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/from-address/    </key>     <documentation><![CDATA[
+                        [Description]: 指定email抄送人的地址。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/console-handler/level/    </key>     <documentation><![CDATA[
+                      [Description]: 设置该handler的level。只有通过logger的message的level包括于该handler level时，通过该handler进行输出。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/level/    </key>     <documentation><![CDATA[
+                      [Description]: 设置该handler的level。只有通过logger的message的level包括于该handler level时，通过该handler进行输出。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/handler-class/    </key>     <documentation><![CDATA[
+                        [Description]: ?阮?user???handler?fully qualified class name。?class???java.util.logging.Handler，?茄君 jeus.util.logging.JeusHandler。
+                        [Example]: <handler-class>com.tmax.logging.handler.MyHandler</handler-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/filter-class/    </key>     <documentation><![CDATA[
+                        [Description]: 设置要在此handler中指定的filer class的 fully qualified class name。
+                        [Example]: <filter-class>com.tmax.logging.filter.MyFilter</filter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/service/method-name/    </key>     <documentation><![CDATA[
+						[Description]:指定要呼叫的Method名称。
+					]]>    </documentation>  </document>   <document>     <key>/jtmax-server/    </key>     <documentation><![CDATA[
+			[Description]: 作为jTmax设置的最优element，必须存在于jtmaxMain.xml。
+		]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/    </key>     <documentation><![CDATA[
+                  [Description]: ?阮?logger??痰?handler。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/service/arg-types/    </key>     <documentation><![CDATA[
+						[Description]:设定Method因子的指定部分，指定已定义好的因子类型。
+							      万一没有应用的因子，该Tag将失去价值。
+							      可使用的因子类型如下；
+                                   short,char,int,long,double,float,String,bytes,webt
+							      例. <input-args>int,int,String</input-args>
+					]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/level/    </key>     <documentation><![CDATA[
+                      [Description]: 设置该handler的level。只有通过logger的message的level包括于该handler level时，通过该handler进行输出。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/service/ejb-name/    </key>     <documentation><![CDATA[
+						[Description]:相当于已安装EJB 模块的ejb-name，
+						应当与模块DD文件 - ejb-jar.xml的 ejb-name相同。
+					]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/console-handler/    </key>     <documentation><![CDATA[
+                      [Description]: 拳?logging?????珂?痰?handler。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/level/    </key>     <documentation><![CDATA[
+                  [Description]: 设置logging的level。各level的意义请参考J2SE的 logging API的Level class。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/send-for-all-messages/    </key>     <documentation><![CDATA[
+                        [Description]: 通过该handler注册的logger的log() method接受message时，决定是否将其设置为email发送对象。如果设置为false，通过email方式，只对logger的特殊send() method呼叫的消息进行传输。
+                        即，只传输最初指定为email发送对象的消息
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/formatter-property/property/    </key>     <documentation><![CDATA[
+                        [Description]: 设置向handler 等进行传输的property。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/name/    </key>     <documentation><![CDATA[
+                      [Description]: 设置handler名称。此时该名称在一个logger内应是唯一的。该名称在tool等中称呼handler时使用。
+                      [Example]: <name>handler1</name>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/name/    </key>     <documentation><![CDATA[
+                      [Description]: 设置handler名称。此时该名称在一个logger内应是唯一的。该名称在tool等中称呼handler时使用。
+                      [Example]: <name>handler1</name>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/    </key>     <documentation><![CDATA[
+                      [Description]: 拳???????logging珂?痰?handler。
+                      [Performance Recommandation]: ??logging message ????????渴。?瞳??刊filter苟?痰，???????，?伎??????骸?Ｏ?棹?
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/listener/backlog/    </key>     <documentation><![CDATA[
+						[Description]:为Jtmax 服务的Tmax的JeusGW所需的 backlog值。
+					]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/valid-day/    </key>     <documentation><![CDATA[
+                          [Description]: 根据该设置中指定期限及继续更新时使用此handler的file。该设置按日期变更file时使用。此时， handler使用的file名称后面自动出现file使用日期。
+                          [Value Description]: day
+                          [Example]: <valid-day>1</valid-day>
+                        ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/file-name/    </key>     <documentation><![CDATA[
+                        [Description]: 设置该handler使用的file name。如果user不进行此项设置，则使用各logger的 default file name。各个default file name请参考JEUS Server 指南。
+                        [Example]: <file-name>C:\logs\mylog.log</file-name>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/maxThreadPoolSize/    </key>     <documentation><![CDATA[
+						[Description]:用于处理Tmax client 请求的线程池最大值
+					]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/    </key>     <documentation><![CDATA[
+                      [Description]:?拳?logging?渴???socket珂?痰? handler。
+                      [Performance Recommandation]: ???logging message?渴? Socket。??，??唐?刊filter苟?痰，?????苟?。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/filter-class/    </key>     <documentation><![CDATA[
+                  [Description]: ?阮?logger????filer class?fully qualified class name。
+                  [Example]: <filter-class>com.tmax.logging.filter.MyFilter</filter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/webt-config/default-charset/    </key>     <documentation><![CDATA[
+						[Description]:如果未设定，则设置成 webt property的 charset。
+						]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/encoding/    </key>     <documentation><![CDATA[
+                      [Description]: 设置该handler保留message时使用的encoding。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/bcc-address/    </key>     <documentation><![CDATA[
+                        [Description]: 指定email抄送人的地址。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/level/    </key>     <documentation><![CDATA[
+                      [Description]: 设置该handler的level。只有通过logger的message的level包括于该handler level时，通过该handler进行输出。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/filter-class/    </key>     <documentation><![CDATA[
+                        [Description]: 设置要在此handler中指定的filer class的 fully qualified class name。
+                        [Example]: <filter-class>com.tmax.logging.filter.MyFilter</filter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/buffer-size/    </key>     <documentation><![CDATA[
+                        [Description]: 指定该handler输出于file时使用的buffer的大小。
+                        [Value Description]: byte 单位。
+                        [Performance Recommandation]: 该值越大file中输出的message被拖延输出，但logging性能越好。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/formatter-property/property/key/    </key>     <documentation><![CDATA[
+                        [Description]: 角property?key令。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/name/    </key>     <documentation><![CDATA[
+                      [Description]: 设置handler名称。此时该名称在一个logger内应是唯一的。该名称在tool等中称呼handler时使用。
+                      [Example]: <name>handler1</name>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/handler-property/    </key>     <documentation><![CDATA[
+                        [Description]: ?阮?handler??邂?珂????property。?property?
+                        key-value???Map，???JeusHandler.setProperty() method?渴?handler。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/console-handler/name/    </key>     <documentation><![CDATA[
+                      [Description]: 设置handler名称。此时该名称在一个logger内应是唯一的。该名称在tool等中称呼handler时使用。
+                      [Example]: <name>handler1</name>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/webt-config/    </key>     <documentation><![CDATA[
+						[Description]:设定与webt相关信息						]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/address/    </key>     <documentation><![CDATA[
+                        [Description]: ?阮??handler?邂?珂??message?IP address。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/    </key>     <documentation><![CDATA[
+                      [Description]: 角User?痰??J2SE logging API???handler珂??阮??
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/handler-property/property/    </key>     <documentation><![CDATA[
+                        [Description]: 设置向handler 等进行传输的property。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/name/    </key>     <documentation><![CDATA[
+                      [Description]: 设置handler名称。此时该名称在一个logger内应是唯一的。该名称在tool等中称呼handler时使用。
+                      [Example]: <name>handler1</name>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/use-parent-handlers/    </key>     <documentation><![CDATA[
+                  [Description]: ??角?瞳?logger??痰parent logger?handler。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/encoding/    </key>     <documentation><![CDATA[
+                      [Description]: 设置该handler保留message时使用的encoding。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/filter-class/    </key>     <documentation><![CDATA[
+                        [Description]: 设置要在此handler中指定的filer class的 fully qualified class name。
+                        [Example]: <filter-class>com.tmax.logging.filter.MyFilter</filter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/formatter-property/property/value/    </key>     <documentation><![CDATA[
+                        [Description]: 角property?value令。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/console-handler/filter-class/    </key>     <documentation><![CDATA[
+                        [Description]: 设置要在此handler中指定的filer class的 fully qualified class name。
+                        [Example]: <filter-class>com.tmax.logging.filter.MyFilter</filter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/append/    </key>     <documentation><![CDATA[
+                        [Description]: ?????handler?痰?file??瞳珂角??季?file??。
+                        ???阮??false，君唐file橙???。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/port/    </key>     <documentation><![CDATA[
+                        [Description]: 设置该handler生成时发送message的port。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/    </key>     <documentation><![CDATA[
+                      [Description]: 拳?匡?近?渴?logging珂?痰?handler。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/handler-property/property/value/    </key>     <documentation><![CDATA[
+                        [Description]: 角property?value令。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/service/name/    </key>     <documentation><![CDATA[
+						[Description]:Tmax呼叫的服务名称。
+					]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/smtp-host-address/    </key>     <documentation><![CDATA[
+                        [Description]: ????email?smtp server?囹。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/    </key>     <documentation><![CDATA[
+						[Description]:设定与记入相关信息
+						]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/console-handler/encoding/    </key>     <documentation><![CDATA[
+                      [Description]: 设置该handler保留message时使用的encoding。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/cc-address/    </key>     <documentation><![CDATA[
+                        [Description]: 指定email抄送人的地址。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/listener/port/    </key>     <documentation><![CDATA[
+						[Description]:Tmax 系统中启动的JeusGW与Jtmax Server进行连接的端口号。
+					]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/formatter-class/    </key>     <documentation><![CDATA[
+                        [Description]: 对此handler使用的formatter的fully qualified class name进行设置。该class继承
+                        java.util.logging.Formatter并实现jeus.util.logging.JeusFormatter。
+                        [Example]: <formatter-class>com.tmax.logging.handler.MyHandler</formatter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/encoding/    </key>     <documentation><![CDATA[
+                      [Description]: 设置该handler保留message时使用的encoding。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/filter-class/    </key>     <documentation><![CDATA[
+                        [Description]: 设置要在此handler中指定的filer class的 fully qualified class name。
+                        [Example]: <filter-class>com.tmax.logging.filter.MyFilter</filter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/encoding/    </key>     <documentation><![CDATA[
+                      [Description]: 设置该handler保留message时使用的encoding。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/valid-hour/    </key>     <documentation><![CDATA[
+                          [Description]: 根据该设置中指定期限及继续更新时使用此handler的file。该设置按时间变更file时使用。此时， handler使用的file名称后面自动出现file使用日期和时间。
+                          [Value Description]: 表示时间，具有24的约数 + n*24 (n是0以上的整数)的值。
+                          [Example]: <valid-hour>3</valid-hour>
+                        ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/service/    </key>     <documentation><![CDATA[
+						[Description]:记录由Tmax呼叫的EJB服务有关信息。
+						]]>    </documentation>  </document>   <document>     <key>/jtmax-server/fdl-file/    </key>     <documentation><![CDATA[
+						[Description]:为实现Tmax和数据通信而定义的 FieldKey文件的绝对路径.
+							      如果无值，则查找$JEUS_HOME/lib/system/tmax.fdl。
+				]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/handler-property/property/key/    </key>     <documentation><![CDATA[
+                        [Description]: 角property?key令。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/level/    </key>     <documentation><![CDATA[
+                      [Description]: 设置该handler的level。只有通过logger的message的level包括于该handler level时，通过该handler进行输出。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/listener/    </key>     <documentation><![CDATA[
+						[Description]:设置在Tmax JeusGW中连接的JtmaxServer侦听器相关信息。
+						]]>    </documentation>  </document>   <document>     <key>/jtmax-server/webt-config/inbuffer-size/    </key>     <documentation><![CDATA[
+                        [Description]:指定接收数据所需的Webt接收缓冲区大小，
+                                  设置的输入缓冲区如果比4096大，则仍保留该值，
+                                  如果小于4096，则指定为4096(最小值>4096)
+                        ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/to-address/    </key>     <documentation><![CDATA[
+                        [Description]: 指定email抄送人的地址。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/webt-config/outbuffer-size/    </key>     <documentation><![CDATA[
+                        [Description]: 指定接收数据所需的Webt接收缓冲区大小，
+                                  设置的输入缓冲区如果比1024大，则保留该值
+                                  如果比1024值小，则大小指定为1024(最小值>1024)
+                    ]]>    </documentation>  </document></description>

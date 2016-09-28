@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceVirtualHost.CreatePage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Virtual Host Create"/>        
+    </component>
+
+    <component id="wizTabPanel" type="jeus:WizardTabPanel">
+        <binding name="tabNames" value="ognl:new java.lang.String[]{'general', 'create'}"/>
+    </component>
+
+    <component id="general" type="Block"/>
+    <component id="create" type="Block"/>
+
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:vhc.general.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="name" type="jeus:Field">
+        <binding name="field" value="ognl:components.nameField"/>
+    </component>
+
+    <component id="nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="virtualHost"/>
+        <binding name="elementName" value="literal:virtualHostName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="host_list" type="jeus:Field">
+        <binding name="field" value="ognl:components.host_listField"/>
+    </component>
+
+    <component id="host_listField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:virtualHost"/>
+        <binding name="elementName" value="literal:hostList"/>
+        <binding name="translator" value="bean:listTranslator"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="createForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:vhc.create.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="next" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="ognl:listeners.onGeneralNext"/>
+    </component>
+
+    <component id="previous" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="ognl:listeners.onCreatePrevious"/>
+    </component>
+
+    <component id="ok" type="Submit">
+        <binding name="value" value="message:common.label.create"/>
+        <binding name="listener" value="ognl:listeners.onCreateOk"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+    <bean name="listTranslator" class="jeus.tool.webadmin.component.translator.ListTranslator"/>
+
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+    <property name="virtualHost" persist="session"/>
+</page-specification>

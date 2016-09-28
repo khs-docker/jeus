@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusServiceSecurityDomain.PoliciesPage">
+
+    <inject property="webadminVisit" type="state" object="visit"/>
+    <inject property="jaxbSource" type="state" object="JAXBSource"/>
+    
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Security Policies"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <!--<binding name="pageNames" expression="@jeus.tool.webadmin.page.PageNames@getJEUSSERVICE_SECURITYDOMAIN_NAMES(objectName)"/>-->
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@JEUSSERVICE_SECURITYDOMAIN_NAMES"/>
+    </component>
+
+    <component id="policiesForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:policies.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="policiesTab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'policies.memory.label', 'policies.repository.label'}, new java.lang.String[]{'memory', 'repository'})"/>
+    </component>
+
+    <component id="memory" type="Block"/>
+    <component id="repository" type="Block"/>
+
+    <component id="memoryForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="policies" type="jeus:Field">
+        <binding name="field" value="components.policiesField"/>
+        <binding name="label" value="message:policies.policies.label"/>
+    </component>
+
+    <component id="policiesField" type="jeus:PropertySelection">
+        <binding name="model" value="policiesModel"/>
+        <binding name="value" value="selectedPolicyId"/>
+    </component>
+
+    <component id="modify" type="Submit">
+        <binding name="value" value="message:domain.services.modify.label"/>
+        <binding name="listener" value="listeners.onModify"/>
+    </component>
+
+    <component id="remove" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:domain.services.remove.label"/>
+        <binding name="message" value="message:JEUSForm.remove.confirm"/>
+        <binding name="listener" value="listeners.onRemoveOk"/>
+    </component>
+
+    <component id="create" type="Submit">
+        <binding name="value" value="message:domain.services.create.label"/>
+        <binding name="listener" value="listeners.onCreate"/>
+    </component>
+
+    <component id="condModify" type="If">
+        <binding name="condition" value="selectedPolicyId != null and command != null and @jeus.tool.webadmin.page.JeusServiceSecurityDomain.SecurityCommand@MODIFY_COMMAND.equals(command)"/>
+    </component>
+
+    <component id="condCreate" type="If">
+        <binding name="condition" value="command != null and @jeus.tool.webadmin.page.JeusServiceSecurityDomain.SecurityCommand@CREATE_COMMAND.equals(command)"/>
+    </component>
+
+    <component id="policy_tab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'policies.role.label','policies.resource.label'}, new java.lang.String[]{'role', 'resource'})"/>
+        <binding name="listener" value="listeners.onChangeTab"/>
+        <binding name="userParameter" value="selectedPolicyId"/>
+     </component>
+
+    <component id="createForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:policies.create.title"/>
+        <binding name="listener" value="listeners.onCreateOk"/>
+        <binding name="subform" value="true"/>
+    </component>
+
+    <component id="context_id" type="jeus:Field">
+        <binding name="field" value="components.context_idField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="context_idField" type="jeus:DojoTextField">
+        <binding name="value" value="policyId"/>
+        <binding name="displayName" value="message:policies.create.context_id.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="role" type="Block"/>
+    <component id="resource" type="Block"/>
+
+    <component id="roleForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:policies.role.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="subform" value="true"/>
+    </component>
+
+    <component id="hidden_policy_id" type="Hidden">
+        <binding name="value" value="selectedPolicyId"/>
+    </component>
+
+    <component id="roles" type="jeus:Field">
+        <binding name="field" value="components.rolesField"/>
+        <binding name="label" value="message:policies.role.roles.label"/>
+    </component>
+
+    <component id="rolesField" type="jeus:PropertySelection">
+        <binding name="model" value="rolesModel"/>
+        <binding name="value" value="selectedRole"/>
+    </component>
+
+    <component id="modify_role" type="Submit">
+        <binding name="value" value="message:domain.services.modify.label"/>
+        <binding name="listener" value="listeners.onModifyRole"/>
+    </component>
+
+<!--
+    <component id="remove_role" type="Submit">
+        <binding name="value" value="message:domain.services.remove.label"/>
+        <binding name="listener" value="listeners.onRemoveRoleOk"/>
+    </component>
+-->
+    <component id="remove_role" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:domain.services.remove.label"/>
+        <binding name="message" value="message:JEUSForm.remove.confirm"/>
+        <binding name="listener" value="listeners.onRemoveRoleOk"/>
+    </component>
+
+    <component id="create_role" type="Submit">
+        <binding name="value" value="message:domain.services.create.label"/>
+        <binding name="listener" value="listeners.onCreateRole"/>
+    </component>
+
+
+    <component id="condModifyRole" type="If">
+        <binding name="condition" value="@jeus.tool.webadmin.page.JeusServiceSecurityDomain.SecurityCommand@MODIFY_COMMAND.equals(tabCommand)"/>
+    </component>
+
+    <component id="modify_roleForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:policies.role.modify.title"/>
+        <binding name="subform" value="true"/>
+        <binding name="listener" value="listeners.onModifyRoleOk"/>
+        <binding name="resetListener" value="null"/>
+    </component>
+
+    <component id="hidden_policy_id3" copy-of="hidden_policy_id"/>
+    <component id="hidden_role" type="Hidden">
+        <binding name="value" value="selectedRole"/>
+    </component>
+
+    <component id="role_name" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:policies.role.name.label"/>
+        <binding name="value" value="formRole.name"/>
+    </component>
+
+    <component id="role_classname" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:policies.role.classname.label"/>
+        <binding name="value" value="formRole.classname"/>
+    </component>
+
+    <component id="role_actions" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:policies.role.actions.label"/>
+        <binding name="value" value="formRole.actions"/>
+    </component>
+
+    <component id="role_principals" type="jeus:Field">
+        <binding name="field" value="components.role_principalsField"/>
+        <binding name="label" value="message:policies.role.principals.label"/>
+    </component>
+
+    <component id="role_principalsField" type="contrib:Palette">
+        <binding name="model" value="principalsModel"/>
+        <binding name="selected" value="formRole.principals"/>
+        <binding name="selectedTitleBlock" value="components.nullBlock"/>
+        <binding name="availableTitleBlock" value="components.nullBlock"/>
+    </component>
+
+    <component id="role_unchecked" type="jeus:Field">
+        <binding name="field" value="components.role_uncheckedField"/>
+        <binding name="label" value="message:policies.role.unchecked.label"/>
+    </component>
+
+    <component id="role_uncheckedField" type="jeus:DojoCheckbox">
+        <binding name="value" value="formRole.unchecked"/>
+    </component>
+
+    <component id="role_excluded" type="jeus:Field">
+        <binding name="field" value="components.role_excludedField"/>
+        <binding name="label" value="message:policies.role.excluded.label"/>
+    </component>
+
+    <component id="role_excludedField" type="jeus:DojoCheckbox">
+        <binding name="value" value="formRole.excluded"/>
+    </component>
+
+
+    <component id="condCreateRole" type="If">
+        <binding name="condition" value="@jeus.tool.webadmin.page.JeusServiceSecurityDomain.SecurityCommand@CREATE_COMMAND.equals(tabCommand)"/>
+    </component>
+
+    <component id="create_roleForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:policies.role.create.title"/>
+        <binding name="subform" value="true"/>
+        <binding name="listener" value="listeners.onCreateRoleOk"/>
+    </component>
+
+    <component id="hidden_policy_id5" copy-of="hidden_policy_id"/>
+
+    <component id="create_role_name" type="jeus:Field">
+        <binding name="field" value="components.create_role_nameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="create_role_nameField" type="jeus:DojoTextField">
+        <binding name="value" value="formRole.name"/>
+        <binding name="displayName" value="message:policies.role.name.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="create_role_classname" type="jeus:Field">
+        <binding name="field" value="components.create_role_classnameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="create_role_classnameField" type="jeus:DojoTextField">
+        <binding name="value" value="formRole.classname"/>
+        <binding name="displayName" value="message:policies.role.classname.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="create_role_actions" type="jeus:Field">
+        <binding name="field" value="components.create_role_actionsField"/>
+        <binding name="label" value="message:policies.role.actions.label"/>
+    </component>
+
+    <component id="create_role_actionsField" type="jeus:DojoTextField">
+        <binding name="value" value="formRole.actions"/>
+    </component>
+
+    <component id="create_role_principals" type="jeus:Field">
+        <binding name="field" value="components.create_role_principalsField"/>
+        <binding name="label" value="message:policies.role.principals.label"/>
+    </component>
+
+    <component id="create_role_principalsField" type="contrib:Palette">
+        <binding name="model" value="principalsModel"/>
+        <binding name="selected" value="formRole.principals"/>
+        <binding name="selectedTitleBlock" value="components.nullBlock"/>
+        <binding name="availableTitleBlock" value="components.nullBlock"/>
+    </component>
+
+    <component id="create_role_unchecked" type="jeus:Field">
+        <binding name="field" value="components.create_role_uncheckedField"/>
+        <binding name="label" value="message:policies.role.unchecked.label"/>
+    </component>
+
+    <component id="create_role_uncheckedField" type="jeus:DojoCheckbox">
+        <binding name="value" value="formRole.unchecked"/>
+    </component>
+
+    <component id="create_role_excluded" type="jeus:Field">
+        <binding name="field" value="components.create_role_excludedField"/>
+        <binding name="label" value="message:policies.role.excluded.label"/>
+    </component>
+
+    <component id="create_role_excludedField" type="jeus:DojoCheckbox">
+        <binding name="value" value="formRole.excluded"/>
+    </component>
+
+
+    <component id="resourceForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:policies.resource.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="subform" value="true"/>
+    </component>
+
+    <component id="hidden_policy_id2" copy-of="hidden_policy_id"/>
+
+    <component id="resources" type="jeus:Field">
+        <binding name="field" value="components.resourcesField"/>
+        <binding name="label" value="message:policies.resource.resources.label"/>
+    </component>
+
+    <component id="resourcesField" type="jeus:PropertySelection">
+        <binding name="model" value="resourcesModel"/>
+        <binding name="value" value="selectedResource"/>
+    </component>
+
+    <component id="modify_resource" type="Submit">
+        <binding name="value" value="message:domain.services.modify.label"/>
+        <binding name="listener" value="listeners.onModifyResource"/>
+    </component>
+
+    <component id="remove_resource" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:domain.services.remove.label"/>
+        <binding name="message" value="message:JEUSForm.remove.confirm"/>
+        <binding name="listener" value="listeners.onRemoveResourceOk"/>
+    </component>
+
+    <component id="create_resource" type="Submit">
+        <binding name="value" value="message:domain.services.create.label"/>
+        <binding name="listener" value="listeners.onCreateResource"/>
+    </component>
+
+    <component id="condModifyResource" copy-of="condModifyRole"/>
+
+    <component id="modify_resourceForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:policies.resource.modify.title"/>
+        <binding name="subform" value="true"/>
+        <binding name="listener" value="listeners.onModifyResourceOk"/>
+    </component>
+
+    <component id="hidden_policy_id4" copy-of="hidden_policy_id"/>
+    <component id="hidden_resource" type="Hidden">
+        <binding name="value" value="selectedResource"/>
+    </component>
+
+    <component id="resource_name" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:policies.resource.name.label"/>
+        <binding name="value" value="formResource.name"/>
+    </component>
+
+    <component id="resource_classname" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:policies.resource.classname.label"/>
+        <binding name="value" value="formResource.classname"/>
+    </component>
+
+    <component id="resource_actions" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:policies.resource.actions.label"/>
+        <binding name="value" value="formResource.actions"/>
+    </component>
+
+    <component id="resource_roles" type="jeus:Field">
+        <binding name="field" value="components.resource_rolesField"/>
+        <binding name="label" value="message:policies.resource.roles.label"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="resource_rolesField" type="contrib:Palette">
+        <binding name="model" value="rolesModel"/>
+        <binding name="selected" value="formResource.roles"/>
+        <binding name="selectedTitleBlock" value="components.nullBlock"/>
+        <binding name="availableTitleBlock" value="components.nullBlock"/>
+        <binding name="validators" value="validators:required"/>
+        <binding name="displayName" value="message:policies.role.principals.label"/>
+    </component>
+
+    <component id="resource_unchecked" type="jeus:Field">
+        <binding name="field" value="components.resource_uncheckedField"/>
+        <binding name="label" value="message:policies.resource.unchecked.label"/>
+    </component>
+
+    <component id="resource_uncheckedField" type="jeus:DojoCheckbox">
+        <binding name="value" value="formResource.unchecked"/>
+    </component>
+
+    <component id="resource_excluded" type="jeus:Field">
+        <binding name="field" value="components.resource_excludedField"/>
+        <binding name="label" value="message:policies.resource.excluded.label"/>
+    </component>
+
+    <component id="resource_excludedField" type="jeus:DojoCheckbox">
+        <binding name="value" value="formResource.excluded"/>
+    </component>
+
+
+    <component id="condCreateResource" type="If">
+        <binding name="condition" value="@jeus.tool.webadmin.page.JeusServiceSecurityDomain.SecurityCommand@CREATE_COMMAND.equals(tabCommand)"/>
+    </component>
+
+    <component id="create_resourceForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:policies.resource.create.title"/>
+        <binding name="subform" value="true"/>
+        <binding name="listener" value="listeners.onCreateResourceOk"/>
+    </component>
+
+    <component id="hidden_policy_id6" copy-of="hidden_policy_id"/>
+
+    <component id="create_resource_name" type="jeus:Field">
+        <binding name="field" value="components.create_resource_nameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="create_resource_nameField" type="jeus:DojoTextField">
+        <binding name="value" value="formResource.name"/>
+        <binding name="displayName" value="message:policies.resource.name.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="create_resource_classname" type="jeus:Field">
+        <binding name="field" value="components.create_resource_classnameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="create_resource_classnameField" type="jeus:DojoTextField">
+        <binding name="value" value="formResource.classname"/>
+        <binding name="displayName" value="message:policies.resource.classname.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="create_resource_actions" type="jeus:Field">
+        <binding name="field" value="components.create_resource_actionsField"/>
+        <binding name="label" value="message:policies.resource.actions.label"/>
+    </component>
+
+    <component id="create_resource_actionsField" type="jeus:DojoTextField">
+        <binding name="value" value="formResource.actions"/>
+    </component>
+
+    <component id="create_resource_roles" type="jeus:Field">
+        <binding name="field" value="components.create_resource_rolesField"/>
+        <binding name="label" value="message:policies.resource.roles.label"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="create_resource_rolesField" type="contrib:Palette">
+        <binding name="model" value="rolesModel"/>
+        <binding name="selected" value="formResource.roles"/>
+        <binding name="selectedTitleBlock" value="components.nullBlock"/>
+        <binding name="availableTitleBlock" value="components.nullBlock"/>
+        <binding name="validators" value="validators:required"/>
+        <binding name="displayName" value="message:policies.role.principals.label"/>
+    </component>
+
+    <component id="create_resource_unchecked" type="jeus:Field">
+        <binding name="field" value="components.create_resource_uncheckedField"/>
+        <binding name="label" value="message:policies.resource.unchecked.label"/>
+    </component>
+
+    <component id="create_resource_uncheckedField" type="jeus:DojoCheckbox">
+        <binding name="value" value="formResource.unchecked"/>
+    </component>
+
+    <component id="create_resource_excluded" type="jeus:Field">
+        <binding name="field" value="components.create_resource_excludedField"/>
+        <binding name="label" value="message:policies.resource.excluded.label"/>
+    </component>
+
+    <component id="create_resource_excludedField" type="jeus:DojoCheckbox">
+        <binding name="value" value="formResource.excluded"/>
+    </component>
+
+
+    <component id="repositoryForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="roleTableLabel" type="Insert">
+        <binding name="value" value="message:policies.repository.role_table.label"/>
+    </component>
+
+    <component id="repository_role_name_column" type="Insert">
+        <binding name="value" value="message:policies.role.name.label"/>
+    </component>
+
+    <component id="repository_role_principal_column" type="Insert">
+        <binding name="value" value="message:policies.role.principals.label"/>
+    </component>
+
+    <component id="repository_role_actions_column" type="Insert">
+        <binding name="value" value="message:policies.role.actions.label"/>
+    </component>
+
+    <component id="repository_role_classname_column" type="Insert">
+        <binding name="value" value="message:policies.role.classname.label"/>
+    </component>
+
+    <component id="repository_role_excluded_column" type="Insert">
+        <binding name="value" value="message:policies.role.excluded.label"/>
+    </component>
+
+    <component id="repository_role_unchecked_column" type="Insert">
+        <binding name="value" value="message:policies.role.unchecked.label"/>
+    </component>
+
+    <component id="eachRole" type="Foreach">
+        <binding name="source" value="roles"/>
+        <binding name="value" value="roleView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="eachRolePrincipal" type="Foreach">
+        <binding name="source" value="roleView.principal"/>
+        <binding name="value" value="rolePrincipalView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="repository_role_name_value" type="Insert">
+        <binding name="value" value="roleView.name"/>
+    </component>
+
+    <component id="roleLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceSecurityDomain_RoleConfiguration"/>
+        <binding name="parameters" value="{objectName, roleView.name}"/>
+    </component>
+
+    <component id="repository_role_principal_value" type="Insert">
+        <binding name="value" value="rolePrincipalView.principal"/>
+    </component>
+
+    <component id="repository_role_actions_value" type="Insert">
+        <binding name="value" value="roleView.actions"/>
+    </component>
+
+    <component id="repository_role_classname_value" type="Insert">
+        <binding name="value" value="roleView.classname"/>
+    </component>
+
+    <component id="repository_role_excluded_value" type="Insert">
+        <binding name="value" value="roleView.excluded"/>
+    </component>
+
+    <component id="repository_role_unchecked_value" type="Insert">
+        <binding name="value" value="roleView.unchecked"/>
+    </component>
+
+    <component id="roleDeleteLink" type="jeus:DirectLink">
+        <binding name="listener" value="listeners.onRoleDeleteOk"/>
+        <binding name="parameters" value="roleView.name"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.delete.confirm', roleView.name)"/>
+    </component>
+
+    <component id="delete" type="Image">
+        <binding name="image" value="assets.delete"/>
+    </component>
+
+    <component id="repositoryConfigRoleForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:policies.role.title"/>
+        <binding name="listener" value="listeners.onRepositoryRoleOk"/>
+        <binding name="subform" value="true"/>
+    </component>
+
+    <component id="repository_role_name" type="jeus:Field">
+        <binding name="field" value="components.repository_role_nameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="repository_role_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="rolePermission"/>
+        <binding name="elementName" value="literal:role"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="repository_role_principals" type="jeus:Field">
+        <binding name="field" value="components.repository_role_principalsField"/>
+        <binding name="label" value="message:policies.role.principals.label"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="repository_role_principalsField" type="contrib:Palette">
+        <binding name="model" value="repositoryPrincipalModel"/>
+        <binding name="selected" value="selectedRepositoryPrincipal"/>
+        <binding name="selectedTitleBlock" value="components.nullBlock"/>
+        <binding name="availableTitleBlock" value="components.nullBlock"/>
+        <binding name="validators" value="validators:required"/>
+        <binding name="displayName" value="message:policies.role.principals.label"/>
+    </component>
+
+    <component id="repository_role_actions" type="jeus:Field">
+        <binding name="field" value="components.repository_role_actionsField"/>
+    </component>
+
+    <component id="repository_role_actionsField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="rolePermission"/>
+        <binding name="elementName" value="literal:actions"/>
+    </component>
+
+    <component id="repository_role_classname" type="jeus:Field">
+        <binding name="field" value="components.repository_role_classnameField"/>
+    </component>
+
+    <component id="repository_role_classnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="rolePermission"/>
+        <binding name="elementName" value="literal:classname"/>
+    </component>
+
+    <component id="repository_role_unchecked" type="jeus:Field">
+        <binding name="field" value="components.repository_role_uncheckedField"/>
+        <binding name="label" value="message:policies.role.unchecked.label"/>
+    </component>
+
+    <component id="repository_role_uncheckedField" type="jeus:DojoCheckbox">
+        <binding name="selected" value="selectedRoleUnchecked"/>
+    </component>
+
+    <component id="repository_role_excluded" type="jeus:Field">
+        <binding name="field" value="components.repository_role_excludedField"/>
+        <binding name="label" value="message:policies.role.excluded.label"/>
+    </component>
+
+    <component id="repository_role_excludedField" type="jeus:DojoCheckbox">
+        <binding name="selected" value="selectedRoleExcluded"/>
+    </component>
+
+    <component id="resourceTableLabel" type="Insert">
+        <binding name="value" value="message:policies.repository.resource_table.label"/>
+    </component>
+
+    <component id="repository_resource_name_column" type="Insert">
+        <binding name="value" value="message:policies.resource.name.label"/>
+    </component>
+
+    <component id="repository_resource_ctxid_column" type="Insert">
+        <binding name="value" value="message:policies.resource.ctxid.label"/>
+    </component>
+
+    <component id="repository_resource_role_column" type="Insert">
+        <binding name="value" value="message:policies.resource.roles.label"/>
+    </component>
+
+    <component id="repository_resource_actions_column" type="Insert">
+        <binding name="value" value="message:policies.resource.actions.label"/>
+    </component>
+
+    <component id="repository_resource_classname_column" type="Insert">
+        <binding name="value" value="message:policies.resource.classname.label"/>
+    </component>
+
+    <component id="repository_resource_excluded_column" type="Insert">
+        <binding name="value" value="message:policies.resource.excluded.label"/>
+    </component>
+
+    <component id="repository_resource_unchecked_column" type="Insert">
+        <binding name="value" value="message:policies.resource.unchecked.label"/>
+    </component>
+
+    <component id="eachResource" type="Foreach">
+        <binding name="source" value="resources"/>
+        <binding name="value" value="resourceView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="eachResourceRole" type="Foreach">
+        <binding name="source" value="resourceView.role"/>
+        <binding name="value" value="resourceRoleView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="ctxidLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceSecurityDomain_ResourceConfiguration"/>
+        <binding name="parameters" value="{objectName, resourceView.resource, resourceView.contextId, 'Ctxid'}"/>
+    </component>
+
+    <component id="resourceLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceSecurityDomain_ResourceConfiguration"/>
+        <binding name="parameters" value="{objectName, resourceView.resource, resourceView.contextId, 'Resource'}"/>
+    </component>
+
+    <component id="repository_resource_ctxid_value" type="Insert">
+        <binding name="value" value="resourceView.contextId == null ? 'default' : resourceView.contextId"/>
+    </component>
+
+    <component id="repository_resource_name_value" type="Insert">
+        <binding name="value" value="resourceView.resource"/>
+    </component>
+
+    <component id="repository_resource_role_value" type="Insert">
+        <binding name="value" value="resourceRoleView.name"/>
+    </component>
+
+    <component id="repository_resource_actions_value" type="Insert">
+        <binding name="value" value="resourceView.actions"/>
+    </component>
+
+    <component id="repository_resource_classname_value" type="Insert">
+        <binding name="value" value="resourceView.classname"/>
+    </component>
+
+    <component id="repository_resource_excluded_value" type="Insert">
+        <binding name="value" value="resourceView.excluded"/>
+    </component>
+
+    <component id="repository_resource_unchecked_value" type="Insert">
+        <binding name="value" value="resourceView.unchecked"/>
+    </component>
+
+    <component id="resourceDeleteLink" type="jeus:DirectLink">
+        <binding name="listener" value="listeners.onResourceDeleteOk"/>
+        <binding name="parameters" value="{(resourceView.contextId == null ? 'default' : resourceView.contextId), resourceView.resource}"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.delete.confirm', resourceView.resource)"/>
+    </component>
+
+    <component id="delete2" copy-of="delete"/>
+
+    <component id="repositoryConfigResourceForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:policies.resource.title"/>
+        <binding name="listener" value="listeners.onRepositoryResourceOk"/>
+        <binding name="subform" value="true"/>
+    </component>
+
+    <component id="repository_resource_ctxid" type="jeus:Field">
+        <binding name="field" value="components.repository_resource_ctxidField"/>
+    </component>
+
+    <component id="repository_resource_ctxidField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="resourcePermissions"/>
+        <binding name="elementName" value="literal:contextId"/>
+    </component>
+
+    <component id="repository_resource_name" type="jeus:Field">
+        <binding name="field" value="components.repository_resource_nameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="repository_resource_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="resourcePermission"/>
+        <binding name="elementName" value="literal:resource"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="repository_resource_classname" type="jeus:Field">
+        <binding name="field" value="components.repository_resource_classnameField"/>
+    </component>
+
+    <component id="repository_resource_classnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="resourcePermission"/>
+        <binding name="elementName" value="literal:classname"/>
+    </component>
+
+    <component id="repository_resource_actions" type="jeus:Field">
+        <binding name="field" value="components.repository_resource_actionsField"/>
+    </component>
+
+    <component id="repository_resource_actionsField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="resourcePermission"/>
+        <binding name="elementName" value="literal:actions"/>
+    </component>
+
+    <component id="repository_resource_roles" type="jeus:Field">
+        <binding name="field" value="components.repository_resource_rolesField"/>
+        <binding name="label" value="message:policies.resource.roles.label"/>
+    </component>
+
+    <component id="repository_resource_rolesField" type="contrib:Palette">
+        <binding name="model" value="repositoryRoleModel"/>
+        <binding name="selected" value="selectedRepositoryRole"/>
+        <binding name="selectedTitleBlock" value="components.nullBlock"/>
+        <binding name="availableTitleBlock" value="components.nullBlock"/>
+    </component>
+
+    <component id="repository_resource_unchecked" type="jeus:Field">
+        <binding name="field" value="components.repository_resource_uncheckedField"/>
+        <binding name="label" value="message:policies.resource.unchecked.label"/>
+    </component>
+
+    <component id="repository_resource_uncheckedField" type="jeus:DojoCheckbox">
+        <binding name="selected" value="selectedResourceUnchecked"/>
+    </component>
+
+    <component id="repository_resource_excluded" type="jeus:Field">
+        <binding name="field" value="components.repository_resource_excludedField"/>
+        <binding name="label" value="message:policies.resource.excluded.label"/>
+    </component>
+
+    <component id="repository_resource_excludedField" type="jeus:DojoCheckbox">
+        <binding name="selected" value="selectedResourceExcluded"/>
+    </component>
+
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+
+    <property name="selectedPolicyId"/>
+    <property name="selectedRole"/>
+    <property name="selectedResource"/>
+    <property name="policyId"/>
+
+    <property name="selectedRoleUnchecked"/>
+    <property name="selectedRoleExcluded"/>
+    <property name="selectedResourceUnchecked"/>
+    <property name="selectedResourceExcluded"/>
+
+    <property name="selectedRepositoryPrincipal"/>
+    <property name="selectedRepositoryRole"/>
+
+    <property name="roleView"/>
+    <property name="rolePrincipalView"/>
+    <property name="resourceView"/>
+    <property name="resourceRoleView"/>
+
+    <property name="command" />
+    <property name="tabCommand" />
+</page-specification>

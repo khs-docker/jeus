@@ -1,0 +1,77 @@
+<html><header><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></header><body><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(1) <b>&lt;subjects&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Subject(users)들을 정의한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(2)subject*<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(2) 
+		&lt;subjects&gt;
+	<b>&lt;subject&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Subject를 정의한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(3)description?<br>
+		(4)principal+<br>
+		(7)credential*<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(3) 
+		&lt;subjects&gt;
+	
+		&lt;subject&gt;
+	<b>&lt;description&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Subject에 대한 설명.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">임의의 설명문</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;description&gt;A really nide guy!&lt;/description&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(4) 
+		&lt;subjects&gt;
+	
+		&lt;subject&gt;
+	<b>&lt;principal&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">해당 Subject에 대한 user identify를 정의한다.처음으로 등장하는 principal 태그가 "primary" identify이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(5)classname?<br>
+		(6)name<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(5) 
+		&lt;subjects&gt;
+	
+		&lt;subject&gt;
+	
+		&lt;principal&gt;
+	<b>&lt;classname&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">java.security.Principal인터페이스를 구현한 Java 클래스명. 이 클래스는 String 타입의 Principal명을 받아 들이는 public 생성자를 반드시 가지고 있어야 한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Java 클래스명</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;classname&gt;mypackage.MyPrincipalImpl&lt;/classname&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(6) 
+		&lt;subjects&gt;
+	
+		&lt;subject&gt;
+	
+		&lt;principal&gt;
+	<b>&lt;name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">해당 Principal명 (가령, 사용자명 또는 그룹명)</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">A String id.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;name&gt;johan&lt;/name&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(7) 
+		&lt;subjects&gt;
+	
+		&lt;subject&gt;
+	<b>&lt;credential&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Subject에 대한 Credential을 정의한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(8)classname?<br>
+		(9)property*<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(8) 
+		&lt;subjects&gt;
+	
+		&lt;subject&gt;
+	
+		&lt;credential&gt;
+	<b>&lt;classname&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">jeus.security.base.CredentialFactory 인터페이스를 구현한 Java 클래스명.
+                                       어떤 파라미터도 갖지 않는 public생성자를 제공해야 한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Java 클래스명</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">jeus.security.resource.PasswordFactory</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;classname&gt;mypackage.MyPasswordFactory&lt;/classname&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(9) 
+		&lt;subjects&gt;
+	
+		&lt;subject&gt;
+	
+		&lt;credential&gt;
+	<b>&lt;property&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">선택사항으로 Credential Factory에 넘겨줄 name-value쌍의 속성값을 정의한다.  속성에 대한 자세한 정보는 Credential Factory 관련 클래스의 문서를 참고하기 바란다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(10)name<br>
+		(11)value?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(10) 
+		&lt;subjects&gt;
+	
+		&lt;subject&gt;
+	
+		&lt;credential&gt;
+	
+		&lt;property&gt;
+	<b>&lt;name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">속성명</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">속성명</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;name&gt;password&lt;/name&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(11) 
+		&lt;subjects&gt;
+	
+		&lt;subject&gt;
+	
+		&lt;credential&gt;
+	
+		&lt;property&gt;
+	<b>&lt;value&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">선택사항으로 속성에 대한 구체적인 값</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">속성 . "password" 속성 값은 Base 64로 인코딩 되어야 한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;value&gt;bXlwYXNzd29yZA==&lt;/value&gt;</td></tr></table></body></html>

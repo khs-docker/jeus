@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.component.table.CustomizeColumnPage">
+    <component id="shell" type="Shell">
+        <binding name="title" value="message:CustomizeColumn.title"/>
+        <binding name="stylesheets" value="{assets.jeus_stylesheet, assets.palette_stylesheet}"/>
+    </component>
+
+    <component id="customizeForm" type="JEUSForm">
+        <binding name="title" value="message:CustomizeColumn.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="dynamite" type="Dynamite"/>
+
+    <component id="pageSize" type="Field">
+        <binding name="field" value="components.pageSizeField"/>
+        <binding name="label" value="message:CustomizeColumn.pageSize.label"/>
+    </component>
+
+    <component id="pageSizeField" type="PropertySelection">
+        <binding name="value" value="pageSize"/>
+        <binding name="model" value="pageSizeModel"/>
+    </component>
+
+    <component id="columnsSection" type="FormSection">
+        <binding name="title" value="message:CustomizeColumn.columns.title"/>
+    </component>
+
+    <component id="columns" type="contrib:Palette">
+        <binding name="model" value="columnsModel"/>
+        <binding name="selected" value="selectedColumns"/>
+        <binding name="sort" value="@org.apache.tapestry.contrib.palette.SortMode@USER"/>
+		<binding name="tableClass" value="literal:paletteTable"/>
+		
+        <binding name="selectImage" value="asset:select"/>
+        <binding name="selectDisabledImage" value="asset:select_disable"/>
+        <binding name="deselectImage" value="asset:deselect"/>
+        <binding name="deselectDisabledImage" value="asset:deselect_disable"/>
+        <binding name="upImage" value="asset:up"/>
+        <binding name="upDisabledImage" value="asset:up_disable"/>
+        <binding name="downImage" value="asset:down"/>
+        <binding name="downDisabledImage" value="asset:down_disable"/>
+
+        <binding name="selectedTitleBlock" value="components.selectedTitle"/>
+        <binding name="availableTitleBlock" value="components.availableTitle"/>
+    </component>
+
+    <component id="available" type="Insert">
+        <binding name="value" value="message:CustomizeColumn.available.label"/>
+    </component>
+
+    <component id="selected" type="Insert">
+        <binding name="value" value="message:CustomizeColumn.selected.label"/>
+    </component>
+
+      <component id="ok" type="ConfirmSubmit">
+        <binding name="listener" value="listeners.onOk"/>
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:JEUSForm.ok.confirm"/>
+          <binding name="class" value="literal:form_button"/>
+      </component>
+
+  <component id="cancel" type="Any">
+      <binding name="element" value="literal:input"/>
+      <binding name="type" value="literal:button"/>
+      <binding name="value" value="message:JEUSForm.cancel.label"/>
+      <binding name="onclick" value="literal:window.close();"/>
+      <binding name="class" value="literal:form_button"/>
+  </component>
+
+    <asset name="up" path="context:/image/up.gif"/>
+    <asset name="down" path="context:/image/down.gif"/>
+    <asset name="select" path="context:/image/select.gif"/>
+    <asset name="deselect" path="context:/image/deselect.gif"/>
+    <asset name="up_disable" path="context:/image/up_disable.gif"/>
+    <asset name="down_disable" path="context:/image/down_disable.gif"/>
+    <asset name="select_disable" path="context:/image/select_disable.gif"/>
+    <asset name="deselect_disable" path="context:/image/deselect_disable.gif"/>
+
+	<asset name="palette_stylesheet" path="context:/css/palette.css"/>
+	<asset name="jeus_stylesheet" path="context:/css/jeus.css"/>
+	
+    <property name="pageSize"/>
+    <property name="columnsModel" persist="session"/>
+    <property name="tableViewId" persist="session"/>
+</page-specification>

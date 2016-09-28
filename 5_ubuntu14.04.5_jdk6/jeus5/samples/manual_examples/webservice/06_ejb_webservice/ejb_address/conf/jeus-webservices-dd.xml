@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jeus-webservices-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <ejb-context-path>webservice</ejb-context-path>
+    <service>
+        <webservice-description-name>AddressBookService</webservice-description-name>
+        <port>
+            <port-component-name>AddressBookIFPort</port-component-name>
+            <ejb-endpoint-url>/AddressBookService</ejb-endpoint-url>
+        </port>
+    </service>
+</jeus-webservices-dd>
+

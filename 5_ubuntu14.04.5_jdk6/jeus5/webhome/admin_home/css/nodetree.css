@@ -1,0 +1,36 @@
+body {
+    margin:0px;
+    padding:3px;
+    background-color:white;
+	font-family:Tahoma, Verdana;
+    font-size:11px;
+}
+
+img {
+	border:none;
+}
+
+table, tr, td {
+	margin: 0px;
+	padding: 0px;	
+}
+
+a, a:link, a:visited, a:active {
+    text-decoration: none;
+}
+
+a:hover {
+    color:#526DA5;
+    text-decoration: underline;
+}
+
+.selectedNodeViewClass{
+    font-weight:bold;
+    color: #597FBF;
+    font-size: 11px;
+}
+
+.notSelectedNodeViewClass{
+    font-size: 11px;
+    color:black;
+}

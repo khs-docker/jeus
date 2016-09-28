@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="GB2312"?>
+<description>                                                
+    <text key="userType.group"><![CDATA[
+                        [Description]: 对用户有关的group identify进行定义。定义用户所属的群组。此时的群组应定义在<groups><group><name></name></group></groups>。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="accounts"><![CDATA[
+                        [Description]: 定义对帐户的设置。在此可定义用户与群组。
+            ]]>                                                
+    </text>
+                                                         
+    <text key="usersType.user"><![CDATA[
+                        [Description]: 定义用户。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="userType.name"><![CDATA[
+                        [Description]: 对相关用户的用户名进行定义。作为"primary" identify应该是唯一的。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="groupType.subgroup"><![CDATA[
+                        [Description]: 定义下属群组。此时的群组应定义在 <groups><group><name></name></group></groups>。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="accountsType.groups"><![CDATA[                                [Description]: 定义group。                    ]]>                                                
+    </text>
+                                                         
+    <text key="userType.description"><![CDATA[
+                        [Description]: 关于用户的说明
+                        [Value Description]: 任意的说明
+                        [Example]: <description>A really nice guy!</description>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="userType.password"><![CDATA[
+                            [Description]: 对用户的密码进行设置。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="groupsType.group"><![CDATA[
+                        [Description]: 定义群组。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="accountsType.users"><![CDATA[
+                                [Description]: 定义用户。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="groupType.name"><![CDATA[
+                        [Description]: 定义相应群组的群组名。作为群组的"primary" identify，应该是唯一的。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="groupType.description"><![CDATA[
+                        [Description]: 群组有关说明
+                        [Value Description]: 任意的说明
+                    ]]>                                                
+    </text>
+ </description>

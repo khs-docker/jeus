@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusServiceSecurityDomain.OverviewPage">
+
+    <inject property="stateObject" type="state" object="WebadminStateObject"/>
+    <inject property="externalService" object="engine-service:external"/>
+
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Security domain Overview"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{pageName}"/>
+    </component>
+
+    <component id="domainForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.overview.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="name_column" type="Insert">
+        <binding name="value" value="message:domain.overview.name.label"/>
+    </component>
+
+    <component id="subjects_column" type="Insert">
+        <binding name="value" value="message:domain.overview.accounts.label"/>
+    </component>
+
+    <component id="eachDomain" type="Foreach">
+        <binding name="source" value="domains"/>
+        <binding name="value" value="domain"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="domainLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceSecurityDomain_Services"/>
+        <binding name="parameters" value="domain.objectName.canonicalName"/>
+    </component>
+
+    <component id="name_value" type="Insert">
+        <binding name="value" value="domain.name"/>
+    </component>
+
+    <component id="condNotXml" type="If">
+        <binding name="condition" value="domain.objectName.domain != 'XML'"/>
+    </component>
+
+    <component id="subjects_value" type="Insert">
+        <binding name="value" value="domain.subjects"/>
+    </component>
+
+    <component id="condNotReserved" type="If">
+        <binding name="condition" value="not @jeus.tool.webadmin.page.JeusServiceSecurityDomain.ReservedDomain@contains(domain.name)"/>
+    </component>
+
+    <component id="deleteLink" type="jeus:DirectLink">
+        <binding name="parameters" value="domain.name"/>
+        <binding name="listener" value="listeners.onDeleteDomain"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.delete.confirm', domain.name)"/>
+    </component>
+
+    <component id="delete" type="Image">
+        <binding name="image" value="assets.delete"/>
+    </component>
+
+    <component id="createLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceSecurityDomain_Create"/>
+        <binding name="parameters" value="objectName.canonicalName"/>
+    </component>
+
+    <component id="create" type="Image">
+        <binding name="image" value="assets.create"/>
+    </component>
+
+    <component id="create_label" type="Insert">
+        <binding name="value" value="message:domain.create.label"/>
+    </component>
+
+    <asset name="create" path="context:/image/create.gif"/>
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+    <property name="domain"/>
+</page-specification>

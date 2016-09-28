@@ -1,0 +1,11 @@
+#!/bin/sh
+
+. jeus.properties
+
+BOOT_PARAMETER=$*
+
+${JAVA_HOME}/bin/java -classpath ${JEUS_HOME}/lib/system/bootstrap.jar  \
+     -Xmx512m                                                           \
+     -Djeus.home=${JEUS_HOME}                                           \
+     ${JAVA_ARGS}                                                       \
+     jeus.tool.compiler.AppCompilerBootstrapper ${BOOT_PARAMETER}

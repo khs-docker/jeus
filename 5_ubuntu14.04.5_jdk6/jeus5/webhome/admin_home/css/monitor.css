@@ -1,0 +1,82 @@
+
+#monitor_menu{
+	margin: 0;
+	padding: 5px 1px 15px 1px;
+	list-style-type: none;	
+	float: left;
+	width: 900px;
+}
+
+#forma #monitor_menu{
+	_padding-bottom: 0px;
+}
+
+#monitor_menu .name{
+	float: left;	
+}
+
+#monitor_menu .mbeanList{
+	float: right;
+}
+
+#monitor_menu .mbeanList select{
+	width: 400px;
+}
+
+
+#monitor_menu .field{
+	margin: 0;	
+}
+
+.table{
+	clear: both;
+	width: 100%;	
+}
+
+.table .type{
+	width: 150px;
+}
+
+.table .name{
+	width: 150px;
+	word-wrap:break-word;
+	word-break:break-all;
+}
+
+.table .objectName{
+	width: 600px;
+}
+
+.table .statistic{
+	width: 200px;
+}
+
+.table .method{
+	width: 200px;
+}
+
+.table .label{
+	width: 170px;
+}
+
+.table .setting{
+	width: 30px;
+}
+
+.table .info{
+	
+}
+
+.monitorRun{
+	padding-left: 20px;
+	background: url("../image/monitor/but_monitor.gif") no-repeat left 50%;	
+}
+
+.monitorAdd{
+	padding-left: 18px;
+	background: url("../image/monitor/but_add.gif") no-repeat left 50%;	
+}
+
+
+
+

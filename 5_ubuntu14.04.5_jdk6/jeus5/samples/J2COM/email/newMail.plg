@@ -1,0 +1,35 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: newMail - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9F8.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/newMail.pdb" /debug /machine:I386 /out:"Debug/newMail.exe" /pdbtype:sept 
+.\Debug\newMail.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9F8.tmp"
+<h3>Output Window</h3>
+Linking...
+newMail.obj : error LNK2001: unresolved external symbol "public: void __thiscall _Application::SetVisible(int)" (?SetVisible@_Application@@QAEXH@Z)
+newMail.obj : error LNK2001: unresolved external symbol "public: void __thiscall Selection::TypeParagraph(void)" (?TypeParagraph@Selection@@QAEXXZ)
+newMail.obj : error LNK2001: unresolved external symbol "public: void __thiscall Selection::TypeText(char const *)" (?TypeText@Selection@@QAEXPBD@Z)
+newMail.obj : error LNK2001: unresolved external symbol "public: struct IDispatch * __thiscall _Application::GetSelection(void)" (?GetSelection@_Application@@QAEPAUIDispatch@@XZ)
+newMail.obj : error LNK2001: unresolved external symbol "public: struct IDispatch * __thiscall Documents::Add(struct tagVARIANT *,struct tagVARIANT *,struct tagVARIANT *,struct tagVARIANT *)" (?Add@Documents@@QAEPAUIDispatch@@PAUtagVARIANT@@000@Z)
+newMail.obj : error LNK2001: unresolved external symbol "public: struct IDispatch * __thiscall _Application::GetDocuments(void)" (?GetDocuments@_Application@@QAEPAUIDispatch@@XZ)
+nafxcwd.lib(thrdcore.obj) : error LNK2001: unresolved external symbol __endthreadex
+nafxcwd.lib(thrdcore.obj) : error LNK2001: unresolved external symbol __beginthreadex
+libcd.lib(crt0.obj) : error LNK2001: unresolved external symbol _main
+Debug/newMail.exe : fatal error LNK1120: 9 unresolved externals
+Error executing link.exe.
+
+
+
+<h3>Results</h3>
+newMail.exe - 10 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

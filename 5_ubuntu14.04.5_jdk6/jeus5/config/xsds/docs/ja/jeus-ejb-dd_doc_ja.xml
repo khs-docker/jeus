@@ -1,0 +1,943 @@
+<?xml version="1.0" encoding="Shift-JIS"?>
+<description>        
+    <text key="jeus-beanType.service-ref"><![CDATA[
+                    [Description]: JEUSウェブサービスクライアントの設定文書のルートエレメント(root element).
+                        ]]>        
+    </text>
+         
+    <text key="persistence-optimizeType.update-delay-till-tx"><![CDATA[
+                        [Description]: このオプションを“false”に設定すると、生成されたEJBデータベースの挿入と更新がEJB
+                        setXXX()が呼び出されるときに実行されます。一般的にこのオプションを“true”に設定し、“true”の場合には、EJBデータの挿入とトランザクションがコミットされたときにアップデートされます。開発者は次の事項を参照してください。
+                           1. トランザクションを始めます。
+                            2. EJBデータを更新します。
+                            3. EJBデータを読み込みます。
+                            4. トランザクションをコミットします。
+                        設定された値が“false”であれば、ステップ3. で読み取られたデータはステップ2. で記録されたデータであるはずです。
+                        設定された値が“true”であれば、ステップ3ではなく、ステップ4. でコミット後に表示される値を読み込み、ステップ2.で記録したデータです。                       このオプションは、CMP2.0でのみ使用されます。
+                        [Performance Recommendation]: “false”でセッティングするとEJBのinsert、update作業の性能に悪影響を与えます。
+                        すべてのinsert、update作業が別々に実行されるために、性能の低下をもたらします。
+                        従って、“true”にする方をお勧めします。
+                        [Example]: &lt;update-delay-till-tx>true&lt;/update-delay-till-tx>
+                    ]]>        
+    </text>
+         
+    <text key="auto-key-generatorType.sequence-column"><![CDATA[
+                        [Description]: USER_KEY_TABLEの場合のみ、使用します。このelementはPrimary Keyを持っている
+                        コラムの名前を明示します。
+                        [Value Description]: コラムの名前
+                        [Example]: &lt;sequence-column>PRIMARYKEYCOLUMN&lt;/sequence-column>
+                    ]]>        
+    </text>
+         
+    <text key="durable-timer-serviceType.ignore-durable-timers-at-deploy"><![CDATA[
+                    [Description]: このEJBがdeployされるときに、除去されなかったpersistence timerを無視するかどうかを指定します。もしtrueで無視されると、このtimerは deploy時に除去されます。
+                    ]]>        
+    </text>
+         
+    <text key="find-methodType.query-method"><![CDATA[
+                        [Description]: Findメソッドの名前とパラメーター
+                    ]]>        
+    </text>
+         
+    <text key="clusteringType.ejb-remote-idempotent-exclude-method"><![CDATA[
+                        [Description]: このelementは、"idempotent"ホームメソッドか除外するメソッドを指定します。上記の&lt;ejb-remote-idempotent-method>に優先します。
+			
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.database-insert-delay"><![CDATA[
+                    [Description]: このオプションは、EJBが生成されるときに新しいEJB データがDBに保存されるかを決定します。現在は、2つの方法があります。ejbCreate()メソッド完了の後とejbPostCreate()メソッド 完了の後があります。
+                    [Example]: &lt;database-insert-delay>ejbCreate&lt;/database-insert-delay>
+                    ]]>        
+    </text>
+         
+    <text key="object-managementType.connect-pool"><![CDATA[
+                        [Description]: コネクションプールは、クライアントとBeanプールから持ってきたEJBインスタンスを仲介するEJBリモート
+                        インタフェース実現クラス(EJB objects)を持っています。このプールからコネクションインスタンスを呼び出し、クライアントのリクエストと連結します。
+                ]]>        
+    </text>
+         
+    <text key="security-interopType.integrity-confidentiality"><![CDATA[
+                        [Description]: このelementは、CSIスペックに定義されている "Integrity"ビットと"Confidentiality"ビットを
+                        マッピングします。設定に対しては、ここで定義された通りに2つのビット両方に対して設定を適用します。
+                        [Defined Value]:
+                            [NotSupported]:
+                            "TLS_SEC_TRANS.target_supports" ビット配列の "Integrity"と"Confidentiality"ビットを
+                            0に設定します。（disable).
+                            [Supports]:
+                            "TLS_SEC_TRANS.target_supports"ビット配列の "Integrity"と"Confidentiality"ビットを
+                            1に設定します。(enable).
+                            [Requires]:
+                            "TLS_SEC_TRANS.target_requires"ビット配列の"Integrity" と"Confidentiality"ビットを
+                            1に設定します。(enable). そして、"TLS_SEC_TRANS. target_supports"ビット配列の"Integrity"
+                            と"Confidentiality"ビットを1に設定します。(enable).
+                        [Example]: &lt;integrity-confidentiality>Requires&lt;/integrity-confidentiality>
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.msg-selector"><![CDATA[
+                    [Description]: EJB 2.0 styleのMessage-Driven Beanでのみ使用するelementで、このMDBが使用するmessage selectorを設定します。詳しい内容は、JEUS JMSのマニュアルとJMS specを参照してください。
+                    ]]>        
+    </text>
+         
+    <text key="auto-key-generatorType.key-cache-size"><![CDATA[
+                        [Description]: このelementは、EJBエンジンに割り当てられるユニークなキーの数の設定します。これは
+                        Primary Keyデータベースからキーを渡してもらい、そのPrimary Key値をここに宣言されている値だけ増加させます。それだけPrimary Keyにアクセスする必要がなくなるため、性能の向上を得ることができます。
+                        [Value Description]: ローカルEJBエンジンに割り当てられる Primary Keyの数。Oracleデータベースである場合、
+                       この値は必ずSEQUENCEのSEQUENCE INCREMENTの値と一致する必要があります。
+                        [Performance Recommendation]: 性能最適化のためにこの値を適当に上げます。
+                        [Example]: &lt;key-cache-size>20&lt;/key-cache-size>
+                    ]]>        
+    </text>
+         
+    <text key="jeus-ejb-ddType.module-info"><![CDATA[
+                    [Description]: EJBモジュール全体に適用される包括的な情報を設定します。 
+                    ]]>        
+    </text>
+         
+    <text key="jndi-spiType.mq-vendor"><![CDATA[
+                    [Description]: 次ぎのelementで設定するJNDI名前サービスを通じて MDBと連結するMQ/JMSベンダーの名前
+                    ]]>        
+    </text>
+         
+    <text key="schema-infoType.table-name"><![CDATA[
+                        [Description]:  EJBとマッピングされる関係型データベースのテーブルの名前
+                        Default Value: EJBモジュールの名前 + EJB　Beanの名前の最後の15文字
+                        [Example]: &lt;table-name>ACCOUNT&lt;/table-name>
+                    ]]>        
+    </text>
+         
+    <text key="cm-persistence-optimizeType.init-caching"><![CDATA[
+                        [Description]: このelementを"true"に設定すると、EJBエンジンはマッピングするDBテーブルの列に対して
+                        EJB Entity Beanをあらかじめ初期化します。この作業は、エンジンがブートされるときに実行されます。このelementを
+                        "false"に設定すると、EJBインスタンスはcreate(), findByPrimaryKey()或いはこのような機能を行う
+                        ホームインタフェースのメソッドを通じて生成されます。
+                       [Performance Recommendation]: この値を"true"に設定するとより多いシステムメモリが必要とされるが、全体的な性能は向上されます。
+                        システムメモリが足りないと判断される場合は"false"に設定します。
+                        [Example]: &lt;init-caching>true&lt;/init-caching>
+                    ]]>        
+    </text>
+         
+    <text key="persistence-optimizeType.non-modifying-method"><![CDATA[
+                        [Description]: Non-modifyingメソッドとは、Beanと連結されたデータベースに何の変化も与えないメソッドを意味します。（例 : non-modifying methods = "getter"/"read only" メソッド)。Beanのすべてのread-only
+                        メソッドはejbStore()メソッド呼び出しより効率的に使用するためにこのelementに明示されます。
+                        [Performance Recommendation]: もしBeanがクラスタリングされずにデータベースの列に接続する他の要素がなければ、常にEXCLUSIVE_ACCESSを使用してください。.
+                        [Performance Recommendation]: 最適の性能のためにすべての read-onlyメソッドはこのリストに登録することをお勧めします。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.max-message"><![CDATA[
+                    [Description]: EJB 2.0 styleのMessage-Driven Beanでのみ使用するelementでこのMDBが使用する
+                    JMS Sessionに与えられる最大のmessageの数を指定します。より詳しい内容は、JEUS JMSのマニュアルとJMS specを参照してください。
+                    ]]>        
+    </text>
+         
+    <text key="column-mapType.foreign-key-column"><![CDATA[
+                        [Description]: この&lt;column-map>が宣言されたEJBのDB tableに存在する外部キー（Foreign Key）のDBコラムの名前です。
+                        このキーは、target-primary-key-column elementに定義されたEJBのPrimary Key DBコラムの値がマッピングされます。
+                        もしmany-to-many relationである場合は、relation tableに存在するforeign keyコラムの名前です。
+                    ]]>        
+    </text>
+         
+    <text key="security-interopType.trust-in-client"><![CDATA[
+                        [Description]: このelementは、CSIスペックに定義されている"Trust in client"ビットをマッピングします。
+                        [Defined Value]:
+                            [NotSupported]:
+                            "TLS_SEC_TRANS.target_supports" ビット配列の"Client authentication"ビットを0に設定します。(disable).
+                            [Supports]:
+                            "TLS_SEC_TRANS.target_supports"ビット配列の"Client authentication"ビットを1に
+                            設定しまｓ。(enable).
+                            [Requires]:
+                            "TLS_SEC_TRANS.target_requires"ビット配列の"Client authentication"ビットを1に設定します(enable)。そして、"TLS_SEC_TRANS.target _supports"ビット配列の
+                            "Client authentication"ビットを1に設定します(enable)。
+                        [Example]: &lt;trust-in-client>Requires&lt;/trust-in-client>
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.res-ref"><![CDATA[
+                    [Description]: このelementは、ソースコード上で使用できる外部資源(例えば: データベース)の参照名を宣言できます。
+                    [Dependency]: res-ref/jndi-info/ref-name = ejb-jar/enterprise-beans/ * /resource-ref/res-ref-name
+                    ]]>        
+    </text>
+         
+    <text key="object-managementType.bean-pool"><![CDATA[
+                        [Description]: Beanプールは、EJB　Beanの実現クラスインスタンスを持っています。インスタンスは、クライアントのリクエストを処理するために           EJB ContextとBean skeleton実現クラスに連結されたときにプールから出てサービスを始まります。プールにインスタンスがこれ以上残っていないときに新しいインスタンスが生成され、生成されたインスタンスはBeanプールに追加されます。
+                    ]]>        
+    </text>
+         
+    <text key="local-file-dbType.min-hole"><![CDATA[
+                        [Description]: File DBにあるBeanを再活性化するときにそのBeanを使用するFile DBに"hole"が生成されます。
+                        多過ぎる"hole"があるときにはそのFile DBは再構成される場合があります。min-holeとpacking-rate
+                        の状態が一致すれば、File DBは再構成されます。このelementに明示された値は、再構成が必要とされる最小限の"hole"の数を意味します。
+                        [Value Description]: "hole"の最小数
+                        [Performance Recommendation]: File DBの再構成は、システムソースの無駄使いをもたらすようになります。従って、
+                        この値は最大限高く設定してください。
+                        [Example]: &lt;min-hole>5000&lt;/min-hole>
+                    ]]>        
+    </text>
+         
+    <text key="schema-infoType.data-source-name"><![CDATA[
+                        [Description]: データベースと連結するときにしようするデータベース・コネクションプールのJNDIの名前。このコネクション・プールは一般的に
+                        JEUSMain.xmlに設定され、JEUSのマネージャであるJVMによって実行されます。
+                        [Value Description]: JEUS DBコネクションプールのJNDIの名前
+                        [Example]: &lt;data-source-name>MYDB&lt;/data-source-name>
+                    ]]>        
+    </text>
+         
+    <text key="find-methodType.include-updates"><![CDATA[
+                        [Description]: “true”の場合はfinderメソッドが呼び出される間に生成されたupdateがコミットされるため、
+                        Finderメソッドが実行される間にupdateされた情報を確認できます。
+                        Default Value: &lt;persistence-optimize>の&lt;include-update>に 指定された値がdefault値です。
+                        [Example]: &lt;include-updates>true&lt;/include-updates>
+                    ]]>        
+    </text>
+         
+    <text key="schema-infoType.db-vendor"><![CDATA[
+                        [Description]: コンテナがSQLを生成するときにどんなDBMSに合わせて生成するかを設定します。
+                    ]]>        
+    </text>
+         
+    <text key="schema-infoType.find-method"><![CDATA[
+                        [Description]: CMP 1.1 Entity Beanの場合にfinderメソッドにたいして必ず必要なSQL文を明示する必要があります。
+                      CMP 2.0の場合には、ejb-jar.xmlに指定されたEJB-QLをoverridingできます。
+                        適用はjeus-queryと同じです。
+                        [Deprecated]: &lt;jeus-query>を使用してください。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.invoke-http"><![CDATA[
+                    [Description]: この機能を設定すると、クライアント側のEJB stubと遠隔地のRMIの実行環境はHTTP-RMI
+                    リクエストで通信が行われます。これは、防火壁を越えてEJBにアクセスするときに使用されます。このモード
+                    ( HTTP呼び出しモード)を使用するときにクライアントがEJB stubで メソッドを呼び出すと、HTTP-RMIリクエスト
+                   は、これをウェブコンテナに送るウェブサーバに発送されます。そして、これはRMI Handler
+                    Servlet(jeus. rmi.http.ServletHandler)に送られ、ここでHandler Servletは、リクエストからHTTPヘッダーを除去した後にこれをRMIの実行環境に伝送します。このelementが設定される前にjeus.rmi.http. ServletHandler Servletは、必ずJEUSウェブコンテナにDeployされている必要があります。(より詳しい情報は、JEUSウェブガイドを参照してください。)
+                    [Performance Recommendation]: HTTP呼び出しモードを使用することで、若干の性能向上が期待できます。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.jndi-spi"><![CDATA[
+                    [Description]: EJB 2.0 styleのMessage-Driven Beanでのみ使用するelementで、もしMDBが基本値（jeus.jndi.JEUSContextFactory)ではない他のJNDIの名前サービスに登録されているJMSサービスを使用する場合にはこのelementを使用します。この elementはJEUS MDBをIBM MQや
+                    SONIC MQのようなJEUS JMSサービスの以外のものと連結するときに使用します。 
+                    ]]>        
+    </text>
+         
+    <text key="schema-infoType.creating-table"><![CDATA[
+                        [Description]: もしこれを活性化させれば、EJBエンジンがブートするときに、データベースにテーブルが無ければ生成します。もしこのelement値が"false"であれば、"schema check"が活性かされます。これはEJBエンジンがブートされるときに動作し、schema-info elementに定義されたDBスキーマが正しいかを確認します。エンジンコンテナのJVMパラメーターーを明示することで、これをOverrideすることもできます。（例 : -Djeus.ejb.checktable=false" )
+                        下位elementによっていtableを生成する方式が異なります。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.ejb-ref"><![CDATA[
+                    [Description]: このelementは、コードで使用するEJB参照を実際の EJB JNDIの名前でBindします。
+                    [Dependency]: ejb-ref/jndi-info/ref-name = ejb-jar/enterprise-beans/ * /ejb-ref/ejb-ref-name
+                    ]]>        
+    </text>
+         
+    <text key="cm-fieldType.exclude-field"><![CDATA[
+                        [Description]:  このelementを"true"に設定すると、上記で指定されたフィールドに対するaccessor method
+                        (set, get method)が、EJB serverが生成するconcrete bean classに生成されません。すなわち、
+                        このbeanを使用するクライアントがこのフィールドを使用できないようにします。これは、ejb-jar.xmlで指定された
+                        cmp-fieldを無視する結果となります。この設定は、CMP 2.0 EntityBeanでのみ動作されます。
+                        [Example]: &lt;exclude-field>true&lt;/exclude-field>
+                    ]]>        
+    </text>
+         
+    <text key="file-db-infoType.local-file-db"><![CDATA[
+                        [Description]: このelementは、非活性化されるセッション状態を維持するBeanの状態を保存するローカル・ファイル・データベースを明示します。
+                        [Performance Recommendation]: クラスタリングを使用しなければ、遠隔File DBの代わりにこのelementを使用する方が性能に役に立ちます。
+                    ]]>        
+    </text>
+         
+    <text key="schema-infoType.cm-field"><![CDATA[
+                        [Description]:  コンテナが管理するデータベースのそれぞれのコラムとマッピングするフィールドを明示します。
+                        [Dependency]: cm-filed/field = enterprise-beans/entity/cmp-field/field-name
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.security-interop"><![CDATA[
+                    [Description]: このelementは、IIOP/CSIを使用し、EJBエンジンで使用可能なとき、すなわち、enable-interop
+                    Elementがtrueの場合に宣言されます。次の設定に対する情報に関しては、CSIスペックを参照してください。
+                    ]]>        
+    </text>
+         
+    <text key="schema-infoType.deleting-table"><![CDATA[
+                        [Description]:  これを活性化させると、EJBエンジンが終了されるときに命名されたデータベースのテーブルを削除します。意図しなかったDB tableの削除を防ぐために、system propertyが設定されてあり、
+                        &lt;creating-table>設定が存在しないとtableを削除できません。
+                        [Example]: &lt;deleting-table>true&lt;/deleting-table>
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.use-access-control"><![CDATA[
+                    [Description]: EJBmethodを呼び出し中にmethodを呼び出したprincipalを対象にEJB methodが使用するリソースに対してJ2SE Securityで提供するaccess-controlを使用するかを決めます。
+                    この機能を動作させるためには、JEUSを起動するときに -Djava.security.managerを設定してsecurity managerを
+                    活性化する必要があります。
+                    [Performance Recommendation]: アクセスコントロールをチェックするつもりでなければ、falseに指定した方が性能に役に立ちます。
+                    [Example]: &lt;use-access-control>false&lt;/use-access-control>
+                    ]]>        
+    </text>
+         
+    <text key="beanlistType.jeus-bean"><![CDATA[
+                    [Description]: それぞれのBeanに対するjeus specificの設定を行います。ejb-jar.xmlの格Beanごとにこの設定がされている必要があります。Beanの種類ごとに設定する必要のあるelementが異なるため、JEUS EJBマニュアルを参照しながら設定してくささい。
+                    ]]>        
+    </text>
+         
+    <text key="creating-tableType.use-existing-table"><![CDATA[
+                        [Description]: もしDBに指定された名前のテーブルが既に存在すればこれをそのまま使用し、無い場合のみテーブルを生成します。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.clustering"><![CDATA[
+                    [Description]: クラスタリングの設定は、障害対処とロードの分散機能を提供します。これは、基本的に1つのEJBが他の複数のEJBのエンジンにすべてが設置された場合に使用可能です。これは、JEUSのノード間のクラスタリングの方法と類似です。クラスタリングに参加するすべてのEJBは同じexport-nameを持つ必要があります。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.mdb-resource-adapter"><![CDATA[
+                    [Description]: コネクタと連動されるMessage-Driven Beanでのみ使用するelementで、
+                    このMDBが使用するリソースアダップタを設定します。
+                    ]]>        
+    </text>
+         
+    <text key="ejb-module-infoType.unspecified-container-transaction"><![CDATA[
+                    [Description]: ejb-jar.xmlでcontainer transactionが指定されていないmethodに対する設定を行います。この値のdefaultは-Djeus.ejb.transaction.attribute.defaultで設定できます。この値が指定されていないと、 Supportsがdefaultで使用されます。
+                    ]]>        
+    </text>
+         
+    <text key="schema-infoType.prim-key-field"><![CDATA[
+                        [Description]: ejb-jar.xmlに&lt;prim-key-class>が明示されている場合のみに使用されます。
+                        &lt;prim-key-class>のfieldの中でEJB　BeanとDBテーブルの列で Primary Keyを構成するために使用されるすべてのEJBフィールドの名前を明示します。下位のelementの中で&lt;field>のみを指定します。
+                        Default Value: もしこの値が明示できなければ、&lt;prim-key-class>のすべてのpublicフィールドで
+                        Primary Keyを構成します。
+                        [Example]: &lt;prim-key-field>id&lt;/prim-key-field>
+                    ]]>        
+    </text>
+         
+    <text key="export-iiopType.only-iiop"><![CDATA[
+                    [Description]: このEJBのHomeをIIOPの以外にRMI Stubも一緒に登録するかを決定します。
+					一緒に登録されると、CosNamingにはIIOP stubが、JEUS JNDIにはRMI stubが登録されます。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.local-export-name"><![CDATA[
+                    [Description]: BeanがローカルBeanインタフェースの場合に使用するJNDIの名前です。
+                    [Value Description]: 任意に指定でき、JNDI Naming Systemで必ずユニークな名前である必要があります。
+                    [Example]: &lt;local-export-name>LOCALTELLEREJB&lt;/local-export-name>
+                    ]]>        
+    </text>
+         
+    <text key="unspecified-method-permissionType.excluded"><![CDATA[
+                [Description]: ejb-jar.xmlでmethod permissionが指定されていないmethodをexcludeします。従って、
+                あるprincipalは、このmethodを呼び出すpermissionを取得することができません。
+                    ]]>        
+    </text>
+         
+    <text key="auto-key-generatorType.generator-name"><![CDATA[
+                        [Description]: OracleとUSER_KEY_TABLEの値を使用する場合に使用します。Oracleの場合は
+                        SEQUENCEの名前を明示します。USER_KEY_TABLEの場合は、 Primary Keyを持っているテーブル名を明示します。
+                        [Value Description]: Oracleの場合にはSEQUENCEの名前、 USER_KEY_TABLEの場合にはテーブルの名前。
+                        [Example]: &lt;generator-name>MYKEYTABLE&lt;/generator-name>
+                    ]]>        
+    </text>
+         
+    <text key="cm-persistence-optimizeType.fetch-size"><![CDATA[
+                        [Description]: このelementは、DBにかなり大きいサイズの ResultSetがリターンされるときに一回にいくつの列を持ってくるかを示します。
+                        [Performance Recommendation]: この値を高く設定するとさらに多い量のシステムメモリが必要とされるが、データベースの"select"リクエストより効率的に実行します。
+                        [Example]: &lt;fetch-size>80&lt;/fetch-size>
+                    ]]>        
+    </text>
+         
+    <text key="activation-config-propertyType.activation-config-property-name"><![CDATA[
+                        [Description]: 指定しようとするactivation config propertyの名前です。JMS MDBの場合には
+                        acknowledgeMode、 messageSelector、 destinationType、 subscriptionDurabilityに基本的に認識されます。
+                    ]]>        
+    </text>
+         
+    <text key="activation-configType.activation-config-property"><![CDATA[
+                        [Description]: それぞれのactivation config propertyを指定します。
+                    ]]>        
+    </text>
+         
+    <text key="local-file-dbType.file-db-path"><![CDATA[
+                        [Description]: このelementは、セッション状態を維持するBeanの状態を保存するFile DBを生成するディレクトリの経路を明示します。
+                        [Value Description]: 経路は絶対経路を使用します。
+                        [Example]: &lt;file-db-path>c:\temp&lt;/file-db-path>
+                    ]]>        
+    </text>
+         
+    <text key="jeus-ejb-ddType.message-destination"><![CDATA[
+                    [Description]: ejb-jar.xmlの&lt;message-destination>に宣言された message destinationと
+                    JNDIに登録された実際のDestination　elementをマッピングします。
+                    [Dependency]: message-destination/jndi-info/ref = ejb-jar/enterprise-beans/ * /message-destination-ref/message-destination-ref-name
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.env"><![CDATA[
+                    [Description]: 標準EJB DDに定義された&lt;env-entry>タッグに追加されたりOverrideされます。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.connection-factory-name"><![CDATA[
+                    [Description]: EJB 2.0 styleのMessage-Driven Beanでのみ使用するelementで、このMDBが使用する
+                    JMS connection factoryのJNDIの名前を設定します。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.object-management"><![CDATA[
+                    [Description]: セッション状態を維持するBeanとエンティティBeanにのみ適用されるelement管理機能は、このBeanにたいするBeanインスタンスプーリング作業をコントロールします。
+                    ]]>        
+    </text>
+         
+    <text key="cm-fieldType.column-name"><![CDATA[
+                        [Description]:  &lt;field> タッグに明示されたEJBフィールドとマッピングされるデータベーステーブルのコラムの名前を明示します。
+                        [Example]: &lt;column-name>ID&lt;/column-name>
+                    ]]>        
+    </text>
+         
+    <text key="creating-tableType.force-creating-table"><![CDATA[
+                        [Description]: もしDBに指定された名前のtableにすでに存在すれば、これを取り消し、再びテーブルを生成します。
+                    ]]>        
+    </text>
+         
+    <text key="clusteringType.ejb-home-idempotent-exclude-method"><![CDATA[
+                        [Description]: このelementは、"idempotent"ホームメソッドから除外されるメソッドを指定したます。上記の &lt;ejb-home-idempotent-method>に優先します。                   ]]>        
+    </text>
+         
+    <text key="local-file-dbType.packing-rate"><![CDATA[
+                        [Description]: この値は0と1の間にある値です。min-holeの状態が一致し、"hole"によって使用される
+                        File DBの総比率がこの値と一致するときにFile DBは再構成されます。
+                        [Performance Recommendation]: File DBの再構成は、システムソースの無駄使いをもたらすようになります。従って、
+                        この値は最大限高く設定してください。
+                        [Example]: &lt;packing-rate>0.4&lt;/packing-rate>
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.export-iiop"><![CDATA[
+                    [Description]: このelementを設定すれば、Beanのインタフェースが  IIOP stubとskeletonとして
+                    COS Naming Serverにexportできるようにします。これは、IIOPに接続できるすべてのクライアントがBeanにアクセスできるようにします。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.destination"><![CDATA[
+                    [Description]: EJB 2.0 styleのMessage-Driven Beanでのみ使用するelementで、このMDBが使用する
+                    JMS DestinationのJNDIの名前を設定します。より詳しい情報は、 JEUS JMSのマニュアルとJMS specを参照してください。
+                    ]]>        
+    </text>
+         
+    <text key="ejb-relation-mapType.table-name"><![CDATA[
+                        [Description]: EJB RelationがこのM:Mの関係であればこのデータベースの中でこの
+                        M:MのRelationを示す"join-table"があります。この elementは、
+                        M:MのRelationを表現する"join-table"の名前を明示します。
+                        [Example]: &lt;table-name>studentcoursejoin&lt;/table-name>
+                    ]]>        
+    </text>
+         
+    <text key="mdb-resource-adapterType.activation-config"><![CDATA[
+                        [Description]: リソースアダプタを設定するactivation configを記録します。この設定は、
+                        ejb-jar.xmlのactivation configをoverrideすることができます。
+                 ]]>        
+    </text>
+         
+    <text key="file-db-infoType.remote-file-db"><![CDATA[
+                        [Description]: このelementは、ローカルFile DBの代わりです。もしこの値が設定されれば、Beanの状態はJEUSMain.xmlに設定されたセッションマネージャに保存され、JEUSマネージャによって実行されるはずです。
+                        セッション状態を維持するBeanがクラスタリングされることを求めるなら、必ずこのelementを設定する必要があります。
+                        クラスタリングされない環境であｈこの値が使用される理由がありません。
+                        [Performance Recommendation]: 性能上の理由でクラスタリングしなければ、この値を使用しないことをお勧めします。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.enable-instant-ql"><![CDATA[
+                    [Description]: この値を"true"に設定すれば、このBeanのホームインタフェースは付加的にJEUSの特定的なインタフェース
+                   ( "jeus.ejb.bean.objectbase.EJBInstanceFinder" )を実現します。このインタフェースは、次のようなメソッドを含めます。
+                        findWithInstantQL(java.lang.String qlSentence).
+                    このメソッドはクライアントのソースコードで直ちに任意のEJB QL Queryを明示できるようにします。これは、
+                    Finderメソッドが十分ではない場合に臨時解決策となります。                    参考: "qlSentence"文字列パラメーターは、 パラメーターが無い、すなわち"?"が無いEJB QL文のみをサポ―トすることに注意してください。これは、CMP 2.0  Entity Beanでのみ動作を行います。                    [Performance Recommendation]: "findWithInstantQL(java.lang.String qlSentence)" メソッドの使用は非効率的です。                    特別な状況でなければ使用しない方が好ましいです。
+                    [Example]: &lt;enable-instant-ql>true&lt;/enable-instant-ql>
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.schema-info"><![CDATA[
+                    [Description]: このelementは、データベースのコラムとEJBフィールドのマッピングを定義します。このelementは
+                    CMP Entity Beanでのみ使用します。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.durable"><![CDATA[
+                    [Description]: EJB 2.0 styleのMessage-Driven Beanでのみ使用するelementで、このMDBをJMSの
+                    durable subscriberに指定するかを決定します。詳しい内容は、JEUS JMSのマニュアルとJMS specを参照してください。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.ack-mode"><![CDATA[
+                    [Description]: EJB 2.0 styleのMessage-Driven Beanでのみ使用するelementで、このMDBが使用する
+                    JMS SessionのAckndowledge modeを設定します。より詳しい内容は、JEUS JMSの マニュアルとJMS specを参照してください。
+                    ]]>        
+    </text>
+         
+    <text key="ejb-module-infoType.keep-generated"><![CDATA[
+                    [Description]: このモジュールに対して生成されたJavaソースファイルを残すかどうかを指定します。
+                    この設定がtrueの場合は、jeus-application-dd.xmlの設定に優先します。 Falseの場合には
+                    jeus-application-dd.xmlのkeep-generatedの設定によります。
+                    ]]>        
+    </text>
+         
+    <text key="cm-persistence-optimizeType.subengine-type"><![CDATA[
+                        [Description]: このelementはデータベーステーブルの列にアクセスするときにejbLoad()
+                        メソッドが持つデータベースロック(lock)のタイプを宣言します。この設定はBeanの属性によって設定されることができます。( 例: BeanがWriteよりRead作業を多く実行する場合かまたは逆にread作業よりwrite作業を多く実行する場合)
+                        Oracle DBに対しては、WriteLockを使用する場合にDB IsolationがSerializationに設定される効果が得られます。
+                        [Performance Recommendation]: もしEJB　BeanがDBテーブルの列に対してWrite作業よりRead作業の方が多ければ"ReadLocking"を使用します。逆に、Read作業が多ければ"WriteLocking"を使用します。
+                        [Example]: &lt;subengine-type>WriteLocking&lt;/subengine-type>
+                    ]]>        
+    </text>
+         
+    <text key="local-file-dbType.file-db-name"><![CDATA[
+                        [Description]: ここでFile DBの名前を明示します。この名前の後ろには数字が追加され、fdbという拡張子を使用します。数字は実際にFile DBとバックアップFile DBを区別するために使用されます。たとえば、
+                        File DBの名前が"teller"である場合、"teller1.fdb"と"teller2.fdb"が生成されます。
+                        [Value Description]: 拡張子がない任意のファイルの名前
+                        [Example]: &lt;file-db-name>teller&lt;/file-db-name>
+                    ]]>        
+    </text>
+         
+    <text key="object-managementType.capacity"><![CDATA[
+                        [Description]: これは生成されると予想されるBeanインスタンスの最大数を意味します。この値は、EJBと連結される
+                        内部クライアントセッションデータの効率的な構成のために使用されます。
+                        [Value Description]: beanの数
+                    ]]>        
+    </text>
+         
+    <text key="durable-timer-serviceType.delete-durable-timers-at-undeploy"><![CDATA[
+                    [Description]:  通常、timerはcode上で明示的にremove()が呼び出されなければ、除去されません。
+                   このEJBがundeployされるときに、まだ除去されなかったpersistence timerがあればそれを除去するようにするオプションです。
+                    ]]>        
+    </text>
+         
+    <text key="object-managementType.disconnect-timeout"><![CDATA[
+                        [Description]: このelementは、ここで設定されている時間の間クライアントのリクエストを受けないとクライアントとBeanインスタンスとの連結を取り消すのに使用されます。そうすると、コネクションインスタンス(EJB object)は、
+                        永久的にランタイム・メモリから除去されます。
+                        [Value Description]: millisecondの単位です。
+                    ]]>        
+    </text>
+         
+    <text key="bean-poolType.pool-min"><![CDATA[
+                        [Description]: プールに入れられるBeanインスタンスの最小数
+                    ]]>        
+    </text>
+         
+    <text key="jeus-ejb-ddType.ejb-relation-map"><![CDATA[
+                    [Description]: このelementは、CMP 2.0 Entity Bean間の関係を定義するときに使用します。
+                    ejb-relation-map elementは、ejb-jar.xmlに宣言されたそれぞれの Relationごとに1つつづ存在します。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.thread-max"><![CDATA[
+                    [Description]: EJBエンジンがクライアントのリクエストを受け取り及び処理するスレッドの最大数を設定します。この値だけのスレッドがすでに使用されていれば、その次のリクエストは、他のスレッドが使用可能になるまで待ちます。
+                    ]]>        
+    </text>
+         
+    <text key="remote-file-dbType.remote-primary-file-db"><![CDATA[
+                        [Description]: このelementは、状態永続性のためにしようされる主なSession Managerを選択します。
+                        [Value Description]: Session ManagerのJNDIの名前
+                        [Example]: &lt;remote-primary-file-db>MYSESSIONSERVER&lt;/remote-primary-file-db>
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.run-as-identity"><![CDATA[
+                    [Description]: このelementは、ejb-jar.xmlに定義されたrun-as-specified-identity roleの名前を実際のユーザの名前(principal)にマッピングします。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.file-db-info"><![CDATA[
+                    [Description]: EJBエンジンは、セッション状態を維持するBeanが非活性化されるときにBeanの状態をFile DBに保存した後に、
+                    また必要な時に再びその状態値を復旧します。このとき、使用するFile DBに対する設定を行います。
+                    ]]>        
+    </text>
+         
+    <text key="security-interopType.client-auth"><![CDATA[
+                        [Description]: このelementは、CSIスペックに定義されている "Client authentication"ビットをマッピングします。
+                        [Defined Value]:
+                            [NotSupported]:
+                            "AS_ContextSec.target_supports"ビット配列の"Client authentication"ビットを0に設定します。(disable).
+                            [Supports]:
+                            "AS_ContextSec.target_supports"ビット配列の"Client authentication"ビットを1に設定します(enable)。
+                            [Requires]:
+                            "AS_ContextSec.target_requires"ビット配列の"Client authentication" ビットを1に設定します(enable)。そして、"AS_ContextSec.target_supports"ビット配列の"Client
+                            authentication" ビットを1に設定します(enable)。
+                        [Example]: &lt;client-auth>Requires&lt;/client-auth>
+                    ]]>        
+    </text>
+         
+    <text key="persistence-optimizeType.engine-type"><![CDATA[
+                        [Description]: これは、EJBエンジンによってejbLoad()呼び出しが発生するときに生じる行為を決定し、最適かさせます。
+                        [Performance Recommendation]: もしBeanがクラスタリングさせずにデータベースの列に接続する他のよそがなければ、常にEXCLUSIVE_ACCESSを使用してください。
+                        [Example]: &lt;engine-type>SINGLE_OBJECT&lt;/engine-type>
+                    ]]>        
+    </text>
+         
+    <text key="column-mapType.target-primary-key-column"><![CDATA[
+                        [Description]: 外部キー（Foreign Key）コラムにマッピングされるEJBのPrimary KeyのDBコラムの名前です。
+                    ]]>        
+    </text>
+         
+    <text key="durable-timer-serviceType.enable-durable-timers"><![CDATA[
+                    [Description]: このEJBがtimerをpersistenceに管理するかを決定します。この値がtrueとしても
+                    EJBMain.xmlにdurable timerが設定されていなければpersistence timerを使用することができません。
+                    ]]>        
+    </text>
+         
+    <text key="find-methodType.sql"><![CDATA[
+                        [Description]: EJB 1.1でfinderメソッドを生成するときに使用するSQL文の一部分。
+                        EJB 2.0では、このelementを使用しません。特殊文字( たとえば“&lt;” )を使用するときには
+                    &lt;![CDATA[sql]]&amp;gt;を使用する必要があります。
+                        [Value Description]: これは、ただwhere節の気ワードを明示します。このSQL文で
+                        "?"はfinderメソッドが呼び出されるときにfinderメソッドのパラメーター値の順に置き換えられます。
+                        ?の後ろに数字を入力できるが、これは何番目のパラメーターであるかを示します。すなわち、"?1"は一番目の
+                        パラメーター値が入る箇所です。
+                        このとき、 ?の後ろに数字を入れる形式と?のみ使用する形式は、混用して使用することはできません。
+                        [Example]: &lt;sql>customer_address=?&lt;/sql>
+                    ]]>        
+    </text>
+         
+    <text key="cm-fieldType.field"><![CDATA[
+                        [Description]:  データベースのコラムとマッピングされるEJBFヒール度の名前
+                        [Example]: &lt;field>id&lt;/field>
+                    ]]>        
+    </text>
+         
+    <text key="unspecified-method-permissionType.unchecked"><![CDATA[
+                [Description]: ejb-jar.xmlでmethod permissionが指定されていないmethodをuncheckedに見なします。
+                従って、すべてのprincipalはこのmethodを呼び出すpermissionを取得します。
+                    ]]>        
+    </text>
+         
+    <text key="ejb-module-infoType.fast-deploy"><![CDATA[
+                    [Description]: このモジュールがDeployの前にejb module compilerによってcompileされ、fast deployが可能であるときに設定します。
+                    この設定がtrueの場合は、jeus-application-dd.xmlの設定に優先します。 Falseの場合には
+                    jeus-application-dd.xmlのfast deployの設定によります。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-relationship-roleType.column-map"><![CDATA[
+                            [Description]: このelementは、1つのテーブルの外部キー（Foreign Key）を他のEJBのPrimary Keyとマッピングします。
+                            このマッピングは、短方向でRelationを定義します。もし Foreign KeyやPrimary Keyが
+                            複数のコラムやEJBフィールドを複合して使用された場合、これらをすべてcolumn-map elementに定義する必要があります。
+                        ]]>        
+    </text>
+         
+    <text key="persistence-optimizeType.entity-cache-size"><![CDATA[
+                        [Description]: このelementは、内部のキャッシュメモリに残っているエンティティBeanインスタンスの最大数を明示します。
+                        最適の性能のために、キャッシュメモリの中に非活性化されたBeanインスタンスを持っています。
+                        [Value Description]: このelementは、内部のキャッシュメモリに残っているエンティティBeanインスタンスの最大数
+                        [Defined Value]:
+                            [0]:
+                            非活性化されたエンティティBeanに対するキャッシングは行いません。
+                        [Performance Recommendation]: 多くのシステムメモリの使用を考えると、この値は中分に高く設定するときに、より最適の性能が期待できます。逆に、システムメモリが中分で無い場合にはこの値を低く設定してください。
+                        [Example]: &lt;entity-cache-size>100&lt;/entity-cache-size>
+                    ]]>        
+    </text>
+         
+    <text key="cm-fieldType.type"><![CDATA[
+                        [Description]: これはデータベース側でのテーブルカラムのデータタイプを意味します。
+                       ( 例 : "VARCHAR(20)", "NUMERIC" )。もしこのelementが明示されない場合には基本値を使用します。
+                        オラクルDBの場合は、"CLOB"と"BLOB"のタイプを使用することができます。"CLOB"のタイプはEJBの
+                        java.lang.Stringフィールドに対応され、"BLOB"は直列化されたelementフィールドに対応されます。
+                        [Example]: &lt;type>NUMERIC&lt;/type>
+                    ]]>        
+    </text>
+         
+    <text key="jeus-ejb-dd"><![CDATA[
+			[Description]: 単一JEUS EJBモジュールの最上位element。それぞれのjeus-ejb-dd.xml
+			ファイルにはこのタッグが必ず存在します。
+            ]]>        
+    </text>
+         
+    <text key="jeus-beanType.local-invoke-optimize"><![CDATA[
+                    [Description]: このelementは、2つのEJB相好に通信して同じJVMの中で実行されたら、メソッドを呼び出すかまたはRMI通信を行うかを決めます。このオプションが活性化されたときにメソッド呼び出しで通信します(call-by-reference)。従って、EJBプログラミングはしない方が好ましいです。
+                    すべてのメソッド呼び出しは、call-by-valueであるように扱います。
+                    [Performance Recommendation]: 性能を向上させるために2つのEJBが同じJVMに存在するときにこの値をtrueに設定します。
+                    [Example]: &lt;local-invoke-optimize>true&lt;/local-invoke-optimize>
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.single-vm-only"><![CDATA[
+                    [Description]: “true”に設定されていると、JNDIサーバはBeanが実行されているJVMでのみ、Beanの名前が
+                    Exportできるように範囲を限定させます。この意味は、該当のBeanをアクセスできるクライアントは、同一のJVM内で運営されているServletとBeanだけということです。(すなわち、そのBeanは現在のエンジンコンテナでのみ、見ることができる)。このオプションは、同じBeanが他のエンジンコンテナでもDeployされている場合に有用に使用することができます。
+                    一般的に、Beanが同じJNDI exportの名前を持っている場合にはこの名前がexportされるときに相好をJNDI Naming Serverでoverwriteします。このオプションを使用することで格BeanはBeanを運営しているJVMでのみ認識され、範囲が制限されることでexport名前がoverwriteされません。
+                    [Example]: &lt;single-vm-only>true&lt;/single-vm-only>
+                    ]]>        
+    </text>
+         
+    <text key="ejb-relation-mapType.jeus-relationship-role"><![CDATA[
+                        [Description]: このelementは、1つのEJBと他のEJBの間に Relationを明示します。それぞれのelementは
+                        短方向でRelationを意味します。M:MのRelationの場合には必ず2つの
+                        jeus-relationship-role elementが必要です。それぞれのelementは、"join-table"のそれぞれの
+                        Foreign KeyとEJBの実際のPrimary Keyをマッピングします。
+                    ]]>        
+    </text>
+         
+    <text key="ejb-relation-mapType.relation-name"><![CDATA[
+                        [Description]: このelementは、標準ejb-jar.xmlに定義されている EJB 2.0 Relationの名前を明示します。
+                        [Example]: &lt;relation-name>student-course&lt;/relation-name>
+                        [Dependency]: ejb-jar/relationships/ejb-relation/ejb-relation-name
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.cm-persistence-optimize"><![CDATA[
+                    [Description]: このelementの使用は、EJBエンジンによって生成されるejbLoad()とejbStore()メソッドの性能を向上されるために使用する属性を定義します。このelementはCMP Entity Beanでのみ使用されます。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.export-port"><![CDATA[
+                    [Description]: このelementは、このBeanがサービスするRMI Listener Portを明示します。この設定は
+                    クライアントとEJB間に防火壁があるときにも使用されます。この elementは管理者がRMI通信を許容するポート番号を提供する場合のみ、使用できます。
+                              [Value Description]: ポート番号
+                    [Example]: &lt;export-port>7654&lt;/export-port>
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.export-name"><![CDATA[
+                    [Description]: JNDI Naming Systemに登録されるユニークな名前です。クラスタリングに参加するすべてのBeanは、同じexport-nameを持つ必要があります。
+                    [Value Description]: 任意に指定でき、JNDI Naming Systemで必ずユニークな名前である必要があります。
+                    [Example]: &lt;export-name>TELLEREJB&lt;/export-name>
+                    ]]>        
+    </text>
+         
+    <text key="unspecified-method-permissionType.role"><![CDATA[
+                  [Description]: ejb-jar.xmlでmethod permissionが指定されていないmethodのpermissionをここに設定されている
+                  ロールに割り当てます。他のロールのprincipalは、このmethodを呼び出すpermissionを取得することができません。
+                  [Value Description]: ejb-jar.xmlの&lt;assembler-description>で指定されたロールの名前
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.pooling-bean"><![CDATA[
+                    [Description]: stateful session beanにたいしてのみ適用されるelementで、このelementをtrueに設定すれば、セッション状態を維持するBeanインスタンスは非活性化（クライアントのリクエストをすべて処理し、Beanプールにインスタンスが返還された状態）された後に再使用されます。 
+                    [Performance Recommendation]: セッション状態を維持するBeanの再使用を禁止される特別な理由がなければ、全体的な性能の最適化のために、この機能をtrueに設定します。
+                    ]]>        
+    </text>
+         
+    <text key="schema-infoType.jeus-query"><![CDATA[
+                        [Description]: jeus-queryタッグは、queryメソッドの(findXXX)で EJB-QLとJEUS EJB-QLの拡張を使用できるようにします。これは、
+                        ejb-jar.xmlのqueryタッグと等しいです。このタッグの主な目的は、
+                        BEA WebLogicアプリケーションサーバをJEUS 4.2に容易にマイグレーションするためです。
+                        適用はfind-methodと同じです。
+                    ]]>        
+    </text>
+         
+    <text key="clusteringType.ejb-home-idempotent-method"><![CDATA[
+                        [Description]: このelementは、"idempotent"ホームメソッドというものを宣言します。このメソッドは、実行中にBean自身やデータベースのフィールドの内容などが変更されないことを保障します。idempotent
+                        メソッドは、基本的にアップデートや設定の変化なしに結果値を返還するgetterメソッドです。
+                        このメソッドを明示する理由は、あるメソッドがIdempotentメソッドであれば、最初に試みたメソッドの呼び出しが実行中に失敗しても安全に再呼び出しが可能です。しかし、そのメソッドがIdempotentメソッドでないと、こういう場合には解決策がありません。同じ副作用を持つ二回の連続的で重複したメソッドの呼び出しで、不一致となる状態に至る危険を甘受しなければならない、そしてこの場合exceptionにしたほうがさらに効率的です。従って、Idempotent
+                        Methodを多く使用するほどEJB failoverは効率的に動作されるはずです。
+                    ]]>        
+    </text>
+         
+    <text key="mdb-resource-adapterType.resource-adapter-name"><![CDATA[
+                        [Description]: MDBが使用するリソースアダプタの名前を設定します。この名前は該当のリソースアダプタの
+                        jeus-connector-dd.xmlに指定されているモジュールの名前です。
+                    ]]>        
+    </text>
+         
+    <text key="bean-poolType.resizing-period"><![CDATA[
+                        [Description]: Beanプールのサイズが再調整される時間間隔。この時間ごとに使用されないインスタンスをプールから除去します。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.ejb-name"><![CDATA[
+                    [Description]: ejb-jar.xmlにしてされているejb-nameを示します。
+                    [Example]: &lt;ejb-name>teller&lt;/ejb-name>
+					[Dependency]: ejb-jar/enterprise-beans/ * /ejb-name
+                    ]]>        
+    </text>
+         
+    <text key="schema-infoType.auto-key-generator"><![CDATA[
+                        [Description]: このelementはPrimary Keyを設定せずにcreate()を呼び出すときに
+                        Primary Keyを自動に生成させる外部ソースを指定します。この外部ソースは、単一のPrimary Keyを生成する必要の無い複数のEJBエンジンが共有する1つのデータベースである必要があります。EJBエンジンがデータベースからPrimary Keyを持ってきた後に、DBにあるPrimary Keyの値は常にユニークでなければならないが、他のEJBエンジンによって使用されるほど値が増加されます。Primary Key値はデータベース内で常に"int"
+                        型であり、Bean内では必ずjava.lang.Integerタイプである必要があります。
+                    ]]>        
+    </text>
+         
+    <text key="clusteringType.ejb-remote-idempotent-method"><![CDATA[
+                        [Description]: このelementは、"idempotent"リモートメソッドということを宣言します。このメソッドは、実行中にBean自身やデータベースのフィールドの内容が変更されないことを保障します。idempotent
+                        メソッドは基本的にあるアップデートや設定の変化なしに結果値を返還するgetterメソッドです。このような
+                        メソッドを明示する理由は、あるメソッドがIndempotentメソッドであれば最初に試みたメソッド呼び出しが実行中に失敗したとしても安全にまた呼び出しできます。しかし、そのメソッドがIdempotentメソッドでなければ、こういう場合には解決策がありません。同じ副作用を持つ二回の連続的で重複したメソッドの呼び出しで、不一致となる状態に至る危険を甘受しなければならない、そしてこの場合exceptionにしたほうがさらに効率的です。従って、Idempotent methodを多く使用するほどEJB failoverは効率的に動作されるはずです。
+                    ]]>        
+    </text>
+         
+    <text key="jndi-spiType.provider-url"><![CDATA[
+                    [Description]: JNDI名前サービスと連結するときに使用するURLアドレスとポート番号
+                    [Example]: &lt;provider-url> protocol://localhost:2345&lt;/provider-url>
+                    ]]>        
+    </text>
+         
+    <text key="auto-key-generatorType.generator-type"><![CDATA[
+                        [Description]: このelementは、Primary Keyを持っているデータベースのタイプとベンダーを明示します。
+                        [Example]: &lt;generator-type>USER_KEY_TABLE&lt;/generator-type>
+                    ]]>        
+    </text>
+         
+    <text key="clusteringType.enable-clustering"><![CDATA[
+                        [Description]: このエレメントを true に設定すればクルロストリング??が活性化になります. 
+                        [Example]: &lt;enable-clustering>true&lt;/enable-clustering>
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.res-env-ref"><![CDATA[
+                    [Description]: このelementは、コードで使用する外部資源参照を実際のJNDIの名前でBindしまｓ。このelementは、標準EJB DDの&lt;resource-env-ref>に対応します。
+                    [Dependency]: res-env-ref/jndi-info/ref-name = ejb-jar/enterprise-beans/ * /resource-env-ref/resource-env-ref-name
+                    ]]>        
+    </text>
+         
+    <text key="activation-configType.description"><![CDATA[
+                        [Description]: このactivation configに対する説明を書き込むことができます。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.persistence-optimize"><![CDATA[
+                  [Description]: このelementは、entity beanでejbLoadとejbStoreメソッドを呼び出す時期を指定する
+                  EJBエンジンの規則を決定し、最適化するための設定を含めます。このメソッドをより少なく呼び出されるほど性能は効率的になります。
+                  [Performance Recommendation]: このelementの下位elementは、性能に大きい影響を及ぼすため、正確に設定する必要があります。
+                    ]]>        
+    </text>
+         
+    <text key="ejb-module-infoType.role-permission"><![CDATA[
+                    [Description]: このEJBモジュールでのuser principalとejb-jar.xmlで使用するロールの関係を設定します。
+                    ]]>        
+    </text>
+         
+    <text key="activation-config-propertyType.activation-config-property-value"><![CDATA[                             [Description]: 指定しようとするactivation config property値を設定します。                     
+                    ]]>        
+    </text>
+         
+    <text key="object-managementType.passivation-timeout"><![CDATA[
+                        [Description]: このelementで明示した特定期間の間にクライアントのリクエストを受け取ってなかったBeanをEJBエンジンで非活性化します。非活性化されたBeanはメモリから除去され、その状態はファイルまたはDBに保存されます。
+                        [Value Description]: millisecondの単位です。
+                    ]]>        
+    </text>
+         
+    <text key="remote-file-dbType.conn-pool-size"><![CDATA[
+                        [Description]: 遠隔セッションサーバとのコネクションをキャッシュするときに使用するプールのサイズを設定します。
+                        [Example]: &lt;conn-pool-size>50&lt;/conn-pool-size>
+                    ]]>        
+    </text>
+         
+    <text key="bean-poolType.pool-max"><![CDATA[
+                        [Description]: プールにあるBeanインスタンスの最大数
+                    ]]>        
+    </text>
+         
+    <text key="ejb-module-infoType.unspecified-method-permission"><![CDATA[
+                    [Description]: ejb-jar.xmlでmethod permissionが指定されていないmethodに対する設定を行います。
+                    ]]>        
+    </text>
+         
+    <text key="remote-file-dbType.remote-backup-file-db"><![CDATA[
+                        [Description]: このelementは状態永続性のために使用されるバックアップSession Managerを選択します。
+                        Backup Session ManagerはPrimary Session Managerがダウンなどの理由で使用が出来なくなった場合に使用します。
+                        [Value Description]: Session ManagerのJNDIの名前
+                        [Example]: &lt;remote-backup-file-db>MYSESSIONBACKUP&lt;/remote-backup-file-db>
+                    ]]>        
+    </text>
+         
+    <text key="security-interopType.identity-assertion"><![CDATA[
+                        [Description]: このelementはCSIスペックに定義されている "Identity assertion" ビットをマッピングします。
+                        [Defined Value]:
+                            [NotSupported]:
+                            "SAS_ContextSec.target_supports"  ビット配列の"Client authentication" ビットを0に設定します(disable)。
+                            [Supports]:
+                            "SAS_ContextSec.target_supports"  ビット配列の"Client authentication" ビットを1に設定します(enable)。
+                        [Example]: &lt;integrity-confidentiality>Requires&lt;/integrity-confidentiality>
+                    ]]>        
+    </text>
+         
+    <text key="persistence-optimizeType.include-update"><![CDATA[
+                        [Description]: &lt;schema-info>のそれぞれの&lt;find-method>ごとに設定される&lt;include-updates>値の
+                        Default値をここに指定できます。すなわち、&lt;find-method>に &lt;include-update>が指定されていない場合、ここに指定された値で設定されます。“true”の場合、finderメソッドが呼び出される間に生成されたupdateがcommitされるため、finderメソッドが実行される間にupdateされた情報を確認できます。
+                        [Performance Recommendation]: find method自身が実行されるtransactionで変更された内容を反映する必要がなければ、falseに設定されていた方が性能に役立ちます。
+                        [Example]: &lt;include-updates>true&lt;/include-updates>
+                    ]]>        
+    </text>
+         
+    <text key="jeus-beanType.durable-timer-service"><![CDATA[
+                    [Description]: このEJBがTimer Serviceを使用する場合に persistence timerに対する動作を設定します。
+                    ]]>        
+    </text>
+         
+    <text key="jeus-ejb-ddType.beanlist"><![CDATA[
+                    [Description]: それぞれのBeanを設定するelementです。
+                    ]]>        
+    </text>
+         
+    <text key="jndi-spiType.initial-context-factory"><![CDATA[
+                    [Description]: JMSサービスと連結するときにJEUS Naming Serviceを使用するとき必要なinitial context
+                    Factoryのクラスの名前
+                    [Example]: &lt;initial-context-factory>acme.jndi.ACMEContextFactory&lt;/initial-context-factory>
+                    ]]>        
+    </text>
+         
+    <text key="jeus-relationship-roleType.relationship-role-name"><![CDATA[
+                        [Description]: これは、ejb-jar.xmlファイルのejb-relationship-role-name elementに定義されている
+                        relationship roleの名前です。
+                        [Example]: &lt;relationship-role-name>student-to-course&lt;/relationship-role-name>
+                        [Dependency]: ejb-jar/relationships/ejb-relation/ejb-relationship-role/ejb-relationship-role-name
+                    ]]>        
+    </text>
+    <text key="generator-typeType.ORACLE"><![CDATA[
+                        [Description]: Oracle DBの場合
+                    ]]>               
+    </text>
+                 
+    <text key="generator-typeType.MSSQL"><![CDATA[
+                        [Description]: MS SQL DBの場合
+                    ]]>               
+    </text>
+                 
+    <text key="generator-typeType.USER_KEY_TABLE"><![CDATA[
+                        [Description]: OracleとMSSQLを除いた他のDBの場合
+                    ]]>               
+    </text>
+                 
+    <text key="database-insert-delayType.ejbCreate"><![CDATA[
+                        [Description]: ejbCreateメソッドの後にEJBデータをDB tableに追加します。
+                    ]]>               
+    </text>
+                 
+    <text key="database-insert-delayType.ejbPostCreate"><![CDATA[
+                        [Description]: ejbPostCreateメソッドの後にEJBデータをDB tableに追加します。
+                    ]]>               
+    </text>
+                 
+    <text key="subengine-typeType.ReadLocking"><![CDATA[
+                    [Description]: 生成されたejbLoad()は、データベーステーブルの列に対して常に"shared lock"を持ちます。
+                    ]]>               
+    </text>
+                 
+    <text key="subengine-typeType.WriteLocking"><![CDATA[
+                    [Description]: 生成されたejbLoad()は、データベーステーブルの列に対して常に"exclusive lock"を持ちます。
+                    ]]>               
+    </text>
+                 
+    <text key="subengine-typeType.WriteLockingFind"><![CDATA[
+                    [Description]: 生成されたejbLoad()とejbFind()は、データベーステーブルの列に対して常に"exclusive lock"を持ちます。
+                    ]]>               
+    </text>
+                 
+    <text key="mq-vendorType.SONICMQ"><![CDATA[
+                        [Description]: Sonic MQを使用する場合
+                    ]]>               
+    </text>
+                 
+    <text key="mq-vendorType.IBMMQ"><![CDATA[
+                        [Description]: IBM MQを使用する場合
+                    ]]>               
+    </text>    
+    <text key="trans-attributeType"><![CDATA[
+	The trans-attributeType specifies how the container must
+	manage the transaction boundaries when delegating a method
+	invocation to an enterprise bean's business method.
+	The value must be one of the following:
+	    NotSupported
+	    Supports
+	    Required
+	    RequiresNew
+	    Mandatory
+	    Never
+            ]]>
+    </text>    
+ </description>

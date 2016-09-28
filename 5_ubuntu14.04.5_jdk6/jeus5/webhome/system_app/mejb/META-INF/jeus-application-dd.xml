@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<application xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+  <path>mejb.jar</path>
+  <deployment-type>COMPONENT</deployment-type>
+  <fast-deploy>true</fast-deploy>
+  <deployment-target>
+	<all-targets/>
+  </deployment-target>
+  <ejb-component/>
+</application>
+               

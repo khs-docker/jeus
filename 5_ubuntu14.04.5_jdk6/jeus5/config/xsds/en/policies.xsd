@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    attributeFormDefault="unqualified" 
+    elementFormDefault="qualified" 
+    targetNamespace="http://www.tmaxsoft.com/xml/ns/jeus" version="5.0" 
+    xmlns="http://www.tmaxsoft.com/xml/ns/jeus" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">      
+    <xs:include schemaLocation="jeus-common.xsd"/>      
+    <xs:element name="policies" type="PoliciesType">         
+        <xs:annotation>             
+            <xs:documentation><![CDATA[
+                        [Description]: Defines JEUS authority check and related policies. 
+            ]]>
+            </xs:documentation>         
+        </xs:annotation>     
+    </xs:element>      
+    <xs:complexType name="PoliciesType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="1" minOccurs="0" name="policy" type="PolicyType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Defines Policy of JEUS.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="PolicyType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="1" minOccurs="0" name="role-permissions" type="RolePermissionsType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Defines principal-role mappings on the related Policy. 
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="resource-permissions" type="ResourcePermissionsType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Defines role-resource mappings on related Policy. 
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="RolePermissionsType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="role-permission" type="rolePermissionType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Defines principal-role mapping on related Policy. 
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="ResourcePermissionsType">         
+        <xs:sequence>             
+            <xs:element default="default" maxOccurs="1" minOccurs="0" name="context-id" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: context id applied for role-resource mapping(This tag is not commonly used).
+                        [Value Description]: context id value
+                        [Example]: &lt;context-id>MyContext&lt;/context-id>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="resource-permission" type="ResourcePermissionType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Defines role-resource mapping on related Policy. 
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="ResourcePermissionType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="role" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Role being mapped with related Resource. 
+                        [Value Description]: Role Name
+                        [Example]: &lt;role>Administrator&lt;/role>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="1" name="resource" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Resource being mapped with Role.
+                        [Value Description]: Resource Name.
+                        [Example]: &lt;resource>jeus.server.*&lt;/resource>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="0" name="actions" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Actions value to be passed to generator of resource permission class as selected value. 
+                        [Value Description]: Actions data value to be passed to resource permission class.
+                        [Example]: &lt;actions>boot,down&lt;/actions>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="jeus.security.resource.ResourcePermission" maxOccurs="1" minOccurs="0" name="classname" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Java class name inherited java.security.Permission.
+                                      This class is used for resource permission. 
+                        [Value Description]: Java Class name 
+                        [Example]: &lt;classname>jeus.security.resource.TimeConstrainedResourcePermission&lt;/classname>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="0" name="excluded" type="emptyType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: If this tag exists, the related Resource will be eliminated. (Access is not allowed for anyone).
+                        [Value Description]: For this field, No value is set. Empty type. 
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="0" name="unchecked" type="emptyType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: If this tag exists, the related Resource will not be checked. (Access is allowed for everyone).
+                        [Value Description]: No value is not set. . empty  Type.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType> 
+</xs:schema>

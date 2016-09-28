@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JDBCDataSource.ReconfigurePage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JDBC Data Source Reconfigure"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@JDBCDATASOURCE_NAMES"/>
+    </component>
+    <component id="security" type="Block"/>
+    <component id="pool" type="Block"/>
+
+    <component id="reconfigure_tab" type="jeus:InnerTabPanel">
+        <binding name="model" value="ognl:new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'jds.reconfigure.security.label','jds.reconfigure.pool.label'}, new java.lang.String[]{'security','pool'})"/>
+    </component>
+
+    <component id="reconfigForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jds.reconfigure.title"/>
+        <binding name="useForm" value="ognl:false "/>
+    </component>
+
+    <component id="securityForm" type="jeus:JEUSForm">
+        <binding name="listener" value="ognl:listeners.onReconfigOk"/>
+    </component>
+
+    <component id="poolForm" type="jeus:JEUSForm">
+        <binding name="listener" value="ognl:listeners.onReconfigOk"/>
+    </component>
+
+    <component id="user" type="jeus:Field">
+        <binding name="field" value="ognl:components.userField"/>
+    </component>
+
+    <component id="userField" type="jeus:DojoTextField">
+        <binding name="value" value="ognl:properties.User"/>
+        <binding name="displayName" value="message:jds.reconfigure.user.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="password" type="jeus:Field">
+        <binding name="field" value="ognl:components.passwordField"/>
+    </component>
+
+    <component id="passwordField" type="jeus:DojoTextField">
+        <binding name="value" value="ognl:properties.Password"/>
+        <binding name="displayName" value="message:jds.reconfigure.password.label"/>
+        <binding name="hidden" value="ognl:true"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="poolSection" type="jeus:FormSection">
+        <binding name="title" value="message:jds.reconfigure.pool.title"/>
+    </component>
+
+    <component id="min" type="jeus:Field">
+        <binding name="field" value="ognl:components.minField"/>
+    </component>
+
+    <component id="minField" type="jeus:DojoTextField">
+        <binding name="value" value="properties.PoolMin"/>
+        <binding name="displayName" value="message:jds.reconfigure.min.label"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="max" type="jeus:Field">
+        <binding name="field" value="ognl:components.maxField"/>
+    </component>
+
+    <component id="maxField" type="jeus:DojoTextField">
+        <binding name="value" value="properties.PoolMax"/>
+        <binding name="displayName" value="message:jds.reconfigure.max.label"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="step" type="jeus:Field">
+        <binding name="field" value="ognl:components.stepField"/>
+    </component>
+
+    <component id="stepField" type="jeus:DojoTextField">
+        <binding name="displayName" value="message:jds.reconfigure.step.label"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+        <binding name="value" value="properties.PoolStep"/>
+    </component>
+
+</page-specification>

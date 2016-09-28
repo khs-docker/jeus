@@ -1,0 +1,55 @@
+<span jwcid="$content$">
+	<table jwcid="condHasTargets" cellspacing="0" cellpadding="0" border="0" element="table">
+        <tr jwcid="condOption" element="tr">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td jwcid="@Any" class="ognl:optionLabelClass"><span jwcid="option_label"/></td>
+            <td>&nbsp;&nbsp;</td>
+            <td jwcid="@Any" class="ognl:optionLabelClass"><span jwcid="option_label2"/></td>
+        </tr>
+	    <tr>
+	        <td>
+	            <input jwcid="allCheck"/>&nbsp;<span jwcid="allCheck_label" class="field_label"/>
+	        </td>
+            <td jwcid="condOption1" element="td">
+                &nbsp;&nbsp;<!--<input jwcid="allOption" class="ognl:optionClass"/>-->
+            </td>
+	    </tr>
+	    <span jwcid="eachNode">
+	        <tr>
+	            <td class="table_values_noborder">
+	                <input jwcid="nodeCheck"/><span jwcid="nodeName" class="target_explorer_nodename"/>
+	            </td>
+                <td jwcid="condOption2" element="td">
+                   &nbsp;&nbsp;<!--<input jwcid="nodeOption" class="ognl:optionClass"/>-->
+                </td>
+	        </tr>
+	        <tr jwcid="eachContainer" valign="top" element="tr">
+	            <td class="table_values_noborder_top">
+	                <img jwcid="space" width="30" height="1"/><input jwcid="containerCheck"/>&nbsp;
+	                <img jwcid="containerIcon" align="middle"/>&nbsp;<span jwcid="containerName"/>
+	            </td>
+		        
+	            <span jwcid="condOption3">
+	                <span jwcid="deployTargetScript"/>
+	                <td>&nbsp;&nbsp;</td>
+	                <td>
+	                    <input jwcid="containerOption" onChange="ognl:'onChangeContextGroup('+virtualHostSelectName+', \''+nodeName+'\', \''+containerName+'\', this.options[this.selectedIndex].value)'"/>
+	                </td>
+	                <td>&nbsp;&nbsp;</td>
+	                <td>
+	                    <select jwcid="virtualHostSelect" size="3">
+	                        <span jwcid="eachVirtualHost">
+	                            <option jwcid="virtualHostOption"/>
+	                        </span>
+	                    </select>
+	                </td>
+	            </span>
+	        </tr>
+            <tr jwcid="condHasNext" element="tr">
+                <td jwcid="@Any" height="3" colspan="ognl:useOption ? 2 : 1" background="ognl:assets.dot"></td>
+            </tr>
+	    </span>
+	    <span jwcid="targetScript"/>
+	</table>
+</span>

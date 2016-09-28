@@ -1,0 +1,35 @@
+<html jwcid="shell">
+    <body jwcid="@Body" class="tundra">
+        <script type="text/javascript" src="/webadmin/js/JeusDojo/release/dojo/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+        <script type="text/javascript" src="/webadmin/js/JeusDojo/release/dojo/dojo/jeus.js"/>
+        <script type="text/javascript">
+            dojo.require("dojo.parser");
+            dojo.require("dijit.layout.ContentPane");
+            dojo.require("dijit.layout.SplitContainer");
+            dojo.require("dijit.layout.LayoutContainer");
+        </script>
+        <div dojoType="dijit.layout.LayoutContainer" class="layout">
+            <div dojoType="dijit.layout.ContentPane" layoutAlign="top" class="mainTitleBar">
+            </div>
+            <div dojoType="dijit.layout.SplitContainer" persist="false" orientation="horizontal" sizerWidth="4" layoutAlign="client">
+                 <div dojoType="dijit.layout.LayoutContainer" sizeMin="14" sizeShare="14" style="border: 0px solid #bfbfbf;">
+                    <div dojoType="dijit.layout.ContentPane" layoutAlign="top">
+                        <ul id="titlebar">
+                            <li><span jwcid="@Insert" value="message:la.tree.title" class="logger"/></li>
+                            <li id="titlebar_refresh"><a jwcid="@DirectLink" listener="listener:onRefresh"><img jwcid="@Image" image="asset:refresh" alt="refresh"/></a></li>
+                        </ul>
+                    </div>
+                    <div dojoType="dijit.layout.ContentPane" layoutAlign="client">
+                        <span jwcid="tree"/>
+                   </div>
+                </div>
+                <div dojoType="dijit.layout.ContentPane" id="mainPane" sizeMin="56" sizeShare="56" style="border: 1px solid #bfbfbf;" preventCache="true">
+                    <iframe jwcid="@jeus:IFrame" id="logMain" page="JeusServiceJeusLogService_Analysis" name="main" frameborder="0"></iframe>
+                </div>
+            </div>
+            <div dojoType="dijit.layout.ContentPane" layoutAlign="bottom" id="bottom">
+                <div>Copyright &copy; Since 2000 TmaxSoft co.,Ltd All rights reserved.</div>
+            </div>
+        </div>
+    </body>
+</html>

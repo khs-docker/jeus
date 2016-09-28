@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+
+<input-symbol key="target" required="yes"/>
+<input-symbol key="button" required="yes"/>
+<input-symbol key="showText" required="yes"/>
+<input-symbol key="hideText" required="yes"/>
+
+<body>
+<unique>
+function toggle_button(buttonId, id, showText, hideText){
+	
+    var detail = document.getElementById(id);
+    var button = document.getElementById(buttonId);
+    if( !detail || !detail.style || !detail.style.display ) return;
+
+    if( detail.style.display == 'block'){
+        detail.style.display = 'none';
+        button.value = showText;
+    }else{
+        detail.style.display = 'block';
+        detail.focus();
+        button.value = hideText;
+    }
+}
+</unique>
+</body>
+<initialization>
+<!-- 
+dojo.event.connect(dojo.widget.byId('${button.clientId}'), 'onClick', function(){
+	toggle_button('${button.clientId}', '${target.clientId}', '${showText}', '${hideText}');
+});
+ -->
+document.getElementById("${button.id}").onclick=function(){
+	toggle_button("${button.id}", "${target.id}", "${showText}", "${hideText}");
+};
+</initialization>
+</script>

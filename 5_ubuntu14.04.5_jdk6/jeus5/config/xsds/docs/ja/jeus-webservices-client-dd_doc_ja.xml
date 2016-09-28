@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="Shift-JIS"?>
+<description>        
+    <text key="portInfoType.wsdl-port"><![CDATA[
+                            [Description]: &lt;port-info>と連結されたWSDL portの定義を表示します。
+                        ]]>        
+    </text>
+         
+    <text key="portInfoType.service-endpoint-interface"><![CDATA[
+                            [Description]: WSDL portのサービス・エンドポイント・インタフェースを示すクラスを表示します。
+                                &lt;service-ref>で&lt;port-component-ref>の&lt;service-endpoint-interface>に対応します。
+                            [Dependency]:/web-app/service-ref/port-component-ref/service-endpoint-interface
+                            			 /ejb-jar/enterprise-beans/session/service-ref/port-component-ref/service-endpoint-interface
+                        ]]>        
+    </text>
+         
+    <text key="jeus-webservices-client-ddType.service-client"><![CDATA[
+                            [Description]: 配置されるウェブサービスクライアントのための設定を表示します。 
+                        ]]>        
+    </text>
+         
+    <text key="nameValueType.name"><![CDATA[
+                            [Description]: javax.xml.rpc.Stubまたはjavax.xml.rpc.CallにProperty設定するためのキーの名前を示します。                                
+                        ]]>        
+    </text>
+         
+    <text key="serviceClientType.service-ref-name"><![CDATA[
+                            [Description]: WSDLファイルで、関連されているウェブサービスのエンドポイントの名前です。 
+                                &lt;service-ref-name>は、標準配置記述子web.xmlまたはejb-jar.xmlの
+                                &lt;service-ref-name>に相応します。 
+                            [Dependency]:/web-app/service-ref/service-ref-name   
+                            			 /ejb-jar/enterprise-beans/session/service-ref/service-ref-name 
+                        ]]>        
+    </text>
+         
+    <text key="portInfoType.security"><![CDATA[
+                            [Description]: ウェブサービスのセキュリティ(WS-Security)のためのウェブサービス・クライアントの設定です。 
+                        ]]>        
+    </text>
+         
+    <text key="serviceClientType.port-info"><![CDATA[
+                            [Description]: 配置されるウェブサービス・クライアントが呼び出すウェブサービス・ポート情報を表示します。
+                        ]]>        
+    </text>
+         
+    <text key="portInfoType.call-property"><![CDATA[
+                            [Description]: 特定portで使用するjavax.xml.rpc.Callに 
+                                設定するpropertyを表示します。
+                        ]]>        
+    </text>
+         
+    <text key="serviceClientType.call-property"><![CDATA[
+                            [Description]: WSDL serviceで使用するすべての javax.xml.rpc.Callに設定するpropertyを表示します。
+                        ]]>        
+    </text>
+         
+    <text key="serviceClientType.service-qname"><![CDATA[
+                            [Description]: WSDLのWSDL service定義を表示します。
+                        ]]>        
+    </text>
+         
+    <text key="serviceClientType.wsdl-override"><![CDATA[
+                            [Description]: &lt;service-ref>の&lt;wsdl-file>を代替するためのWSDLファイルの位置を表示します。 
+                                表示された位置は有効なURLでなければなりません。
+                        ]]>        
+    </text>
+         
+    <text key="portInfoType.stub-property"><![CDATA[
+                            [Description]: 特定のportで使用するjavax.xml.rpc.Stubに設定するpropertyを表示します。
+                        ]]>        
+    </text>
+         
+    <text key="webservice-securityType.response-receiver"><![CDATA[
+                            [Description]: ウェブサービスの応答メッセージにセキュリティが適用されている場合、これを処理するための設定です。
+                        ]]>        
+    </text>
+         
+    <text key="webservice-securityType.request-sender"><![CDATA[
+                            [Description]: ウェブサービスを呼び出すメッセージにセキュリティを適用するための設定です。
+                        ]]>        
+    </text>
+         
+    <text key="serviceClientType.require-dynamic-proxy"><![CDATA[
+                            [Description]: port component link使用時に ServiceReferenceFactoryでdynamic proxyを使用するように指示します。
+                        ]]>        
+    </text>
+         
+    <text key="nameValueType.value"><![CDATA[
+                            [Description]: javax.xml.rpc.Stubまたはjavax.xml.rpc.CallにPeopertyを設定するためのキーに対応する値です。
+                        ]]>        
+    </text>
+         
+    <text key="serviceClientType.service-impl-class"><![CDATA[
+                            [Description]: ウェブサービス・クライアントのためにサービス実現体を表示します。 
+                                配置時に自動に生成されるため、ウェブサービス配置子を設定する必要はありません。 
+                        ]]>        
+    </text>
+ </description>

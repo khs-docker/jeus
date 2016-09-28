@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <servlet>
+        <servlet-name>jsp_pingClient</servlet-name>
+        <jsp-file>/pingClient.jsp</jsp-file>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <service-ref>
+        <service-ref-name>service/PingSecurityService</service-ref-name>
+        <service-interface>javax.xml.rpc.Service</service-interface>
+        <wsdl-file>WEB-INF/wsdl/PingSecurityService.wsdl</wsdl-file>
+        <jaxrpc-mapping-file>WEB-INF/PingSecurityService-mapping.xml</jaxrpc-mapping-file>
+        <port-component-ref>
+            <service-endpoint-interface>ping.Ping</service-endpoint-interface>
+        </port-component-ref>
+    </service-ref>
+</web-app>
+

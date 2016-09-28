@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+<description>     
+    <text key="user-cert-map"><![CDATA[
+                        [Description]: user와 certificate간의 mapping정보를 정의한다.
+            ]]>     
+    </text>
+     
+    <text key="UserCertMapType.user-cert"><![CDATA[
+                                [Description]: group들을 정의한다.
+                    ]]>     
+    </text>
+     
+    <text key="UserCertType.username"><![CDATA[
+                        [Description]: keystore내의 certificate에 대한 user name을 정의한다. "primary" identify로서 유일해야 한다.
+                    ]]>     
+    </text>
+     
+    <text key="UserCertType.alias"><![CDATA[
+                            [Description]:  keystore내의 certificate에 대한 alias를 정의한다.
+                    ]]>     
+    </text>
+     
+    <text key="UserCertType.keypassword"><![CDATA[
+                            [Description]: keystore내의 certificate에 대한 private key를 얻기위한 keypassword를 정의한다.
+                    ]]>     
+    </text>
+     
+    <text key="UserCertType.secretkey"><![CDATA[
+					[Description]: private key 를 정의한다.
+			    ]]>     
+    </text>
+     
+    <text key="SecretKeyType.keyname"><![CDATA[
+                        [Description]: private key 의 이름을 정의한다.
+                    ]]>     
+    </text>
+     
+    <text key="SecretKeyType.keyalgorithm"><![CDATA[
+                        [Description]: private key 의 키알고리즘을 나타낸다.
+                    ]]>     
+    </text>
+     
+    <text key="SecretKeyType.keyvalue"><![CDATA[
+                        [Description]: private key의 값을 base64형태로 나타낸다.
+                    ]]>     
+    </text>
+ </description>

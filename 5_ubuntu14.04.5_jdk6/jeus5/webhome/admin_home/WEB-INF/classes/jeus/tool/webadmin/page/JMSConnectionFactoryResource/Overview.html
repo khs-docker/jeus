@@ -1,0 +1,55 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="form">
+              <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                <tr>
+                    <td class="table_columns">
+                        <span jwcid="type_column"/>
+                    </td>
+                    <td class="table_columns">
+                        <span jwcid="name_column"/>
+                    </td>
+                    <td class="table_columns">
+                        <span jwcid="export_name_column"/>
+                    </td>
+                    <td class="table_columns">
+                        <span jwcid="actions_column"/>
+                    </td>
+                    <td  class="table_columns" width="20">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr jwcid="eachConnectionFactory">
+                    <td class="table_values">
+                        <span jwcid="type_value"/>
+                    </td>
+                    <td class="table_values">
+                        <a jwcid="connectionFactoryLink"><span jwcid="name_value"/></a>
+                    </td>
+                    <td class="table_values">
+                        <span jwcid="export_name_value"/>
+                    </td>
+                    <td class="table_values" align="center">
+                        <a jwcid="bindLink"></a><input jwcid="bind" onclick="window.location = previousSibling.href;" class="form_button"/>
+                    </td>
+                    <td class="table_values" align="center">
+                        <a jwcid="deleteLink"><img jwcid="delete" border="0"/></a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+            <br/>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td  width="100%">&nbsp;</td>
+                    <td  nowrap="true">
+                        <a jwcid="createLink"><img jwcid="create" align="absmiddle"/>&nbsp;<span jwcid="create_label"/></a><br/>
+<!--
+                        <a jwcid="createQueueLink"><img jwcid="create" align="absmiddle"/>&nbsp;<span jwcid="create_queue_label"/></a><br/>
+                        <a jwcid="createTopicLink"><img jwcid="create2" align="absmiddle"/>&nbsp;<span jwcid="create_topic_label"/></a>
+-->
+                    </td>
+                </tr>
+            </table>
+    </span>
+</html>

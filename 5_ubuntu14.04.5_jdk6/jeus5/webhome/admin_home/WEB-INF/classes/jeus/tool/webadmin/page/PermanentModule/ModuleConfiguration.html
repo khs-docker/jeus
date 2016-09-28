@@ -1,0 +1,55 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+       	<form jwcid="componentsForm">
+            <span jwcid="components" class="field_label"/>
+            <span jwcid="componentsField"/>
+			<div class="form_button_layer">
+            	<input jwcid="ok" class="form_button" style="width:100px;"/>
+			</div>
+		</form>
+        <span jwcid="ejb_component">
+            <span jwcid="ejb_componentFormSection"/>
+            <span jwcid="@RenderBlock" block="ognl:components.uriBlock"/>
+            <span jwcid="clientViewPath">
+                <span jwcid="clientViewPathField"/>
+            </span>
+            <span jwcid="@RenderBlock" block="component:keep_generatedBlock"/>
+            <span jwcid="@RenderBlock" block="ognl:components.java_permissionBlock"/>
+        </span>
+        <span jwcid="web_component">
+            <span jwcid="web_componentFormSection"/>
+            <span jwcid="@RenderBlock" block="ognl:components.uriBlock"/>
+            <span jwcid="contextRoot">
+                <span jwcid="contextRootField"/>
+            </span>
+            <span jwcid="@RenderBlock" block="component:keep_generatedBlock"/>
+            <span jwcid="@RenderBlock" block="ognl:components.java_permissionBlock"/>
+        </span>
+        <span jwcid="connector_component">
+            <span jwcid="connector_componentFormSection"/>
+            <span jwcid="@RenderBlock" block="ognl:components.uriBlock"/>
+        </span>
+        <span jwcid="client_component">
+            <span jwcid="client_componentFormSection"/>
+            <span jwcid="@RenderBlock" block="ognl:components.uriBlock"/>
+        </span>
+        <span jwcid="java_permissionBlock@Block">
+            <span jwcid="check_java_security_permission">
+                <span jwcid="security_permission_description">
+                    <input jwcid="security_permission_descriptionField" style="width:98%;" rows="4"/>
+                </span>
+                <span jwcid="security_permission_spec">
+                    <input jwcid="security_permission_specField" style="width:98%;" rows="6"/>
+                </span>
+            </span>
+        </span>
+        <span jwcid="uriBlock@Block">
+            <span jwcid="uri"/>
+        </span>
+        <span jwcid="keep_generatedBlock@Block">
+        	<span jwcid="keep_generated">
+            	<span jwcid="keep_generatedField"/>
+			</span>
+        </span>
+    </span>
+</html>

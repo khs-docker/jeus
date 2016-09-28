@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description>                  
+    <text key="worker-poolType.submit-timeout"><![CDATA[
+                    [Description]: The operation will be rejected when operation can not be started for configured time period on client request. 
+								    User receives event or exception according to service request mode. 
+                    [Value Description]:Time period in msec unit. In case of setting as 0, it will be in waiting mode until operation will be started. 
+                    [Example]: &lt;submit-timeout>5000&lt;/submit-timeout>
+                    ]]>                  
+    </text>
+                     
+    <text key="wait-connectionType.wait-connection"><![CDATA[
+                    [Description]: This element configures wheter to wait for obtaining Connection. 
+                    [Example]: &lt;wait-connection>true&lt;/wait-connection>
+                    ]]>                  
+    </text>
+                     
+    <text key="pool-managementType.disposable-connection"><![CDATA[
+                    [Description]: This element is configuration whether to use temporary conection in case where Connection is not obtained.
+                    ]]>                  
+    </text>
+                     
+    <text key="connection-poolType.dissociation-timeout"><![CDATA[
+                    [Description]: This element configures applied time period for dissociation. This will be ignored when this function is not supported in related resource adoptor. 
+                    [Value Description]: Time period value in msec unit. If it is 0, dissociation is not used. 
+                    [Example]: &lt;dissociation-timeout>0&lt;/dissociation-timeout>
+                    ]]>                  
+    </text>
+                     
+    <text key="jeus-connector-ddType.module-name"><![CDATA[
+                    [Description]: This element is Connector module name. 
+								    This should be unique within application in case of being a module within application.
+								    This should be unique within entire JEUS system in case of being server module. 
+								    This element is used for setting inflow target within Message Driven Bean.
+                    [Example]: &lt;module-name>whitebox-xa&lt;/module-name>
+                    ]]>                  
+    </text>
+                     
+    <text key="jeus-connector-ddType.worker-pool"><![CDATA[
+                    [Description]: This element is related to Work Manager.
+                    ]]>                  
+    </text>
+                     
+    <text key="connection-poolType.skip-connection-matching"><![CDATA[
+                    [Description]: Connection matching procedure will be ommitted for connection authenticaiton. 
+                    [Example]: &lt;skip-connection-matching>false&lt;/skip-connection-matching>
+                    ]]>                  
+    </text>
+                     
+    <text key="worker-poolType.step"><![CDATA[
+                    [Description]: In case where the number of thread increases, this is the number of thread with single increment. 
+                    				The number of total threads should not exceed configured max value. 
+                    [Example]: &lt;max>1&lt;/max>
+                    ]]>                  
+    </text>
+                     
+    <text key="pool-managementType.min"><![CDATA[
+                    [Description]: The minimum value on the number of connections managed by Connection pool.
+                    				When connection which is less than this configured value, new connection will be immediately generated according to user request.
+                    				In case where larger number of connections exist, it will remove connection which has not been used for a certain period from connection pool. 
+                    [Example]: &lt;min>0&lt;/min>
+                    ]]>                  
+    </text>
+                     
+    <text key="connection-poolType.export-name"><![CDATA[
+                    [Description]: Name to be binded to JNDI Naming System for related connection pool. 
+                    [Value Description]: This should be unique name in related module. 
+                    [Example]: &lt;export-name>datasource1&lt;/export-name>
+                    ]]>                  
+    </text>
+                     
+    <text key="worker-poolType.min"><![CDATA[
+                    [Description]: Minimum number of threads being managed by Work Manager.
+                    				When thread less than configured value exists, Work Manager will immediately enhance user request.
+								    This element maintains min number of threads by starting to reduece thread which has not been used for a certain time period in case where the number of thread which is larger than set value exists. 
+                    [Example]: &lt;min>3&lt;/min>
+                    ]]>                  
+    </text>
+                     
+    <text key="connection-poolType.use-wrapper"><![CDATA[
+                [Description]: For additional function, connection wrapper is used. For additional infomation, please refer to Connector Manual.
+                [Example]: &lt;use-wrapper>true&lt;/use-wrapper>
+                ]]>          
+    </text>
+            
+    <text key="worker-poolType.shutdown-timeout"><![CDATA[
+                [Description]: When Work Manager is terminated, it will wait for maximum set time period.
+                [Value Description]: Time period in msec unit. If it is 0, it won't wait.
+                                        If it is set as -1, it will wait until operation is terminated.
+                                        Threads in operation will get Interrupt.
+                [Example]: &lt;shutdown-timeout>-1&lt;/shutdown-timeout>
+                ]]>          
+    </text>
+            
+    <text key="disposable-connectionType.allow-disposable-connection"><![CDATA[
+                [Description]: In case where it can not receive Connnection, it will configure whether to use temporary connection.
+                [Example]: &lt;allow-disposable-connection>true&lt;/allow-disposable-connection>
+                ]]>          
+    </text>
+            
+    <text key="worker-poolType.release-timeout"><![CDATA[
+                [Description]: If operation is not terminated after operation starts, Work Manager calls release() method.
+                [Value Description]: Time period in mesc unit. In case where it is set as 0, release() method will not be called.
+                [Example]: &lt;release-timeout>60000&lt;/release-timeout>
+                ]]>          
+    </text>
+            
+    <text key="connection-poolType.user"><![CDATA[
+                [Description]: In case of managing security in container, this is user name used for generating connection.
+                [Example]: &lt;user>scott&lt;/user>
+                ]]>          
+    </text>
+            
+    <text key="connection-poolType.property"><![CDATA[
+                [Description]: This element adds property to be applied in ManagedConnectionFactory. This value should be priotized than value set in ra.xml.
+                ]]>          
+    </text>
+            
+    <text key="pool-managementType.pooled-timeout"><![CDATA[
+                [Description]: When Connection which is larger than min value exists in Connection pool, it will remove Connection which has not been user for a certain time from Connection Pool.
+                [Example]: &lt;pooled-timeout>600000&lt;/pooled-timeout>
+                ]]>          
+    </text>
+            
+    <text key="jeus-connector-ddType.use-workmanager"><![CDATA[
+            [Description]: This element configures whether to use Work Manager. If it is true, this will be initialized prior to start resource adoptor.
+            [Example]: &lt;use-workmanager>true&lt;/use-workmanager>
+            ]]>          
+    </text>
+            
+    <text key="wait-connectionType.max-wait-trial"><![CDATA[
+            [Description]: If connection matching fails for the set time period, it is considered as failure for receiving Connection.
+            [Example]: &lt;max-waiter-trial>5&lt;/max-waiter-trial>
+            ]]>          
+    </text>
+            
+    <text key="pool-managementType.max"><![CDATA[
+        [Description]: Maximum value of the number of connection managed by Connection pool.
+        [Example]: &lt;max>20&lt;/max>
+        ]]>          
+    </text>
+            
+    <text key="connection-poolType.invalidation-timeout"><![CDATA[
+        [Description]: This element configures applied time for invalidation. Connection which is not retunred will be abruptly removed even though it passes this time period.
+        [Value Description]: Time period value in msec unit. If it is 0, invalidation will not be used.
+        [Example]: &lt;invalidation-timeout>0&lt;/invalidation-timeout>
+        ]]>          
+    </text>
+            
+    <text key="worker-poolType.pooled-timeout"><![CDATA[
+        [Description]: In case where the number of threads exceeding min value in Work Manager, it will be removed from thread pool which has not been used for set time period.
+        [Value Description]: Time period in msec unit. If it is 0, it won't be removed.
+        [Example]: &lt;pooled-timeout>600000&lt;/pooled-timeout>
+        ]]>          
+    </text>
+            
+    <text key="wait-connectionType.wait-timeout"><![CDATA[
+    [Description]: It is considered as "failed" to receive Connection if it does not obtain Connection even though it has waited for a certain time period.
+    [Example]: &lt;wait-timeout>10000&lt;/wait-timeout>
+    ]]>          
+    </text>
+            
+    <text key="jeus-connector-ddType.connection-pool"><![CDATA[
+    [Description]: This element configuers Connection Pool.
+    ]]>          
+    </text>
+            
+    <text key="pool-managementType.wait-connection"><![CDATA[
+    [Description]: In case where there is no need to wait for obtaining Connection in Connection Pool, this is configuration for it.
+    ]]>          
+    </text>
+            
+    <text key="disposable-connectionType.max-disposable-count"><![CDATA[
+    [Description]: Maximum number of temporary Connections. Temporary connection will be automatically removed after being used.
+    [Example]: &lt;max-disposable-count>3&lt;/max-disposable-count>
+    ]]>          
+    </text>
+            
+    <text key="connection-poolType.pool-management"><![CDATA[
+    [Description]: This element configures related value on connection pool.
+    ]]>          
+    </text>
+            
+    <text key="connection-poolType.password"><![CDATA[
+    [Description]: In case of managing security, this is password used for generating connection.
+    [Example]: &lt;password>tiger&lt;/password>
+    ]]>          
+    </text>
+            
+    <text key="worker-poolType.max"><![CDATA[
+    [Description]: Maximum value of number of threads in which Work Manager manages. The number of threads should not exceed this value.
+    [Example]: &lt;max>10&lt;/max>
+    ]]>          
+    </text>
+            
+    <text key="connection-poolType.transaction-support"><![CDATA[
+            [Description]: This element configures transaction type supported by related connection pool.
+                            Value set in this field should be more priotized than value configured in ra.xml.
+            [Value Description]: Select one of NoTransaction, LocalTransaction, XATransaction or XATransactionOnly.
+            [Example]: &lt;transaction-support>XATransaction&lt;/transaction-support>
+            ]]>          
+    </text>
+            
+    <text key="jeus-connector-dd"><![CDATA[
+            [Description]: This is the top level element of JEUS Connector module. For each jeus-connector-dd.xml file, this tag should exist.
+		    ]]>          
+    </text>
+            
+    <text key="worker-poolType.pre-allocation"><![CDATA[
+    [Description]: The configured number of threads will be generated when Work Manager is initialized as min value.
+    [Example]: &lt;pre-allocation>true&lt;/pre-allocation>
+    ]]>          
+    </text>
+            
+    <text key="wait-connectionType.max-waiter-count"><![CDATA[
+            [Description]: Maximum number of clients waiting for obtaining connection. It will be considered as "failed" when it exceeds the set value.
+            [Example]: &lt;max-waiter-count>5&lt;/max-waiter-count>
+            ]]>          
+    </text>
+          
+    <text key="log-fileType.buffer-size"><![CDATA[
+                        [Description]: Specify the size of buffer that connection pool uses to print out log file.
+                        [Value Description]: The basic unit is 'byte'
+                        [Performance Recommendation]: The higher numbers for this value will delay the message output to the file, but improve the logging performance.
+                        [Example]: <buffer-size>512</buffer-size>
+                    ]]>          
+    </text>
+           
+    <text key="connection-poolType.log-file"><![CDATA[
+                        [Description]: Specify the log file which is to be used by the managed connection factory of the corresponding connection pool.
+                    ]]>          
+    </text>
+           
+    <text key="log-fileType.file-name"><![CDATA[
+                        [Description]: Specify the log file name which is to be used by connection pool.
+                        [Example]: <file-name>C:\logs\mylog.log</file-name>
+                    ]]>          
+    </text>
+           
+    <text key="connection-poolType.validation-timeout"><![CDATA[
+                    [Description]: Specify timeout interval for validating the connections in connection pool by resource adapter. After ManagedConnectionFactory of the resource adapter implements the ValidatingManagedConnectionFactory interface, invalid connections will be removed from connection pool according to the specified time.
+                    [Value Description]: Time value msec. If you don't want validation, then the value must be 0.
+                    [Example]: <validation-timeout>0</validation-timeout>
+                    ]]>          
+    </text>
+           
+    <text key="log-fileType.valid-day"><![CDATA[
+                      [Description]: Specify the frequency at which JEUS creates new log file. setting it to  1 or over will automatically insert the creation date in the end of file name.
+                      [Value Description]: day
+                      [Example]: <valid-day>1</valid-day>
+                    ]]>          
+    </text>
+</description>

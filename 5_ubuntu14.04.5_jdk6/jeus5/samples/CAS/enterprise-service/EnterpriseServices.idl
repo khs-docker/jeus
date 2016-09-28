@@ -1,0 +1,27 @@
+// EnterpriseServices.idl : IDL source for EnterpriseServices.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (EnterpriseServices.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(1814779A-EE1A-447A-9AF3-75B3C565C28C),
+		dual,
+		helpstring("IEnterpriseServices Interface"),
+		pointer_default(unique)
+	]
+	interface IEnterpriseServices : IDispatch
+	{
+		[propget, id(1), helpstring("property: Provider URL to the application server")] HRESULT ProviderURL([out, retval] BSTR *pVal);
+		[propput, id(1), helpstring("property: Provider URL to the application server")] HRESULT ProviderURL([in] BSTR newVal);
+		[propget, id(2), helpstring("property: Security principal, username, for protected EJB access")] HRESULT SecurityPrincipal([out, retval] BSTR *pVal);
+		[propput, id(2), helpstring("property: Security principal, username, for protected EJB access")] HRESULT SecurityPrincipal([in] BSTR newVal);
+		[propget, id(3), helpstring("property: Security credentials, password, for protected EJB access")] HRESULT SecurityCredentials([out, retval] BSTR *pVal);
+		[propput, id(3), helpstring("property: Security credentials, password, for protected EJB access")] HRESULT SecurityCredentials([in] BSTR newVal);
+		[id(4), helpstring("method: Lookup the EJB home interface for the EJB named: jndiName, and narrow the result to class: homeClassName")] HRESULT LookupEjbHome([in] BSTR jndiName, [in] BSTR homeClassName, [out, retval] IDispatch **ppHome);
+	};
+
+

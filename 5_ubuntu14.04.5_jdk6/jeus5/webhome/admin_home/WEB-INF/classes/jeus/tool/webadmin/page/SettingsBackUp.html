@@ -1,0 +1,56 @@
+<span jwcid="@jeus:MainBorder" title="SettingsBackUp">
+<span jwcid="@jeus:TabPanel" pageNames="ognl:new java.lang.String[]{'Settings', pageName}">
+	<form jwcid="settingForm@jeus:JEUSForm"
+		title="message:settings.config.title"
+		description="message:settings.config.description"
+		useDefaultButtons="ognl:false">
+		<span jwcid="@jeus:ReadOnlyTextField" label="message:main.node.title" value="ognl:visit.nodeName"/>
+		<div jwcid="config@Any">
+			<table class="table">
+				<tr>
+                    <th><span jwcid="name_column"/></th>
+                    <th><span jwcid="time_column"/></th>
+                    <th><span jwcid="description_column"/></th>
+                    <th><span jwcid="actions_column"/></th>
+                    <th width="20">&nbsp;</th>
+                </tr>
+				<tr jwcid="@Foreach" source="ognl:source" value="ognl:backup" element="literal:tr">
+					<td>
+						<span jwcid="name@Any"><span jwcid="@Insert" value="ognl:backup.name"/></span>
+					</td>
+					<td width="220" align="center"><span jwcid="@Insert" value="ognl:backup.getTime(page.locale)"/></td>
+                    <td width="300" align="center">
+                        <span jwcid="@Insert" value="ognl:backup.description"></span>    
+                    </td>
+                    <td align="center">
+                        <a jwcid="applyLink"></a><input jwcid="apply" class="form_button" style="width:50px;" onclick="progress_bar();disabled=true;window.location = previousSibling.href;"/>
+                        <a jwcid="rollBackLink"></a><input jwcid="rollBack" class="form_button" style="width:50px;" onclick="progress_bar();disabled=true;window.location = previousSibling.href;"/>
+                    </td>
+                    <td width="20" align="center">
+                        <a jwcid="deleteLink"><img jwcid="delete" align="middle"/></a>
+                    </td>
+                </tr>
+			</table>
+			<div class="form_button_layer">
+                <a jwcid="@DirectLink" listener="listener:onDuplicate"></a><button class="form_button" jwcid="@Button" label="message:common.label.add" onclick="progress_bar();disabled=true;window.location = previousSibling.href;"/>
+			</div>
+			<div jwcid="configDuplicate@Any" style="margin-top: 20px;">
+                <span jwcid="@If" condition="ognl:config">
+                <br/>
+                <span jwcid="@jeus:FormSection" title="message:setting.duplicate.title"/>
+                <span jwcid="@jeus:Field" label="message:setting.duplicate.target" field="component:targetField">
+                    <input jwcid="targetField@TextField" value="ognl:targetName" validators="validators:required" displayName="message:setting.duplicate.target"/>
+                </span>
+                <span jwcid="@jeus:Field" label="message:setting.duplicate.description" field="component:descriptionField">
+                    <input jwcid="descriptionField@TextArea" value="ognl:description" displayName="message:setting.duplicate.description" style="width: 100%;" rows="8"/>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="@jeus:ConfirmSubmit" class="form_button" value="message:JEUSForm.ok.label" message="message:JEUSForm.ok.confirm" listener="listener:onDuplicateOK"/>
+                    <input jwcid="@Submit" class="form_button" value="message:JEUSForm.cancel.label" listener="listener:onDuplicateCancel"/>
+                </div>
+                </span>
+			</div>
+		</div>
+	</form>
+</span>
+</span>

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceWebEngine.ConfigurationPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="message:ejc.title"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@JEUSSERVICE_WEBENGINE_NAMES"/>
+        <binding name="subtabNames" value="ognl:{'general', 'error_log', 'access_log', 'user_log', 'monitoring'}"/>
+    </component>
+
+    <component id="general" type="Block"/>
+    <component id="error_log" type="Block"/>
+    <component id="access_log" type="Block"/>
+    <component id="user_log" type="Block"/>
+    <component id="monitoring" type="Block"/>
+    
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:wec.general.title"/>
+        <binding name="listener" value="ognl:listeners.onGeneralOk"/>
+    </component>
+
+    <component id="name" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:wec.general.name.label"/>
+        <binding name="value" value="ognl:objectName.keyPropertyList.name"/>
+    </component>
+
+    <component id="general_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="redirect_stdout" type="jeus:Field">
+        <binding name="field" value="ognl:components.redirect_stdoutField"/>
+        <binding name="renderBottom" value="ognl:false"/>
+    </component>
+
+    <component id="redirect_stdoutField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:webEngine"/>
+        <binding name="elementName" value="literal:redirectStdout"/>
+    </component>
+
+    <component id="redirect_stderr" type="jeus:Field">
+        <binding name="field" value="ognl:components.redirect_stderrField"/>        
+        <binding name="renderBottom" value="ognl:false"/>
+    </component>
+
+    <component id="redirect_stderrField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:webEngine"/>
+        <binding name="elementName" value="literal:redirectStderr"/>
+    </component>
+
+
+    <component id="shutdown_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.shutdown_timeoutField"/>
+        <binding name="renderBottom" value="ognl:false"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="shutdown_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="webEngine"/>
+        <binding name="elementName" value="literal:shutdownTimeout"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+
+<!-- 
+    <component id="security_switch" type="jeus:Field">
+        <binding name="field" value="ognl:components.security_switchField"/>
+        
+        <binding name="renderBottom" value="ognl:false"/>
+    </component>
+
+    <component id="security_switchField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:webEngine"/>
+        <binding name="elementName" value="literal:securitySwitch"/>
+    </component>
+ -->
+
+
+    <component id="properties" type="jeus:Field">
+        <binding name="field" value="ognl:components.propertiesField"/>
+    </component>
+
+    <component id="propertiesField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:properties"/>
+        <binding name="elementName" value="literal:property"/>
+        <binding name="translator" value="bean:propertyTranslator"/>
+    </component>
+
+    <component id="note" type="jeus:Field">
+        <binding name="field" value="components.noteField"/>
+        <binding name="label" value="message:common.message.note.label"/>
+    </component>
+
+    <component id="noteField" type="jeus:NoteIO">
+        <binding name="directName" value="ognl:objectName.keyPropertyList.name"/>
+        <binding name="pageName" value="literal:JeusServiceWebEngine_Configure"/>
+        <binding name="value" value="note"/>
+        <binding name="displayName" value="literal:"/>
+        <binding name="validators" value="validators:$noteValidator"/>
+    </component>
+
+   <component id="error_logForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:wec.error_log.title"/>
+        <binding name="listener" value="ognl:listeners.onErrorLogOk"/>
+    </component>
+
+    <component id="error_log_logging_panel" type="jeus:Logging">
+        <binding name="logging" value="ognl:errorLog"/>
+    </component>
+
+    <component id="error_log_handlerForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:wec.handler.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+        <binding name="subform" value="ognl:true"/>
+    </component>
+
+    <component id="error_log_handler_panel" type="jeus:HandlerList">
+        <binding name="handlers" value="ognl:errorLogHandlers"/>
+        <binding name="createPage" value="literal:JeusServiceWebEngine_CreateErrorLogHandler"/>
+        <binding name="editPage" value="literal:JeusServiceWebEngine_EditErrorLogHandler"/>
+        <binding name="deleteListener" value="ognl:listeners.onDeleteErrorLogHandler"/>
+        <binding name="objectName" value="ognl:objectName"/>
+        <binding name="jeusType" value="literal:WebEngineErrorLog"/>
+    </component>
+
+   <component id="access_logForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:wec.access_log.title"/>
+        <binding name="listener" value="ognl:listeners.onAccessLogOk"/>
+    </component>
+
+    <component id="enable_access_log" type="jeus:Field">
+        <binding name="field" value="ognl:components.enable_access_logField"/>
+    </component>
+
+    <component id="enable_access_logField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:accessLog"/>
+        <binding name="elementName" value="literal:enable"/>
+    </component>
+
+    <component id="access_log_format" type="jeus:Field">
+        <binding name="field" value="ognl:components.access_log_formatField"/>
+    </component>
+
+    <component id="access_log_formatField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:accessLog"/>
+        <binding name="elementName" value="literal:format"/>
+    </component>
+
+    <component id="access_log_logging_panel" type="jeus:Logging">
+        <binding name="logging" value="ognl:accessLog"/>
+        <binding name="webAccessLog" value="ognl:true"/>
+    </component>
+
+    <component id="access_log_handlerForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:wec.handler.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+        <binding name="subform" value="ognl:true"/>
+    </component>
+
+    <component id="access_log_handler_panel" type="jeus:HandlerList">
+        <binding name="handlers" value="ognl:accessLogHandlers"/>
+        <binding name="createPage" value="literal:JeusServiceWebEngine_CreateAccessLogHandler"/>
+        <binding name="editPage" value="literal:JeusServiceWebEngine_EditAccessLogHandler"/>
+        <binding name="deleteListener" value="ognl:listeners.onDeleteAccessLogHandler"/>
+        <binding name="objectName" value="ognl:objectName"/>
+        <binding name="jeusType" value="literal:WebEngineAccessLog"/>
+    </component>
+
+   <component id="user_logForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:wec.user_log.title"/>
+        <binding name="listener" value="ognl:listeners.onUserLogOk"/>
+    </component>
+
+    <component id="user_log_logging_panel" type="jeus:Logging">
+        <binding name="logging" value="ognl:userLog"/>
+    </component>
+
+    <component id="user_log_handlerForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:wec.handler.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+        <binding name="subform" value="ognl:true"/>
+    </component>
+
+    <component id="user_log_handler_panel" type="jeus:HandlerList">
+        <binding name="handlers" value="ognl:userLogHandlers"/>
+        <binding name="createPage" value="literal:JeusServiceWebEngine_CreateUserLogHandler"/>
+        <binding name="editPage" value="literal:JeusServiceWebEngine_EditUserLogHandler"/>
+        <binding name="deleteListener" value="ognl:listeners.onDeleteUserLogHandler"/>
+        <binding name="objectName" value="ognl:objectName"/>
+        <binding name="jeusType" value="literal:WebEngineUserLog"/>
+    </component>
+
+    
+    <component id="monitoringForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:wec.monitoring.title"/>
+        
+        <binding name="listener" value="ognl:listeners.onMonitoringOk"/>
+        <binding name="mbean" value="ognl:true"/>
+        <binding name="parentElement" value="ognl:webEngine"/>
+        <binding name="elementName" value="literal:monitoring"/>
+    </component>
+
+    <component id="check_thread_pool" type="jeus:Field">
+        <binding name="field" value="ognl:components.check_thread_poolField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+        <binding name="renderBottom" value="ognl:false"/>
+    </component>
+
+    <component id="check_thread_poolField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="monitoring"/>
+        <binding name="elementName" value="literal:checkThreadPool"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="check_session" type="jeus:Field">
+        <binding name="field" value="ognl:components.check_sessionField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+        <binding name="renderBottom" value="ognl:false"/>
+    </component>
+
+    <component id="check_sessionField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="monitoring"/>
+        <binding name="elementName" value="literal:checkSession"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+     <component id="check_class_reload" type="jeus:Field">
+        <binding name="field" value="ognl:components.check_class_reloadField"/>
+         <binding name="unit" value="message:common.unit.msec"/>
+        <binding name="renderBottom" value="ognl:false"/>
+    </component>
+
+    <component id="check_class_reloadField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="monitoring"/>
+        <binding name="elementName" value="literal:checkClassReload"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <bean name="propertyTranslator" class="jeus.tool.webadmin.component.translator.WebEnginePropertyTranslator"/>
+
+    <bean name="noteValidator" class="jeus.tool.webadmin.validator.NoteSizeValidator"/>
+
+    <property name="note"/>
+
+</page-specification>

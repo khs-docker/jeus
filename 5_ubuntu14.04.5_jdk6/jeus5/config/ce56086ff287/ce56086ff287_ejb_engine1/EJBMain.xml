@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<ejb-engine xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <resolution>10000</resolution>
+</ejb-engine>

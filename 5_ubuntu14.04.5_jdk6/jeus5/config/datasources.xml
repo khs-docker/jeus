@@ -1,0 +1,750 @@
+<?xml version="1.0"?>
+
+<!-- JEUS JDBC Datasource Specifications -->
+<!-- Supported DBMS vendors are Oracle, DB2, Sybase, MS SQL.-->
+
+<datasource-specifications>
+    <datasource-specification id="oracle-1" dbms="Oracle" vendor="oracle" label="Oracle DataSource - Thin">
+        <fixed-property name="data-source-class-name" value="oracle.jdbc.pool.OracleDataSource"/>
+        <property name="data-source-name" value="oracle.jdbc.pool.OracleDataSource"/>
+        <fixed-property name="data-source-type" value="DataSource"/>
+        <fixed-property name="driver-type" value="thin"/>
+
+        <property name="database-name"	required="true" default="ORCL"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true" default="1521"/>
+        <property name="user"		required="true" default="scott"/>
+        <property name="password"	required="true" default="tiger"/>
+    </datasource-specification>
+
+    <datasource-specification id="oracle-2" dbms="Oracle" vendor="oracle" label="Oracle ConnectionPoolDataSource - Thin">
+        <fixed-property name="data-source-class-name" value="oracle.jdbc.pool.OracleConnectionPoolDataSource"/>
+        <property name="data-source-name" value="oracle.jdbc.pool.OracleConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+        <fixed-property name="driver-type" value="thin"/>
+
+        <property name="database-name"	required="true" default="ORCL"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true" default="1521"/>
+        <property name="user"		required="true" default="scott"/>
+        <property name="password"	required="true" default="tiger"/>
+    </datasource-specification>
+
+    <datasource-specification id="oracle-3" dbms="Oracle" vendor="oracle" label="Oracle LocalXADataSource - Thin">
+        <fixed-property name="data-source-class-name" value="oracle.jdbc.pool.OracleConnectionPoolDataSource"/>
+        <property name="data-source-name" value="oracle.jdbc.pool.OracleConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="LocalXADataSource"/>
+        <fixed-property name="driver-type" value="thin"/>
+
+        <property name="database-name"	required="true" default="ORCL"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true" default="1521"/>
+        <property name="user"		required="true" default="scott"/>
+        <property name="password"	required="true" default="tiger"/>
+    </datasource-specification>
+
+    <datasource-specification id="oracle-4" dbms="Oracle" vendor="oracle" label="Oracle XADataSource - Thin">
+        <fixed-property name="data-source-class-name" value="oracle.jdbc.xa.client.OracleXADataSource"/>
+        <property name="data-source-name" value="oracle.jdbc.xa.client.OracleXADataSource"/>
+        <fixed-property name="data-source-type" value="XADataSource"/>
+        <fixed-property name="driver-type" value="thin"/>
+
+        <property name="database-name"	required="true" default="ORCL"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true" default="1521"/>
+        <property name="user"		required="true" default="scott"/>
+        <property name="password"	required="true" default="tiger"/>
+    </datasource-specification>
+
+    <datasource-specification id="oracle-5" dbms="Oracle" vendor="oracle" label="Oracle DataSource - OCI">
+        <fixed-property name="data-source-class-name" value="oracle.jdbc.pool.OracleDataSource"/>
+        <property name="data-source-name" value="oracle.jdbc.pool.OracleDataSource"/>
+        <fixed-property name="data-source-type" value="DataSource"/>
+        <fixed-property name="driver-type" value="oci"/>
+
+        <property name="database-name"	required="true" default="ORCL"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true" default="1521"/>
+        <property name="user"		required="true" default="scott"/>
+        <property name="password"	required="true" default="tiger"/>
+    </datasource-specification>
+
+    <datasource-specification id="oracle-6" dbms="Oracle" vendor="oracle" label="Oracle ConnectionPoolDataSource - OCI">
+        <fixed-property name="data-source-class-name" value="oracle.jdbc.pool.OracleConnectionPoolDataSource"/>
+        <property name="data-source-name" value="oracle.jdbc.pool.OracleConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+        <fixed-property name="driver-type" value="oci"/>
+
+        <property name="database-name"	required="true" default="ORCL"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true" default="1521"/>
+        <property name="user"		required="true" default="scott"/>
+        <property name="password"	required="true" default="tiger"/>
+    </datasource-specification>
+
+    <datasource-specification id="oracle-7" dbms="Oracle" vendor="oracle" label="Oracle LocalXADataSource - OCI">
+        <fixed-property name="data-source-class-name" value="oracle.jdbc.pool.OracleConnectionPoolDataSource"/>
+        <property name="data-source-name" value="oracle.jdbc.pool.OracleConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="LocalXADataSource"/>
+        <fixed-property name="driver-type" value="oci"/>
+
+        <property name="database-name"	required="true" default="ORCL"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true" default="1521"/>
+        <property name="user"		required="true" default="scott"/>
+        <property name="password"	required="true" default="tiger"/>
+    </datasource-specification>
+
+    <datasource-specification id="oracle-8" dbms="Oracle" vendor="oracle" label="Oracle XADataSource - OCI">
+        <fixed-property name="data-source-class-name" value="oracle.jdbc.xa.client.OracleXADataSource"/>
+        <property name="data-source-name" value="oracle.jdbc.xa.client.OracleXADataSource"/>
+        <fixed-property name="data-source-type" value="XADataSource"/>
+        <fixed-property name="driver-type" value="oci"/>
+
+        <property name="database-name"	required="true" default="ORCL"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true" default="1521"/>
+        <property name="user"		required="true" default="scott"/>
+        <property name="password"	required="true" default="tiger"/>
+    </datasource-specification>
+
+    <datasource-specification id="oracle-9" dbms="Oracle" vendor="others" label="Custom DataSource"/>
+
+    <datasource-specification id="sybase-1" dbms="Sybase" vendor="sybase" label="Sybase jConnect 4.5 DataSource">
+        <fixed-property name="data-source-class-name" value="jeus.jdbc.driver.blackbox.BlackboxDataSource"/>
+        <fixed-property name="data-source-type" value="DataSource"/>
+
+        <additional-property name="DriverClassName" type="java.lang.String" value="com.sybase.jdbc.SybDriver"/>
+        <additional-property name="URL" type="java.lang.String" value="jdbc:sybase:Tds:localhost"/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+    </datasource-specification>
+
+    <datasource-specification id="sybase-2" dbms="Sybase" vendor="sybase" label="Sybase jConnect 4.5 ConnectionPoolDataSource">
+        <fixed-property name="data-source-class-name" value="jeus.jdbc.driver.blackbox.BlackboxConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+
+        <additional-property name="DriverClassName" type="java.lang.String" value="com.sybase.jdbc.SybDriver"/>
+        <additional-property name="URL" type="java.lang.String" value="jdbc:sybase:Tds:localhost"/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+    </datasource-specification>
+
+
+    <datasource-specification id="sybase-3" dbms="Sybase" vendor="sybase" label="Sybase jConnect 5.5 DataSource">
+        <fixed-property name="data-source-class-name" value="com.sybase.jdbc2.jdbc.SybDataSource"/>
+        <property name="data-source-name" value="com.sybase.jdbc2.jdbc.SybDataSource"/>
+        <fixed-property name="data-source-type" value="DataSource"/>
+        <fixed-property name="network-protocol" value="Tds"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true"/>
+        <property name="user"		    required="true"/>
+        <property name="password"	    required="true"/>
+    </datasource-specification>
+
+    <datasource-specification id="sybase-4" dbms="Sybase" vendor="sybase" label="Sybase jConnect 5.5 ConnectionPoolDataSource">
+        <fixed-property name="data-source-class-name" value="com.sybase.jdbc2.jdbc.SybConnectionPoolDataSource"/>
+        <property name="data-source-name" value="com.sybase.jdbc2.jdbc.SybConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+        <fixed-property name="network-protocol" value="Tds"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true"/>
+        <property name="user"		    required="true"/>
+        <property name="password"	    required="true"/>
+
+    </datasource-specification>
+
+    <datasource-specification id="sybase-5" dbms="Sybase" vendor="sybase" label="Sybase jConnect 5.5 LocalXADataSource">
+        <fixed-property name="data-source-class-name" value="com.sybase.jdbc2.jdbc.SybConnectionPoolDataSource"/>
+        <property name="data-source-name" value="com.sybase.jdbc2.jdbc.SybConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="LocalXADataSource"/>
+        <fixed-property name="network-protocol" value="Tds"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true"/>
+        <property name="user"		    required="true"/>
+        <property name="password"	    required="true"/>
+    </datasource-specification>
+
+    <datasource-specification id="sybase-6" dbms="Sybase" vendor="sybase" label="Sybase jConnect 5.5 XADataSource">
+        <fixed-property name="data-source-class-name" value="com.sybase.jdbc2.jdbc.SybXADataSource"/>
+        <property name="data-source-name" value="com.sybase.jdbc2.jdbc.SybXAPoolDataSource"/>
+        <fixed-property name="data-source-type" value="XADataSource"/>
+        <fixed-property name="network-protocol" value="Tds"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true"/>
+        <property name="user"		    required="true"/>
+        <property name="password"	    required="true"/>
+    </datasource-specification>
+
+    <datasource-specification id="sybase-7" dbms="Sybase" vendor="sybase" label="Sybase jConnect 6.x DataSource">
+        <fixed-property name="data-source-class-name" value="com.sybase.jdbc3.jdbc.SybDataSource"/>
+        <property name="data-source-name" value="com.sybase.jdbc3.jdbc.SybDataSource"/>
+        <fixed-property name="data-source-type" value="DataSource"/>
+        <fixed-property name="network-protocol" value="Tds"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true"/>
+        <property name="user"		required="true"/>
+        <property name="password"	required="true"/>
+    </datasource-specification>
+
+    <datasource-specification id="sybase-8" dbms="Sybase" vendor="sybase" label="Sybase jConnect 6.x ConnectionPoolDataSource">
+        <fixed-property name="data-source-class-name" value="com.sybase.jdbc3.jdbc.SybConnectionPoolDataSource"/>
+        <property name="data-source-name" value="com.sybase.jdbc3.jdbc.SybConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+        <fixed-property name="network-protocol" value="Tds"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true"/>
+        <property name="user"		required="true"/>
+        <property name="password"	required="true"/>
+    </datasource-specification>
+
+    <datasource-specification id="sybase-9" dbms="Sybase" vendor="sybase" label="Sybase jConnect 6.x LocalXADataSource">
+        <fixed-property name="data-source-class-name" value="com.sybase.jdbc3.jdbc.SybConnectionPoolDataSource"/>
+        <property name="data-source-name" value="com.sybase.jdbc3.jdbc.SybConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="LocalXADataSource"/>
+        <fixed-property name="network-protocol" value="Tds"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true"/>
+        <property name="user"		required="true"/>
+        <property name="password"	        required="true"/>
+    </datasource-specification>
+
+    <datasource-specification id="sybase-10" dbms="Sybase" vendor="sybase" label="Sybase jConnect 6.x XADataSource">
+        <fixed-property name="data-source-class-name" value="com.sybase.jdbc3.jdbc.SybXADataSource"/>
+        <property name="data-source-name" value="com.sybase.jdbc3.jdbc.SybXADataSource"/>
+
+        <fixed-property name="data-source-type" value="XADataSource"/>
+        <fixed-property name="network-protocol" value="Tds"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true"/>
+        <property name="user"		required="true"/>
+        <property name="password"	required="true"/>
+    </datasource-specification>
+
+    <datasource-specification id="sybase-11" dbms="Sybase" vendor="others" label="Custom DataSource"/>
+
+    <datasource-specification id="db2-1" dbms="DB2" vendor="db2" label="DB2 DataSource">
+        <fixed-property name="data-source-class-name" value="COM.ibm.db2.jdbc.DB2DataSource"/>
+        <fixed-property name="data-source-type" value="DataSource"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true" default="446"/>
+        <property name="user"		    required="true"/>
+        <property name="password"	    required="true"/>
+    </datasource-specification>
+
+    <datasource-specification id="db2-2" dbms="DB2" vendor="db2" label="DB2 ConnectionPoolDataSource">
+        <fixed-property name="data-source-class-name" value="COM.ibm.db2.jdbc.DB2ConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true" default="446"/>
+        <property name="user"		    required="true"/>
+        <property name="password"	    required="true"/>
+    </datasource-specification>
+
+    <datasource-specification id="db2-3" dbms="DB2" vendor="db2" label="DB2 LocalXADataSource">
+        <fixed-property name="data-source-class-name" value="COM.ibm.db2.jdbc.DB2ConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="LocalXADataSource"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true" default="446"/>
+        <property name="user"		    required="true"/>
+        <property name="password"	    required="true"/>
+    </datasource-specification>
+
+    <datasource-specification id="db2-4" dbms="DB2" vendor="db2" label="DB2 XADataSource">
+        <fixed-property name="data-source-class-name" value="COM.ibm.db2.jdbc.DB2XADataSource"/>
+        <fixed-property name="data-source-type" value="XADataSource"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true" default="446"/>
+        <property name="user"		    required="true"/>
+        <property name="password"	    required="true"/>
+    </datasource-specification>
+
+    <datasource-specification id="db2-5" dbms="DB2" vendor="db2" label="DB2 JCC ConnectionPoolDataSource">
+        <fixed-property name="data-source-class-name" value="com.ibm.db2.jcc.DB2ConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true"/>
+        <property name="port-number"	required="true"/>
+        <property name="user"		    required="true"/>
+        <property name="password"	    required="true"/>
+        <additional-property name="driverType" type="java.lang.Integer" value="4"/>
+    </datasource-specification>
+
+    <datasource-specification id="db2-6" dbms="DB2" vendor="db2" label="DB2 JCC XADataSource">
+        <fixed-property name="data-source-class-name" value="com.ibm.db2.jcc.DB2XADataSource"/>
+        <fixed-property name="data-source-type" value="XADataSource"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true"/>
+        <property name="port-number"	required="true"/>
+        <property name="user"		    required="true"/>
+        <property name="password"	    required="true"/>
+        <additional-property name="driverType" type="java.lang.Integer" value="4"/>
+    </datasource-specification>
+
+    <datasource-specification id="db2-7" dbms="DB2" vendor="others" label="Custom DataSource"/>
+
+
+    <datasource-specification id="mssql-1" dbms="MS-SQL" vendor="mssql" label="MS-SQL DataSource">
+        <fixed-property name="data-source-class-name" value="com.microsoft.jdbcx.sqlserver.SQLServerDataSource"/>
+        <property name="data-source-name" value="com.microsoft.jdbcx.sqlserver.SQLServerDataSource"/>
+        <fixed-property name="data-source-type" value="DataSource"/>
+
+        <property name="server-name"	required="true"/>
+        <property name="user"		    required="true"/>
+        <property name="password"	    required="true"/>
+    </datasource-specification>
+
+    <datasource-specification id="mssql-2" dbms="MS-SQL" vendor="mssql" label="MS-SQL ConnectionPoolDataSource">
+        <fixed-property name="data-source-class-name" value="com.microsoft.jdbcx.sqlserver.SQLServerDataSource"/>
+        <property name="data-source-name" value="com.microsoft.jdbcx.sqlserver.SQLServerDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+
+        <property name="server-name"	required="true"/>
+        <property name="user"		    required="true"/>
+        <property name="password"	    required="true"/>
+    </datasource-specification>
+
+    <datasource-specification id="mssql-3" dbms="MS-SQL" vendor="mssql" label="MS-SQL LocalXADataSource">
+        <fixed-property name="data-source-class-name" value="com.microsoft.jdbcx.sqlserver.SQLServerDataSource"/>
+        <property name="data-source-name" value="com.microsoft.jdbcx.sqlserver.SQLServerDataSource"/>
+        <fixed-property name="data-source-type" value="LocalXADataSource"/>
+
+        <property name="server-name"	required="true"/>
+        <property name="user"		    required="true"/>
+        <property name="password"	    required="true"/>
+    </datasource-specification>
+
+    <datasource-specification id="mssql-4" dbms="MS-SQL" vendor="mssql" label="MS-SQL XADataSource">
+        <fixed-property name="data-source-class-name" value="com.microsoft.jdbcx.sqlserver.SQLServerDataSource"/>
+        <property name="data-source-name" value="com.microsoft.jdbcx.sqlserver.SQLServerDataSource"/>
+        <fixed-property name="data-source-type" value="XADataSource"/>
+
+        <property name="server-name"	required="true"/>
+        <property name="user"		    required="true"/>
+        <property name="password"	    required="true"/>
+
+        <additional-property name="selectMethod" type="java.lang.String" value="cursor"/>
+    </datasource-specification>
+
+    <datasource-specification id="mssql-5" dbms="MS-SQL" vendor="mssql" label="MS-SQL 2005 DataSource">
+        <fixed-property name="data-source-class-name" value="com.microsoft.sqlserver.jdbc.SQLServerDataSource"/>
+        <fixed-property name="data-source-type" value="DataSource"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true"/>
+        <property name="port-number"	required="true" default="1433"/>
+        <property name="user"		    required="true"/>
+        <property name="password"	    required="true"/>
+    </datasource-specification>
+
+    <datasource-specification id="mssql-6" dbms="MS-SQL" vendor="mssql" label="MS-SQL 2005 ConnectionPoolDataSource">
+        <fixed-property name="data-source-class-name" value="com.microsoft.sqlserver.jdbc.SQLServerConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true"/>
+        <property name="port-number"	required="true" default="1433"/>
+        <property name="user"		    required="true"/>
+        <property name="password"	    required="true"/>
+    </datasource-specification>
+
+    <datasource-specification id="mssql-7" dbms="MS-SQL" vendor="mssql" label="MS-SQL 2005 LocalXADataSource">
+        <fixed-property name="data-source-class-name" value="com.microsoft.sqlserver.jdbc.SQLServerConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="LocalXADataSource"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true"/>
+        <property name="port-number"	required="true" default="1433"/>
+        <property name="user"		    required="true"/>
+        <property name="password"	    required="true"/>
+    </datasource-specification>
+
+    <datasource-specification id="mssql-8" dbms="MS-SQL" vendor="mssql" label="MS-SQL 2005 XADataSource">
+        <fixed-property name="data-source-class-name" value="com.microsoft.sqlserver.jdbc.SQLServerXADataSource"/>
+        <fixed-property name="data-source-type" value="XADataSource"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true"/>
+        <property name="port-number"	required="true" default="1433"/>
+        <property name="user"		    required="true"/>
+        <property name="password"	    required="true"/>
+    </datasource-specification>
+
+    <datasource-specification id="mssql-9" dbms="MS-SQL" vendor="others" label="Custom DataSource"/>
+
+    <datasource-specification id="mysql-1" dbms="MySQL" vendor="others" label="MySQL DataSource - Connector/J 3.x">
+        <fixed-property name="data-source-class-name" value="jeus.jdbc.driver.blackbox.BlackboxDataSource"/>
+        <fixed-property name="data-source-type" value="DataSource"/>
+
+        <additional-property name="DriverClassName" type="java.lang.String" value="com.mysql.jdbc.Driver"/>
+        <additional-property name="URL" type="java.lang.String" value="jdbc:mysql://localhost:3306"/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+        <additional-property name="Password" type="java.lang.String" value=""/>
+    </datasource-specification>
+
+    <datasource-specification id="mysql-2" dbms="MySQL" vendor="others" label="MySQL ConnectionPoolDataSource - Connector/J 3.x">
+        <fixed-property name="data-source-class-name" value="jeus.jdbc.driver.blackbox.BlackboxConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+
+        <additional-property name="DriverClassName" type="java.lang.String" value="com.mysql.jdbc.Driver"/>
+        <additional-property name="URL" type="java.lang.String" value="jdbc:mysql://localhost:3306"/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+        <additional-property name="Password" type="java.lang.String" value=""/>
+    </datasource-specification>
+
+    <datasource-specification id="mysql-3" dbms="MySQL" vendor="others" label="MySQL DataSource - MM.MySQL">
+        <fixed-property name="data-source-class-name" value="jeus.jdbc.driver.blackbox.BlackboxDataSource"/>
+        <fixed-property name="data-source-type" value="DataSource"/>
+
+        <additional-property name="DriverClassName" type="java.lang.String" value="org.gjt.mm.mysql.Driver"/>
+        <additional-property name="URL" type="java.lang.String" value="jdbc:mysql://localhost:3306/dbname"/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+        <additional-property name="Password" type="java.lang.String" value=""/>
+    </datasource-specification>
+
+    <datasource-specification id="mysql-4" dbms="MySQL" vendor="others" label="MySQL ConnectionPoolDataSource - MM.MySQL">
+        <fixed-property name="data-source-class-name" value="jeus.jdbc.driver.blackbox.BlackboxConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+
+        <additional-property name="DriverClassName" type="java.lang.String" value="org.gjt.mm.mysql.Driver"/>
+        <additional-property name="URL" type="java.lang.String" value="jdbc:mysql://localhost:3306/dbname"/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+        <additional-property name="Password" type="java.lang.String" value=""/>
+    </datasource-specification>
+
+    <datasource-specification id="mysql-5" dbms="MySQL" vendor="mysql" label="MySQL DataSource - Connector/J 5.x">
+        <fixed-property name="data-source-class-name" value="com.mysql.jdbc.jdbc2.optional.MysqlDataSource"/>
+        <fixed-property name="data-source-type" value="DataSource"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true"/>
+        <property name="port-number"	required="true"/>
+        <property name="user"		required="true"/>
+        <property name="password"	required="true"/>
+        <property name="network-protocol" required="false"/>        
+    </datasource-specification>
+
+    <datasource-specification id="mysql-6" dbms="MySQL" vendor="mysql" label="MySQL ConnectionPoolDataSource - Connector/J 5.x">
+        <fixed-property name="data-source-class-name" value="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true"/>
+        <property name="port-number"	required="true"/>
+        <property name="user"		required="true"/>
+        <property name="password"	required="true"/>
+        <property name="network-protocol" required="false"/>
+    </datasource-specification>
+
+    <datasource-specification id="mysql-7" dbms="MySQL" vendor="mysql" label="MySQL LocalXADataSource - Connector/J 5.x">
+        <fixed-property name="data-source-class-name" value="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="LocalXADataSource"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true"/>
+        <property name="port-number"	required="true"/>
+        <property name="user"		required="true"/>
+        <property name="password"	required="true"/>
+        <property name="network-protocol" required="false"/>
+    </datasource-specification>
+
+    <datasource-specification id="mysql-8" dbms="MySQL" vendor="mysql" label="MySQL XADataSource - Connector/J 5.x">
+        <fixed-property name="data-source-class-name" value="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource"/>
+        <fixed-property name="data-source-type" value="XADataSource"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true"/>
+        <property name="port-number"	required="true"/>
+        <property name="user"		required="true"/>
+        <property name="password"	required="true"/>
+        <property name="network-protocol" required="false"/>
+    </datasource-specification>
+
+    <datasource-specification id="mysql-9" dbms="MySQL" vendor="others" label="Custom DataSource"/>
+
+    <datasource-specification id="cloudscape-1" dbms="Cloudscape" vendor="others" label="Cloudscape DataSource - previous">
+        <fixed-property name="data-source-class-name" value="jeus.jdbc.driver.blackbox.BlackboxDataSource"/>
+        <fixed-property name="data-source-type" value="DataSource"/>
+
+        <additional-property name="DriverClassName" type="java.lang.String" value="COM.cloudscape.core.JDBCDriver"/>
+        <additional-property name="URL" type="java.lang.String" value="jdbc:cloudscape:dbname"/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+        <additional-property name="Password" type="java.lang.String" value=""/>
+    </datasource-specification>
+
+    <datasource-specification id="cloudscape-2" dbms="Cloudscape" vendor="others" label="Cloudscape ConnectionPoolDataSource - previous">
+        <fixed-property name="data-source-class-name" value="jeus.jdbc.driver.blackbox.BlackboxConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+
+        <additional-property name="DriverClassName" type="java.lang.String" value="COM.cloudscape.core.JDBCDriver"/>
+        <additional-property name="URL" type="java.lang.String" value="jdbc:cloudscape:dbname"/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+        <additional-property name="Password" type="java.lang.String" value=""/>
+    </datasource-specification>
+
+    <datasource-specification id="cloudscape-3" dbms="Cloudscape" vendor="others" label="Cloudscape DataSource - 5.x">
+        <fixed-property name="data-source-class-name" value="jeus.jdbc.driver.blackbox.BlackboxDataSource"/>
+        <fixed-property name="data-source-type" value="DataSource"/>
+
+        <additional-property name="DriverClassName" type="java.lang.String" value="com.ibm.db2j.jdbc.DB2jDriver"/>
+        <additional-property name="URL" type="java.lang.String" value="jdbc:db2j:dbname"/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+        <additional-property name="Password" type="java.lang.String" value=""/>
+    </datasource-specification>
+
+    <datasource-specification id="cloudscape-4" dbms="Cloudscape" vendor="others" label="Cloudscape ConnectionPoolDataSource - 5.x">
+        <fixed-property name="data-source-class-name" value="jeus.jdbc.driver.blackbox.BlackboxConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+
+        <additional-property name="DriverClassName" type="java.lang.String" value="com.ibm.db2j.jdbc.DB2jDriver"/>
+        <additional-property name="URL" type="java.lang.String" value="jdbc:db2j:dbname"/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+        <additional-property name="Password" type="java.lang.String" value=""/>
+    </datasource-specification>
+
+    <datasource-specification id="cloudscape-5" dbms="Cloudscape" vendor="others" label="Custom DataSource"/>
+
+    <datasource-specification id="informix-1" dbms="Informix" vendor="informix" label="Informix DataSource">
+        <fixed-property name="data-source-class-name" value="com.informix.jdbcx.IfxDataSource"/>
+        <fixed-property name="data-source-type" value="DataSource"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true"/>
+        <property name="port-number"	required="true"/>
+        <property name="user"		required="true"/>
+        <property name="password"	required="true"/>
+        <property name="network-protocol" required="false"/>
+        <additional-property name="IfxIFXHOST" type="java.lang.String" value="localhost"/>
+    </datasource-specification>
+
+    <datasource-specification id="informix-2" dbms="Informix" vendor="informix" label="Informix ConnectionPoolDataSource">
+        <fixed-property name="data-source-class-name" value="com.informix.jdbcx.IfxConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true"/>
+        <property name="port-number"	required="true"/>
+        <property name="user"		required="true"/>
+        <property name="password"	required="true"/>
+        <property name="network-protocol" required="false"/>
+        <additional-property name="IfxIFXHOST" type="java.lang.String" value="localhost"/>
+    </datasource-specification>
+
+    <datasource-specification id="informix-3" dbms="Informix" vendor="informix" label="Informix LocalXADataSource">
+        <fixed-property name="data-source-class-name" value="com.informix.jdbcx.IfxConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="LocalXADataSource"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true"/>
+        <property name="port-number"	required="true"/>
+        <property name="user"		required="true"/>
+        <property name="password"	required="true"/>
+        <property name="network-protocol" required="false"/>
+        <additional-property name="IfxIFXHOST" type="java.lang.String" value="localhost"/>
+    </datasource-specification>
+
+    <datasource-specification id="informix-4" dbms="Informix" vendor="informix" label="Informix XADataSource">
+        <fixed-property name="data-source-class-name" value="com.informix.jdbcx.IfxXADataSource"/>
+        <fixed-property name="data-source-type" value="XADataSource"/>
+
+        <property name="database-name"	required="true"/>
+        <property name="server-name"	required="true"/>
+        <property name="port-number"	required="true"/>
+        <property name="user"		required="true"/>
+        <property name="password"	required="true"/>
+        <property name="network-protocol" required="false"/>
+        <additional-property name="IfxIFXHOST" type="java.lang.String" value="localhost"/>
+    </datasource-specification>
+
+    <datasource-specification id="informix-5" dbms="Informix" vendor="others" label="Custom DataSource"/>
+
+    <datasource-specification id="postgreSQL-1" dbms="PostgreSQL" vendor="others" label="PostgreSQL DataSource">
+        <fixed-property name="data-source-class-name" value="jeus.jdbc.driver.blackbox.BlackboxDataSource"/>
+        <fixed-property name="data-source-type" value="DataSource"/>
+
+        <additional-property name="DriverClassName" type="java.lang.String" value="org.postgresql.Driver"/>
+        <additional-property name="URL" type="java.lang.String" value="jdbc:postgresql://localhost:5740/database"/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+        <additional-property name="Password" type="java.lang.String" value=""/>
+    </datasource-specification>
+
+    <datasource-specification id="postgreSQL-2" dbms="PostgreSQL" vendor="others" label="PostgreSQL ConnectionPoolDataSource">
+        <fixed-property name="data-source-class-name" value="jeus.jdbc.driver.blackbox.BlackboxConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+
+        <additional-property name="DriverClassName" type="java.lang.String" value="org.postgresql.Driver"/>
+        <additional-property name="URL" type="java.lang.String" value="jdbc:postgresql://localhost:5740/database"/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+        <additional-property name="Password" type="java.lang.String" value=""/>
+    </datasource-specification>
+
+    <datasource-specification id="postgreSQL-3" dbms="PostgreSQL" vendor="others" label="Custom DataSource"/>
+
+    <datasource-specification id="hsql-1" dbms="Hsql" vendor="others" label="Hsql DataSource">
+        <fixed-property name="data-source-class-name" value="jeus.jdbc.driver.blackbox.BlackboxDataSource"/>
+        <fixed-property name="data-source-type" value="DataSource"/>
+
+        <additional-property name="DriverClassName" type="java.lang.String" value="org.hsqldb.jdbcDriver"/>
+        <additional-property name="URL" type="java.lang.String" value=""/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+        <additional-property name="Password" type="java.lang.String" value=""/>
+    </datasource-specification>
+
+    <datasource-specification id="hsql-2" dbms="Hsql" vendor="others" label="Hsql ConnectionPoolDataSource">
+        <fixed-property name="data-source-class-name" value="jeus.jdbc.driver.blackbox.BlackboxConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+
+        <additional-property name="DriverClassName" type="java.lang.String" value="org.hsqldb.jdbcDriver"/>
+        <additional-property name="URL" type="java.lang.String" value="jdbc:hsqldb:hsql://localhost"/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+        <additional-property name="Password" type="java.lang.String" value=""/>
+    </datasource-specification>
+
+    <datasource-specification id="hsql-3" dbms="Hsql" vendor="others" label="Custom DataSource"/>
+
+    <datasource-specification id="derby-1" dbms="Derby" vendor="others" label="Derby DataSource">
+        <fixed-property name="data-source-class-name" value="org.apache.derby.jdbc.ClientDataSource"/>
+        <fixed-property name="data-source-type" value="DataSource"/>
+
+        <additional-property name="ServerName" type="java.lang.String" value="localhost"/>
+        <additional-property name="PortNumber" type="java.lang.Integer" value="1527"/>
+        <additional-property name="DatabaseName" type="java.lang.String" value=""/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+        <additional-property name="Password" type="java.lang.String" value=""/>
+        <additional-property name="ConnectionAttributes" type="java.lang.String" value=";create=true"/>
+    </datasource-specification>
+
+    <datasource-specification id="derby-2" dbms="Derby" vendor="others" label="Derby ConnectionPoolDataSource">
+        <fixed-property name="data-source-class-name" value="org.apache.derby.jdbc.ClientConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+
+        <additional-property name="ServerName" type="java.lang.String" value="localhost"/>
+        <additional-property name="PortNumber" type="java.lang.Integer" value="1527"/>
+        <additional-property name="DatabaseName" type="java.lang.String" value=""/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+        <additional-property name="Password" type="java.lang.String" value=""/>
+        <additional-property name="ConnectionAttributes" type="java.lang.String" value=";create=true"/>
+    </datasource-specification>
+
+    <datasource-specification id="derby-3" dbms="Derby" vendor="others" label="Derby XADataSource">
+        <fixed-property name="data-source-class-name" value="org.apache.derby.jdbc.ClientXADataSource"/>
+        <fixed-property name="data-source-type" value="XADataSource"/>
+
+        <additional-property name="ServerName" type="java.lang.String" value="localhost"/>
+        <additional-property name="PortNumber" type="java.lang.Integer" value="1527"/>
+        <additional-property name="DatabaseName" type="java.lang.String" value=""/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+        <additional-property name="Password" type="java.lang.String" value=""/>
+        <additional-property name="ConnectionAttributes" type="java.lang.String" value=";create=true"/>
+    </datasource-specification>
+
+    <datasource-specification id="derby-4" dbms="Derby" vendor="others" label="Custom DataSource"/>
+
+    <datasource-specification id="tibero-1" dbms="Tibero" vendor="tibero" label="Tibero DataSource">
+        <fixed-property name="data-source-class-name" value="com.tmax.tibero.jdbc.ext.TbDataSource"/>
+        <fixed-property name="data-source-type" value="DataSource"/>
+        <fixed-property name="driver-type" value="thin"/>
+
+        <property name="database-name"	required="true" default=""/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true" default="6666"/>
+        <property name="user"		required="true" default="tibero"/>
+        <property name="password"	required="true" default="tmax"/>
+    </datasource-specification>
+
+    <datasource-specification id="tibero-2" dbms="Tibero" vendor="tibero" label="Tibero ConnectionPoolDataSource">
+        <fixed-property name="data-source-class-name" value="com.tmax.tibero.jdbc.ext.TbConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+        <fixed-property name="driver-type" value="thin"/>
+
+        <property name="database-name"	required="true" default=""/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true" default="6666"/>
+        <property name="user"		required="true" default="tibero"/>
+        <property name="password"	required="true" default="tmax"/>
+    </datasource-specification>
+
+    <datasource-specification id="tibero-3" dbms="Tibero" vendor="tibero" label="Tibero LocalXADataSource">
+        <fixed-property name="data-source-class-name" value="com.tmax.tibero.jdbc.ext.TbConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="LocalXADataSource"/>
+        <fixed-property name="driver-type" value="thin"/>
+
+        <property name="database-name"	required="true" default=""/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true" default="6666"/>
+        <property name="user"		required="true" default="tibero"/>
+        <property name="password"	required="true" default="tmax"/>
+    </datasource-specification>
+
+    <datasource-specification id="tibero-4" dbms="Tibero" vendor="tibero" label="Tibero XADataSource">
+        <fixed-property name="data-source-class-name" value="com.tmax.tibero.jdbc.ext.TbXADataSource"/>
+        <fixed-property name="data-source-type" value="XADataSource"/>
+        <fixed-property name="driver-type" value="thin"/>
+
+        <property name="database-name"	required="true" default=""/>
+        <property name="server-name"	required="true" default="localhost"/>
+        <property name="port-number"	required="true" default="6666"/>
+        <property name="user"		required="true" default="tibero"/>
+        <property name="password"	required="true" default="tmax"/>
+    </datasource-specification>
+
+    <datasource-specification id="tibero-5" dbms="Tibero" vendor="others" label="Custom DataSource"/>
+
+    <datasource-specification id="other-1" dbms="Other" vendor="others" label="BlackBoxDataSource">
+        <fixed-property name="data-source-class-name" value="jeus.jdbc.driver.blackbox.BlackboxDataSource"/>
+        <fixed-property name="data-source-type" value="DataSource"/>
+
+        <additional-property name="DriverClassName" type="java.lang.String" value=""/>
+        <additional-property name="URL" type="java.lang.String" value=""/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+        <additional-property name="Password" type="java.lang.String" value=""/>
+    </datasource-specification>
+
+    <datasource-specification id="other-2" dbms="Other" vendor="others" label="BlackBoxConnectionPoolDataSource">
+        <fixed-property name="data-source-class-name" value="jeus.jdbc.driver.blackbox.BlackboxConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="ConnectionPoolDataSource"/>
+
+        <additional-property name="DriverClassName" type="java.lang.String" value=""/>
+        <additional-property name="URL" type="java.lang.String" value=""/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+        <additional-property name="Password" type="java.lang.String" value=""/>
+    </datasource-specification>
+
+    <datasource-specification id="other-3" dbms="Other" vendor="others" label="BlackBoxLocalXADataSource">
+        <fixed-property name="data-source-class-name" value="jeus.jdbc.driver.blackbox.BlackboxConnectionPoolDataSource"/>
+        <fixed-property name="data-source-type" value="LocalXADataSource"/>
+
+        <additional-property name="DriverClassName" type="java.lang.String" value=""/>
+        <additional-property name="URL" type="java.lang.String" value=""/>
+        <additional-property name="User" type="java.lang.String" value=""/>
+        <additional-property name="Password" type="java.lang.String" value=""/>
+    </datasource-specification>
+
+    <datasource-specification id="other-4" dbms="Other" vendor="others" label="Other DataSource">
+    </datasource-specification>
+
+</datasource-specifications>

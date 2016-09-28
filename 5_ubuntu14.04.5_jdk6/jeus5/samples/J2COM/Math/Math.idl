@@ -1,0 +1,39 @@
+// Math.idl : IDL source for Math.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (Math.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(9DA6E3FD-0A77-489A-82D9-FACDB294A4E5),
+		dual,
+		helpstring("IArithmetic Interface"),
+		pointer_default(unique)
+	]
+	interface IArithmetic : IDispatch
+	{
+		[id(1), helpstring("method Sum")] HRESULT Sum(int x, int y, [out, retval] int *sum);
+	};
+
+[
+	uuid(E318B006-A72E-429E-92BB-4C59CD2D53B9),
+	version(1.0),
+	helpstring("Math 1.0 Type Library")
+]
+library MATHLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(50354DC9-E6FF-4A88-9CB7-8C1C4BE1E5BE),
+		helpstring("Arithmetic Class")
+	]
+	coclass Arithmetic
+	{
+		[default] interface IArithmetic;
+	};
+};

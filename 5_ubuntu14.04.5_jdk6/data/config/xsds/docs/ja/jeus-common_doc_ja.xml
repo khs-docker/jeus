@@ -1,0 +1,878 @@
+<?xml version="1.0" encoding="Shift-JIS"?>
+<description>      
+  
+    <text key="handlerPropertySetType.property"><![CDATA[
+                        [Description]: handlerに伝達するpropertyを設定します。
+                    ]]>        
+    </text>
+         
+    <text key="rolePermissionType.principal"><![CDATA[
+                        [Description]: ロールに該当するユーザプリンシパルを指定します。
+                        [Value Description]: セキュリティのaccounts.xmlに指定されているプリンシパル名
+                    ]]>
+    </text>
+         
+    <text key="schedulerType.job-list"><![CDATA[
+                        [Description]: schedulerに登録するjob listを指定します。
+                    ]]>        
+    </text>
+         
+    <text key="rolePermissionType.role"><![CDATA[
+                        [Description]: principalに割り当てるロールの名前を指定します。
+                    ]]>        
+    </text>
+         
+    <text key="smtp-propertyGroup.from-address"><![CDATA[
+                        [Description]: メール送信者のアドレスを指定します。
+                    ]]>        
+    </text>
+         
+    <text key="keystore-managerType.truststore-path"><![CDATA[
+
+                        [Description]: 現在のドメインに適用するtruststore fileのパスを定義します。
+                    
+                    ]]>   
+    </text>
+         
+    <text key="propertyType.value"><![CDATA[
+                        [Description]: propertyのvalue値です。
+                    ]]>        
+    </text>
+         
+    <text key="file-handlerType.file-name"><![CDATA[
+                        [Description]: このHandlerが使用するファイル名前を設定します。もしユーザがこの設定を行わない場合は、それぞれのロガーのディフォルトファイル名が使用されます。それぞれのディフォルトファイル名は、JEUS Serverマニュアルを参照してください。
+                        [Example]: &lt;file-name>C:\logs\mylog.log&lt;/file-name>
+                    ]]>        
+    </text>
+         
+    <text key="jndi-refType.jndi-info"><![CDATA[
+                        [Description]: このelementは、コードで使用するEJB参照を実際EJB JNDIの名前でbindします。
+                        たとえば、実際JNDIの名前が"ACCEJB"であるaccount EJBをコード上で
+                        "ejb/account"でlookupできます。
+                    ]]>        
+    </text>
+         
+    <text key="job-listType.job"><![CDATA[
+                        [Description]: schedulerに登録する1つのjobを指定します。
+                    ]]>        
+    </text>
+         
+    <text key="jsp-engineType.compile-option"><![CDATA[
+                        [Description]: Servletコンパイラーで使用されるオプションで、通常使用されません。
+                        [Value Description]: コンパイルに使用される適切なコンパイラーオプション(&lt;java-compiler>elementを参照)
+                    ]]>        
+    </text>
+         
+    <text key="poolingType.period"><![CDATA[
+                        [Description]: poolingされるelementを整理する時間を指定します。
+                        [Performance Recommendation]: この値が大きいほど整理する周期が長くなり、serverの運営には付加が少ないが、しかしそれだけメモリーが漏れる可能性があるので適当な値に設定します。
+                    ]]>        
+    </text>
+         
+    <text key="run-as-identityType.principal-name"><![CDATA[
+                    [Description]: ejb-jar.xml或いはweb.xml中でrun-as-specified-identityのroleで使用されるprincipal名
+                    [Value Description]: securityのsubjects.xmlで指定されているprincipal名
+                    ]]>        
+    </text>
+         
+    <text key="loggingGroup.handler"><![CDATA[
+                  [Description]:　ロガーで使用するHandlerを設定します。
+                    ]]>        
+    </text>
+         
+    <text key="jsp-engineType.jsp-work-dir"><![CDATA[
+                        [Description]: JSP workdirは、Servletソースファイルと暮らすファイルが保存される位置です。開発者または管理者は、デバッグを目的に該当ディレクトリを使用できます。
+                                                このelementは、一般的に使用する必要はありません。
+                        [Value Description]: JSPコンパイルのために使用される絶対経路
+                        [Defined Value]: default : %SERVLET_HOME%\jspwork \enginename\GroupDocBase\DocBase
+                    ]]>        
+    </text>
+         
+    <text key="SecurityServicePropertyType.value"><![CDATA[
+                        [Description]: オプションで属性に対する値
+                        [Value Description]: 属性名
+                        [Example]: &lt;value>c:\security\myAccounts.xml&lt;/value>
+                    ]]>        
+    </text>
+         
+    <text key="rolePermissionType.classname"><![CDATA[
+                    [Description]: 使用するrole permission class nameを指定します。 指定しないと、JEUSで
+                    基本的に提供するクラスが使用されます。
+                    ]]>        
+    </text>
+         
+    <text key="user-handlerType.formatter-class"><![CDATA[
+                        [Description]: このhandlerが使用するformatterの完全な記述によるクラス名（fully qualified class name）を設定します。このクラスは
+                        java.util.logging.Formatterを相続してもらい、
+jeus.util.logging.JeusFormatterを実現します。
+                        [Example]: &lt;formatter-class>com.tmax.logging.handler.MyHandler&lt;/formatter-class>
+                    ]]>        
+    </text>
+         
+    <text key="SecurityServicePropertyType.name"><![CDATA[
+
+                        [Description]: プロパティ名
+                        [Value Description]: プロパティ名
+                        [Example]: <name>filename</name>
+                    
+                    ]]>   
+    </text>         
+    <text key="handlerType.user-handler"><![CDATA[
+                      [Description]: ユーザがJ2SE logging APIに従って作ったHandlerを使用する場合の設定です。
+                    ]]>            
+    </text>
+             
+    <text key="common-handlerType.filter-class"><![CDATA[
+                        [Description]: このHandlerに指定するfiler classの完全な記述によるクラス名（fully qualified class name）を設定します。
+                        [Example]: &lt;filter-class>com.tmax.logging.filter.MyFilter&lt;/filter-class>
+                    ]]>            
+    </text>
+             
+    <text key="handlerType.file-handler"><![CDATA[
+                      [Description]: ロギングをファイルとして出力する場合に使用するHandlerです。
+                    ]]>            
+    </text>
+             
+    <text key="user-handlerType.handler-property"><![CDATA[
+                        [Description]: handlerが生成されるときに渡すpropertyを設定します。このpropertyは
+                        key-valueでMapに格納され、JeusHandler.setProperty() methodを通じてhandlerに
+                        伝達されます。
+                    ]]>            
+    </text>
+             
+    <text key="jsp-engineType.compile-encoding"><![CDATA[
+                        [Description]: この属性は、JSPファイルがParsing(解析)されて生成されたServletソースファイルをコンパイルするときに?encodingオプションに指定する値です。
+                                                この設定は、通常使用されません。Web Containerは適切な設定を自動に選択します。
+                        [Value Description]: 使用するエンコーディングschemeを表示する文字列。より詳しい情報にたいしては、『javacコンパイラー』を参照してください。
+                        [Defined Value]: default : ウェブコンテナーで自動に選択します。
+                    ]]>            
+    </text>
+             
+    <text key="SecurityServiceType.property"><![CDATA[
+                        [Description]: オプションで該当セキュリティ・サービスにname-valueペアで属性を定義します。定義できる属性とそれぞれの属性に対する説明はサービスクラスに対するドキュメントを参照してください。
+                    ]]>            
+    </text>
+             
+    <text key="rolePermissionType.unchecked"><![CDATA[
+                        [Description]: 確認なしでロールを使用できるようにします。
+                        [Example]: &lt;unchecked/>
+                    ]]>            
+    </text>
+             
+    <text key="smtp-propertyGroup.smtp-host-address"><![CDATA[
+                        [Description]: メールを送信するsmtp serverのアドレスを指定します。
+                    ]]>            
+    </text>
+             
+    <text key="jobType.name"><![CDATA[
+                        [Description]: このjobの名前を指定します。
+                    ]]>            
+    </text>
+             
+    <text key="jsp-engineType.check-included-jspfile"><![CDATA[
+                        [Description]: この属性が“true”に設定されると、“include” directive方式でincludeされたJSPファイルの変更可否をincludeしたJSPファイルが実行されるときにチェックし、
+                                                もし変更された場合には、該当JSPファイルをrecompileする機能です。基本的には、includeされたJSPファイルは、変更の可否は点検されません。
+                        [Value Description]: Boolean値でこの設定を活性化或いは非活性化します。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: default : false
+                                                    true : 該当設定を活性化します。
+                                                    false :該当設定を非活性化します。
+                    ]]>            
+    </text>
+             
+    <text key="handlerType.smtp-handler"><![CDATA[
+                      [Description]: ロギングをイメールで送る場合に使用するHandlerです。
+                      [Performance Recommandation]: ロギングメッセージ1つが1つのイメールで伝送されるため、適切なフィルターなしで使用することはおびただしい量のイメールを発生させますので注意を要します。
+                    ]]>            
+    </text>
+             
+    <text key="smtp-propertyGroup.to-address"><![CDATA[
+                        [Description]: メール受信者のアドレスを指定します。
+                    ]]>            
+    </text>
+             
+    <text key="invoke-httpType.http-port"><![CDATA[
+                        [Description]: HTTP-RMIの要求を受け、処理するウェブサーバのポート番号を設定します。このウェブサーバ/ウェブコンテナーでは、必ずRMI Handler ServletがDeployされおり、またすでに実行されている必要があります。
+                        [Value Description]: HTTP-RMI stubが接続するウェブサーバのポート番号
+                    ]]>            
+    </text>
+             
+    <text key="intervalType.millisecond"><![CDATA[
+                        [Description]: 周期をmillisecond単位に指定します。
+                    ]]>            
+    </text>
+             
+    <text key="jobType.count"><![CDATA[
+                        [Description]: このjobが実行される回数を指定します。
+						[Defined Value]: [-1]:
+										実行される回数を制限しません。
+                    ]]>            
+    </text>
+             
+    <text key="keystore-managerType.truststore-password"><![CDATA[
+
+                        [Description]: 現在のドメインに適用するtruststore fileに対するパスワードを定義します。
+                    
+                    ]]>   
+    </text>
+             
+    <text key="jobType.interval"><![CDATA[
+                        [Description]: このjobが実行される周期を指定します。
+                    ]]>            
+    </text>
+             
+    <text key="intervalType.minutely"><![CDATA[
+                        [Description]: 周期を分単位に指定します。
+                    ]]>            
+    </text>
+             
+    <text key="common-handlerType.encoding"><![CDATA[
+                      [Description]: このHandlerがメッセージを残すときに使用するエンコーディングを設定します。
+                    ]]>            
+    </text>
+             
+    <text key="methodParamType.method-params"><![CDATA[
+                            [Description]: methodのparameterを順序通りに指定します。
+                    ]]>            
+    </text>
+             
+    <text key="envType.value"><![CDATA[
+                        [Description]: この値は、対応するwrapperクラス生成子のパラメタとして使用されます。
+                        [Example]: &lt;value>100&lt;/value>
+                    ]]>            
+    </text>
+             
+    <text key="file-handlerType.buffer-size"><![CDATA[                        [Description]: このハンドラーがファイルに出力されるときに使用するバッファサイズを指定します。                        [Value Description]: バイト単位です。                        [Performance Recommandation]: この値が大きいほどファイルに出力されるメッセージは送れて出力されるが、Loggingの性能はよくなります。                    ]]>            
+    </text>
+             
+    <text key="file-handlerType.valid-hour"><![CDATA[
+                          [Description]: このHandlerが使用するファイルをこの設定で指定された期間中だけ使って引き続き更新する場合に使用します。この設定は、日付段位でファイルを変更するときに使います。この場合、Handlerが使用するファイル名の後ろにファイルが使用された日付と時間が自動生成されます。
+                          [Value Description]: 時間を示し、24の約数 + n*24 (nは0以上の正数)の値を持ちます。
+                          [Example]: &lt;valid-hour>3&lt;/valid-hour>
+                        ]]>            
+    </text>
+             
+    <text key="envType.type"><![CDATA[
+                        [Description]: 環境変数のJavaタイプ
+                        [Value Description]: 次ぎのJavaタイプの中で1つを選択します。　java.lang.Boolean,
+                        java.lang.String, java.lang.Integer, java.lang.Double, java.lang.Byte, java.lang.Short,
+                        java.lang.Long, java.lang.Float, java.lang.Character.
+                        [Example]: &lt;type>java.lang.Integer&lt;/type>
+                    ]]>            
+    </text>
+             
+    <text key="handlerType.socket-handler"><![CDATA[
+                      [Description]: ロギングを指定されたソケットに送る場合に使用するHandlerです。
+                      [Performance Recommandation]: ロギングメッセージが1つづつソケットに伝送されるので、適切なフィルターなしで使用することは性能低下をもたらします。
+                  ]]>            
+    </text>
+             
+    <text key="securityPermissionType.security-permission-spec"><![CDATA[
+                  [Description]: security permissionを記述します。この形式は、Java policy fileに従います。
+                  [Example]: grant {
+                                permission java.lang.RuntimePermission "foo";
+                            }
+                    ]]>            
+    </text>
+             
+    <text key="intervalType.hourly"><![CDATA[
+                        [Description]: 周期を時間単位に指定します。
+                    ]]>            
+    </text>
+             
+    <text key="poolingType.min"><![CDATA[
+                        [Description]: poolingされるelementの最小値を指定します。
+                    ]]>            
+    </text>
+             
+    <text key="jobType.end-time"><![CDATA[
+                        [Description]: このjobの終了時間を指定します。もし時間が与えられなければ、jobは終了されません。
+                    ]]>            
+    </text>
+             
+    <text key="loggingGroup.level"><![CDATA[
+                  [Description]: ロギングのレベルを設定します。それぞれのレベルの意味は、J2SEのロギングAPIのレベル・クラスを参照してください。
+                    ]]>            
+    </text>
+             
+    <text key="file-handlerType.valid-day"><![CDATA[
+                          [Description]: このHandlerが使用するファイルをこの設定で指定された期間中だけ使って引き続き更新する場合に使用します。この設定は、日付段位でファイルを変更するときに使います。この場合、Handlerが使用するファイル名の後ろにファイルが使用された日付が自動生成されます。
+                          [Value Description]: day
+                          [Example]: &lt;valid-day>1&lt;/valid-day>
+                        ]]>            
+    </text>
+             
+    <text key="jobType.description"><![CDATA[
+                        [Description]: このjobの説明を書き込めます。
+                    ]]>            
+    </text>
+             
+    <text key="intervalType.daily"><![CDATA[
+                        [Description]: 周期を日付単位に指定します。
+                    ]]>            
+    </text>
+
+    <text key="oldPoolingType.min"><![CDATA[
+                        [Description]: poolingされるelementの最小値を指定します。
+                    ]]>                
+    </text>
+                 
+    <text key="handlerType.console-handler"><![CDATA[
+                      [Description]: ロギングをスクリーンに表示する場合に使用するHandlerです。
+                    ]]>                
+    </text>
+                 
+    <text key="socket-handlerType.port"><![CDATA[
+                        [Description]: このhandlerが生成されるときにメッセージの送信先Portを設定します。
+                    ]]>                
+    </text>
+                 
+    <text key="jndi-infoType.export-name"><![CDATA[
+                        [Description]: JEUS DDに定義された実際のJNDI名 
+                        [Example]: &lt;export-name>ACCEJB&lt;/export-name>
+                    ]]>                
+    </text>
+                 
+    <text key="invoke-httpType.url"><![CDATA[
+                        [Description]: HTTP-RMI stubによって呼び出されるRMI Handler Servlet (jeus.rmi.http.ServletHandler)
+                        のURI経路を必ず設定します。このURLは、プロトコル、ウェブサーバIP、ポート番号を除いてただServlet要求経路のみを設定します。プロトコルは、HTTP、 RMIの実行環境とウェブサーバは同じIPアドレスを持っていると仮定します。
+                        (これはウェブサーバとウェブコンテナーは必ずHTTP-RMI要求を同じマシンで受けることを意味します。
+                        ) ポート番号は、次に説明するelement(HTTP-port)で設定します。
+                        [Value Description]: RMI Handler Servletを明示しているServlet コンテキスト経路
+                        [Example]: &lt;url>/mycontext/RMIHandlerServlet&lt;/url>
+                    ]]>                
+    </text>
+                 
+    <text key="method-paramsType.method-param"><![CDATA[
+                            [Description]: methodのparameterの完全な記述によるクラス名（fully qualified class name）を指定します。
+                            [Example]: java.lang.String
+                    ]]>                
+    </text>
+                 
+    <text key="securityPermissionType.description"><![CDATA[
+                  [Description]: このsecurity permission設定に対する説明を書き込むことができます。
+                    ]]>                
+    </text>
+                 
+    <text key="schedulerType.enabled"><![CDATA[
+                        [Description]: Scheduler Serviceを駆動するかを設定します。
+                        [Defined Value]: default : true
+                                                    true : 活性化します。
+                                                    false : 非活性化します。
+                    ]]>                
+    </text>
+                 
+    <text key="rolePermissionType.actions"><![CDATA[
+                        [Description]: このrole permissionに対するactionを定義します。Defaultで使用される
+                        role permissionは決まったactionはありません。
+                    ]]>                
+    </text>
+                 
+    <text key="jsp-engineType.keep-generated"><![CDATA[
+                        [Description]: このelementは、JSPページから生成されたJavaソースファイルをコンパイルし、Servletクラスファイルを生成した後にJavaソースファイルの保存の可否を決定します。
+                                                このファイルはデバッグに有用です。
+                        [Value Description]: Boolean値でこの設定を活性化或いは非活性化します。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: default : true
+                                                     true : Javaソースファイルを維持します。
+                                                     false : Javaソースファイルを削除します。
+                    ]]>                
+    </text>
+                 
+    <text key="socket-handlerType.address"><![CDATA[
+                        [Description]: このhandlerが生成されるときにメッセージの送信先IP Addressを設定します。
+                    ]]>                
+    </text>
+                 
+    <text key="file-handlerType.append"><![CDATA[
+                        [Description]: このHandlerが使用するファイルがすでに存在する場合、ファイルの後ろに追加するかを決定します。
+                        Falseで設定されていれば既存のファイルは除去されます。
+                    ]]>                
+    </text>
+                 
+    <text key="res-refType.jndi-info"><![CDATA[
+                        [Description]: このエンジンコンテナーのJNDIに登録するそれぞれのresource referenceのexport nameとreference nameを指定します。
+                    ]]>                
+    </text>
+                 
+    <text key="common-handlerType.name"><![CDATA[
+                      [Description]: Handlerの名前を設定します。このとき名前は、1つのロガー内でのみユニークな名前を設定します。この名前はツールなどでHandlerを示すときに使用します。
+                      [Example]: &lt;name>handler1&lt;/name>
+                    ]]>                
+    </text>
+                 
+    <text key="keystore-managerType.keystore-keypassword"><![CDATA[
+                           [Description]: 現在のドメインに適用するkeystore fileに対するkeypasswordを定義する
+                    ]]>   
+    </text>
+                 
+    <text key="jsp-engineType.compile-output-dir"><![CDATA[
+                        [Description]: この属性を設定してJSPファイルにより生成されたクラスファイルを&lt;jsp-work-dir>のディレクトリではない置くことができます。
+                                                この属性を設定を設定しないと、クラスファイルはjspworkディレクトリに位置します。このelementは、通常使用されません。
+                        [Value Description]: JSPクラスファイルを保存するのに使用される絶対経路
+                        [Defined Value]: default : %SERVLET_HOME%\jspwork \enginename\GroupDocBase\DocBase
+                    ]]>                
+    </text>
+                 
+    <text key="rolePermissionType.excluded"><![CDATA[
+                        [Description]: ロールを使用できないようにします。
+                        [Example]: &lt;excluded/>
+                    ]]>                
+    </text>
+                 
+    <text key="smtp-handlerType.send-for-all-messages"><![CDATA[
+                        [Description]: このhandlerが登録したロガーのlog() methodを通じて入って来たメッセージがこのhandlerで入った場合、これをイメールで送る対象とするかを設定します。もしfalseで設定されていれば、ロガーの特別なsend() methodで呼び出されたメッセージのみイメールで伝送されます。
+                        すなわち、最初からイメールで送る目的で指定されたメッセージのみイメールで伝送されます。
+                    ]]>                
+    </text>
+                 
+    <text key="jobType.class-name"><![CDATA[
+                        [Description]: jobを実行するclassのfully qualified nameです。
+                    ]]>                
+    </text>
+                 
+    <text key="user-handlerType.formatter-property"><![CDATA[
+                        [Description]: handlerが生成されるときに生成されたformatterに渡すpropertyを設定します。
+                        このpropertyは、key-valueでMapに格納され、
+JeusFormatter.setProperty() methodを通じて
+                        Formatterに伝達されます。
+                    ]]>                
+    </text>
+                 
+    <text key="oldPoolingType.period"><![CDATA[
+                        [Description]: poolingされるelementを整理する時間を指定します。
+                        [Performance Recommendation]: この値が大きいほど整理する周期が長くなり、serverの運営には付加が少ないが、しかしそれだけメモリーが漏れる可能性があるので適当な値に設定します。
+                    ]]>                
+    </text>
+                 
+    <text key="schedulerType.thread-pool"><![CDATA[
+                    [Description]: schedulerでmulti-threadでjobを実行するときに使用するthread poolを設定します
+                    ]]>                
+    </text>
+                 
+    <text key="jobType.begin-time"><![CDATA[
+                        [Description]: このjobのスタート時間を指定します。もし時間が与えられなければ、jobは直ちにスタートします。
+                    ]]>                
+    </text>
+                 
+    <text key="loggingGroup.filter-class"><![CDATA[
+                  [Description]: ロガーに指定するfiler classの完全な記述によるクラス名（fully qualified class name）を設定します。
+                  [Example]: &lt;filter-class>com.tmax.logging.filter.MyFilter&lt;/filter-class>
+                    ]]>                
+    </text>
+                 
+    <text key="oldPoolingType.max"><![CDATA[
+                        [Description]: poolingされるelementの最大値を指定します。
+                    ]]>                
+    </text>
+                 
+    <text key="methodParamType.method-name"><![CDATA[
+                            [Description]: method名を指定します。
+                            [Example]: foo
+                    ]]>                
+    </text>
+                 
+    <text key="oldPoolingType.step"><![CDATA[
+                        [Description]: poolingされるelementが増加されるときの増加量を設定します。
+                    ]]>                
+    </text>
+                 
+    <text key="common-handlerType.level"><![CDATA[
+                      [Description]: このハンドラのレベルを設定します。ロガーを通ったメッセージのレベルがこのハンドラ
+                      レベルに含まれる場合にのみ、このハンドラにによって出力されます。
+                      (ただし、アクセスログは、INFOレベル以上では出力されません。)
+                    ]]>
+    </text>
+                 
+    <text key="propertyType.key"><![CDATA[
+                        [Description]: propertyのkey値です。
+                    ]]>                
+    </text>
+                 
+    <text key="smtp-propertyGroup.bcc-address"><![CDATA[
+                        [Description]: メールの非表示同報者アドレスを指定します。
+                    ]]>
+    </text>
+                 
+    <text key="jsp-engineType.java-compiler"><![CDATA[
+                        [Description]: JSPのJavaソースをServletクラスファイルでコンパイルするためのJavaコンパイラーを指定します。 
+                                                ディフォルト設定が最も効率的であるためこのelementは使用しないことをお勧めします。
+                        [Value Description]: Javaコンパイラーを指定する文字列。コンパイラーは、実行できるようにするためにはシステム経路に必ず踏むまれる必要があります
+                        [Defined Value]: default : sun.tools.javac
+                                                    sun.tools.javac : JDKライブラリ “tools.jar”が含まれているSUN Microsystems　Javaコンパイラーを使用しあｍす。(この設定をお勧めします。)
+                                                    javac : システムパスに含まれた外部"javac" コンパイラーを指定します。
+                                                    com.sun.tools.javac: いくつかのシステムで動作します。もし動作すると、sun.tools.javacより効率的で安定性が高いため優先度が高いオプションです。
+                    ]]>                
+    </text>
+                 
+    <text key="keystore-managerType.keystore-path"><![CDATA[
+
+                        [Description]: 現在のドメインに適用するkeystore fileのパスを定義する
+                    
+                    ]]>   
+    </text>
+                      
+    <text key="jndi-infoType.ref-name"><![CDATA[
+                        [Description]: このelementは、ソースコード上でしようできる参照名を宣言できます。
+                        [Value Description]: 実際JNDIの名にbindされる参照名。これは、該当するJ2EEスタンダードdescriptor elementのref-nameに対応されます。
+                        [Example]: &lt;ref-name>ejb/AccountEJB&lt;/ref-name>
+                    ]]>                    
+    </text>
+                     
+    <text key="user-handlerType.handler-class"><![CDATA[
+                        [Description]: ユーザが作成したhandlerの完全な記述によるクラス名（fully qualified class name）を設定します。このクラスは
+                        java.util.logging.Handlerを相続してもらい
+jeus.util.logging.JeusHandlerを実現します。
+                        [Example]: &lt;handler-class>com.tmax.logging.handler.MyHandler&lt;/handler-class>
+                    ]]>                    
+    </text>
+                     
+    <text key="keystore-managerType.keystore-password"><![CDATA[
+
+                        [Description]: 現在のドメインに適用するkeystore fileに対するパスワードを定義する。
+                    
+                    ]]>   
+    </text>                    
+    <text key="poolingType.max"><![CDATA[
+                        [Description]: poolingされるelementの最大値を指定します。
+                    ]]>                        
+    </text>
+                         
+    <text key="envType.name"><![CDATA[
+                        [Description]: コードで使用する環境変数の名前
+                        [Example]: &lt;name>minAmount&lt;/name>
+                    ]]>                        
+    </text>
+                         
+    <text key="SecurityServiceType.classname"><![CDATA[
+                        [Description]: jeus.security.spiのクラスの中で1つを拡張したJavaクラス名
+                        [Value Description]: Javaクラス名
+                        [Example]: &lt;classname>mypackage.MyAutenticationService&lt;/classname>
+                    ]]>                        
+    </text>
+                         
+    <text key="smtp-propertyGroup.cc-address"><![CDATA[
+                        [Description]: 参照者（Cc）のアドレスを指定します。
+                    ]]>                        
+    </text>
+                         
+    <text key="loggingGroup.use-parent-handlers"><![CDATA[
+                  [Description]: 新しいロガーのHandlerをこのロガーでも使用するかを決定します。
+                    ]]>                        
+    </text>
+
+    <text key="loggingLevelType.FATAL"><![CDATA[
+                        [Description]: SEVEREに該当するレベルです。JEUS 4.x代のロガーのレベルですが、互換性のためにサポートしています。
+                    ]]>
+    </text>
+
+    <text key="loggingLevelType.NOTICE"><![CDATA[
+                        [Description]: WARNINGに該当するレベルです。JEUS 4.x代のロガーのレベルですが、互換性のためにサポートしています。
+                    ]]>
+    </text>
+
+    <text key="loggingLevelType.INFORMATION"><![CDATA[
+                        [Description]: INFOに該当するレベルです。JEUS 4.x代のロガーのレベルですが、互換性のためにサポートしています。
+                    ]]>
+    </text>
+
+    <text key="loggingLevelType.DEBUG"><![CDATA[
+                        [Description]: FINEに該当するレベルです。JEUS 4.x代のロガーのレベルですが、互換性のためにサポートしています。
+                    ]]>
+    </text>
+                 
+    <text key="loggingLevelType.fatal"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.notice"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.information"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.debug"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.SEVERE"><![CDATA[
+                        [Description]: J2SE Logging APIのレベル・クラス・ドキュメントを参照してください。
+                    ]]>
+    </text>
+
+    <text key="loggingLevelType.WARNING"><![CDATA[
+                        [Description]: J2SE Logging APIのレベル・クラス・ドキュメントを参照してください。
+                    ]]>
+    </text>
+
+    <text key="loggingLevelType.INFO"><![CDATA[
+                        [Description]: J2SE Logging APIのレベル・クラス・ドキュメントを参照してください。
+                    ]]>
+    </text>
+
+    <text key="loggingLevelType.CONFIG"><![CDATA[
+                        [Description]: J2SE Logging APIのレベル・クラス・ドキュメントを参照してください。
+                    ]]>
+    </text>
+
+    <text key="loggingLevelType.FINE"><![CDATA[
+                        [Description]: J2SE Logging APIのレベル・クラス・ドキュメントを参照してください。
+                    ]]>
+    </text>
+
+    <text key="loggingLevelType.FINER"><![CDATA[
+                        [Description]: J2SE Logging APIのレベル・クラス・ドキュメントを参照してください。
+                    ]]>
+    </text>
+
+    <text key="loggingLevelType.FINEST"><![CDATA[
+                        [Description]: J2SE Logging APIのレベル・クラス・ドキュメントを参照してください。
+                    ]]>
+    </text>
+
+    <text key="loggingLevelType.ALL"><![CDATA[
+                        [Description]: J2SE Logging APIのレベル・クラス・ドキュメントを参照してください。
+                    ]]>
+    </text>
+                 
+    <text key="loggingLevelType.severe"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.warning"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.info"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.config"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.fine"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.finer"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.finest"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.all"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="db-vendorType.oracle"><![CDATA[
+                        [Description]: Oracle DBMSの場合
+                    ]]>
+    </text>
+
+    <text key="db-vendorType.informix"><![CDATA[
+                        [Description]: Informix DBMSの場合
+                    ]]>
+    </text>
+
+    <text key="db-vendorType.db2"><![CDATA[
+                        [Description]: IBM DB2 DBMSの場合
+                    ]]>
+    </text>
+
+    <text key="db-vendorType.mssql"><![CDATA[
+                        [Description]: Microsoft SQL Server DBMSの場合
+                    ]]>
+    </text>
+
+    <text key="db-vendorType.sybase"><![CDATA[
+                        [Description]: Sybase DBMSの場合
+                    ]]>
+    </text>
+
+    <text key="db-vendorType.hsql"><![CDATA[
+                        [Description]: HSQL DBMSの場合
+                    ]]>
+    </text>
+
+    <text key="db-vendorType.cloudscape"><![CDATA[
+                        [Description]: Cloudscape DBMSの場合
+                    ]]>
+    </text>
+
+    <text key="db-vendorType.mysql"><![CDATA[
+                        [Description]: MySQL DBMSの場合
+                    ]]>
+    </text>
+                 
+    <text key="engineType.EXCLUSIVE_ACCESS"><![CDATA[
+                    [Description]: 各エンティティBeanインスタンスはそれぞれが示すデータベースのコラムと1対1の関係を持ちながら、
+                    それぞれに独占的にアクセスします。これは、1つのインスタンスが動作している間は他のエンティティBeanは
+                    データをアクセスしたり変更したりできないことを意味し、EJBエンジンは ejbLoad()呼び出しを
+                    すべて省略できることを表します。エンジンはビーンの生成時に一度だけ ejbLoad()呼び出しを行い、
+                    ビーンが動作している間はデータベースに何の変化もないと仮定し ejbLoad()呼び出しを行いません。
+                    このビーンはクラスタリングされたビーンの一部である場合は使用できません。データベースはWASによってのみ
+                    変更が許されることを必ず覚えてください。(WAS以外のアクセスは許容されません。)
+                    ]]>
+    </text>
+
+    <text key="engineType.SINGLE_OBJECT"><![CDATA[
+                    [Description]: このように設定すると、他のEJBエンジンの複数のEJBが同じデータベースのコラムに
+                    マッピングされることができます。ejbLoad()はエンティティBeanにリクエストが入る前にいつも呼び出されます。SINGLE_OBJECTと
+                    MULTIPLE_OBJECTは同種のEJBをクラスタリングするときに必要です。
+                    SINGLE_OBJECTの場合は、それぞれのEJBエンジンでただ1つのEJB
+エンティティBeanがEJBクライアントの全リクエストを処理します。
+                    つまり、同じEJBエンジンで他のEJB
+                    クライアントのリクエストが届くと、
+                    先に接続していた他のクライアントのリクエストが終了するまで待機状態に置かれます。
+                    ]]>          
+    </text>
+
+    <text key="engineType.MULTIPLE_OBJECT"><![CDATA[
+                    [Description]: このように設定すると、他のEJBエンジンの複数のEJBが同じデータベースのコラムに
+                    マッピングされることができます。ejbLoad()はエンティティBeanにリクエストが入る前にいつも呼び出されます。SINGLE_OBJECTと
+                    MULTIPLE_OBJECTは同種のEJBをクラスタリングするときに必要です。
+                    MULTIPLE_OBJECTの場合は、それぞれのEJBエンジンですべてのEJB
+                    クライアントのリクエストを同時処理するときに、複数のEJBエンティティBeanインスタンスが生成されます。
+                    つまり、SINGLE_OBJECTモードとは違って、EJBクライアントのリクエストは先に処理している他のリクエストが終了するまで待機されません。
+                    ]]>
+    </text>
+                 
+    <text key="vendorType.oracle"><![CDATA[
+                        [Description]: Oracle JDBC driver
+                    ]]>               
+    </text>
+                 
+    <text key="vendorType.sybase"><![CDATA[
+                        [Description]: Sybase JDBC driver
+                    ]]>               
+    </text>
+                 
+    <text key="vendorType.mssql"><![CDATA[
+                        [Description]: JEUS MS SQL Server driver
+                    ]]>               
+    </text>
+                 
+    <text key="vendorType.db2"><![CDATA[
+                        [Description]: DB2 JDBC driver
+                    ]]>               
+    </text>
+                 
+    <text key="vendorType.others"><![CDATA[
+                        [Description]: その他のJDBC driver
+                    ]]>               
+    </text>
+
+    <text key="off-intType"><![CDATA[
+               [Value Type Description]: 基本的に0以上のint型です。-1は、設定していないと見なされます。つまり、offになります。
+            ]]>
+    </text>
+
+    <text key="nonNegativeIntType"><![CDATA[
+               [Value Type Description]: 0より大きいint型です。つまり、intの範囲内で
+               0より大きい値を含みます。
+            ]]>
+    </text>
+
+    <text key="nonNegativeLongType"><![CDATA[
+               [Value Type Description]: 0より大きいlong型です。つまり、longの範囲内で
+               0より大きい値を含みます。
+            ]]>
+    </text>
+
+    <text key="positiveLongType"><![CDATA[
+                [Value Type Description]: 0以上のlong型です。つまり、longの範囲で1以上の値を含みます。
+            ]]>
+    </text>
+
+    <text key="positiveIntType"><![CDATA[
+                [Value Type Description]: 基本的に0以上のint型ですが、1以上の値のみを許容します。
+            ]]>
+    </text>
+
+    <text key="positiveShortType"><![CDATA[
+                [Value Type Description]: JMSブローカのブローカIDとして使用します。0はローカルブローカIDとして予約されています。
+            ]]>
+    </text>
+
+    <text key="off-longType"><![CDATA[
+                [Value Type Description]: 基本的にunsigned long型です。-1は、設定していないと見なされます。つまり、offになります。
+            ]]>
+    </text>
+
+    <text key="fractionType"><![CDATA[
+                [Value Type Description]: 0と1の間のfloat型で、比率を示します。
+            ]]>
+    </text>
+
+    <text key="keystore-configType.keystore-path"><![CDATA[
+                [Description]: 現在のドメインに適用するキーストアファイルのパスを定義します。
+            ]]>
+    </text>
+
+    <text key="keystore-configType.keystore-password"><![CDATA[
+                [Description]: 現在のドメインに適用するキーストアファイルに対するパスワードを定義します。
+            ]]>
+    </text>
+
+    <text key="keystore-configType.keystore-keypassword"><![CDATA[
+                [Description]: 現在のドメインに適用するキーストアファイルに対するキーパスワードを定義します。
+            ]]>
+    </text>
+
+    <text key="keystore-configType.truststore-path"><![CDATA[
+                [Description]: 現在のドメインに適用するトラストストアファイルのファイルパスを定義します。
+            ]]>
+    </text>
+
+    <text key="keystore-configType.truststore-password"><![CDATA[
+                [Description]: 現在のドメインに適用するトラストストアファイルに対するパスワードを定義します。
+            ]]>
+    </text>
+
+    <text key="loggingGroup.name"><![CDATA[
+              [Description]: デフォルトロガー(jeus、jeus.ejb、jeus.servlet、jeus.jmsなど)以外の他のロガー(jeus.transaction、jeus.jndiなど)に対し設定を適用するときに、当該ロガー名を指定します。
+         したがって、一般的な場合には名前を指定しません。
+             ロガーの名前を知りたい場合はロガーページを別途参照してください。
+                             この要素を省略した場合、ロギング設定が<node>または<EngineContainer>に存在するときの名前はjeus loggerです。
+                     エンジンの下に設定している場合は、常に各エンジンのロガー設定を示すので名前は無視されます。
+                     デフォルトコンテナの場合は、ノードのロギング設定に従うため、名前は無視されます。
+                ]]>          
+    </text>
+
+             
+    <ref key="console-handlerType">common-handlerType</ref>
+     
+    <ref key="file-handlerType">common-handlerType</ref>
+     
+    <ref key="smtp-handlerType">smtp-propertyGroup</ref>
+     
+    <ref key="smtp-handlerType">common-handlerType</ref>
+     
+    <ref key="smtp-senderType">smtp-propertyGroup</ref>
+     
+    <ref key="socket-handlerType">common-handlerType</ref>
+     
+    <ref key="user-handlerType">common-handlerType</ref>
+     
+    <ref key="system-loggingType">loggingGroup</ref>
+     
+    <ref key="user-logType">system-loggingType</ref>
+               
+</description>

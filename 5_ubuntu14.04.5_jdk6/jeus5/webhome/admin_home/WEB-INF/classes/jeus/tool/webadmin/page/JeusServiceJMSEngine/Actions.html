@@ -1,0 +1,15 @@
+<html jwcid="mainBorder">
+	<span jwcid="tabPanel"/>
+	<span jwcid="takeover">
+		<form jwcid="takeover_form">
+			<span jwcid="@If" condition="ognl:takeover_enabled">
+				<span jwcid="takeover_brokernames">
+					<select jwcid="takeover_brokernames_field"/>
+				</span>			
+			</span>
+			<span jwcid="@Else">
+				<span jwcid="@Insert" value="message:jms.takeover.unavail.label" class="field_label"/>
+			</span>
+		</form>
+	</span>		
+</html>

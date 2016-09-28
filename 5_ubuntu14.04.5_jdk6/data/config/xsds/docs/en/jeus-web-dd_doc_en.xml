@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description>        
+    <text key="contextType.properties"><![CDATA[                        [Description]: Configure context-wide property.                    ]]>        
+    </text>
+         
+    <text key="res-env-refType.jndi-info"><![CDATA[
+                        [Description]: Each &lt;jndi-info> element connects with JNDI name in one reference. 
+                    ]]>        
+    </text>
+         
+    <text key="file-cachingType.directory"><![CDATA[
+                        [Description]: Static contents are set for one directory path to be cached. For configuring several numbers of cache directory, the number of elments are added.
+                        [Value Description]: URL Directory path to be cached by Content.
+                    ]]>        
+    </text>
+         
+    <text key="contextType.service-ref"><![CDATA[
+                    [Description]: Root element on configuration documentation of JEUS Web Service Client (root element).
+                        ]]>        
+    </text>
+         
+    <text key="contextType.res-env-ref"><![CDATA[
+                        [Description]: This element links symbolic resource environment references (source code references to administered objects) in web.xml to the actual JNDI names used in the system. 
+                        [Dependency]: ref-name : /web-app/resource-env-ref/resource-env-ref-name
+                    ]]>        
+    </text>
+         
+    <text key="contextType.auto-reload"><![CDATA[
+                        [Description]: Determines whether to reload Servlets classes and custom tag classes automtically if the classes are changed. 
+										This feature should only be enabled in a development environment because of the extra processing power required to do the checking and reloading.
+                    ]]>        
+    </text>
+         
+    <text key="contextType.deny-download"><![CDATA[
+                        [Description]: This element specifies any files that should not be downloadable under any circumstances. 
+										For example, if a file named "secret.dat" exists in a directory called "data" of some context with the context path "/customers" in a domain 
+										called "www.foo.com" and a client requests the URL "www.foo.com/customers/data/secret.dat", the "secret.dat" file would normally be downloaded. 
+										To prevent this from happening you will need to make use of this XML element in order to create a download denial condition that matches the file "secret.
+                  ]]>        
+    </text>
+         
+    <text key="contextType.role-mapping"><![CDATA[
+                        [Description]: This element maps any J2EE role names used in the &lt;security-role> element of the web.xml file of this context to actual system user names. 
+                                       	The web.xml file will be located under the "\WEB-INF\" directory of this context's document base directory.
+                        [Dependency]: role : /web-app/security-role/role-name
+                    ]]>        
+    </text>
+         
+    <text key="role-mappingType.role-permission"><![CDATA[
+                        [Description]:
+                    ]]>        
+    </text>
+         
+    <text key="servletType.run-as-identity"><![CDATA[
+                    [Description]: This element defines mapping of run-as-specified-identity role name defined in web.xml as actual user name(principal) 
+                    ]]>        
+    </text>
+         
+    <text key="contextType.user-log"><![CDATA[
+                        [Description]: This element sets the handling of messages that were defined by the programmer using the ServletContext.log() method (from within a Servlet).
+                                       	This element is identical to the &lt;context-group>&lt;logging>&lt;user-log> element with the exception that the default log file used will be named after the name of the context (e.g. "Examples.log"). 
+										By using this element, log files for inidvidual contexts can be obtained.
+                    ]]>        
+    </text>
+         
+    <text key="contextType.docbase"><![CDATA[
+                        [Description]: This element is not used but is remained for compatibility with the old version.
+                        [Hidden]:  ture
+                    ]]>        
+    </text>
+         
+    <text key="jsp-resourceType.provider-class"><![CDATA[                	[Description]: Configure class implementing JspResourceProvider Interface for providing JSP Resource to InputStream.                	]]>        
+    </text>
+         
+    <text key="contextType.jndi-properties"><![CDATA[
+	                	[Description]: Specify the property for jndi.
+                	
+                    ]]>        
+    </text>
+         
+    <text key="ejb-refType.jndi-info"><![CDATA[
+                        [Description]: Each &lt;jndi-info> element connects with JNDI name in one reference. 
+                    ]]>            
+    </text>
+             
+    <text key="contextType.aliasing"><![CDATA[
+                        [Description]: Aliasing is used to create symbolic links from requested URL paths to actual file system directories.
+										By default, each URL path below a context path will be assumed to reflect a sub-directory of the context's document base directory.
+                                        However, if this is not the case and the URL path should be directed to a different directory, this element should be used to override the default behaviour.
+                    ]]>            
+    </text>
+             
+    <text key="contextType.enable-jsp"><![CDATA[
+                        [Description]: Determines the usage availabiltiy of JSP engine.
+                        [Value Description]: Activating or inactivating this configuration as Boolean value.
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: Activating JSP in Web Container.
+                                        [false]: Inactivating JSP in Web Container.
+                                                 When it is set, this value will prevent from having an access to entire JSP files(Returning Service Unavailable message as browser.) 
+                    ]]>            
+    </text>
+             
+    <text key="contextType.jsp-resource"><![CDATA[                		[Description]: This element configure provider-class for providing JSP resource stored in 				Repository to JspEngine.                	]]>            
+    </text>
+             
+    <text key="contextType.fast-deploy"><![CDATA[
+                        [Description]: When this web component includes Web Service or Web Service Client, This will set the availabiltiy of using class file installed with web component 
+										when it is not compiled by generating Stub of Tie and Web Service Client of Web Service. 
+                    ]]>            
+    </text>
+             
+    <text key="deny-downloadType.directory"><![CDATA[
+                        [Description]: For preventing on downloading an entire file in certain directory, this element is used (Related to URL path of context).
+                        [Value Description]: Directory starting and ending with "/". Directory related to URL path of Context.
+                        [Example]: &lt;directory>/data/&lt;/directory>
+                    ]]>            
+    </text>
+             
+    <text key="file-cachingType.max-idle-time"><![CDATA[
+                        [Description]: Time period in where Cached static resource is not used for the time except for caching the related resource.
+                        [Value Description]: Unit of Millisecond.
+                        [Example]: &lt;max-idle-time>1800&lt;/max-idle-time>
+                    ]]>            
+    </text>
+             
+    <text key="deny-downloadType.extension"><![CDATA[
+                        [Description]: It rejects downloading entire file in Context for given extension. 
+                        [Value Description]: File Extension 
+                        [Example]: &lt;extension>dat&lt;/extension>
+                    ]]>            
+    </text>
+             
+    <text key="auto-reloadType.enable-reload"><![CDATA[
+                        [Description]: Determine whether to activate or inactivate Servlet auto-reload.
+                        [Value Description]: Activating or inactivating this configuration as Boolean value.
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: Activating the related configuration.
+                                         [false]: Inactivating the related configuration .
+                    ]]>            
+    </text>
+             
+    <text key="auto-reloadType.check-on-demand"><![CDATA[
+                        [Description]: Set for inspecting or not when each request reached for reloading Servlet class.
+                        [Value Description]: Activating or inactivating this configuration as Boolean value.
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: Activating the related configuration.
+                                         [false]: Inactivating the related configuration .
+                    ]]>            
+    </text>
+             
+    <text key="contextType.allow-indexing"><![CDATA[
+                        [Description]: The sub-elements of this element specifies the URL paths that may be indexed. 
+										Indexing means that the contents of the underlying directory of an URL path is listed in the Web browsers window. 
+                                        Indexing occurs if three conditions are fullfilled: 
+											1. the user requested an URL path that did not contain an explicit file or resource name (e.g. no "index.html" was specified), 
+											2. no "default welcome file" was specified in the Web applications's web.xml descriptor file and 
+											3. indexing is allowed for the requested directory (allowed directories are listed in the sub-elements of this element). 
+                                      	If all of these conditions are fullfilled, a directory list will be sent back to the client.
+                   ]]>            
+    </text>
+             
+    <text key="file-cachingType.max-cache-memory"><![CDATA[
+                        [Description]: Allocated maximum memory for storing static resource.
+                        [Value Description]: The number of Megabytes unit 
+                        [Value Type Description]: Integer
+                        [Defined Value]: [-1]: It is not limited for cache size.
+                    ]]>            
+    </text>
+             
+    <text key="added-classpathType.class-path"><![CDATA[
+                        [Description]: Declares user defined classpth for adding when executing and compiling Servlet.
+                        [Value Description]: Directory or JAR file can be configured. When configuring the directory, it should end with directory classfier (“\” Windows ,”/” Unix).
+                        [Example]: &lt;class-path>c:\mylib\subdir\&lt;/class-path>
+                    ]]>            
+    </text>
+             
+    <text key="contextType.added-classpath"><![CDATA[
+                        [Description]: This element specifies additional classes to add to the class path when Servlets are compiled or executed. 
+										By default, the classes and packages below the "\WEB-INF\classes\" directory as well as any JAR files below the "\WEB-INF\lib\" directory are included in the class path.
+										The "\WEB-INF\" directory is located just beneath the context's document base directory.
+                   ]]>            
+    </text>
+             
+    <text key="deny-downloadType.file"><![CDATA[
+                        [Description]: This element makes sure that set file will not be downloaded.
+                        [Value Description]: The path followed by file name according to URL context.
+                        [Example]: &lt;file>/data/secret.dat&lt;/file>
+                    ]]>            
+    </text>
+             
+    <text key="contextType.keep-generated"><![CDATA[
+                        [Description]: When this web component includes Web Service or Web Service Client, it determines whether to leave java source file of Tie and Web Service Client Stub.
+										If this has not been set, it will use the configuration of &lt;application>
+                    ]]>            
+    </text>
+             
+    <text key="allow-indexingType.directory"><![CDATA[
+                        [Description]: This element activates directory indexing on set URL path. 
+                        [Value Description]: URL path starting and ending with "/".
+                    ]]>            
+    </text>
+             
+    <text key="contextType.jsp-engine"><![CDATA[
+                     [Description]: This element makes JSP-related settings for this context. The settings will apply to all JSP pages contained in this context.
+                ]]>            
+    </text>
+         
+    <text key="jndi-propertiesType.local-bindings"><![CDATA[
+                        [Description] : Determine whether to use local binding.
+                	    [Value Description]: This is the boolean value that activate or deactivate this configuration.
+                	
+                    ]]>        
+    </text>
+             
+    <text key="aliasingType.alias"><![CDATA[
+                        [Description]: Each &lt;alias> element defines one mapping between a request URL and an arbitrary directory. 
+										Example: the user requests the URL "www.foo.com/examples/images/hello.gif". 
+                                        		By default the container would look for the "hello.gif" file in the directory "/images/" below the "Example" context's base directory. 
+                                               	However, if the "hello.gif" file is located in the "c:\web\images\" directory and not in the context, an alias element would be needed.
+                                               	If several mappings are necessary, use several instances of this element.
+                    ]]>                
+    </text>
+                 
+    <text key="contextType.res-ref"><![CDATA[
+                        [Description]: This element links symbolic resource references (for example datasource references) in web.xml to the actual JNDI names used in the system.
+                        [Dependency]: ref-name : /web-app/resource-ref/res-ref-name
+                    ]]>                
+    </text>
+                 
+    <text key="contextType.ejb-ref"><![CDATA[
+                        [Description]: This element is connected to JNDI name used in actual system for EJB reference set in web.xml 
+                        [Dependency]: ref-name : /web-app/ejb-ref/ejb-ref-name
+                    ]]>                
+    </text>
+                 
+    <text key="contextType.servlet"><![CDATA[
+                        [Description]: This element contains information on servlet of jeus within context. 
+                    ]]>                
+    </text>
+                 
+    <text key="contextType.webinf-first"><![CDATA[                        [Description]: Configure whether to find it below web-inf directory when loading class.                            If it is configured as true, it will find below web-inf. If it is false, it will			    find it within high level classlaoder. 			    When configuring it as true, you should be careful of ClassCastException due to duplicated class.                      ]]>                
+    </text>
+                 
+    <text key="servletType.servlet-name"><![CDATA[
+                        [Description]: This element refers servlet-name configured in web.xml.
+                    ]]>                
+    </text>
+                 
+    <text key="aliasType.real-path"><![CDATA[
+                        [Description]: This element the URL path that should be mapped to &lt;alias-name> element.
+                        [Value Description]: An URL path starting and ending with a "/". The path is relative to the context's path (“\” Window,”/”  Unix).
+                        [Example]: &lt;real-path>c:\web\images\&lt;/real-path>
+                    ]]>                
+    </text>
+                 
+    <text key="contextType.url-rewriting"><![CDATA[
+                        [Description]: By default, the Web container will use cookies to maintain the client's session id over several requests. 
+										One problem is that most Web browsers do not send any session ID cookie information with a new request 
+										if that request has a different domain name than the domain name for the request where the cookie was originally created. 
+                                        This option (url-rewriting), if set to "true", will force the use of URL rewriting instead of relying on cookies (even if the Web browser supports cookies). 
+                                        This way, session tracking will work even if different domain names are used across several calls. This will cause all the URL's returned by the context to have a unique 
+                                        JSESSIONID URL parameter attached. If set to "false", this feature will not be used and the default cookie-based behavior will be used. 
+                        [Value Description]: Activating or inactivating this configuration as Boolean value.
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: Activating the related configuration.
+                                         [false]: Inactivating the related configuartion.
+                   ]]>                
+    </text>
+                 
+    <text key="jeus-web-dd"><![CDATA[
+                [Description]: JEUS applciation(Servlet Application) Deployment Descriptor conains exactly one of these elements at the top level. 
+								The sub-element of this element (&lt;context;>) contains information pertining to the deployment and registration of on context (Web application).
+            ]]>                
+    </text>
+                 
+    <text key="contextType.file-caching"><![CDATA[
+                        [Description]: This element configures the caching of static resources such as images and HTML files. 
+										Caching means that often-requested files are temporarily stored and fetched from main memory instead of from the secondary storage (e.g. the hard disc drive). 
+                                        This will increase the performance of fetching such static resources.
+                    ]]>                
+    </text>
+                 
+    <text key="aliasType.alias-name"><![CDATA[
+                        [Description]: This element the URL path that should be mapped to a specific directory.
+                        [Value Description]: Directory starting and ending with "/". Directory related with URL path of Context.
+                        [Example]: &lt;alias-name>/images/&lt;/alias-name>
+                    ]]>                
+    </text>
+                 
+    <text key="contextType.max-instance-pool-size"><![CDATA[
+                        [Description]: Sets the maximum number of Servlet instances to create if the single threaded model is used (thus only for Servlets implementing the "SingleThreadedModel" interface). 
+										If more requests for a single threaded Servlet arrive than the maximum allowed instance count set here, those requests will be queued until a single threaded Servlet instance becomes available.
+                        [Value Description]: Maximum number of single threaded Servlet instance to be genereted for this Context group.
+                        [Value Type Description]: Integer
+                        [Defined Value]: [-1]: If this value is used, there will be no limitation for the number of instances on single threaded Servlets 
+                    ]]>                
+    </text>
+                 
+    <text key="contextType.enable-default-login"><![CDATA[
+                        [Description]: This element is not used.
+                    ]]>          
+    </text>
+                 
+    <text key="contextType.context-path"><![CDATA[
+                        [Description]: The URL path of the context. This path is entered by the user directly after the domain name (and port number).
+										Example: if the context path of a context A is "/examples", the URL "http://www.foo.com/examples/index.html" would result in the index.html file of the context A to be fetched. 
+										Note: this element must be set if it is not set in WEBMain.xml.
+                        [Value Description]: An URL path starting with a "/" character. The path must be unique within this virtual host.
+                    ]]>                
+    </text>
+       
+</description>

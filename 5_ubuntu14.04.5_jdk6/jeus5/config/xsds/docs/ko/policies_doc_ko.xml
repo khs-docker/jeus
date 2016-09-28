@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+<description>     
+    <text key="policies"><![CDATA[
+                        [Description]: JEUS의 권한 체크와 관련된 Policy들을 정의한다.
+            ]]>     
+    </text>
+     
+    <text key="PoliciesType.policy"><![CDATA[
+                        [Description]: JEUS의 Policy를 정의한다.
+                    ]]>     
+    </text>
+     
+    <text key="PolicyType.role-permissions"><![CDATA[
+                        [Description]: 해당 Policy에 대한 principal-role 매핑들을 정의한다.
+                    ]]>     
+    </text>
+     
+    <text key="PolicyType.resource-permissions"><![CDATA[
+                        [Description]: 해당 Policy에 대한 role-resource 매핑들을 정의한다.
+                    ]]>     
+    </text>
+     
+    <text key="RolePermissionsType.role-permission"><![CDATA[
+                        [Description]: 해당 Policy에 대한 principal-role 매핑을 정의한다.
+                    ]]>     
+    </text>
+     
+    <text key="ResourcePermissionsType.context-id"><![CDATA[
+                        [Description]: role-resource 매핑이 적용 되는 context id(보통 이 태그는 사용되지 않는다).
+                        [Value Description]: context id 값
+                        [Example]: <context-id>MyContext</context-id>
+                    ]]>     
+    </text>
+     
+    <text key="ResourcePermissionsType.resource-permission"><![CDATA[
+                        [Description]: 해당 Policy에 대한 role-resource 매핑을 정의한다.
+                    ]]>     
+    </text>
+     
+    <text key="ResourcePermissionType.role"><![CDATA[
+                        [Description]: 해당 Resource에 매핑되는 Role
+                        [Value Description]: Role명
+                        [Example]: <role>Administrator</role>
+                    ]]>     
+    </text>
+     
+    <text key="ResourcePermissionType.resource"><![CDATA[
+                        [Description]: Role을 맵핑하는 Resource.
+                        [Value Description]: Resource명.
+                        [Example]: <resource>jeus.server.*</resource>
+                    ]]>     
+    </text>
+     
+    <text key="ResourcePermissionType.actions"><![CDATA[
+                        [Description]: 선택적인 값으로 resource permission클래스의 생성자에 넘길 actions 값
+                        [Value Description]: resource permission class에 넘길 actions 데이터 값.
+                        [Example]: <actions>boot,down</actions>
+                    ]]>     
+    </text>
+     
+    <text key="ResourcePermissionType.classname"><![CDATA[
+                        [Description]: java.security.Permission을 상속한 Java 클래스명.
+                                       이 클래스는 resource permission에 사용된다.
+                        [Value Description]: Java 클래스명
+                        [Example]: <classname>jeus.security.resource.TimeConstrainedResourcePermission</classname>
+                    ]]>     
+    </text>
+     
+    <text key="ResourcePermissionType.excluded"><![CDATA[
+                        [Description]: 만약 이 태그가 있으면, 해당 Resource는 배제된다(누구도 해당 Resource에 접근할 수 없다).
+                        [Value Description]: 어떤  값도 설정되지 않는다. empty  타입.
+                    ]]>     
+    </text>
+     
+    <text key="ResourcePermissionType.unchecked"><![CDATA[
+                        [Description]: 만약 이 태그가 있으면, 해당 Resource는 체크되지 않는다(누구나 이 Resource에 접근할 수 있다).
+                        [Value Description]: 어떤 값도 설정되지 않는다. empty  타입.
+                    ]]>     
+    </text>
+ </description>

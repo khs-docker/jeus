@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="/webadmin/css/login.css" rel="stylesheet" type="text/css" />
+        <title>JEUS 5 Web Console</title>
+        <script language="JavaScript">
+            if(window.opener){
+                window.opener.top.location.href = window.location.href;
+                window.close();
+            }else if(window != window.top){
+                window.top.location.href = window.location.href;
+            }
+            window.scrolling ="no";
+        </script>
+    </head>
+    <body jwcid="@Body" class="login_bg">
+        <span jwcid="condFailed">
+            <script jwcid="alertScript"/>
+        </span>
+        <span jwcid="dynamite"/>
+        <form jwcid="loginForm">
+            <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                <td align="center">
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td><img jwcid="login_top" width="689" height="50"/></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="left_ar"><img jwcid="logo_JEUS"/></div>
+                            <div class="right_ar">
+                                <div class="login_area">
+                                    <div style="padding-top:9px">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td width="43" rowspan="2"><img jwcid="img_idpw" width="43" height="43"/></td>
+                                                <td width="146" height="43">
+                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr>
+                                                            <td height="21"><input jwcid="usernameField" class="inputText-loginClass" style="width:140px;"/></td>   
+                                                        </tr>
+                                                        <tr>
+                                                            <td height="21"><input jwcid="passwordField" class="inputText-loginClass" style="width:140px;"/></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td width="54" rowspan="2"><img jwcid="b_login" width="45" height="43" border="0"/></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div><img jwcid="logo_tmaxSoft"/></div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

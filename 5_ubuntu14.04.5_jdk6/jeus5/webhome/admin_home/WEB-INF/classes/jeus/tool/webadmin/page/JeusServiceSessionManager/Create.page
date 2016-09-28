@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceSessionManager.CreatePage">
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Session Manager Configuration"/>
+    </component>
+
+    <component id="wizTabPanel" type="jeus:WizardTabPanel">
+        <binding name="tabNames" value="ognl:new java.lang.String[]{'general', 'storage', 'create'}"/>
+    </component>
+
+    <component id="general" type="Block"/>
+    <component id="storage" type="Block"/>
+    <component id="create" type="Block"/>
+
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:smc.general.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="name" type="jeus:Field">
+        <binding name="field" value="ognl:components.nameField"/>      
+    </component>
+
+    <component id="nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:name"/>
+        <binding name="validators" value="validators:required,$nameValidator"/>
+    </component>
+
+    <component id="passivation_to" type="jeus:Field">
+        <binding name="field" value="ognl:components.passivation_toField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="passivation_toField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:passivationTo"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="removal_to" type="jeus:Field">
+        <binding name="field" value="ognl:components.removal_toField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="removal_toField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:removalTo"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="check_to" type="jeus:Field">
+        <binding name="field" value="ognl:components.check_toField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="check_toField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:checkTo"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="backup_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.backup_nameField"/>
+    </component>
+
+    <component id="backup_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:backupName"/>
+    </component>
+
+    <component id="backup_trigger" type="jeus:Field">
+        <binding name="field" value="ognl:components.backup_triggerField"/>
+        <binding name="unit" value="message:sm.general.unit.objects.label"/>
+    </component>
+
+    <component id="backup_triggerField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:backupTrigger"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="operation_to" type="jeus:Field">
+        <binding name="field" value="ognl:components.operation_toField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="operation_toField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:operationTo"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="general_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="storageForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:smc.storage.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="min_hole" type="jeus:Field">
+        <binding name="field" value="ognl:components.min_holeField"/>
+    </component>
+
+    <component id="min_holeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:minHole"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="packing_rate" type="jeus:Field">
+        <binding name="field" value="ognl:components.packing_rateField"/>
+    </component>
+
+    <component id="packing_rateField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:packingRate"/>
+        <binding name="translator" value="translator:number2,valueType=Float"/>
+        <binding name="validators" value="validators:min=0.0,max=1.0"/>
+    </component>
+
+    <component id="file_db_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.file_db_nameField"/>
+    </component>
+
+    <component id="file_db_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:fileDbName"/>
+    </component>
+
+    <component id="file_db_path" type="jeus:Field">
+        <binding name="field" value="ognl:components.file_db_pathField"/>
+    </component>
+
+    <component id="file_db_pathField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:fileDbPath"/>
+    </component>
+
+    <component id="storage_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="createForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:smc.storage.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="general_next" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="ognl:listeners.onGeneralNext"/>
+    </component>
+
+    <component id="storage_previous" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="ognl:listeners.onStoragePrevious"/>
+    </component>
+
+    <component id="storage_next" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="ognl:listeners.onStorageNext"/>
+    </component>
+
+    <component id="create_previous" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="ognl:listeners.onCreatePrevious"/>
+    </component>
+
+    <component id="createOk" type="jeus:ConfirmSubmit">
+        <binding name="label" value="message:common.label.create"/>
+        <binding name="message" value="message:session.ok.confirm"/>
+        <binding name="listener" value="ognl:listeners.onCreate"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+    <bean name="nameValidator" class="jeus.tool.webadmin.page.JeusServiceSessionManager.NameValidator">
+        <set name="sessionServer" value="ognl:sessionServer"/>
+    </bean>
+
+    <property name="sessionManager" persist="session"/>
+
+</page-specification>

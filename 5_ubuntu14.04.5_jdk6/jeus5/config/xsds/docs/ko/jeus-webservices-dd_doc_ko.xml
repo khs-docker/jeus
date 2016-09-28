@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+<description>          
+    <text key="jeus-webservices-dd"><![CDATA[
+                [Description]: JEUS 웹 서비스 설정 문서의 루트 엘리먼트(root element).
+            ]]>          
+    </text>
+           
+    <text key="jeus-webservices-ddType.ejb-context-path"><![CDATA[
+                        [Description]: 배치 할 EJB웹서비스를 위한 엔드포인트 URL의 컨텍스트(Context) 경로를 표시한다.
+                            EJB 엔드포인트에서만 사용한다.
+                    ]]>          
+    </text>
+           
+    <text key="jeus-webservices-ddType.ejb-login-config"><![CDATA[
+                        [Description]: EJB 웹서비스 엔드포인트 URL에 대하여 클라이언트가 인증 받는데
+                            사용되는 인증 방법과 인증 영역을 표시한다. EJB 엔드포인트에서만 사용한다.
+                    ]]>          
+    </text>
+           
+    <text key="jeus-webservices-ddType.service-info-page"><![CDATA[
+                        [Description]: 서비스가 웹 브라우저로 호출되었을 때 나타나는 화면을
+                            커스터마이즈 할 때 사용한다. 담당할 페이지의 /로 시작하는 컨텍스트 상대 경로를 준다.
+                    ]]>          
+    </text>
+           
+    <text key="jeus-webservices-ddType.service"><![CDATA[
+                        [Description]: 배치되는 웹서비스를 표시한다.
+                    ]]>          
+    </text>
+           
+    <text key="ejb-login-configType.auth-method"><![CDATA[
+                        [Description]: 인증 방법을 설정한다.
+                            'BASIC', 'CLIENT-CERT', 'DIGEST', 'FORM' 의 네 값 중에 하나를 선택한다.
+                    ]]>          
+    </text>
+           
+    <text key="ejb-login-configType.realm-name"><![CDATA[
+                        [Description]: 보안 정책이 적용되는 도메인을 설정한다.
+                    ]]>          
+    </text>
+           
+    <text key="serviceType.webservice-description-name"><![CDATA[
+                        [Description]: WSDL 파일에서 관련된 웹서비스 엔드포인트 이름이다.
+                            <webservice-description-name>은 표준 배치 서술자 webservice.xml의
+                            <webservice-description-name>에 상응한다.
+                        [Dependency]:/webservices/webservice-description/webservice-description-name
+                    ]]>          
+    </text>
+           
+    <text key="serviceType.wsdl-publish"><![CDATA[
+                        [Description]: WSDL를 공개할 방식을 설정한다.
+                    ]]>          
+    </text>
+           
+    <text key="serviceType.port"><![CDATA[
+                        [Description]: 웹서비스 port 정보를 설정한다.
+                    ]]>          
+    </text>
+           
+    <text key="wsdl-publishType.http-publish"><![CDATA[
+                            [Description]: http 방식으로 공개되는 WSDL를 나타낸다.
+                                공개된 WSDL에서 import하는 schema들은 HTTP URL에 의하여 참조된다.
+                        ]]>          
+    </text>
+           
+    <text key="wsdl-publishType.file-publish"><![CDATA[
+                            [Description]: file 방식으로 공개되는 WSDL를 나타낸다.
+                                공개된 WSDL에서 import하는 schema들은 파일 상대 경로에 의하여 참조된다.
+                        ]]>          
+    </text>
+           
+    <text key="http-publishType.server-url"><![CDATA[
+                        [Description]: 배치된 웹서비스의 WSDL 파일를 공개하는 서버의 URL이다.
+                    ]]>          
+    </text>
+           
+    <text key="http-publishType.secure-server-url"><![CDATA[
+                        [Description]: 배치된 웹서비스의 WSDL 파일를 공개하는 서버의 SSL 보안이 가능한URL이다.
+                    ]]>          
+    </text>
+           
+    <text key="http-publishType.wsdl-url"><![CDATA[
+                        [Description]: 배치된 웹서비스의 WSDL 파일을 웹서비스의 컨텍스트 내에서 기본적으로 설정되는 기존
+                            WSDL 공개 URL(일반적으로 '/{서비스이름}?wsdl')에 부가적으로 이 URL로도 공개할 수 있다.
+                            (컨텍스트 이후의 URL만 설정 가능하며 '/specified_url'과 같은 방식으로 설정한다.)
+                    ]]>          
+    </text>
+           
+    <text key="file-publishType.server-url"><![CDATA[
+                        [Description]: 배치된 웹서비스의 WSDL 파일를 공개하는 서버의 URL이다.
+                    ]]>          
+    </text>
+           
+    <text key="file-publishType.secure-server-url"><![CDATA[
+                        [Description]: 배치된 웹서비스의 WSDL 파일를 공개하는 서버의 SSL 보안이 가능한URL이다.
+                    ]]>          
+    </text>
+           
+    <text key="file-publishType.publish-path"><![CDATA[
+                        [Description]: 웹서비스 WSDL이 저장되는 디렉토리를 표시한다.
+                    ]]>          
+    </text>
+           
+    <text key="portType.port-component-name"><![CDATA[
+                        [Description]: 웹서비스 엔드포인트를 구별하기 위한 이름을 표시한다.
+                            <port-component-name>은 표준 배치 서술자 webservice.xml의
+                            <port-component-name>에 상응한다.
+                        [Dependency]:/webservices/webservice-description/port-component/port-component-name
+                    ]]>          
+    </text>
+           
+    <text key="portType.ejb-endpoint-url"><![CDATA[
+                        [Description]: EJB 엔드포인트에 접근할 수 있는 엔드포인트 URL을 표시한다.
+                            EJB 엔드포인트에서만 사용한다.
+                    ]]>          
+    </text>
+           
+    <text key="portType.tie-class"><![CDATA[
+                        [Description]: 웹서비스 엔드포인트 URL과 웹서비스 Endpint 인터페이스를
+                            연결해 주는 class를 표시한다.
+                            배치 시에 자동 생성되므로 웹서비스 배치자가 표시할 필요가 없다.
+                    ]]>          
+    </text>
+           
+    <text key="portType.service-property"><![CDATA[
+                        [Description]: 특정 서비스 엔드포인트 포트에 설정하는 property들을 표시한다.
+                    ]]>          
+    </text>
+           
+    <text key="portType.ejb-transport-guarantee"><![CDATA[
+                        [Description]: EJB 엔드포인트에서 주고 받는 메시지에 대한
+                            기밀성(confidentiality)과 무결성(integrity) 구성을 표시한다.
+                            설정 가능한 값은 ‘NONE’, ‘CONFIDENTIAL’ 또는 ‘INTEGRAL’이다.
+                    ]]>          
+    </text>
+           
+    <text key="portType.soapver"><![CDATA[
+                        [Description]: 배치된 웹서비스에서 서비스하는 SOAP 메시지의 버전을 표시한다.
+                    ]]>          
+    </text>
+           
+    <text key="portType.security"><![CDATA[
+                        [Description]: 웹서비스의 보안(WS-Security)을 위한 설정이다.
+                    ]]>          
+    </text>
+           
+    <text key="portType.rm"><![CDATA[
+                        [Description]: 웹서비스의 Reliable 메시징(WS-ReliableMessaging)을 사용함을 나타낸다.
+                    ]]>          
+    </text>
+           
+    <text key="portType.transaction"><![CDATA[
+                        [Description]: 웹서비스의 Transaction (WS-Transaction)을 사용함을 나타낸다.
+                    ]]>          
+    </text>
+           
+    <text key="securityType.request-receiver"><![CDATA[
+                        [Description]: 웹서비스 클라이언트의 보안 메시지 요청을 처리하기 위한 설정이다.
+                    ]]>          
+    </text>
+           
+    <text key="securityType.response-sender"><![CDATA[
+                        [Description]: 웹서비스가 SOAP 메시지를 처리한 후, 응답을 내보 낼 때, 보안이 적용된 메시지를 보내기 위한 설정이다.
+                    ]]>          
+    </text>
+           
+    <text key="rmType.client-provider"><![CDATA[
+                        [Description]: RM 웹서비스가 클라이언트 모드로 동작함을 나타낸다. 기본값은 "false"이다.
+                    ]]>          
+    </text>
+</description>

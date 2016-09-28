@@ -1,0 +1,60 @@
+// Created by Microsoft (R) C/C++ Compiler Version 12.00.8168.0 (ca35af0d).
+//
+// d:\tmaxsoft\jeus5\samples\cas\examples\vc\debug\java_util_Iterator.tlh
+//
+// C++ source equivalent of Win32 type library D:\j2ee-cas-com-bridge\doc\guide\examples\typelib\java_util_Iterator.tlb
+// compiler-generated file created 04/04/05 at 15:36:54 - DO NOT EDIT!
+
+#pragma once
+#pragma pack(push, 8)
+
+#include <comdef.h>
+
+namespace java_util_Iterator_Lib {
+
+//
+// Forward references and typedefs
+//
+
+struct __declspec(uuid("bede50ae-24a2-4f94-7af7-617cbf15cafe"))
+/* dispinterface */ java_util_Iterator;
+struct __declspec(uuid("02e148c2-3f3e-47ee-52aa-1f5abb21cafe"))
+/* dispinterface */ java_util_Iterator_Statics;
+
+//
+// Smart pointer typedef declarations
+//
+
+_COM_SMARTPTR_TYPEDEF(java_util_Iterator, __uuidof(IDispatch));
+_COM_SMARTPTR_TYPEDEF(java_util_Iterator_Statics, __uuidof(IDispatch));
+
+//
+// Type library items
+//
+
+struct __declspec(uuid("bede50ae-24a2-4f94-7af7-617cbf15cafe"))
+java_util_Iterator : IDispatch
+{
+    //
+    // Wrapper methods for error-handling
+    //
+
+    // Methods:
+    VARIANT_BOOL hasNext ( );
+    _variant_t next ( );
+    HRESULT remove ( );
+};
+
+struct __declspec(uuid("02e148c2-3f3e-47ee-52aa-1f5abb21cafe"))
+java_util_Iterator_Statics : IDispatch
+{};
+
+//
+// Wrapper method implementations
+//
+
+#include "d:\tmaxsoft\jeus5\samples\cas\examples\vc\debug\java_util_Iterator.tli"
+
+} // namespace java_util_Iterator_Lib
+
+#pragma pack(pop)

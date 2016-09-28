@@ -1,0 +1,59 @@
+<html jwcid="popupMainBorder">
+    <span jwcid="condRule">
+        <form jwcid="ruleForm">
+            <span jwcid="file_pattern">
+                <input jwcid="file_patternField" size="50"/>
+            </span>
+            <span jwcid="task_name">
+                <input jwcid="task_nameField"/>
+            </span>
+            <span jwcid="start_date">
+                <input jwcid="start_dateField"/>
+            </span>
+            <span jwcid="end_date">
+                <input jwcid="end_dateField"/>
+            </span>
+            <span jwcid="pattern_id" class="field_label"/>
+            <a jwcid="regularExpressionDescription">
+                <span jwcid="pattern_id_help" class="field_label"/>
+            </a>
+            <table width="100%" cellpadding="0" cellspacing="0" class="table" border="1">
+                <!-- table header -->
+                <tr>
+                    <td class="table_columns" width="20">&nbsp;</td>
+                    <td class="table_columns" width="150"><span jwcid="name_column"/></td>
+                    <td class="table_columns"><span jwcid="pattern_column"/></td>
+                    <td class="table_columns"><span jwcid="class_name_column"/></td>
+                </tr>
+                <!-- table body -->
+                <tr jwcid="eachField">
+                    <td class="table_values" align="center"><input jwcid="include"/></td>
+                    <td class="table_values"><span jwcid="name_value"/></td>
+                    <td class="table_values"><input jwcid="pattern" style="border:1px solid #AAAAAA;"/></td>
+                    <td class="table_values" align="center" width="100%"><input jwcid="class_name"/></td>
+                </tr>
+            </table>
+            <br/>
+            <span jwcid="enable_buffer_size">
+                <input jwcid="enable_buffer_sizeField"/>
+            </span>
+            <span jwcid="buffer_size">
+                <input jwcid="buffer_sizeField"/>
+            </span>
+        </form>
+    </span>
+  <!--  <span jwcid="condCompleted">
+        <br/>
+        <br/>
+        <br/>
+        <table border="0" width="550" align="center" style="border:1px solid #AAAAAA;">
+            <tr>
+                <td style="padding:10px;">
+                    <form jwcid="messageForm">
+                        <table jwcid="message"/>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </span>
+--></html>

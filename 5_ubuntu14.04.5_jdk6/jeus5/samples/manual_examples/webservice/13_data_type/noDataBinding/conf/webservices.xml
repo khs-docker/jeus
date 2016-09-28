@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<webservices version="1.1" 
+    xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:tns="http://www.tmaxsoft.com/j2eews/BookQuote">
+    <webservice-description>
+        <webservice-description-name>BookQuoteService</webservice-description-name>
+        <wsdl-file>WEB-INF/wsdl/BookQuoteService.wsdl</wsdl-file>
+        <jaxrpc-mapping-file>WEB-INF/mapping/BookQuoteService-mapping.xml</jaxrpc-mapping-file>
+        <port-component>
+            <port-component-name>BookQuote</port-component-name>
+            <wsdl-port>tns:BookQuotePort</wsdl-port>
+            <service-endpoint-interface>sample.nodatabinding.service.BookQuote</service-endpoint-interface>
+            <service-impl-bean>
+                <servlet-link>BookQuoteService</servlet-link>
+            </service-impl-bean>
+        </port-component>
+    </webservice-description>
+</webservices>

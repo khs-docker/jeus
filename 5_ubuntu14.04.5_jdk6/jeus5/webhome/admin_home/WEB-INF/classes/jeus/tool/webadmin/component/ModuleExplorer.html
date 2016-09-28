@@ -1,0 +1,39 @@
+<span jwcid="$content$">
+    <table cellspacing="0" cellpadding="0" border="0" width="100%">
+        <tr>
+            <td align="right">
+                <span jwcid="deployedIcon2" align="absmiddle"/>&nbsp;<span jwcid="convention" class="table_convention"/>
+            </td>
+        </tr>
+    </table>
+    <table class="table">
+        <tr>
+            <th width="20">&nbsp;</th>
+            <th>
+                <span jwcid="moduleNameColumn"/>
+            </th>
+            <th>
+                <span jwcid="modulePathColumn"/>
+            </th>
+            <th width="16">
+                <img jwcid="deployedIconColumn" alt="deployed"/>
+            </th>
+        </tr>
+        <tr jwcid="eachModule">
+            <td align="center">
+                <input jwcid="moduleCheck"/>
+            </td>
+            <td>
+                <span jwcid="moduleName" class="ognl:moduleView.moduleInfo.moduleType"/>
+            </td>
+            <td>
+                <span jwcid="modulePath"/>
+            </td>
+            <td align="center">
+                <span jwcid="condDeployed">
+                    <img jwcid="deployedIcon" alt="deployed"/>
+                </span>
+            </td>
+        </tr>
+    </table>
+</span>

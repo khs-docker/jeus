@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<application name="webadmin">
+
+    <description>JEUS Web Administration Application</description>
+    
+    <!--<meta key="org.apache.tapestry.accepted-locales" value="ko,en,ja,zh"/>-->
+    <meta key="jeus.tool.webadmin.supported-help-locales" value="ko"/>
+    <meta key="org.apache.tapestry.template-encoding" value="EUC-KR"/>
+
+    <!-- Main Pages -->
+	<page name="Login" 		    specification-path="/jeus/tool/webadmin/page/Login.page"/>
+    <page name="Home" 		    specification-path="/jeus/tool/webadmin/page/Home.page"/>
+    <page name="Main" 		    specification-path="/jeus/tool/webadmin/page/Main.page"/>
+    <page name="Settings" 		    specification-path="/jeus/tool/webadmin/page/Settings.page"/>
+    <page name="SettingsBackUp" 	specification-path="/jeus/tool/webadmin/page/SettingsBackUp.page"/>
+
+    <page name="ClusterView" 	specification-path="/jeus/tool/webadmin/page/ClusterView.page"/>
+    <page name="NodeView" 		specification-path="/jeus/tool/webadmin/page/NodeView.page"/>
+    <page name="NodeList"   specification-path="/jeus/tool/webadmin/page/NodeList.page"/>
+    <page name="NodeTree" 	specification-path="/jeus/tool/webadmin/page/NodeTree.page"/>
+
+    <page name="JeusServiceEJBEngine_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceEJBEngine/Configuration.page"/>
+    <page name="JeusServiceWebEngine_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceWebEngine/Configuration.page"/>
+    <page name="JeusServiceWebEngine_ContextGroup" specification-path="/jeus/tool/webadmin/page/JeusServiceWebEngine/ContextGroup.page"/>
+    <page name="JeusServiceContextGroup_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceContextGroup/Configuration.page"/>
+    <page name="JeusServiceContextGroup_WebListener" specification-path="/jeus/tool/webadmin/page/JeusServiceContextGroup/WebListener.page"/>
+    <page name="JeusServiceWebListener_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceWebListener/Configuration.page"/>
+    <page name="JeusServiceJMSEngine_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceJMSEngine/Configuration.page"/>
+    <page name="JeusServiceServerChannel_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceServerChannel/Configuration.page"/>
+    <page name="JeusServiceServerChannel_Create" specification-path="/jeus/tool/webadmin/page/JeusServiceServerChannel/Create.page"/>
+
+    <page name="JeusServiceJDBCDataSourceService_Overview" specification-path="/jeus/tool/webadmin/page/JeusServiceJDBCDataSourceService/Overview.page"/>
+    <page name="JeusServiceJDBCDataSourceService_Create" specification-path="/jeus/tool/webadmin/page/JeusServiceJDBCDataSourceService/Create.page"/>
+    <page name="JeusServiceJDBCDataSourceService_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceJDBCDataSourceService/Configuration.page"/>
+
+
+    <page name="StaleSession" specification-path="/jeus/tool/webadmin/page/StaleSession.page"/>
+    <page name="StaleLink" specification-path="/jeus/tool/webadmin/page/StaleLink.page"/>
+    <page name="Exception" 	  specification-path="/jeus/tool/webadmin/page/Exception.page"/>
+
+
+    <page name="Etc_JNDITree" 	specification-path="/jeus/tool/webadmin/page/Etc/JNDITree.page"/>
+    <page name="Etc_JNDITreeView" 	specification-path="/jeus/tool/webadmin/page/Etc/JNDITreeView.page"/>
+    <page name="Etc_JNDITreeFrameSet" 	specification-path="/jeus/tool/webadmin/page/Etc/JNDITreeFrameSet.page"/>
+    <page name="Etc_Binding" 	specification-path="/jeus/tool/webadmin/page/Etc/Binding.page"/>
+    <page name="Etc_JNDIList" 	specification-path="/jeus/tool/webadmin/page/Etc/JNDIList.page"/>
+    <page name="Etc_TroubleMonitor" 	specification-path="/jeus/tool/webadmin/page/Etc/TroubleMonitor.page"/>
+    <page name="Etc_ElementDocument" 	specification-path="/jeus/tool/webadmin/page/Etc/ElementDocument.page"/>
+
+    <page name="JeusServiceJEUSManager_Cluster" specification-path="/jeus/tool/webadmin/page/JeusServiceJEUSManager/Cluster.page"/>
+    <page name="JeusServiceJEUSManager_Control" specification-path="/jeus/tool/webadmin/page/JeusServiceJEUSManager/Control.page"/>
+    <page name="JeusServiceJEUSManager_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceJEUSManager/Configuration.page"/>
+    <page name="JeusServiceJEUSManager_Distribute" specification-path="/jeus/tool/webadmin/page/JeusServiceJEUSManager/Distribute.page"/>
+    <page name="JeusServiceJEUSManager_EditHandler" specification-path="/jeus/tool/webadmin/page/Handler/Configuration.page"/>
+    <page name="JeusServiceJEUSManager_CreateHandler" specification-path="/jeus/tool/webadmin/page/Handler/Create.page"/>
+    <page name="JeusServiceJEUSManager_EditLogger" specification-path="/jeus/tool/webadmin/page/SystemLogger/Configuration.page"/>
+    <page name="JeusServiceJEUSManager_CreateLogger" specification-path="/jeus/tool/webadmin/page/SystemLogger/Create.page"/>
+
+    <page name="JeusServiceJNDIResourceService_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceJNDIResourceService/Configuration.page"/>
+
+    <page name="JeusServiceP2PSessionServerService_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceP2PSessionServerService/Configuration.page"/>
+
+    <page name="JeusServiceSessionServerService_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceSessionServerService/Configuration.page"/>
+    <page name="JeusServiceSessionManager_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceSessionManager/Configuration.page"/>
+    <page name="JeusServiceSessionManager_Statistics" specification-path="/jeus/tool/webadmin/page/JeusServiceSessionManager/Statistics.page"/>
+    <page name="JeusServiceSessionManager_Create" specification-path="/jeus/tool/webadmin/page/JeusServiceSessionManager/Create.page"/>
+    <page name="JeusServiceSessionContainer_Statistics" specification-path="/jeus/tool/webadmin/page/JeusServiceSessionContainer/Statistics.page"/>
+
+    <page name="JeusServiceJMXExportService_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceJMXExportService/Configuration.page"/>
+
+    <page name="JeusServiceSchedulerService_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceSchedulerService/Configuration.page"/>
+    <page name="JeusServiceSchedulerJob_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceSchedulerJob/Configuration.page"/>
+    <page name="JeusServiceSchedulerJob_Create" specification-path="/jeus/tool/webadmin/page/JeusServiceSchedulerJob/Create.page"/>
+
+    <page name="JeusServiceJNLPService_Overview" specification-path="/jeus/tool/webadmin/page/JeusServiceJNLPService/Overview.page"/>
+    <page name="JeusServiceJNLPService_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceJNLPService/Configuration.page"/>
+
+    <page name="J2EEServer_Overview" specification-path="/jeus/tool/webadmin/page/J2EEServer/Overview.page"/>
+    <page name="J2EEServer_Configuration" specification-path="/jeus/tool/webadmin/page/J2EEServer/Configuration.page"/>
+    <page name="J2EEServer_ResRefConfiguration" specification-path="/jeus/tool/webadmin/page/J2EEServer/ResRefConfiguration.page"/>
+    <page name="J2EEServer_Statistics" specification-path="/jeus/tool/webadmin/page/J2EEServer/Statistics.page"/>
+    <page name="J2EEServer_Create" specification-path="/jeus/tool/webadmin/page/J2EEServer/Create.page"/>
+    <page name="J2EEServer_EditSystemHandler" specification-path="/jeus/tool/webadmin/page/Handler/Configuration.page"/>
+    <page name="J2EEServer_CreateSystemHandler" specification-path="/jeus/tool/webadmin/page/Handler/Create.page"/>
+    <page name="J2EEServer_EditUserHandler" specification-path="/jeus/tool/webadmin/page/Handler/Configuration.page"/>
+    <page name="J2EEServer_CreateUserHandler" specification-path="/jeus/tool/webadmin/page/Handler/Create.page"/>
+    <page name="J2EEServer_EditLogger" specification-path="/jeus/tool/webadmin/page/SystemLogger/Configuration.page"/>
+    <page name="J2EEServer_CreateLogger" specification-path="/jeus/tool/webadmin/page/SystemLogger/Create.page"/>
+    <page name="JeusServiceEngine_Overview" specification-path="/jeus/tool/webadmin/page/JeusServiceEngine/Overview.page"/>
+    <page name="JeusServiceEngine_Create" specification-path="/jeus/tool/webadmin/page/JeusServiceEngine/Create.page"/>
+
+    <!-- JeusService EJB Engine Pages -->
+
+    <page name="JeusServiceEJBEngine_Statistics" specification-path="/jeus/tool/webadmin/page/JeusServiceEJBEngine/Statistics.page"/>
+    <page name="JeusServiceEJBEngine_Control" specification-path="/jeus/tool/webadmin/page/JeusServiceEJBEngine/Control.page"/>
+    <page name="JeusServiceEJBEngine_Distribute" specification-path="/jeus/tool/webadmin/page/JeusServiceEJBEngine/Distribute.page"/>
+
+    <page name="JeusServiceEJBEngine_EditHandler" specification-path="/jeus/tool/webadmin/page/Handler/Configuration.page"/>
+    <page name="JeusServiceEJBEngine_CreateHandler" specification-path="/jeus/tool/webadmin/page/Handler/Create.page"/>
+
+    <!-- EJB Pages -->
+    <page name="EJB_Configuration" specification-path="/jeus/tool/webadmin/page/EJB/Configuration.page"/>
+    <page name="EJB_Statistics" specification-path="/jeus/tool/webadmin/page/EJB/Statistics.page"/>
+
+    <!-- J2EEApplication Pages -->
+    <page name="J2EEApplication_Configuration" specification-path="/jeus/tool/webadmin/page/J2EEApplication/Configuration.page"/>
+    <page name="J2EEApplication_Control" specification-path="/jeus/tool/webadmin/page/J2EEApplication/Control.page"/>
+
+    <!-- EJB Module Pages -->
+    <page name="EJBModule_Configuration" specification-path="/jeus/tool/webadmin/page/EJBModule/Configuration.page"/>
+    <page name="EJBModule_Statistics" specification-path="/jeus/tool/webadmin/page/EJBModule/Statistics.page"/>
+    <page name="EJBModule_Control" specification-path="/jeus/tool/webadmin/page/EJBModule/Control.page"/>
+
+    <!-- Web Module Pages -->
+    <page name="WebModule_Configuration" specification-path="/jeus/tool/webadmin/page/WebModule/Configuration.page"/>
+    <page name="WebModule_Statistics" specification-path="/jeus/tool/webadmin/page/WebModule/Statistics.page"/>
+    <page name="WebModule_Control" specification-path="/jeus/tool/webadmin/page/WebModule/Control.page"/>
+
+    <!-- Resource Adapter Module Pages -->
+    <page name="ResourceAdapterModule_Configuration" specification-path="/jeus/tool/webadmin/page/ResourceAdapterModule/Configuration.page"/>
+    <page name="ResourceAdapterModule_Statistics" specification-path="/jeus/tool/webadmin/page/ResourceAdapterModule/Statistics.page"/>
+    <page name="ResourceAdapterModule_Control" specification-path="/jeus/tool/webadmin/page/ResourceAdapterModule/Control.page"/>
+
+    <page name="AppClientModule_Configuration" specification-path="/jeus/tool/webadmin/page/AppClientModule/Configuration.page"/>
+    <page name="AppClientModule_Control" specification-path="/jeus/tool/webadmin/page/AppClientModule/Control.page"/>
+    <!-- JeusService WebEngine Pages -->
+
+    <page name="PermanentModule_Overview" specification-path="/jeus/tool/webadmin/page/PermanentModule/Overview.page"/>
+    <page name="PermanentModule_Configuration" specification-path="/jeus/tool/webadmin/page/PermanentModule/Configuration.page"/>
+    <page name="PermanentModule_Undeploy" specification-path="/jeus/tool/webadmin/page/PermanentModule/Undeploy.page"/>
+
+    <page name="PermanentModule_AppConfiguration" specification-path="/jeus/tool/webadmin/page/PermanentModule/AppConfiguration.page"/>
+	<page name="PermanentModule_ModuleConfiguration" specification-path="/jeus/tool/webadmin/page/PermanentModule/ModuleConfiguration.page"/>
+
+    <page name="JeusServiceWebEngine_Session" specification-path="/jeus/tool/webadmin/page/JeusServiceWebEngine/Session.page"/>
+    <page name="JeusServiceWebEngine_Distribute" specification-path="/jeus/tool/webadmin/page/JeusServiceWebEngine/Distribute.page"/>
+
+    <page name="JeusServiceWebEngine_EditErrorLogHandler" specification-path="/jeus/tool/webadmin/page/Handler/Configuration.page"/>
+    <page name="JeusServiceWebEngine_CreateErrorLogHandler" specification-path="/jeus/tool/webadmin/page/Handler/Create.page"/>
+    <page name="JeusServiceWebEngine_EditAccessLogHandler" specification-path="/jeus/tool/webadmin/page/Handler/Configuration.page"/>
+    <page name="JeusServiceWebEngine_CreateAccessLogHandler" specification-path="/jeus/tool/webadmin/page/Handler/Create.page"/>
+    <page name="JeusServiceWebEngine_EditUserLogHandler" specification-path="/jeus/tool/webadmin/page/Handler/Configuration.page"/>
+    <page name="JeusServiceWebEngine_CreateUserLogHandler" specification-path="/jeus/tool/webadmin/page/Handler/Create.page"/>
+
+    <!-- JeusService ContextGroup Pages -->
+    <page name="JeusServiceContextGroup_Create" specification-path="/jeus/tool/webadmin/page/JeusServiceContextGroup/Create.page"/>
+    <page name="JeusServiceContextGroup_Statistics" specification-path="/jeus/tool/webadmin/page/JeusServiceContextGroup/Statistics.page"/>
+    <page name="JeusServiceContextGroup_EditAccessLogHandler" specification-path="/jeus/tool/webadmin/page/Handler/Configuration.page"/>
+    <page name="JeusServiceContextGroup_CreateAccessLogHandler" specification-path="/jeus/tool/webadmin/page/Handler/Create.page"/>
+    <page name="JeusServiceContextGroup_EditUserLogHandler" specification-path="/jeus/tool/webadmin/page/Handler/Configuration.page"/>
+    <page name="JeusServiceContextGroup_CreateUserLogHandler" specification-path="/jeus/tool/webadmin/page/Handler/Create.page"/>
+
+    <page name="JeusServiceVirtualHost_Create" specification-path="/jeus/tool/webadmin/page/JeusServiceVirtualHost/Create.page"/>
+    <page name="JeusServiceVirtualHost_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceVirtualHost/Configuration.page"/>
+
+
+    <page name="JeusServiceWebListener_Statistics" specification-path="/jeus/tool/webadmin/page/JeusServiceWebListener/Statistics.page"/>
+    <page name="JeusServiceWebListener_Create" specification-path="/jeus/tool/webadmin/page/JeusServiceWebListener/Create.page"/>
+    <page name="JeusServiceWebtobBackup_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceWebtobBackup/Configuration.page"/>
+    <page name="JeusServiceWebtobBackup_Create" specification-path="/jeus/tool/webadmin/page/JeusServiceWebtobBackup/Create.page"/>
+    <page name="JeusServiceThreadPool_Statistics" specification-path="/jeus/tool/webadmin/page/JeusServiceThreadPool/Statistics.page"/>
+
+    <!-- JeusService JMSEngine Pages -->
+
+    <page name="JeusServiceJMSEngine_Distribute" specification-path="/jeus/tool/webadmin/page/JeusServiceJMSEngine/Distribute.page"/>
+   	<page name="JeusServiceJMSEngine_Actions" specification-path="/jeus/tool/webadmin/page/JeusServiceJMSEngine/Actions.page"/>
+   	<page name="JeusServiceJMSEngine_EditErrorLogHandler" specification-path="/jeus/tool/webadmin/page/Handler/Configuration.page"/>
+    <page name="JeusServiceJMSEngine_CreateErrorLogHandler" specification-path="/jeus/tool/webadmin/page/Handler/Create.page"/>
+    <page name="JeusServiceJMSEngine_EditAccessLogHandler" specification-path="/jeus/tool/webadmin/page/Handler/Configuration.page"/>
+    <page name="JeusServiceJMSEngine_CreateAccessLogHandler" specification-path="/jeus/tool/webadmin/page/Handler/Create.page"/>
+
+    <page name="JeusServiceWSEngine_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceWSEngine/Configuration.page"/>
+    <page name="JeusServiceWSEngine_Statistics" specification-path="/jeus/tool/webadmin/page/JeusServiceWSEngine/Statistics.page"/>
+    <page name="JeusServiceWSNode_Create" specification-path="/jeus/tool/webadmin/page/JeusServiceWSNode/Create.page"/>
+    <page name="JeusServiceWSNode_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceWSNode/Configuration.page"/>
+    <page name="JeusServiceWSVirtualHost_Create" specification-path="/jeus/tool/webadmin/page/JeusServiceWSVirtualHost/Create.page"/>
+    <page name="JeusServiceWSVirtualHost_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceWSVirtualHost/Configuration.page"/>
+
+    <page name="JDBCDataSource_Overview" specification-path="/jeus/tool/webadmin/page/JDBCDataSource/Overview.page"/>
+    <page name="JDBCDataSource_Statistics" specification-path="/jeus/tool/webadmin/page/JDBCDataSource/Statistics.page"/>
+    <page name="JDBCDataSource_Reconfigure" specification-path="/jeus/tool/webadmin/page/JDBCDataSource/Reconfigure.page"/>
+
+
+    <page name="JCAResource_Statistics" specification-path="/jeus/tool/webadmin/page/JCAResource/Statistics.page"/>
+    <page name="JCAResource_Control" specification-path="/jeus/tool/webadmin/page/JCAResource/Control.page"/>
+
+    <page name="JTAResource_Statistics" specification-path="/jeus/tool/webadmin/page/JTAResource/Statistics.page"/>
+    <page name="JTAResource_Configuration" specification-path="/jeus/tool/webadmin/page/JTAResource/Configuration.page"/>
+
+
+    <!-- JeusService JDBCDataSourceService Pages -->
+
+    <page name="JeusServiceJDBCClusterDataSourceService_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceJDBCClusterDataSourceService/Configuration.page"/>
+    <page name="JeusServiceJDBCClusterDataSourceService_Create" specification-path="/jeus/tool/webadmin/page/JeusServiceJDBCClusterDataSourceService/Create.page"/>
+
+
+    <page name="URLResource_Configuration" specification-path="/jeus/tool/webadmin/page/URLResource/Configuration.page"/>
+    <page name="URLResource_Overview" specification-path="/jeus/tool/webadmin/page/URLResource/Overview.page"/>
+
+    <page name="JavaMailResource_Configuration" specification-path="/jeus/tool/webadmin/page/JavaMailResource/Configuration.page"/>
+    <page name="JavaMailResource_Overview" specification-path="/jeus/tool/webadmin/page/JavaMailResource/Overview.page"/>
+
+    <!-- JeusService TmaxExtResourceService Pages -->
+    <page name="JeusServiceTmaxExtResourceService_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceTmaxExtResourceService/Configuration.page"/>
+    <page name="JeusServiceTmaxExtResourceService_Create" specification-path="/jeus/tool/webadmin/page/JeusServiceTmaxExtResourceService/Create.page"/>
+    <page name="JeusServiceTmaxExtResourceService_Overview" specification-path="/jeus/tool/webadmin/page/JeusServiceTmaxExtResourceService/Overview.page"/>
+    <page name="JeusServiceVirtualNode_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceVirtualNode/Configuration.page"/>
+    <page name="JeusServiceVirtualNode_Distribute" specification-path="/jeus/tool/webadmin/page/JeusServiceVirtualNode/Distribute.page"/>
+
+    <page name="JeusServiceTmaxClusterExtResourceService_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceTmaxClusterExtResourceService/Configuration.page"/>
+    <page name="JeusServiceTmaxClusterExtResourceService_Create" specification-path="/jeus/tool/webadmin/page/JeusServiceTmaxClusterExtResourceService/Create.page"/>
+
+
+    <page name="JeusServiceWebtDataSource_Overview" specification-path="/jeus/tool/webadmin/page/JeusServiceWebtDataSource/Overview.page"/>
+
+    <!-- JeusService MQExtResourceService Pages -->
+    <page name="JeusServiceMQExtResourceService_Create" specification-path="/jeus/tool/webadmin/page/JeusServiceMQExtResourceService/Create.page"/>
+    <page name="JeusServiceMQExtResourceService_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceMQExtResourceService/Configuration.page"/>
+    <page name="JeusServiceMQExtResourceService_Overview" specification-path="/jeus/tool/webadmin/page/JeusServiceMQExtResourceService/Overview.page"/>
+
+    <!-- JMS Connection Factory Pages -->
+    <page name="JMSConnectionFactoryResource_Configuration" specification-path="/jeus/tool/webadmin/page/JMSConnectionFactoryResource/Configuration.page"/>
+    <page name="JMSConnectionFactoryResource_Create" specification-path="/jeus/tool/webadmin/page/JMSConnectionFactoryResource/Create.page"/>
+    <page name="JMSConnectionFactoryResource_Overview" specification-path="/jeus/tool/webadmin/page/JMSConnectionFactoryResource/Overview.page"/>
+    <page name="JMSDestinationResource_Create" specification-path="/jeus/tool/webadmin/page/JMSDestinationResource/Create.page"/>
+    <page name="JMSDestinationResource_Configuration" specification-path="/jeus/tool/webadmin/page/JMSDestinationResource/Configuration.page"/>
+    <page name="JMSDestinationResource_Overview" specification-path="/jeus/tool/webadmin/page/JMSDestinationResource/Overview.page"/>
+    <page name="JMSDestinationResource_DurableSubscriber" specification-path="/jeus/tool/webadmin/page/JMSDestinationResource/DurableSubscriber.page"/>
+    <page name="JMSDestinationResource_Messages" specification-path="/jeus/tool/webadmin/page/JMSDestinationResource/Messages.page"/>
+    <page name="JMSDestinationResource_Consumers" specification-path="/jeus/tool/webadmin/page/JMSDestinationResource/Consumers.page"/>
+    <page name="JMSClientResource_Overview" specification-path="/jeus/tool/webadmin/page/JMSClientResource/Overview.page"/>
+    <page name="JMSClientResource_Statistics" specification-path="/jeus/tool/webadmin/page/JMSClientResource/Statistics.page"/>
+    <page name="JMSClientResource_Connections" specification-path="/jeus/tool/webadmin/page/JMSClientResource/Connections.page"/>
+    <page name="JMSConnectionResource_Statistics" specification-path="/jeus/tool/webadmin/page/JMSConnectionResource/Statistics.page"/>
+    <page name="JMSConnectionResource_Sessions" specification-path="/jeus/tool/webadmin/page/JMSConnectionResource/Sessions.page"/>
+    <page name="JMSSessionResource_Statistics" specification-path="/jeus/tool/webadmin/page/JMSSessionResource/Statistics.page"/>
+    <page name="JMSSessionResource_Consumers" specification-path="/jeus/tool/webadmin/page/JMSSessionResource/Consumers.page"/>
+
+    <page name="JMSDurableSubscriberResource_Statistics" specification-path="/jeus/tool/webadmin/page/JMSDurableSubscriberResource/Statistics.page"/>
+
+
+    <!-- Deploy Pages -->
+    <page name="FolderApplicationModule_Deploy" specification-path="/jeus/tool/webadmin/page/FolderApplicationModule/Deploy.page"/>
+
+    <!-- JEUS Log Service -->
+    <page name="JeusServiceJeusLogService_Control" specification-path="/jeus/tool/webadmin/page/JeusServiceJeusLogService/Control.page"/>
+    <page name="JeusServiceJeusLogService_Level" specification-path="/jeus/tool/webadmin/page/JeusServiceJeusLogService/Level.page"/>
+    <page name="JeusServiceJeusLogService_Create" specification-path="/jeus/tool/webadmin/page/JeusServiceJeusLogService/Create.page"/>
+    <page name="JeusServiceJeusLogService_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceJeusLogService/Configuration.page"/>
+    <page name="JeusServiceJeusLogService_Frameset" specification-path="/jeus/tool/webadmin/page/JeusServiceJeusLogService/Frameset.page"/>
+    <page name="JeusServiceJeusLogService_Analysis" specification-path="/jeus/tool/webadmin/page/JeusServiceJeusLogService/Analysis.page"/>
+    <page name="JeusServiceJeusLogService_Tree" specification-path="/jeus/tool/webadmin/page/JeusServiceJeusLogService/Tree.page"/>
+    <page name="JeusServiceJeusLogService_Handler" specification-path="/jeus/tool/webadmin/page/JeusServiceJeusLogService/Handler.page"/>
+    <page name="JeusServiceJeusLogService_TreeView" specification-path="/jeus/tool/webadmin/page/JeusServiceJeusLogService/TreeView.page"/>
+
+    <!-- LogAnalyzer Service -->
+    <page name="JeusServiceLogAnalyzerService_Frameset" specification-path="/jeus/tool/webadmin/page/JeusServiceLogAnalyzerService/Frameset.page"/>
+    <page name="JeusServiceLogAnalyzerService_Analysis" specification-path="/jeus/tool/webadmin/page/JeusServiceLogAnalyzerService/Analysis.page"/>
+    <page name="JeusServiceLogAnalyzerService_Tree" specification-path="/jeus/tool/webadmin/page/JeusServiceLogAnalyzerService/Tree.page"/>
+    <page name="JeusServiceLogAnalyzerService_Status" specification-path="/jeus/tool/webadmin/page/JeusServiceLogAnalyzerService/Status.page"/>
+    <page name="JeusServiceLogAnalyzerService_Handler" specification-path="/jeus/tool/webadmin/page/JeusServiceLogAnalyzerService/Handler.page"/>
+    <page name="JeusServiceLogAnalyzerService_Rule" specification-path="/jeus/tool/webadmin/page/JeusServiceLogAnalyzerService/Rule.page"/>
+    <page name="JeusServiceLogAnalyzerService_Result" specification-path="/jeus/tool/webadmin/page/JeusServiceLogAnalyzerService/Result.page"/>
+    <page name="JeusServiceLogAnalyzerService_StackTrace" specification-path="/jeus/tool/webadmin/page/JeusServiceLogAnalyzerService/StackTrace.page"/>
+    <page name="JeusServiceLogAnalyzerService_HiddenStackTrace" specification-path="/jeus/tool/webadmin/page/JeusServiceLogAnalyzerService/HiddenStackTrace.page"/>
+    <page name="JeusServiceLogAnalyzerService_StatusView" specification-path="/jeus/tool/webadmin/page/JeusServiceLogAnalyzerService/StatusView.page"/>
+    <page name="JeusServiceLogAnalyzerService_TreeView" specification-path="/jeus/tool/webadmin/page/JeusServiceLogAnalyzerService/TreeView.page"/>
+    <page name="JeusServiceLogAnalyzerService_Logo" specification-path="/jeus/tool/webadmin/page/JeusServiceLogAnalyzerService/Logo.page"/>
+
+    <!-- Security Domain Pages -->
+    <page name="JeusServiceSecurityDomain_Overview" specification-path="/jeus/tool/webadmin/page/JeusServiceSecurityDomain/Overview.page"/>
+    <page name="JeusServiceSecurityDomain_Create" specification-path="/jeus/tool/webadmin/page/JeusServiceSecurityDomain/Create.page"/>
+    <page name="JeusServiceSecurityDomain_Services" specification-path="/jeus/tool/webadmin/page/JeusServiceSecurityDomain/Services.page"/>
+    <page name="JeusServiceSecurityDomain_Configuration" specification-path="/jeus/tool/webadmin/page/JeusServiceSecurityDomain/Configuration.page"/>
+    <!--<page name="JeusServiceSecurityDomain_Subjects" specification-path="/jeus/tool/webadmin/page/JeusServiceSecurityDomain/Subjects.page"/>-->
+    <page name="JeusServiceSecurityDomain_Accounts" specification-path="/jeus/tool/webadmin/page/JeusServiceSecurityDomain/Accounts.page"/>
+    <page name="JeusServiceSecurityDomain_Policies" specification-path="/jeus/tool/webadmin/page/JeusServiceSecurityDomain/Policies.page"/>
+    <page name="JeusServiceSecurityDomain_Cache" specification-path="/jeus/tool/webadmin/page/JeusServiceSecurityDomain/Cache.page"/>
+    <page name="JeusServiceSecurityDomain_Keystore" specification-path="/jeus/tool/webadmin/page/JeusServiceSecurityDomain/Keystore.page"/>
+    <page name="JeusServiceSecurityDomain_UserConfiguration" specification-path="/jeus/tool/webadmin/page/JeusServiceSecurityDomain/UserConfiguration.page"/>
+    <page name="JeusServiceSecurityDomain_GroupConfiguration" specification-path="/jeus/tool/webadmin/page/JeusServiceSecurityDomain/GroupConfiguration.page"/>
+    <page name="JeusServiceSecurityDomain_ResourceConfiguration" specification-path="/jeus/tool/webadmin/page/JeusServiceSecurityDomain/ResourceConfiguration.page"/>
+    <page name="JeusServiceSecurityDomain_RoleConfiguration" specification-path="/jeus/tool/webadmin/page/JeusServiceSecurityDomain/RoleConfiguration.page"/>
+
+    <!-- JEUS Monitoring -->
+    <page name="JeusMonitoringThreadMonitoringService_Overview" specification-path="/jeus/tool/webadmin/page/JeusMonitoringThreadMonitoringService/Overview.page"/>
+    <page name="JeusMonitoringThreadMonitoringService_Infos" specification-path="/jeus/tool/webadmin/page/JeusMonitoringThreadMonitoringService/Infos.page"/>
+	<page name="JeusMonitoringTransactionMonitoringService_Overview" specification-path="/jeus/tool/webadmin/page/JeusMonitoringTransactionMonitoringService/Overview.page"/>
+    <page name="JeusMonitoringMBeanMonitoringService_Frameset" specification-path="/jeus/tool/webadmin/page/JeusMonitoringMBeanMonitoringService/Frameset.page"/>
+    <page name="JeusMonitoringMBeanMonitoringService_Overview" specification-path="/jeus/tool/webadmin/page/JeusMonitoringMBeanMonitoringService/Overview.page"/>    
+    <page name="JeusMonitoringMBeanMonitoringService_Configuration" specification-path="/jeus/tool/webadmin/page/JeusMonitoringMBeanMonitoringService/Configuration.page"/>    
+    <page name="JeusMonitoringMBeanMonitoringService_Statistics" specification-path="/jeus/tool/webadmin/page/JeusMonitoringMBeanMonitoringService/Statistics.page"/>    
+    <page name="JeusMonitoringMBeanMonitoringService_Control" specification-path="/jeus/tool/webadmin/page/JeusMonitoringMBeanMonitoringService/Control.page"/>
+    <page name="JeusMonitoringMBeanMonitoringService_Tree" specification-path="/jeus/tool/webadmin/page/JeusMonitoringMBeanMonitoringService/Tree.page"/>
+    <page name="JeusMonitoringMBeanMonitoringService_TreeView" specification-path="/jeus/tool/webadmin/page/JeusMonitoringMBeanMonitoringService/TreeView.page"/>
+    
+    <page name="JeusServiceApplicationModule_Info" specification-path="/jeus/tool/webadmin/page/JeusServiceApplicationModule/Info.page"/>
+    <page name="JeusServiceJCAResource_Info" specification-path="/jeus/tool/webadmin/page/JeusServiceJCAResource/Info.page"/>
+    <page name="JeusServiceJeusMonitoring_Info" specification-path="/jeus/tool/webadmin/page/JeusServiceJeusMonitoring/Info.page"/>
+    <page name="JeusServiceJeusService_Info" specification-path="/jeus/tool/webadmin/page/JeusServiceJeusService/Info.page"/>
+    <page name="JeusServiceJMSResource_Info" specification-path="/jeus/tool/webadmin/page/JeusServiceJMSResource/Info.page"/>
+    <page name="JeusServiceResource_Info" specification-path="/jeus/tool/webadmin/page/JeusServiceResource/Info.page"/>
+    <page name="JeusServiceResourceService_Info" specification-path="/jeus/tool/webadmin/page/JeusServiceResourceService/Info.page"/>
+    <page name="JeusServiceService_Info" specification-path="/jeus/tool/webadmin/page/JeusServiceService/Info.page"/>
+
+    <library id="contrib" specification-path="/org/apache/tapestry/contrib/Contrib.library"/>
+    <library id="jeus"    specification-path="/jeus/tool/webadmin/Jeus.library"/>
+
+</application>

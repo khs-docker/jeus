@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceJDBCClusterDataSourceService.ConfigurationPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Clustered JDBC Data Source Service Configuration"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:new java.lang.String[]{'JeusServiceJDBCClusterDataSourceService_Configuration'}"/>
+    </component>
+
+    <component id="nullBlock" type="Block"/>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:cds.title"/>
+        <binding name="listener" value="ognl:listeners.onOk"/>
+    </component>
+
+
+    <component id="export_name" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="ognl:clusterDs"/>
+        <binding name="elementName" value="literal:exportName"/>
+    </component>
+
+    <component id="is_pre_conn" type="jeus:Field">
+        <binding name="field" value="ognl:components.is_pre_connField"/>
+    </component>
+
+    <component id="is_pre_connField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:clusterDs"/>
+        <binding name="elementName" value="literal:isPreConn"/>
+    </component>
+
+    <component id="data_source_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.data_source_nameField"/>
+        <binding name="label" value="message:cds.data_source_name.label"/>
+    </component>
+
+    <component id="data_source_nameField" type="contrib:Palette">
+        <binding name="model" value="ognl:datasourceModel"/>
+        <binding name="selected" value="ognl:dataSourceName"/>
+        <binding name="sort" value="ognl:@org.apache.tapestry.contrib.palette.SortMode@USER"/>
+        <binding name="selectedTitleBlock" value="ognl:components.nullBlock"/>
+        <binding name="availableTitleBlock" value="ognl:components.nullBlock"/>
+    </component>
+
+</page-specification>

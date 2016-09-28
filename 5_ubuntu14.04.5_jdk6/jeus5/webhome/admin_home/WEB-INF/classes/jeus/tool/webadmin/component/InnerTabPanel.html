@@ -1,0 +1,24 @@
+<span jwcid="$content$">
+<div class="topTabPanel">
+	<ul class="top_nav">
+		<li jwcid="@For" source="ognl:tabIndexes" value="ognl:index" element="li">
+			<span jwcid="@If" condition="ognl:model.activeTabIndex == index" renderTag="ognl:false">
+				<a class="selected"><span jwcid="@RenderBlock" block="component:label"/></a>
+			</span>
+			<span jwcid="@Else" renderTag="ognl:false">
+				<a id="component:label" jwcid="@DirectLink" listener="listener:onChangeTab" parameters="ognl:{index, userParameter}">
+                    <span jwcid="@RenderBlock" block="component:label"/>
+                </a>
+                <div dojoType="dijit.Tooltip" connectId="component:label" label="ognl:model.getTabLabel(page, index)" jwcid="@Any"></div>
+            </span>
+		</li>
+	</ul>
+	<div class="top_content">
+		<span jwcid="@RenderBlock" block="ognl:model.getTabBody(page)"/>
+	</div>
+</div>
+<span jwcid="label@Block">
+<span jwcid="@If" condition="ognl:model.getTabIcon(page, index) != null" renderTag="ognl:false"><img jwcid="@Image" image="ognl:model.getTabIcon(page, index)"/></span><span jwcid="@Insert" value="ognl:model.getTabLabel(page, index)"/>
+</span>
+</span>
+

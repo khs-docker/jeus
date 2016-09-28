@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.PermanentModule.AppConfigurationPage">
+
+    <inject property="externalService" object="engine-service:external"/>
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Deploy New Application Module"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="{'PermanentModule_AppConfiguration'}"/>
+        <binding name="subtabNames" value="{'targets','options'}"/>
+    </component>
+
+    <component id="targetsForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:pmd.targets.title"/>
+        <binding name="description" value="message:amd.targets.description"/>
+        <binding name="success" value="listener:onTargetsOK"/>
+    </component>
+
+    <component id="noTargetsForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:pmd.targets.title"/>
+        <binding name="description" value="message:amd.targets.description"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="_targets" type="jeus:Field">
+        <binding name="label" value="message:amd.targets.targets.label"/>
+        <binding name="layout" value="@jeus.tool.webadmin.component.Field@EXTENDED_LAYOUT"/>
+    </component>
+
+    <component id="targetsField" type="jeus:TargetExplorer">
+        <binding name="model" value="targetExplorerModel"/>
+        <binding name="selectionModel" value="targetExplorerSelectionModel"/>
+        <binding name="useOption" value="renderContextGroup"/>
+        <binding name="optionLabel" value="message:amd.targets.context_group.label"/>
+        <binding name="optionLabelClass" value="literal:field_label"/>
+        <binding name="useOption2" value="renderContextGroup"/>
+        <binding name="optionLabel2" value="message:amd.targets.virtual_host.label"/>
+    </component>
+
+    <component id="condNoTarget" type="If">
+        <binding name="condition" value="targetExplorerModel == null"/>
+    </component>
+
+    <component id="noTarget" type="Insert">
+        <binding name="value" value="message:common.exception.0041"/>
+    </component>
+
+   	<component id="app_keep_generated" type="jeus:Field">
+        <binding name="field" value="component:app_keep_generatedField"/>
+    </component>
+
+    <component id="app_keep_generatedField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:keepGenerated"/>
+    </component>
+
+ 	<component id="check_java_security_permission" type="jeus:ExtendedCheckbox">
+		<binding name="value" value="javaSecurityPermissionCheck"/>
+		<binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:javaSecurityPermission"/>
+		<binding name="targets" value="{components.security_permission_descriptionField, components.security_permission_specField}"/>
+	</component>
+
+    <component id="security_permission_description" type="jeus:Field">
+        <binding name="field" value="component:security_permission_descriptionField"/>
+    </component>
+
+    <component id="security_permission_descriptionField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="javaSecurityPermission"/>
+        <binding name="elementName" value="literal:description"/>
+        <binding name="disabled" value="!javaSecurityPermissionCheck"/>
+    </component>
+
+    <component id="security_permission_spec" type="jeus:Field">
+        <binding name="field" value="component:security_permission_specField"/>
+    </component>
+
+    <component id="security_permission_specField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="javaSecurityPermission"/>
+        <binding name="elementName" value="literal:securityPermissionSpec"/>
+        <binding name="validators" value="validators:required"/>
+        <binding name="disabled" value="!javaSecurityPermissionCheck"/>
+    </component>
+
+    <component id="optionsForm" type="jeus:JEUSForm">
+		<binding name="success" value="listener:onPermanentDeployOk"/>
+        <binding name="title" value="message:pmd.options.title"/>
+    </component>
+
+	<component id="condAbsolutePath" type="If">
+		<binding name="condition" value="application.isSetNameAndPathAndDeploymentType()"/>
+	</component>
+
+	<component id="readOnlyAbsolutePath" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:absolutePath"/>
+	</component>
+
+	<component id="absolutePath" type="jeus:Field">
+		<binding name="field" value="component:absolutePathField"/>
+	</component>
+
+	<component id="absolutePathField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:absolutePath"/>
+	</component>
+
+    <component id="fast_deploy" type="jeus:Field">
+        <binding name="field" value="component:fast_deployField"/>
+    </component>
+
+    <component id="fast_deployField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:fastDeploy"/>
+    </component>
+
+    <component id="deploy_when_booting" type="jeus:Field">
+        <binding name="field" value="component:deploy_when_bootingField"/>
+    </component>
+
+    <component id="deploy_when_bootingField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:deployWhenBooting"/>
+    </component>
+
+    <component id="class_ftp_unit" type="jeus:Field">
+        <binding name="field" value="component:class_ftp_unitField"/>
+    </component>
+
+    <component id="class_ftp_unitField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:classFtpUnit"/>
+        <binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@getPropertySelectionModel(application.classFtpUnitEnumeration)"/>
+        <binding name="defaultWrite" value="true"/>
+    </component>
+
+    <component id="security_domain_name" type="jeus:Field">
+        <binding name="field" value="component:security_domain_nameField"/>
+    </component>
+
+    <component id="security_domain_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:securityDomainName"/>
+    </component>
+
+	<component id="check_autodeploy" type="jeus:ExtendedCheckbox">
+		<binding name="value" value="autoDeployCheck"/>
+		<binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:autoDeploy"/>
+		<binding name="targets" value="{components.check_absolute_pathField, components.auto_deployField}"/>
+	</component>
+
+    <component id="check_absolute_path" type="jeus:Field">
+        <binding name="field" value="component:check_absolute_pathField"/>
+    </component>
+
+    <component id="check_absolute_pathField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="autoDeploy"/>
+        <binding name="elementName" value="literal:checkAbsolutePath"/>
+        <binding name="disabled" value="!autoDeployCheck"/>
+    </component>
+
+    <component id="auto_deploy" type="jeus:Field">
+        <binding name="field" value="component:auto_deployField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="auto_deployField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="autoDeploy"/>
+        <binding name="elementName" value="literal:autoDeployCheckInterval"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=1"/>
+        <binding name="disabled" value="!autoDeployCheck"/>
+    </component>
+
+    <component id="classloading" type="jeus:Field">
+        <binding name="field" value="component:classloadingField"/>
+    </component>
+
+    <component id="classloadingField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:classloading"/>
+        <binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@getPropertySelectionModel(application.classloadingEnumeration)"/>
+    </component>
+
+    <property name="application" persist="session"/>
+    <property name="appIndex" persist="session"/>
+
+</page-specification>

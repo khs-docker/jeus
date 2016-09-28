@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.RemoteWebtobControlService.StatisticsPage">
+    
+
+    <component id="mainBorder" type="jeus:WebtobMainBorder">
+        <binding name="title" value="literal:Remote WebToB Statistics"/>
+        <binding name="helpURL" value="ognl:helpURL"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        
+        <binding name="pageNames" value="ognl:new java.lang.String[]{'plugin:RemoteWebtobControlService_Statistics'}"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:webtob.statistics.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="refreshButton" type="Any">
+        <binding name="element" value="literal:input"/>
+        <binding name="value" value="message:common.label.refresh"/>
+    </component>
+
+    <component id="svrTable" type="jeus:JEUSTable">
+        <binding name="source" value="ognl:svrList"/>
+        <binding name="columns" value="literal:webtob.statistics.svr_name.label:svrName, webtob.statistics.status.label:status, webtob.statistics.min_proc.label:minProc, webtob.statistics.max_proc.label:maxProc, webtob.statistics.count.label:count, webtob.statistics.avg.label:avg"/>
+        <binding name="row" value="ognl:currentSvr"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+    </component>
+
+    <property name="currentSvr"/>
+</page-specification>

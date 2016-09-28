@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusMonitoringMBeanMonitoringService.FramesetPage">
+    <component id="shell" type="Shell">
+        <binding name="title" value="message:mmo.frameset.title"/>
+        <binding name="stylesheets" value="{assets.monitor_css, assets.tundra_css, assets.dojo_css, assets.jeusDojoTree_css, assets.jeus_css}"/>
+    </component>
+
+    <inject property="webadminStateObject" type="state" object="WebadminStateObject"/>
+    <inject property="webadminVisit" type="state" object="visit"/>
+
+    <component id="tree" type="jeus:DojoXTree">
+        <binding name="rootNode" value="ognl:mBeanTree"/>
+    </component>
+
+    <asset name="monitor_css" path="context:/css/monitor.css"/>
+    <asset name="dojo_css" path="context:/js/JeusDojo/release/dojo/dojo/resources/dojo.css"/>
+    <asset name="jeusDojoTree_css" path="context:/js/JeusDojo/release/dojo/dijit/tests/css/jeusDojoTree.css"/>
+    <asset name="tundra_css" path="context:/js/JeusDojo/release/dojo/dijit/themes/tundra/tundra.css"/>
+    <asset name="jeus_css" path="context:/css/jeus.css"/>
+
+    <property name="treeStateMode" persist="session"/>
+
+    <asset name="refresh" path="context:/image/refresh_out.gif"/>
+
+</page-specification>

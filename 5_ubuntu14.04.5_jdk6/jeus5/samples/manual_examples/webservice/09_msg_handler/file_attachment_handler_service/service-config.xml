@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-services-config xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+	<service>
+		<service-name>FileAttachmentService</service-name>
+		<target-namespace>urn:FileAttachmentService</target-namespace>
+		<output-wsdl-file>FileAttachmentService.wsdl</output-wsdl-file>
+		<output-jaxrpc-mapping-file>FileAttachmentService-mapping.xml</output-jaxrpc-mapping-file>
+		<style>wrapped</style>
+		<interface>
+			<endpoint-interface-class>filetransfer.FileTransferIF</endpoint-interface-class>			
+		</interface>
+	</service>
+</web-services-config>

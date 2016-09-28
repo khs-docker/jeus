@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceWSEngine.StatisticsPage">
+    <meta key="alternative.page.name" value="JeusServiceWSEngine_Configuration"/>
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:WSEngine Statistics"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@getJEUSSERVICE_WSENGINE_NAMES(objectName)"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:ws.statistics.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="refreshButton" type="Any">
+        <binding name="element" value="literal:input"/>
+        <binding name="value" value="message:common.label.refresh"/>
+    </component>
+
+    <component id="svrTable" type="jeus:JEUSTable">
+        <binding name="source" value="ognl:svrList"/>
+        <binding name="columns" value="literal:ws.statistics.svr_name.label:svrName, ws.statistics.status.label:status, ws.statistics.min_proc.label:minProc, ws.statistics.max_proc.label:maxProc, ws.statistics.count.label:count, ws.statistics.avg.label:avg"/>
+        <binding name="row" value="ognl:currentSvr"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+    </component>
+
+    <property name="currentSvr"/>
+</page-specification>

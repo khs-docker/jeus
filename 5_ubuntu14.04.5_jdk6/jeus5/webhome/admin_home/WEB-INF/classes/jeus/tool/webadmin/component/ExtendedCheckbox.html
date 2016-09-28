@@ -1,0 +1,32 @@
+<span jwcid="$content$">
+    <div dojoType="dijit.TitlePane" title="ognl:label" jwcid="@Any" style="width: 100%;">
+        <div class="field">
+            <label for="ognl:id+'Field'" id="ognl:id+'_label'" jwcid="@Any"><span jwcid="@RenderBlock" block="component:labelBlock"/></label>
+            <div class="field_content">
+                <span jwcid="checkbox"/>
+            &nbsp;</div>
+            <span jwcid="condShowDescription">
+                <span jwcid="@If" condition="ognl:description != null" renderTag="ognl:false">
+                    <p class="field_description"><span jwcid="@Insert" value="ognl:description"/></p>
+                </span>
+                <span jwcid="@If" condition="ognl:usage != null" renderTag="ognl:false">
+                    <span jwcid="@Insert" value="message:common.label.usage"/> : <span jwcid="@Insert" value="ognl:usage"/>
+                </span>
+            </span>
+        </div>
+        <div id="prog_menu" style="border:1px solid #BECAD6; padding:10px; margin:20px 0;">
+           <span jwcid="@RenderBody"/>
+        </div>
+    </div>
+    <br/>
+    <span jwcid="script"/>
+
+    <span jwcid="labelBlock@Block">
+	    <span jwcid="condHasElemdocHref">
+	        <a jwcid="elemdocLink"><span jwcid="label"/></a>
+	    </span>
+	    <span jwcid="@Else" renderTag="ognl:false">
+	        <span jwcid="label2"/>
+	    </span>
+    </span>
+</span>

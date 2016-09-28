@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceJMXExportService.ConfigurationPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JMX Export Service Configuration"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@JMXEXPORTSERVICE_NAMES"/>
+        <binding name="subtabNames" value="ognl:{'adaptor', 'mlet'}"/>
+    </component>
+
+    <component id="adaptor" type="Block"/>
+    <component id="http_adaptor" type="Block"/>
+    <component id="jmxmp_adaptor" type="Block"/>
+    <component id="rmi_adaptor" type="Block"/>
+    <component id="snmp_adaptor" type="Block"/>
+
+    <component id="mlet" type="Block"/>
+
+    <component id="adaptorForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jmx.adaptor.title"/>
+        <binding name="useForm" value="ognl:false"/>
+    </component>
+
+    <component id="adaptor_tab" type="jeus:InnerTabPanel">
+        <binding name="model" value="ognl:new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'jmx.adaptor.http.label','jmx.adaptor.jmxmp.label', 'jmx.adaptor.rmi.label', 'jmx.adaptor.snmp.label'}, new java.lang.String[]{'http_adaptor', 'jmxmp_adaptor', 'rmi_adaptor', 'snmp_adaptor'})"/>
+
+    </component>
+
+    <component id="http_adaptorForm" type="jeus:JEUSForm">
+        <binding name="listener" value="ognl:listeners.onHttpAdaptorOk"/>
+    </component>
+
+
+    <component id="http_adaptor_port" type="jeus:Field">
+        <binding name="field" value="ognl:components.http_adaptor_portField"/>
+    </component>
+
+    <component id="http_adaptor_portField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="jmxManager"/>
+        <binding name="elementName" value="literal:htmlAdaptorPort"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="rmi_adaptorForm" type="jeus:JEUSForm">
+        <binding name="listener" value="ognl:listeners.onRmiAdaptorOk"/>
+        <binding name="resetListener" value="ognl:listeners.onRmiAdaptorReset"/>
+    </component>
+
+    <component id="rmi_connector_port" type="jeus:Field">
+        <binding name="field" value="ognl:components.rmi_connector_portField"/>
+    </component>
+
+     <component id="rmi_connector_portField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="rmiConnector"/>
+        <binding name="elementName" value="literal:rmiConnectorPort"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="jmxmp_adaptorForm" type="jeus:JEUSForm">
+        <binding name="listener" value="ognl:listeners.onJmxmpAdaptorOk"/>
+    </component>
+
+    <component id="jmxmp_connector_port" type="jeus:Field">
+        <binding name="field" value="ognl:components.jmxmp_connector_portField"/>
+    </component>
+
+     <component id="jmxmp_connector_portField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="jmxmpConnector"/>
+        <binding name="elementName" value="literal:jmxmpConnectorPort"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="export_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.export_nameField"/>
+    </component>
+
+    <component id="export_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:rmiConnector"/>
+        <binding name="elementName" value="literal:exportName"/>
+    </component>
+
+    <component id="ref_export_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.ref_export_nameField"/>
+    </component>
+
+    <component id="ref_export_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:rmiConnector"/>
+        <binding name="elementName" value="literal:refExportName"/>
+    </component>
+
+    <component id="snmp_adaptorForm" type="jeus:JEUSForm">
+        <binding name="listener" value="ognl:listeners.onSnmpAdaptorOk"/>
+        <binding name="resetListener" value="ognl:listeners.onSnmpAdaptorReset"/>
+        <binding name="objectName" value="ognl:@jeus.tool.webadmin.util.JMXUtils@getSnmpAgentServiceName(objectName)"/>
+        <binding name="mbean" value="ognl:true"/>
+    </component>
+
+    <component id="snmp_adaptor_port" type="jeus:Field">
+        <binding name="field" value="ognl:components.snmp_adaptor_portField"/>
+        
+    </component>
+
+    <component id="snmp_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="snmp_adaptor_portField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="snmpAdaptor"/>
+        <binding name="elementName" value="literal:snmpAdaptorPort"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:required,min=1"/>
+    </component>
+
+    <component id="snmp_max_packet_size" type="jeus:Field">
+        <binding name="field" value="ognl:components.snmp_max_packet_sizeField"/>
+        <binding name="unit" value="message:common.unit.bytes"/>
+    </component>
+
+    <component id="snmp_max_packet_sizeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="snmpAdaptor"/>
+        <binding name="elementName" value="literal:snmpMaxPacketSize"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=256,max=2147483647"/>
+        <binding name="MBeanAttributeName" value="literal:MaxPacketSize"/>
+    </component>
+
+    <component id="snmp_security" type="jeus:Field">
+        <binding name="field" value="ognl:components.snmp_securityField"/>
+    </component>
+
+    <component id="snmp_securityField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:snmpAdaptor"/>
+        <binding name="elementName" value="literal:snmpSecurity"/>
+    </component>
+
+    <component id="snmp_version" type="jeus:Field">
+        <binding name="field" value="ognl:components.snmp_versionField"/>
+    </component>
+
+    <component id="snmp_versionField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="ognl:snmpAdaptor"/>
+        <binding name="elementName" value="literal:snmpVersion"/>
+        <binding name="model" value="ognl:snmpVersionModel"/>
+    </component>
+
+    <component id="snmp_trap_demon" type="jeus:Field">
+        <binding name="field" value="ognl:components.snmp_trap_demonField"/>
+        <binding name="description" value="message:jmx.adaptor.snmp.trap_demon.description"/>
+    </component>
+
+    <component id="snmp_trap_demonField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:snmpAdaptor"/>
+        <binding name="elementName" value="literal:trapDemon"/>
+        <binding name="translator" value="bean:trapDemonTranslator"/>
+    </component>
+
+    <component id="poolingSection" type="jeus:FormSection">
+        <binding name="title" value="message:jmx.adaptor.pooling.title"/>
+    </component>
+
+    <component id="min" type="jeus:Field">
+        <binding name="field" value="ognl:components.minField"/>
+    </component>
+
+    <component id="minField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="pooling"/>
+        <binding name="elementName" value="literal:min"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="max" type="jeus:Field">
+        <binding name="field" value="ognl:components.maxField"/>
+    </component>
+
+    <component id="maxField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="pooling"/>
+        <binding name="elementName" value="literal:max"/>
+        <binding name="validators" value="validators:$maxValidator"/>
+    </component>
+
+    <component id="period" type="jeus:Field">
+        <binding name="field" value="ognl:components.periodField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="periodField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="pooling"/>
+        <binding name="elementName" value="literal:period"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="mletForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jmx.mlet.title"/>
+        <binding name="listener" value="ognl:listeners.onMletOk"/>
+    </component>
+
+    <component id="mlet_url" type="jeus:Field">
+        <binding name="field" value="ognl:components.mlet_urlField"/>
+    </component>
+
+    <component id="mlet_urlField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:jmxManager"/>
+        <binding name="elementName" value="literal:mletUrl"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+
+	<bean name="maxValidator" class="jeus.tool.webadmin.validator.FieldMinMaxValidator">
+		<set name="min" value="1"/>
+		<set name="minField" value="component:minField"/>
+	</bean>
+
+    <bean name="trapDemonTranslator" class="jeus.tool.webadmin.component.translator.TrapDemonTranslator"/>
+    <bean name="listTranslator" class="jeus.tool.webadmin.component.translator.ListTranslator"/>
+
+</page-specification>

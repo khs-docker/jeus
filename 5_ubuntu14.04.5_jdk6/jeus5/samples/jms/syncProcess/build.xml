@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<project name="jms_sync" default="all" basedir=".">
+
+  <!-- set global properties for this build -->
+  <property file="../../sample.properties"/>
+  <property name="source" value="."/>
+  <property name="build" value="${source}/build"/>
+
+  <import file="${jeus.home}/samples/common.xml"/>
+
+  <target name="all" depends="clean, init, compile"/>
+
+  <!-- Create the build directory structure used by compile
+       and copy the deployment descriptors into it-->
+  <target name="init">
+    <mkdir dir="${build}"/> 		
+  </target>
+
+  <!-- Compile ejb classes into the build directory (jar preparation) -->
+  <target name="compile" depends="init">
+    <javac srcdir="${source}" destdir="${build}" classpath="${jeus.libraries}"/>
+  </target>
+
+	<!-- Clean all the directories and files that have created -->
+  <target name="clean">
+    <delete dir="${build}"/>
+  </target>
+
+  <!-- Run the example -->
+  <target name="run_sender">
+	<java dir="${build}" classname="jms.queue.SyncMsgSend" fork="yes" failonerror="true">
+		<sysproperty key="java.naming.factory.initial" value="jeus.jndi.JEUSContextFactory"/>
+		<sysproperty key="java.naming.factory.url.pkgs" value="jeus.jndi.jns.url"/>
+		<sysproperty key="jeus.tm.not_use" value="true"/>
+		<sysproperty key="jeus.baseport" value="${jeus.baseport}"/>
+		<classpath refid="jeus.libraries"/>
+	</java>
+  </target>
+
+  <target name="run_receiver">
+	<java dir="${build}" classname="jms.queue.SyncReceive" fork="yes" failonerror="true">
+		<sysproperty key="java.naming.factory.initial" value="jeus.jndi.JEUSContextFactory"/>
+		<sysproperty key="java.naming.factory.url.pkgs" value="jeus.jndi.jns.url"/>
+		<sysproperty key="jeus.tm.not_use" value="true"/>
+		<sysproperty key="jeus.baseport" value="${jeus.baseport}"/>
+		<classpath refid="jeus.libraries"/>
+	</java>
+  </target>
+
+</project>

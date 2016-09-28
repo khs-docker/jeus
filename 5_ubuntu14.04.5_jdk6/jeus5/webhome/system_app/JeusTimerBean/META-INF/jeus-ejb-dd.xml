@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jeus-ejb-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+  <beanlist>
+	<jeus-bean>
+	  <ejb-name>JeusTimerBean</ejb-name>
+	  <local-export-name>_JeusTimerBean_</local-export-name>
+	  <local-invoke-optimize>true</local-invoke-optimize>
+	  <persistence-optimize>
+		<engine-type>SINGLE_OBJECT</engine-type>
+	  </persistence-optimize>
+	  <schema-info>
+		<creating-table>
+		  <use-existing-table/>
+		</creating-table>
+		<db-vendor>oracle</db-vendor>
+		<data-source-name>jdbc/DB1</data-source-name>
+	  </schema-info>
+	  <durable-timer-service>
+		<enable-durable-timers>false</enable-durable-timers>
+	  </durable-timer-service>
+	</jeus-bean>
+  </beanlist>
+</jeus-ejb-dd>
+

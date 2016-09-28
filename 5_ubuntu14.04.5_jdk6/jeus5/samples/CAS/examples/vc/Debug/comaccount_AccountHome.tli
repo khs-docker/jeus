@@ -1,0 +1,99 @@
+// Created by Microsoft (R) C/C++ Compiler Version 12.00.8168.0 (e4e81207).
+//
+// d:\tmaxsoft\jeus5\samples\cas\examples\vc\debug\comaccount_AccountHome.tli
+//
+// Wrapper implementations for Win32 type library D:\j2ee-cas-com-bridge\doc\guide\examples\typelib\comaccount_AccountHome.tlb
+// compiler-generated file created 04/04/05 at 15:36:54 - DO NOT EDIT!
+
+#pragma once
+
+//
+// dispinterface comaccount_AccountHome wrapper method implementations
+//
+
+inline _variant_t comaccount_AccountHome::create ( const _variant_t & param1, const _variant_t & param2, const _variant_t & param3, const _variant_t & param4, const _variant_t & param5, const _variant_t & param6 ) {
+    VARIANT _result;
+    _com_dispatch_method(this, 0xc, DISPATCH_METHOD, VT_VARIANT, (void*)&_result, 
+        L"\x000c\x000c\x000c\x000c\x000c\x000c", &param1, &param2, &param3, &param4, &param5, &param6);
+    return _variant_t(_result, false);
+}
+
+inline IDispatchPtr comaccount_AccountHome::create_1 ( _bstr_t String1 ) {
+    IDispatch * _result;
+    _com_dispatch_method(this, 0xd, DISPATCH_METHOD, VT_DISPATCH, (void*)&_result, 
+        L"\x0008", (BSTR)String1);
+    return IDispatchPtr(_result, false);
+}
+
+inline IDispatchPtr comaccount_AccountHome::create_2 ( _bstr_t String1, _bstr_t String2, _bstr_t String3, _bstr_t String4, double param5, double param6 ) {
+    IDispatch * _result;
+    _com_dispatch_method(this, 0xe, DISPATCH_METHOD, VT_DISPATCH, (void*)&_result, 
+        L"\x0008\x0008\x0008\x0008\x0005\x0005", (BSTR)String1, (BSTR)String2, (BSTR)String3, (BSTR)String4, param5, param6);
+    return IDispatchPtr(_result, false);
+}
+
+inline IDispatchPtr comaccount_AccountHome::findAll ( ) {
+    IDispatch * _result;
+    _com_dispatch_method(this, 0xf, DISPATCH_METHOD, VT_DISPATCH, (void*)&_result, NULL);
+    return IDispatchPtr(_result, false);
+}
+
+inline IDispatchPtr comaccount_AccountHome::findByBalance ( double param1, double param2 ) {
+    IDispatch * _result;
+    _com_dispatch_method(this, 0x10, DISPATCH_METHOD, VT_DISPATCH, (void*)&_result, 
+        L"\x0005\x0005", param1, param2);
+    return IDispatchPtr(_result, false);
+}
+
+inline IDispatchPtr comaccount_AccountHome::findByLastName ( _bstr_t String1 ) {
+    IDispatch * _result;
+    _com_dispatch_method(this, 0x11, DISPATCH_METHOD, VT_DISPATCH, (void*)&_result, 
+        L"\x0008", (BSTR)String1);
+    return IDispatchPtr(_result, false);
+}
+
+inline IDispatchPtr comaccount_AccountHome::findByPrimaryKey ( _bstr_t String1 ) {
+    IDispatch * _result;
+    _com_dispatch_method(this, 0x12, DISPATCH_METHOD, VT_DISPATCH, (void*)&_result, 
+        L"\x0008", (BSTR)String1);
+    return IDispatchPtr(_result, false);
+}
+
+inline IDispatchPtr comaccount_AccountHome::getEJBMetaData ( ) {
+    IDispatch * _result;
+    _com_dispatch_method(this, 0x13, DISPATCH_METHOD, VT_DISPATCH, (void*)&_result, NULL);
+    return IDispatchPtr(_result, false);
+}
+
+inline IDispatchPtr comaccount_AccountHome::getHomeHandle ( ) {
+    IDispatch * _result;
+    _com_dispatch_method(this, 0x14, DISPATCH_METHOD, VT_DISPATCH, (void*)&_result, NULL);
+    return IDispatchPtr(_result, false);
+}
+
+inline HRESULT comaccount_AccountHome::remove ( const _variant_t & param1 ) {
+    return _com_dispatch_method(this, 0x15, DISPATCH_METHOD, VT_EMPTY, NULL, 
+        L"\x000c", &param1);
+}
+
+inline HRESULT comaccount_AccountHome::remove_1 ( const _variant_t & Object1 ) {
+    return _com_dispatch_method(this, 0x16, DISPATCH_METHOD, VT_EMPTY, NULL, 
+        L"\x000c", &Object1);
+}
+
+inline HRESULT comaccount_AccountHome::remove_2 ( IDispatch * Handle1 ) {
+    return _com_dispatch_method(this, 0x17, DISPATCH_METHOD, VT_EMPTY, NULL, 
+        L"\x0009", Handle1);
+}
+
+inline IDispatchPtr comaccount_AccountHome::GetHomeHandle ( ) {
+    IDispatch * _result;
+    _com_dispatch_method(this, 0xb, DISPATCH_PROPERTYGET, VT_DISPATCH, (void*)&_result, NULL);
+    return IDispatchPtr(_result, false);
+}
+
+inline IDispatchPtr comaccount_AccountHome::GetEJBMetaData ( ) {
+    IDispatch * _result;
+    _com_dispatch_method(this, 0xa, DISPATCH_PROPERTYGET, VT_DISPATCH, (void*)&_result, NULL);
+    return IDispatchPtr(_result, false);
+}

@@ -1,0 +1,884 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    attributeFormDefault="unqualified" 
+    elementFormDefault="qualified" 
+    targetNamespace="http://www.tmaxsoft.com/xml/ns/jeus" version="5.0" 
+    xmlns="http://www.tmaxsoft.com/xml/ns/jeus" 
+    xmlns:j2ee="http://java.sun.com/xml/ns/j2ee" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">       
+    <xs:include schemaLocation="jeus-common.xsd"/>      
+    <xs:element name="jms-server" type="jms-serverType">         
+        <xs:annotation>             
+            <xs:documentation><![CDATA[
+                [Description]:  The top level element inside JMSMain.xml.
+                Token or String values can not include following strings. ':', ',', '*', '?', '='
+            ]]>
+            </xs:documentation>         
+        </xs:annotation>     
+    </xs:element>      
+    <xs:complexType name="jms-serverType">         
+        <xs:sequence>             
+            <xs:element minOccurs="0" name="broker-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:This element is name of JMS message broker. If it is not set, host name is used.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element maxOccurs="unbounded" minOccurs="1" name="service-config" type="service-config">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:This is configuration on server channel for providing messaging service. Minimum one should be configured.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element minOccurs="0" name="thread-pool" type="jms-thread-poolType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:This element is configuration on thread pool in which JMS message broker uses.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element minOccurs="0" name="access-log" type="system-loggingType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:This element configures inforamtion on access log.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="durable-subscriber" type="durable-subscriberType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures information on Durable subscriber.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="connection-factory" type="connection-factoryType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures information on connection factory.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="destination" type="destinationType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures information on destination.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="queue-cluster" type="queue-clusterType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element selects Queue clustering method.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="topic-cluster" type="topic-clusterType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element selects topic clustering method.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element minOccurs="0" name="storage" type="storageType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures storage information for persistent message.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element minOccurs="0" name="jms-server-cluster" type="jms-server-clusterType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures JMS message broker participating in here in case of using destination clustering.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>                 
+                <xs:unique name="cluster-server-name">                     
+                    <xs:selector xpath="jms-server-info"/>                     
+                    <xs:field xpath="broker-name"/>                 
+                </xs:unique>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="service-config">         
+        <xs:sequence>             
+            <xs:element name="name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This is name of server channel. This is used for configuring channel information in Connection Factory.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:choice>                 
+                <xs:element name="server-url" type="xs:token">                     
+                    <xs:annotation>                         
+                        <xs:documentation><![CDATA[
+                        [Description]: Specify the URL of sever channel. Only the TCP type is supported in the current version.
+                    
+                    ]]>
+                        </xs:documentation>                     
+                    </xs:annotation>                 
+                </xs:element>                 
+                <xs:group ref="jms-tcp-address"/>             
+            </xs:choice>             
+            <xs:element default="false" minOccurs="0" name="use-ssl" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This configures whether to apply SSL to server channel.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="ssl-configuration" type="jms-server-sslType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:  Specify the variables for SSL.
+                    
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="1000" minOccurs="0" name="client-limit" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This configures maximum number of client in which server channel allows.
+                        In case of using blocking socket,it can not exceed the maximum number of threads set in message broker.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="100" minOccurs="0" name="backlog-size" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Backlog size of service port.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element default="true" minOccurs="0" name="blocking-socket" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:  It determines whether to use blocking socket or non-blocking-socket for JMS server
+                         It is recommended to use non-blocking socket.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element default="65536" minOccurs="0" name="read-buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: The size of network buffer reading message from client. The default value is 64K.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element default="65536" minOccurs="0" name="write-buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Size of network buffer for transmitting message to Client. The default value is 64K.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element default="120" minOccurs="0" name="connection-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:In case of using blocking socket, it terminates the connection  when there is no request from client for the set time.
+                         The default value is 120 minutes.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="check-security" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Determine whether to do security check when establishing connection from Connection Factory. When the value of this element
+                         is true, user should possess jues.jms.client.connectionFactory permission and allow for createConnection action.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="30" minOccurs="0" name="client-keepalive-timeout" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: When the connection with client has been abruptly terminated,  this is the time period in which it will wait for reconnection.
+                        After time period has been passed, it will return the resource to the server.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:group name="jms-tcp-address">         
+        <xs:sequence>             
+            <xs:element default="127.0.0.1" minOccurs="0" name="server-address" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: IP address of related server channel is directly configured. This is used as address value for connecting to client.
+                                If it is not set, "127.0.0.1" will be used.
+                        [Example]: 123.123.123.123
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="port" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element is service port number of related server channel.
+                        [Example]: 9741
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:group>      
+    <xs:complexType name="jms-ssl-baseType">         
+        <xs:sequence>             
+            <xs:element default="TLS" minOccurs="0" name="protocol" type="xs:token"/>             
+            <xs:element default="JKS" minOccurs="0" name="key-store-type" type="xs:string"/>             
+            <xs:element minOccurs="1" name="key-store-file" type="xs:string"/>             
+            <xs:element minOccurs="1" name="key-store-pass" type="xs:string"/>             
+            <xs:element default="SunX509" minOccurs="0" name="key-management-algorithm" type="xs:string"/>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:group name="jms-ssl-trustType">         
+        <xs:sequence>             
+            <xs:element default="JKS" minOccurs="0" name="trust-store-type" type="xs:string"/>             
+            <xs:element minOccurs="1" name="trust-store-file" type="xs:string"/>             
+            <xs:element minOccurs="1" name="trust-store-pass" type="xs:string"/>             
+            <xs:element default="SunX509" minOccurs="0" name="trust-management-algorithm" type="xs:string"/>         
+        </xs:sequence>     
+    </xs:group>      
+    <xs:complexType name="jms-server-sslType">         
+        <xs:complexContent>    
+            <xs:extension base="jms-ssl-baseType">                 
+                <xs:sequence>                     
+                    <xs:element minOccurs="0" name="client-auth" type="client-authType"/>                 
+                </xs:sequence>             
+            </xs:extension>         
+        </xs:complexContent>     
+    </xs:complexType>      
+    <xs:complexType name="client-authType">         
+        <xs:group ref="jms-ssl-trustType"/>     
+    </xs:complexType>      
+    <xs:complexType name="jms-client-sslType">         
+        <xs:complexContent>    
+            <xs:extension base="jms-ssl-baseType">                 
+                <xs:group ref="jms-ssl-trustType"/>             
+            </xs:extension>         
+        </xs:complexContent>     
+    </xs:complexType>       
+    <xs:complexType name="connection-factoryType">         
+        <xs:sequence>             
+            <xs:element default="nonxa" minOccurs="0" name="type" type="factory-typeType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Configuring information on connection factory.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element is the name of Connection Factory used for management purpose in JMS System.
+		            ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="0" name="service" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures name of service attempting to be connected by Connection Factory.
+                            Name set in service-config is used.
+                            In case where name is not set, it is configured as initially set service.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>                 
+                <xs:unique name="factory-service-config-name">                     
+                    <xs:selector xpath="xs:jms-server/service-config"/>                     
+                    <xs:field xpath="name"/>                 
+                </xs:unique>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="export-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Name in which Connection Factory is binded in naming server.
+		                If it has not been set, name property will be used as it is.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="clustered-factory" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures the range of connection factory. If it is set as true, it will be used as cluster factory.
+            		]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="client-id" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element is ClientID value being set as default value in generated conection using related Connection Factory.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="true" minOccurs="0" name="fixed-client-id" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="round-robin" minOccurs="0" name="broker-selection-policy" type="broker-selection-policyType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Determine the policy to select the channel when ConnectionFactory creates connection.
+                    
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="thread-pool" type="jms-thread-poolType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: In case of establishing connection from this connection by Factory client,
+                        thread pool information on this connection is set.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:simpleType name="destination-typeType">         
+        <xs:restriction base="xs:token">             
+            <xs:enumeration value="queue"/>             
+            <xs:enumeration value="topic"/>         
+        </xs:restriction>     
+    </xs:simpleType>      
+    <xs:simpleType name="factory-typeType">         
+        <xs:restriction base="xs:token">             
+            <xs:enumeration value="nonxa"/>             
+            <xs:enumeration value="xa"/>             
+            <xs:enumeration value="queue"/>             
+            <xs:enumeration value="topic"/>             
+            <xs:enumeration value="xaqueue"/>             
+            <xs:enumeration value="xatopic"/>         
+        </xs:restriction>     
+    </xs:simpleType>      
+    <xs:simpleType name="broker-selection-policyType">         
+        <xs:restriction base="xs:token">             
+            <xs:enumeration value="round-robin"/>             
+            <xs:enumeration value="active-standby"/>         
+        </xs:restriction>     
+    </xs:simpleType>      
+    <xs:complexType name="destinationType">         
+        <xs:sequence>             
+            <xs:element name="type" type="destination-typeType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures type of related destination. Select either of queue or topic.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element is the destination name used for management purpose within JMS message broker.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="broker-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Specify name of the broker routing the incoming message to this destination.
+                         Unless specified, the message will be routed to the destination of the server that connected to connection factory.
+                         If specified, even though the destination is connected to another clustering server, the messages sent by the procedure in this destination 
+                         will be routed to the specified broker, but not to the destination of connected server.
+                         Please do not use this option for clustering destination. 
+                    
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="export-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Name for related destination to be binded into naming server. If it is not set, name property is used as it is.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="multiple-receiver" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Specify whether to allow multiple receivers for the distributed processing of queue type destination.
+                    
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="2147483647" minOccurs="0" name="consumer-limit" type="positiveIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Limit the number of consumers for accessing to destination.
+                    
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="round-robin" minOccurs="0" name="local-distribute" type="local-distributeType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: It determines whether to do message distribution of queue destination set as multiple-receiver.
+                        One of round-robin or random can be configured.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="2147483647" minOccurs="0" name="limit" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures maximum memory size can be used in related destination.
+                        In case where used memory exceeds this value, message delivering of client will process as an error.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="2147483647" minOccurs="0" name="high-mark" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures memory size starting to use flow control.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="0" minOccurs="0" name="low-mark" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures memory size starting soft caching.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:choice minOccurs="0">                 
+                <xs:element minOccurs="0" name="queue-cluster-name" type="xs:token">                     
+                    <xs:annotation>                         
+                        <xs:documentation><![CDATA[
+                            [Description]: Select clustering type set as queue-cluster.
+                        ]]>
+                        </xs:documentation>                     
+                    </xs:annotation>                     
+                    <xs:unique name="queue-cluster-config-name">                         
+                        <xs:selector xpath="xs:jms-server/queue-cluster"/>                         
+                        <xs:field xpath="queue-cluster-name"/>                     
+                    </xs:unique>                 
+                </xs:element>                 
+                <xs:element minOccurs="0" name="topic-cluster-name" type="xs:token">                     
+                    <xs:annotation>                         
+                        <xs:documentation><![CDATA[
+                            [Description]: Select set clustering type as topic-cluster.
+                        ]]>
+                        </xs:documentation>                     
+                    </xs:annotation>                     
+                    <xs:unique name="topic-cluster-config-name">                         
+                        <xs:selector xpath="xs:jms-server/topic-cluster"/>                         
+                        <xs:field xpath="topic-cluster-name"/>                     
+                    </xs:unique>                 
+                </xs:element>             
+            </xs:choice>          
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="topic-clusterType">         
+        <xs:sequence>             
+            <xs:element name="topic-cluster-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Configure clustering type for clustering topic.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="non-durable" name="relay-type" type="relay-typeType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This is method of delivering message to cluster server set above. Either of non-durable or durable can be configured.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" name="target" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures broker name participating in clustering. Related name should be name set in jms-server-info.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>                 
+                <xs:unique name="topic-cluster-broker-name">                     
+                    <xs:selector xpath="xs:jms-server/jms-server-info"/>                     
+                    <xs:field xpath="broker-name"/>                 
+                </xs:unique>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="queue-clusterType">         
+        <xs:sequence>             
+            <xs:element name="queue-cluster-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Configure clustering type for queue clustering.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="round-robin" minOccurs="0" name="cluster-distribute" type="cluster-distributeType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Configure method for distributing message in each broker participating in queue clustering.
+                        One of server-weighted, consumer-weighted, round-robin or random can be set.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="1" minOccurs="0" name="local-preference" type="positiveIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: It enhances the importnace of message processed in local broker.
+                        This is only meaningful in case where either of server-weighted or consumer-weighted mode is used.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" name="target" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures broker name participating in clustering. Related name should be name set in jms-server-info.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>                 
+                <xs:unique name="queue-cluster-broker-name">                     
+                    <xs:selector xpath="xs:jms-server/jms-server-info"/>                     
+                    <xs:field xpath="broker-name"/>                 
+                </xs:unique>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:simpleType name="relay-typeType">         
+        <xs:restriction base="xs:token">             
+            <xs:enumeration value="non-durable"/>             
+            <xs:enumeration value="durable"/>         
+        </xs:restriction>     
+    </xs:simpleType>      
+    <xs:simpleType name="cluster-distributeType">         
+        <xs:restriction base="xs:token">             
+            <xs:enumeration value="server-weighted"/>             
+            <xs:enumeration value="consumer-weighted"/>             
+            <xs:enumeration value="round-robin"/>             
+            <xs:enumeration value="random"/>         
+        </xs:restriction>     
+    </xs:simpleType>      
+    <xs:simpleType name="local-distributeType">         
+        <xs:restriction base="xs:token">             
+            <xs:enumeration value="round-robin"/>             
+            <xs:enumeration value="random"/>         
+        </xs:restriction>     
+    </xs:simpleType>      
+    <xs:complexType name="durable-subscriberType">         
+        <xs:sequence>             
+            <xs:element name="client-id" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This tag configures value determining client.
+                        Entire client-id values within durable-subscriber element should not be duplicated
+                        not only in connection-factory element but also in durable-subscirber element.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element is the name of Durable Subscriber used for management purpose within message broker.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="destination-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element is destination name in which Durable Subscriber receives message.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="message-selector" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures message selector of Durable Subscriber.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="storageType">         
+        <xs:sequence>             
+            <xs:choice>                 
+                <xs:element minOccurs="0" name="db-storage" type="db-storageType">                     
+                    <xs:annotation>                         
+                        <xs:documentation><![CDATA[
+					    [Description]: This element configures database storage in case of using database storage.
+                    ]]>
+                        </xs:documentation>                     
+                    </xs:annotation>                 
+                </xs:element>                  
+                <xs:element minOccurs="0" name="file-storage" type="file-storageType">                     
+                    <xs:annotation>                         
+                        <xs:documentation><![CDATA[
+					    [Description]: This element configures file storage in case of using file storage.
+                    ]]>
+                        </xs:documentation>                     
+                    </xs:annotation>                 
+                </xs:element>             
+            </xs:choice>             
+            <xs:element default="true" minOccurs="0" name="synchronous-delete" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation/>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="delete-invalid-destination" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation/>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>      
+    </xs:complexType>      
+    <xs:complexType name="db-storageType">         
+        <xs:sequence>             
+            <xs:choice>                 
+                <xs:element name="data-source-name" type="xs:token">                     
+                    <xs:annotation>                         
+                        <xs:documentation><![CDATA[
+					    [Description]: This element configures name of datasource to be binded in JNDI to be used.
+                 ]]>
+                        </xs:documentation>                     
+                    </xs:annotation>                 
+                </xs:element>                 
+                <xs:element name="embedded" type="emptyType">                     
+                    <xs:annotation>                         
+                        <xs:documentation><![CDATA[
+                            [Description]: Option to use embedded DB as storage.
+                        
+                    ]]>
+                        </xs:documentation>                     
+                    </xs:annotation>                 
+                </xs:element>             
+            </xs:choice>             
+            <xs:element minOccurs="0" name="destination-table-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+					    [Description]: This element configures destination table name used in JMS.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="durable-subscriber-table-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation/>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="transaction-table-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+					    [Description]: This element configures transaction table name used in JMS.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="message-table-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+					    [Description]: This element configures message table name used in JMS.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="durable-message-table-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation/>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="500" minOccurs="0" name="wait-timeout" type="xs:long">                 
+                <xs:annotation>                     
+                    <xs:documentation/>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="true" minOccurs="0" name="wait-until-complete" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation/>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="file-storageType">         
+        <xs:sequence>             
+            <xs:element name="path" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This is full file path in which file storage is located.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="jms-thread-poolType">         
+        <xs:sequence>             
+            <xs:element default="1" minOccurs="0" name="min" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures minimum size of thread pool.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="300" minOccurs="0" name="max" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures maximum size of thread pool.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="300000" minOccurs="0" name="keep-alive-time" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: For thread which has not been used for set time period and exceeds min number, thread will be destroyed.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="jms-server-clusterType">         
+        <xs:annotation>             
+            <xs:documentation><![CDATA[
+                [Description]: 데스티네이션 클러스터을 사용하는 경우 설정하며 이 부분은 클러스터링에 참여하는 모든 JMS 메시지 브로커가 동일하여야 한다.
+            ]]>
+            </xs:documentation>         
+        </xs:annotation>         
+        <xs:sequence>             
+            <xs:element minOccurs="0" name="cluster-service" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures service name for communcation between clusterings. If it is not set,
+		                it is temporarily configured.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>                 
+                <xs:unique name="cluster-service-config-name">                     
+                    <xs:selector xpath="xs:jms-server/service-config"/>                     
+                    <xs:field xpath="name"/>                 
+                </xs:unique>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" name="jms-server-info" type="jms-server-infoType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures information on JMS message broker taking part in Cluster.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="jms-server-infoType">         
+        <xs:sequence>             
+            <xs:element name="broker-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This is name used for communicating between clusters.
+                        JMS message broker taking part in clustering should contain unique value.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="broker-id" type="positiveShortType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element is broker id used for communication among clusters.
+		                JMS Message broker taking part in cluster should contain each unique value.
+                        If the value has not been set, it can be temporaily configured according to set order in cluster table.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="ip-address" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element is ip-address of related JMS message broker.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="jms-port" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element is service prot value of JMS message broker.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="use-ssl" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures whether to use SSL.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="ssl-configuration" type="jms-client-sslType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Specify the variables relevant to the SSL.
+                    
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>                             
+            <xs:element default="60000" minOccurs="0" name="connection-interval" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element is time period of attempting to connect with other cluster server.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="1" minOccurs="0" name="weight" type="positiveIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This value is used in case of using message distribution mode of server-weighted mode.  
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType> 
+</xs:schema>

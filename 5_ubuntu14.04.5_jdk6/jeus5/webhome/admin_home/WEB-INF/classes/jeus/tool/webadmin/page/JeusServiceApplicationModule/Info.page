@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JEUSBasePage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{pageName}"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:info.title.ApplicationModule"/>
+        <binding name="description" value="message:info.description.ApplicationModule"/>
+        <binding name="useForm" value="false"/>
+    </component>
+  
+</page-specification>

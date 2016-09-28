@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jeus-ejb-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <module-info/>
+    <beanlist>
+        <jeus-bean>
+            <ejb-name>calc</ejb-name>
+            <export-name>calc</export-name>
+            <export-port>0</export-port>
+            <single-vm-only>false</single-vm-only>
+            <local-invoke-optimize>false</local-invoke-optimize>
+            <thread-max>100</thread-max>
+            <pooling-bean>false</pooling-bean>
+            <database-insert-delay>ejbPostCreate</database-insert-delay>
+            <enable-instant-ql>false</enable-instant-ql>
+            <max-message>10</max-message>
+        </jeus-bean>
+    </beanlist>
+</jeus-ejb-dd>

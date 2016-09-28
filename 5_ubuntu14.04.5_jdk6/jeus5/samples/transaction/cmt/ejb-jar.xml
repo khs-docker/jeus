@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE ejb-jar PUBLIC '-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN' 'http://java.sun.com/dtd/ejb-jar_2_0.dtd'>
+<ejb-jar>
+	<enterprise-beans>
+	    <session>
+	        <ejb-name>productmanager</ejb-name>
+	        <home>transaction.cmt.ProductManagerHome</home>
+	        <remote>transaction.cmt.ProductManager</remote>
+	        <ejb-class>transaction.cmt.ProductManagerEJB</ejb-class>
+	        <session-type>Stateless</session-type>
+	        <transaction-type>Container</transaction-type>
+	    </session>
+	</enterprise-beans>
+	<assembly-descriptor>
+	    <container-transaction>
+	        <method>
+	            <ejb-name>productmanager</ejb-name>
+	            <method-name>*</method-name>
+	            <method-params/>
+	        </method>
+	        <trans-attribute>Required</trans-attribute>
+	    </container-transaction>
+	</assembly-descriptor>
+</ejb-jar>

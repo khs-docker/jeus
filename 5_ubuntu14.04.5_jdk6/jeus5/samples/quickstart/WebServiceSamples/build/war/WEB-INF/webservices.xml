@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<webservices version="1.1" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <webservice-description>
+        <webservice-description-name>EmployeeService</webservice-description-name>
+        <wsdl-file>WEB-INF/wsdl/EmployeeService.wsdl</wsdl-file>
+        <jaxrpc-mapping-file>WEB-INF/EmployeeService-mapping.xml</jaxrpc-mapping-file>
+        <port-component>
+            <port-component-name>EmployeeServiceIFPort</port-component-name>
+            <wsdl-port xmlns:ns2="urn:EmployeeService">ns2:EmployeeServiceIFPort</wsdl-port>
+            <service-endpoint-interface>com.tmax.webservices.emp.service.EmployeeServiceIF</service-endpoint-interface>
+            <service-impl-bean>
+                <servlet-link>EmployeeServlet</servlet-link>
+            </service-impl-bean>
+        </port-component>
+    </webservice-description>
+</webservices>

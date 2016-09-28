@@ -1,0 +1,9 @@
+#!/bin/sh
+
+. jeus.properties
+
+cd ${JEUS_HOME}/bin
+
+${JAVA_HOME}/bin/java -classpath ${JEUS_HOME}/lib/etc/hsqldb.jar ${JAVA_ARGS} org.hsqldb.util.ShutdownServer
+
+

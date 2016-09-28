@@ -1,0 +1,18 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+         <form jwcid="form">
+            <table border="1" cellpadding="3" width="100%" jwcid="connectionPoolTable"/>
+            <span jwcid="jca_control_actions_labelColumnValue">
+                <div style="text-align:center;width:100%;">
+                    <a jwcid="enable_disableLink"></a><input jwcid="enable_disable" class="form_button" onclick="window.location.href=previousSibling.href;"/>
+                    <a jwcid="resyncLink"></a><input jwcid="resync" class="form_button" onclick="window.location.href=previousSibling.href;"/>
+                    <a jwcid="shrinkLink"></a><input jwcid="shrink" class="form_button" onclick="window.location.href=previousSibling.href;"/>
+                </div>
+            </span>
+            <br/>
+            <div class="form_button_layer">
+                <a jwcid="@PageLink" page="ognl:pageName"></a><input jwcid="@Button" class="form_button" onclick="window.location = previousSibling.href;" label="message:common.label.refresh"/>
+           </div>
+        </form>
+    </span>
+</html>

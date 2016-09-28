@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application-client xmlns="http://java.sun.com/xml/ns/j2ee" version="1.4">
+    <display-name>SalaryClient</display-name>
+</application-client>

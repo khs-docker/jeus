@@ -1,0 +1,244 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 2 소개 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('2 소개', 'wm-01.htm', 'wm-03.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left">2 소개
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMHeading2">2.1 개요
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMNormalText">JEUS 4.X 이하 버전에서는 JEUS를 관리하기 위한 도구로서 스윙 기반의JManager와 웹기반의 WebManager를 제공하였었다. 그러나 
+두어플리케이션의 기능들이 중복되어 역할의 분리가 확실하지 않아 사용하기 불편한 점이 있었다. 이에 JEUS 5에서는 모든 JEUS의 구성요소와 어플리케이션 
+모듈들의 배치 및 관리를 웹 기반의 웹 관리자를 통해서 하고 EAR이나 JAR, WAR 같은 어플리케이션 모듈들을 작성하고 패키징하는 기능은 스윙 
+기반의 JEUS Builder를 통해서 할 수 있도록 역할을 확실히 분리하였다.
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMNormalText">이번 장에서는 우선 JEUS 5웹 관리자의 새로운 특징들에는 어떠한 것이 있는지 알아 볼 것이다. 다음, 웹관리자를 실행시키기 위한 환경에 대해서 
+알아보고, 마지막으로 JEUS 웹 관리자의 디렉 토리 구성과 화면 구성에 대해서 개략적으로 알아 보고 결론을 내릴 것이다.
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMHeading2">2.2 JEUS 5 웹관리자의 새로운 특징들
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMNormalText">JEUS 5부터 JEUS 서버 내부적으로 많은 변화가 생겼다. 특히 관리상의 관점에서 봤을 때 JMX, JAXB, 배치 API의추가가 가장 큰 변화라고 
+할 수있다. 이번 절에서는 이들이 새롭게 추가됨으로서 웹 관리자에 어떠한 새로운 특징들이 추가되었는지와 이전 버전에서의 웹 관리자와 무엇이 다른지에 
+대해서 알아볼 것이다.
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMHeading3">2.2.1 JMX
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMEmphasizeChar">JMX
+ </SPAN>는
+ <SPAN CLASS="JMEmphasizeChar">Java Management Extension
+ </SPAN>의 약자로서 
+ <SPAN CLASS="JMEmphasizeChar">Web Application Server
+ </SPAN>를관리하기 위한 표준적인 방법이다. JMX 서버내에는 웹 어플리케이션 서버의 각 구성요소들을 대신하여 관리를 해주는 MBean들이 존재한다. MBean은 
+각구성요소의 속성을 접근하거나 상태를 모니터링하고 제어를 할 수 있는 기능들을 제공한다. 
+ </P>
+<A NAME="1008"></A>
+<P CLASS="JMNormalText">JEUS 5 웹관리자는 JEUS 구성 요소들에 대한 모든 관리를 각 MBean들의 메소드 호출을 통해서 하고 있다.
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMNormalText">각 구성 요소들에 대한 MBean과 제공되는 속성 및 메소들에 대한 자세한 정보는 JMX 안내서와 JMX javadoc을 참조하기 바란다.
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMHeading3">2.2.2 JAXB
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMEmphasizeChar">JAXB
+ </SPAN>는 XML문서를 Java 객체를 통해서 접근하는 방법을 제공한다. JAXB 객체들은 XML Schema파일로부터 생성되며 어플리케이션들은 이 JAXB객체들을 
+이용함으로서 XML문서를 직접 다룰 필요가 없어졌다. 
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMNormalText">JEUS 5의모든 설정 파일들 - 
+ <SPAN CLASS="JMEmphasizeChar">JEUSMain.xml, WEBMain.xml, EJBMain.xml, WSMain.xml
+ </SPAN>등등 &ndash;을 위한 XSD파일들은 XML Schema파일들로 재정의 되었으며 이를 기반으로 하여XML Schema파일들을JAXB 객체들로 
+전환하였다. 
+ <SPAN CLASS="JMEmphasizeChar">JEUS_HOME/lib/system/jeus.jar
+ </SPAN>파일의 
+ <SPAN CLASS="JMJavaCodeChar">jeus.xml.binding 
+ </SPAN><SPAN CLASS="JMJavaCodeChar">이하
+ </SPAN>에존재하는 패키지들은 각 XML Schema 파일과 관련된 JAXB 객체들을 나타낸다. 
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMNormalText">JEUS 5 웹관리자는 JEUS내의 모든 설정을 JAXB를 통해서 함으로서 요소의 순서가 바뀜으로서 생기는 문제라든가 각 요소의 값을 XML Schema에 
+정의한 타입으로 설정하지 않았을 때 생기는 유효검사 문제등에 대해서 신경쓰지 않고 XML파일들을 관리할 수 있게 되었다.
+ </P>
+<A NAME="1014"></A>
+<P CLASS="JMNormalText">JAXB에대한 내용은 JEUS Server 안내서를 참조하기 바란다. 
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMHeading3">2.2.3 배치 API
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMNormalText">J2EE 1.4 이전 버전에서의 어플리케이션 모듈들의 배치는 각 웹 어플리케이션 서버가 제공하는 인터페이스를 통해서만 이루어졌다. 그러나J2EE 
+1.4 버전부터는 모든 웹 어플리케이션 서버가 배치 API를 반드시 구현해야만한다. 이에 따라웹 어플리케이션 서버가 
+ <SPAN CLASS="JMEmphasizeChar">배치
+ </SPAN><SPAN CLASS="JMEmphasizeChar">API
+ </SPAN><SPAN CLASS="JMEmphasizeChar">를
+ </SPAN>구현하게 된다면 어떠한 어플리케이션에서라도 코드의 변경없이 표준적인 방법으로 어플리케이션 모듈들을 배치할 수 있게되었다.
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMNormalText">JEUS 5도 J2EE 1.4 스펙을 준수하는 배치 API를 완벽하게 구현하였으며 웹 관리자에서는 이 API를 통해서 배치관련 기능들을 구현하였다.
+ 
+</P>
+<A NAME="1018"></A>
+<P CLASS="JMHeading3">2.2.4 디자인 및 UI 컴포넌트
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMNormalText">JEUS 5 웹관리자에서 또 다른 주요 변경사항은 전체적인 화면 디자인의 변경이다. 사용에 있어서의 편리함만을 추구한 것이 아니라 눈에서 편안하게 
+받아들일 수 있도록 하여 작업하는 동안 피로함을 느끼지 않게 디자인 면에서 대폭적으로 변경되었다. 또한 각 UI 컴포넌트들은 사용성을 고려하여 제작되어 
+관리자가 좀 더 편리하게 웹 관리자를 사용하게 하였다.
+ </P>
+<A NAME="1020"></A>
+<P CLASS="JMHeading2">2.3 웹 관리자 실행 환경
+ </P>
+<A NAME="1021"></A>
+<P CLASS="JMNormalText">웹 관리자를 실행하기 위해서는 최소 다음의 환경을 갖추어야 한다.
+ </P>
+<A NAME="1022"></A>
+<P CLASS="JMNormalText">1. 운영체제
+ <BR>모든 OS에서 사용 가능
+ </P>
+<A NAME="1023"></A>
+<P CLASS="JMNormalText" ALIGN="left">2. HTTP브라우저
+ <BR>인터넷 익스플로러 5.0 이상
+ <BR>넷스케이프 6.0 이상
+ </P>
+<A NAME="1024"></A>
+<P CLASS="JMNormalText" ALIGN="left">위의 사양은 최소 사양이며 윈도우 2000 이상의 운영체제를 갖춘 PC에서 인터넷 익스플로러 5.5 이상의 버전을 사용할 것을 권장한다.
+ </P>
+<A NAME="1025"></A>
+<P CLASS="JMHeading2">2.4 웹 관리자 구성
+ </P>
+<A NAME="1026"></A>
+<P CLASS="JMNormalText">이 번 절에서는 JEUS 5 웹 관리자의 디렉토리 구조와 주요 화면 구성에 대해서 간략하게 소개할 것이다. 좀 더구체적인 설명은 이후 관련된 장에서 
+자세히 설명할 것이다.
+ </P>
+<A NAME="1027"></A>
+<P CLASS="JMHeading3">2.4.1 디렉토리 구조
+ </P>
+<A NAME="1028"></A>
+<P CLASS="JMNormalText">다음은 JEUS 5 웹 관리자의 디렉토리 구조를 타나낸다.
+ </P>
+
+<P CLASS="JMFigure"><IMG WIDTH="346" SRC="images/image003.gif" HEIGHT="256"></P>
+
+<P CLASS="JMCaption">그림 1 웹관리자의 디렉토리 구조
+ </P>
+<A NAME="1029"></A>
+<P CLASS="JMNormalText">웹 관리자는 
+ <SPAN CLASS="JMFileNameReferenceChar">JEUS_HOME/webhome/admin_home
+ </SPAN>디렉토리에 존재하며 웹 관리자가 직접 관리 하는 XML문서 파일이 두 개 존재한다. 
+ <SPAN CLASS="JMEmphasizeChar">&rdquo;tmonitor.xml&rdquo; 
+ </SPAN>파일은 장애 모니터링에 필요한 한계값이나 제약 값들을 정의하는 파일이고,&rdquo;
+ <SPAN CLASS="JMEmphasizeChar">datasources.xml&rdquo;
+ </SPAN>과&rdquo;mqre
+ <SPAN CLASS="JMEmphasizeChar">sources.xml&rdquo;
+ </SPAN>파일은 각각JDBC 데이터 소스와 MQ 데이터 소스를 설정하기 위해서 각 데이터 소스에 대한 속성들을 정의해 놓은 파일이다. 이들 파일들의 내용을 
+사용자가 변경하게 되면 웹 관리자에 바로 적용된다. 이들 XML 문서에서 사용하는 요소들에 대한 구체적인 설명은 부록을 참조하기 바란다.
+ </P>
+<A NAME="1030"></A>
+<P CLASS="JMHeading3">2.4.2 화면 구성
+ </P>
+<A NAME="1031"></A>
+<P CLASS="JMNormalText">JEUS 웹관리자의 화면은 크게 
+ <SPAN CLASS="JMEmphasizeChar">Cluster View, Node View, Main View
+ </SPAN>3개의 부분으로 나뉘어 진다. 
+ </P>
+
+<P CLASS="JMFigure"><IMG WIDTH="525" SRC="images/image004.jpg" HEIGHT="287"></P>
+
+<P CLASS="JMCaption">그림 2 웹관리자 화면 구성
+ </P>
+<A NAME="1032"></A>
+<P CLASS="JMNormalText">&middot; Cluster View: Cluster View는 클러스터링된 JEUS 노드들의 목록을 보여주는 화면이다. 각 노드들은 상태에 따라 
+아이콘이 변경되며 좌측 상단에 위치한 갱신버튼(
+ <IMG WIDTH="15" SRC="images/image005.gif" HEIGHT="15">)을 클릭하면 노드 목록이 갱신된다.
+ </P>
+
+<P CLASS="JMCaption">표 1JEUS 클러스터에 나타나는 노드들의 상태 아이콘
+ </P>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" CLASS="normal">
+	<TR>
+		<TD CLASS="thead">아이콘 
+ </TD>
+		<TD CLASS="thead">상태 
+ </TD>
+		<TD CLASS="thead">설명 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal"><IMG WIDTH="21" SRC="images/image006.gif" HEIGHT="17"></TD>
+		<TD CLASS="normal">Running 
+ </TD>
+		<TD CLASS="normal">노드가 정상적으로 동작중인 상태 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal"><IMG WIDTH="21" SRC="images/image007.gif" HEIGHT="17"></TD>
+		<TD CLASS="normal">Stopped 
+ </TD>
+		<TD CLASS="normal">노드가 다운된 상태이나 JEUS 매니저는 동작중인 상태. 이 경우에는 노드 아이콘 오른쪽의 노드 이름에 링크가 있어서 링크를 클릭할 경우 설정을 
+변경할 수 있다. 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal"><IMG WIDTH="21" SRC="images/image008.gif" HEIGHT="17"></TD>
+		<TD CLASS="normal">Failed 
+ </TD>
+		<TD CLASS="normal">노드나 그 하위 구성요소들에 문제가 생겼을 경우. 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal"><IMG WIDTH="21" SRC="images/image007.gif" HEIGHT="17"></TD>
+		<TD CLASS="normal">Downed 
+ </TD>
+		<TD CLASS="normal">노드가 완전 다운되었을 경우. 이 경우는 JEUS 매니저도 다운된 상태라서 설정변경도 불가능 하다. 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+<A NAME="1033"></A>
+<P CLASS="JMNormalText">&middot; Node View: Node View는 Cluster View에서 선택된 혹은 기본적으로 웹 관리자가 실행되고 있는 노드의 구조가 
+트리 형태로 나타나는 화면이다. 이 화면 역시 Cluster View와 마찬가지로 좌측 상단에 위치한 갱신 버튼을 누르면 전체 트리가 갱신된다. 
+트리에 사용된 아이콘들에 대한 설명은 부록 B를참조하라.
+ </P>
+<A NAME="1034"></A>
+<P CLASS="JMNormalText">&middot; Main View: Main View는 웹관리자에서의 실제적인 작업공간이다. Node View의 트리에서 어떠한 구성요소를 클릭하거나 
+컨텍스트 메뉴를 클릭하였을 때 이 Main View에 내용들이 출력된다. Main View 는 크게 
+ <SPAN CLASS="JMEmphasizeChar">Header
+ </SPAN><SPAN CLASS="JMEmphasizeChar">, Navigation
+ </SPAN><SPAN CLASS="JMEmphasizeChar">, Body
+ </SPAN>3부분으로 나뉜다. Header 부분은 웹관리자를 사용하고 있는 사용자에 대한 정보와 홈, 설정, 로그아웃, 도움말와 같은 각종 유틸리티 메뉴를 
+보여주며 Navigation은 현재 어디서 작업이 이루어지는 보여준다. 마지막으로Body부분은 실제 작업 내용들을 보여준다.
+ </P>
+<A NAME="1035"></A>
+<P CLASS="JMHeading2">2.5 결론
+ </P>
+<A NAME="1036"></A>
+<P CLASS="JMNormalText">이번 장에서는 JEUS 5 웹 관리자의 새로운 특징들과 화면 구성에 대해서 간략하게 알아보았다. 
+ </P>
+<A NAME="1037"></A>
+<P CLASS="JMNormalText">새로이 개발된JEUS 5의 웹관리자를 통해서 시스템 관리자는 이전 보다 더욱 편리하고 종합적으로 JEUS의 각구성요소들을 관리 할 수 있게 되었으며 
+어플리케이션 배치자들은 어플리케이션 모듈들을 빠르고 쉽게 배치할 수있게 될 것이다.
+ </P>
+<BR><!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

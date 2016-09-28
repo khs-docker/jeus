@@ -1,0 +1,1 @@
+java -cp .\;..\;%JEUS_HOME%\lib\system\jeus.jar TestClient 9999 127.0.0.1 %1

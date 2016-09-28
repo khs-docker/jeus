@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceJMSResource.InfoPage">
+
+    <inject property="stateObject" type="state" object="WebadminStateObject"/>
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{pageName}"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:info.title.JMSResource"/>
+        <binding name="description" value="message:info.description.JMSResource"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="ConnectionFactorylink" type="ExternalLink">
+        <binding name="page" value="literal:JMSConnectionFactoryResource_Overview"/>
+        <binding name="parameters" value="connectionFactoryObjectName.canonicalName"/>
+    </component>
+
+    <component id="Destinationlink" type="ExternalLink">
+        <binding name="page" value="literal:JMSDestinationResource_Overview"/>
+        <binding name="parameters" value="destinationObjectName.canonicalName"/>
+    </component>
+
+    <component id="Clientlink" type="ExternalLink">
+        <binding name="page" value="literal:JMSClientResource_Overview"/>
+        <binding name="parameters" value="objectName.canonicalName"/>
+        <!--
+        <binding name="parameters" value="clientObjectName.canonicalName"/>
+        -->
+    </component>
+
+    <component id="condClientBooted" type="If">
+        <binding name="condition" value="ognl:@jeus.tool.webadmin.util.EngineUtils@getRunningEngines(objectName, stateObject).jms != null"/>
+    </component>
+
+</page-specification>

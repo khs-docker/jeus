@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://tapestry.apache.org/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="jeus.tool.webadmin.component.MainBorder" allow-body="yes" allow-informal-parameters="yes">
+    <parameter name="title" required="yes"/>
+
+    <parameter name="showHeader" required="no" default-value="true"/>
+
+    <inject property="pageService" object="engine-service:page"/>
+    <inject property="navigationsSource" type="state" object="NavigationsSource"/>
+   	<inject property="visit" type="state" object="visit"/>
+    <inject property="webadminStateObject" type="state" object="WebadminStateObject"/>
+
+    <inject property="externalService" object="engine-service:external"/>
+    	
+    <component id="shell" type="Shell">
+        <binding name="stylesheets" value="{assets.tundra_css, assets.dojo_css, assets.fisheyeList_css, assets.jeus_css}"/>
+        <binding name="title" value="title"/>                             
+    </component>
+
+    <component id="condNavigatable" type="If">
+        <binding name="condition" value="ognl:navigatable"/>
+    </component>
+
+    <asset name="tundra_css" path="context:/js/JeusDojo/release/dojo/dijit/themes/tundra/tundra.css"/>
+    <asset name="dojo_css" path="context:/js/JeusDojo/release/dojo/dojo/resources/dojo.css"/>
+    <asset name="fisheyeList_css" path="context:/js/JeusDojo/release/dojo/dojox/widget/FisheyeList/FisheyeList.css"/>
+    <asset name="jeus_css" path="context:/css/jeus.css"/>
+
+</component-specification>

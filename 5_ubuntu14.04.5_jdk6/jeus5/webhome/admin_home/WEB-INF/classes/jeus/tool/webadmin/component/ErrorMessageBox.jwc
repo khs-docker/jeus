@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://tapestry.apache.org/dtd/Tapestry_4_0.dtd">
+
+<!-- <component-specification class="jeus.tool.webadmin.component.ErrorMessageBox" allow-body="yes" allow-informal-parameters="yes"> -->
+<component-specification class="jeus.tool.webadmin.component.ErrorMessageBox" allow-body="yes" allow-informal-parameters="yes">
+  <parameter name="wrapperClass" required="no"/>
+  <parameter name="iconClass" required="no"/>
+
+  <parameter name="message" required="yes"/>
+
+  <parameter name="messageClass" required="no"/>
+  <parameter name="rows" required="no" default-value="6"/>
+
+  <parameter name="detailMessage" required="no"/>
+
+  <parameter name="detailMessageClass" required="no"/>
+  <parameter name="buttonClass" required="no"/>
+  <parameter name="position" required="no" default-value="'left'"/>
+
+	<inject property="script" type="script" object="ErrorMessageBox.script"/>
+  <component id="wrapper" type="Any">
+      <binding name="element" value="literal:table"/>
+      <binding name="class" value="wrapperClass"/>
+  </component>
+
+  <component id="message" type="Insert">
+      <binding name="value" value="message"/>
+      <binding name="class" value="messageClass"/>
+  </component>
+
+  <component id="condLeft" type="If">
+      <binding name="condition" value="detailMessage != null and position.toLowerCase() == 'left'"/>
+      <binding name="renderTag" value="false"/>
+  </component>
+
+  <component id="condBottom" type="If">
+      <binding name="condition" value="position.toLowerCase() == 'bottom'"/>
+      <binding name="renderTag" value="false"/>
+  </component>
+
+  <component id="condDetailMessage" type="If">
+      <binding name="condition" value="detailMessage != null"/>
+  </component>
+
+  <component id="detailWrapper" type="Any">
+      <binding name="element" value="literal:td"/>
+      <binding name="colspan" value="bindings.iconImage != null ? 2 : 1"/>
+  </component>
+
+  <component id="button" type="Any">
+      <binding name="element" value="literal:input"/>
+      <binding name="type" value="literal:button"/>
+      <binding name="class" value="buttonClass"/>
+      <binding name="value" value="message:ErrorMessageBox.show_detail.label"/>
+      <binding name="onclick" value="action+'(this, \''+nextDetailId +'\');'"/>
+  </component>
+
+  <component id="detail" type="Any">
+      <binding name="class" value="detailMessageClass"/>
+      <binding name="element" value="literal:textarea"/>
+      <binding name="rows" value="rows"/>
+      <binding name="id" value="detailId"/>
+  </component>
+
+  <component id="detailMessage" type="Insert">
+      <binding name="value" value="detailMessage"/>
+  </component>
+
+</component-specification>

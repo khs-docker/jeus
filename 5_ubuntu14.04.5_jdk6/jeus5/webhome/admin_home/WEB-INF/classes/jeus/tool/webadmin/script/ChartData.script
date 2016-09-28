@@ -1,0 +1,257 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+<input-symbol key="chartData" class="java.util.List" required="no"/>
+<input-symbol key="boundedRangeCheck"/>
+<input-symbol key="rangeCheck"/>
+<input-symbol key="boundaryCheck"/>
+<input-symbol key="countCheck"/>
+<input-symbol key="timeCheck"/>
+
+<body>
+    var datasets = null;
+    var temp = null;
+    var shift = null;
+
+    var timeTick = null;
+    timeTick = new Array();
+    var i = 0;
+    <if expression="boundedRangeCheck">
+        datasets = {
+            "highWaterMark": {
+                label: "highWaterMark",
+                data: [[0, 0]]
+            },
+            "lowWaterMark": {
+                label: "lowWaterMark",
+                data: [[0, 0]]
+            },
+            "current": {
+                label: "current",
+                data: [[0, 0]]
+            },
+            "upperBound": {
+                label: "upperBound",
+                data: [[0, 0]]
+            },
+            "lowerBound": {
+                label: "lowerBound",
+                data: [[0, 0]]
+            }
+        };
+        shift  = datasets["highWaterMark"].data.shift();
+        shift  = datasets["lowWaterMark"].data.shift();
+        shift  = datasets["current"].data.shift();
+        shift  = datasets["upperBound"].data.shift();
+        shift  = datasets["lowerBound"].data.shift();
+        <foreach key="cdata" index="ii" expression="chartData">
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = ${cdata.highWaterMark};
+            datasets["highWaterMark"].data.push(temp);
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = ${cdata.lowWaterMark};
+            datasets["lowWaterMark"].data.push(temp);
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = ${cdata.current};
+            datasets["current"].data.push(temp);
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = ${cdata.upperBound};
+            datasets["upperBound"].data.push(temp);
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = ${cdata.lowerBound};
+            datasets["lowerBound"].data.push(temp);
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = "${cdata.formatTime}";
+            timeTick.push(temp);
+            i++;
+        </foreach>
+    </if>
+     <if expression="rangeCheck">
+        datasets = {
+            "highWaterMark": {
+                label: "highWaterMark",
+                data: [[0, 0]]
+            },
+            "lowWaterMark": {
+                label: "lowWaterMark",
+                data: [[0, 0]]
+            },
+            "current": {
+                label: "current",
+                data: [[0, 0]]
+            }
+        };
+
+        shift  = datasets["highWaterMark"].data.shift();
+        shift  = datasets["lowWaterMark"].data.shift();
+        shift  = datasets["current"].data.shift();
+        <foreach key="cdata" index="ii" expression="chartData">
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = ${cdata.highWaterMark};
+            datasets["highWaterMark"].data.push(temp);
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = ${cdata.lowWaterMark};
+            datasets["lowWaterMark"].data.push(temp);
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = ${cdata.current};
+            datasets["current"].data.push(temp);
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = "${cdata.formatTime}";
+            timeTick.push(temp);
+            i++;
+        </foreach>
+    </if>
+    <if expression="boundaryCheck">
+        datasets = {
+            "upperBound": {
+                label: "upperBound",
+                data: [[0, 0]]
+            },
+            "lowerBound": {
+                label: "lowerBound",
+                data: [[0, 0]]
+            }
+        };
+        shift  = datasets["upperBound"].data.shift();
+        shift  = datasets["lowerBound"].data.shift();
+        <foreach key="cdata" index="ii" expression="chartData">
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = ${cdata.upperBound};
+            datasets["upperBound"].data.push(temp);
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = ${cdata.lowerBound};
+            datasets["lowerBound"].data.push(temp);
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = "${cdata.formatTime}";
+            timeTick.push(temp);
+            i++;
+        </foreach>
+    </if>
+    <if expression="countCheck">
+        datasets = {
+            "count": {
+                label: "count",
+                data: [[0, 0]]
+            }
+        };
+        shift  = datasets["count"].data.shift();
+        <foreach key="cdata" index="ii" expression="chartData">
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = ${cdata.count};
+            datasets["count"].data.push(temp);
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = "${cdata.formatTime}";
+            timeTick.push(temp);
+            i++;
+        </foreach>
+    </if>
+    <if expression="timeCheck">
+        datasets = {
+            "count": {
+                label: "count",
+                data: [[0, 0]]
+            },
+            "maxTime": {
+                label: "maxTime",
+                data: [[0, 0]]
+            },
+            "minTime": {
+                label: "minTime",
+                data: [[0, 0]]
+            },
+            "totalTime": {
+                label: "totalTime",
+                data: [[0, 0]]
+            }
+        };
+        shift  = datasets["count"].data.shift();
+        shift  = datasets["maxTime"].data.shift();
+        shift  = datasets["minTime"].data.shift();
+        shift  = datasets["totalTime"].data.shift();
+        <foreach key="cdata" index="ii" expression="chartData">
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = ${cdata.count};
+            datasets["count"].data.push(temp);
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = ${cdata.maxTime};
+            datasets["maxTime"].data.push(temp);
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = ${cdata.minTime};
+            datasets["minTime"].data.push(temp);
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = ${cdata.totalTime};
+            datasets["totalTime"].data.push(temp);
+            temp = new Array(2);
+            temp[0] = ${cdata.longTime};
+            temp[1] = "${cdata.formatTime}";
+            timeTick.push(temp);
+            i++;
+        </foreach>
+    </if>
+     var timeResult = null;
+     timeResult = new Array();
+     timeResult.push(timeTick.shift());
+     if(i>1)
+         timeResult.push(timeTick.pop());
+
+    <![CDATA[
+         $(function () {
+
+            var i = 0;
+            $.each(datasets, function(key, val) {
+                val.color = i;
+                ++i;
+            });
+
+            var choiceContainer = $("#graphChoices");
+            $.each(datasets, function(key, val) {
+                choiceContainer.append('<br/><input type="checkbox" name="' + key +
+                                       '" checked="checked" >' + val.label + '</input>');
+            });
+            choiceContainer.find("input").click(plotAccordingToChoices);
+
+            function plotAccordingToChoices() {
+                var data = [];
+
+                choiceContainer.find("input:checked").each(function () {
+                    var key = $(this).attr("name");
+                    if (key && datasets[key])
+                        data.push(datasets[key]);
+                });
+
+                if (data.length > 0)
+                    $.plot($("#graphHolder"), data, {
+                        points: { show: false },
+                        lines: { show: true },
+                        yaxis: { min: 0 },
+                        xaxis: { ticks: timeResult }
+                    });
+            }
+            plotAccordingToChoices();
+        });
+
+    ]]>
+</body>
+
+</script>

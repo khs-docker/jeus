@@ -1,0 +1,43 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="form">
+        </form>
+            <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                <tr>
+                    <td class="table_columns">
+                        <span jwcid="id_column"/>
+                    </td>
+                    <td class="table_columns">
+                        <span jwcid="name_column"/>
+                    </td>
+                    <td class="table_columns">
+                        <span jwcid="client_id_column"/>
+                    </td>
+                    <td class="table_columns">
+                        <span jwcid="remainings_column"/>
+                    </td>
+                    <td class="table_columns">
+                        <span jwcid="selector_column"/>
+                    </td>
+                </tr>
+                <tr jwcid="eachDurable">
+                    <td class="table_values">
+                        <a jwcid="durableLink"><span jwcid="id_value"/></a>
+                    </td>
+                    <td class="table_values">
+                        <span jwcid="name_value"/>
+                    </td>
+                    <td class="table_values">
+                        <span jwcid="client_id_value"/>
+                    </td>
+                    <td class="table_values">
+                        <span jwcid="remainings_value"/>
+                    </td>
+                    <td class="table_values">
+                        <span jwcid="selector_value"/>
+                    </td>
+                </tr>
+            </table>
+            <p style="text-align:right;"><input jwcid="refreshButton" type="button" class="form_button" onclick="window.location.reload();"/></p>
+    </span>
+</html>

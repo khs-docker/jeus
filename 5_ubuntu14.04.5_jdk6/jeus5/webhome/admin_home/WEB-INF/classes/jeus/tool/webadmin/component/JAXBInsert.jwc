@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: JAXBInsert.jwc,v 1.1 2004/09/22 10:25:25 sebong Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://tapestry.apache.org/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="jeus.tool.webadmin.component.JAXBInsert" allow-body="no" allow-informal-parameters="yes">
+
+  <parameter name="value" property="valuebinding">
+  	<description>
+  	The value to be emitted.  Non-strings are converted to strings.
+  	</description>
+  </parameter>
+
+  <parameter name="parentElement"/>
+
+  <parameter name="elementName"/>
+
+  <parameter name="format">
+  	<description>
+  	A Format object used to convert the value to a string.
+  	</description>
+  </parameter>
+  
+  <parameter name="raw">
+  	<description>
+  	If false (the default), then HTML characters in the value are escaped.  If
+  	true, then value is emitted exactly as is.
+  	</description>
+  </parameter>
+  
+  <parameter name="renderTag" default-value="false">
+    <description>If true, causes the tag used to define the insert to be used, as well as any informal 
+    parameters bound.</description>
+  </parameter>
+  
+  <parameter name="mode">
+    <description>
+    Determines which mode to use: breaks after each line, or wrap each line
+    as a paragraph.
+    </description>
+  </parameter>
+</component-specification>

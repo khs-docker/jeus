@@ -1,0 +1,42 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="form">
+        </form>
+        <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+            <tr>
+                <td class="table_columns">
+                    <span jwcid="export_name_column"/>
+                </td>
+                <td class="table_columns">
+                    <span jwcid="url_column"/>
+                </td>
+                <td  class="table_columns" width="20">
+                    &nbsp;
+                </td>
+            </tr>
+            <tr jwcid="eachUrlEntry">
+                <td class="table_values">
+                    <a jwcid="urlLink"><span jwcid="export_name_value"/></a>
+                </td>
+                <td class="table_values">
+                    <span jwcid="url_value"/>
+                </td>
+                <td class="table_values" align="center">
+                    <a jwcid="deleteLink"><img jwcid="delete" border="0"/></a>
+                </td>
+            </tr>
+        </table>
+        <br/>
+        <form jwcid="urlForm">
+            <span jwcid="export_name">
+                <input jwcid="export_nameField"/>
+            </span>
+            <span jwcid="url">
+                <input jwcid="urlField" style="width:400px;"/>
+            </span>
+            <div class="form_button_layer">
+                <input jwcid="add" class="form_button" style="width:100px;"/>
+            </div>
+        </form>
+    </span>
+</html>

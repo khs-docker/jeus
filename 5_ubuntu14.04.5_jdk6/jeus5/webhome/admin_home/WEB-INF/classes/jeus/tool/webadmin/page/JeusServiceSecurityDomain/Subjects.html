@@ -1,0 +1,116 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <span jwcid="basic">
+            <form jwcid="basic_subjectsForm">
+                <span jwcid="@RenderBlock" block="ognl:components.subjectsBlock"/>
+            </form>
+            <span jwcid="condModify">
+                <form jwcid="modifyForm">
+                    <input jwcid="hiddenSubject"/>
+                    <span jwcid="modify_name"/>
+                    <span jwcid="modify_password">
+                        <input jwcid="modify_passwordField"/>
+                    </span>
+                    <span jwcid="modify_confirm_password">
+                        <input jwcid="modify_confirm_passwordField"/>
+                    </span>
+                </form>
+            </span>
+            <span jwcid="condCreate">
+                <form jwcid="createForm">
+                    <span jwcid="name">
+                        <input jwcid="nameField"/>
+                    </span>
+                    <span jwcid="password">
+                        <input jwcid="passwordField"/>
+                    </span>
+                    <span jwcid="confirm_password">
+                        <input jwcid="confirm_passwordField"/>
+                    </span>
+                </form>
+            </span>
+        </span>
+        <span jwcid="expert">
+            <form jwcid="expert_subjectsForm">
+                <span jwcid="@RenderBlock" block="ognl:components.subjectsBlock"/>
+            </form>
+            <span jwcid="condExpertCreate">
+                <form jwcid="expert_createForm">
+                    <span jwcid="expert_name">
+                        <input jwcid="expert_nameField"/>
+                    </span>
+                </form>
+            </span>
+            <span jwcid="condExpertModify">
+                <form jwcid="expertForm"/>
+                <span jwcid="expert_tab"/>
+            </span>
+        </span>
+
+        <span jwcid="subjectsBlock@Block">
+            <span jwcid="subjects">
+                <input jwcid="subjectsField" style="width:100%;"/>
+            </span>
+            <div class="form_button_layer">
+                <input jwcid="modify" class="form_button" style="width:100px;"/>&nbsp;<input jwcid="remove" class="form_button" style="width:100px;"/>&nbsp;&nbsp;<input jwcid="create" class="form_button" style="width:100px;"/>&nbsp;&nbsp;<input jwcid="save" class="form_button" style="width:100px;"/>
+            </div>
+        </span>
+
+        <span jwcid="principals@Block">
+            <form jwcid="principalsForm">
+                <input jwcid="hiddenSubject2"/>
+                <span jwcid="principalsField" style="width:100%;"/>
+                <br/>
+                <div class="form_button_layer">
+                    <input jwcid="principal_remove" class="form_button" style="width:100px;"/>&nbsp;&nbsp;<input jwcid="principal_create" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+
+            <span jwcid="condPrincipalCreate">
+                <form jwcid="principal_createForm">
+                    <input jwcid="hiddenSubject3"/>
+                    <input jwcid="hiddenPrincipal"/>
+                    <span jwcid="principal_classname" >
+                        <input jwcid="principal_classnameField" style="width:98%;"/>
+                    </span>
+                    <span jwcid="principal_name">
+                        <input jwcid="principal_nameField"/>
+                    </span>
+                </form>
+            </span>
+        </span>
+
+        <span jwcid="factories@Block">
+            <form jwcid="factoriesForm">
+                <input jwcid="hiddenSubject4"/>
+                <span jwcid="factoriesField" style="width:100%;"/>
+                <br/>
+                <div class="form_button_layer">
+                    <input jwcid="factory_modify" class="form_button" style="width:100px;"/>&nbsp;<input jwcid="factory_remove" class="form_button" style="width:100px;"/>&nbsp;&nbsp;<input jwcid="factory_create" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+            <span jwcid="condFactoryModify">
+                <form jwcid="factory_modifyForm">
+                    <input jwcid="hiddenSubject5"/>
+                    <input jwcid="hiddenFactory"/>
+                    <span jwcid="factory_classname"/>
+                    <span jwcid="factory_properties">
+                        <input jwcid="factory_propertiesField" style="width:98%" rows="10"/>
+                    </span>
+                </form>
+            </span>
+
+            <span jwcid="condFactoryCreate">
+                <form jwcid="factory_createForm">
+                    <input jwcid="hiddenSubject6"/>
+                    <span jwcid="create_factory_classname">
+                        <input jwcid="create_factory_classnameField" style="width:98%"/>
+                    </span>
+                    <span jwcid="create_factory_properties">
+                        <input jwcid="create_factory_propertiesField" style="width:98%" rows="10"/>
+                    </span>
+                </form>
+            </span>
+        </span>
+    </span>
+</html>

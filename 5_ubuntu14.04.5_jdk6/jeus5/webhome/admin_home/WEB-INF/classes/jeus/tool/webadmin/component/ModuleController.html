@@ -1,0 +1,18 @@
+<span jwcid="$content$">
+    <span jwcid="@If" condition="ognl:available" renderTag="ognl:false">
+        <form jwcid="controlForm">
+            <input jwcid="hidden_model"/>
+            <span jwcid="targets">
+                <span jwcid="targetsField"/>
+            </span>
+			<div class="form_button_layer">
+            	<input jwcid="actionButton" class="form_button" style="width:100px"/>
+            </div>
+        </form>
+    </span>
+    <span jwcid="@Else" renderTag="ognl:false">
+        <form jwcid="controlForm2">
+            <span jwcid="unavailable_message" class="field_label"/>
+        </form>
+    </span>
+</span>

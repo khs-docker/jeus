@@ -1,0 +1,91 @@
+// Created by Microsoft (R) C/C++ Compiler Version 12.00.8168.0 (66d3db91).
+//
+// java_util_Collection.tlh
+//
+// C++ source equivalent of Win32 type library D:\j2ee-cas-com-bridge\doc\guide\examples\typelib\java_util_Collection.tlb
+// compiler-generated file created 04/04/05 at 15:51:47 - DO NOT EDIT!
+
+#pragma once
+#pragma pack(push, 8)
+
+#include <comdef.h>
+
+namespace java_util_Collection_Lib {
+
+//
+// Forward references and typedefs
+//
+
+struct __declspec(uuid("168b9651-247e-4d3e-6df7-37f829bdcafe"))
+/* dispinterface */ java_util_Collection;
+struct __declspec(uuid("0bf15378-ce38-4b45-4740-9c4410d2cafe"))
+/* dispinterface */ java_util_Collection_Statics;
+
+//
+// Smart pointer typedef declarations
+//
+
+_COM_SMARTPTR_TYPEDEF(java_util_Collection, __uuidof(IDispatch));
+_COM_SMARTPTR_TYPEDEF(java_util_Collection_Statics, __uuidof(IDispatch));
+
+//
+// Type library items
+//
+
+struct __declspec(uuid("168b9651-247e-4d3e-6df7-37f829bdcafe"))
+java_util_Collection : IDispatch
+{
+    //
+    // Property data
+    //
+
+    __declspec(property(get=GetEmpty))
+    VARIANT_BOOL Empty;
+
+    //
+    // Wrapper methods for error-handling
+    //
+
+    // Methods:
+    VARIANT_BOOL add (
+        const _variant_t & Object1 );
+    VARIANT_BOOL addAll (
+        IDispatch * Collection1 );
+    HRESULT clear ( );
+    VARIANT_BOOL contains (
+        const _variant_t & Object1 );
+    VARIANT_BOOL containsAll (
+        IDispatch * Collection1 );
+    VARIANT_BOOL equals (
+        const _variant_t & Object1 );
+    long hashCode ( );
+    VARIANT_BOOL isEmpty ( );
+    IDispatchPtr iterator ( );
+    VARIANT_BOOL remove (
+        const _variant_t & Object1 );
+    VARIANT_BOOL removeAll (
+        IDispatch * Collection1 );
+    VARIANT_BOOL retainAll (
+        IDispatch * Collection1 );
+    long size ( );
+    _variant_t toArray (
+        const _variant_t & param1 );
+    _variant_t toArray_1 ( );
+    _variant_t toArray_2 (
+        const _variant_t & ObjectArray1 );
+    VARIANT_BOOL GetEmpty ( );
+};
+
+struct __declspec(uuid("0bf15378-ce38-4b45-4740-9c4410d2cafe"))
+java_util_Collection_Statics : IDispatch
+{};
+
+//
+// Wrapper method implementations
+//
+
+#include "java_util_Collection.tli"
+
+} // namespace java_util_Collection_Lib
+
+#pragma pack(pop)

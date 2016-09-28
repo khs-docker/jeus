@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    attributeFormDefault="unqualified" 
+    elementFormDefault="qualified" 
+    targetNamespace="http://www.tmaxsoft.com/xml/ns/jeus" version="5.0" 
+    xmlns="http://www.tmaxsoft.com/xml/ns/jeus" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">      
+    <xs:element name="user-cert-map" type="UserCertMapType">         
+        <xs:annotation>             
+            <xs:documentation><![CDATA[                        [Description]: Define mapping information between user and certificate.             ]]>
+            </xs:documentation>         
+        </xs:annotation>     
+    </xs:element>      
+    <xs:complexType name="UserCertMapType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="user-cert" type="UserCertType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                                [Description]: Define Groups.                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="UserCertType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="1" minOccurs="1" name="username" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: Define user name for certificate within keystore. This should be unique as "primary" identify.                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="1" name="alias" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                            [Description]:  Define alias for certificate within keystore.                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="0" name="keypassword" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                            [Description]: Define keypassword for obtaining private key for certificate within keystore.                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="0" name="secretkey" type="SecretKeyType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[					[Description]: Define secretkey.			    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="SecretKeyType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="1" minOccurs="1" name="keyname" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: Define the name of secretkey.                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="1" name="keyalgorithm" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: This represents key algorithm of secretkey.                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="1" name="keyvalue" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: This represents value of secretkey in the form of base64.                     ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType> 
+</xs:schema>

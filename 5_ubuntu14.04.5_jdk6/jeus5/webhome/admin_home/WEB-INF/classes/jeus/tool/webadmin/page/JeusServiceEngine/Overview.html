@@ -1,0 +1,43 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="enginesForm">
+            <table class="table">
+                <tr>
+                    <th><span jwcid="name_column"/></th>
+                    <th><span jwcid="type_column"/></th>
+                    <th><span jwcid="status_column"/></th>
+                    <th><span jwcid="actions_column"/></th>
+                    <th width="20">&nbsp;</th>
+                </tr>
+                <tr jwcid="eachEngine">
+                    <td><a jwcid="engineLink"><span jwcid="name_value"/></a></td>
+                    <td align="center"><span jwcid="type_value"/></td>
+                    <td align="center"><span jwcid="status_value"/></td>
+                    <td align="center">
+                        <a jwcid="startLink"></a><input jwcid="start" class="form_button" style="width:50px;" onclick="progress_bar();disabled=true;window.location = previousSibling.href;"/>
+                        <a jwcid="downLink"></a><input jwcid="down" class="form_button" style="width:50px;" onclick="progress_bar();disabled=true;window.location = previousSibling.href;"/>
+                    </td>
+                    <td width="20" align="center">
+                        <span jwcid="condDeleted">
+                            <a jwcid="deleteLink"><img jwcid="delete" align="middle"/></a>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+			<div class="form_button_layer">
+				<span jwcid="condEJB">
+                    <a jwcid="create_ejbLink" class="create_link"><span jwcid="create_ejb_label"/></a>
+                </span>
+                <span jwcid="condWEB">
+                	<a jwcid="create_webLink" class="create_link"><span jwcid="create_web_label"/></a>
+				</span>
+                <span jwcid="condJMS">
+                	<a jwcid="create_jmsLink" class="create_link"><span jwcid="create_jms_label"/></a>
+				</span>
+                <span jwcid="condWS">
+                	<a jwcid="create_wsLink" class="create_link"><span jwcid="create_ws_label"/></a>
+				</span>
+			</div>
+        </form>
+    </span>
+</html>

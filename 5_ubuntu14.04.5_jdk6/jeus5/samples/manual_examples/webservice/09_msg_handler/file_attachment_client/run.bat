@@ -1,0 +1,1 @@
+java -classpath .\build\classes;%JEUS_HOME%\lib\system\jeus.jar;%JEUS_HOME%\lib\system\activation.jar;%JEUS_HOME%\lib\system\jeusws.jar;%JEUS_HOME%\lib\system\mail.jar filetransfer.Client

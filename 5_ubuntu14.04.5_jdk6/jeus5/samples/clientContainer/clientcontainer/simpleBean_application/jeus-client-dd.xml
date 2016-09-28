@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jeus-client-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <module-info>
+        <module-name>simpleClient</module-name>
+        <app-main-class>simpleBean.SalaryClient</app-main-class>
+    </module-info>
+</jeus-client-dd>

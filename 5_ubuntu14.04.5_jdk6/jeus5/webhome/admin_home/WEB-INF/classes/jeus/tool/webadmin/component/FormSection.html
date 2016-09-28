@@ -1,0 +1,6 @@
+<span jwcid="$content$">
+    <!-- title -->
+    <h1 class="subform_title"><span jwcid="@Insert" value="ognl:title"/></h1>
+	<!-- description -->
+	<p class="form_description" jwcid="@If" condition="ognl:description != null and settings.showDescription" element="p"><span jwcid="@Insert" value="ognl:description"/></p>
+</span>

@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceJDBCDataSourceService.ConfigurationPage">
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JDBC Data Source Service Configuration"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@JEUSSERVICE_JDBCDATASOURCESERVICE_NAMES"/>
+        <binding name="subtabNames" value="ognl:database.dataSourceType == 'DataSource' ? {'properties'} : {'properties', 'pool'}"/>
+        <binding name="notFound" value="ognl:database == null || datasourceSpecification == null"/>
+        <binding name="notFoundBlock" value="ognl:components.notFound"/>
+    </component>
+
+    <component id="properties" type="Block"/>
+    <component id="pool" type="Block"/>
+    <component id="notFound" type="Block"/>
+
+    <component id="propertiesForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:dsc.properties.title2"/>
+        <binding name="useDefaultButtons" value="ognl:true"/>
+        <binding name="listener" value="ognl:listeners.onPropertiesOk"/>
+    </component>
+
+    <component id="export_name" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="ognl:database"/>
+        <binding name="elementName" value="literal:exportName"/>
+    </component>
+
+    <component id="vendor" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="ognl:database"/>
+        <binding name="elementName" value="literal:vendor"/>
+    </component>
+
+    <component id="data_source_class_name" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="ognl:database"/>
+        <binding name="elementName" value="literal:dataSourceClassName"/>
+    </component>
+
+    <component id="data_source_type" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="ognl:database"/>
+        <binding name="elementName" value="literal:dataSourceType"/>
+    </component>
+
+    <component id="description" type="jeus:Field">
+        <binding name="field" value="ognl:components.descriptionField"/>
+    </component>
+
+    <component id="descriptionField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:database"/>
+        <binding name="elementName" value="literal:description"/>
+    </component>
+
+    <component id="condDatabaseName" type="If">
+        <binding name="condition" value="ognl:!isFixed('database-name') and !isRequired('database-name')"/>
+    </component>
+
+    <component id="database_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.database_nameField"/>
+    </component>
+
+    <component id="database_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:database"/>
+        <binding name="elementName" value="literal:databaseName"/>
+    </component>
+
+    <component id="condRequiredDatabaseName" type="If">
+        <binding name="condition" value="ognl:!isFixed('database-name') and isRequired('database-name')"/>
+    </component>
+
+    <component id="required_database_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.required_database_nameField"/>
+
+    </component>
+
+    <component id="required_database_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="database"/>
+        <binding name="elementName" value="literal:databaseName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="condDataSourceName" type="If">
+        <binding name="condition" value="ognl:!isFixed('data-source-name') and !isRequired('data-source-name')"/>
+    </component>
+
+    <component id="data_source_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.data_source_nameField"/>
+    </component>
+
+    <component id="data_source_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:database"/>
+        <binding name="elementName" value="literal:dataSourceName"/>
+    </component>
+
+    <component id="condRequiredDataSourceName" type="If">
+        <binding name="condition" value="ognl:!isFixed('data-source-name') and isRequired('data-source-name')"/>
+    </component>
+
+    <component id="required_data_source_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.required_data_source_nameField"/>
+
+    </component>
+
+    <component id="required_data_source_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="database"/>
+        <binding name="elementName" value="literal:dataSourceName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="condServiceName" type="If">
+        <binding name="condition" value="ognl:!isFixed('service-name') and !isRequired('service-name')"/>
+    </component>
+
+    <component id="service_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.service_nameField"/>
+    </component>
+
+    <component id="service_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:database"/>
+        <binding name="elementName" value="literal:serviceName"/>
+    </component>
+
+    <component id="condRequiredServiceName" type="If">
+        <binding name="condition" value="ognl:!isFixed('service-name') and isRequired('service-name')"/>
+    </component>
+
+    <component id="required_service_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.required_service_nameField"/>
+
+    </component>
+
+    <component id="required_service_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="database"/>
+        <binding name="elementName" value="literal:serviceName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="condNetworkProtocol" type="If">
+        <binding name="condition" value="ognl:isFixed('network-protocol') and !isRequired('network-protocol')"/>
+    </component>
+
+    <component id="network_protocol" type="jeus:Field">
+        <binding name="field" value="ognl:components.network_protocolField"/>
+    </component>
+
+    <component id="network_protocolField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:database"/>
+        <binding name="elementName" value="literal:networkProtocol"/>
+    </component>
+
+    <component id="condRequiredNetworkProtocol" type="If">
+        <binding name="condition" value="ognl:isFixed('network-protocol') and isRequired('network-protocol')"/>
+    </component>
+
+    <component id="required_network_protocol" type="jeus:Field">
+        <binding name="field" value="ognl:components.required_network_protocolField"/>
+
+    </component>
+
+    <component id="required_network_protocolField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="database"/>
+        <binding name="elementName" value="literal:networkProtocol"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="condPortNumber" type="If">
+        <binding name="condition" value="ognl:!isFixed('port-number') and !isRequired('port-number')"/>
+    </component>
+
+    <component id="port_number" type="jeus:Field">
+        <binding name="field" value="ognl:components.port_numberField"/>
+    </component>
+
+    <component id="port_numberField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:database"/>
+        <binding name="elementName" value="literal:portNumber"/>
+    </component>
+
+    <component id="condRequiredPortNumber" type="If">
+        <binding name="condition" value="ognl:!isFixed('port-number') and isRequired('port-number')"/>
+    </component>
+
+    <component id="required_port_number" type="jeus:Field">
+        <binding name="field" value="ognl:components.required_port_numberField"/>
+    </component>
+
+    <component id="required_port_numberField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="database"/>
+        <binding name="elementName" value="literal:portNumber"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:required,min=1"/>
+    </component>
+
+    <component id="condServerName" type="If">
+        <binding name="condition" value="ognl:!isFixed('server-name') and !isRequired('server-name')"/>
+    </component>
+
+    <component id="server_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.server_nameField"/>
+    </component>
+
+    <component id="server_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:database"/>
+        <binding name="elementName" value="literal:serverName"/>
+    </component>
+
+    <component id="condRequiredServerName" type="If">
+        <binding name="condition" value="ognl:!isFixed('server-name') and isRequired('server-name')"/>
+    </component>
+
+    <component id="required_server_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.required_server_nameField"/>
+    </component>
+
+    <component id="required_server_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="database"/>
+        <binding name="elementName" value="literal:serverName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="condUser" type="If">
+        <binding name="condition" value="ognl:!isFixed('user') and !isRequired('user')"/>
+    </component>
+
+    <component id="user" type="jeus:Field">
+        <binding name="field" value="ognl:components.userField"/>
+    </component>
+
+    <component id="userField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:database"/>
+        <binding name="elementName" value="literal:user"/>
+    </component>
+
+    <component id="condRequiredUser" type="If">
+        <binding name="condition" value="ognl:!isFixed('user') and isRequired('user')"/>
+    </component>
+
+    <component id="required_user" type="jeus:Field">
+        <binding name="field" value="ognl:components.required_userField"/>
+
+    </component>
+
+    <component id="required_userField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="database"/>
+        <binding name="elementName" value="literal:user"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="condPassword" type="If">
+        <binding name="condition" value="ognl:!isFixed('password') and !isRequired('password')"/>
+    </component>
+
+    <component id="password" type="jeus:Field">
+        <binding name="field" value="ognl:components.passwordField"/>
+    </component>
+
+    <component id="algorithmField" type="jeus:PropertySelection">
+        <binding name="value" value="ognl:passwordAlgorithm"/>
+		<binding name="model" value="jdbcAlgorithmModel"/>
+        <!--<binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@JEUS_CIPHER_ALGORITHM"/>-->
+    </component>
+
+    <component id="passwordField" type="jeus:JAXBAlgorithmField">
+        <binding name="hidden" value="ognl:true"/>
+        <binding name="parentElement" value="ognl:database"/>
+        <binding name="elementName" value="literal:password"/>
+        <binding name="algorithm" value="ognl:passwordAlgorithm"/>
+    </component>
+
+    <component id="condRequiredPassword" type="If">
+        <binding name="condition" value="ognl:!isFixed('password') and isRequired('password')"/>
+    </component>
+
+    <component id="required_password" type="jeus:Field">
+        <binding name="field" value="ognl:components.required_passwordField"/>
+    </component>
+
+    <component id="required_algorithmField" copy-of="algorithmField">
+    </component>
+
+    <component id="required_passwordField" type="jeus:JAXBAlgorithmField">
+        <binding name="hidden" value="ognl:true"/>
+        <binding name="parentElement" value="ognl:database"/>
+        <binding name="elementName" value="literal:password"/>
+        <binding name="algorithm" value="ognl:passwordAlgorithm"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="query_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.query_timeoutField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="query_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:database"/>
+        <binding name="elementName" value="literal:stmtQueryTimeout"/>
+    </component>
+
+    <component id="condDriverType" type="If">
+        <binding name="condition" value="ognl:!isFixed('driver-type') and !isRequired('driver-type')"/>
+    </component>
+
+    <component id="driver_type" type="jeus:Field">
+        <binding name="field" value="ognl:components.driver_typeField"/>
+    </component>
+
+    <component id="driver_typeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:database"/>
+        <binding name="elementName" value="literal:driverType"/>
+    </component>
+
+    <component id="condRequiredDriverType" type="If">
+        <binding name="condition" value="ognl:!isFixed('driver-type') and isRequired('driver-type')"/>
+    </component>
+
+    <component id="required_driver_type" type="jeus:Field">
+        <binding name="field" value="ognl:components.required_driver_typeField"/>
+
+    </component>
+
+    <component id="required_driver_typeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="database"/>
+        <binding name="elementName" value="literal:driverType"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="additional_properties" type="jeus:Field">
+        <binding name="field" value="ognl:components.additional_propertiesField"/>
+        <binding name="label" value="message:dsc.properties.additional_properties.label"/>
+    </component>
+
+    <component id="additional_propertiesField" type="jeus:DojoTextArea">
+        <binding name="value" value="ognl:properties"/>
+    </component>
+
+    <component id="poolForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:dsc.pool.title2"/>
+        <binding name="listener" value="ognl:listeners.onPoolOk"/>
+    </component>
+
+    <component id="condPool" type="If">
+        <binding name="condition" value="ognl:!database.dataSourceType.equals('DataSource')"/>
+    </component>
+
+    <component id="poolingSection" type="jeus:FormSection">
+        <binding name="title" value="message:dsc.pool.pooling.title"/>
+    </component>
+
+    <component id="min" type="jeus:Field">
+        <binding name="field" value="ognl:components.minField"/>
+    </component>
+
+    <component id="minField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="pooling"/>
+        <binding name="elementName" value="literal:min"/>
+		<binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+
+    </component>
+
+    <component id="max" type="jeus:Field">
+        <binding name="field" value="ognl:components.maxField"/>
+    </component>
+
+    <component id="maxField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="pooling"/>
+        <binding name="elementName" value="literal:max"/>
+        <binding name="validators" value="validators:$maxValidator"/>
+    </component>
+
+    <component id="step" type="jeus:Field">
+        <binding name="field" value="ognl:components.stepField"/>
+    </component>
+
+    <component id="stepField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="pooling"/>
+        <binding name="elementName" value="literal:step"/>
+        <binding name="validators" value="validators:$stepValidator"/>
+    </component>
+
+    <component id="period" type="jeus:Field">
+        <binding name="field" value="ognl:components.periodField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="periodField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="pooling"/>
+        <binding name="elementName" value="literal:period"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=1"/>
+
+    </component>
+
+    <component id="wait_free_connectionSection" type="jeus:FormSection">
+        <binding name="title" value="message:dsc.pool.wait_free_connection.title"/>
+    </component>
+
+    <component id="enable_wait" type="jeus:Field">
+        <binding name="field" value="ognl:components.enable_waitField"/>
+    </component>
+
+    <component id="enable_waitField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:waitFreeConnection"/>
+        <binding name="elementName" value="literal:enableWait"/>
+    </component>
+
+    <component id="pool_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="wait_time" type="jeus:Field">
+        <binding name="field" value="ognl:components.wait_timeField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="wait_timeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="waitFreeConnection"/>
+        <binding name="elementName" value="literal:waitTime"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="condXA" type="If">
+        <binding name="condition" value="ognl:database.dataSourceType.indexOf('XADataSource') &gt;= 0"/>
+    </component>
+
+    <component id="delegation_datasource" type="jeus:Field">
+        <binding name="field" value="ognl:components.delegation_datasourceField"/>
+    </component>
+
+    <component id="delegation_datasourceField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="ognl:connectionPool"/>
+        <binding name="elementName" value="literal:delegationDatasource"/>
+        <binding name="model" value="ognl:delegationDatasourceModel"/>
+    </component>
+
+    <component id="max_use_count" type="jeus:Field">
+        <binding name="field" value="ognl:components.max_use_countField"/>
+    </component>
+
+    <component id="max_use_countField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="connectionPool"/>
+        <binding name="elementName" value="literal:maxUseCount"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="condDba" type="If">
+        <binding name="condition" value="ognl:database.vendor == 'oracle' or database.vendor == 'sybase'"/>
+    </component>
+
+    <component id="delegation_dba" type="jeus:Field">
+        <binding name="field" value="ognl:components.delegation_dbaField"/>
+    </component>
+
+    <component id="delegation_dbaField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="ognl:connectionPool"/>
+        <binding name="elementName" value="literal:delegationDba"/>
+        <binding name="model" value="ognl:delegationDbaModel"/>
+    </component>
+
+    <component id="dba_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.dba_timeoutField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="dba_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="connectionPool"/>
+        <binding name="elementName" value="literal:dbaTimeout"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="check_query" type="jeus:Field">
+        <binding name="field" value="ognl:components.check_queryField"/>
+    </component>
+
+    <component id="check_queryField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:connectionPool"/>
+        <binding name="elementName" value="literal:checkQuery"/>
+    </component>
+
+    <component id="check_query_period" type="jeus:Field">
+        <binding name="field" value="ognl:components.check_query_periodField"/>
+    </component>
+
+    <component id="check_query_periodField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="connectionPool"/>
+        <binding name="elementName" value="literal:checkQueryPeriod"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="check_query_class" type="jeus:Field">
+        <binding name="field" value="ognl:components.check_query_classField"/>
+    </component>
+
+    <component id="check_query_classField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:connectionPool"/>
+        <binding name="elementName" value="literal:checkQueryClass"/>
+    </component>
+
+    <component id="stmt_caching_size" type="jeus:Field">
+        <binding name="field" value="ognl:components.stmt_caching_sizeField"/>
+    </component>
+
+    <component id="stmt_caching_sizeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:connectionPool"/>
+        <binding name="elementName" value="literal:stmtCachingSize"/>
+    </component>
+
+    <component id="stmt_fetch_size" type="jeus:Field">
+        <binding name="field" value="ognl:components.stmt_fetch_sizeField"/>
+    </component>
+
+    <component id="stmt_fetch_sizeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:connectionPool"/>
+        <binding name="elementName" value="literal:stmtFetchSize"/>
+    </component>
+
+    <component id="condFound" type="If">
+       <binding name="condition" value="ognl:database != null"/>
+    </component>
+
+    <component id="condNotFound" type="If">
+       <binding name="condition" value="ognl:database == null or alreadyRemoved"/>
+    </component>
+
+    <component id="tabPanel2" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:new java.lang.String[]{pageName}"/>
+    </component>
+
+    <component id="dsForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jdss.overview.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="no_datasource" type="Insert">
+        <binding name="value" value="message:dsc.no.label"/>
+    </component>
+
+
+    <bean name="maxValidator" class="jeus.tool.webadmin.validator.FieldMinMaxValidator">
+        <set name="minField" value="component:minField"/>
+        <set name="min" value="1"/>
+    </bean>
+
+    <bean name="stepValidator" class="jeus.tool.webadmin.validator.StepValidator">
+        <set name="minField" value="component:minField"/>
+        <set name="maxField" value="component:maxField"/>
+        <set name="min" value="0"/>
+    </bean>
+
+</page-specification>

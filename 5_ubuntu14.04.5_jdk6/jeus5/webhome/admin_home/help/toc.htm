@@ -1,0 +1,46 @@
+<HTML>
+	<HEAD>
+		<TITLE>Table of contents</title>
+		<LINK rel="stylesheet" href="styles/jmtable.css" type="text/css">
+		<script language="javascript">
+			function setTitle(t){
+				var title = document.getElementById("title");				
+				if(document.all)
+					title.innerText = t;
+				else
+					title.childNodes[0].nodeValue = t;
+			}
+		</script>
+	</HEAD>
+	<BODY style="margin:0px;overflow=hidden;border:0px none;" >
+		<TABLE cellspacing="0" cellpadding="0" border="0" width="100%" height="100%" id="wrapper">
+			<TR >
+				<TD height="30" valign="middle" class="JMTitleHeading">
+					<img src="images/doc.gif" align="absmiddle">&nbsp;<span id="title">&nbsp;</span>
+				</TD>
+			</TR>
+			<TR>
+				<TD>
+					<iframe id='toc' name='toc' height='100%' width='100%' src='wm/index.htm' frameborder='0'/>
+				</TD>
+			</TR>
+		</TABLE>
+	</BODY>
+	<script language="javascript">
+		function redraw(){
+			var wrapper = document.getElementById("wrapper");
+			wrapper.height = window.innerHeight;
+			var toc = document.getElementById("toc");
+			toc.height = window.innerHeight - 30;
+       	}
+
+		var ns = !document.all;
+		if(ns){
+			redraw();
+			window.resize = redraw();
+		}
+
+    </script>
+
+
+</HTML>

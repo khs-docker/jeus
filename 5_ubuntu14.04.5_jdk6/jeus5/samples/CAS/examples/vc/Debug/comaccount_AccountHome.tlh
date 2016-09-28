@@ -1,0 +1,100 @@
+// Created by Microsoft (R) C/C++ Compiler Version 12.00.8168.0 (e4e81207).
+//
+// d:\tmaxsoft\jeus5\samples\cas\examples\vc\debug\comaccount_AccountHome.tlh
+//
+// C++ source equivalent of Win32 type library D:\j2ee-cas-com-bridge\doc\guide\examples\typelib\comaccount_AccountHome.tlb
+// compiler-generated file created 04/04/05 at 15:36:54 - DO NOT EDIT!
+
+#pragma once
+#pragma pack(push, 8)
+
+#include <comdef.h>
+
+namespace comaccount_AccountHome_Lib {
+
+//
+// Forward references and typedefs
+//
+
+struct __declspec(uuid("632f0e00-5ab4-4e90-6184-5ffa6a22cafe"))
+/* dispinterface */ comaccount_AccountHome;
+struct __declspec(uuid("48d5600c-d381-42fd-68b9-0c8e5cfccafe"))
+/* dispinterface */ comaccount_AccountHome_Statics;
+
+//
+// Smart pointer typedef declarations
+//
+
+_COM_SMARTPTR_TYPEDEF(comaccount_AccountHome, __uuidof(IDispatch));
+_COM_SMARTPTR_TYPEDEF(comaccount_AccountHome_Statics, __uuidof(IDispatch));
+
+//
+// Type library items
+//
+
+struct __declspec(uuid("632f0e00-5ab4-4e90-6184-5ffa6a22cafe"))
+comaccount_AccountHome : IDispatch
+{
+    //
+    // Property data
+    //
+
+    __declspec(property(get=GetEJBMetaData))
+    IDispatchPtr EJBMetaData;
+    __declspec(property(get=GetHomeHandle))
+    IDispatchPtr HomeHandle;
+
+    //
+    // Wrapper methods for error-handling
+    //
+
+    // Methods:
+    _variant_t create (
+        const _variant_t & param1,
+        const _variant_t & param2,
+        const _variant_t & param3,
+        const _variant_t & param4,
+        const _variant_t & param5,
+        const _variant_t & param6 );
+    IDispatchPtr create_1 (
+        _bstr_t String1 );
+    IDispatchPtr create_2 (
+        _bstr_t String1,
+        _bstr_t String2,
+        _bstr_t String3,
+        _bstr_t String4,
+        double param5,
+        double param6 );
+    IDispatchPtr findAll ( );
+    IDispatchPtr findByBalance (
+        double param1,
+        double param2 );
+    IDispatchPtr findByLastName (
+        _bstr_t String1 );
+    IDispatchPtr findByPrimaryKey (
+        _bstr_t String1 );
+    IDispatchPtr getEJBMetaData ( );
+    IDispatchPtr getHomeHandle ( );
+    HRESULT remove (
+        const _variant_t & param1 );
+    HRESULT remove_1 (
+        const _variant_t & Object1 );
+    HRESULT remove_2 (
+        IDispatch * Handle1 );
+    IDispatchPtr GetHomeHandle ( );
+    IDispatchPtr GetEJBMetaData ( );
+};
+
+struct __declspec(uuid("48d5600c-d381-42fd-68b9-0c8e5cfccafe"))
+comaccount_AccountHome_Statics : IDispatch
+{};
+
+//
+// Wrapper method implementations
+//
+
+#include "d:\tmaxsoft\jeus5\samples\cas\examples\vc\debug\comaccount_AccountHome.tli"
+
+} // namespace comaccount_AccountHome_Lib
+
+#pragma pack(pop)

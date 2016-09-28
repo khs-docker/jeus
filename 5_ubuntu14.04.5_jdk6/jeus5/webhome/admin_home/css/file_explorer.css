@@ -1,0 +1,45 @@
+img {
+	border:none;
+}
+
+.fe_view{
+    background-color:#FFFFFF;
+    border:0px;
+}
+
+.fe_path {
+    font-family:Tahoma;
+    font-size:11px;
+    color:#597FBF;
+}
+
+.fe_current {
+    font-family:Tahoma;
+    font-size:11px;
+    color:#000000;
+}
+
+.fe_radio {
+}
+
+.fe_file {
+    font-family:Tahoma;
+    font-size:11px;
+    color:#000000;
+}
+
+a.fe_file:link, a.fe_file:visited, a.fe_file:active {
+    font-family:Tahoma;
+    font-size:11px;
+    text-decoration: none;
+    color:#000000;
+}
+
+a:hover, a.fe_file:hover {
+	font-family:Tahoma;
+    font-size:11px;
+    color:#597FBF;
+    text-decoration: underline;
+}
+
+

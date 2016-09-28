@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceJeusService.InfoPage">
+
+    <inject property="stateObject" type="state" object="WebadminStateObject"/>
+    <inject property="externalService" object="engine-service:external"/>
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{pageName}"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:info.title.JeusService"/>
+        <binding name="description" value="message:info.description.JeusService"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="NamingServerlink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceJNDIResourceService_Configuration"/>
+        <binding name="parameters" value="namingServerObjectName.canonicalName"/>
+    </component>
+
+    <component id="DistributedSessionlink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceP2PSessionServerService_Configuration"/>
+        <binding name="parameters" value="distributedSessionObjectName.canonicalName"/>
+    </component>
+
+    <component id="CentralSessionlink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceSessionServerService_Configuration"/>
+        <binding name="parameters" value="centralSessionObjectName.canonicalName"/>
+    </component>
+
+    <component id="JMXlink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceJMXExportService_Configuration"/>
+        <binding name="parameters" value="jMXObjectName.canonicalName"/>
+    </component>
+
+    <component id="Schedulerlink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceSchedulerService_Configuration"/>
+        <binding name="parameters" value="schedulerObjectName.canonicalName"/>
+    </component>
+
+    <component id="Securitylink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceSecurityDomain_Overview"/>
+        <binding name="parameters" value="securityObjectName.canonicalName"/>
+    </component>
+
+    <component id="Loglink" type="Any">
+        <binding name="onclick" value="'javascript:window.open(\''+(@jeus.tool.webadmin.util.WebUtils@createExternalLink(externalService, 'JeusServiceJeusLogService_Frameset', logObjectName)).absoluteURL+'\', \'Jeus_Logger\', \'width=1024,height=768,toolbars=no,resizable=yes,scrollbars=yes\');'"/>
+    </component>
+
+    <component id="VirtualHostlink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceVirtualNode_Configuration"/>
+        <binding name="parameters" value="virtualHostObjectName.canonicalName"/>
+    </component>
+
+    <component id="JNLPlink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceJNLPService_Overview"/>
+        <binding name="parameters" value="jNLPObjectName.canonicalName"/>
+    </component>
+
+    <component id="LogAnalysislink" type="Any">
+        <binding name="onclick" value="'javascript:window.open(\''+(@jeus.tool.webadmin.util.WebUtils@createExternalLink(externalService, 'JeusServiceLogAnalyzerService_Frameset', logAnalysisObjectName)).absoluteURL+'\', \'log_Analysis\', \'width=1000,height=700,toolbars=no,resizable=yes,scrollbars=yes\');'"/>
+    </component>
+  
+</page-specification>

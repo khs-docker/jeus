@@ -1,0 +1,3125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<catalog>
+	<text key="Home.title">JEUS Web管理者</text>
+    <text key="main.title">主画面</text>
+    <text key="clusterview.title">JEUS Cluster</text>
+    <text key="nodeview.title">JEUS节点树</text>
+
+    <text key="main.utility.home">Home</text>
+    <text key="main.utility.settings">设置</text>
+    <text key="main.utility.logout">退出</text>
+    <text key="main.utility.help">帮助</text>
+
+    <text key="main.node.title">节点</text>
+    <text key="main.node.description">节点是JEUS的非常重要的构成因素。
+    节点是对JEUS 服务器的下级结构 ?CContainer和引擎等-进行capsule的逻辑性结构。
+    一个节点与JEUS管理员有关非常紧密的联系，一个JEUS 管理员对一个节点进行管理。
+    因此，将一个JEUS 管理员称为一个节点。</text>
+
+    <text key="main.engine_container.title">引擎 Container</text>
+    <text key="main.engine_container.description">结构方面JEUS 引擎 Container是以JEUS 引擎使用所需的基础结构与服务有关的很多下级结构形成。
+    引擎 Container从逻辑角度可作为JEUS 节点的下级结构，但从物理角度来看是位于其他JVM中。
+    此类属性是在不使用&quot;default&quot; 引擎 Container的情况下始终存在。</text>
+
+    <text key="main.resource.title">引擎 Container Resource</text>
+    <text key="main.resource.description">通过Resource将数据库或EIS之类外部数据保存地点或服务，以JNDI方式动太阳民增多加到JEUS系统中。
+    此类Resource，由客户端再次通过JNDI使用相关Resource。
+    </text>
+    <text key="main.service.title">引擎 Container 服务</text>
+    <text key="main.service.description">JEUS系统提供很多有用的服务。
+    JNDI 服务器、事物处理、JMX 服务器、Class FTP、Scheduler、安全、日志等相当于此。
+    </text>
+    <text key="main.deployment.title">Batch</text>
+    <text key="main.deployment.description">Batch是指，压缩应用程序文件后将其传输到服务器，并运行应用程序的一系列步骤。
+    JEUS实现Deployment API，Batch可对任何 J2EE 应用程序进行Batch。
+    </text>
+
+    <!-- MainBorder labels -->
+    <text key="MainBorder.version">版本</text>
+    <text key="MainBorder.nodeName">节点</text>
+    <text key="MainBorder.userName">用户</text>
+    <text key="MainBorder.startTime">开始时间</text>
+    <text key="MainBorder.noHelp">不存在帮助栏</text>
+
+    <text key="ErrorMessageBox.show_detail.label">详细查看</text>
+    <text key="ErrorMessageBox.hide_detail.label">隐藏</text>
+
+    <!-- navigation labels -->
+    <text key="Home.title">JEUS Web 管理者</text>
+
+    <text key="Login.title">登录</text>
+    <text key="Login.login.label">登录</text>
+
+    <text key="Settings">设置</text>
+    <text key="Settings.appearance">画面</text>
+    <text key="settings.appearance.title">设置 - 画面</text>
+    <text key="settings.appearance.description">在此对JEUS Web 管理者的画面进行设置。所有设置保存到各用户的cookie中。</text>
+
+    <text key="Settings.refresh">重新修改</text>
+    <text key="settings.refresh.title">设置 - 重新修改</text>
+    <text key="settings.refresh.description">重新修改的设置是对JEUS Web 管理者的view更新周期进行设置。各更新周期的输入单位为秒。 所有设置保存于用户的 cookie中。</text>
+
+    <text key="Settings.xml">XML</text>
+    <text key="settings.xml.title">设置 - XML</text>
+    <text key="settings.xml.description">在此对XML处理所需的选项进行设置。所有设置保存到用户的cookie中。</text>
+
+
+    <text key="settings.show_description.label">查看说明</text>
+    <text key="settings.show_description.description">是显示各因素或说明有关选项的值。设置为"true"时显示说明，选择为"false"时说明即被消失。即使说明被消失，只要单击各因素，即可显示相关说明。</text>
+
+    <text key="settings.language.label">语言</text>
+    <text key="settings.language.description">选择Web 管理者的说明方式与帮助有关 语言。</text>
+
+    <text key="settings.cluster_interval.label">JEUS Cluster 重新修改周期</text>
+    <text key="settings.cluster_interval.description">输入JEUS Cluster目录的更新周期。调入Cluster内的节点目录需要更多时间。因此，建议Cluster中节点多时要放宽周期。</text>
+
+    <text key="settings.node_interval.label">JEUS 节点树重新修改周期</text>
+    <text key="settings.node_interval.description">输入JEUS 节点树的更新周期。</text>
+
+    <text key="settings.lastatus_interval.label">重新修改日志分析状态view 的周期</text>
+    <text key="settings.lastatus_interval.description">利用日志分析工具分析 日志时分析或分析中的操作，显示于日志分析 状态 view中。每一个周期对view进行更新，若想加快分析状况的显示时间，需要缩短周期。</text>
+
+    <text key="settings.connect_timeout.label">JEUS 管理员连接限制时间</text>
+    <text key="settings.connect_timeout.description">在规定的连接时间内若未能接受JEUS 管理员发出的应答，即断开其连接。</text>
+
+    <text key="settings.socket_timeout.label">JEUS 管理员 Socket 限制时间</text>
+    <text key="settings.socket_timeout.description">连接到JEUS 管理员后若在规定的限制时间内没有任何应答时，即断开其连接。</text>
+
+    <text key="settings.keep_comments.label">维护注释</text>
+    <text key="settings.keep_comments.description">JEUS的所有XML处理都利用 JAXB。基本上JAXB不维持注释，如果设置为 "false"，很可能丢失注释。因此，在可能的情况下建议尽可能维持注释。</text>
+
+    <text key="settings.use_element_ordering.label">因素的重新排序</text>
+    <text key="settings.use_element_ordering.description">不使用工具设置文件时，因素的顺序很容易出错。XML处理时对XML 文本的有效情况进行检查，若因素顺序出错时发生错误。因此，该设置为"true"时，对因素进行重新排序，成为有效的文本。</text>
+
+    <!-- NodeTree menu labels -->
+    <text key="NodeTree.refresh">重新修改</text>
+
+    <text key="NodeTree.JeusService.JeusManager.conf">{0} 设置</text>
+    <text key="NodeTree.JeusService.JeusManager.control">JEUS节点控制</text>
+    <text key="NodeTree.JeusService.JeusManager.cluster">JEUS节点clustering </text>
+    <text key="NodeTree.JeusService.JeusManager.distribute">JEUSMain.xml 分配</text>
+    <text key="NodeTree.JeusService.JeusManager.jnditree">JNDI 树</text>
+    <text key="NodeTree.JeusService.JeusManager.tmonitor">故障监控</text>
+
+    <text key="NodeTree.Folder.J2EEServer">引擎 Container</text>
+    <text key="NodeTree.Folder.J2EEServer.overview">引擎 Container 概要 </text>
+    <text key="NodeTree.Folder.J2EEServer.create">生成新引擎 Container </text>
+
+    <text key="NodeTree.J2EEServer.conf">{0} 设置</text>
+    <text key="NodeTree.J2EEServer.stat">{0} 统计</text>
+    <text key="NodeTree.J2EEServer.duplicate">{0} 复制</text>
+
+    <text key="NodeTree.Folder.Resource">Resource</text>
+    <text key="NodeTree.Folder.Service">服务</text>
+
+    <text key="NodeTree.Folder.Engine">引擎</text>
+	<text key="NodeTree.Folder.Engine.overview">引擎概要 </text>
+
+    <text key="NodeTree.JeusService.EJBEngine">EJB 引擎</text>
+	<text key="NodeTree.JeusService.EJBEngine.conf">EJB 引擎设置</text>
+	<text key="NodeTree.JeusService.EJBEngine.stat">EJB 引擎统计</text>
+	<text key="NodeTree.JeusService.EJBEngine.distribute">EJBMain.xml 分配</text>
+
+    <text key="NodeTree.JeusService.WebEngine">servlet 引擎</text>
+	<text key="NodeTree.JeusService.WebEngine.conf">servlet 引擎设置</text>
+	<text key="NodeTree.JeusService.WebEngine.stat">servlet 引擎统计</text>
+	<text key="NodeTree.JeusService.WebEngine.distribute">WEBMain.xml 分配</text>
+    <text key="NodeTree.JeusService.WebEngine.createContextGroup">生成新context 群组</text>
+
+    <text key="NodeTree.JeusService.JMSEngine">JMS 引擎</text>
+	<text key="NodeTree.JeusService.JMSEngine.conf">JMS 引擎设置</text>
+	<text key="NodeTree.JeusService.JMSEngine.distribute">JMSMain.xml 分配</text>
+
+    <text key="NodeTree.JeusService.WSEngine">Web 服务器引擎</text>
+    <text key="NodeTree.JeusService.WSEngine.conf">Web 服务器引擎设置</text>
+    <text key="NodeTree.JeusService.WSEngine.stat">Web 服务器引擎统计</text>
+
+    <text key="NodeTree.JeusService.ContextGroup.conf">{0} 设置</text>
+    <text key="NodeTree.JeusService.ContextGroup.stat">{0} 统计</text>
+    <text key="NodeTree.JeusService.ContextGroup.createWebListener">生成新Web listener</text>
+    <text key="NodeTree.JeusService.ContextGroup.createVirtualHost">生成虚拟主机</text>
+
+    <text key="NodeTree.JeusService.WebListener.conf">{0} 设置</text>
+    <text key="NodeTree.JeusService.WebListener.stat">{0} 统计</text>
+
+	<text key="NodeTree.Folder.ApplicationModule">J2EE 应用程序模块</text>
+	<text key="NodeTree.Folder.ApplicationModuleDeploy">J2EE 应用程序模块配置</text>
+    <text key="NodeTree.Folder.ApplicationModule.deploy">新应用程序模块配置</text>
+    <text key="NodeTree.Folder.ApplicationModule.webdeploy">新Web context 配置</text>
+
+    <text key="NodeTree.J2EEApplication.conf">{0} 设置</text>
+    <text key="NodeTree.J2EEApplication.start">{0} 开始</text>>
+    <text key="NodeTree.J2EEApplication.stop">{0} 停止</text>
+    <text key="NodeTree.J2EEApplication.undeploy">{0} 清除</text>
+
+    <text key="NodeTree.EJBModule.conf">{0} 设置</text>
+    <text key="NodeTree.EJBModule.stat">{0} 统计</text>
+    <text key="NodeTree.EJBModule.start">{0} 开始</text>
+    <text key="NodeTree.EJBModule.stop">{0} 停止</text>
+    <text key="NodeTree.EJBModule.undeploy">{0} 清除</text>
+
+    <text key="NodeTree.EJB.conf">{0} 设置</text>
+    <text key="NodeTree.EJB.stat">{0} 统计</text>
+
+
+    <text key="NodeTree.WebModule.conf">{0} 设置</text>
+    <text key="NodeTree.WebModule.stat">{0} 统计</text>
+    <text key="NodeTree.WebModule.start">{0} 开始</text>
+    <text key="NodeTree.WebModule.stop">{0} 停止</text>
+	<text key="NodeTree.WebModule.undeploy">{0} 清除</text>
+
+	<text key="NodeTree.ResourceAdapterModule.conf">{0} 设置</text>
+	<text key="NodeTree.ResourceAdapterModule.stat">{0} 统计</text>
+    <text key="NodeTree.ResourceAdapterModule.start">{0} 开始</text>
+    <text key="NodeTree.ResourceAdapterModule.stop">{0} 停止</text>
+    <text key="NodeTree.ResourceAdapterModule.undeploy">{0} 清除</text>
+
+	<text key="NodeTree.AppClientModule.conf">{0} 设置</text>
+    <text key="NodeTree.AppClientModule.start">{0} 开始</text>
+    <text key="NodeTree.AppClientModule.stop">{0} 停止</text>
+    <text key="NodeTree.AppClientModule.undeploy">{0} 清除</text>
+
+    <text key="NodeTree.Folder.PermanentModule">长期模块</text>
+    <text key="NodeTree.PermanentModule.conf">{0} 设置</text>
+    <text key="NodeTree.PermanentModule.undeploy">{0} 清除</text>
+
+    <text key="NodeTree.Folder.JDBCDataSource">JDBC</text>
+
+    <text key="NodeTree.JTAResource">事物处理</text>
+    <text key="NodeTree.JTAResource.conf">事物处理设置</text>
+    <text key="NodeTree.JTAResource.stat">事物处理统计</text>
+
+    <text key="NodeTree.Folder.ResourceService">JEUS 管理员 Resource</text>
+
+    <text key="NodeTree.Folder.JDBCDataSourceService">JDBC</text>
+    <text key="NodeTree.Folder.JDBCDataSourceService.overview">JDBC 数据 源代码概要 </text>
+    <text key="NodeTree.Folder.JDBCDataSourceService.create">生成新JDBC 数据 源代码</text>
+    <text key="NodeTree.Folder.JDBCClusterDataSourceService.create">生成新 Cluster JDBC 数据源代码</text>
+
+
+    <text key="NodeTree.Folder.JMSResource">JMS</text>
+    <text key="NodeTree.Folder.JMSConnectionFactoryResource">Connection Factory</text>
+    <text key="NodeTree.Folder.JMSConnectionFactoryResource.open">Connection Factory 概要 </text>
+    <text key="NodeTree.Folder.JMSConnectionFactoryResource.createTopic">生成新 Connection Factory</text>
+    <text key="NodeTree.Folder.JMSConnectionFactoryResource.createQueue">生成新 Connection Factory </text>
+
+    <text key="NodeTree.Folder.JMSDestinationResource">目的文件</text>
+    <text key="NodeTree.Folder.JMSDestinationResource.open">目的文件概要 </text>
+    <text key="NodeTree.Folder.JMSDestinationResource.createTopic">生成新topic 目的文件</text>
+    <text key="NodeTree.Folder.JMSDestinationResource.createQueue">生成新 queue 目的文件</text>
+
+    <text key="NodeTree.JMSDestinationResource.open">目的文件设置</text>
+    <text key="NodeTree.JeusService.JMSTopicDestinationResource.addDurable">增加新Durable subscriber</text>
+
+    <text key="NodeTree.Folder.JMSClientResource">Client</text>
+    <text key="NodeTree.Folder.JMSClientResource.open">Client概要 </text>
+
+    <text key="NodeTree.Folder.JCAResource">JCA Resource</text>
+
+    <text key="NodeTree.Folder.TmaxExtResourceService">WebT</text>
+    <text key="NodeTree.Folder.TmaxExtResourceService.overview">WebT数据 源代码概要 </text>
+    <text key="NodeTree.Folder.TmaxExtResourceService.create">生成新 WebT 数据 源代码</text>
+    <text key="NodeTree.Folder.TmaxClusterExtResourceService.create">生成新 Cluster WebT 数据源代码</text>
+
+    <text key="NodeTree.Folder.URLResource">URL</text>
+    <text key="NodeTree.Folder.JavaMailResource">JAVA 邮件</text>
+
+    <text key="NodeTree.Folder.JeusService">JEUS 管理员服务</text>
+
+    <text key="NodeTree.Folder.MQExtResourceService">MQ</text>
+    <text key="NodeTree.Folder.MQExtResourceService.create">生成新 MQ 数据 源代码</text>
+
+    <text key="NodeTree.JDBCDataSource">{0}</text>
+    <text key="NodeTree.JDBCDataSource.open">{0} 统计</text>
+    <text key="NodeTree.JDBCDataSource.reconfig">{0} 重新设置</text>
+
+
+    <text  key="NodeTree.JeusService.JDBCDataSourceService.open">{0} 设置</text>
+
+    <text key="NodeTree.Folder.WebtDataSource">WebT</text>
+    <text key="NodeTree.Folder.URLResourceService.open">URL 设置</text>
+    <text key="NodeTree.URLResource.open">URL 设置</text>
+
+    <text key="NodeTree.Folder.URLResourceService">URL</text>
+    <text key="NodeTree.Folder.JavaMailResourceService">JAVA 邮件</text>
+    <text key="NodeTree.Folder.JavaMailResourceService.open">JAVA 邮件 设置</text>
+
+    <text key="NodeTree.JeusService.JNDIResourceService">命名服务器</text>
+
+    <text key="NodeTree.JeusService.JMXExportService">JMX</text>
+    <text key="NodeTree.JeusService.JNLPService">JNLP</text>
+    <text key="NodeTree.JeusService.SnmpAgentService">SNMP</text>
+    <text key="NodeTree.JeusService.ClassFTPService">Class FTP</text>
+
+    <text key="NodeTree.JeusService.JeusLogService">日志</text>
+    <text key="NodeTree.JeusService.JeusLogService.open">打开日志</text>
+    <text key="NodeTree.JeusService.LogAnalyzerService">日志分析</text>
+    <text key="NodeTree.JeusService.LogAnalyzerService.open">打开日志分析 </text>
+
+    <text key="NodeTree.JeusService.SecurityManagerService">安全</text>
+    <text key="NodeTree.JeusService.VirtualNode">虚拟主机</text>
+    <text key="NodeTree.JeusService.VirtualNode.open">虚拟主机 设置</text>
+    <text key="NodeTree.JeusService.VirtualNode.distribute">vhost.xml 分配</text>
+    <text key="NodeTree.JeusService.SessionContainer">会话 Container</text>
+
+    <text key="NodeTree.JeusService.P2PSessionServerService">分布式会话 服务器</text>
+    <text key="NodeTree.JeusService.SessionServerService">中央集中式会话 服务器</text>
+    <text key="NodeTree.JeusService.SessionServerService.open">会话服务器 设置</text>
+    <text key="NodeTree.JeusService.SessionServerService.create">会话管理者 设置</text>
+
+    <text key="NodeTree.JeusService.SessionManager">会话管理者</text>
+    <text key="NodeTree.JeusService.SessionManager.open">会话 管理者 设置</text>
+
+    <text key="NodeTree.JeusService.SecurityDomain.services">{0} 服务 设置</text>
+    <text key="NodeTree.JeusService.SecurityDomain.subjects">{0} Subject 设置</text>
+    <text key="NodeTree.JeusService.SecurityDomain.policies">{0} 方案 设置</text>
+
+    <text key="NodeTree.Folder.RemoteWebtob">远程WebToB</text>
+    <text key="NodeTree.Folder.RemoteWebtobControlService.overview">概要 </text>
+    <text key="NodeTree.RemoteWebtobControlService.over">{0} 概要 </text>
+    <text key="NodeTree.RemoteWebtobControlService.conf">{0} 设置</text>
+    <text key="NodeTree.RemoteWebtobControlService.stat">{0} 统计</text>
+    <text key="NodeTree.RemoteWebtobControlService.duplicate">{0} 复制</text>
+	
+	<text key="NodeTree.Folder.JeusMonitoring">JEUS 监控</text>
+	<text key="NodeTree.JeusMonitoring.ThreadMonitoringService">线程监控</text>
+	<text key="NodeTree.JeusMonitoring.TransactionMonitoringService">事物处理 监控</text>
+
+    <!-- enrique Test [2004.12.08] -->
+    <text key="NodeTree.Folder.Monitoring">监控</text>
+    <text key="NodeTree.Folder.TestMonitoringService">测试</text>
+    <text key="NodeTree.JeusService.Monitor">监控</text>
+    <text key="NodeTree.JeusService.Monitor.open">??</text>
+    <text key="NodeTree.jeusService.JMXAdapterService">JMX Http 适配器</text>
+    <text key="NodeTree.Folder.NodeTree.Folder.JMXAdapter">JMX 适配器</text>
+
+    <text key="JeusServiceJMXHttpAdapterService_Configuration">设置</text>
+    <text key="JeusServiceJMXHttpAdapterService_Configuration.adaptor">适配器</text>
+    <text key="jmx.httpadaptor.title">JMX - HTTP 适配器</text>
+    <text key="jmx.httpadaptor.label">HTTP</text>
+    <text key="jmx.httpadaptor.mbeanlist">MBena List</text>
+    <text key="jmx.httpadaptor.mbeanName.label">MBean Name</text>
+    <text key="jmx.httpadaptor.mbeanClass.label">MBean Java Class</text>
+
+    <!-- NodeView labels -->
+    <text key="NodeView.refresh">重新修改</text>
+
+    <text key="Login.title">登录</text>
+    <text key="Login.username.label">用户</text>
+    <text key="Login.password.label">密码</text>
+
+    <!-- ClusterView labels -->
+    <text key="ClusterView.refresh">重新修改</text>
+
+    <!-- Form Component -->
+    <text key="Form.fail.label">错误</text>
+    <text key="Form.fail.guideLine.label">Guide Line</text>
+    <text key="Form.fail.showDetail.label">详细查看</text>
+    <text key="Form.fail.hideDetail.label">隐藏</text>
+    <text key="Form.fail.detail.label">详细信息</text>
+    <text key="JEUSForm.fail.field">输入错误</text>
+    <text key="JEUSForm.reset.label">重新设置</text>
+    <text key="JEUSForm.remove.label">删除</text>
+    <text key="JEUSForm.ok.confirm">要对输入的内容进行传输吗？</text>
+    <text key="JEUSForm.remove.confirm">真的要删除吗？</text>
+    <text key="JEUSForm.reset.confirm">真的要重新设置吗？</text>
+    <text key="Form.success.label">结束</text>
+    <text key="JEUSForm.ok.label">确认</text>
+    <text key="JEUSForm.cancel.label">取消</text>
+    <text key="JEUSForm.revert.label">恢复</text>
+    <text key="Form.progress.label">处理中</text>
+
+    <text key="RangeStatisticField.low">低</text>
+    <text key="RangeStatisticField.high">高</text>
+    <text key="RangeStatisticField.current">现在</text>
+
+    <text key="ModuleExplorer.module_path.label">路径</text>
+    <text key="ModuleExplorer.module_name.label">模块名称</text>
+    <text key="ModuleExplorer.deployed.label">已Batch</text>
+
+    <text key="TargetExplorer.all_check.label">全部</text>
+
+    <text key="ModuleController.start.label">开始</text>
+    <text key="ModuleController.stop.label">停止</text>
+    <text key="ModuleController.undeploy.label">清除</text>
+    <text key="ModuleController.command.success">&quot;{1}&quot;的{0}成功运行。</text>
+
+    <text key="Logging.logging.title">日志设置</text>
+    <text key="Logging.handler.title">Handler</text>
+
+    <text key="Logging.handler.name.label">名称</text>
+    <text key="Logging.handler.type.label">种类</text>
+    <text key="Logging.handler.level.label">水准</text>
+    <text key="Logging.handler.encoding.label">编码</text>
+    <text key="Logging.handler.filter_class.label">filter Class</text>
+    <text key="Logging.handler.create_console.label">生成新控制台Handler</text>
+    <text key="Logging.handler.create_file.label">生成新文件 Handler</text>
+    <text key="Logging.handler.create_smtp.label">生成新SMTP Handler</text>
+    <text key="Logging.handler.create_user.label">生成新用户 Handler</text>
+    <text key="Logging.handler.create_socket.label">生成新 Socket Handler</text>
+
+    <text key="Handler.title">日志 Handler</text>
+    <text key="Handler.type.label">Handler 种类</text>
+    <text key="Handler.name.label">名称</text>
+
+    <text key="Handler.create.title">生成新日志 Handler</text>
+
+    <text key="JEUSTableView.customize.label">表格编辑</text>
+    <text key="CustomizeColumn.title">表格编辑</text>
+    <text key="CustomizeColumn.all.label">全部</text>
+    <text key="CustomizeColumn.pageSize.label">页面大小</text>
+    <text key="CustomizeColumn.columns.title">选择打开</text>
+    <text key="CustomizeColumn.available.label">有用的项目</text>
+    <text key="CustomizeColumn.selected.label">以选择项目</text>
+    <text key="title.available">有用的值</text>
+    <text key="title.selected">以选择的值</text>
+
+    <!-- JeusService JEUSManager Messages -->
+    <!-- short name : jmc -->
+    <text key="JeusServiceJEUSManager_Configuration">设置</text>
+    <text key="JeusServiceJEUSManager_Configuration.general">基本设置</text>
+    <text key="JeusServiceJEUSManager_Configuration.listener">listener</text>
+    <text key="JeusServiceJEUSManager_Configuration.services">服务</text>
+    <text key="JeusServiceJEUSManager_Configuration.logging">错误日志</text>
+    <text key="JeusServiceJEUSManager_CreateHandler.create">生成</text>
+
+    <text key="jm.configuration.general.title">JEUS 管理员 - 基本设置</text>
+    <text key="jm.configuration.general.name.label">名称</text>
+
+    <text key="jm.configuration.services.title">JEUS 管理员 - 服务</text>
+	<text key="jm.configuration.services.webadmin.config.title">Web 管理者 设置</text>
+
+
+    <text key="jm.configuration.listener.title">JEUS 管理员 - listener</text>
+    <text key="jm.configuration.listener.general.label">基本设置</text>
+    <text key="jm.configuration.listener.ssl.label">SSL</text>
+    <text key="jm.configuration.listener.pooling.label">线程池</text>
+
+    <text key="jm.configuration.logging.title">JEUS 管理员 - 日志</text>
+    <text key="jm.configuration.handler.title">日志 Handler</text>
+
+    <text key="JeusServiceJEUSManager_Distribute">分配</text>
+    <text key="jm.distribute.title">JEUSMain.xml 分配</text>
+    <text key="jm.distribute.targets.label">有用的节点</text>
+
+    <text key="JeusServiceJEUSManager_EditHandler">设置</text>
+    <text key="jm.configuration.logging.handler.title">日志 Handler - 设置</text>
+
+    <text key="JeusServiceJEUSManager_Control">控制</text>
+    <text key="jm.control.title">JEUS 管理员 - 控制</text>
+    <text key="jm.control.node_name.label">节点名称</text>
+    <text key="jm.control.targets.label">有用的节点</text>
+    <text key="jm.control.no_targets.label">没有有用的节点。</text>
+
+    <text key="jm.control.boot.label">启动</text>
+
+    <text key="jm.control.exit.label">结束</text>
+    <text key="jm.control.remove.label">删除</text>
+
+    <text key="JeusServiceJEUSManager_Control.boot">启动</text>
+    <text key="JeusServiceJEUSManager_Control.down">宕机</text>
+    <text key="JeusServiceJEUSManager_Control.add_node">增加新节点</text>
+
+    <text key="jmc.boot.title">启动节点</text>
+    <text key="jmc.boot.boot_submit.label">启动</text>
+    <text key="jmc.boot.success">{0} 全部节点成功启动</text>
+
+    <text key="jmc.down.title">节点  宕机</text>
+    <text key="jmc.down.down_submit.label"> 宕机</text>
+    <text key="jmc.down.success">{0} 全部节点宕机成功</text>
+    <text key="jmc.exit.success">{0} 全部节点结束成功</text>
+
+    <text key="jmc.add_node.title">JEUS Cluster中增加新节点</text>
+    <text key="jmc.add_node.node_name.label">节点名称</text>
+    <text key="jmc.add_node.init_boot.label">增加直接启动</text>
+    <text key="jmc.add_node.success">{0} 成功增加节点。</text>
+
+
+    <text key="jmc.remove_node.title">JEUS Cluster中删除节点</text>
+    <text key="jmc.remove_node.remove_submit.label">删除</text>
+    <text key="jmc.remove_node.success">{0}成功被删除。</text>
+
+
+    <text key="JeusServiceJEUSManager_Control.remove_node">节点删除</text>
+
+    <text key="JeusServiceJEUSManager_Cluster">Cluster</text>
+    <text key="jm.cluster.title">JEUS 管理员 - Cluster</text>
+    <text key="jm.cluster.targets.label">有用的节点</text>
+    <text key="jm.cluster.remove.confirm">JEUS Cluster要从JEUS Cluster删除所选节点吗？</text>
+
+
+    <!-- JNDI Resource Service -->
+    <text key="JeusServiceJNDIResourceService_Configuration">设置</text>
+    <text key="JeusServiceJNDIResourceService_Configuration.server">服务器</text>
+    <text key="JeusServiceJNDIResourceService_Configuration.local">地区</text>
+    <text key="jndi.server.title">命名服务器 - 服务器</text>
+    <text key="jndi.server.general.label">基本设置</text>
+    <text key="jndi.server.pooling.label">线程池</text>
+
+    <text key="jndi.pooling.title">线程池</text>
+    <text key="jndi.local.title">命名服务 - 本地</text>
+
+    <text key="JeusServiceSessionServerService_Configuration">设置</text>
+    <text key="JeusServiceSessionServerService_Configuration.general">基本设置</text>
+    <text key="JeusServiceSessionServerService_Configuration.pooling">线程池</text>
+    <text key="JeusServiceSessionServerService_Configuration.session_manager">会话 管理者</text>
+    <text key="sss.general.title">会话服务器服务 - 基本设置</text>
+    <text key="sss.pooling.title">会话服务器服务 - 线程池</text>
+    <text key="sss.session_manager.title">会话服务器服务 - 会话管理者</text>
+
+    <text key="sss.session_manager.name.label">名称</text>
+    <text key="sss.session_manager.min_hole.label">最小Hole数</text>
+    <text key="sss.session_manager.packing_rate.label">packing比率</text>
+    <text key="sss.session_manager.create.label">生成新会话管理者</text>
+
+    <text key="JeusServiceSessionContainer_Statistics">统计</text>
+    <text key="sc.statistics.title">会话 Container - 统计</text>
+    <text key="sc.statistics.container_type.label">种类</text>
+    <text key="sc.statistics.local_session_count.label">本地会话数</text>
+    <text key="sc.statistics.remote_active_count.label">远程激活会话数</text>
+    <text key="sc.statistics.remote_passivated_count.label">远程非活动性会话数</text>
+    <text key="sc.statistics.total_connection_count.label">总连接数</text>
+    <text key="sc.statistics.inuse_connection_count.label">使用中的连接数</text>
+    <text key="sc.statistics.active_session_count.label">活动会话数</text>
+    <text key="sc.statistics.passivated_session_count.label">非活动会话数</text>
+	<text key="sc.statistics.local_file_db_size.label">本地文件 DB大小</text>
+    <text key="sc.statistics.all_session_count.label">总会话数</text>
+    <text key="sc.statistics.backup_session_count.label">备份会话数</text>
+    <text key="sc.statistics.passivated_backup_session_count.label">非活动性备份会话数</text>
+	<text key="sc.statistics.backup_file_db_size.label">备份文件DB大小</text>
+    <text key="sc.statistics.connection_count.label">连接数</text>
+
+    <text key="JeusServiceSessionManager_Configuration">设置</text>
+    <text key="JeusServiceSessionManager_Configuration.general">基本设置</text>
+    <text key="sm.general.title">会话管理者 - 基本设置</text>
+    <text key="sm.general.name.label">名称</text>
+    <text key="sm.general.unit.objects.label">objects</text>
+
+
+    <text key="JeusServiceSessionManager_Configuration.storage">存储</text>
+    <text key="sm.storage.title">会话管理者 - 存储</text>
+    <text key="JeusServiceSessionManager_Statistics">统计</text>
+    <text key="sm.statistics.title">会话管理者 - 统计</text>
+    <text key="sm.statistics.active.label">处于活动中的会话数</text>
+    <text key="sm.statistics.passivated.label">处于非活动中的会话数</text>
+    <text key="sm.statistics.total.label">总会话数</text>
+
+    <text key="JeusServiceSessionManager_Create.general">1. 基本设置</text>
+    <text key="JeusServiceSessionManager_Create.storage">2. 存储</text>
+    <text key="JeusServiceSessionManager_Create.create">3. 生成</text>
+    <text key="smc.general.title">生成新会话管理者- 基本设置</text>
+    <text key="smc.storage.title">生成新会话管理者 - 存储</text>
+    <text key="smc.create.title">生成新会话管理者- 生成</text>
+
+    <text key="JeusServiceP2PSessionServerService_Configuration">设置</text>
+    <text key="JeusServiceP2PSessionServerService_Configuration.general">普通 设置</text>
+	<text key="JeusServiceP2PSessionServerService_Configuration.thread_pool">线程池</text>
+    <text key="JeusServiceP2PSessionServerService_Configuration.default_file_db">基本文件 DB</text>
+
+    <text key="p2p.title">分布式会话服务</text>
+    <text key="p2p.general.title">分布式会话服务器服务 - 基本设置</text>
+	<text key="p2p.thread_pool.title">分布式会话服务器服务 - 线程池</text>
+    <text key="p2p.default_file_db.title">分布式会话服务器服务 - 基本文件 DB</text>
+    <text key="p2p.filedb.ok.confirm">会话管理员已被设置时，会话管理员设置即被删除。\r\n要删除会话管理员的设置、要设置分布式会话服务器吗？</text>
+    <text key="session.title">中央集中式会话服务器服务</text>
+    <text key="session.config.ok.label">确认</text>
+    <text key="session.config.remove.label">删除</text>
+    <text key="session.config.cancel.label">取消</text>
+    <text key="session.config.reset.label">重新设置</text>
+    <text key="session.config.ok.message">成功完成了设置。</text>
+    <text key="session.ok.confirm">中央集中式会话服务器的设置比分布式会话服务器 设置优先。\r\n单击确认，分布式会话服务器的设置即被删除，中央集中式会话服务器的设置即被设置。</text>
+
+    <!-- JNLP Service -->
+    <text key="JeusServiceJNLPService_Overview">概要 </text>
+    <text key="JeusServiceJNLPService_Configuration">设置</text>
+    <!--<text key="JeusServiceJNLPService_Create">生成新JNLP</text>-->
+
+    <!--<text key="jnlp.create.label">生成新JNLP</text>-->
+    <text key="jnlp.title">JNLP 服务设置</text>
+    <text key="jnlp.overview.title">JNLP服务</text>
+    <text key="jnlp.resource_name.label">名称</text>
+    <text key="jnlp.resource_path.label">路径</text>
+    <text key="jnlp.os_name.label">OS</text>
+    <text key="jnlp.architecture.label">结构</text>
+    <text key="jnlp.locale.label">本地</text>
+    <text key="jnlp.version.label">版本</text>
+
+    <!-- JMX Export Service -->
+    <text key="JeusServiceJMXExportService_Configuration">设置</text>
+    <text key="JeusServiceJMXExportService_Configuration.adaptor">适配器</text>
+    <text key="JeusServiceJMXExportService_Configuration.mlet">Mlet</text>
+    <text key="jmx.adaptor.title">JMX - 适配器</text>
+    <text key="jmx.adaptor.http.label">HTTP</text>
+    <text key="jmx.adaptor.rmi.label">RMI</text>
+    <text key="jmx.adaptor.jmxmp.label">JMXMP</text>
+    <text key="jmx.adaptor.snmp.label">SNMP</text>
+    <text key="jmx.adaptor.snmp.trap_demon.description">按行、"${ip_address}:${port}"的方式输入trap_demon。</text>
+    <text key="jmx.adaptor.pooling.title">线程池</text>
+    <text key="jmx.mlet.title">JMX - Mlet</text>
+    <text key="JeusServiceSchedulerService_Configuration">设置</text>
+    <text key="sch.configuration.title">Scheduler 服务</text>
+    <text key="sch.thread_pool.title">线程池</text>
+    <text key="sch.job_list.title">作业目录</text>
+
+    <text key="JeusServiceSchedulerJob_Configuration">设置</text>
+    <text key="job.title">Scheduler作业</text>
+
+    <text key="job.class_name.label">Class 名称</text>
+    <text key="job.name.label">名称</text>
+    <text key="job.begin_time.label">开始时间</text>
+    <text key="job.end_time.label">结束时间</text>
+    <text key="job.interval.label">间隔</text>
+    <text key="job.begin_time.label_eng">Begin Time</text>
+    <text key="job.end_time.label_eng">End Time</text>
+    <text key="job.interval.label_eng">Interval</text>
+    <text key="job.count.label">作业数</text>
+    <text key="job.create.label">新 Scheduler作业生成</text>
+    <text key="JeusServiceSchedulerJob_Create">生成</text>
+    <text key="JeusServiceSchedulerJob_Create.general">1.基本设置</text>
+    <text key="JeusServiceSchedulerJob_Create.job_list">2.作业目录</text>
+    <text key="JeusServiceSchedulerJob_Create.thread_pool">3. 线程池</text>
+    <text key="JeusServiceSchedulerJob_Create.create">4. 生成</text>
+    <text key="job.create.title">新 Scheduler作业生成</text>
+    <text key="job.create.general">基本设置</text>
+    <text key="job.create.job_list">作业目录</text>
+    <text key="job.create.thread_pool">线程池</text>
+    <text key="job.create.create">新 Scheduler作业生成 - 生成</text>
+    <text key="job.message.create.success">成功生成{1}。</text>
+
+
+    <text key="J2EEServer_Overview">概要 </text>
+    <text key="container.overview.title">引擎 Container</text>
+    <text key="container.overview.name.label">名称</text>
+    <text key="container.overview.status.label">状态</text>
+    <text key="container.overview.actions.label">命令</text>
+    <text key="container.overview.start.label">开始</text>
+    <text key="container.overview.down.label"> 宕机</text>
+    <text key="container.overview.start_all.label">全部开始</text>
+    <text key="container.overview.down_all.label">全部宕机</text>
+    <text key="container.overview.create.label">生成新引擎 Container</text>
+    <text key="container.overview.duplicate.label">引擎 Container 复制</text>
+    <text key="container.duplicate.success">成功运行了引擎Container的复制操作。\r\n请在复制的引擎 Container与引擎的设置中变更端口编号。\r\n需要变更的端口 编号如下所示。\r\n    1) Web listener的端口\r\n    2) JMS 引擎的端口\r\n    3) JMX 适配器的端口等。</text>
+    <text key="container.create.success">成功生成引擎 Container。</text>
+    <text key="container.create.empty">引擎 Container中必须存在一个以上引擎。请增加引擎。</text>
+    <text key="container.create.engine.empty">{0} 请输入引擎名称。</text>
+    <text key="container.create.engine.servlet.listener">生成servlet 引擎时必须设置listener(id,端口)。</text>
+    <text key="container.create.engine.servlet.listenerId.duplicate">{0}是已设置的ID。\r\n请设置其他ID。</text>
+    <text key="container.create.engine.servlet.listenerPort.duplicate">{0}端口是已设置的值。\r\n请设置其他值。</text>
+    <text key="container.create.engine.jms.service_config">生成JMS 引擎时必须要设置渠道名称与端口。</text>
+    <text key="container.create.engine.jms.channelPort.duplicate">{0}端口是已设置的值。\r\n请设置其他值。</text>
+
+    <text key="J2EEServer_Statistics">统计</text>
+    <text key="server.statistics.title">引擎 Container - 统计</text>
+    <text key="server.statistics.version.label">版本</text>
+    <text key="server.statistics.vendor.label">vendor</text>
+    <text key="server.statistics.jvm.title">JVM</text>
+    <text key="server.statistics.min_heap_size.label">最小heap大小</text>
+    <text key="server.statistics.max_heap_size.label">最大heap大小</text>
+    <text key="server.statistics.current_heap_size.label">现在heap大小</text>
+    <text key="server.statistics.up_time.label">运行时间</text>
+
+    <text key="J2EEServer_Configuration">设置</text>
+    <text key="J2EEServer_ResRefConfiguration">设置</text>
+    <text key="J2EEServer_Configuration.general">基本设置</text>
+    <text key="J2EEServer_Configuration.system_logging">错误日志</text>
+    <text key="J2EEServer_Configuration.user_logging">用户日志</text>
+    <text key="J2EEServer_Configuration.auto_deploy">自动Batch</text>
+    <text key="J2EEServer_Configuration.interop">相互应用</text>
+    <text key="J2EEServer_Configuration.lifecycle">生命周期</text>
+    <text key="J2EEServer_Configuration.res_ref">Resource 参考</text>
+    <text key="J2EEServer_Configuration.miscellaneous">其他</text>
+    <text key="containerc.general.title">引擎 Container - 基本设置</text>
+    <text key="containerc.general.name.label">名称</text>
+    <text key="containerc.lifecycle.create.label">增加</text>
+    <text key="containerc.lifecycle.modify.label">修改</text>
+    <text key="containerc.lifecycle.remove.label">删除</text>
+    <text key="containerc.lifecycle.create.title">增加新method</text>
+    <text key="containerc.lifecycle.modify.title"> 修改method</text>
+    <text key="containerc.lifecycle.signature.label">因素</text>
+    <text key="containerc.lifecycle.signature.usage">以&quot;类型=值&quot;方式 输入因素值。类型分为原始类型和字符串。</text>
+    <text key="containerc.auto_deploy.title">引擎 Container - 自动Batch</text>
+
+    <text key="containerc.interop.title">引擎 Container - 相互应用</text>
+    <text key="containerc.lifecycle.title">引擎 Container - 生命周期</text>
+    <text key="containerc.res_ref.title">引擎 Container - Resource参考</text>
+    <text key="containerc.res_ref.configuration.title">引擎 Container - Resource 参考设置</text>
+    <text key="containerc.res_ref.refName.label">参考名称</text>
+    <text key="containerc.res_ref.exportName.label">Export名称</text>
+    
+    <text key="containerc.miscellaneous.title">引擎 Container - 其他</text>
+    <text key="containerc.system_logging.title">引擎 Container - 错误日志</text>
+    <text key="containerc.user_logging.title">引擎 Container - 用户日志</text>
+
+    <text key="containerc.system_handler.title">日志 Handler</text>
+    <text key="containerc.user_handler.title">日志 Handler</text>
+    <text key="J2EEServer_CreateSystemHandler.create">生成</text>
+    <text key="J2EEServer_CreateUserHandler.create">生成</text>
+    <text key="J2EEServer_EditSystemHandler">设置</text>
+    <text key="J2EEServer_EditUserHandler">设置</text>
+
+    <text key="J2EEServer_Create">生成</text>
+    <text key="J2EEServer_Create.create">生成</text>
+    <text key="container.engine.create.label">生成新引擎</text>
+    <text key="container.create.title">生成新引擎 Container</text>
+    <text key="container.duplicate.title">复制引擎 Container</text>
+    <text key="container.create.container_name.label">名称</text>
+    <text key="container.create.engine.label">引擎生成情况</text>
+    <text key="container.create.engines.title">引擎</text>
+    <text key="container.create.engines.description">对重新生成时包括于引擎 Container的引擎进行设置。要生成的引擎 Container必须设置一个以上引擎。
+    生成servlet 引擎时设置Http listener的id和端口、生成JMS 引擎时必须设置服务器渠道的名称和端口。
+    一个节点中存在一个WS 引擎，若其他Container中设置WS 引擎时，Table中不存在生成选项。</text>
+    <text key="container.create.ejb_name.label">EJB 引擎名称</text>
+    <text key="container.create.servlet_name.label">servlet 引擎名称</text>
+    <text key="container.create.servlet_name.description">对生成的servlet 引擎 名称进行设置。</text>
+    <text key="container.create.servlet.description">对servlet 引擎的生成情况进行设置。</text>
+    <text key="container.create.servlet.listener_id.label">Web listener id</text>
+    <text key="container.create.servlet.listener_id.description">对servlet 引擎的Web listener id进行设置。</text>
+    <text key="container.create.servlet.listener_port.label">Web listener端口</text>
+    <text key="container.create.servlet.listener_port.description">对servlet 引擎的Web listener端口进行设置。</text>
+    <text key="container.create.jms_name.label">JMS 引擎名称</text>
+    <text key="container.create.jms.channel_name.label">JMS 服务器渠道 名称</text>
+    <text key="container.create.jms.channel_port.label">JMS 服务器渠道端口</text>
+    <text key="container.create.ws_name.label">Web 服务器引擎名称</text>
+    <text key="container.create.creation.label">生成</text>
+    <text key="container.create.engine_type.label">引擎种类</text>
+    <text key="container.create.engine_name.label">引擎名称</text>
+    <text key="container.create.ip_or_name.label">listener ID/服务器渠道 名称</text>
+    <text key="container.create.port.label">listener/服务器渠道端口</text>
+    <text key="container.create.ejb_engine.label">EJB 引擎</text>
+    <text key="container.create.servlet_engine.label">servlet 引擎</text>
+    <text key="container.create.jms_engine.label">JMS 引擎</text>
+    <text key="container.create.ws_engine.label">WS 引擎</text>
+
+    <text key="containerc.lifecycle.classname.label">Class 名称</text>
+    <text key="containerc.lifecycle.methods.label">method</text>
+
+    <text key="JeusServiceEngine_Create">生成</text>
+    <text key="engine.create.title">生成新引擎</text>
+    <text key="engine.create.ejb.title">生成新EJB引擎</text>
+    <text key="engine.create.servlet.title">生成新 servlet 引擎</text>
+    <text key="engine.create.jms.title">生成新 JMS 引擎</text>
+    <text key="engine.create.ws.title">生成新 Web 服务器引擎</text>
+    <text key="engine.create.name.label">引擎名称</text>
+    <text key="engine.create.type.label">引擎种类</text>
+    <text key="engine.create.use_existing_conf.label">使用现有设置</text>
+    <text key="engine.create.server.channel.name">服务器渠道名称</text>
+    <text key="engine.create.server.channel.name.description">服务器渠道的 名称。使用于 Connection Factory中指定渠道信息。</text>
+    <text key="engine.create.server.channel.port">服务器渠道端口</text>
+    <text key="engine.create.server.channel.port.description">是相关服务器渠道的服务端口编号。</text>
+    <text key="engine.create.listener.id">listener id</text>
+    <text key="engine.create.listener.id.description">指识别相关listener的唯一名称。该名称从结构文件的其他部分中涉及相关listener时使用。</text>
+    <text key="engine.create.listener.port">listener端口</text>
+    <text key="engine.create.listener.port.description">从客户端接受HTTP请求时使用的端口。根据IANA(www.iana.org)，HTTP端口为80。secure listener指接受HTTPS请求时使用的端口。 </text>
+
+    <text key="JeusServiceEngine_Overview">概要 </text>
+    <text key="engine.overview.title">引擎</text>
+    <text key="engine.overview.name.label">名称</text>
+    <text key="engine.overview.type.label">引擎种类</text>
+    <text key="engine.overview.status.label">状态</text>
+    <text key="engine.overview.actions.label">命令</text>
+    <text key="engine.overview.start.label">开始</text>
+    <text key="engine.overview.down.label">宕机</text>
+    <text key="engine.overview.start_all.label">全部开始</text>
+    <text key="engine.overview.down_all.label">全宕机</text>
+
+    <text key="engine.overview.create_ejb.label">生成新EJB 引擎</text>
+    <text key="engine.overview.create_web.label">生成新servlet 引擎</text>
+    <text key="engine.overview.create_jms.label">生成新JMS 引擎</text>
+    <text key="engine.overview.create_ws.label">生成新Web 服务器引擎</text>
+
+
+    <!-- JeusService EJB Engine Messages -->
+    <!-- short name : ejc -->
+    <text key="JeusServiceEJBEngine_Configuration">设置</text>
+    <text key="JeusServiceEJBEngine_Configuration.general">基本设置</text>
+    <text key="ejc.title">EJB 引擎设置</text>
+
+    <text key="ejc.general.title">EJB 引擎 - 基本设置</text>
+    <text key="ejc.general.name.label">名称</text>
+    <text key="ejc.general.system_log.title">EJB 引擎 - 系统日志</text>
+
+    <text key="JeusServiceEJBEngine_Configuration.logging">错误日志</text>
+    <text key="ejc.logging.title">EJB 引擎 - 错误日志</text>
+    <text key="ejc.handler.title">日志 Handler</text>
+    <text key="JeusServiceEJBEngine_CreateHandler">生成</text>
+    <text key="JeusServiceEJBEngine_CreateHandler.create">生成</text>
+    <text key="JeusServiceEJBEngine_EditHandler">设置</text>
+
+
+    <text key="JeusServiceEJBEngine_Configuration.active_mgmt">激活管理</text>
+    <text key="ejc.active_mgmt.title">EJB 引擎 - 激活管理</text>
+    <text key="ejc.email_notify.title">邮件通知</text>
+    <text key="ejc.active_mgmt.general.label">基本设置</text>
+    <text key="ejc.active_mgmt.email_notify.label">邮件通知</text>
+
+    <text key="JeusServiceEJBEngine_Configuration.invoke_http">HTTP呼叫</text>
+    <text key="ejc.invoke_http.title">EJB 引擎 - HTTP呼叫</text>
+
+    <text key="JeusServiceEJBEngine_Configuration.timer_service">定时器 服务</text>
+    <text key="ejc.timer_service.title">EJB 引擎 - 定时器服务</text>
+    <text key="ejc.timer_service.general.label">基本设置</text>
+    <text key="ejc.timer_service.pooling.label">线程池</text>
+    <text key="ejc.timer_service.durable.label">持续性设置</text>
+
+    <text key="ejc.timer_service.durable_setting.title">持续性设置</text>
+    <text key="JeusServiceEJBEngine_Statistics">统计</text>
+    <text key="JeusServiceEJBEngine_Distribute">分配</text>
+    <text key="ejb.distribute.title">EJBMain.xml 分配</text>
+    <text key="ejb.distribute.targets.label">可用的EJB引擎</text>
+    <text key="ejb.distribute.unavail.label">没有可用的EJB引擎。</text>
+
+
+    <!-- short name ejm -->
+    <text key="ejm.module_list.title">EJB模块</text>
+    <text key="ejm.module_list.application_name.label">应用程序名称</text>
+    <text key="ejm_module_list_name_label">模块名称</text>
+    <text key="ejm.module_list.bean_count.label"> bean数</text>
+    <text key="ejm.module_list.location.label">位置</text>
+    <text key="ejm.statistics.title">EJB 引擎 - 统计</text>
+    <text key="ejm.statistics.application_name.label">应用程序名称</text>
+    <text key="ejm_statistics_module_name_label">模块名称</text>
+    <text key="ejm_statistics_bean_name_label">Bean名称</text>
+    <text key="ejm.statistics.create.label">生成</text>
+    <text key="ejm.statistics.remove.label">删除</text>
+    <text key="ejm.statistics.request.label">请求</text>
+    <text key="ejm.statistics.committed.label">commit</text>
+    <text key="ejm.statistics.rolledback.label">回滚</text>
+    <text key="ejm.statistics.no_modules.label">没有可用的EJB 模块。</text>
+
+    <!-- EJB Module Configuration -->
+    <!-- short name emc -->
+    <text key="EJBModule_Configuration">设置</text>
+    <text key="EJBModule_Configuration.general">基本设置</text>
+    <text key="EJBModule_Configuration.jeus_ejb_dd">jeus-ejb-dd.xml</text>
+    <text key="EJBModule_Configuration.ejb_jar">ejb-jar.xml</text>
+    <text key="emc.general.title">EJB 模块 - 基本设置</text>
+    <text key="emc.jeus_ejb_dd.title">EJB 模块 - JEUS EJB 模块Batch技术人员</text>
+    <text key="emc.ejb_jar.title">EJB 模块 - 标准EJB 模块 Batch 技术人员</text>
+    <text key="emc.general.application_name.label">应用程序名称</text>
+    <text key="emc.general.module_name.label">模块名称</text>
+    <text key="emc.general.bean_list.title">Bean目录</text>
+    <text key="EJBModule_Control">Batch</text>
+    <text key="EJBModule_Control.start">开始</text>
+    <text key="emc.start.title">EJB 模块 - 开始</text>
+    <text key="emc.stop.title">EJB 模块 - 停止</text>
+    <text key="emc.undeploy.title">EJB 模块 - 清除</text>
+
+    <text key="EJBModule_Control.stop">停止</text>
+    <text key="EJBModule_Control.undeploy">清除</text>
+
+    <text key="EJBModule_Statistics">统计</text>
+
+    <text key="ejb_name_label">名称</text>
+    <text key="ejb.bean_type.label">Bean种类</text>
+    <text key="ejb.export_name.label">Export名称</text>
+    <text key="ejb.local_export_name.label">地区Export名称</text>
+
+    <!-- EJB Statistic Page  Messages -->
+    <text key="EJB_Configuration">设置</text>
+    <text key="EJB_Statistics">统计</text>
+
+    <text key="EJB_Configuration.general">基本</text>
+    <text key="EJB_Configuration.jeus_ejb_dd">Batch技术人员</text>
+
+
+    <text key="ejb.configuration.general.title">EJB模块 - 基本</text>
+    <text key="ejb.configuration.general.ejb_name.label">EJB 名称</text>
+    <text key="ejb.configuration.general.module_name.label">模块名称</text>
+    <text key="ejb.configuration.general.bean_type.label">Bean种类</text>
+    <text key="ejb.configuration.general.export_name.label">输出名称</text>
+    <text key="ejb.configuration.general.local_export_name.label">本地输出 名称</text>
+    <text key="ejb.configuration.entity_bean.table_name.label">Table名称</text>
+    <text key="ejb.configuration.entity_bean.db_vendor.label">数据库vendor</text>
+    <text key="ejb.configuration.entity_bean.data_source_name.label">数据源代码名称</text>
+    <text key="ejb.configuration.mdb.connection_factory_name.label">Connection Factory 名称</text>
+    <text key="ejb.configuration.mdb.destination.label">目的文件</text>
+    <text key="ejb.configuration.jeus_ejb_dd.title">JEUS EJB 模块 Batch 技术人员</text>
+
+
+    <text key="ejb.statistics.title">统计</text>
+    <text key="ejb.statistics.create_count.label">生成</text>
+    <text key="ejb.statistics.remove_count.label">删除</text>
+    <text key="ejb.statistics.request_count.label">请求</text>
+    <text key="ejb.statistics.committed_count.label"> commit </text>
+    <text key="ejb.statistics.rolledback_count.label">回滚</text>
+    <text key="ejb.statistics.timeout_rolledback_count.label">timeout 回滚</text>
+	<text key="ejb.statistics.webservice.label">Web服务</text>
+	<text key="ejb.statistics.webservices.request.label">请求数</text>
+	<text key="ejb.statistics.webservices.failed_request.label">失败请求数</text>
+	<text key="ejb.statistics.webservices.successful_request.label">成功请求数</text>
+	<text key="ejb.statistics.webservices.service_time.label">服务时间</text>
+	<text key="ejb.statistics.webservices.max_response_time.label">最多应答时间</text>
+	<text key="ejb.statistics.webservices.last_response_time.label">最近应答时间</text>
+
+
+    <!--stateless session bean -->
+    <text key="ejb.statistics.method_ready_count.label">方法准备数</text>
+    <text key="ejb.statistics.passive_count.label">Passive数</text>
+    <text key="ejb.statistics.total_ejb_bean_count.label">总EJB bean数</text>
+    <text key="ejb.statistics.active_ejb_bean_count.label">活动中EJB bean数</text>
+    <text key="ejb.statistics.total_thread_count.label">总线程数</text>
+    <text key="ejb.statistics.active_thread_count.label">激活中的线程数</text>
+    <text key="ejb.statistics.total_ejb_object_count.label">总EJB 数量</text>
+    <text key="ejb.statistics.active_ejb_object_count.label">活动中EJB 数量</text>
+    <text key="ejb.statistics.auto_removed_ejb_object_count.label">自动删除的EJB数量</text>
+    <text key="ejb.statistics.file_db_size_count.label">文件 DB 大小数</text>
+    <text key="ejb.statistics.pooled_count.label"> pooling数量</text>
+    <text key="ejb.statistics.ready_count.label">准备数量</text>
+    <text key="ejb.statistics.message_count.label">message数</text>
+
+    <!-- Web Engine Configuration -->
+    <!-- short name wec -->
+    <text key="JeusServiceWebEngine.navigation">servlet 引擎</text>
+    <text key="JeusServiceWebEngine_Configuration">设置</text>
+    <text key="JeusServiceWebEngine_Configuration.general">基本设置</text>
+
+    <text key="wec.general.title">servlet 引擎 - 基本设置</text>
+    <text key="wec.general.name.label">名称</text>
+
+    <text key="JeusServiceWebEngine_Configuration.monitoring">监控</text>
+
+    <text key="JeusServiceWebEngine_Configuration.startup_shutdown">Life Cycle</text>
+
+    <text key="JeusServiceWebEngine_Configuration.error_log">错误日志</text>
+    <text key="JeusServiceWebEngine_Configuration.user_log">用户日志</text>
+    <text key="JeusServiceWebEngine_Configuration.access_log">存取日志</text>
+
+    <text key="wec.error_log.title">servlet 引擎 - 错误日志</text>
+    <text key="wec.access_log.title">servlet 引擎 - 存取日志</text>
+    <text key="wec.user_log.title">servlet 引擎 - 用户日志</text>
+    <text key="wec.handler.title">日志Handler</text>
+    <text key="JeusServiceWebEngine_CreateErrorLogHandler">生成</text>
+    <text key="JeusServiceWebEngine_CreateErrorLogHandler.create">生成</text>
+    <text key="JeusServiceWebEngine_EditErrorLogHandler">设置</text>
+    <text key="JeusServiceWebEngine_CreateAccessLogHandler">生成</text>
+    <text key="JeusServiceWebEngine_CreateAccessLogHandler.create">生成</text>
+    <text key="JeusServiceWebEngine_EditAccessLogHandler">设置</text>
+    <text key="JeusServiceWebEngine_CreateUserLogHandler">生成</text>
+    <text key="JeusServiceWebEngine_CreateUserLogHandler.create">生成</text>
+    <text key="JeusServiceWebEngine_EditUserLogHandler">设置</text>
+
+    <text key="wec.monitoring.title">servlet引擎 - 监控</text>
+
+    <text key="wec.startup_shutdown.title">WEB Engine - Life Cycle</text>
+
+    <text key="JeusServiceWebEngine_Configuration.session_cluster">会话 Cluster</text>
+    <text key="wec.session_cluster.title">servlet 引擎 - 会话 Cluster</text>
+    <text key="wec.session_cluster.general.label">基本设置</text>
+    <text key="wec.session_cluster.session_server.label">会话服务器</text>
+    <text key="wec.session_cluster.session_routing.label">会话安排</text>
+
+    <text key="JeusServiceWebEngine_ContextGroup">context 群组</text>
+    <text key="wec.context_group.title">servlet 引擎 - context 群组</text>
+    <text key="wec.context_group.group_name_column.label">名称</text>
+    <text key="wec.context_group.group_docbase_column.label">文本基本路径</text>
+    <text key="wec.context_group.actions_column.label">命令</text>
+
+    <text key="JeusServiceWebEngine_Session">会话</text>
+    <text key="JeusServiceWebEngine_Session.general">基本设置</text>
+    <text key="JeusServiceWebEngine_Session.p2p">分布式会话服务器</text>
+    <text key="JeusServiceWebEngine_Session.central">中央集中式会话 服务器</text>
+
+    <text key="wec.session.general.title">servlet 引擎会话 - 基本设置</text>
+
+    <text key="wec.session.p2p.title">servlet引擎会话 - 分布式会话服务器</text>
+    <text key="wec.session.p2p.general.label">基本设置</text>
+    <text key="wec.session.p2p.thread_pool.label">线程池</text>
+    <text key="wec.session.p2p.file_db.label">文件数据库</text>
+    <text key="wec.session.p2p.backup.label">备份</text>
+
+    <text key="wec.session.central.title">servlet引擎会话 - 中央集中式会话 服务器</text>
+
+    <text key="JeusServiceWebEngine_Statistics">统计</text>
+    <text key="wes.title">servlet引擎 - 统计</text>
+    <text key="wes.total_connection.label">总连接</text>
+    <text key="wes.used_connection.label">使用中连接</text>
+
+    <text key="JeusServiceWebEngine_Distribute">分配</text>
+    <text key="web.distribute.title">WEBMain.xml 分配</text>
+    <text key="web.distribute.targets.label">可用的servlet 引擎</text>
+    <text key="web.distribute.unavail.label">没有可用的servlet 引擎。</text>
+    <text key="web.engine.create.listener_id.duplicate">listener id {0}已被设置。\r\n请设置其他值。</text>
+    <text key="web.engine.create.listener_port.duplicate">{0}端口已被设置。\r\n请设置其他值。</text>
+
+    <text key="JeusServiceVirtualHost_Configuration">设置</text>
+    <text key="JeusServiceVirtualHost_Configuration.general">基本设置</text>
+    <text key="JeusServiceVirtualHost_Configuration.context">context</text>
+
+    <text key="vh.general.title">虚拟主机 - 基本设置</text>
+    <text key="vh.general.name.label">名称</text>
+    <text key="vh.general.host_list.label">Host目录</text>
+    <text key="vh.host_list.required">至少需要一个以上主机名称。</text>
+
+    <text key="vh.context.title">虚拟主机- context</text>
+    <text key="vh.context.name.label">名称</text>
+    <text key="vh.context.path.label">路径</text>
+
+    <text key="JeusServiceVirtualHost_Create">生成</text>
+    <text key="JeusServiceVirtualHost_Create.general">1. 基本设置</text>
+    <text key="JeusServiceVirtualHost_Create.create">2. 生成</text>
+    <text key="vhc.general.title">生成新虚拟主机 - 基本设置</text>
+    <text key="vhc.context.title">生成新虚拟主机 - context</text>
+    <text key="vhc.create.title">生成新虚拟主机 - 生成</text>
+
+    <text key="JeusServiceContextGroup_Configuration">设置</text>
+    <text key="JeusServiceContextGroup_Configuration.general">基本设置</text>
+    <text key="JeusServiceContextGroup_Configuration.virtual_host">虚拟主机</text>
+
+    <text key="JeusServiceContextGroup_Configuration.context">context</text>
+    <text key="cgc.context.title">context 群组 - context</text>
+    <text key="cgc.context.name.label">名称</text>
+    <text key="cgc.context.path.label">路径</text>
+
+    <text key="cgc.virtual_host.title">context 群组 - 虚拟主机</text>
+    <text key="cgc.virtual_host.name.label">名称</text>
+    <text key="cgc.virtual_host.create.label">生成新虚拟主机</text>
+
+    <text key="cgc.handler.title">日志 Handler</text>
+    <text key="JeusServiceContextGroup_Configuration.access_log">存取日志</text>
+    <text key="cgc.access_log.title">context 群组 - 存取日志</text>
+    <text key="JeusServiceContextGroup_Configuration.user_log">用户日志</text>
+    <text key="cgc.user_log.title">context 群组 - 用户日志</text>
+
+    <text key="JeusServiceContextGroup_EditAccessLogHandler">设置</text>
+    <text key="JeusServiceContextGroup_CreateAccessLogHandler.create">生成</text>
+    <text key="JeusServiceContextGroup_EditUserLogHandler">设置</text>
+    <text key="JeusServiceContextGroup_CreateUserLogHandler.create">生成</text>
+
+    <text key="JeusServiceContextGroup_Configuration.encoding">编码</text>
+    <text key="cgc.encoding.title">context 群组 - 编码</text>
+    <text key="cgc.encoding.request.title">请求编码</text>
+    <text key="cgc.encoding.response.title">应答编码</text>
+    <text key="cgc.encoding.postdata.title">POST 数据编码</text>
+
+    <text key="JeusServiceContextGroup_WebListener">Web listener</text>
+    <text key="cgc.webserver_connection.create.label">生成新 Web listener </text>
+
+    <text key="JeusServiceContextGroup_Statistics">统计</text>
+    <text key="JeusServiceContextGroup_Statistics.session_container">会话 Container</text>
+    <text key="JeusServiceContextGroup_Statistics.webmodule">Web 模块</text>
+    <text key="cgs.session_container.title">context 群组 - 会话 Container 统计</text>
+    <text key="cgs.webmodule.title">context 群组 - Web 模块统计</text>
+    <text key="cgs.session_container.local_session_count.label">地区会话数</text>
+
+    <text key="cgs_webmodule_name_label">Web 模块名称</text>
+    <text key="cgs.request_count.label">请求</text>
+    <text key="cgs.processing_time.label">处理时间</text>
+    <text key="cgs.all_session_size.label">总会话数</text>
+    <text key="cgs.active_session_size.label">激活中的会话数</text>
+    <text key="cgs.passivate_session_size.label">非激活中的会话数</text>
+    <text key="cgs.local_session_size.label">本地会话数</text>
+    <text key="cgs_webmodule_actions_label">命令</text>
+    <text key="cgs.refresh.label">重新修改</text>
+
+
+    <text key="JeusServiceContextGroup_Configuration.session_config">会话</text>
+    <text key="cgc.session_config.title">context 群组 - 会话</text>
+
+    <text key="JeusServiceContextGroup_Configuration.jsp_engine">JSP 引擎</text>
+    <text key="cgc.jsp_engine.title">context 群组 - JSP引擎</text>
+    <text key="JeusServiceContextGroup_Configuration.response_header">应答Header</text>
+    <text key="cgc.response_header.title">context 群组 - 应答Header</text>
+    <text key="cgc.response_header.cookie.title">会话idea cookie</text>
+
+    <text key="cgc.response_header.custom_header.title">用户header field</text>
+    <text key="cgc.response_header.custom_header.label">用户header Key/值</text>
+
+    <text key="JeusServiceContextGroup_Create">生成context 群组</text>
+    <text key="JeusServiceContextGroup_Create.general">1. 基本设置</text>
+    <text key="JeusServiceContextGroup_Create.create">2. 生成</text>
+
+    <text key="JeusServiceWebListener_Configuration">设置</text>
+    <text key="JeusServiceWebListener_Configuration.general">基本设置</text>
+    <text key="wlc.general.title2">Web listener - 基本设置</text>
+    <text key="wlc.general.listener_id.label">id</text>
+
+    <text key="JeusServiceWebListener_Configuration.thread_pool">线程池</text>
+    <text key="wlc.thread_pool.title2">Web listener - 线程池</text>
+    <text key="wlc.thread_pool.thread_state_notify.title">线程状态通知</text>
+
+    <text key="wlc.miscellaneous.title2">Web listener - 其他</text>
+
+    <text key="JeusServiceWebListener_Create.type">1. listener 种类</text>
+    <text key="JeusServiceWebListener_Create.general">2. 基本设置</text>
+    <text key="JeusServiceWebListener_Create.thread_pool">3. 线程池</text>
+    <text key="JeusServiceWebListener_Create.miscellaneous">4. 其他</text>
+    <text key="JeusServiceWebListener_Create.create">5. 生成</text>
+    <text key="wlc.type.title">Web listener 生成 - listener 种类</text>
+    <text key="wlc.general.title">Web listener 生成 - 基本设置</text>
+    <text key="wlc.thread_pool.title">Web listener 生成 - 线程池</text>
+    <text key="wlc.miscellaneous.title">Web listener 生成 - 其他</text>
+    <text key="wlc.create.title">生成新 Web listener - 生成</text>
+    <text key="wlc.context_group.create.label">生成新 context 群组</text>
+
+    <text key="JeusServiceWebListener_Configuration.backup">备份</text>
+    <text key="wlc.backup.title2">Web listener - WebToB 备份</text>
+    <text key="wlc.backup.create_backup.label">生成新WebToB备份</text>
+    <text key="JeusServiceWebListener_Configuration.miscellaneous">其他</text>
+    <text key="wlc.misc.webtob_address.label">WebToB 地址</text>
+    <text key="wlc.general.port.label">端口</text>
+    <text key="wlc.misc.hth_count.label">HTH 进程</text>
+
+    <text key="wlc.success">Web listener &quot;{0}&quot;()成功增加。</text>
+
+    <text key="JeusServiceWebListener_Statistics">统计</text>
+    <text key="wls.title">Web listener - 统计</text>
+    <text key="wls_name_label">线程池名称</text>
+    <text key="wls.all_thread_count.label">总线程</text>
+    <text key="wls.active_thread_count.label">激活中的线程</text>
+    <text key="wls.block_thread_count.label">闭塞的线程</text>
+    <text key="wls.max_thread_count.label">最大线程</text>
+    <text key="wls.wait_queue_count.label">等待中的queue</text>
+
+    <text key="JeusServiceThreadPool.navigation">线程池{0}</text>
+    <text key="JeusServiceThreadPool_Statistics">统计</text>
+    <text key="tps.title">线程池 - 统计</text>
+    <text key="tps.active.label">激活中的线程</text>
+    <text key="tps.idle.label">等待中线程</text>
+    <text key="tps.blocked.label">闭塞的线程</text>
+    <text key="tps.reconnecting.label">重新连接中的线程</text>
+
+    <text key="tps.id.label">线程ID</text>
+    <text key="tps.status.label">状态</text>
+    <text key="tps.elapsed_time.label">经过时间（毫秒）</text>
+    <text key="tps.total_request_count.label">总请求数</text>
+    <text key="tps.total_average_processing_time.label">平均处理时间（毫秒）</text>
+    <text key="tps.running_application.label">应用程序</text>
+
+    <text key="JeusServiceWebtobBackup_Configuration">设置</text>
+    <text key="JeusServiceWebtobBackup_Configuration.navigation">Webtob 备份</text>
+    <text key="JeusServiceWebtobBackup_Configuration.general">基本设置</text>
+    <text key="JeusServiceWebtobBackup_Configuration.thread_pool">线程池</text>
+    <text key="JeusServiceWebtobBackup_Configuration.miscellaneous">其他</text>
+    <text key="JeusServiceWebtobBackup_Create">新 Webtob 备份生成</text>
+    <text key="JeusServiceWebtobBackup_Create.general">1. 基本设置</text>
+    <text key="JeusServiceWebtobBackup_Create.general.title">生成新Webtob 备份 - 基本设置</text>
+    <text key="JeusServiceWebtobBackup_Create.thread_pool.title">生成新Webtob 备份 - 线程池</text>
+    <text key="JeusServiceWebtobBackup_Create.thread_pool">2. 线程池</text>
+    <text key="JeusServiceWebtobBackup_Create.miscellaneous.title">生成新Webtob 备份 - 其他</text>
+    <text key="JeusServiceWebtobBackup_Create.miscellaneous">3. 其他</text>
+    <text key="JeusServiceWebtobBackup_Create.create.title">新Webtob备份生成 - 生成</text>
+    <text key="JeusServiceWebtobBackup_Create.create">4. 生成</text>
+    <text key="wbc.success">新 Webtob 备份已成功增加。</text>
+
+    <text key="cgc.general.title2">context群组 - 基本设置</text>
+    <text key="cgc.general.title">生成context 群组 - 基本设置</text>
+    <text key="cgc.general.group_name.label">名称</text>
+
+    <text key="cgc.webserver_connection.title2">context 群组 - Web listener</text>
+    <text key="cgc.webserver_connection.title">生成新context群组 - Web listener</text>
+    <text key="cgc.webserver_connection.id_column.label">id</text>
+    <text key="cgc.webserver_connection.type_column.label">种类</text>
+    <text key="cgc.webserver_connection.port_column.label">端口</text>
+    <text key="cgc.webserver_connection.min_column.label">最小线程</text>
+    <text key="cgc.webserver_connection.actions_column.label">命令</text>
+
+    <text key="cgc.success">context 群组 &quot;{0}&quot;已成功增加。</text>
+    <text key="cgc.create.title">生成新context群组 - 生成</text>
+
+    <text key="JeusServiceWSEngine_Overview">概要 </text>
+    <text key="JeusServiceWSEngine_Create.create">生成</text>
+    <text key="JeusServiceWSEngine_Configuration">设置</text>
+    <text key="JeusServiceWSEngine_Configuration.node">节点</text>
+    <text key="JeusServiceWSEngine_Configuration.vhost">虚拟主机</text>
+    <text key="JeusServiceWSEngine_Configuration.server_group">服务器 群组</text>
+    <text key="JeusServiceWSEngine_Configuration.server">服务器</text>
+    <text key="JeusServiceWSEngine_Configuration.service">服务</text>
+    <text key="JeusServiceWSEngine_Configuration.access">接近</text>
+    <text key="JeusServiceWSEngine_Configuration.authent">认证</text>
+    <text key="JeusServiceWSEngine_Configuration.directory">目录</text>
+    <text key="JeusServiceWSEngine_Configuration.uri">URI</text>
+    <text key="JeusServiceWSEngine_Configuration.ext">扩展</text>
+    <text key="JeusServiceWSEngine_Configuration.alias">别名</text>
+    <text key="JeusServiceWSEngine_Configuration.dirindex">目录结构</text>
+    <text key="JeusServiceWSEngine_Configuration.ssl">SSL</text>
+    <text key="JeusServiceWSEngine_Configuration.errdoc">错误文本</text>
+    <text key="JeusServiceWSEngine_Configuration.expires">到期</text>
+    <text key="JeusServiceWSEngine_Configuration.tcpgw">TCPGW</text>
+    <text key="JeusServiceWSEngine_Configuration.logging">日志</text>
+    <text key="JeusServiceWSEngine_Configuration.nliveinq"></text>
+    <text key="JeusServiceWSEngine_Statistics">统计</text>
+
+    <text key="ws.overview.title">Web 服务器引擎</text>
+    <text key="ws.overview.target_node.label">目前节点名称</text>
+    <text key="ws.overview.target_vhost.label">目前节点名称</text>
+    <text key="ws.overview.target_node.description">当前作业中的节点名称</text>
+    <text key="ws.overview.target_vhost.description">当前作业中的节点名称</text>
+    <text key="ws.overview.name.label">名称</text>
+    <text key="ws.overview.config_file.label">设置文件</text>
+    <text key="ws.overview.address.label">IP 地址</text>
+    <text key="ws.overview.control_port.label">端口</text>
+    <text key="ws.overview.status.label">状态</text>
+    <text key="ws.overview.actions.label">命令</text>
+    <text key="ws.overview.statistics.label">统计</text>
+    <text key="ws.overview.start.label">开始</text>
+    <text key="ws.overview.down.label"> 宕机</text>
+    <text key="ws.overview.compile.label">编译</text>
+    <text key="ws.overview.start_all.label">全部开始</text>
+    <text key="ws.overview.down_all.label">全部宕机</text>
+    <text key="ws.overview.duplicate.label">Webtob 复制</text>
+    <text key="ws.overview.create.label">生成Web 服务器引擎</text>
+	<text key="ws.overview.config.title">Web 服务器引擎设置</text>
+    <text key="ws.overview.start.success.message">Web服务器的引擎服务器已成功启动。</text>
+    <text key="ws.overview.start.failure.message">Web服务器的引擎服务器启动失败。</text>
+    <text key="ws.overview.down.success.message">Web 引擎服务器已成功结束。</text>
+    <text key="ws.overview.down.failure.message">Web服务器引擎服务器的结束操作失败。</text>
+    <text key="ws.overview.compile.success.message">Web服务器引擎设置已编译成功。</text>
+    <text key="ws.overview.compile.failure.message">Web服务器引擎设置编译失败。</text>
+
+    <text key="ws.config.node.name.label">节点名称</text>
+    <text key="ws.config.node.webtobdir.label">WebToB Home 目录</text>
+    <text key="ws.config.node.shmkey.label">共享memory key</text>
+    <text key="ws.config.node.docroot.label">服务文本root</text>
+    <text key="ws.configuration.no.instance.message">
+    选择的Web 服务器引擎相关设置文件不存在。\r\n
+    请在相关WebToB中重新生成设置文件或，注册已存在的设置文件。\r\n
+    </text>
+    <text key="ws.create.title">生成新 Web服务器引擎</text>
+
+    <text key="ws.node.title">Web 服务器引擎 - 节点</text>
+    <text key="ws.node.name.label">名称</text>
+    <text key="ws.node.webtob_dir.label">WebToB 目录</text>
+    <text key="ws.node.shmkey.label">共享memory Key</text>
+    <text key="ws.node.docroot.label">文件基本路径</text>
+    <text key="ws.node.port.label">端口</text>
+    <text key="ws.node.index_name.label">index 名称</text>
+    <text key="ws.node.logging.label">日志</text>
+    <text key="ws.node.error_log.label">错误日志</text>
+    <text key="ws.node.general.label">基本</text>
+    <text key="ws.node.info.label">节点信息</text>
+    <text key="ws.node.supplement.label">附加功能</text>
+    <text key="ws.node.connection.label">连接</text>
+    <text key="ws.node.cache.label">高速缓冲器</text>
+    <text key="ws.node.log.label">日志</text>
+    <text key="ws.node.http.label">HTTP header </text>
+    <text key="ws.node.user.label">用户设置</text>
+    <text key="ws.node.ssl.label">SSL</text>
+    <text key="ws.node.directory.label">目录</text>
+
+    <text key="ws.config.vhost.name.label">虚拟主机节点名称</text>
+    <text key="ws.config.vhost.node_name.label">节点名称</text>
+    <text key="ws.config.vhost.docroot.label">服务文本Root</text>
+
+    <text key="ws.vhost.title">Web 服务器引擎 - 虚拟主机</text>
+    <text key="ws.vhost.name.label">名称</text>
+    <text key="ws.vhost.node_name.label">节点名称</text>
+    <text key="ws.vhost.docroot.label">文件基本路径</text>
+    <text key="ws.vhost.port.label">端口</text>
+    <text key="ws.vhost.index_name.label">index 名称</text>
+    <text key="ws.vhost.logging.label">日志</text>
+    <text key="ws.vhost.error_log.label">错误日志</text>
+    <text key="ws.vhost.general.label">基本</text>
+    <text key="ws.vhost.info.label">节点 信息</text>
+    <text key="ws.vhost.supplement.label">附加功能</text>
+    <text key="ws.vhost.connection.label">连接</text>
+    <text key="ws.vhost.log.label">日志</text>
+    <text key="ws.vhost.user.label">用户设置</text>
+    <text key="ws.vhost.ssl.label">SSL</text>
+    <text key="ws.vhost.directory.label">目录</text>
+
+    <text key="ws.server_group.title">Web 服务器引擎 - 服务器 群组</text>
+    <text key="ws.server_group.name.label">名称</text>
+    <text key="ws.server_group.svr_type.label">服务器种类</text>
+
+    <text key="ws.server.title">Web 服务器引擎 - 服务器</text>
+    <text key="ws.server.name.label">名称</text>
+    <text key="ws.server.svg_name.label">服务器群组名称</text>
+    <text key="ws.server.min_proc.label">最小进程</text>
+    <text key="ws.server.max_proc.label">最大进程</text>
+
+    <text key="ws.service.title">Web 服务器引擎 - 服务</text>
+    <text key="ws.service.name.label">名称</text>
+    <text key="ws.service.priority.label">最优顺序</text>
+    <text key="ws.service.svc_time.label">服务处理限定时间</text>
+
+    <text key="ws.directory.title">Web 服务器引擎 - 目录</text>
+    <text key="ws.directory.name.label">名称</text>
+    <text key="ws.directory.path.label">路径</text>
+
+    <text key="ws.uri.title">Web 服务器引擎 - URI</text>
+    <text key="ws.uri.name.label">名称</text>
+    <text key="ws.uri.def.label">定义</text>
+    <text key="ws.uri.svr_type.label">服务器种类</text>
+
+    <text key="ws.alias.title">Web服务器引擎- 别名</text>
+    <text key="ws.alias.name.label">名称</text>
+    <text key="ws.alias.def.label">URI定义</text>
+    <text key="ws.alias.real_path.label">实际路径</text>
+    <text key="ws.alias.svr_type.label">服务器种类</text>
+
+    <text key="ws.dirindex.title">Web 服务器引擎 - 目录索引</text>
+    <text key="ws.dirindex.name.label">名称</text>
+    <text key="ws.dirindex.option.label">选择</text>
+
+    <text key="ws.ssl.title">Web 服务器引擎 - SSL</text>
+    <text key="ws.ssl.name.label">名称</text>
+    <text key="ws.ssl.certificate_file.label">认证文件</text>
+    <text key="ws.ssl.certificate_key_file.label">认证Key文件</text>
+
+	<text key="ws.authent.title">Web 服务器引擎 - 认证</text>
+    <text key="ws.authent.name.label">名称</text>
+    <text key="ws.authent.type.label">认证控制方式</text>
+    <text key="ws.authent.user_file.label">用户文件</text>
+    <text key="ws.authent.group_file.label">群组文件</text>
+
+    <text key="ws.access.title">Web 服务器引擎 - 接近</text>
+    <text key="ws.access.name.label">名称</text>
+    <text key="ws.access.order.label">顺序</text>
+
+    <text key="ws.errdoc.title">Web 服务器引擎 - 错误文本</text>
+    <text key="ws.errdoc.name.label">名称</text>
+    <text key="ws.errdoc.status.label">状态</text>
+    <text key="ws.errdoc.url.label">URL</text>
+
+    <text key="ws.expires.title">Web 服务器引擎 - 到期</text>
+    <text key="ws.expires.name.label">名称</text>
+    <text key="ws.expires.mimetype.label">MIME类型</text>
+    <text key="ws.expires.url.label">URL</text>
+    <text key="ws.expires.time.label">到期时间</text>
+
+    <text key="ws.tcpgw.title">Web 服务器引擎 - TCPGW</text>
+	<text key="ws.tcpgw.name.label">名称</text>
+
+<!--
+    <text key="webtob.expires.mimetype.label">MIME类型</text>
+    <text key="webtob.expires.url.label">URL</text>
+    <text key="webtob.expires.time.label">到期时间</text>
+-->
+	<text key="ws.ext.title">Web 服务器引擎 - 扩展</text>
+    <text key="ws.ext.name.label">名称</text>
+    <text key="ws.ext.mime_type.label">MIME类型</text>
+    <text key="ws.ext.svr_type.label">服务器种类</text>
+
+    <text key="ws.logging.title">Web 服务器引擎 - 日志</text>
+    <text key="ws.logging.name.label">名称</text>
+    <text key="ws.logging.file_name.label">文件名称</text>
+    <text key="ws.logging.format.label">格式</text>
+    <text key="ws.logging.valid_days.label">有效日期</text>
+    <text key="ws.logging.option.label">选择</text>
+
+    <!--
+    <text key="ws.node.title">Web 服务器引擎 - 节点</text>
+    <text key="ws.node.name.label">名称</text>
+    <text key="ws.node.webtob_dir.label">WebToB 目录</text>
+    <text key="ws.node.shmkey.label">共享memory Key</text>
+    <text key="ws.node.docroot.label">文件基本路径</text>
+    <text key="ws.node.port.label">端口</text>
+    <text key="ws.node.index_name.label">index 名称</text>
+    <text key="ws.node.logging.label">日志</text>
+    <text key="ws.node.error_log.label">错误日志</text>
+    <text key="ws.node.general.label">基本</text>
+    <text key="ws.node.info.label">节点信息</text>
+    <text key="ws.node.supplement.label">附加功能</text>
+    <text key="ws.node.connection.label">连接</text>
+    <text key="ws.node.cache.label">高速缓冲器</text>
+    <text key="ws.node.log.label">日志</text>
+    <text key="ws.node.http.label">HTTP header </text>
+    <text key="ws.node.user.label">用户设置</text>
+    <text key="ws.node.ssl.label">SSL</text>
+    <text key="ws.node.directory.label">目录</text>
+
+
+    <text key="ws.server_group.title">Web 服务器引擎 - 服务器群组</text>
+    <text key="ws.server_group.name.label">名称</text>
+    <text key="ws.server_group.svr_type.label">服务器种类</text>
+
+    <text key="ws.server.title">Web 服务器引擎 - 服务器</text>
+    <text key="ws.server.name.label">名称</text>
+    <text key="ws.server.svg_name.label">服务器群组名称</text>
+    <text key="ws.server.min_proc.label">最小进程</text>
+
+    <text key="ws.uri.title">Web 服务器引擎 - URI</text>
+    <text key="ws.uri.name.label">名称</text>
+    <text key="ws.uri.def.label">定义</text>
+    <text key="ws.uri.svr_type.label">服务器种类</text>
+
+    <text key="ws.alias.title">Web 服务器引擎- 别名</text>
+    <text key="ws.alias.name.label">名称</text>
+    <text key="ws.alias.def.label">URI 定义</text>
+    <text key="ws.alias.real_path.label">实际路径</text>
+    <text key="ws.alias.svr_type.label">服务器种类</text>
+
+    <text key="ws.ext.title">Web 服务器引擎 - 扩展</text>
+    <text key="ws.ext.name.label">名称</text>
+	<text key="ws.ext.mime_type.label">MIME类型</text>
+    <text key="ws.ext.svr_type.label">服务器种类</text>
+
+    <text key="ws.logging.title">Web 服务器引擎 - 日志</text>
+    <text key="ws.logging.name.label">名称</text>
+    <text key="ws.logging.file_name.label">文件名称</text>
+    <text key="ws.logging.format.label">格式</text>
+    <text key="ws.logging.valid_days.label">有效日期</text>
+    <text key="ws.logging.option.label">选择</text>
+-->
+
+    <text key="JeusServiceWSEngine_Statistics">统计</text>
+    <text key="ws.statistics.title">Web 服务器引擎 - 统计</text>
+    <text key="ws.statistics.svr_name.label">服务器名称</text>
+    <text key="ws.statistics.status.label">状态</text>
+    <text key="ws.statistics.min_proc.label">最小进程</text>
+    <text key="ws.statistics.max_proc.label">最大进程</text>
+    <text key="ws.statistics.count.label">执行数</text>
+    <text key="ws.statistics.avg.label">平均运行时间（毫秒）</text>
+
+
+
+    <text key="WebModule_Configuration">设置</text>
+    <text key="WebModule_Configuration.jeus_web_dd">jeus-web-dd.xml</text>
+    <text key="WebModule_Configuration.web">web.xml</text>
+
+    <text key="wmc.jeus_web_dd.title">Web模块-JEUS Web模块Batch 技术人员</text>
+    <text key="wmc.web.title">Web 模块 - 标准Web 模块 Batch 技术人员</text>
+    <text key="WebModule_Control">Batch</text>
+    <text key="WebModule_Control.start">开始</text>
+    <text key="WebModule_Control.stop">停止</text>
+    <text key="WebModule_Control.undeploy">清除</text>
+    <text key="wmc.start.title">Web 模块 - 开始</text>
+    <text key="wmc.stop.title">Web 模块 - 停止</text>
+    <text key="wmc.undeploy.title">Web 模块 - 清除</text>
+    <text key="WebModule_Statistics">统计</text>
+    <text key="WebModule_Statistics.general">基本</text>
+    <text key="WebModule_Statistics.servlets">servlet</text>
+
+    <text key="wms.webmodule.title">Web 模块</text>
+    <text key="wms.webmodule.context_group.label">context 群组</text>
+    <text key="wms.webmodule.request_count.label">请求数</text>
+    <text key="wms.webmodule.processing_time.label">处理时间（毫秒）</text>
+    <text key="wms.webmodule.all_session_size.label">总会话数</text>
+    <text key="wms.webmodule.active_session_size.label">激活中的会话数</text>
+    <text key="wms.webmodule.passivate_session_size.label">非激活中的会话数</text>
+    <text key="wms.webmodule.local_session_size.label">地区会话数</text>
+    <text key="wms.webmodule.refresh.label">重新修改</text>
+
+
+    <text key="wms.servlet.title">servlet</text>
+
+    <text key="wms.general.title">Web 模块 - 统计</text>
+    <text key="wms.servlets.title">Web 模块- servlet 统计</text>
+    <text key="wms.servlets.general.label">普通</text>
+    <text key="wms.servlets.webservice.label">Web服务</text>
+    <text key="wms_servlet_name_label">名称</text>
+    <text key="wms.servlet_class.label">Class</text>
+    <text key="wms.webservice.label">Web 服务</text>
+    <text key="wms.jsp_file_name.label">JSP 文件名称</text>
+    <text key="wms.state.label">状态</text>
+    <text key="wms.total_requests.label">总请求数</text>
+    <text key="wm_statistics_actions_label">命令</text>
+    <text key="wms.suspend.label">停止</text>
+    <text key="wms.resume.label">重新开始</text>
+    <text key="wms.terminate.label">结束</text>
+    <text key="wms.restart.label">重新开始</text>
+    <text key="wms.reload.label">重新装载</text>
+	<text key="wms.webservices.name.label">名称</text>
+	<text key="wms.webservices.request.label">请求数</text>
+	<text key="wms.webservices.failed_request.label">失败请求数</text>
+	<text key="wms.webservices.successful_request.label">成功请求数</text>
+	<text key="wms.webservices.service_time.label">服务时间</text>
+	<text key="wms.webservices.max_response_time.label">最大应答时间</text>
+	<text key="wms.webservices.last_response_time.label">最近应答时间</text>
+
+    <text key="ResourceAdapterModule_Configuration">设置</text>
+    <text key="ResourceAdapterModule_Configuration.jeus_connector_dd">jeus-connector-dd.xml</text>
+    <text key="ResourceAdapterModule_Configuration.ra">ra.xml</text>
+    <text key="ra.jeus_connector_dd.title">Resource 适配器 - JEUS 连接器模块 Batch 技术人员</text>
+    <text key="ra.ra.title">Resource适配器-标准连接器模块 Batch 技术人员</text>
+
+    <text key="ResourceAdapterModule_Statistics">统计</text>
+    <text key="ra.statistics.title">Resource 适配器模块 - 统计</text>
+    <text key="ra.statistics.average_use_time.label">平均使用时间</text>
+    <text key="ra.statistics.average_accept_time.label">平均接受时间</text>
+    <text key="ra.statistics.average_reject_time.label">平均拒绝时间</text>
+    <text key="ra.statistics.average_start_time.label">平均开始时间</text>
+    <text key="ra.statistics.average_complete_time.label">平均结束时间</text>
+    <text key="ra.statistics.create_count.label">生成</text>
+    <text key="ra.statistics.pooled_threads.label">pooling线程</text>
+    <text key="ra.statistics.free_threads.label">可用线程</text>
+    <text key="ra.statistics.waiting_thread_count.label">等待中线程</text>
+    <text key="ra.statistics.shrink_count.label">再调整数</text>
+    <text key="ra.statistics.acquire_fail_count.label">线程获取失败数</text>
+    <text key="ra.statistics.stats.null">Work Manager并不是Active 状态。</text>
+
+    <text key="ResourceAdapterModule_Control">Batch</text>
+    <text key="ResourceAdapterModule_Control.start">开始</text>
+    <text key="ResourceAdapterModule_Control.stop">停止</text>
+    <text key="ResourceAdapterModule_Control.undeploy">清除</text>
+    <text key="ra.control.title">Resource 适配器模块 - Batch</text>
+    <text key="ra.start.title">Resource 适配器模块 - 开始</text>
+    <text key="ra.stop.title">Resource 适配器模块 - 停止</text>
+    <text key="ra.undeploy.title">Resource 适配器模块 - 清除</text>
+
+
+    <!--- JMSEngine Messages-->
+    <text key="JeusServiceJMSEngine_Configuration">设置</text>
+    <text key="JeusServiceJMSEngine_Configuration.general">基本设置</text>
+    <text key="JeusServiceJMSEngine_Configuration.server_channel">服务器渠道</text>
+    <text key="JeusServiceJMSEngine_Configuration.logging">错误日志</text>
+    <text key="JeusServiceJMSEngine_Configuration.access_log">存取日志</text>
+    <text key="JeusServiceJMSEngine_Configuration.storageBlock">存储</text>
+    <text key="JeusServiceJMSEngine_Configuration.cluster">Cluster</text>
+    <text key="JeusServiceJMSEngine_Configuration.durable_subscriber"> durable_subscriber </text>
+    <text key="JeusServiceJMSEngine_Configuration.queue_cluster">queue Cluster</text>
+    <text key="JeusServiceJMSEngine_Configuration.topic_cluster">topic Cluster</text>
+
+    <text key="jmsc.general.title">JMS 引擎 - 基本设置</text>
+    <text key="jmsc.general.name.label">名称</text>
+    <text key="jmsc.general.port.label">端口</text>
+
+    <text key="jmsc.server_channel.title">JMS 引擎 - 服务器渠道</text>
+    <text key="JeusServiceServerChannel_Create">生成</text>
+    <text key="JeusServiceServerChannel_Configuration">设置</text>
+    <text key="channel.create.title">生成新服务器渠道</text>
+    <text key="channel.create.label">生成新服务器渠道</text>
+    <text key="channel.configuration.title">服务器渠道 - 设置</text>
+
+    <text key="jmsc.handler.title">日志 Handler</text>
+    <text key="jmsc.cluster.title">JMS 引擎 - Cluster</text>
+    <text key="jmsc.durable_subscriber.title">JMS 引擎 - durable_subscriber </text>
+    <text key="jmsc.queue_cluster.title">JMS 引擎 - queue Cluster</text>
+	<text key="jmsc.queue_cluster.target.required.message">必须输入至少一个targetb。</text>
+	<text key="jmsc.topic_cluster.title">JMS 引擎 - topic Cluster</text>
+	<text key="jmsc.topic_cluster.target.required.message">必须输入至少一个targetb。</text>
+
+    <text key="jmsc.logging.title">JMS 引擎 - 错误日志</text>
+    <text key="jmsc.access_log.title">JMS 引擎 - 存取日志</text>
+
+    <text key="JeusServiceJMSEngine_Distribute">分配</text>
+    <text key="jms.distribute.title">JMSMain.xml 分配</text>
+    <text key="jms.distribute.targets.label">可用的JMS 引擎</text>
+    <text key="jms.distribute.unavail.label">没有可用的JMS 引擎。</text>
+    <text key="jms.engine.create.channel_name.duplicate"></text>
+    <text key="jms.engine.create.channel_port.duplicate">{0}端口已被设置。\r\n请设置其他值。</text>
+
+    <text key="JeusServiceJMSEngine_CreateErrorLogHandler.create">生成</text>
+    <text key="JeusServiceJMSEngine_EditErrorLogHandler">设置</text>
+    <text key="JeusServiceJMSEngine_CreateAccessLogHandler.create">生成</text>
+    <text key="JeusServiceJMSEngine_EditAccessLogHandler">设置</text>
+
+    <text key="rdc.service_config.name.label">名称</text>
+    <text key="rdc.service_config.port.label">端口</text>
+    <text key="rdc.service_config.use_ssl.label">SSL 使用</text>
+	<text key="rdc.service_config.server_address.label">服务器地址</text>
+
+    <text key="rdc.jms_server_info.broker_name.label">名称</text>
+    <text key="rdc.jms_server_info.broker_id.label">id</text>
+	<text key="rdc.jms_server_info.ip_address.label">ip地址</text>
+    <text key="rdc.jms_server_info.use_ssl.label">SSL 使用</text>
+	<text key="rdc.jms_server_info.jms_port.label">端口</text>
+	<text key="rdc.jms_server_info.connection_interval.label">连接周期</text>
+
+    <text key="rdc.durable_subscriber.client_id.label">Client id</text>
+    <text key="rdc.durable_subscriber.name.label">名称</text>
+    <text key="rdc.durable_subscriber.destination_name.label">目的文件名称</text>
+    <text key="rdc.durable_subscriber.message_selector.label">消息选择者</text>
+
+    <text key="rdc.queue_cluster.queue_cluster_name.label">名称</text>
+    <text key="rdc.queue_cluster.cluster_distribute.label">分布式方式</text>
+    <text key="rdc.queue_cluster.local_preference.label"> local比重</text>
+    <text key="rdc.queue_cluster.queue_target.label">对象</text>
+
+    <text key="rdc.topic_cluster.topic_cluster_name.label">名称</text>
+    <text key="rdc.topic_cluster.relay_type.label">传达方式</text>
+    <text key="rdc.topic_cluster.topic_target.label">对象</text>
+
+    <text key="JeusServiceJMSEngine_Configuration.connection_factory">Connection Factory</text>
+    <text key="jmsc.cf.title">Connection Factory</text>
+    <text key="jmsc.cf.type_column.label">种类</text>
+    <text key="jmsc.cf.name_column.label">名称</text>
+    <text key="jmsc.cf.export_name_column.label">Export名称</text>
+    <text key="jmsc.cf.topic_create.label">生成新 Connection Factory </text>
+    <text key="jmsc.cf.queue_create.label">生成新 Connection Factory </text>
+
+    <text key="JeusServiceJMSEngine_Configuration.destination">目的文件</text>
+    <text key="jmsc.dn.title">JMS 引擎 - 目的文件</text>
+    <text key="jmsc.dn.type_column.label">种类</text>
+    <text key="jmsc.dn.name_column.label">名称</text>
+    <text key="jmsc.dn.export_name_column.label">Export名称</text>
+    <text key="jmsc.dn.topic_create.label">生成新 topic 目的文件</text>
+    <text key="jmsc.dn.queue_create.label">生成新 queue 目的文件</text>
+
+    <text key="JeusServiceJMSEngine_Configuration.thread_pool">线程池</text>
+    <text key="jmsc.thread_pool.title">JMS 引擎 - 线程池</text>
+    <text key="jmsc.storage.title">JMS 引擎 - 存储</text>
+
+    <text key="AppClientModule_Configuration">设置</text>
+    <text key="client.jeus_client_dd.title">应用程序客户端模块 - JEUS Client 模块 Batch 技术人员</text>
+    <text key="client.application_client.title">应用程序客户端模块 - 标准客户端 模块 Batch 技术人员</text>
+    <text key="AppClientModule_Configuration.jeus_client_dd">jeus-client-dd.xml</text>
+    <text key="AppClientModule_Configuration.application_client">application-client.xml</text>
+    <text key="AppClientModule_Control">Batch</text>
+    <text key="AppClientModule_Control.start">开始</text>
+    <text key="AppClientModule_Control.stop">停止</text>
+    <text key="AppClientModule_Control.undeploy">清除</text>
+    <text key="cmc.start.title">应用程序客户端模块 - 开始</text>
+    <text key="cmc.stop.title">应用程序客户端模块 - 停止</text>
+    <text key="cmc.undeploy.title">应用程序客户端模块 - 清除</text>
+
+	<text key="PermanentModule_Overview">概要 </text>
+	
+	<text key="PermanentModule_Configuration">设置</text>
+	<text key="PermanentModule_Configuration.select">1. 选择</text>
+	<text key="PermanentModule_Configuration.targets">2. 对象</text>
+	<text key="PermanentModule_Configuration.options">3. 选择事项 1</text>
+	<text key="PermanentModule_Configuration.options2">4. 选择事项 2</text>
+	<text key="PermanentModule_Configuration.deploy">5. Batch</text>
+	<text key="PermanentModule_Configuration.result">6. 结果</text>
+    <text key="PermanentModule_Undeploy">清除</text>
+
+	<text key="pm.overview.title">长期模块 - 应用程序</text>
+	<text key="pm.module_name.label">模块名称</text>
+	<text key="pm.deployment_type.label">模块类型</text>
+	<text key="pm.path.label">模块 路径</text>
+    <text key="pm.configuration.title">长期模块 - 设置</text>
+    <text key="pm.application.label">应用程序</text>
+    <text key="pm.undeploy.title">长期模块-清除</text>
+	<text key="pm.target.blind.title">对象选择</text>
+	<text key="pm.option.blind.title">选择事项的选择</text>
+
+	<text key="pm.select.title">长期模块 Batch - 模块信息</text>
+	<text key="pm.select.description">显示永久Batch有关的一个模块名称及路径 信息。</text>
+	<text key="pm.select.module_name.label">模块名称</text>
+	<text key="pm.select.path.label">模块路径</text>
+    
+    <text key="pm.targets.title">长期模块 Batch - 对象</text>
+    <text key="pm.targets.description">该阶段中选择对模块进行Batch的对象。
+    所有模块以引擎 Container单位进行Batch，选择对模块进行Batch的引擎 Container即可。
+    </text>
+	<text key="pm.targets.targets.label">可用的对象</text>
+    <text key="pm.targets.context_group.label">[context 群组]</text>
+	<text key="pm.targets.virtual_host.label">[虚拟主机]</text>
+    <text key="pm.targets.error">至少选择一个以上的对象。</text>
+    <text key="pm.java_permission_spec.label">JAVA permission 说明</text>
+	<text key="pm.java_permission_description.label">JAVA permission 说明</text>
+	
+	<text key="pm.options.title">长期模块 Batch - 各component的选择事项</text>
+    <text key="pm.options.components.label">各组件种类的选择事项</text>
+	<text key="pm.options.ejb_component.title">EJB 组件选择事项</text>
+    <text key="pm.options.ejb_component.keep_generated.label">维持生成代码</text>
+    <text key="pm.options.ejb_component.fast_deploy.label">快速的Batch</text>
+    <text key="pm.options.apply_all.label">该设置要应用到相同种类的模块吗？</text>
+    <text key="pm.options.uri.label">URI</text>
+	<text key="pm.options.web_component.title">WEB 组件选择事项</text>
+    <text key="pm.options.web_component.context_group.label">context 群组</text>
+    <text key="pm.options.client_component.title">应用程序客户端组件选择事项</text>
+    <text key="pm.options.connector_component.title">Resource 适配器 组件选择事项</text>
+
+	<text key="pm.options2.title">长期模块 Batch - 共同选择事项</text>
+
+    <text key="pm.deploy.title">长期模块 Batch - Batch</text>
+    <text key="pm.deploy.deploy.label">Batch</text>
+	<text key="pm.deploy.description">应用相关模块的变更设置内容。</text>
+    <text key="pm.deploy.two_phase_deploy.label">2 阶段 Batch</text>
+    <text key="pm.deploy.two_phase_deploy.description">2 阶段 Batch是向所有对象成功分配模块时结束Batch操作的选择项目。只要一个失败，已Batch的其他对象的模块也被自动清除。
+    </text>
+    <text key="pm.deploy.permanent_deploy.title">永久性Batch 设置</text>
+    <text key="pm.deploy.permanent_deploy.label">永久性 Batch</text>
+    <text key="pm.deploy.permanent_deploy.description">选择永久性Batch时，向JEUSMain.xml注册模块信息，在启动JEUS时被自动启动。
+		应注意的是，选择该值，不进行run time Batch。
+		永久Batch的模块可通过节点树的永久模块节点进行确认。
+	</text>
+	<text key="pm.deploy.permanent_deploy.description2">启动的引擎 Container不存在。 
+		此时，通过永久性Batch，处理模块。
+		进行永久性Batch时，在JEUSMain.xml中注册模块信息，启动JEUS时被自动启动。
+		应注意的是，选择该值，不进行run time Batch。
+		永久Batch的模块可通过节点树的永久模块节点进行确认。
+    </text>
+    <text key="pm.deploy.permanent_runtime_deploy.label">run time Batch</text>
+	<text key="pm.deploy.permanent_runtime_deploy.description">永久性Batch时，设置是否进行run time Batch。
+    </text>
+
+	<text key="pm.configuration.success">&quot;{0}&quot; 成功变更模块设置。</text>
+    <text key="pm.result.title">长期模块 Batch - 结果</text>
+    <text key="pm.result.completed.label">成功的对象目录</text>
+    <text key="pm.result.failed.label">失败的对象目录</text>
+
+
+    <!--  J2EEApplication -->
+    <text key="J2EEApplication_Configuration">设置</text>
+    <text key="J2EEApplication_Configuration.application">application.xml</text>
+    <text key="ear.application.title">J2EE 应用程序 - Batch 技术人员</text>
+
+    <text key="J2EEApplication_Control">Batch</text>
+    <text key="J2EEApplication_Control.start">开始</text>
+    <text key="J2EEApplication_Control.stop">停止</text>
+    <text key="J2EEApplication_Control.undeploy">清除</text>
+    <text key="ear.start.title">J2EE 应用程序 - 开始</text>
+    <text key="ear.stop.title">J2EE 应用程序 - 停止</text>
+    <text key="ear.undeploy.title">J2EE 应用程序 - 清除</text>
+
+
+    <text key="JDBCDataSource_Overview">概要 </text>
+    <text key="jds.overview.title">JDBC 数据源代码</text>
+    <text key="jds_export_name_label">Export名称</text>
+    <text key="jds.create_count.label">生成</text>
+    <text key="jds.close_count.label">关闭</text>
+    <text key="jds.pool_size.label">池大小</text>
+    <text key="jds.free_pool_size.label">可使用的池大小</text>
+    <text key="jds.waiting_thread_count.label">等待中线程</text>
+    <text key="jds.reconnect_count.label">重新连接</text>
+    <text key="jds.no_datasources.label">没有可用的数据源代码。</text>
+    <text key="jds.create.label">生成新 JDBC 数据源代码</text>
+    <text key="jds.actions.label">命令</text>
+    <text key="jds.bind.label">bind</text>
+    <text key="jds.reconfigure.security.label">安全</text>
+    <text key="jds.reconfigure.pool.label">连接池</text>
+
+    <text key="JDBCDataSource_Statistics">统计</text>
+    <text key="jds.statistics.title">JDBC 数据源代码- 统计</text>
+    <text key="jds_actions_label">命令</text>
+    <text key="jds.enable.label">可能</text>
+    <text key="jds.disable.label">不可能</text>
+    <text key="jds.shrink.label">重新调整连接</text>
+    <text key="jds.resync.label">重新开始XA 事物处理</text>
+
+    <text key="JDBCDataSource_Reconfigure">重新设置</text>
+    <text key="jds.reconfigure.title">JDBC 数据源代码- 重新设置</text>
+    <text key="jds.reconfigure.user.label">用户名称</text>
+    <text key="jds.reconfigure.password.label">口令</text>
+    <text key="jds.reconfigure.pool.title">连接池</text>
+    <text key="jds.reconfigure.min.label">最小</text>
+    <text key="jds.reconfigure.max.label">最大</text>
+    <text key="jds.reconfigure.step.label">增加幅度</text>
+
+    <text key="JeusServiceJDBCDataSourceService_Overview">概要 </text>
+    <text key="jdss.overview.title">JDBC 数据源代码</text>
+    <text key="jds.export_name.label">Export名称</text>
+    <text key="jds.vendor.label">vendor</text>
+    <text key="jds.class_name.label">Class 名称</text>
+    <text key="jds.datasource_type.label">数据源代码种类</text>
+
+    <text key="jdss.overview.cds.title">Cluster JDBC 数据源代码</text>
+    <text key="jdss.overview.cds.create.label">生成新 JDBC Cluster 数据 源代码</text>
+    <text key="jdss.overview.cds.is_pre_conn.label">Connection准备</text>
+    <text key="jdss.overview.cds.count.label">数据源代码数量</text>
+
+    <text key="JeusServiceJDBCDataSourceService_Configuration">设置</text>
+    <text key="JeusServiceJDBCDataSourceService_Configuration.properties">基本设置</text>
+    <text key="JeusServiceJDBCDataSourceService_Configuration.pool">连接 池</text>
+    <text key="dsc.properties.title2">JDBC 数据源代码服务 - 基本设置</text>
+    <text key="dsc.pool.title2">JDBC 数据源代码服务 - 连接池</text>
+
+    <!-- JDBCResource  -->
+    <!-- short name jcd -->
+    <text key="JeusServiceJDBCDataSourceService_Create">生成新 JDBC 数据 源代码</text>
+    <text key="JeusServiceJDBCDataSourceService_Create.datasource">1. 数据 源代码</text>
+    <text key="JeusServiceJDBCDataSourceService_Create.properties">2. 属性</text>
+    <text key="JeusServiceJDBCDataSourceService_Create.pool">3. 连接池</text>
+    <text key="JeusServiceJDBCDataSourceService_Create.create">4. 生成</text>
+
+    <text key="dsc.title">生成新JDBC 数据源代码</text>
+    <text key="dsc.success">{0}成功生成。</text>
+	<text key="dsc.export_name.duplicate">JDBC 数据源代码设置中存在重复的Export名称。请确认JEUSMain.xml的datasource 设置。</text>
+	<text key="dsc.datasource.no.datasource.message">选择要生成的datasource。</text>
+    <text key="dsc.datasource.title">生成新JDBC 数据源代码 - 数据源代码</text>
+    <text key="dsc.datasource.dbms.label">DBMS</text>
+    <text key="dsc.datasource.datasource_list.label">可用的数据源代码</text>
+
+    <text key="dsc.properties.title">新 JDBC 数据源代码生成 - 属性</text>
+    <text key="dsc.properties.vendor.label">vendor</text>
+    <text key="dsc.properties.export_name.label">Export名称</text>
+    <text key="dsc.properties.data_source_class_name.label">数据源代码Class 名称</text>
+    <text key="dsc.properties.data_source_type.label">数据源代码种类</text>
+    <text key="dsc.properties.data_source_name.label">数据源代码名称</text>
+    <text key="dsc.properties.database_name.label">数据库名称</text>
+    <text key="dsc.properties.driver_type.label">driver种类</text>
+    <text key="dsc.properties.description.label">说明</text>
+    <text key="dsc.properties.service_name.label">服务名称</text>
+    <text key="dsc.properties.network_protocol.label">network protocol</text>
+    <text key="dsc.properties.port_number.label">端口</text>
+    <text key="dsc.properties.server_name.label">服务器</text>
+    <text key="dsc.properties.user.label">用户</text>
+    <text key="dsc.properties.password.label">密码</text>
+    <text key="dsc.properties.driver_type.label">driver 种类</text>
+    <text key="dsc.properties.additional_properties.label">增加属性</text>
+
+    <text key="dsc.pool.title">新 JDBC 数据源代码生成 - 连接池</text>
+    <text key="dsc.create.title">新 JDBC 数据源代码生成 - 生成</text>
+
+    <text key="dsc.pool.pooling.title">线程池</text>
+    <text key="dsc.pool.wait_free_connection.title">可用的连接等待</text>
+
+    <text key="dsc.create.bind_now.label">对该JDBC 数据源代码进行bind吗？</text>
+    <text key="dsc.create.completed">生成生成了数据 源代码{0}。</text>
+    <text key="dsc.no.label">在相关JDBC 数据源代码设置中已被删除，其设置信息不存在。</text>
+
+    <text key="JeusServiceJDBCClusterDataSourceService_Configuration">设置</text>
+    <text key="cds.title">ClusterJDBC 数据源代码服务</text>
+    <text key="cds.export_name.label">Export名称</text>
+    <text key="cds.data_source_name.label">数据源代码名称</text>
+
+    <text key="JeusServiceJDBCClusterDataSourceService_Create">生成</text>
+    <text key="JeusServiceJDBCClusterDataSourceService_Create.general">1. 基本设置</text>
+    <text key="JeusServiceJDBCClusterDataSourceService_Create.data_source_name_block">2. 数据源代码名称</text>
+    <text key="JeusServiceJDBCClusterDataSourceService_Create.create">3. 生成</text>
+    <text key="cdsc.general.title">新Cluster JDBC数据源代码生成 - 基本设置</text>
+    <text key="cdsc.data_source_name_block.title">新 Cluster JDBC 数据 源代码生成 - 数据源代码</text>
+    <text key="cdsc.create.title">新 Cluster JDBC 数据 源代码生成 - 生成</text>
+    <text key="cdsc.create.bind_now.label">要对该Cluster JDBC 数据源代码进行bind吗？</text>
+
+    <!-- TmaxExtResourceService  -->
+    <!-- short name webtc -->
+    <text key="JeusServiceTmaxExtResourceService_Create">新 WebT 数据 源代码生成</text>
+    <text key="JeusServiceTmaxExtResourceService_Create.general">1. 基本设置</text>
+    <text key="JeusServiceTmaxExtResourceService_Create.pool">2. 连接池</text>
+    <text key="JeusServiceTmaxExtResourceService_Create.logging">3. 日志</text>
+    <!--<text key="JeusServiceTmaxExtResourceService_Create.cluster">4. Cluster</text>-->
+    <text key="JeusServiceTmaxExtResourceService_Create.miscellaneous">4. 其他</text>
+    <text key="JeusServiceTmaxExtResourceService_Create.create">5. 生成</text>
+    <text key="webtc.general.title">新 WebT 数据源代码生成 - 基本设置</text>
+    <text key="webtc.general.title2">WebT 数据源代码- 基本设置</text>
+    <text key="webtc.general.export_name.label">Export名称</text>
+    <text key="webtc.general.host_name.label">Host名称</text>
+    <text key="webtc.general.port.label">端口</text>
+    <text key="webtc.general.properties.label">增加属性</text>
+
+    <text key="webtc.pool.title">新 WebT 数据源代码生成 - 连接池</text>
+    <text key="webtc.pool.title2">WebT 数据源代码- 连接池</text>
+    <text key="webtc.pool.pooling.title">线程池</text>
+    <text key="webtc.pool.wait_free_connection.title">可用的连接等待</text>
+
+    <text key="webtc.logging.title">新 WebT 数据源代码生成 - 日志</text>
+    <text key="webtc.logging.title2">WebT 数据源代码- 日志</text>
+    <text key="webtc.cluster.title">新 WebT 数据源代码生成 - Cluster</text>
+    <text key="webtc.cluster.title2">WebT 数据源代码- Cluster</text>
+    <text key="webtc.miscellaneous.title">新 WebT 数据源代码生成 - 其他</text>
+    <text key="webtc.miscellaneous.title2">WebT 数据源代码- 其他</text>
+    <text key="webtc.miscellaneous.security.title">安全</text>
+
+    <text key="webtc.miscellaneous.monitoring.title">监控</text>
+
+    <text key="JeusServiceTmaxExtResourceService_Configuration">设置</text>
+    <text key="JeusServiceTmaxExtResourceService_Configuration.general">基本信息</text>
+    <text key="JeusServiceTmaxExtResourceService_Configuration.pool">连接 池</text>
+    <text key="JeusServiceTmaxExtResourceService_Configuration.logging">日志</text>
+    <text key="JeusServiceTmaxExtResourceService_Configuration.miscellaneous">其他</text>
+
+    <text key="JeusServiceTmaxClusterExtResourceService_Create">生成</text>
+    <text key="JeusServiceTmaxClusterExtResourceService_Create.general">1. 基本设置</text>
+    <text key="JeusServiceTmaxClusterExtResourceService_Create.tmax_delegation_source_block">2. 数据 源代码名称</text>
+    <text key="JeusServiceTmaxClusterExtResourceService_Create.create">3. 生成</text>
+    <text key="JeusServiceTmaxClusterExtResourceService_Configuration">设置</text>
+    <text key="tcsc.general.title">新 Cluster WebT 数据源代码生成 - 基本设置</text>
+    <text key="tcsc.tmax_delegation_source_block.title">新 Cluster WebT 数据 源代码生成 - 数据源代码</text>
+    <text key="tcsc.create.title">新 Cluster WebT 数据 源代码生成 - 生成</text>
+    <text key="tcsc.create.bind_now.label">要对该Cluster WebT 数据源代码进行 bind吗？</text>
+    <text key="tcs.title">Cluster WebT 数据源代码服务</text>
+    <text key="tcs.no.label">相关WebT 数据源代码已在设置中删除，其设置信息不存在。</text>
+    <text key="tcs.tmax_delegation_source.label">数据源代码名称</text>
+
+    <text key="webtc.create.title">新 WebT 数据源代码生成 - 生成</text>
+    <text key="webtc.create.bind_now.label">要对该WebT 数据源代码进行bind吗？</text>
+
+    <text key="JeusServiceTmaxExtResourceService_Overview">概要 </text>
+    <text key="webt.overview.title">WebT 数据源代码</text>
+    <text key="webt.overview.export_name.label">Export名称</text>
+    <text key="webt.overview.webt_datasource_type.label">WebT 数据 源代码种类</text>
+    <text key="webt.overview.host_name.label">Host名称</text>
+    <text key="webt.overview.port.label">端口</text>
+    <text key="webt.overview.create.label">新 WebT 数据源代码生成</text>
+    <text key="webt.overview.bind.label">bind</text>
+    <text key="webt.overview.actions.label">命令</text>
+
+    <text key="webtc.overview.tcs.title">Cluster WebT 数据源代码</text>
+    <text key="webtc.overview.tcs.enable_load_balance.label">负载平衡功能</text>
+    <text key="webtc.overview.tcs.is_pre_conn.label">Connection准备</text>
+    <text key="webts.overview.tcs.create.label">新 WebT Cluster 数据 源代码生成</text>
+
+    <text key="JeusServiceWebtDataSource_Overview">概要 </text>
+    <text key="wds.overview.title">WebT 数据源代码</text>
+    <text key="wds.overview.export_name.label">Export名称</text>
+    <text key="wds.overview.total_connection_count.label">总连接数</text>
+    <text key="wds.overview.free_connection_count.label">可使用的连接数</text>
+    <text key="wds.overview.active_connection_count.label">使用中连接数</text>
+    <text key="wds.overview.create_count.label">生成</text>
+    <text key="wds.overview.close_count.label">关闭</text>
+    <text key="wds.overview.pool_size.label">池大小</text>
+    <text key="wds.overview.free_pool_size.label">可用的池大小</text>
+    <text key="wds.overview.waiting_thread_count.label">等待中线程</text>
+    <text key="wds.overview.reconnect_count.label">再连接数</text>
+
+     <!-- MQExtResourceService  -->
+    <!-- short name mqc -->
+    <text key="JeusServiceMQExtResourceService_Create">新 MQ 数据 源代码生成</text>
+	<text key="JeusServiceMQExtResourceService_Create.mqresource">1. 数据 源代码</text>
+	<text key="JeusServiceMQExtResourceService_Create.properties">2. 属性</text>
+    <text key="JeusServiceMQExtResourceService_Create.create">3. 生成</text>
+
+    <text key="JeusServiceMQExtResourceService_Configuration">设置</text>
+    <text key="JeusServiceMQExtResourceService_Configuration.properties">基本设置</text>
+    <text key="JeusServiceMQExtResourceService_Configuration.general">基本信息</text>
+    <text key="JeusServiceMQExtResourceService_Configuration.pool">连接 池</text>
+    <text key="JeusServiceMQExtResourceService_Configuration.logging">日志</text>
+    <text key="JeusServiceMQExtResourceService_Configuration.miscellaneous">其他</text>
+
+    <text key="mqc.create.title">新 MQ 数据 源代码生成 - 生成</text>
+	<text key="mqc.mqresource.title">新 MQ 数据 源代码生成 - 数据源代码</text>
+	<text key="mqc.properties.title">新 MQ 数据 源代码生成 - 属性</text>
+    <text key="mqc.properties.title2">MQ 数据 源代码服务 - 基本设置</text>
+	<text key="mqc.mqvendor.label">vendor</text>
+	<text key="mqc.mqresource_list.label">Resource类型</text>
+	<text key="mqc.factory_class.label">Factory Class</text>
+    <text key="mqc.create.bind_now.label">要对该MQ 数据源代码进行bind吗？</text>
+    <text key="mqc.no.label">相关MQ 数据源代码已在设置中删除，其设置信息不存在。</text>
+
+    <text key="mqc.properties.export_name.label">Export Name</text>
+    <text key="mqc.properties.additional_properties.label">增加 属性?</text>
+    <text key="mqc.success">{0}成功生成。</text>
+	<text key="mqc.export_name.duplicate">MQ 数据 源代码设置中存在重复的Export名称。请确认JEUSMain.xml的jms-source 设置。</text>
+	<text key="mqc.no.mqresource.message">选择要生成的Resource。</text>
+
+    <text key="JeusServiceMQExtResourceService_Overview">概要 </text>
+    <text key="mq.overview.title">MQ 数据源代码</text>
+    <text key="mq.export_name.label">Export名称</text>
+	<text key="mq.vendor.label">vendor</text>
+    <text key="mq.class_name.label">Factory Class</text>
+    <text key="mq.resource_type.label">Resource类型</text>
+	<text key="mq.actions.label">命令</text>
+	<text key="mq.create.label">新 MQ 数据源代码生成</text>
+    <text key="mq.bind.label">bind</text>
+
+    <text key="JeusServiceWebtDataSource_Overview">概要 </text>
+    <text key="wds.overview.title">WebT 数据源代码</text>
+    <text key="wds.overview.export_name.label">Export名称</text>
+    <text key="wds.overview.total_connection_count.label">总连接数</text>
+    <text key="wds.overview.free_connection_count.label">可使用的连接数</text>
+    <text key="wds.overview.active_connection_count.label">使用中连接数</text>
+    <text key="wds.overview.create_count.label">生成</text>
+    <text key="wds.overview.close_count.label">关闭</text>
+    <text key="wds.overview.pool_size.label">池大小</text>
+    <text key="wds.overview.free_pool_size.label">可用池大小</text>
+    <text key="wds.overview.waiting_thread_count.label">等待中线程</text>
+    <text key="wds.overview.reconnect_count.label">再连接数</text>
+
+
+    <text key="JCAResource_Statistics">统计</text>
+    <text key="JCAResource_Statistics.connection">连接</text>
+    <text key="jca.statistics.connection.title">JCA Resource - 连接</text>
+    <text key="JCAResource_Statistics.connectionPool">连接池</text>
+    <text key="jca.statistics.connection_pool.title">JCA Resource - 连接 池</text>
+    <text key="jca.statistics.cf_name.label">Connection Factory</text>
+    <text key="jca.statistics.mcf_name.label">管理 Connection Factory</text>
+    <text key="jca.statistics.average_use_time.label">平均使用时间（毫秒）</text>
+    <text key="jca.statistics.average_wait_time.label">平均等待时间（毫秒）</text>
+    <text key="jca.statistics.create_count.label">生成</text>
+    <text key="jca.statistics.close_count.label">关闭</text>
+    <text key="jca.statistics.free_pool_size.label">可用池大小</text>
+    <text key="jca.statistics.pool_size.label">池大小</text>
+    <text key="jca.statistics.waiting_thread_count.label">等待中线程</text>
+
+    <text key="JCAResource_Control">控制</text>
+    <text key="jca.control.title">JCA Resource - 控制</text>
+    <text key="jca.control.cf_name.label">Connection Factory</text>
+    <text key="jca.control.create_count.label">生成</text>
+    <text key="jca.control.close_count.label">关闭</text>
+    <text key="jca.control.free_pool_size.label">可用池大小</text>
+    <text key="jca.control.pool_size.label">池大小</text>
+    <text key="jca.control.waiting_thread_count.label">等待中线程</text>
+    <text key="jca_control_actions_label">命令</text>
+    <text key="jca.control.enable.label">可用</text>
+    <text key="jca.control.disable.label">不可用</text>
+    <text key="jca.control.resync.label">连接再调整</text>
+    <text key="jca.control.shrink.label">重新开始XA 事物处理</text>
+
+    <text key="JavaMailResource_Overview">概要 </text>
+    <text key="mail.overview.title">JAVA 邮件 Resource</text>
+    <text key="mail.title">JAVA 邮件 Resource</text>
+    <text key="mail.export_name.label">Export名称</text>
+    <text key="mail.properties.label">属性</text>
+    <text key="JavaMailResource_Configuration">设置</text>
+    <text key="mail.configuration.title">JAVA 邮件 Resource - 设置</text>
+    <!--<text key="mail.no.label">不存在相关JAVA 邮件设置。</text>-->
+    <text key="mail.no.label">相关JAVA 邮件 Resource已在设置中删除，其设置信息不存在。</text>
+	<text key="mail.property.required.message">属性未被输入，或方式有错误。属性方式应为 &quot; key=value &quot;。</text>
+
+    <text key="URLResource_Overview">概要 </text>
+    <text key="url.overview.title">URL Resource</text>
+    <text key="URLResource_Configuration">设置</text>
+    <text key="url.configuration.title">URL Resource - 设置</text>
+    <text key="url.export_name.label">Export名称</text>
+    <text key="url.url.label">URL</text>
+    <text key="url.add.success">{0}成功生成。</text>
+    <text key="url.update.success">{0}成功更新。</text>
+    <!--<text key="url.no.label">相关URL 信息不存在。</text>-->
+	<text key="url.no.label">相关URL Resource已在设置中删除，其设置信息不存在。</text>
+	<text key="url.disallowed.format.message">错误的URL方式。</text>
+	
+    <text key="JeusServiceJeusLogService_Control">日志标准控制</text>
+    <text key="JeusServiceJeusLogService_Create">日志 Handler生成</text>
+    <text key="JeusServiceJeusLogService_Create.type">1. 种类</text>
+    <text key="JeusServiceJeusLogService_Create.general">2. 基本设置</text>
+    <text key="JeusServiceJeusLogService_Create.create">3. 生成</text>
+    <text key="JeusServiceJeusLogService_Configuration">日志 Handler 生成</text>
+    <text key="JeusServiceJeusLogService_Configuration.general">设置</text>
+    <text key="log.control.title">JEUS 日志服务 - 日志标准控制</text>
+    <text key="log.logger.control.title">日志标准控制</text>
+    <text key="log.handler.control.title">Handler标准控制</text>
+    <text key="log.handler.create.title">JEUS 日志服务 - Handler 生成</text>
+    <text key="log.handler.create.type.title">Handler 生成 - Handler 种类</text>
+    <text key="log.handler.create.type.description">对所选日志中使用的Handler 种类进行选择。</text>
+    <text key="log.handler.create.general.title">Handler 生成 - Handler 基本设置</text>
+    <text key="log.handler.create.general.description">根据要生成的种类Handler，设置其值。</text>
+    <text key="log.handler.create.create.title">Handler 生成 - 生成</text>
+    <text key="log.handler.create.create.description">生成所设置的Handler。</text>
+    <text key="log.handler.create.label">新 日志 Handler 生成</text>
+    <text key="log.handler.create.select.type.error">对要生成的Handler 种类进行选择。</text>
+    <text key="log.handler.create.logger_name.label">日志名称</text>
+    <text key="log.handler.create.handler_type.label">Handler 种类</text>
+    <text key="log.handler.create.handler_name.label">Handler 名称</text>
+    <text key="log.handler.create.handler_level.label">Handler标准</text>
+    <text key="log.handler.create.encoding.label">编码</text>
+    <text key="log.handler.create.filter_class.label">filter Class</text>
+    <text key="log.handler.create.file_name.label">文件名称</text>
+    <text key="log.handler.create.valid.label">有效期限</text>
+    <text key="log.handler.create.buffer_size.label">缓冲大小</text>
+    <text key="log.handler.create.append.label">增加与否</text>
+    <text key="log.handler.create.handler_class.label">Handler Class</text>
+    <text key="log.handler.create.handler_property.label">Handler 属性</text>
+    <text key="log.handler.create.formatter_class.label">formater Class</text>
+    <text key="log.handler.create.formatter_property.label">formater 属性</text>
+    <text key="log.handler.create.smtp_host_address.label">SMTP 服务器 地址</text>
+    <text key="log.handler.create.from_address.label">发信者地址</text>
+    <text key="log.handler.create.to_address.label">收信者地址</text>
+    <text key="log.handler.create.cc_address.label">抄送地址</text>
+    <text key="log.handler.create.bcc_address.label">隐藏地址</text>
+    <text key="log.handler.create.send_for_all_messages.label">传输所有消息</text>
+    <text key="log.handler.create.address.label">ip地址</text>
+    <text key="log.handler.create.port.label">端口</text>
+    <text key="log.handler.create.is_set_xml.label">XML中设置</text>
+    <text key="log.handler.create.handler_name.description">对handler名称进行设置。此时该名称应在一个logger内是唯一的。该名称在too中用于称呼handler。</text>
+    <text key="log.handler.create.encoding.description">对handler发送消息时使用的encoding进行设置。</text>
+    <text key="log.handler.create.filter_class.description">对handler中指定的 filer class的fully qualified class name进行设置。</text>
+    <text key="log.handler.create.file_name.description">对该handler使用的文件名称进行设置。如果用户不设置该项内容，则使用各logger的默认文件名称。
+    各个默认文件名称请参考JEUS Server手册。</text>
+    <text key="log.handler.create.valid.description">按设置中指定的期间使用handler的文件，继续使用时进行更新。</text>
+    <text key="log.handler.create.buffer_size.description">对handler输出到文件时所使用的buffer大小进行指定。</text>
+    <text key="log.handler.create.append.description">如果handler使用的文件已存在时，决定是否附加到文件后面。如果设置为false，现有文件即被删除。</text>
+    <text key="log.handler.create.handler_class.description">对用户创建的handler的fully qualified class name进行设置。该Class应继承java.util.logging.Handler，并实现jeus.util.logging.JeusHandler。</text>
+    <text key="log.handler.create.handler_property.description">对生成handler时的property进行设置。该property作为key-value保存到Map后，通过JeusHandler.setProperty() method传输到handler。</text>
+    <text key="log.handler.create.formatter_class.description">对该handler使用的formatter的ully qualified class name进行设置。该Class继承java.util.logging.Formatter，应实现jeus.util.logging.JeusFormatter。</text>
+    <text key="log.handler.create.formatter_property.description">对生成handler时创建的formatter的property进行设置。该property作为key-value保存到Map后，通过JeusFormatter.setProperty() method传输到formatter。</text>
+    <text key="log.handler.create.smtp_host_address.description">指定发送邮件的smtp服务器地址。</text>
+    <text key="log.handler.create.from_address.description">指定邮件发送人的地址。</text>
+    <text key="log.handler.create.to_address.description">指定邮件收件人的地址。</text>
+    <text key="log.handler.create.cc_address.description">指定邮件抄送人的地址。</text>
+    <text key="log.handler.create.bcc_address.description">指定邮件密件抄送人的地址。</text>
+    <text key="log.handler.create.send_for_all_messages.description">通过handler注册的logger的log() method接受消息时，设置是否将其指定为邮件收件人。如果设置为false，只对logger的特殊send() method呼叫的消息进行邮件传送。即，初期设置为邮件发送对象的消息进行邮件传送。</text>
+    <text key="log.handler.create.address.description">设置生成handler时要发送消息的对方IP地址。</text>
+    <text key="log.handler.create.port.description">设置生成handler时要发送消息的对方端口。</text>
+    <text key="log.handler.create.is_set_xml.description">不仅在运行时间中生成前面设置的Handler，同时也在XML文件进行相关设置。</text>
+    <text key="log.handler.configuration.general.title">Handler 设置 - Handler 基本设置</text>
+    <text key="log.handler.configuration.general.description">对所选Handler的设置值进行修改。</text>
+
+    <text key="log.control.level.label">标准</text>
+    <text key="log.control.logger_name.label">日志名称</text>
+    <text key="log.control.apply_recursively.label">适应于下级日志</text>
+    <text key="log.control.use_parent_handlers.label">使用上级Handler </text>
+    <text key="log.control.logger.section.title">日志标准控制</text>
+    <text key="log.control.handler.section.title">Handler标准控制</text>
+    <text key="log.control.handler.logger_name.label">日志名称</text>
+    <text key="log.control.handler.handler_type.label">Handler 种类</text>
+    <text key="log.control.handler.handler_name.label">Handler 名称</text>
+    <text key="log.control.handler.handler_level.label">Handler标准</text>
+
+    <text key="JeusServiceVirtualNode_Configuration">设置</text>
+    <text key="vnode.title">虚拟主机 设置 - 设置</text>
+    <text key="vnode.node.description">注册虚拟节点。输入方式为 '${host_name}:${port}       ${vitual_host}'。空白部分放入空格或Tab。</text>
+	<text key="vnode.node.message">设置/变更的内容在JEUS重新启动后再使用。\n\r要发送输入的内容吗？</text>
+    <text key="JeusServiceVirtualNode_Distribute">分配</text>
+    <text key="vnode.distribute.title">vhost.xml 分配</text>
+
+    <text key="cfc.no_jms_engine.label">该Container中不存在JMS 引擎。</text>
+    <text key="JMSConnectionFactoryResource_Create.navigation">生成新Connection Factory </text>
+    <text key="JMSConnectionFactoryResource_Configuration">设置</text>
+    <text key="JMSConnectionFactoryResource_Configuration.general">基本设置</text>
+    <text key="cfc.general.title2">JMS Connection Factory Resource - 基本设置</text>
+    <text key="JMSConnectionFactoryResource_Configuration.thread_pool">线程池</text>
+    <text key="cfc.thread_pool.title2">JMS Connection Factory Resource - 线程池</text>
+
+    <text key="JMSConnectionFactoryResource_Overview">概要 </text>
+    <text key="cfr.overview.title">JMS Connection Factory</text>
+    <text key="cfr.overview.name.label">名称</text>
+    <text key="cfr.overview.export_name.label">Export名称</text>
+    <text key="cfr.overview.type.label">种类</text>
+    <text key="cfr.create.label">生成新 Connection Factory </text>
+    <text key="cfr.create_nonxa.label">生成新 Non-XA Connection Factory </text>
+    <text key="cfr.create_xa.label">生成新 XA Connection Factory </text>
+    <text key="cfr.create_queue.label">生成新 Connection Factory </text>
+    <text key="cfr.create_topic.label">生成新 Connection Factory </text>
+    <text key="cfr.create_xa_queue.label">生成新 XA queue Connection Factory </text>
+    <text key="cfr.create_xa_topic.label">生成新 XA topic Connection Factory </text>
+
+
+    <text key="JMSConnectionFactoryResource_Create">生成新 Connection Factory </text>
+    <text key="JMSConnectionFactoryResource_Create.general">1. 基本设置</text>
+    <!--<text key="cfc.general.title">生成新 {0} Connection Factory- 基本设置</text>-->
+    <text key="cfc.general.title">生成新 Connection Factory - 基本设置</text>
+
+    <text key="cfc.general.name.label">名称</text>
+    <text key="cfc.general.type.label">种类</text>
+
+    <text key="JMSConnectionFactoryResource_Create.thread_pool">2. 线程池</text>
+    <!--<text key="cfc.thread_pool.title">生成新{0}Connection Factory- 线程池</text>-->
+    <text key="cfc.thread_pool.title">生成新 Connection Factory - 线程池</text>
+
+    <text key="JMSConnectionFactoryResource_Create.create">3. 生成</text>
+    <text key="cfc.create.title">生成新Connection Factory - 生成</text>
+    <text key="cfc.create.create_now.label">要对该Connection Factory进行bind吗？</text>
+    <text key="cfc.create.bind_now.label">要对该Connection Factory进行bind吗？</text>
+
+    <text key="JMSDestinationResource_Create.navigation">生成新目的文件</text>
+    <text key="JMSDestinationResource_Configuration">设置</text>
+    <text key="JMSDestinationResource_Configuration.general">普通</text>
+    <text key="JMSDestinationResource_Configuration.storage">存储</text>
+
+    <text key="dnc.no_destination.label">不存在该目的文件的设置。</text>
+
+    <text key="JMSDestinationResource_Overview">概要 </text>
+    <text key="dnc.title">JMS 目的文件 Resource</text>
+    <text key="dnc.export_name.label">Export名称</text>
+    <text key="dnc.name.label">名称</text>
+    <text key="dnc.type.label">种类</text>
+    <text key="dnc.create_queue.label">新 queue 目的文件 生成</text>
+    <text key="dnc.create_topic.label">新 topic 目的文件 生成</text>
+    <text key="dnc.message_count.label">消息数</text>
+    <text key="dnc.relay_section.label">中继</text>
+
+    <text key="JMSDestinationResource_DurableSubscriber"> DurableSubscriber </text>
+    <text key="dnc.durable.title">JMS 目的文件 Resource - DurableSubscriber </text>
+    <text key="dnc.durable.id.label">ID</text>
+    <text key="dnc.durable.name.label">名称</text>
+    <text key="dnc.durable.client_id.label">Client ID</text>
+    <text key="dnc.durable.remainings.label">剩余消息</text>
+    <text key="dnc.durable.selector.label">消息选择者</text>
+
+    <text key="JMSDestinationResource_Messages">消息</text>
+    <text key="dnc.messages.title">JMS 目的文件 Resource - message</text>
+    <text key="dnc.messages.id.label">ID</text>
+    <text key="dnc.messages.delivered.label">传送结束</text>
+    <text key="dnc.messages.type.label">结束</text>
+    <text key="dnc.messages.created_time.label">生成所用时间</text>
+    <text key="dnc.messages.selector.label">message 选择者</text>
+
+    <text key="JMSDestinationResource_Consumers">消费者</text>
+    <text key="dnc.consumers.title">JMS 目的文件 Resource - 消费者</text>
+    <text key="dnc_consumers_client_label">Client</text>
+    <text key="dnc.consumers.message_count.label">message数</text>
+    <text key="dnc.consumers.expired_message_count.label">已过期限的消息数量</text>
+    <text key="dnc.consumers.pending_message_count.label">未被处理的消息数量</text>
+    <text key="dnc.consumers.average_send_time.label">平均传送时间（毫秒）</text>
+    <text key="dnc.consumers.average_message_wait_time.label">平均等待时间（毫秒）</text>
+
+    <text key="JMSDestinationResource_Create">新目的文件生成</text>
+    <text key="JMSDestinationResource_Create.general">1. 基本设置</text>
+    <text key="cdn.general.title">生成新 {0} 目的文件  - 基本设置</text>
+    <text key="cdn.general.title2">JMS 目的文件 Resource - 基本设置</text>
+    <text key="cdn.general.name.label">名称</text>
+
+    <text key="cdn.storage.select_type.label">存储种类</text>
+    <text key="cdn.storage.data_source.title">数据源代码</text>
+    <text key="cdn.storage.file_storage.title">文件存储</text>
+    <text key="cdn.storage.message_file_unit.title">消息所需文件单位的设置</text>
+    <text key="cdn.storage.consumer_file_unit.title">消费者所需文件单位的设置</text>
+    <text key="cdn.storage.deliver_file_unit.title">配送者所需文件单位的设置</text>
+
+    <text key="JMSDestinationResource_Create.create">2. 生成</text>
+    <text key="cdn.create.title">生成新 {0} 目的文件-生成</text>
+    <text key="cdn.create.bind_now.label">要对该目的文件进行bind吗？</text>
+
+    <text key="JMSDurableSubscriberResource_Statistics">统计</text>
+    <text key="dsr.statistics.title">JMS DurableSubscriber - 统计</text>
+    <text key="dsr.statistics.id.label">ID</text>
+    <text key="dsr.statistics.client_id.label">Client ID</text>
+    <text key="dsr.statistics.name.label">名称</text>
+    <text key="dsr.statistics.remaining_messages.label">所剩消息</text>
+    <text key="dsr.statistics.selector.label">选择者</text>
+
+    <text key="JMSClientResource_Overview">概要 </text>
+    <text key="clr.overview.title">JMS Client Resource</text>
+    <text key="clr_overview_name_label">名称</text>
+    <text key="clr.overview.host_address.label">主机地址</text>
+    <text key="clr.overview.port.label">端口</text>
+    <text key="clr.overview.transaction_count.label">事物处理</text>
+    <text key="clr.overview.commit_count.label">commit</text>
+    <text key="clr.overview.rollback_count.label">回滚</text>
+    <text key="clr_overview_connection_count_label">连接</text>
+
+    <text key="JMSClientResource_Statistics">统计</text>
+    <text key="clr.statistics.title">JMS Client Resource - 统计</text>
+    <text key="clr.statistics.name.label">名称</text>
+    <text key="clr.statistics.host_address.label">Host地址</text>
+    <text key="clr.statistics.port.label">端口</text>
+    <text key="clr.statistics.transaction_count.label">事物处理</text>
+    <text key="clr.statistics.commit_count.label">commit</text>
+    <text key="clr.statistics.rollback_count.label">回滚</text>
+
+    <text key="JMSClientResource_Connections">连接</text>
+    <text key="clr.connections.title">JMS Client Resource - 连接</text>
+    <text key="clr_connections_name_label">名称</text>
+    <text key="clr.connections.transactional.label">事物处理</text>
+    <text key="clr.connections.session_count.label">会话数</text>
+
+    <text key="JMSConnectionResource_Statistics">统计</text>
+    <text key="cnr.statistics.title">JMS 连接 Resource - 统计</text>
+    <text key="cnr.statistics.name.label">名称</text>
+    <text key="cnr.statistics.transactional.label">统计</text>
+
+    <text key="JMSConnectionResource_Sessions">会话</text>
+    <text key="cnr.sessions.title">JMS 连接 Resource - 会话</text>
+    <text key="cnr_sessions_name_label">名称</text>
+    <text key="cnr.sessions.application_session.label">应用程序会话</text>
+    <text key="cnr.sessions.durable_subscription_count.label"> durable_subscription数量</text>
+    <text key="cnr.sessions.message_count.label">消息数量</text>
+    <text key="cnr.sessions.expired_message_count.label">已过期限的消息数量</text>
+    <text key="cnr.sessions.pending_message_count.label">未被处理的消息数量</text>
+    <text key="cnr.sessions.average_message_wait_time.label">平均消息等待时间（毫秒）</text>
+
+    <text key="JMSSessionResource_Statistics">统计</text>
+    <text key="ssr.statistics.title">JMS 会话 Resource - 统计</text>
+    <text key="ssr.statistics.name.label">名称</text>
+    <text key="ssr.statistics.application_session.label">应用程序会话</text>
+    <text key="ssr.statistics.durable_subscription_count.label"> durable_subscription数量</text>
+    <text key="ssr.statistics.message_count.label">消息计算</text>
+    <text key="ssr.statistics.expired_message_count.label">已过期限的消息数量</text>
+    <text key="ssr.statistics.pending_message_count.label">未被处理的消息数量</text>
+    <text key="ssr.statistics.average_send_time.label">平均传送时间（毫秒）</text>
+    <text key="ssr.statistics.average_message_wait_time.label">平均消息 等待时间（毫秒）</text>
+
+    <text key="JMSSessionResource_Consumers">消费者</text>
+    <text key="ssr.consumers.title">JMS 会话 Resource - 消费者</text>
+    <text key="ssr.consumers.origin.label">原产地</text>
+    <text key="ssr.consumers.message_count.label">消息数量</text>
+    <text key="ssr.consumers.expired_message_count.label">已过期限的消息数量</text>
+    <text key="ssr.consumers.pending_message_count.label">未被处理的消息数量</text>
+    <text key="ssr.consumers.average_send_time.label">平均传送时间(ms)</text>
+    <text key="ssr.consumers.average_message_wait_time.label">平均消息等待时间</text>
+
+    <text key="JTAResource_Configuration">设置</text>
+    <text key="JTAResource_Configuration.general">基本设置</text>
+    <text key="JTAResource_Configuration.pooling">线程池</text>
+
+    <text key="jta.configuration.title">事物处理 - 基本设置</text>
+
+    <text key="jta.pooling.title">事物处理 - 线程池</text>
+
+    <text key="JTAResource_Statistics">统计</text>
+    <text key="jta.statistics.title">事物处理 - 统计</text>
+
+    <text key="jta.statistics.active_count.label">活动数量</text>
+    <text key="jta.statistics.committed_count.label">commit数</text>
+    <text key="jta.statistics.rolledback_count.label">回滚数</text>
+    <text key="jta.statistics.timeout_count.label">timeout数</text>
+    <text key="jta.statistics.timeout_rolledback_count.label"> timeout 回滚数</text>
+    <text key="jta.statistics.active_timeout_count.label">激活timeout数量</text>
+    <text key="jta.statistics.prepare_timeout_count.label">准备(Prepare) timeout数</text>
+    <text key="jta.statistics.prepared_timeout_count.label">准备(Prepared)的timeout数</text>
+    <text key="jta.statistics.commit_timeout_count.label">commit timeout数</text>
+    <text key="jta.statistics.incomplete_commit_count.label">未结束 的commit数</text>
+    <text key="jta.statistics.execution_time.label">平均运行时间</text>
+
+    <text key="FolderApplicationModule_Deploy.select">1. 模块选择</text>
+    <text key="FolderApplicationModule_Deploy.targets">2. 对象</text>
+    <text key="FolderApplicationModule_Deploy.options">3. 选择事项 1</text>
+    <text key="FolderApplicationModule_Deploy.options2">4. 选择事项 2</text>
+    <text key="FolderApplicationModule_Deploy.deploy">5. Batch</text>
+    <text key="FolderApplicationModule_Deploy.result">6. 结果</text>
+
+    <text key="amd.select.title">新 应用程序模块 Batch - 模块选择</text>
+    <text key="amd.select.description">在第一阶段的模块选择阶段中选择要Batch的 模块。
+    选择模块的方式有三种。
+        第一是应用程序 Home所在的模块选择，
+        第二是直接输入任意路径所在的模块文件或目录的绝对路径。输入目录时，作为EXPLODED模式，只能对目录存在的节点的一个Container进行Batch。
+		最后向服务器上传local的文件。
+    </text>
+
+    <text key="amd.select.upload_file.label">文件</text>
+    <text key="amd.select.absolute_path.label">绝对路径</text>
+    <text key="amd.select.upload_target.label">应用程序 Home</text>
+
+    <text key="amd.select.existing_module_tab.label">模块</text>
+    <text key="amd.select.upload_tab.label">文件上传 </text>
+    <text key="amd.select.absolute_path_tab.label">绝对路径</text>
+	<text key="amd.select.existing_module_tab.apphome.label">应用程序home</text>
+	<text key="amd.select.existing_module_tab.selected_dir.label">选择目录</text>
+
+    <text key="amd.select.module.error">选择Batch模块。</text>
+    <text key="amd.targets.title">新应用程序模块 Batch - 对象</text>
+    <text key="amd.targets.description">该阶段中选择要对模块进行Batch的对象。
+    所有模块以引擎Container单位进行Batch。因此，选择想进行模块Batch的引擎 Container即可。
+    </text>
+
+    <text key="amd.targets.targets.label">可用对象</text>
+    <text key="amd.targets.context_group.label">[context 群组]</text>
+	<text key="amd.targets.virtual_host.label">[虚拟主机]</text>
+    <text key="amd.targets.error">至少选择一个以上对象。</text>
+	<text key="amd.options.title">新应用程序模块Batch - 各组件的选择事项</text>
+	<text key="amd.java_permission_spec.label">JAVA permission 说明</text>
+    <text key="amd.java_permission_description.label">JAVA permission 说明</text>
+    <text key="amd.options.components.label">各组件种类选择事项</text>
+
+    <text key="amd.options.ejb_component.title">EJB 组件选择事项</text>
+    <text key="amd.options.ejb_component.keep_generated.label">维持生成代码</text>
+    <text key="amd.options.ejb_component.fast_deploy.label">快速Batch</text>
+    <text key="amd.options.apply_all.label">将该设置使用于相同种类的模块吗？</text>
+    <text key="amd.options.uri.label">URI</text>
+
+    <text key="amd.options.web_component.title">WEB 组件选择事项</text>
+    <text key="amd.options.web_component.context_group.label">context 群组</text>
+    <text key="amd.options.client_component.title">应用程序客户端组件选择事项</text>
+	<text key="amd.options.connector_component.title">Resource 适配器组件选择事项</text>
+
+	<text key="amd.options2.title">新应用程序模块 Batch - 共同选择事项</text>
+
+    <text key="amd.deploy.title">新应用程序模块 - Batch</text>
+    <text key="amd.deploy.deploy.label">Batch</text>
+    <text key="amd.deploy.two_phase_deploy.label">2 阶段 Batch</text>
+    <text key="amd.deploy.two_phase_deploy.description">2 阶段 Batch是向所有对象成功批处理模块才能结束Batch操作的选项。只要有一个失败，已Batch的其他对象模块好被自动删除。
+    </text>
+    <text key="amd.deploy.permanent_deploy.title">永久性Batch设置</text>
+    <text key="amd.deploy.permanent_deploy.label">永久性Batch</text>
+    <text key="amd.deploy.permanent_deploy.description">选择永久性Batch，JEUSMain.xml中注册模块信息，在启动JEUS时进行自动启动。
+		应注意的是，选择该值，对运行时间无法进行Batch。
+		永久性Batch模块可通过节点树的永久模块节点中进行确认。
+	</text>
+	<text key="amd.deploy.permanent_deploy.description2">启动的引擎 Container不存在。
+		在此情况下，模块始终采用永久性Batch方式。
+		选择永久性Batch时，JEUSMain.xml中注册模块信息，
+		在启动JEUS时被自动启动。
+		应注意的是，选择该值，无法对运行时间进行Batch。
+		选择永久性Batch的模块可通过节点树的永久模块节进行确认。
+    </text>
+    <text key="amd.deploy.permanent_runtime_deploy.label">运行时间Batch</text>
+	<text key="amd.deploy.permanent_runtime_deploy.description">对永久性Batch时的运行时间的Batch与否进行设置。
+    </text>
+
+    <text key="amd.deploy.success">&quot;{0}&quot; 模块成功实现了批处理。</text>
+    <text key="amd.result.title">新 应用程序模块 Batch - 结果</text>
+    <text key="amd.result.completed.label">成功对象目录</text>
+    <text key="amd.result.failed.label">失败对象目录</text>
+
+    <text key="FolderApplicationModule_DeployWebContext.context">1. Web context 选择</text>
+    <text key="FolderApplicationModule_DeployWebContext.targets">2. 对象</text>
+    <!--<text key="FolderApplicationModule_DeployWebContext.options">3. 选择事项</text>-->
+    <text key="FolderApplicationModule_DeployWebContext.deploy">3. Batch</text>
+    <text key="FolderApplicationModule_DeployWebContext.result">4. 结果</text>
+
+    <text key="dwc.context.title">新Web context Batch - Web context 选择</text>
+    <text key="dwc.targets.title">新Web context Batch - 对象</text>
+    <text key="dwc.options.title">新Web context Batch - 选择事项</text>
+    <text key="dwc.deploy.title">新Web context Batch - Batch</text>
+    <text key="dwc.result.title">新Web context Batch - 结果</text>
+
+    <text key="dwc.options.context_group.label">context 群组</text>
+    <text key="dwc.options.context_name.label">context 名称</text>
+    <text key="dwc.deploy.deploy.label">Batch</text>
+    <text key="dwc.deploy.two_phase_deploy.label">2 阶段 Batch</text>
+    <text key="dwc.deploy.permanent_deploy.label">永久性Batch</text>
+    <text key="dwc.deploy.success">&quot;{0}&quot; context成功实现了批处理。</text>
+    <text key="dwc.result.completed.label">成功对象目录</text>
+    <text key="dwc.result.failed.label">失败对象目录</text>
+    <text key="dwc.unavailable.label">没有可用的</text>
+
+
+    <!-- Security -->
+    <text key="JeusServiceSecurityDomain_Overview">概要 </text>
+    <text key="domain.overview.title">安全Domain</text>
+    <text key="domain.overview.name.label">名称</text>
+    <text key="domain.overview.subjects.label">Subject数</text>
+	<text key="domain.overview.accounts.label">帐户数量</text>
+
+    <text key="JeusServiceSecurityDomain_Create">生成</text>
+    <text key="JeusServiceSecurityDomain_Create.create">生成</text>
+    <text key="domain.create.title">生成新安全domain</text>
+    <text key="domain.create.name.label">Domain名称</text>
+    <text key="domain.create.src_domain.label">原domain名称</text>
+    <text key="domain.create.select_domain.label">-- domain选择 --</text>
+    <text key="domain.create.use_existing_conf.label">使用现有的设置</text>
+    <text key="domain.create.label">生成新安全domain</text>
+	<text key="JeusServiceSecurityDomain_Services">服务</text>
+	<text key="JeusServiceSecurityDomain_Services.cipher">密码运算法则</text>
+	<text key="JeusServiceSecurityDomain_Services.cache">cache</text>
+	<text key="JeusServiceSecurityDomain_Services.keystore"> keystore </text>
+	<text key="JeusServiceSecurityDomain_Services.authentication">认证</text>
+	<text key="JeusServiceSecurityDomain_Services.authorization">分配权限</text>
+	<text key="JeusServiceSecurityDomain_Services.login">登录</text>
+	<text key="JeusServiceSecurityDomain_Services.idassertion">ID验证</text>
+	<text key="JeusServiceSecurityDomain_Services.crdmapping">Credential  Mapping </text>
+	<text key="JeusServiceSecurityDomain_Services.crdverification">Credential 验证</text>
+	<text key="JeusServiceSecurityDomain_Services.audit">检查</text>
+	<text key="JeusServiceSecurityDomain_Services.custom">定制服务</text>
+	<text key="domain.services.cipher.title">安全 domain - 密码运算法则</text>
+    <text key="domain.services.cache.title">安全 domain - 缓冲服务</text>
+    <text key="domain.services.keystore.title">安全 domain - Key store 服务</text>
+    <text key="domain.services.authentication.title">安全 domain - 认证服务</text>
+    <text key="domain.services.authorization.title">安全 domain - 权限分配服务</text>
+    <text key="domain.services.login.title">安全 domain - 登录 服务</text>
+    <text key="domain.services.idassertion.title">安全 domain - idea 检查 服务</text>
+    <text key="domain.services.crdmapping.title">安全domain - Credential 映射服务</text>
+    <text key="domain.services.crdverification.title">安全domain - Credential 检查 服务</text>
+	<text key="domain.services.audit.title">安全 domain - 检查服务</text>
+	<text key="domain.services.crdverification.description">选择Credential 检查 服务. 具有登录密码 检查方式和认证书检查方式.</text>
+    <text key="domain.services.custom.title">安全 domain - 用户 服务</text>
+    <text key="domain.services.custom.description">用户服务不可以与 Jeus所提供的基本服务(缓冲, 关键 store 服务之外的全部服务)实现重复设置. 因此,注册用户服务,已注册的Jeus的服务设置即被删除。 并且，可对Jeus提供的各个服务进行用户 服务注册操作，此时，Jeus向各个服务基本支持的功能也被删除。</text>
+    <text key="domain.services.custom.ok.confirm">Jeus基本提供的服务 (认证、权限、 JAAS登录、idea 检查、Credential 服务)有关的设置全被删除。要注册用户服务吗？</text>
+    
+    <text key="domain.services.authen.xml.ok.confirm">如果已设置定制服务及数据库 repository、用户 repository，相关设置即被删除。要设置吗？</text>
+    <text key="domain.services.authen.db.ok.confirm">如果已设置定制服务及XML 文件repository、用户 repository，相关设置即被删除。要设置吗？</text>
+	<text key="domain.services.authen.custom.ok.confirm">若已设置Custom服务及XML文件repository、 数据库repository时，相关设置即被删除。要进行设置吗？</text>
+	<text key="domain.services.authen.cache.ok.confirm">如果已设置定制服务，相关设置即被删除。要设置吗？</text>
+	<text key="domain.services.custom.authentication.ok.confirm">若已设置custom服务时，相关设置即被删除。要进行设置吗？</text> 
+    
+    <text key="domain.services.autho.xml.ok.confirm">如果已设置定制服务及数据库 repository、用户 repository，相关设置即被删除。要设置吗？</text>
+    <text key="domain.services.autho.db.ok.confirm">如果已设置定制服务 及XML 文件 repository 、数据库 repository，相关设置即被删除。要设置吗？</text>
+    <text key="domain.services.autho.custom.ok.confirm">如果已设置定制服务 及XML 文件 repository 、数据库 repository，相关设置即被删除。要设置吗？</text>
+	<text key="domain.services.autho.jacc.ok.confirm">若已设置Custom服及repository时，相关设置即被删除。要进行设置吗？</text>
+	<text key="domain.services.autho.cache.ok.confirm">如果已设置定制服务，相关设置即被删除。要设置吗？</text>
+	<text key="domain.services.custom.authorization.ok.confirm">如果已设置定制服务，相关设置即被删除。要设置吗？</text>
+    
+	<text key="domain.services.jaas.handler.ok.confirm">若已设置custom服务及用户服务时，相关设置即被删除。要进行设置吗？</text>
+	<text key="domain.services.jaas.login.ok.confirm">如果已设置定制服务及用户服务，相关设置即被删除。要设置吗？</text>
+
+	<text key="domain.services.login.custom.ok.confirm">若已设置Custome的服务及JAAS 登录服务时，相关设置即被删除。要进行设置吗？</text>
+    
+    <text key="domain.services.id.config.ok.confirm">如果已设置定制服务，相关设置即被删除。要设置吗？ </text>
+    <text key="domain.services.id.default.user.ok.confirm">如果已设置定制服务及 定制用户mapper、用户服务，相关设置即被删除。要设置吗？ </text>
+    <text key="domain.services.id.custom.user.ok.confirm">如果已设置定制服务及 基本用户 mapper、用户服务，相关设置即被删除。要设置吗？ </text>
+    <text key="domain.services.id.custom.ok.confirm">如果已设置定制服务及基本 服务，相关设置即被删除。要设置吗？ </text>
+    
+    <text key="domain.services.crd.default.mapping.ok.confirm">如果已设置定制服务及用户服务，相关设置即被删除。要设置吗？ </text>
+    <text key="domain.services.crd.custom.mapping.ok.confirm">如果已设置定制服务及基本服务，相关设置即被删除。要设置吗？ </text>
+    
+    <text key="domain.services.crd.verification.pwd.ok.confirm">如果已设置定制服务及用户服务，相关设置即被删除。要设置吗？ </text>
+    <text key="domain.services.crd.verification.cert.ok.confirm">如果已设置定制服务及用户服务，相关设置即被删除。要设置吗？</text>
+	<text key="domain.services.crd.verification.custom.ok.confirm">如果已设置定制服务及基本服务，相关设置即被删除。要设置吗？</text>
+
+	<text key="domain.services.audit.default.ok.confirm">如果已设置定制服务及用户服务，相关设置即被删除。要设置吗？</text>
+    <text key="domain.services.audit.custom.ok.confirm">如果已设置定制服务及基本服务，相关设置即被删除。要设置吗？</text>
+    
+    <text key="domain.services.repository.label">repository服务</text>
+    <text key="domain.services.cache.label">缓冲服务</text>
+    <text key="domain.services.autho.jacc.label">JACC 服务</text>
+    <text key="domain.services.use_jacc.label">JACC使用</text>
+    <text key="domain.services.default.label">基本 服务</text>
+    <text key="domain.services.default.repository.label">基本 repository服务</text>
+    <text key="domain.services.custom.repository.label">用户repository服务</text>
+    <text key="domain.services.repository.xml.label">XML 文件repository  </text>
+    <text key="domain.services.repository.db.label">数据库repository  </text>
+	<text key="domain.services.repository.custom.label">用户repository</text>
+    <text key="domain.services.custom.repository.title">用户服务</text>
+    <text key="domain.services.default.file.repository.title">文件</text>
+    <text key="domain.services.default.database.repository.title">数据库</text>
+	<text key="domain.services.jaas.login.label">JAAS 登录</text>
+	<text key="domain.services.custom.login.label">Custom登录</text>
+    <text key="domain.services.jaas.handler.label">handler</text>
+    <text key="domain.services.jaas.loginmodule.label">登录模式</text>
+    <text key="domain.services.jaas.loginmodule.classname.label">class 名称</text>
+    <text key="domain.services.jaas.loginmodule.controlflag.label">控制属性</text>
+    <text key="domain.services.jaas.loginmodule.optionname.label">选择名称</text>
+    <text key="domain.services.jaas.loginmodule.optionvalue.label">选择值</text>
+    <text key="domain.services.id.config.label">设置文件</text>
+    <text key="domain.services.id.defaultUser.label">基本 用户 mapper</text>
+    <text key="domain.services.id.customUser.label">定制用户 mapper</text>
+    <text key="domain.services.crd.verification.none.label">未使用</text>
+    <text key="domain.services.crd.verification.password.label">登录密码检查</text>
+	<text key="domain.services.crd.verification.password.description">针对PasswordFactory class进行的 credential verification 设定</text>
+    <text key="domain.services.crd.verification.certificate.label">认证书 检查</text>
+    <text key="domain.services.crd.verification.certificate.jeus.label">Jeus(JEUS) 认证书 检查</text>
+	<text key="domain.services.crd.verification.certificate.jeus.description">针对X509Certificate进行的 credential verification 设定</text>
+    <text key="domain.services.crd.verification.certificate.sun.label">SUN</text>
+    <text key="domain.services.custom.label">用户服务</text>
+    <text key="domain.services.custom.classname.label">class 名称</text>
+    <text key="domain.services.custom.optionname.label">选择名称</text>
+    <text key="domain.services.custom.optionvalue.label">选择值</text>
+    <text key="domain.services.services.label">服务</text>
+    <text key="domain.services.modify.label">设定</text>
+    <text key="domain.services.remove.label">删除</text>
+    <text key="domain.services.create.label">生成</text>
+    <text key="domain.services.save.label">保存</text>
+    <text key="domain.services.modify.title">安全服务设定</text>
+
+    <text key="domain.message.file_find.fail">因为{0}是不存在的domain，所以无法使用{0}设置。</text>
+
+    <text key="domain.services.classname.label">class 名称</text>
+    <text key="domain.services.properties.label">属性 等</text>
+    <text key="domain.services.create.title">生成新安全服务</text>
+
+	<text key="JeusServiceSecurityDomain_Accounts">帐户</text>
+	<text key="domain.accounts.title">安全 domain - 帐户</text>
+	<text key="domain.accounts.accounts.label">帐户</text>
+	<text key="domain.accounts.modify.title">帐户设定</text>
+	<text key="domain.accounts.name.label">名称</text>
+	<text key="domain.accounts.password.algorithm.label">密码和 运算法则</text>
+	<text key="domain.accounts.password.label">密码</text>
+    <text key="domain.accounts.confirm_password.label">确定密码</text>
+    <text key="domain.accounts.create.title">生成新安全 帐户</text>
+	
+    <text key="JeusServiceSecurityDomain_Services.master">主</text>
+    <text key="JeusServiceSecurityDomain_Services.slave">从</text>
+    <text key="domain.services.master.title">安全domain?C 主服务</text>
+    <text key="domain.services.slave.title">安全domain?C 从服务</text>
+    <text key="domain.services.services.label">服务</text>
+    <text key="domain.services.modify.label">修改</text>
+    <text key="domain.services.remove.label">删除</text>
+    <text key="domain.services.create.label">生成</text>
+    <text key="domain.services.save.label">保存</text>
+    <text key="domain.services.modify.title">修改安全服务</text>
+
+    <text key="domain.message.file_find.fail">{0}是不存在的domain， {0} 无法使用设置。</text>
+
+    <text key="domain.services.classname.label">Class 名称</text>
+    <text key="domain.services.properties.label">属性等</text>
+    <text key="domain.services.create.title">生成新安全服务</text>
+
+    <text key="JeusServiceSecurityDomain_Subjects">Subject</text>
+    <text key="JeusServiceSecurityDomain_Subjects.basic">基本</text>
+    <text key="domain.subjects.basic_subjects.title">安全domain- Subject(基本模式)</text>
+    <text key="domain.subjects.expert_subjects.title">安全domain - Subject(专家模式)</text>
+    <text key="domain.subjects.subjects.label">Subject</text>
+    <text key="domain.subjects.policies.title">安全domain- 方案</text>
+    <text key="domain.subjects.modify.title">修改Subject</text>
+    <text key="domain.subjects.name.label">名称</text>
+    <text key="domain.subjects.password.label">密码</text>
+    <text key="domain.subjects.confirm_password.label">密码 确认</text>
+    <text key="domain.subjects.create.title">新 安全 Subject 生成</text>
+    <text key="subject.principals.title">Subject - Principal</text>
+    <text key="subject.principals.label">Principal</text>
+    <text key="subject.factories.label">credentail Factory</text>
+    <text key="subject.principal.create.title">生成新主题</text>
+    <text key="subject.principal.classname.label">Class 名称</text>
+    <text key="subject.principal.name.label">名称</text>
+
+    <text key="subject.factory.modify.title">修改credential Factory </text>
+    <text key="subject.factory.classname.label">Class 名称</text>
+    <text key="subject.factory.properties.label">属性</text>
+    <text key="subject.factory.create.title">生成新credential Factory </text>
+    <text key="subject.factory.credentialfactory.remove">Subject &quot;{0}&quot;成功删除credential Factory。</text>
+    <text key="subject.factory.currentSubject.credentialfactory.remove">&quot;{0}&quot;是与现在Subject相同的Principa，无法删除credential Factory。</text>
+ 
+    <text key="JeusServiceSecurityDomain_Subjects.expert">专家</text>
+    <text key="JeusServiceSecurityDomain_Policies">方案</text>
+
+    <text key="policies.title">安全domain - 方案</text>
+    <text key="policies.role.label">role</text>
+    <text key="policies.resource.label">Resource</text>
+    <text key="policies.policies.label">context 识别</text>
+    <text key="policies.create.title">生成新context</text>
+    <text key="policies.create.context_id.label">识别context</text>
+
+    <text key="policies.role.title">role 权限</text>
+    <text key="policies.role.modify.title">修改role 权限</text>
+    <text key="policies.role.create.title">生成新role 权限</text>
+
+    <text key="policies.role.roles.label">role</text>
+    <text key="policies.role.name.label">名称</text>
+    <text key="policies.role.classname.label">Class 名称</text>
+    <text key="policies.role.principals.label">主要</text>
+    <text key="policies.role.actions.label">行动</text>
+    <text key="policies.role.unchecked.label">检查</text>
+    <text key="policies.role.excluded.label">除外</text>
+
+    <text key="policies.resource.title">Resource 权限</text>
+    <text key="policies.resource.resources.label">Resource</text>
+
+
+    <text key="policies.resource.modify.title">修改Resource 权限</text>
+    <text key="policies.resource.create.title">生成新Resource权限</text>
+
+    <text key="policies.resource.roles.label">role</text>
+    <text key="policies.resource.name.label">名称</text>
+    <text key="policies.resource.classname.label">Class 名称</text>
+    <text key="policies.resource.principals.label">主要</text>
+    <text key="policies.resource.actions.label">行动</text>
+    <text key="policies.resource.unchecked.label">检查</text>
+    <text key="policies.resource.excluded.label">除外</text>
+
+
+
+    <text key="policy.role.create.title">生成新role 权限</text>
+
+
+
+    <!-- JNDI Tree Pages -->
+    <text key="Etc_JNDITree.remote.title">JNDI 树</text>
+    <text key="Etc_JNDITree.local.title">地区JNDI 树</text>
+
+    <text key="Etc_Binding.title">binding信息</text>
+    <text key="Etc_Binding.name.label">名称</text>
+    <text key="Etc_Binding.class.label">Class 名称</text>
+    <text key="Etc_Binding.hash_code.label">hash code</text>
+
+    <text key="Etc_TroubleMonitor">monitor</text>
+    <text key="troubles.title">故障 monitor</text>
+    <text key="troubles.name.label">名称</text>
+    <text key="troubles.j2eeType.label">J2EE 型</text>
+    <text key="troubles.jeusType.label">JEUS 型</text>
+    <text key="troubles.constraint_key.label">制约key</text>
+    <text key="troubles.constraint_value.label">制约值</text>
+    <text key="troubles.cause.label">原因</text>
+    <text key="troubles.status.label">状态</text>
+
+    <text key="Etc_ElementDocument.title">要素文本</text>
+    <text key="elemdoc.name.label">名称</text>
+    <text key="elemdoc.description.label">说明</text>
+    <text key="elemdoc.value_type.label">资料型</text>
+    <text key="elemdoc.value_type_description.label">资料型说明</text>
+    <text key="elemdoc.default_value.label">基本值</text>
+    <text key="elemdoc.defined_values.label">定义的值</text>
+    <text key="elemdoc.deprecated.label"></text>
+    <text key="elemdoc.performance_recommendation.label">性能推荐值</text>
+    <text key="elemdoc.example.label">例子</text>
+    <text key="JeusServiceJEUSManager_CreateHandler.navigation">生成新的日志Handler </text>
+
+
+    <!-- LogAnalyzer -->
+    <text key="JeusServiceLogAnalyzerService_Analysis">分析</text>
+    <text key="la.title">日志分析</text>
+    <text key="la.tree.title">日志树</text>
+    <text key="la.status.title">分析状态</text>
+    <text key="la.status.remove.message">删除该分析 结果吗？</text>
+
+    <text key="la.offline.title">offline 日志分析</text>
+    <text key="la.offline.file_pattern.label">文件pattern</text>
+    <text key="la.offline.formatter_class_name.label">格式化程序Class 名称</text>
+    <text key="la.offline.log_record_class_name.label">日志record Class 名称</text>
+    <text key="la.offline.logger_type.label">logger种类</text>
+
+    <text key="la.handler.title">&quot;{0}&quot;对应的日志 Handler</text>
+    <text key="la.handler.handler_owner.label">Handler 所属logger名称</text>
+    <text key="la.handler.name.label">Handler 名称</text>
+    <text key="la.handler.pattern.label">文件 名称pattern</text>
+    <text key="la.handler.level.label">标准</text>
+    <text key="la.handler.display_rows.label">输出行数</text>
+    <text key="la.handler.interval.label">周期</text>
+    <text key="la.handler.buffer_size.label">缓冲大小</text>
+    <text key="la.handler.actions.label">命令</text>
+    <text key="la.handler.analysis.label">分析</text>
+    <text key="la.handler.stack_trace.label">跟踪日志</text>
+    <text key="la.stack_trace.title">跟踪日志</text>
+    <text key="la.stack_trace.refresh.label">重新修改</text>
+    <text key="la.stack_trace.buffer.label">缓冲大小</text>
+
+    <text key="la.rule.title">分析规则设置</text>
+
+    <text key="la.rule.file_pattern.label">文件pattern</text>
+    <text key="la.rule.name.label">pattern ID</text>
+    <text key="la.rule.pattern.label">正规 表格型</text>
+    <text key="la.rule.class_name.label">分析 Class</text>
+    <text key="la.rule.task_name.label">作业名称</text>
+    <text key="la.rule.task_name.description">采用如下规则进行分析时，对各分析操作进行识别的操作名称。
+    左侧'分析 状态' view中将该名称作为识别者。
+    ?) task1
+    </text>
+    <text key="la.rule.start_date.label">开始日期(时间)</text>
+    <text key="la.rule.end_date.label">结束日期(时间)</text>
+    <text key="la.rule.date.description">输入方式为'yyyy-MM-dd'。 例) 2004-09-21 </text>
+    <text key="la.rule.pattern_id.label">pattern识别</text>
+	<text key="la.rule.pattern_id_help.label">(正规显示方式的帮助栏)</text>
+    <text key="la.rule.buffer_size.label">缓冲大小</text>
+    <text key="la.rule.enable_buffer_size.label">缓冲使用</text>
+    <text key="la.rule.message.title">成功开始了日志分析!</text>
+    <text key="la.rule.completed">
+    日志分析成功开始为背景程序。
+   通过分析状态窗口确认目前操作情况。
+    完成后在分析状态窗口中单击操作名称，即可确认分析结果。
+    </text>
+    <text key="la.rule.pattern_error.message">未输入正确的显示方式。请输入正常的显示方式。</text>   
+
+    <text key="la.result.title">{0}分析 结果</text>
+    <text key="la.result.page_size.label">页大小</text>
+    <text key="la.result.total_rows.label">总</text>
+
+    <text key="Exception.title">错误</text>
+
+	<!-- JEUS Monitoring -->
+	<text key="JeusMonitoringThreadMonitoringService_Overview">概要 </text>
+	<text key="tpmo.overview.title">线程监控</text>
+	<text key="tpmo.overview.field.label">线程池信息</text>
+	<text key="tpmo.overview.filter.label">filter</text>
+	<text key="tpmo.overview.filterButton.label">搜索</text>
+	<text key="tpmo.overview.name.label">名称</text>
+	<text key="tpmo.overview.keepAliveTime.label">Keep Alive Time</text>
+	<text key="tpmo.overview.activeCount.label">活动线程</text>
+	<text key="tpmo.overview.active.label">激活</text>
+	<text key="tpmo.overview.beginTime.label">开始时间</text>
+	<text key="tpmo.overview.currentTime.label">执行时间</text>
+	<text key="tpmo.overview.poolSize.label">池大小</text>
+	<text key="tpmo.overview.largestPoolSize.label">最大池大小</text>
+	<text key="tpmo.overview.taskCount.label">处理作业数</text>
+	<text key="tpmo.overview.notFound.message">无法找到包含该项的线程池。</text>
+
+	<text key="JeusMonitoringThreadMonitoringService_Configuration">设置</text>
+	<text key="tpmo.configuration.title">线程池 - 设置</text>
+	<text key="tpmo.configuration.keepAliveTime.label">Keep Alive Time</text>
+	<text key="tpmo.configuration.maxPoolSize.label">最大池大小</text>
+	<text key="tpmo.configuration.corePoolSize.label">core池大小</text>
+	<text key="tpmo.configuration.success">线程池 {0}的设置成功结束。</text>
+	
+	<text key="JeusMonitoringThreadMonitoringService_Infos">信息</text>
+	<text key="tmo.infos.title">线程监控信息</text>
+	<text key="tmo.infos.tableField.lable">[作业线程信息]</text>
+	<text key="tmo.infos.poolName.label">线程池名称</text>
+	<text key="tmo.infos.threadExecutionTime.label">线程运行时间</text>
+	<text key="tmo.infos.queueWaitingTime.label">queue等待时间</text>
+	<text key="tmo.infos.waitingQueueSize.label">等待队列大小</text>
+	<text key="tmo.infos.threadName.label">名称</text>
+	<text key="tmo.infos.keepAliveTime.label">Keep Alive Time</text>
+	<text key="tmo.infos.activeCount.label">活动线程</text>
+	<text key="tmo.infos.active.label">激活</text>
+	<text key="tmo.infos.beginTime.label">开始时间</text>
+	<text key="tmo.infos.runningTime.label">运行时间</text>
+	<text key="tmo.infos.poolSize.label">池大小</text>
+	<text key="tmo.infos.maxPoolSize.label">最大池大小</text>
+	<text key="tmo.infos.corePoolSize.label">核心池大小</text>
+	<text key="tmo.infos.largestPoolSize.label">最大池大小</text>
+	<text key="tmo.infos.taskCount.label">处理作业数</text>
+
+	<text key="JeusMonitoringTransactionMonitoringService_Overview">概要 </text>
+	<text key="txmo.overview.title">事物处理监控</text>
+	<text key="txmo.overview.serverName.label">Container 名称</text>
+	<text key="txmo.overview.activeTimeout.label">Active Timeout</text>
+
+    <!-- Remote Webtob Control -->
+	<!--
+    <text key="RemoteWebtobControlService_Overview">概要 </text>
+    <text key="RemoteWebtobControlService_Create.create">生成</text>
+    <text key="RemoteWebtobControlService_Configuration">设置</text>
+    <text key="RemoteWebtobControlService_Configuration.node">节点</text>
+    <text key="RemoteWebtobControlService_Configuration.vhost">虚拟主机</text>
+    <text key="RemoteWebtobControlService_Configuration.server_group">服务器群组</text>
+    <text key="RemoteWebtobControlService_Configuration.server">服务器</text>
+    <text key="RemoteWebtobControlService_Configuration.service">服务</text>
+    <text key="RemoteWebtobControlService_Configuration.access">接近</text>
+    <text key="RemoteWebtobControlService_Configuration.authent">认证</text>
+    <text key="RemoteWebtobControlService_Configuration.directory">目录</text>
+    <text key="RemoteWebtobControlService_Configuration.uri">URI</text>
+    <text key="RemoteWebtobControlService_Configuration.ext">扩展</text>
+    <text key="RemoteWebtobControlService_Configuration.alias">别名</text>
+    <text key="RemoteWebtobControlService_Configuration.dirindex">目录 ??</text>
+    <text key="RemoteWebtobControlService_Configuration.ssl">SSL</text>
+    <text key="RemoteWebtobControlService_Configuration.errdoc">错误文本</text>
+    <text key="RemoteWebtobControlService_Configuration.expires">到期</text>
+    <text key="RemoteWebtobControlService_Configuration.tcpgw">TCPGW</text>
+    <text key="RemoteWebtobControlService_Configuration.logging">日志</text>
+    <text key="RemoteWebtobControlService_Configuration.nliveinq"></text>
+    <text key="RemoteWebtobControlService_Statistics">统计</text>
+
+    <text key="webtob.overview.title">远程WebToB</text>
+    <text key="webtob.overview.target_node.label">现在节点名称</text>
+    <text key="webtob.overview.target_vhost.label">现在节点名称</text>
+    <text key="webtob.overview.target_node.description">当前作业中节点名称</text>
+    <text key="webtob.overview.target_vhost.description">当前作业中节点名称</text>
+    <text key="webtob.overview.name.label">名称</text>
+    <text key="webtob.overview.config_file.label">设置文件</text>
+    <text key="webtob.overview.address.label">IP 地址</text>
+    <text key="webtob.overview.control_port.label">端口</text>
+    <text key="webtob.overview.status.label">状态</text>
+    <text key="webtob.overview.actions.label">命令</text>
+    <text key="webtob.overview.statistics.label">统计</text>
+    <text key="webtob.overview.start.label">开始</text>
+    <text key="webtob.overview.down.label"> down</text>
+    <text key="webtob.overview.compile.label">编译</text>
+    <text key="webtob.overview.start_all.label">全部开始</text>
+    <text key="webtob.overview.down_all.label">全部down</text>
+    <text key="webtob.overview.duplicate.label">Webtob 复制</text>
+    <text key="webtob.overview.create.label">远程WebToB生成</text>
+	<text key="webtob.overview.config.title">远程WebToB设置</text>
+    <text key="webtob.overview.start.success.message">远程WebToB 服务器启动成功。</text>
+    <text key="webtob.overview.start.failure.message">远程WebToB 服务器启动失败。</text>
+    <text key="webtob.overview.down.success.message">远程WebToB 服务器成功结束。</text>
+    <text key="webtob.overview.down.failure.message">远程WebToB 服务器结束失败。</text>
+    <text key="webtob.overview.compile.success.message">远程WebToB 编译成功。</text>
+    <text key="webtob.overview.compile.failure.message">远程WebToB 编译失败。</text>
+
+    <text key="webtob.config.node.name.label">节点名称</text>
+    <text key="webtob.config.node.webtobdir.label">WebToB Home 目录</text>
+    <text key="webtob.config.node.shmkey.label">共享memory segment</text>
+    <text key="webtob.config.node.docroot.label">服务文本 root</text>
+    <text key="webtob.configuration.no.instance.message">
+    所选远程WebToB的设置文件不存在。\r\n
+    在相关WebToB中重新生成设置文件，或请注册已存在的设置文件。\r\n
+    </text>
+    <text key="webtob.create.title">生成新的远程WebToB</text>
+
+    <text key="webtob.node.title">远程WebToB - 节点</text>
+    <text key="webtob.node.name.label">名称</text>
+    <text key="webtob.node.webtob_dir.label">WebToB 目录</text>
+    <text key="webtob.node.shmkey.label">共享memory?</text>
+    <text key="webtob.node.docroot.label">文本 基本路径</text>
+    <text key="webtob.node.port.label">端口</text>
+    <text key="webtob.node.index_name.label">index名称</text>
+    <text key="webtob.node.logging.label">日志</text>
+    <text key="webtob.node.error_log.label">错误日志</text>
+    <text key="webtob.node.general.label">基本</text>
+    <text key="webtob.node.info.label">节点 信息</text>
+    <text key="webtob.node.supplement.label">附加功能</text>
+    <text key="webtob.node.connection.label">连接</text>
+    <text key="webtob.node.cache.label">高速缓冲器</text>
+    <text key="webtob.node.log.label">日志</text>
+    <text key="webtob.node.http.label">HTTP header </text>
+    <text key="webtob.node.user.label">用户 设置</text>
+    <text key="webtob.node.ssl.label">SSL</text>
+    <text key="webtob.node.directory.label">目录</text>
+
+    <text key="webtob.config.vhost.name.label">虚拟主机节点名称</text>
+    <text key="webtob.config.vhost.node_name.label">节点名称</text>
+    <text key="webtob.config.vhost.docroot.label">服务文本Root</text>
+
+    <text key="webtob.vhost.title">远程WebToB - 虚拟主机</text>
+    <text key="webtob.vhost.name.label">名称</text>
+    <text key="webtob.vhost.node_name.label">节点名称</text>
+    <text key="webtob.vhost.docroot.label">文本基本路径</text>
+    <text key="webtob.vhost.port.label">端口</text>
+    <text key="webtob.vhost.index_name.label">index名称</text>
+    <text key="webtob.vhost.logging.label">日志</text>
+    <text key="webtob.vhost.error_log.label">错误日志</text>
+    <text key="webtob.vhost.general.label">基本</text>
+    <text key="webtob.vhost.info.label">节点信息</text>
+    <text key="webtob.vhost.supplement.label">附加功能</text>
+    <text key="webtob.vhost.connection.label">连接</text>
+    <text key="webtob.vhost.log.label">日志</text>
+    <text key="webtob.vhost.user.label">用户设置</text>
+    <text key="webtob.vhost.ssl.label">SSL</text>
+    <text key="webtob.vhost.directory.label">目录</text>
+
+    <text key="webtob.server_group.title">远程WebToB - 服务器群组</text>
+    <text key="webtob.server_group.name.label">名称</text>
+    <text key="webtob.server_group.svr_type.label">服务器种类</text>
+
+    <text key="webtob.server.title">远程WebToB - 服务器</text>
+    <text key="webtob.server.name.label">名称</text>
+    <text key="webtob.server.svg_name.label">服务器群组名称</text>
+    <text key="webtob.server.min_proc.label">最小process</text>
+    <text key="webtob.server.max_proc.label">最大process</text>
+
+    <text key="webtob.service.title">远程WebToB - 服务</text>
+    <text key="webtob.service.name.label">名称</text>
+    <text key="webtob.service.priority.label">最优顺序</text>
+    <text key="webtob.service.svc_time.label">服务处理期限</text>
+
+    <text key="webtob.directory.title">远程WebToB - 目录</text>
+    <text key="webtob.directory.name.label">名称</text>
+    <text key="webtob.directory.path.label">路径</text>
+
+    <text key="webtob.uri.title">远程WebToB - URI</text>
+    <text key="webtob.uri.name.label">名称</text>
+    <text key="webtob.uri.def.label">定义</text>
+    <text key="webtob.uri.svr_type.label">服务器种类</text>
+
+    <text key="webtob.alias.title">远程WebToB- 别名</text>
+    <text key="webtob.alias.name.label">名称</text>
+    <text key="webtob.alias.def.label">URI 定义</text>
+    <text key="webtob.alias.real_path.label">实际路径</text>
+    <text key="webtob.alias.svr_type.label">服务器种类</text>
+
+    <text key="webtob.dirindex.title">远程WebToB - 目录索引</text>
+    <text key="webtob.dirindex.name.label">名称</text>
+    <text key="webtob.dirindex.option.label">选择</text>
+
+    <text key="webtob.ssl.title">远程WebToB - SSL</text>
+    <text key="webtob.ssl.name.label">名称</text>
+    <text key="webtob.ssl.certificate_file.label">认证文件</text>
+    <text key="webtob.ssl.certificate_key_file.label">认证key文件</text>
+
+	<text key="webtob.authent.title">远程WebToB - 认证</text>
+    <text key="webtob.authent.name.label">名称</text>
+    <text key="webtob.authent.type.label">认证 控制方式</text>
+    <text key="webtob.authent.user_file.label">用户文件</text>
+    <text key="webtob.authent.group_file.label">群组文件</text>
+
+    <text key="webtob.access.title">远程WebToB - 接近</text>
+    <text key="webtob.access.name.label">名称</text>
+    <text key="webtob.access.order.label">顺序</text>
+
+    <text key="webtob.errdoc.title">远程WebToB - 错误文本</text>
+    <text key="webtob.errdoc.name.label">名称</text>
+    <text key="webtob.errdoc.status.label">状态</text>
+    <text key="webtob.errdoc.url.label">URL</text>
+
+    <text key="webtob.expires.title">远程WebToB - 到期</text>
+    <text key="webtob.expires.name.label">名称</text>
+    <text key="webtob.expires.mimetype.label">MIME类型</text>
+    <text key="webtob.expires.url.label">URL</text>
+    <text key="webtob.expires.time.label">到期时间</text>
+
+    <text key="webtob.tcpgw.title">远程WebToB - TCPGW</text>
+	<text key="webtob.tcpgw.name.label">名称</text>
+	-->
+<!--
+    <text key="webtob.expires.mimetype.label">MIME类型</text>
+    <text key="webtob.expires.url.label">URL</text>
+    <text key="webtob.expires.time.label">到期时间</text>
+-->
+	<!--
+    <text key="webtob.ext.title">远程WebToB - 扩展</text>
+    <text key="webtob.ext.name.label">名称</text>
+    <text key="webtob.ext.mime_type.label">MIME类型</text>
+    <text key="webtob.ext.svr_type.label">服务器种类</text>
+
+    <text key="webtob.logging.title">远程WebToB - 日志</text>
+    <text key="webtob.logging.name.label">名称</text>
+    <text key="webtob.logging.file_name.label">文件名称</text>
+    <text key="webtob.logging.format.label">格式</text>
+    <text key="webtob.logging.valid_days.label">有效日期</text>
+    <text key="webtob.logging.option.label">选择</text>
+
+    <text key="webtob.statistics.title">远程WebToB - 统计</text>
+    <text key="webtob.statistics.svr_name.label">服务器名称</text>
+    <text key="webtob.statistics.status.label">状态</text>
+    <text key="webtob.statistics.min_proc.label">最小进程</text>
+    <text key="webtob.statistics.max_proc.label">最大进程</text>
+    <text key="webtob.statistics.count.label">执行数</text>
+    <text key="webtob.statistics.avg.label">平均运行时间(毫秒)</text>
+	-->
+
+<!--
+    <text key="webtob.overview.start.success.message">远程WebToB 服务器 &quot;{0}\quot;成功启动。</text>
+    <text key="webtob.overview.start.failure.message">远程WebToB 服务器 &quot;{0}\quot;启动失败。</text>
+    <text key="webtob.overview.down.success.message">远程WebToB 服务器 &quot;{0}\quot;结束成功。</text>
+    <text key="webtob.overview.down.failure.message">远程WebToB 服务器 &quot;{0}\quot;结束失败。</text>
+-->
+
+    <!-- common messages                                                     -->
+    <!-- webadmin exception messages                                         -->
+   <text key="common.exception.0001">? ''{0}'' 以Object 名称无法查询到JAXB Object。</text>
+    <text key="common.exception.0002">{0}该项已存在。</text>
+    <text key="common.exception.0003">并不是有效的型。{0}应为{1}型。</text>
+    <text key="common.exception.0004">{0}需要比{1}大。</text>
+    <text key="common.exception.0005">{0}无法bind。重新确认设置。</text>
+    <text key="common.exception.0006">{0}是不明主机。确认节点名称。</text>
+    <text key="common.exception.0007">{0} 无任何节点信息。</text>
+    <text key="common.exception.0008">{0} 节点已经被其他Jeus系统聚类。</text>
+    <text key="common.exception.0009">{0}节点已经被其他Jeus系统聚类。</text>
+    <text key="common.exception.0010">{0} 节点没有被激活。首先执行\"jeus\"命令后运行JEUS 管理员。</text>
+	<text key="common.exception.0011">{0} 节点未被激活。首先执行&quot;jeus&quot; 命令后再运行JEUS 管理员。</text>
+    <text key="common.exception.0012">{0}个对象中进行\"{1}\"模块Batch操作失败。</text>
+    <text key="common.exception.0013">\"{0}\"已存在。</text>
+    <text key="common.exception.0014">\"{0}\"已存在。</text>
+    <text key="common.exception.0015">至少存在一个引擎 Container。</text>
+    <text key="common.exception.0016">是无效IP地址方式。</text>
+    <text key="common.exception.0017">至少存在一个context 群组。</text>
+    <text key="common.exception.0018">至少存在一个Web listener。</text>
+    <text key="common.exception.0019">至少选择一个Web context。</text>
+    <text key="common.exception.0020">{0} 服务器必须包括于所选对象中。</text>
+    <text key="common.exception.0021">{0} 对象对\"{2}\"模块进行{1}失败。</text>
+    <text key="common.exception.0022">{0}已存在。</text>
+    <text key="common.exception.0023">至少一个JMS存在于该Cluster。</text>
+    <text key="common.exception.0024">{0}进行bind失败。</text>
+    <text key="common.exception.0025">{0}更新操作失败。</text>
+    <text key="common.exception.0026">{0}增加操作失败。</text>
+    <text key="common.exception.0027">{0} 目的文件增加失败。详细内容请参考日志。</text>
+    <text key="common.exception.0028">{0} Connection Factory的增加操作失败。详细内容请参考日志。</text>
+    <text key="common.exception.0029">{0} WebT 数据源代码的增加操作失败。详细内容请参考日志。</text>
+    <text key="common.exception.0030">至少存在一个\"{0}\"。</text>
+    <text key="common.exception.0031">密码错误。</text>
+    <text key="common.exception.0032">无法查找Subject {0}。</text>
+    <text key="common.exception.0033">至少存在一个\"{0}\"。</text>
+    <text key="common.exception.0034">{0}并不是基本Subject。基本Subject是使用PasswordFactory后拥有唯一的Principal与密码。</text>
+    <text key="common.exception.0035">为了对分布式会话服务器进行共同设置，该节点内应设置至少一个以上的分布式会话服务器。分布式会话服务器的设置可利用Web 引擎的会话Tab。</text>
+    <text key="common.exception.0036">中央集中式会话服务器已被设置。为了设置分布式会话服务器，需重新开始中央集中式会话服务器设置。在中央集中式会话服务器设置Tab中单击重新设置按钮，对所有设置进行重新开始。</text>
+    <text key="common.exception.0037">分布式会话服务器已被设置。为了设置中央集中式会话服务器，需重新开始分布式会话服务器设置。在分布式会话服务器设置Tab中单击重新设置按钮，对所有设置进行重新开始。</text>
+    <text key="common.exception.0038">至少存在一个引擎。</text>
+    <text key="common.exception.0039">至少存在一个引擎。</text>
+    <text key="common.exception.0040">引擎Container名称中不可以使用"_"或空白文字。</text>
+    <text key="common.exception.0041">模块的配置对象不存在。</text>
+    <text key="common.exception.0042">
+    JNLP 服务设置文件不存在。
+    在JEUS 管理员服务中将Enable JNLP设置为true时，必须存在JNLPMain.xml文件。
+    </text>
+    <text key="common.exception.0043">不进行JNLP 服务设置。要使用JNLP 服务，需要在JEUS 管理员 - 服务中进行Enable Jnlp 设置。</text>
+    <text key="common.exception.0044">成功运行重新设置操作。</text>
+    <text key="common.exception.0045">引擎 Container名称中不可以使用韩文。</text>
+    <text key="common.exception.0046">引擎名称中不可以使用"_"或空白文字。</text>
+    <text key="common.exception.0047">引擎 名称无法使用汉字。</text>
+    <text key="common.exception.0048"> \"{0}\"为Main Principal，无法进行删除。</text>
+    <text key="common.exception.0049">应选择需要删除的Subject。</text>
+    <text key="common.exception.0050">应选择需要删除的Subject。</text>
+    <text key="common.exception.0051">应选择需要删除的Class。</text>
+    <text key="common.exception.0052">应选择需要修改的Class。</text>
+    <text key="common.exception.0053">应选择需要删除的Factory。</text>
+    <text key="common.exception.0054">应选择需要修改的Factory。</text>
+    <text key="common.exception.0055">应选择需要删除的Policy。</text>
+    <text key="common.exception.0056">应选择需要修改的Policy。</text>
+    <text key="common.exception.0057">应选择需要删除的Role。</text>
+    <text key="common.exception.0058">应选择需要修改的Role。</text>
+    <text key="common.exception.0059">应选择需要删除的Resource。</text>
+    <text key="common.exception.0060">应选择需要修改的Resource。</text>
+    <text key="common.exception.0061">应选择需要删除的Principal。</text>
+    <text key="common.exception.0062">Handler名称中不可以使用韩文。</text>
+    <text key="common.exception.0063">Handler名称中不可以使用"_"或空白文字。</text>
+    <text key="common.exception.0064">为了对中央集中式会话服务器进行共同设置，该Web 引擎内应设置至少一个以上的中央集中式会话服务器。中央集中式会话服务器的设置可利用Web 引擎的会话Tab。</text>
+    <text key="common.exception.0065">成功运行设置操作。</text>
+    <text key="common.exception.0066">可能使用英文或数字。</text>
+    <text key="common.exception.0067">无法连接\"{0}\" 节点。</text>
+    <text key="common.exception.0068">至少存在一个服务器渠道设置。</text>
+    <text key="common.exception.0069">Step应该是{0}。</text>
+    <text key="common.exception.0070">{0}要比{1}小或一样。</text>
+    <text key="common.exception.0071">{0}和{1}中必须设置一个。但不可以全部设置。</text>
+
+    <text key="common.exception.element_not_found">无法查找\"{0}\"所需的\"{1}\"xml。请更新节点树后再进行操作。</text>
+    <text key="common.exception.file_not_found">无法查找\"{0}\"文件。</text>
+    <text key="common.exception.xml_not_found">无法查找\"{0}\"xml文件。</text>
+    <text key="common.exception.page_access_denied">无法连接\"{0}\"页面。向管理者咨询请求连接权限。</text>
+    <text key="common.exception.login_fail">登录失败。Id和密码错误。</text>
+    <text key="common.exception.definition_not_found">无法查找\"{0}\"定义。</text>
+
+    <text key="common.message.min.label">最小</text>
+    <text key="common.message.max.label">最大</text>
+    <text key="common.message.step.label">增加幅度</text>
+    <text key="common.message.period.label">周期</text>
+
+    <text key="common.message.create.success">{0}生成成功。</text>
+    <text key="common.message.create.fail">{0}生成失败。详细内容请确认日志信息。</text>
+
+    <text key="common.message.add.success">{0}成功增加。</text>
+    <text key="common.message.add.fail">{0}增加失败。详细内容请确认日志信息。</text>
+
+    <text key="common.message.update.success">{0}成功更新。</text>
+    <text key="common.message.update.fail">{0}更新失败。</text>
+
+    <text key="common.message.remove.success">{0}成功删除。</text>
+    <text key="common.message.remove.confirm">要删除{0}吗？</text>
+    <text key="common.message.save.success">{0}保存成功。</text>
+    <text key="common.message.distribute.success">{0}分配成功。</text>
+    <text key="common.message.distribute_all.success">所有设置分配成功。</text>
+    <text key="common.message.bind.success">{0}成功bind。</text>
+    <text key="common.message.start.success">{0}成功开始。</text>
+    <text key="common.message.down.success">{0}成功宕机掉。</text>
+    <text key="common.message.start.fail">{0}启动失败。详细内容请确认日志信息。</text>
+    <text key="common.message.down.fail">{0}宕机操作失败。详细内容请确认日志信息。</text>
+
+    <text key="common.message.start_all.success">{0}的所有Container开始成功。</text>
+    <text key="common.message.down_all.success">{0}的全部Container成功宕机掉。</text>
+    <text key="common.message.start_all.fail">{0}的Container启动失败。详细内容请确认日志信息。</text>
+    <text key="common.message.down_all.fail">{0}的Container 的宕机失败。详细内容请确认日志信息。</text>
+    <text key="common.message.delete.confirm">要删除{0}吗？</text>
+    <text key="common.message.reset.confirm">要对该方式的所有值进行初始化吗？ </text>
+    <text key="common.message.command.success">成功运行了\"{0}\"的{1}。</text>
+    <text key="common.message.command.fail">\"{0}\"的 {1}失败。</text>
+    <text key="common.message.at_least_one">至少选择一项。</text>
+    <text key="common.message.customize.success">表格编辑成功。</text>
+
+    <text key="common.usage.property">按行、按"key=value"方式进行输入。</text>
+    <text key="common.message.resource.remove.success">
+    Resource {0}被成功删除。\r\n
+    被bind的Resource只在设置文件中删除，适用于重新启动JEUS管理员。
+    </text>
+    <text key="common.message.resource.delete.confirm">要删除{0}吗？\r\n bind的Resource在设置文件中被删除，bind的删除在JEUS管理员被宕机后使用。</text>
+	<text key="common.message.academic.container.duplicate.impossible">无法复制Container {0}。\r\n节点{0}中已设置2个引擎 Container。在\r\n academy license中对一个节点中生成的引擎 Container被限制为2个。</text>
+	<text key="common.message.academic.container.create.impossible">无法生成新的Container。\r\n节点 {0}中已设置2个引擎 Container。在\r\n academy license中对一个节点中生成的引擎 Container被限制为2个。</text>
+	<text key="common.message.academic.node_cluster.add.impossible">无法增加节点{0}。在\r\nacademy license中对生成的节点控制在2个之内。</text>
+	
+
+    <text key="tooltip.select">选择</text>
+    <text key="tooltip.deselect">选择重新开始</text>
+    <text key="tooltip.moveup">向前</text>
+    <text key="tooltip.movedown">向后</text>
+
+    <!-- unit -->
+    <text key="common.unit.sec">秒</text>
+    <text key="common.unit.msec">毫秒</text>
+    <text key="common.unit.minutes">分</text>
+    <text key="common.unit.bytes">bytes</text>
+    <text key="common.unit.objects">目标</text>
+
+    <!-- label -->
+    <text key="common.label.upload">上传</text>
+    <text key="common.label.ok">确认</text>
+    <text key="common.label.add">增加</text>
+    <text key="common.label.next">下一步 &gt;</text>
+    <text key="common.label.skip">忽略</text>
+    <text key="common.label.previous">&lt; 上一步</text>
+    <text key="common.label.create">生成</text>
+    <text key="common.label.advanced">高级选项</text>
+    <text key="common.label.refresh">重新修改</text>
+    <text key="common.label.remove">删除</text>
+    <text key="common.label.go">前进</text>
+    <text key="common.label.usage">[使用方法]</text>
+    <text key="common.label.query">查询</text>
+    <text key="jm.control.down.label"> 宕机</text>
+    <text key="common.message.config.fail">设置失败。详细内容请确认日志文件。</text>
+    <text key="txmo.overview.gtid.label">GTID</text>
+    <text key="jta.recovery_log.title">事务处理 - 恢复日志文件</text>
+    <text key="JeusServiceSecurityDomain_ResourceConfiguration">设置</text>
+    <text key="log.control.apply_recursively.description">不选择时，不使用由用户调整级别的下级Logger。</text>
+    <text key="domain.services.close.label">关闭</text>
+    <text key="policies.repository.role_table.label">[作用权限信息]</text>
+    <text key="wlc.ssl.config.title">生成Web 监听 - SSL设置</text>
+    <text key="JeusServiceWebListener_Configuration.ssl">SSL</text>
+    <text key="NodeTree.JeusService.SecurityDomain.accounts">{0} 帐号设置</text>
+    <text key="txmo.overview.recoveryTimeout.label">恢复Timeout</text>
+    <text key="JeusServiceWebListener_Create.ssl">4. SSL</text>
+    <text key="jm.configuration.security.title">JEUS 管理员 - 安全</text>
+    <text key="txmo.overview.uncompletedTimeout.label">未完成的Timeout</text>
+    <text key="dsc.datasource.test_fail">测试失败。</text>
+    <text key="jm.configuration.security.domain.title"> domain设置</text>
+    <text key="domain.accounts.repository.user.label">用户</text>
+    <text key="domain.accounts.repository.group.label">群组</text>
+    <text key="policies.repository.resource_table.label">[ resource权限信息]</text>
+    <text key="policies.resource.ctxid.label"> context标识符</text>
+    <text key="txmo.overview.commitTimeout.label">commit Timeout</text>
+    <text key="JTAResource_Configuration.recovery_log">恢复日志文件</text>
+    <text key="policies.repository.label"> repository信息</text>
+    <text key="domain.accounts.memory.label">memory 信息</text>
+    <text key="domain.accounts.repository.user_config.label">设置用户信息</text>
+    <text key="JeusServiceSecurityDomain_RoleConfiguration">设置</text>
+    <text key="txmo.overview.decision.label">决定</text>
+    <text key="common.label.test">测试</text>
+    <text key="policies.memory.label">memory信息</text>
+    <text key="domain.accounts.description.label">说明</text>
+    <text key="domain.services.memory.label">[memory 信息]</text>
+    <text key="jm.configuration.security.general.title">基本设置</text>
+    <text key="txmo.overview.preparedTimeout.label">准备好的Timeout</text>
+    <text key="domain.accounts.repository.group_table.label">[群组信息]</text>
+    <text key="txmo.overview.ltid.label">LTID</text>
+    <text key="txmo.overview.type.label">种类</text>
+    <text key="cnr.sessions.average_send_time.label">平均传输时间(ms)</text>
+    <text key="domain.accounts.subgroup.label">子群组</text>
+    <text key="JeusServiceSecurityDomain_Configuration">设置</text>
+    <text key="txmo.overview.prepareTimeout.label">准备好的Timeout</text>
+    <text key="wlc.ssl.config.title2"> Web监听 - SSL设置</text>
+    <text key="domain.accounts.repository.user_table.label">[用户信息]</text>
+    <text key="JeusServiceJEUSManager_Configuration.security">安全</text>
+    <text key="domain.accounts.group.label">群组</text>
+    <text key="common.message.config.success">设置成功。</text>
+    <text key="domain.accounts.repository.label"> repository信息</text>
+    <text key="dsc.datasource.test_success">测试成功。</text>
+    <text key="JeusServiceSecurityDomain_GroupConfiguration">设置</text>
+    <text key="txmo.overview.childxid.label">下级XID</text>
+    <text key="txmo.overview.externalxid.label">外部 XID</text>
+    <text key="domain.configuration.title">安全domain - 设置用户服务</text>
+    <text key="log.control.use_parent_handlers.description">使用上级handlers。</text>
+    <text key="txmo.overview.tminfo.label">事务处理信息</text>
+    <text key="JeusServiceSecurityDomain_UserConfiguration">设置</text>
+    <text key="NodeTree.JeusService.SchedulerService">Scheduler</text>    
+    <text key="dnc.pending_message_count.label">剩余消息数量</text>    
+<!-- Syfer Test label and page -->
+<!--
+    <text key="NodeTree.Folder.EtcService">Test</text>
+    <text key="Etc_AgentView">概要 </text>
+    <text key="etc.agentview.title">Agent View</text>
+    
+    <text key="Etc_AgentMbeanView">MBean</text>
+    <text key="Etc_AgentMbeanView.attribute">属性</text>
+    <text key="Etc_AgentMbeanView.operation">Operation</text>
+    <text key="etc.agentmbeanview.title">MBean View</text>   
+-->
+    <text key="domain.message.securitydomain_notselected">原文Domain应处于被选状态。</text>
+    <text key="jds.test.label">测试</text>
+
+    <text key="rdc.service_config.server_url.label">服务器 URL</text>
+    <text key="domain.services.dbconfig.label">DB Config配置</text>
+    <text key="domain.services.export.label">Export Name 配置</text>    
+    
+    <text key="domain.services.subvalidation.title">安全Domain ?C 确认subject 的服务</text>
+    <text key="JeusServiceSecurityDomain_Services.subject_validation">确认subject </text>
+    <text key="domain.services.subjectvalidation.description">决定是否使用确认subject的服务.</text>
+    <text key="domain.services.sub.valid.default.ok.confirm"> custom 服务和用户服务已经被设置时该设置会被删除。 是否设置?</text>
+    <text key="amd.absolute.module.error">输入分配模块的路径.</text>
+    <text key="domain.services.sub.validation.none.label">不使用</text>
+    <text key="ModuleController.command.fail">\"{0}\"找不到模块.</text>
+    <text key="domain.services.sub.valid.custom.ok.confirm"> custom 服务和用户服务已经被设置时该设置会被删除。 是否设置?</text>
+    <text key="common.exception.0072">没有设置的内容. </text>
+    <text key="domain.services.sub.validation.using.label">使用</text>
+    
+    <text key="jms.server_config.select_type.label">Address Type</text>
+</catalog>
+

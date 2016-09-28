@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusServiceSecurityDomain.RoleConfigurationPage">
+    <inject property="jaxbSource" type="state" object="JAXBSource"/>
+   
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Security Domain Configuration"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{'JeusServiceSecurityDomain_RoleConfiguration'}"/>
+    </component>
+
+    <component id="repositoryConfigRoleForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:policies.role.title"/>
+        <binding name="listener" value="listeners.onRepositoryRoleOk"/>
+    </component>
+
+    <component id="repository_role_name" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="rolePermission"/>
+        <binding name="elementName" value="literal:role"/>
+    </component>
+
+    <component id="repository_role_principals" type="jeus:Field">
+        <binding name="field" value="components.repository_role_principalsField"/>
+        <binding name="label" value="message:policies.role.principals.label"/>
+    </component>
+
+    <component id="repository_role_principalsField" type="contrib:Palette">
+        <binding name="model" value="repositoryPrincipalModel"/>
+        <binding name="selected" value="selectedRepositoryPrincipal"/>
+        <binding name="selectedTitleBlock" value="components.nullBlock"/>
+        <binding name="availableTitleBlock" value="components.nullBlock"/>
+    </component>
+
+    <component id="repository_role_actions" type="jeus:Field">
+        <binding name="field" value="components.repository_role_actionsField"/>
+    </component>
+
+    <component id="repository_role_actionsField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="rolePermission"/>
+        <binding name="elementName" value="literal:actions"/>
+    </component>
+
+    <component id="repository_role_classname" type="jeus:Field">
+        <binding name="field" value="components.repository_role_classnameField"/>
+    </component>
+
+    <component id="repository_role_classnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="rolePermission"/>
+        <binding name="elementName" value="literal:classname"/>
+    </component>
+
+     <component id="repository_role_unchecked" type="jeus:Field">
+        <binding name="field" value="components.repository_role_uncheckedField"/>
+        <binding name="label" value="message:policies.role.unchecked.label"/>
+    </component>
+
+    <component id="repository_role_uncheckedField" type="jeus:DojoCheckbox">
+        <binding name="selected" value="selectedRoleUnchecked"/>
+    </component>
+
+    <component id="repository_role_excluded" type="jeus:Field">
+        <binding name="field" value="components.repository_role_excludedField"/>
+        <binding name="label" value="message:policies.role.excluded.label"/>
+    </component>
+
+    <component id="repository_role_excludedField" type="jeus:DojoCheckbox">
+        <binding name="selected" value="selectedRoleExcluded"/>
+    </component>
+
+    <bean name="requiredValidator" class="org.apache.tapestry.valid.StringValidator">
+        <set name="required" value="true"/>
+    </bean>
+
+    <property name="selectedPolicyId" />
+    <property name="selectedRole" />
+    <property name="selectedResource" />
+    <property name="policyId" />
+
+    <property name="selectedRepositoryPrincipal"/>
+    <property name="selectedRepositoryRole"/>
+
+    <property name="selectedRoleUnchecked"/>
+    <property name="selectedRoleExcluded"/>
+
+    <property name="roleView"/>
+    <property name="rolePrincipalView" />
+    <property name="resourceView"/>
+    <property name="resourceRoleView"/>
+
+    <property name="command" />
+    <property name="tabCommand"/>
+
+
+</page-specification>

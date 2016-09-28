@@ -1,0 +1,949 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 24 JEUS 매니저 서비스 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('24 JEUS 매니저 서비스', 'wm-23.htm', 'wm-25.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left"><A NAME="jeusmanager_service"></A>24 JEUS 매니저 서비스
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMHeading2"><A NAME="jndi_conf"></A>24.1 네이밍 서버 설정
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMNormalText">Java Naming and Directory Interface&trade; (JNDI)는 자바 어플리케이션이 네트워크에서 객체를 찾고 가져올 수 
+있도록 하는 API이다. 어플리케이션이 알아야 하는 것은, 찾아서 사용하려는 객체의 논리적인 이름뿐이다. 사용자의 관점에서 볼 때는 이전의 엔터프라이즈 
+환경보다 손쉽게 다양한 객체를 사용할 수 있다.
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMNormalText">JEUS Naming Server는 JNSServer와 JNSLocal로구성되어 있다. 이 둘은 서로 다른 설정을 가진다. JNSServer에서는JNSLocal의 
+커넥션을 받아들이는 설정과 다른 JNSServer와 접속하기 위한 설정이 필요하고, JNSLocal은 JNSServer와접속하기 위한 것과 JNDI 
+트리의 반영을 위한 설정이 필요하다.
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMHeading3"><A NAME="jndi_conf_general"></A>24.1.1 네이밍 서버 기본 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-24.htm#jndi_conf">네이밍 서버
+ </A>&gt; 기본 설정
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">네이밍 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">서버
+ </SPAN>를 클릭한다.
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMNormalText">3. 폼내의 탭 패널에서 
+ <SPAN CLASS="JMGUIWidget">기본 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을클릭한다.
+ </P>
+<A NAME="1008"></A>
+<P CLASS="JMNormalText">4. 각 설정 항목을 입력한다. 변경된 설정은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image229.jpg" HEIGHT="412"></P>
+
+<P CLASS="JMCaption">그림 194 네이밍 서버 기본 설정
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMHeading3"><A NAME="jndi_conf_thrdpool"></A>24.1.2 네이밍 서버 쓰레드 풀 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-24.htm#jndi_conf">네이밍 서버
+ </A>&gt; 쓰레드 풀
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">네이밍 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">서버
+ </SPAN>를 클릭한다.
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMNormalText">3. 폼내의 탭 패널에서 
+ <SPAN CLASS="JMGUIWidget">쓰레드 
+ </SPAN><SPAN CLASS="JMGUIWidget">풀
+ </SPAN>을클릭한다.
+ </P>
+<A NAME="1014"></A>
+<P CLASS="JMNormalText">4. 각 설정 항목을 입력한다. 최소값은 런타임시에 의미가 없으므로 최소값을 제외한 나머지는 런타임에 적용이 된다.
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="509" SRC="images/image230.gif" HEIGHT="354"></P>
+
+<P CLASS="JMCaption">그림 195 네이밍 서버 쓰레드 풀설정
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMHeading3"><A NAME="jndi_conf_local"></A>24.1.3 로컬 네이밍 서버 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-24.htm#jndi_conf">네이밍 서버
+ </A>&gt; 로컬 서버 설정
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">네이밍 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1018"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">로컬
+ </SPAN>을 클릭한다.
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMNormalText">3. 각 설정 항목을 입력한다. 입력한 값은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1020"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1021"></A>
+<P CLASS="JMHeading2"><A NAME="jmx"></A>24.2 JMX 서버
+ </P>
+<A NAME="1022"></A>
+<P CLASS="JMNormalText">JMX서버는 JEUS 매니저와 각엔진 컨테이너에서 사용된다. 아래의 설정 방법은 엔진 컨테이너에서의 JMX 서버 설정과 같다.
+ </P>
+<A NAME="1023"></A>
+<P CLASS="JMHeading3"><A NAME="jmx_http"></A>24.2.1 HTTP 아답터 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-24.htm#jmx">JMX 서버
+ </A>&gt; HTTP 아답터 설정
+ </P>
+<A NAME="1024"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">JMX
+ </SPAN>를 클릭한다.
+ </P>
+<A NAME="1025"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">아답터
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1026"></A>
+<P CLASS="JMNormalText">3. 안쪽의 탭패널에서 
+ <SPAN CLASS="JMGUIWidget">HTTP
+ </SPAN>를 클릭한다.
+ </P>
+<A NAME="1027"></A>
+<P CLASS="JMNormalText">4. <SPAN CLASS="JMGUIWidget">HTTP
+ </SPAN>포트를 입력한다. 입력된 값은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1028"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMGUIWidget"><IMG BORDER="0" WIDTH="513" SRC="images/image231.gif" HEIGHT="262"></SPAN></P>
+
+<P CLASS="JMCaption">그림 196JMX HTTP 아답터 설정
+ </P>
+<A NAME="1029"></A>
+<P CLASS="JMHeading3"><A NAME="jmx_jmxmp"></A>24.2.2 JMXMP 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-24.htm#jmx">JMX 서버
+ </A>&gt; JMXMP
+ </P>
+<A NAME="1030"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">JMX
+ </SPAN>를 클릭한다.
+ </P>
+<A NAME="1031"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">아답터
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1032"></A>
+<P CLASS="JMNormalText">3. 안쪽의 탭패널에서 
+ <SPAN CLASS="JMGUIWidget">JMXMP
+ </SPAN>를 클릭한다.
+ </P>
+<A NAME="1033"></A>
+<P CLASS="JMNormalText">4. <SPAN CLASS="JMGUIWidget">JMXMP
+ </SPAN>포트를 입력한다. 입력된 값은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1034"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="MsoNormal" ALIGN="center"><IMG BORDER="0" WIDTH="515" SRC="images/image232.gif" HEIGHT="324"></P>
+
+<P CLASS="JMCaption">그림 197. JMX JMXMP 아답터 설정
+ </P>
+<A NAME="1035"></A>
+<P CLASS="JMHeading3"><A NAME="jmx_rmi"></A>24.2.3 RMI 아답터 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-24.htm#jmx">JMX 서버
+ </A>&gt; RMI 아답터 설정
+ </P>
+<A NAME="1036"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">JMX
+ </SPAN>를 클릭한다.
+ </P>
+<A NAME="1037"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">아답터
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1038"></A>
+<P CLASS="JMNormalText">3. 안쪽의 탭패널에서 
+ <SPAN CLASS="JMGUIWidget">RMI
+ </SPAN>를 클릭한다.
+ </P>
+<A NAME="1039"></A>
+<P CLASS="JMNormalText">4. RMI포트를 입력한다. 입력된 값은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1040"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="515" SRC="images/image233.gif" HEIGHT="417"></P>
+
+<P CLASS="JMCaption">그림 198JMX RMI 아답터설정
+ </P>
+<A NAME="1041"></A>
+<P CLASS="JMHeading3"><A NAME="jmx_snmp"></A>24.2.4 SNMP 아답터설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-24.htm#jmx">JMX 서버
+ </A>&gt; SNMP 아답터 설정
+ </P>
+<A NAME="1042"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">JMX
+ </SPAN>를 클릭한다.
+ </P>
+<A NAME="1043"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">아답터
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1044"></A>
+<P CLASS="JMNormalText">3. 안쪽의 탭에서 
+ <SPAN CLASS="JMGUIWidget">SNMP
+ </SPAN>를 클릭한다.
+ </P>
+<A NAME="1045"></A>
+<P CLASS="JMNormalText">4. 각 설정 항목을 입력한다. 변경된 값은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1046"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1047"></A>
+<P CLASS="JMNormalText">6. 설정을 초기화 하고 싶을 경우 
+ <SPAN CLASS="JMGUIWidget">재설정
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="517" SRC="images/image234.jpg" HEIGHT="560"></P>
+
+<P CLASS="JMCaption">그림 199JMX SNMP 아답터 설정
+ </P>
+<A NAME="1048"></A>
+<P CLASS="JMHeading3"><A NAME="jmx_mlet"></A>24.2.5 MLet 등록
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-24.htm#jmx">JMX 서버
+ </A>&gt; MLet 등록
+ </P>
+<A NAME="1049"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">JMX
+ </SPAN>를 클릭한다.
+ </P>
+<A NAME="1050"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">Mlet
+ </SPAN>을 클릭한다.
+ </P>
+<A NAME="1051"></A>
+<P CLASS="JMNormalText">3. Mlet의경로를 줄별로 입력한다. 입력된 값은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1052"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1053"></A>
+<P CLASS="JMHeading2">24.3 클래스 FTP
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 클래스 FTP
+ </P>
+<A NAME="1054"></A>
+<P CLASS="JMNormalText">클래스 FTP Server는 EJB 스텁 클래스를 FTP를 통해서 전송하기 위해 사용한다.
+ </P>
+<A NAME="1055"></A>
+<P CLASS="JMNormalText">클래스 FTP의 설정은
+ <A HREF="wm-04.htm#jm_conf_services">4.1.5 서비스 설정
+ </A>을참조하라.
+ </P>
+<A NAME="1056"></A>
+<P CLASS="JMHeading2"><A NAME="sched"></A>24.4 스케줄러
+ </P>
+<A NAME="1057"></A>
+<P CLASS="JMNormalText">스케줄러는 미리 지정한 시간에 특정 작업들이 실행되도록 하는데 사용된다.
+ </P>
+<A NAME="1058"></A>
+<P CLASS="JMNormalText">스케줄러 서비스의 시작과 종료는 
+ <A HREF="wm-04.htm#jm_conf_services">4.1.5 서비스 설정
+ </A>을참조하라.
+ </P>
+<A NAME="1059"></A>
+<P CLASS="JMHeading3"><A NAME="schedulerjob_create"></A><A NAME="job_create"></A>24.4.1 스케줄러 작업 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="#scheduler">스케줄러
+ </A>&gt; 새 스케줄러 작업 생성
+ </P>
+<A NAME="1060"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">스케줄러
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1061"></A>
+<P CLASS="JMNormalText">2. <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">스케줄러 
+ </SPAN><SPAN CLASS="JMGUIWidget">작업 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>링크를 클릭한다.
+ </P>
+<A NAME="1062"></A>
+<P CLASS="JMNormalText">3. 각 설정 항목을 입력한다. 
+ </P>
+<A NAME="1063"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1064"></A>
+<P CLASS="JMNormalText">5. 작업 목록에 새로 만들어진 작업이 추가된다.
+ </P>
+<A NAME="1065"></A>
+<P CLASS="JMHeading3"><A NAME="job_remove"></A>24.4.2 스케줄러 작업 제거
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="#scheduler">스케줄러
+ </A>&gt; 스케줄러 작업 제거
+ </P>
+<A NAME="1066"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">스케줄러
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1067"></A>
+<P CLASS="JMNormalText">2. 삭제하고자 하는 작업을 선택한 후 
+ <A HREF="http://localhost:9744/webadmin/application?service=direct/1/URLResource_Overview/deleteLink&amp;sp=Stmaxsoft"><IMG BORDER="0" WIDTH="11" SRC="images/image033.gif" HEIGHT="13"></A>아이콘을 클릭한다.
+ </P>
+<A NAME="1068"></A>
+<P CLASS="JMNormalText">3. 작업 목록에서 작업이 삭제된다.
+ </P>
+<A NAME="1069"></A>
+<P CLASS="JMHeading3"><A NAME="job_conf"></A>24.4.3 스케줄러 작업 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="#scheduler">스케줄러
+ </A>&gt; 스케줄러 작업 설정
+ </P>
+<A NAME="1070"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">스케줄러
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1071"></A>
+<P CLASS="JMNormalText">2. 스케줄러 작업목록에서 변경하고자 하는 작업을 선택한다.
+ </P>
+<A NAME="1072"></A>
+<P CLASS="JMNormalText">3. 각 설정 항목을 입력한다. 변경된 값은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1073"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1074"></A>
+<P CLASS="JMHeading2"><A NAME="log"></A>24.5 로그 서비스
+ </P>
+<A NAME="1075"></A>
+<P CLASS="JMNormalText">JEUS는 JEUS에서 발생하는 여러가지 상황들을 로그를 통해 알려준다. JEUS 로그는J2SE 1.4 이상의 버전에서 logging API를기반으로 
+동작한다. 따라서 설정하는 방식도 logging API의 로거, 핸들러, 포맷터 구조를 그대로 반영하고 있으며 개발자가 logging API를 이용하여 
+JEUS의 로거를 원하는 대로 사용할 수 있다.
+ </P>
+<A NAME="1076"></A>
+<P CLASS="JMNormalText">비록 로거의 생성이 자유롭기는 하나 JEUS 내부적으로 사용되는 로거중에 각각의 설정을 XML파일에 영구적으로 저장하는 것들이 있다. 이 장에서는 
+영구적으로 저장되는 로그 설정과 런타임에 로그의 수준을 제어하는 것에 대해서 알아볼 것이다.
+ </P>
+<A NAME="1077"></A>
+<P CLASS="JMNormalText">참고 : 이절에서는 서블릿 엔진의 엑세스로그를 기준으로 설명할 것이다. 다른 로그의 설정도 엑세스 로그와 유사하다.
+ </P>
+<A NAME="1078"></A>
+<P CLASS="JMHeading3"><A NAME="log_conf_general"></A>24.5.1 기본 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng_conf">설정
+ </A>&gt;
+ <A HREF="wm-09.htm#servleteng_conf_accesslog">엑세스 로그
+ </A>&gt; 기본 설정
+ </P>
+<A NAME="1079"></A>
+<P CLASS="JMNormalText">기본 설정에서는 로그의 수준과 포맷과 같은 공통적인 항목에 대해서 설정한다.
+ </P>
+<A NAME="1080"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">서블릿 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">설정 
+ </SPAN><SPAN CLASS="JMGUIWidget">서블릿 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1081"></A>
+<P CLASS="JMNormalText">2. 주 화면의 탭에서 
+ <SPAN CLASS="JMGUIWidget">엑세스 
+ </SPAN><SPAN CLASS="JMGUIWidget">로그
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1082"></A>
+<P CLASS="JMNormalText">3. 각 설정 항목을 입력한다. 변경된 항목은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1083"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1084"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMNoteWarningChar">참고
+ </SPAN><SPAN CLASS="JMNoteWarningChar">:
+ </SPAN>로그 수준의 수정은 런타임에 적용되지 않는다. 로그 수준의 제어에 대해서는
+ <A HREF="wm-24.htm#log_control_level">24.5.8로그 수준 제어
+ </A>를참조하기 바란다.
+ </P>
+<A NAME="1085"></A>
+<P CLASS="JMHeading3"><A NAME="log_create_consolehandler"></A>24.5.2 콘솔 핸들러 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng_conf">설정
+ </A>&gt;
+ <A HREF="wm-09.htm#servleteng_conf_accesslog">엑세스 로그
+ </A>&gt;새 콘솔 핸들러 생성
+ </P>
+<A NAME="1086"></A>
+<P CLASS="JMNormalText">콘솔 핸들러는 로그를 콘솔로 출력하는 핸들러이다.
+ </P>
+<A NAME="1087"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">서블릿 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">설정 
+ </SPAN><SPAN CLASS="JMGUIWidget">서블릿 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1088"></A>
+<P CLASS="JMNormalText">2. 주 화면의 탭에서 
+ <SPAN CLASS="JMGUIWidget">엑세스 
+ </SPAN><SPAN CLASS="JMGUIWidget">로그
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1089"></A>
+<P CLASS="JMNormalText">3. 화면의 하단에서 
+ <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">콘솔 
+ </SPAN><SPAN CLASS="JMGUIWidget">핸들러 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>을클릭한다.
+ </P>
+<A NAME="1090"></A>
+<P CLASS="JMNormalText">4. 각 설정 항목을 입력한다.
+ </P>
+<A NAME="1091"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1092"></A>
+<P CLASS="JMNormalText">6. 핸들러 목록에 콘솔 핸들러가 추가된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="518" SRC="images/image235.jpg" HEIGHT="328"></P>
+
+<P CLASS="JMCaption">그림 200 새 콘솔 핸들러 생성
+ </P>
+<A NAME="1093"></A>
+<P CLASS="JMHeading3"><A NAME="log_create_filehandler"></A>24.5.3 파일 핸들러 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng_conf">설정
+ </A>&gt;
+ <A HREF="wm-09.htm#servleteng_conf_accesslog">엑세스 로그
+ </A>&gt;새 파일 핸들러 생성
+ </P>
+<A NAME="1094"></A>
+<P CLASS="JMNormalText">파일 핸들러는 로그를 파일로 출력하는 핸들러이다.
+ </P>
+<A NAME="1095"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">서블릿 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">서블릿 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1096"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">엑세스 
+ </SPAN><SPAN CLASS="JMGUIWidget">로그
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1097"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">파일 
+ </SPAN><SPAN CLASS="JMGUIWidget">핸들러 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>을클릭한다.
+ </P>
+<A NAME="1098"></A>
+<P CLASS="JMNormalText">4. 각 설정 항목을 입력한다.
+ </P>
+<A NAME="1099"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1100"></A>
+<P CLASS="JMNormalText">6. 핸들러 목록에 파일 핸들러가 추가된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="517" SRC="images/image236.jpg" HEIGHT="509"></P>
+
+<P CLASS="JMCaption">그림 201 새 파일 핸들러 생성
+ </P>
+<A NAME="1101"></A>
+<P CLASS="JMHeading3"><A NAME="log_create_smtphandler"></A>24.5.4 SMTP 핸들러 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng_conf">설정
+ </A>&gt;
+ <A HREF="wm-09.htm#servleteng_conf_accesslog">엑세스 로그
+ </A>&gt; 새 SMTP 핸들러 생성
+ </P>
+<A NAME="1102"></A>
+<P CLASS="JMNormalText">SMTP 핸들러는 로그를 이메일로 출력하는 핸들러이다.
+ </P>
+<A NAME="1103"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">서블릿 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">설정 
+ </SPAN><SPAN CLASS="JMGUIWidget">서블릿 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1104"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">엑세스 
+ </SPAN><SPAN CLASS="JMGUIWidget">로그
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1105"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">새 SMTP 
+ </SPAN><SPAN CLASS="JMGUIWidget">핸들러 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>을클릭한다.
+ </P>
+<A NAME="1106"></A>
+<P CLASS="JMNormalText">4. 각 설정 항목을 입력한다.
+ </P>
+<A NAME="1107"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1108"></A>
+<P CLASS="JMNormalText">6. 핸들러 목록에 
+ <SPAN CLASS="JMGUIWidget">SMTP
+ </SPAN>핸들러가 추가된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="502" SRC="images/image237.jpg" HEIGHT="557"></P>
+
+<P CLASS="JMCaption">그림 202 새 SMTP 핸들러 생성
+ </P>
+<A NAME="1109"></A>
+<P CLASS="JMHeading3">24.5.5 소켓 핸들러 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng_conf">설정
+ </A>&gt;
+ <A HREF="wm-09.htm#servleteng_conf_accesslog">엑세스 로그
+ </A>&gt; 새 소켓 핸들러 생성
+ </P>
+<A NAME="1110"></A>
+<P CLASS="JMNormalText">소켓 핸들러는 로그를 지정된 소켓으로 전송하는 핸들러이다.
+ </P>
+<A NAME="1111"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">서블릿 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">설정 
+ </SPAN><SPAN CLASS="JMGUIWidget">서블릿 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1112"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">엑세스 
+ </SPAN><SPAN CLASS="JMGUIWidget">로그
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1113"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">소켓 
+ </SPAN><SPAN CLASS="JMGUIWidget">핸들러 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>을클릭한다.
+ </P>
+<A NAME="1114"></A>
+<P CLASS="JMNormalText">4. 각 설정 항목을 입력한다.
+ </P>
+<A NAME="1115"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1116"></A>
+<P CLASS="JMNormalText">6. 핸들러 목록에 
+ <SPAN CLASS="JMGUIWidget">소켓
+ </SPAN>핸들러가 추가된다.
+ </P>
+
+<P CLASS="MsoNormal" ALIGN="center"><IMG BORDER="0" WIDTH="528" SRC="images/image238.jpg" HEIGHT="413"></P>
+
+<P CLASS="JMCaption">그림 203 새소켓 핸들러 생성
+ </P>
+<A NAME="1117"></A>
+<P CLASS="JMHeading3"><A NAME="log_create_userhandler"></A>24.5.6 사용자 핸들러 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng_conf">설정
+ </A>&gt;
+ <A HREF="wm-09.htm#servleteng_conf_accesslog">엑세스 로그
+ </A>&gt; 새 사용자 핸들러 생성
+ </P>
+<A NAME="1118"></A>
+<P CLASS="JMNormalText">사용자가 만든 핸들러 클래스를 지정하는 항목이다.
+ </P>
+<A NAME="1119"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">서블릿 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">설정 
+ </SPAN><SPAN CLASS="JMGUIWidget">서블릿 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1120"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">엑세스 
+ </SPAN><SPAN CLASS="JMGUIWidget">로그
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1121"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">사용자 
+ </SPAN><SPAN CLASS="JMGUIWidget">핸들러 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>을클릭한다.
+ </P>
+<A NAME="1122"></A>
+<P CLASS="JMNormalText">4. 각 설정 항목을 입력한다.
+ </P>
+<A NAME="1123"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1124"></A>
+<P CLASS="JMNormalText">6. 핸들러 목록에 사용자 핸들러가 추가된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="512" SRC="images/image239.jpg" HEIGHT="645"></P>
+
+<P CLASS="JMCaption">그림 204 사용자 로그 핸들러 추가
+ </P>
+<A NAME="1125"></A>
+<P CLASS="JMHeading3"><A NAME="log_remove_handler"></A>24.5.7 핸들러 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng_conf">설정
+ </A>&gt;
+ <A HREF="wm-09.htm#servleteng_conf_accesslog">엑세스 로그
+ </A>&gt; 핸들러 삭제
+ </P>
+<A NAME="1126"></A>
+<P CLASS="JMNormalText">핸들러의 삭제는 모든 핸들러 타입에서 똑 같다. 
+ </P>
+<A NAME="1127"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">서블릿 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">설정 
+ </SPAN><SPAN CLASS="JMGUIWidget">서블릿 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1128"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">엑세스 
+ </SPAN><SPAN CLASS="JMGUIWidget">로그
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1129"></A>
+<P CLASS="JMNormalText">3. 삭제하고자 하는 핸들러를 선택한 후 
+ <A HREF="http://localhost:9744/webadmin/application?service=direct/1/JeusServiceWebEngine_Configuration/access_log_handler_panel.deleteLink&amp;sp=Shandler2"><IMG BORDER="0" WIDTH="11" SRC="images/image033.gif" HEIGHT="13"></A>아이콘을 클릭한다.
+ </P>
+<A NAME="1130"></A>
+<P CLASS="JMNormalText">4. 핸들러가 삭제되고 핸들러 목록에서 사라진다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="500" SRC="images/image240.gif" HEIGHT="116"></P>
+
+<P CLASS="JMCaption">그림 205 로그 핸들러 삭제
+ </P>
+<A NAME="1131"></A>
+<P CLASS="JMNormalText">참고 :로그 핸들러를 삭제하더라도 실제적으로 삭제되는 것은 아니고 다음 부트시에 적용된다.
+ </P>
+<A NAME="1132"></A>
+<P CLASS="JMHeading3"><A NAME="log_control_level"></A>24.5.8 로그 수준 제어
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 로그 서비스
+ </P>
+<A NAME="1133"></A>
+<P CLASS="JMNormalText">JEUS 내에서 사용되는 모든 로그는 런타임에 레벨을 조정 할 수 있다. 엔진 컨테이너의 로그일 경우는 엔진 컨테이너의 로그 서비스를 이용하고 JEUS 
+매니저의 로그일 경우는 JEUS 매니저 서비스의 로그 서비스를 이용한다.
+ </P>
+<A NAME="1134"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">로그
+ </SPAN>를 클릭한다.
+ </P>
+<A NAME="1135"></A>
+<P CLASS="JMNormalText">2. 좌측에는 로거 트리가 나타난다.
+ </P>
+<A NAME="1136"></A>
+<P CLASS="JMNormalText">3. 로거 트리에서 수준을 조정하고자 하는 로거를 선택한다. 
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="193" SRC="images/image241.gif" HEIGHT="298"></P>
+
+<P CLASS="JMCaption">그림 206 로거 트리
+ </P>
+<A NAME="1137"></A>
+<P CLASS="JMNormalText">4. 로거를 선택하면 우측에 현재 로거의 이름과 로그 수준을 출력한다.
+ </P>
+<A NAME="1138"></A>
+<P CLASS="JMNormalText">5. 로그 수준 콤보박스에서 원하는 로그 수준을 선택한 후, 만약 하위의 로거에까지 동일한 로그 수준을 적용하고 싶을 경우 
+ <SPAN CLASS="JMGUIWidget">반복 
+ </SPAN><SPAN CLASS="JMGUIWidget">적용
+ </SPAN>을선택 한다.
+ </P>
+<A NAME="1139"></A>
+<P CLASS="JMNormalText">6. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="473" SRC="images/image242.gif" HEIGHT="124"></P>
+
+<P CLASS="JMCaption">그림 207 로그 수준 설정
+ </P>
+<!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

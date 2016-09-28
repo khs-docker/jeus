@@ -1,0 +1,32 @@
+
+
+<SCRIPT LANGUAGE=VBSCRIPT RUNAT=SERVER>
+
+
+Sub Application_OnStart
+    '*** Initialize the JVM
+    Dim JvmCtl
+    Set JvmCtl = Server.CreateObject("J2EECAS.JvmControl")
+
+    'when system classpath is not set
+    JvmCtl.Classpath = "C:\jeus50\lib\system\jeus.jar;C:\jeus50\lib\system\jmxtools.jar;C:\jeus50\lib\system\jmxri.jar;C:\jeus50\lib\system\jmxremote.jar;C:\jeus50\samples\CAS\examples\classes\deployexample\build"
+    'JvmCtl.Classpath = "%JEUS_HOME%\lib\system\jeus.jar;%JEUS_HOME%\lib\system\jmxtools.jar;%JEUS_HOME%\lib\system\jmxri.jar;%JEUS_HOME%\lib\system\jmxremote.jar;%JEUS_HOME%\samples\CAS\examples\classes\deployexample\build"
+     
+    JvmCtl.JvmOptions = "-Djeus.baseport=2100"
+
+    JvmCtl.StartJvm
+    
+    '*** Create an enterprise services object for EJB access
+    Dim JEUS
+    Set JEUS = Server.CreateObject("J2EECAS.JEUSServices")
+    JEUS.ProviderURL = "localhost"
+    
+    '*** Retrieve reference to EJB home interface using enterprise services
+    Dim AcctHome
+
+	Set AcctHome = JEUS.LookupEjbHome("MyComAccount", "comaccount.AccountHome")
+    Set Application("AcctHome") = AcctHome
+End Sub
+
+
+</SCRIPT>

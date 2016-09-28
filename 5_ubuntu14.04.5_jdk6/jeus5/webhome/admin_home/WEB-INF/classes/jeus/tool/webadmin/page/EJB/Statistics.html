@@ -1,0 +1,99 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="form">
+            <span jwcid="@RenderBlock" block="ognl:components.EJBStats"/>
+            <span jwcid="stats"/>
+<!--
+            <span jwcid="webService"/>
+            <span jwcid="condWS">
+                <span jwcid="request"/>
+                <span jwcid="failedRequest"/>
+                <span jwcid="successfulRequest"/>
+                <span jwcid="serviceTime"/>
+                <span jwcid="maxResponseTime"/>
+                <span jwcid="lastResponseTime"/>
+            </span>
+-->
+             <div class="form_button_layer">
+                <input jwcid="refreshButton" type="button" class="form_button" onclick="window.location.reload();"/>
+             </div>
+        </form>
+
+        <!-- Common EJB Stats -->
+        <span jwcid="EJBStats">
+            <!-- JSR-77 -->
+            <span jwcid="createCount"/>
+            <span jwcid="removeCount"/>
+            <!-- JEUS -->
+            <span jwcid="requestCount"/>
+            <span jwcid="committedCount"/>
+            <span jwcid="rolledbackCount"/>
+            <span jwcid="timeoutRolledbackCount"/>
+        </span>
+
+        <!-- Stats for each EJB type -->
+        <span jwcid="StatefulSessionBean">
+            <span jwcid="@RenderBlock" block="ognl:components.methodReady"/>
+            <span jwcid="@RenderBlock" block="ognl:components.passive"/>
+            <span jwcid="@RenderBlock" block="ognl:components.ejbBean"/>
+            <span jwcid="@RenderBlock" block="ognl:components.thread"/>
+            <span jwcid="@RenderBlock" block="ognl:components.EJBObject"/>
+            <span jwcid="fileDBSizeCount"/>
+        </span>
+
+        <span jwcid="StatelessSessionBean">
+            <span jwcid="@RenderBlock" block="ognl:components.methodReady"/>
+            <span jwcid="@RenderBlock" block="ognl:components.ejbBean"/>
+            <span jwcid="@RenderBlock" block="ognl:components.thread"/>
+            <span jwcid="webService"/>
+            <span jwcid="condWS">
+                <span jwcid="request"/>
+                <span jwcid="failedRequest"/>
+                <span jwcid="successfulRequest"/>
+                <span jwcid="serviceTime"/>
+                <span jwcid="maxResponseTime"/>
+                <span jwcid="lastResponseTime"/>
+            </span>
+        </span>
+
+        <span jwcid="EntityBean">
+            <span jwcid="readyCount"/>
+            <span jwcid="pooledCount"/>
+            <span jwcid="@RenderBlock" block="ognl:components.passive"/>
+            <span jwcid="@RenderBlock" block="ognl:components.ejbBean"/>
+            <span jwcid="@RenderBlock" block="ognl:components.thread"/>
+            <span jwcid="@RenderBlock" block="ognl:components.EJBObject"/>
+        </span>
+
+        <span jwcid="MessageDrivenBean">
+            <span jwcid="messageCount"/>
+            <span jwcid="@RenderBlock" block="ognl:components.ejbBean"/>
+        </span>
+
+        <span jwcid="passive@Block">
+            <span jwcid="passiveCount"/>
+        </span>
+
+        <span jwcid="ejbBean@Block">
+            <span jwcid="totalEJBBeanCount"/>
+            <span jwcid="activeEJBBeanCount"/>
+        </span>
+
+        <span jwcid="thread@Block">
+            <span jwcid="totalThreadCount"/>
+            <span jwcid="activeThreadCount"/>
+        </span>
+
+        <span jwcid="EJBObject@Block">
+            <span jwcid="totalEJBObjectCount"/>
+            <span jwcid="activeEJBObjectCount"/>
+            <span jwcid="autoRemovedEJBObjectCount"/>
+        </span>
+
+        <span jwcid="methodReady@Block">
+            <span jwcid="methodReadyCount"/>
+        </span>
+
+
+    </span>
+</html>

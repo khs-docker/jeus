@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceLogAnalyzerService.ResultPage">
+    
+    <component id="popupMainBorder" type="jeus:PopupMainBorder">
+        <binding name="title" value="literal:Result"/>
+    </component>
+
+    <component id="condHasTask" type="If">
+        <binding name="condition" value="ognl:task != null"/>
+    </component>
+
+    <component id="condHasResult" type="If">
+        <binding name="element" value="literal:tr"/>
+        <binding name="condition" value="ognl:result != null"/>
+    </component>
+
+    <component id="resultForm" type="jeus:JEUSForm">
+        <binding name="title" value="ognl:messages.format('la.result.title', task)"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="resultField" type="jeus:PropertySelection">
+        <binding name="model" value="ognl:resultModel"/>
+        <binding name="value" value="ognl:result"/>
+        <binding name="submitOnChange" value="ognl: !requestCycle.rewinding ? listeners.onChangeResult : ( result != null and !result.startsWith('-')? listeners.onChangeResult : null)"/>
+    </component>
+
+    <component id="resultTable" type="jeus:JEUSTable">
+        <binding name="tableModel" value="ognl:tableModel"/>
+        <binding name="pageParameters" value="ognl:{task, result}"/>
+        <binding name="tableSessionStateManager" value="ognl:tableSessionStateManager"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+        <binding name="showCustomize" value="ognl:false"/>
+    </component>
+    
+
+    <component id="pageSize" type="Insert">
+        <binding name="value" value="message:la.result.page_size.label"/>
+    </component>
+
+    <component id="pageSizeField" type="jeus:PropertySelection">
+        <binding name="model" value="ognl:pageSizeModel"/>
+        <binding name="value" value="ognl:pageSize"/>
+        <binding name="submitOnChange" value="ognl:listeners.onChangePageSize"/>
+    </component>
+
+    <component id="totalRows" type="Insert">
+        <binding name="value" value="message:la.result.total_rows.label"/>
+    </component>
+
+    <component id="totalRowsValue" type="Insert">
+        <binding name="value" value="ognl:totalRows"/>
+    </component>
+
+    <component id="condResult" type="If">
+        <binding name="condition" value="ognl:result != null"/>
+    </component>
+
+    <component id="download" type="jeus:DownloadLink">
+        <binding name="listener" value="ognl:listeners.onDownload"/>
+        <binding name="contentType" value="literal:application/vnd.ms-excel"/>
+        <binding name="fileName" value="ognl:result+'.xls'"/>
+        <binding name="parameters" value="ognl:{task, result}"/>
+    </component>
+
+    <component id="excel" type="Image">
+        <binding name="image" value="ognl:assets.excel"/>
+    </component>
+
+    <component id="hiddenTask" type="Hidden">
+        <binding name="value" value="ognl:task"/>
+    </component>
+
+    <component id="hiddenResult" type="Hidden">
+        <binding name="value" value="ognl:result"/>
+    </component>
+
+    <component id="hiddenPageSize" type="Hidden">
+        <binding name="value" value="ognl:pageSize"/>
+    </component>
+
+    <property name="task"/>
+    <property name="result"/>
+    <property name="pageSize" persist="session"/>
+
+    <asset name="excel" path="context:/image/log/excel.gif"/>
+    <asset name="form_css" path="context:/css/form.css"/>
+
+</page-specification>

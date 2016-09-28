@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JMSClientResource.ConnectionsPage">
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JMS Client Resource Connections"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@JMSCLIENTRESOURCE_NAMES"/>
+    </component>
+
+    <component id="connectionsForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:clr.connections.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="refreshButton" type="Any">
+        <binding name="element" value="literal:input"/>
+        <binding name="value" value="message:common.label.refresh"/>
+    </component>
+
+    <component id="connectionsTable" type="jeus:JEUSTable">
+        <binding name="source" value="ognl:connections"/>
+        <binding name="columns" value="literal:clr_connections_name_label, clr.connections.transactional.label:transactional, clr.connections.session_count.label:sessionCount"/>
+        <binding name="row" value="ognl:currentView"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+    </component>
+
+    <component id="clr_connections_name_labelColumnValue" type="Block"/>
+    <component id="connectionLink" type="ExternalLink">
+        <binding name="page" value="literal:JMSConnectionResource_Statistics"/>
+        <binding name="parameters" value="ognl:currentView.objectName.canonicalName"/>
+    </component>
+
+    <component id="connection" type="Insert">
+        <binding name="value" value="ognl:currentView.name"/>
+    </component>
+
+
+    <property name="currentView"/>
+</page-specification>

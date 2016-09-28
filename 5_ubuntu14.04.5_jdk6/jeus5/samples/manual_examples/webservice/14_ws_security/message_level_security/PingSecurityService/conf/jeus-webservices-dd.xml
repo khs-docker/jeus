@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jeus-webservices-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <service>
+        <webservice-description-name>PingSecurityService</webservice-description-name>
+        <port>
+            <port-component-name>PingPort</port-component-name>            
+            <security>
+                <request-receiver>
+                    <action-list>UsernameToken Signature Encrypt</action-list>
+                    <password-callback-class>ping.PingPWCallback</password-callback-class>
+                    <decryption>
+                        <keystore>
+                            <key-type>jks</key-type>
+                            <keystore-password>keystore_password</keystore-password>
+                            <keystore-filename>server-keystore.jks</keystore-filename>
+                        </keystore>
+                    </decryption>
+                    <signature-verification>
+                        <keystore>
+                            <key-type>jks</key-type>
+                            <keystore-password>keystore_password</keystore-password>
+                            <keystore-filename>server-keystore.jks</keystore-filename>
+                        </keystore>
+                    </signature-verification>
+                </request-receiver>
+                <response-sender>
+                    <action-list>UsernameToken Signature Encrypt</action-list>
+                    <password-callback-class>ping.PingPWCallback</password-callback-class>
+                    <user>JEUS_SERVER</user>
+                    <signature-infos>
+                        <signature-info>
+                            <keyIdentifier>DirectReference</keyIdentifier>
+                            <keystore>
+                                <key-type>jks</key-type>
+                                <keystore-password>keystore_password</keystore-password>
+                                <keystore-filename>server-keystore.jks</keystore-filename>
+                            </keystore>
+                        </signature-info>
+                    </signature-infos>
+                    <encryption-infos>
+                        <encryption-info>
+                            <encryptionUser>JEUS_CLIENT</encryptionUser>
+                            <keyIdentifier>DirectReference</keyIdentifier>
+                            <keystore>
+                                <key-type>jks</key-type>
+                                <keystore-password>keystore_password</keystore-password>
+                                <keystore-filename>server-keystore.jks</keystore-filename>
+                            </keystore>
+                        </encryption-info>
+                    </encryption-infos>
+                </response-sender>
+            </security>
+        </port>
+    </service>
+</jeus-webservices-dd>
+

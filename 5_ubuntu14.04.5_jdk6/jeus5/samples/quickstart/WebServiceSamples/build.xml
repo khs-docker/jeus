@@ -1,0 +1,127 @@
+<?xml version="1.0" ?>
+<project name="Employee" default="all" basedir=".">	
+
+	<property name="jeus.home" value="${env.JAVA_HOME}"/>
+	<property name="java.home" value="${env.JAVA_HOME}"/>
+	<path id="jeus.classpath">
+		<pathelement location="${jeus.home}/classes"/>
+		<pathelement location="${jeus.home}/lib/system/jeus.jar"/>
+		<pathelement location="${jeus.home}/lib/system/xercesImpl.jar"/>
+		<pathelement location="${jeus.home}/lib/system/xml-apis.jar"/>
+		<pathelement location="${jeus.home}/lib/system/jaxb-api.jar"/>
+		<pathelement location="${jeus.home}/lib/system/jaxb-impl.jar"/>
+		<pathelement location="${jeus.home}/lib/system/jaxb-libs.jar"/>
+		<pathelement location="${jeus.home}/lib/system/relaxngDatatype.jar"/>
+		<pathelement location="${jeus.home}/lib/system/xsdlib.jar"/>
+		<pathelement location="${jeus.home}/lib/system/mail.jar"/>
+		<pathelement location="${jeus.home}/lib/system/activation.jar"/>
+		<pathelement location="${java.home}/lib/tools.jar"/>
+	</path>
+	
+  <!-- path to root -->
+  <!--
+  <property name="root.dir" value="../../.."/> 
+  -->
+  <property name="work.home" value="."/>
+
+  <!-- The destination directory for the build -->
+  <property name="build.dir" value="${work.home}/build"/>
+  <property name="classes.dir" value="${build.dir}/classes"/>
+
+  <property name="src" value="${work.home}/src"/>
+  <property name="build.wardir" value="${build.dir}/war"/>
+  <property name="build.jardir" value="${build.dir}/jar"/>
+  <property name="build.eardir" value="${build.dir}/ear"/>
+  <property name="warfile" value="${build.dir}/WSVCSamples.war"/>
+  <property name="earfile" value="${build.dir}/WSVCSamples.ear"/>
+
+  <property name="jaxrpc.wsdl" value="${build.dir}/EmployeeService.wsdl"/>
+  <property name="jaxrpc.mapping" value="${build.dir}/EmployeeService-mapping.xml"/>
+  
+  <property name="j2ee-webservice-dd" value="./conf/webservices.xml"/>
+  <property name="jeus-webservice-dd" value="./conf/jeus-webservices-dd.xml"/>
+  <property name="jeus-web-dd" value="./conf/jeus-web-dd.xml"/>
+  <property name="web-xml" value="./conf/web.xml"/>
+  <property name="application-xml" value="./conf/application.xml"/>
+
+  <path id="build.classpath">
+    <path refid="jeus.classpath"/>
+    <pathelement location="${classes.dir}"/>
+  </path>
+
+	<target name="core" depends="compile" />
+	<target name="all" depends="wsear,move" />
+
+  <target name="compile">
+    <mkdir dir="${classes.dir}"/>
+    <javac srcdir="${src}"
+           debug="on"
+           destdir="${classes.dir}"
+	   includes="**/*.java">
+      <classpath refid="build.classpath"/>
+    </javac>
+
+  </target>
+<taskdef name="java2wsdl" classname="jeus.util.ant.webservices.Java2WsdlTask">
+	<classpath refid="jeus.classpath" />
+</taskdef>
+
+<taskdef name="wsdl2java" classname="jeus.util.ant.webservices.Wsdl2JavaTask">
+	<classpath refid="jeus.classpath" />
+</taskdef>
+
+<target name="init">
+  <tstamp/>
+  <mkdir dir="${build.dir}/WEB-INF/classes"/>
+</target>
+  
+<target name="clean">
+  <delete dir="${build.dir}"/>
+  <delete file="${wswarfile}"/>
+</target>
+
+<target name="java2wsdl" depends="compile">
+    <java2wsdl destDir="${build.dir}"
+			verbose="true"
+			configfilepath="./service-config.xml">
+		        <classpath refid="build.classpath" />
+  </java2wsdl>
+</target>
+			
+<target name="wswar" depends="java2wsdl">
+  <delete dir="${build.wardir}" quiet="true"/>
+  <mkdir dir="${build.wardir}"/>
+  <mkdir dir="${build.wardir}/WEB-INF"/>
+  <mkdir dir="${build.wardir}/WEB-INF/wsdl"/>
+  <copy todir="${build.wardir}/WEB-INF/classes">
+      <fileset dir="${classes.dir}">
+         <exclude name="**/*.wsdl"/>
+      </fileset>
+  </copy>
+  <copy file="${jaxrpc.wsdl}"  todir="${build.wardir}/WEB-INF/wsdl" />
+  <copy file="${jaxrpc.mapping}"  todir="${build.wardir}/WEB-INF" />
+  <copy file="${j2ee-webservice-dd}"  todir="${build.wardir}/WEB-INF" />
+  <copy file="${jeus-webservice-dd}"  todir="${build.wardir}/WEB-INF" />
+  <copy file="${jeus-web-dd}"  todir="${build.wardir}/WEB-INF" />
+  <copy file="${web-xml}"  todir="${build.wardir}/WEB-INF" />
+  <jar jarfile="${warfile}" basedir="${build.wardir}" excludes="cvs">
+     <manifest>
+       <attribute name="Class-Path" value=""/>
+     </manifest>
+  </jar>
+</target>
+
+<target name="wsear" depends="wswar">
+  <mkdir dir="${build.eardir}"/>
+  <mkdir dir="${build.eardir}/META-INF"/>    
+  
+  <copy file="${application-xml}"  todir="${build.eardir}/META-INF" />
+  <copy file="${warfile}"  todir="${build.eardir}/" />
+  
+  <jar jarfile="${earfile}" basedir="${build.eardir}" excludes="cvs">
+     <manifest>
+       <attribute name="Class-Path" value=""/>
+     </manifest>
+  </jar>
+</target>
+</project>

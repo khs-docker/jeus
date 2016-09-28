@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusServiceJEUSManager.ControlPage">
+	<inject property="webadminStateObject" type="state" object="WebadminStateObject"/>
+	<inject property="externalService" object="engine-service:external"/>
+	<inject property="pageService" object="engine-service:page"/>
+	
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JEUSManager Control"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@JEUSSERVICE_JEUSMANAGER_NAMES"/>
+    </component>
+
+    <component id="boot" type="Block"/>
+    <component id="down" type="Block"/>
+    <component id="exit" type="Block"/>
+
+    <component id="controlForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jm.control.title"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="condHasBootTargets" type="If">
+        <binding name="condition" value="bootModel.nodeNames != null and bootModel.nodeNames.length &gt; 0"/>
+    </component>
+    <component id="condNotHasBootTargets" type="If">
+        <binding name="condition" value="bootModel.nodeNames == null or bootModel.nodeNames.length == 0"/>
+    </component>
+    <component id="condHasDownTargets" type="If">
+        <binding name="condition" value="downModel.nodeNames != null and downModel.nodeNames.length &gt; 0"/>
+    </component>
+    <component id="condNotHasDownTargets" type="If">
+        <binding name="condition" value="downModel.nodeNames == null or downModel.nodeNames.length == 0"/>
+    </component>
+    <component id="condHasExitTargets" type="If">
+        <binding name="condition" value="exitModel.nodeNames != null and exitModel.nodeNames.length &gt; 0"/>
+    </component>
+    <component id="condNotHasExitTargets" type="If">
+        <binding name="condition" value="exitModel.nodeNames == null or exitModel.nodeNames.length == 0"/>
+    </component>
+    <component id="no_boot_targets" type="Insert">
+        <binding name="value" value="message:jm.control.no_targets.label"/>
+    </component>
+    <component id="no_down_targets" copy-of="no_boot_targets"/>
+    <component id="no_exit_targets" copy-of="no_boot_targets"/>
+
+
+    <component id="control_tab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'jm.control.boot.label', 'jm.control.down.label', 'jm.control.exit.label'}, new java.lang.String[]{'boot', 'down', 'exit'})"/>
+    </component>
+
+    <component id="bootForm" type="jeus:JEUSForm">
+        <binding name="listener" value="listeners.onBootOk"/>
+        <binding name="resetListener" value="null"/>
+    </component>
+
+    <component id="boot_targets" type="jeus:Field">
+        <binding name="label" value="message:jm.control.targets.label"/>
+        <binding name="layout" value="@jeus.tool.webadmin.component.Field@EXTENDED_LAYOUT"/>
+    </component>
+
+    <component id="boot_targetsField" type="jeus:TargetExplorer">
+        <binding name="model" value="bootModel"/>
+        <binding name="selectionModel" value="bootSelectionModel"/>
+        <binding name="renderUnderline" value="false"/>
+    </component>
+
+    <component id="downForm" type="jeus:JEUSForm">
+        <binding name="listener" value="listeners.onDownOk"/>
+        <binding name="resetListener" value="null"/>
+    </component>
+
+    <component id="down_targets" type="jeus:Field">
+        <binding name="label" value="message:jm.control.targets.label"/>
+        <binding name="layout" value="@jeus.tool.webadmin.component.Field@EXTENDED_LAYOUT"/>
+    </component>
+
+    <component id="down_targetsField" type="jeus:TargetExplorer">
+        <binding name="model" value="downModel"/>
+        <binding name="selectionModel" value="downSelectionModel"/>
+        <binding name="renderUnderline" value="false"/>
+    </component>
+
+    <component id="exitForm" type="jeus:JEUSForm">
+        <binding name="listener" value="listeners.onExitOk"/>
+        <binding name="resetListener" value="null"/>
+    </component>
+
+    <component id="exit_targets" type="jeus:Field">
+        <binding name="label" value="message:jm.control.targets.label"/>
+        <binding name="layout" value="@jeus.tool.webadmin.component.Field@EXTENDED_LAYOUT"/>
+    </component>
+
+    <component id="exit_targetsField" type="jeus:TargetExplorer">
+        <binding name="model" value="exitModel"/>
+        <binding name="selectionModel" value="exitSelectionModel"/>
+        <binding name="renderUnderline" value="false"/>
+    </component>
+
+    <asset name="dot" path="context:/image/dot.gif"/>
+</page-specification>

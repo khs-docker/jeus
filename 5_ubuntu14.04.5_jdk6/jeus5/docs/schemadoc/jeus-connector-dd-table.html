@@ -1,0 +1,271 @@
+<html><header><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></header><body><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(1) <b>&lt;jeus-connector-dd&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">단일 JEUS Connector 모듈의 최상위 element. 각각의 jeus-connector-dd.xml 파일에는 이 태그가 반드시 존재한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(2)module-name<br>
+		(3)use-workmanager?<br>
+		(4)worker-pool?<br>
+		(13)connection-pool*<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(2) 
+		&lt;jeus-connector-dd&gt;
+	<b>&lt;module-name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Connector 모듈의 이름이다. 어플리케이션 내의 모듈인 경우 어플리케이션 내에서 유일하여야 하며 서버 모듈인 경우는 전체 JEUS 시스템에서 유일하여야 한다. Message Driven Bean 에서 inflow 타겟을 지정하기 위해 사용된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;module-name&gt;whitebox-xa&lt;/module-name&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(3) 
+		&lt;jeus-connector-dd&gt;
+	<b>&lt;use-workmanager&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Work Manager 를 사용할 것인지를 설정한다. true 인 경우 리소스 어댑터가 시작(start) 되기 직전에 설정에 따라 초기화 된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">boolean</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">false</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;use-workmanager&gt;true&lt;/use-workmanager&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(4) 
+		&lt;jeus-connector-dd&gt;
+	<b>&lt;worker-pool&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Work Manager 에 관련된 설정을 한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(5)min?<br>
+		(6)max?<br>
+		(7)step?<br>
+		(8)pre-allocation?<br>
+		(9)submit-timeout?<br>
+		(10)release-timeout?<br>
+		(11)shutdown-timeout?<br>
+		(12)pooled-timeout?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(5) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;worker-pool&gt;
+	<b>&lt;min&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Work Manager 가 관리하는 쓰레드 갯수의 최소값이다.
+                    이 설정값 보다 적은 쓰레드가 존재할 경우 Work Manager 는 사용자의 요청에 따라 즉시 쓰레드를 늘인다.
+                    이 설정값 보다 많은 쓰레드가 존재하는 경우 일정 시간동안 사용되지 않은 쓰레드를 줄이기 시작하여 min 갯수의 쓰레즈를 유지한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeIntType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 int type이다. 즉, int 범위에서
+			   0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">3</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;min&gt;3&lt;/min&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(6) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;worker-pool&gt;
+	<b>&lt;max&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Work Manager 가 관리하는 쓰레드 갯수의 최대값이다. 쓰레드의 갯수는 이 값을 넘지 않는다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeIntType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 int type이다. 즉, int 범위에서
+			   0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">10</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;max&gt;10&lt;/max&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(7) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;worker-pool&gt;
+	<b>&lt;step&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">쓰레드 수가 증가할 필요가 있을 경우, 한번에 증가하게 되는 쓰레드의 갯수이다.
+                    총 쓰레드의 수는 위에 설정된 max 값을 넘을 수 없다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeIntType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 int type이다. 즉, int 범위에서
+			   0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">1</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;max&gt;1&lt;/max&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(8) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;worker-pool&gt;
+	<b>&lt;pre-allocation&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Work Manager 가 초기화 될때 min 값에 설정된 수의 쓰레드를 미리 만들어 놓는다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">boolean</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">true</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;pre-allocation&gt;true&lt;/pre-allocation&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(9) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;worker-pool&gt;
+	<b>&lt;submit-timeout&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">클라이언트의 요청에 대해 지정된 시간동안 작업을 시작할 수 없을 경우 작업은 거부된다.
+                    사용자는 서비스 요청 방식에 따라 익셉션을 받거나 이벤트를 받게 된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">시간값 msec 단위. 0 으로 설정하는 경우 작업이 시작될 때까지 계속 대기상태로 기다린다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeLongType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 long type이다. 즉, long 범위에서
+               0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">5000</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;submit-timeout&gt;5000&lt;/submit-timeout&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(10) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;worker-pool&gt;
+	<b>&lt;release-timeout&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">작업이 시작되어 이 시간이 지난 후에도 작업이 종료되지 않았다면 Work Manager 는 해당 작업에 대해 release() 메쏘드를 호출해 준다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">시간값 msec 단위. 0 으로 설정하는 경우 release() 메쏘드는 호출되지 않는다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeLongType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 long type이다. 즉, long 범위에서
+               0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">60000</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;release-timeout&gt;60000&lt;/release-timeout&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(11) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;worker-pool&gt;
+	<b>&lt;shutdown-timeout&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Work Manager 가 종료되는 순간 진행중인 작업이 있을 경우 최대 여기에 설정된 시간동안 대기한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">시간값 msec 단위. 0 이면 기다리지 않으며, -1 로 설정하는 경우 작업이 종료될 때까지 계속 기다리게 된다. 작업중인 쓰레드들은 Interrupt 를 받게 된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">long</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">-1</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;shutdown-timeout&gt;-1&lt;/shutdown-timeout&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(12) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;worker-pool&gt;
+	<b>&lt;pooled-timeout&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Work Manager 에 min 값을 초과하는 수의 쓰레드가 있을 경우 설정된 시간 동안 사용되지 않은 쓰레드를 풀에서 제거한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">시간값 msec 단위. 0 이면 제거하지 않는다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeLongType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 long type이다. 즉, long 범위에서
+               0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">600000</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;pooled-timeout&gt;600000&lt;/pooled-timeout&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(13) 
+		&lt;jeus-connector-dd&gt;
+	<b>&lt;connection-pool&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Connection Pool 에 대한 설정을 한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(14)export-name?<br>
+		(15)transaction-support?<br>
+		(16)user?<br>
+		(17)password?<br>
+		(18)use-wrapper?<br>
+		(19)dissociation-timeout?<br>
+		(20)invalidation-timeout?<br>
+		(21)skip-connection-matching?<br>
+		(22)pool-management?<br>
+		(34)property*<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(14) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	<b>&lt;export-name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">해당 connection pool 이 JNDI Naming System 에 바인딩 되는 이름이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">임의로 지정할 수 있고 해당 모듈내에서 유일한 이름이어야만 한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;export-name&gt;datasource1&lt;/export-name&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(15) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	<b>&lt;transaction-support&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">해당 connection pool 이 지원하는 트랜잭션 타입을 설정한다. 여기에 설정된 값은 ra.xml 에 설정된 값보다 우선시 된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">NoTransaction, LocalTransaction, XATransaction, XATransactionOnly 네가지 중 하나를 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">transaction-supportType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Defined Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">NoTransaction<br><br>LocalTransaction<br><br>XATransaction<br><br>XATransactionOnly<br><br></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;transaction-support&gt;XATransaction&lt;/transaction-support&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(16) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	<b>&lt;user&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">security 를 container 에서 관리하는 경우, connection 을 생성하기 위해 사용하는 user 이름이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;user&gt;scott&lt;/user&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(17) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	<b>&lt;password&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">security 를 container 에서 관리하는 경우, connection 을 생성하기 위해 사용하는 password 이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;password&gt;tiger&lt;/password&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(18) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	<b>&lt;use-wrapper&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">부가적인 기능을 위해서 connection wrapper 를 이용한다. 자세한 내용은 메뉴얼을 참조하도록 한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">boolean</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">true</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;use-wrapper&gt;true&lt;/use-wrapper&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(19) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	<b>&lt;dissociation-timeout&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">dissociation 을 적용하는 시간 값을 설정한다. 해당 리소스 어댑터에서 이 기능을 지원하지 않는 경우 무시된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">시간값 msec 단위. 0 이면 dissociation 을 사용하지 않는다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeLongType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 long type이다. 즉, long 범위에서
+               0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;dissociation-timeout&gt;0&lt;/dissociation-timeout&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(20) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	<b>&lt;invalidation-timeout&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">invalidation 을 적용할 시간 값을 설정한다. 이 시간이 지나도 connnection pool 로 돌아오지 않는 connection 은 강제로 제거 된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">시간값 msec 단위. 0 이면 invalidation 을 사용하지 않는다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeLongType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 long type이다. 즉, long 범위에서
+               0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;invalidation-timeout&gt;0&lt;/invalidation-timeout&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(21) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	<b>&lt;skip-connection-matching&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">connection 인증을 위한 connection matching 과정을 생략한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">boolean</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">false</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;skip-connection-matching&gt;false&lt;/skip-connection-matching&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(22) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	<b>&lt;pool-management&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">connection pool 에 관련된 값을 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(23)min?<br>
+		(24)max?<br>
+		(25)pooled-timeout?<br>
+		(26)wait-connection?<br>
+		(31)disposable-connection?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(23) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	
+		&lt;pool-management&gt;
+	<b>&lt;min&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Connection pool 에 의해 관리되는 Connection 갯수의 최소값이다.
+                    이 설정값 보다 적은 connection 이 존재할 경우 사용자의 요청에 따라 즉시 새로운 connection 을 생성한다.
+                    이보다 많은 connection 이 존재하는 경우 일정 시간동안 사용되지 않은 connection 를 풀에서 제거한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeIntType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 int type이다. 즉, int 범위에서
+			   0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;min&gt;0&lt;/min&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(24) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	
+		&lt;pool-management&gt;
+	<b>&lt;max&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Connection pool 에 의해 관리되는 Connection 갯수의 최대값이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeIntType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 int type이다. 즉, int 범위에서
+			   0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">20</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;max&gt;20&lt;/max&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(25) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	
+		&lt;pool-management&gt;
+	<b>&lt;pooled-timeout&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Connection pool 에 min 값보다 많은 Connection 이 있을 경우, 설정된 시간 동안 사용되지 않은 Connection 을 풀에서 제거한다</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">시간값 msec 단위. 0 으로 설정하면 connection 은 제거되지 않는다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeLongType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 long type이다. 즉, long 범위에서
+               0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">600000</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;pooled-timeout&gt;600000&lt;/pooled-timeout&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(26) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	
+		&lt;pool-management&gt;
+	<b>&lt;wait-connection&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Connection Pool 에서 Connection 을 얻기 위해 기다릴 필요가 있을 경우 이에 관련된 설정이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(27)wait-connection?<br>
+		(28)max-waiter-count?<br>
+		(29)max-wait-trial?<br>
+		(30)wait-timeout?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(27) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	
+		&lt;pool-management&gt;
+	
+		&lt;wait-connection&gt;
+	<b>&lt;wait-connection&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Connection 을 얻기 위해 기다릴 것인지를 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">boolean</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">true</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;wait-connection&gt;true&lt;/wait-connection&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(28) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	
+		&lt;pool-management&gt;
+	
+		&lt;wait-connection&gt;
+	<b>&lt;max-waiter-count&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">커넥션을 얻기 위해 기다리는 client 의 최대 수이다. 이보다 많을 경우 바로 실패한 것으로 간주된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeIntType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 int type이다. 즉, int 범위에서
+			   0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">5</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;max-waiter-count&gt;5&lt;/max-waiter-count&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(29) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	
+		&lt;pool-management&gt;
+	
+		&lt;wait-connection&gt;
+	<b>&lt;max-wait-trial&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 횟수만큼 connection matching 을 실패했다면 Connection 을 얻는데 실패한 것으로 간주한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeIntType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 int type이다. 즉, int 범위에서
+			   0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">5</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;max-waiter-trial&gt;5&lt;/max-waiter-trial&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(30) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	
+		&lt;pool-management&gt;
+	
+		&lt;wait-connection&gt;
+	<b>&lt;wait-timeout&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 시간동안 기다려도 Connection 을 얻지 못했다면 Connection 을 얻는데 실패한 것으로 간주한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeLongType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 long type이다. 즉, long 범위에서
+               0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">10000</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;wait-timeout&gt;10000&lt;/wait-timeout&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(31) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	
+		&lt;pool-management&gt;
+	<b>&lt;disposable-connection&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Connection 을 얻지 못했을 경우 임시 Connection 을 이용할 것인지에 대한 설정이다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(32)allow-disposable-connection?<br>
+		(33)max-disposable-count?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(32) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	
+		&lt;pool-management&gt;
+	
+		&lt;disposable-connection&gt;
+	<b>&lt;allow-disposable-connection&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">Connection 을 얻지 못했을 경우 임시 Connection 을 사용할 것인지를 설정한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">boolean</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">true</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;allow-disposable-connection&gt;true&lt;/allow-disposable-connection&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(33) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	
+		&lt;pool-management&gt;
+	
+		&lt;disposable-connection&gt;
+	<b>&lt;max-disposable-count&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">임시 Connection 의 최대 갯수이다. 임시 커넥션은 사용이 끝나면 자동적으로 제거된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">nonNegativeIntType</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type Description </i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">0 이상의 int type이다. 즉, int 범위에서
+			   0 이상의 값들을 포함한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Default Value</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">3</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Example</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">&lt;max-disposable-count&gt;3&lt;/max-disposable-count&gt;</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(34) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	<b>&lt;property&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">ManagedConnectionFactory 에 적용할 property 를 추가한다. ra.xml 에 설정된 값보다 우선시 된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(35)name<br>
+		(36)type<br>
+		(37)value<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(35) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	
+		&lt;property&gt;
+	<b>&lt;name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(36) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	
+		&lt;property&gt;
+	<b>&lt;type&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(37) 
+		&lt;jeus-connector-dd&gt;
+	
+		&lt;connection-pool&gt;
+	
+		&lt;property&gt;
+	<b>&lt;value&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table></body></html>

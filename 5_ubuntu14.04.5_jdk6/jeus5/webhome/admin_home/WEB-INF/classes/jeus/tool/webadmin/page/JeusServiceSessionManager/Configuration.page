@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceSessionManager.ConfigurationPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Session Manager Configuration"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@getJEUSSERVICE_SESSIONMANAGER_NAMES(objectName)"/>
+        <binding name="subtabNames" value="ognl:{'general', 'storage'}"/>
+    </component>
+
+    <component id="general" type="Block"/>
+    <component id="storage" type="Block"/>
+
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:sm.general.title"/>
+        <binding name="success" value="listener:onGeneralOk"/>
+        <binding name="cancel" value="listener:onGeneralReset"/>
+    </component>
+
+<!--    <component id="general_ok" type="jeus:ConfirmSubmit">
+        <binding name="label" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:session.ok.confirm"/>
+        <binding name="listener" value="ognl:listeners.onGeneralOk"/>
+    </component>
+
+    <component id="general_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="general_reset" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.reset.label"/>
+        <binding name="message" value="message:JEUSForm.reset.confirm"/>
+        <binding name="listener" value="ognl:listeners.onGeneralReset"/>
+    </component>-->
+
+    <component id="name" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:name"/>
+    </component>
+
+    <component id="passivation_to" type="jeus:Field">
+        <binding name="field" value="ognl:components.passivation_toField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="passivation_toField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:passivationTo"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="removal_to" type="jeus:Field">
+        <binding name="field" value="ognl:components.removal_toField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="removal_toField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:removalTo"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="check_to" type="jeus:Field">
+        <binding name="field" value="ognl:components.check_toField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="check_toField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:checkTo"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="backup_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.backup_nameField"/>
+    </component>
+
+    <component id="backup_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:backupName"/>
+    </component>
+
+    <component id="backup_trigger" type="jeus:Field">
+        <binding name="field" value="ognl:components.backup_triggerField"/>
+        <binding name="unit" value="message:sm.general.unit.objects.label"/>
+    </component>
+
+    <component id="backup_triggerField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:backupTrigger"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="operation_to" type="jeus:Field">
+        <binding name="field" value="ognl:components.operation_toField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="operation_toField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:operationTo"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="general_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="storageForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:sm.storage.title"/>
+        <binding name="success" value="listener:onStorageOk"/>
+        <binding name="cancel" value="listener:onStorageReset"/>
+    </component>
+
+<!--    <component id="storage_ok" type="jeus:ConfirmSubmit">
+        <binding name="label" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:session.ok.confirm"/>
+        <binding name="listener" value="ognl:listeners.onStorageOk"/>
+    </component>
+
+    <component id="storage_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="storage_reset" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.reset.label"/>
+        <binding name="message" value="message:JEUSForm.reset.confirm"/>
+        <binding name="listener" value="ognl:listeners.onStorageReset"/>
+    </component>-->
+
+    <component id="min_hole" type="jeus:Field">
+        <binding name="field" value="ognl:components.min_holeField"/>
+    </component>
+
+    <component id="min_holeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:minHole"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="packing_rate" type="jeus:Field">
+        <binding name="field" value="ognl:components.packing_rateField"/>
+    </component>
+
+    <component id="packing_rateField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:packingRate"/>
+        <binding name="translator" value="translator:number2,valueType=float"/>
+        <binding name="validators" value="validators:min=0.0,max=1.0"/>
+    </component>
+
+    <component id="file_db_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.file_db_nameField"/>
+    </component>
+
+    <component id="file_db_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:fileDbName"/>
+    </component>
+
+    <component id="file_db_path" type="jeus:Field">
+        <binding name="field" value="ognl:components.file_db_pathField"/>
+    </component>
+
+    <component id="file_db_pathField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionManager"/>
+        <binding name="elementName" value="literal:fileDbPath"/>
+    </component>
+
+    <component id="storage_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+
+</page-specification>

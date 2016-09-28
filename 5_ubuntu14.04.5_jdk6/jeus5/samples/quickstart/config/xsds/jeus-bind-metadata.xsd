@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+<xs:schema
+	xmlns="http://www.tmaxsoft.com/xml/ns/jeus"
+	targetNamespace="http://www.tmaxsoft.com/xml/ns/jeus"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified"
+	version="5.0">
+
+	<xs:element name="metadata" type="metadataType"/>
+
+	<xs:complexType name="metadataType">
+		<xs:sequence>
+			<xs:element name="default-element" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="mbean-attribute" type="xs:string" minOccurs="0"/>
+			<xs:element name="element-level" type="element-levelType" minOccurs="0" default="BASIC"/>
+            <xs:element name="origin-name" type="xs:string" minOccurs="0"/>
+            <xs:element name="section" type="xs:boolean" minOccurs="0" default="false"/>
+            <xs:element name="enable" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="element-levelType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BASIC"/>
+			<xs:enumeration value="ADVANCED"/>				
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

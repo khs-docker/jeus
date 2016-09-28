@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description>                  
+    <text key="client-module-infoType.app-argument"><![CDATA[
+				[Description]: Configuring application argument to be used when client application is being executed. 
+				]]>                  
+    </text>
+                     
+    <text key="jeus-client-ddType.res-ref"><![CDATA[
+				[Description]: resource related information 
+				]]>                  
+    </text>
+                     
+    <text key="jeus-client-ddType.res-env-ref"><![CDATA[
+				[Description]: resource environment related information
+				]]>                  
+    </text>
+                     
+    <text key="security-infoType.provider-node-name"><![CDATA[
+				[Description]: Configuring server to execute security authentication when client applicaiton is being executed. 
+				]]>                  
+    </text>
+                     
+    <text key="jeus-client-ddType.scheduler"><![CDATA[
+                        [Description]: Configuration of scheduler to be used in Client Container.
+                    ]]>                  
+    </text>
+                     
+    <text key="jeus-client-dd"><![CDATA[
+			[Description]: The top level element of JEUS Client module. For each jeus-client-dd.xml, this tag should exist. 
+            ]]>                  
+    </text>
+                     
+    <text key="client-module-infoType.app-main-class"><![CDATA[
+				[Description]: Fully qualified class name of Main class of Client Application.
+				]]>                  
+    </text>
+                     
+    <text key="jeus-client-ddType.ejb-ref"><![CDATA[
+				[Description]: Information on EJB reference 
+				]]>                  
+    </text>
+                     
+    <text key="client-module-infoType.module-name"><![CDATA[
+				[Description]: Module name to be set in client applciation.
+				]]>                  
+    </text>
+                     
+    <text key="security-infoType.user"><![CDATA[
+				[Description]: Configuring user name of security context when client applicaiton is being executed. 
+				]]>                  
+    </text>
+                     
+    <text key="jeus-client-ddType.module-info"><![CDATA[
+				[Description]: Information on Client Application 
+				]]>                  
+    </text>
+                     
+    <text key="jeus-client-ddType.env"><![CDATA[
+				[Description]: Information on environment entry
+				]]>                  
+    </text>
+                     
+    <text key="security-infoType.passwd"><![CDATA[
+				[Description]: Configuring password of security context to be used when client application is being executed. 
+				For this field, encoded value is set as base64.
+				]]>                  
+    </text>
+                     
+    <text key="jeus-client-ddType.security-info"><![CDATA[
+				[Description]: Configuring various types of information for security authentication when executing client application.
+				]]>                  
+    </text>
+                     
+    <text key="jeus-client-ddType.system-logging"><![CDATA[
+				[Description]: Configuring logger used by client application container. 
+				]]>                  
+    </text>
+                     
+    <text key="jeus-client-ddType.service-ref"><![CDATA[
+                    [Description]: Root element on configuration documentation of JEUS Web Service Client (root element).
+                        ]]>                  
+    </text>
+ </description>

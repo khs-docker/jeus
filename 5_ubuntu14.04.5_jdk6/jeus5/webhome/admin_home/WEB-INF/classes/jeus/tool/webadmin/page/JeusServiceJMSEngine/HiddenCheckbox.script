@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+
+<input-symbol key="source" required="yes"/>
+<input-symbol key="target" required="yes"/>
+
+<let key="funcName" unique="yes">change_hidden_checkbox</let>
+
+<body>
+function ${funcName}(){
+	var form = document.getElementById("${source.form.name}");
+	var value = form.${source.id}.checked;
+
+	form = document.getElementById("${target.form.name}");
+	form.${target.id}.value=value;
+	return true; 
+}
+</body>
+<initialization>
+${funcName}();
+document.getElementById("${source.form.name}").${source.id}.onchange=${funcName};
+</initialization>
+
+</script>

@@ -1,0 +1,48 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="containersForm">
+            <table class="table">
+                <tr>
+                    <th><span jwcid="container_name_column"/></th>
+                    <th><span jwcid="status_column"/></th>
+                    <th><span jwcid="actions_column"/></th>
+                    <th width="40">&nbsp;</th>
+                </tr>
+                <tr jwcid="eachContainer">
+                    <td><a jwcid="containerLink"><span jwcid="container_name_value"/></a></td>
+                    <td align="center"><span jwcid="status_value"/></td>
+                    <td align="center">
+                        <a jwcid="startLink"></a><input jwcid="start" class="form_button" style="width:50px;" onclick="progress_bar();disabled=true;window.location = previousSibling.href;"/>
+                        <a jwcid="downLink"></a><input jwcid="down" class="form_button" style="width:50px;" onclick="progress_bar();disabled=true;window.location = previousSibling.href;"/>
+                    </td>
+                    <td width="40" align="center">
+                        <span jwcid="condStopped">
+                            <a jwcid="deleteLink"><img jwcid="delete" align="middle" alt="delete"/></a>
+                        </span>
+                        <span jwcid="condRunning">
+                            <img jwcid="empty" align="middle" width="13" height="1" alt=""/>
+                        </span>
+                        <span jwcid="condNotAcademic">
+                            <a jwcid="duplicateLink"><img jwcid="duplicate" align="middle" alt="duplicate"/></a>
+                        </span>
+                        <span jwcid="condAcademic">
+                            <a jwcid="duplicateImpossibleLink"><img jwcid="duplicate2" align="middle" alt="duplicate"/></a>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+            <ul class="button_layer_left">
+            	<li><a jwcid="start_allLink"></a><input jwcid="start_all" class="form_button" onclick="progress_bar();disabled=true;window.location = previousSibling.href;"/></li>
+            	<li><a jwcid="down_allLink"></a><input jwcid="down_all" class="form_button" onclick="progress_bar();disabled=true;window.location = previousSibling.href;"/></li>
+            </ul>
+            <div class="form_button_layer">
+				<span jwcid="condNotAcademic2">
+                	<a jwcid="createLink" class="create_link"><span jwcid="create_label"/></a>
+				</span>
+                <span jwcid="condAcademic2">
+                	<a jwcid="createImpossibleLink" class="create_link"><span jwcid="create_label2"/></a>
+				</span>
+            </div>
+        </form>
+    </span>
+</html>

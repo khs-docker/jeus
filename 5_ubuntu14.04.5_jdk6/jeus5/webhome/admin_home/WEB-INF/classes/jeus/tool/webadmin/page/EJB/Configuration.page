@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.EJB.ConfigurationPage">
+	<inject property="jaxbSource" type="state" object="JAXBSource"/>
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:EJB Configuration"/>
+	</component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@EJB_NAMES"/>
+    </component>
+
+    <component id="StatefulSessionBean" type="Block"/>
+    <component id="StatelessSessionBean" type="Block"/>
+    <component id="EntityBean" type="Block"/>
+    <component id="MessageDrivenBean" type="Block"/>
+
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ejb.configuration.general.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="ejbName" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ejb.configuration.general.ejb_name.label"/>
+        <binding name="value" value="jeusBean.ejbName"/>
+    </component>
+
+    <component id="moduleName" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ejb.configuration.general.module_name.label"/>
+        <binding name="value" value="objectName.getKeyProperty('EJBModule')"/>
+    </component>
+
+    <component id="beanType" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ejb.configuration.general.bean_type.label"/>
+        <binding name="value" value="objectName.getKeyProperty('j2eeType')"/>
+    </component>
+
+    <component id="exportName" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ejb.configuration.general.export_name.label"/>
+        <binding name="value" value="jeusBean.exportName"/>
+    </component>
+
+    <component id="localExportName" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ejb.configuration.general.local_export_name.label"/>
+        <binding name="value" value="jeusBean.localExportName"/>
+    </component>
+
+<!--
+    <component id="tableName" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ejb.configuration.entity_bean.table_name.label"/>
+        <binding name="value" value="schemaInfo.tableName"/>
+    </component>
+
+    <component id="dbVendor" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ejb.configuration.entity_bean.db_vendor.label"/>
+        <binding name="value" value="schemaInfo.dbVendor"/>
+    </component>
+
+    <component id="dataSourceName" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ejb.configuration.entity_bean.data_source_name.label"/>
+        <binding name="value" value="schemaInfo.dataSourceName"/>
+    </component>
+-->
+
+    <component id="connectionFactoryName" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ejb.configuration.mdb.connection_factory_name.label"/>
+        <binding name="value" value="jeusBean.connectionFactoryName"/>
+    </component>
+
+    <component id="destination" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ejb.configuration.mdb.destination.label"/>
+        <binding name="value" value="jeusBean.destination"/>
+    </component>
+
+</page-specification>

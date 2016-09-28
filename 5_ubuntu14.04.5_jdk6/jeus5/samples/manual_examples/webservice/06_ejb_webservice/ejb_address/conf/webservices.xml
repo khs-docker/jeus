@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<webservices version="1.1" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <webservice-description>
+        <webservice-description-name>AddressBookService</webservice-description-name>
+        <wsdl-file>META-INF/wsdl/AddressBookService.wsdl</wsdl-file>
+        <jaxrpc-mapping-file>META-INF/AddressBookService-mapping.xml</jaxrpc-mapping-file>
+        <port-component>
+            <port-component-name>AddressBookIFPort</port-component-name>
+            <wsdl-port xmlns:ns2="urn:AddressBookService">ns2:AddressBookIFPort</wsdl-port>
+            <service-endpoint-interface>address.AddressBookIF</service-endpoint-interface>
+            <service-impl-bean>
+                <ejb-link>AddressEJB</ejb-link>
+            </service-impl-bean>
+        </port-component>
+    </webservice-description>
+</webservices>
+

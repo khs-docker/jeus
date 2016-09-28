@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.EJB.StatisticsPage">
+	
+	<inject property="jaxbSource" type="state" object="JAXBSource"/>
+	<inject property="webadminVisit" type="state" object="visit"/>
+	
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:EJB Monitor"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@EJB_NAMES"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:ejb.statistics.title"/>
+        <!--<binding name="description" value="message:ejb.statistics.description"/>-->
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="stats" type="RenderBlock">
+        <binding name="block" value="ejbTypeBlock"/>
+    </component>
+
+    <component id="EJBStats" type="Block"/>
+    <component id="StatefulSessionBean" type="Block"/>
+    <component id="StatelessSessionBean" type="Block"/>
+    <component id="EntityBean" type="Block"/>
+    <component id="MessageDrivenBean" type="Block"/>
+
+    <component id="webService" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ejb.statistics.webservice.label"/>
+        <binding name="value" value="webserviceProvider"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="condWS" type="If">
+        <binding name="condition" value="webserviceProvider == true"/>
+    </component>
+
+    <component id="request" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ejb.statistics.webservices.request.label"/>
+        <binding name="value" value="numberOfRequests"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="failedRequest" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ejb.statistics.webservices.failed_request.label"/>
+        <binding name="value" value="numberOfFailedRequests"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="successfulRequest" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ejb.statistics.webservices.successful_request.label"/>
+        <binding name="value" value="numberOfSuccessfulRequests"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="serviceTime" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ejb.statistics.webservices.service_time.label"/>
+        <binding name="value" value="serviceTime"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="maxResponseTime" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ejb.statistics.webservices.max_response_time.label"/>
+        <binding name="value" value="maxResponseTime"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="lastResponseTime" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ejb.statistics.webservices.last_response_time.label"/>
+        <binding name="value" value="lastResponseTime"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <!-- EJBStats -->
+    <component id="createCount" type="jeus:CountStatisticField">
+        <binding name="label" value="message:ejb.statistics.create_count.label"/>
+        <binding name="description" value="message:ejb.statistics.create_count.description"/>
+        <binding name="count" value="stats.createCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="removeCount" type="jeus:CountStatisticField">
+        <binding name="label" value="message:ejb.statistics.remove_count.label"/>
+        <binding name="description" value="message:ejb.statistics.remove_count.description"/>
+        <binding name="count" value="stats.removeCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="requestCount" type="jeus:CountStatisticField">
+        <binding name="label" value="message:ejb.statistics.request_count.label"/>
+        <binding name="description" value="message:ejb.statistics.request_count.description"/>
+        <binding name="count" value="stats.requestCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="committedCount" type="jeus:CountStatisticField">
+        <binding name="label" value="message:ejb.statistics.committed_count.label"/>
+        <binding name="description" value="message:ejb.statistics.committed_count.description"/>
+        <binding name="count" value="stats.committedCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="rolledbackCount" type="jeus:CountStatisticField">
+        <binding name="label" value="message:ejb.statistics.rolledback_count.label"/>
+        <binding name="description" value="message:ejb.statistics.rolledback_count.description"/>
+        <binding name="count" value="stats.rolledbackCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="timeoutRolledbackCount" type="jeus:CountStatisticField">
+        <binding name="label" value="message:ejb.statistics.timeout_rolledback_count.label"/>
+        <binding name="description" value="message:ejb.statistics.timeout_rolledback_count.description"/>
+        <binding name="count" value="stats.timeoutRolledbackCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="methodReadyCount" type="jeus:RangeStatisticField">
+        <binding name="label" value="message:ejb.statistics.method_ready_count.label"/>
+        <binding name="description" value="message:ejb.statistics.method_ready_count.description"/>
+        <binding name="renderBottom" value="true"/>
+        <binding name="range" value="stats.methodReadyCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="passiveCount" type="jeus:RangeStatisticField">
+        <binding name="label" value="message:ejb.statistics.passive_count.label"/>
+        <binding name="description" value="message:ejb.statistics.passive_count.description"/>
+        <binding name="renderBottom" value="true"/>
+        <binding name="range" value="stats.passiveCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="totalEJBBeanCount" type="jeus:RangeStatisticField">
+        <binding name="label" value="message:ejb.statistics.total_ejb_bean_count.label"/>
+        <binding name="description" value="message:ejb.statistics.total_ejb_bean_count.description"/>
+        <binding name="renderBottom" value="true"/>
+        <binding name="range" value="stats.totalEJBBeanCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="activeEJBBeanCount" type="jeus:RangeStatisticField">
+        <binding name="label" value="message:ejb.statistics.active_ejb_bean_count.label"/>
+        <binding name="description" value="message:ejb.statistics.active_ejb_bean_count.description"/>
+        <binding name="renderBottom" value="true"/>
+        <binding name="range" value="stats.activeEJBBeanCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="totalThreadCount" type="jeus:RangeStatisticField">
+        <binding name="label" value="message:ejb.statistics.total_thread_count.label"/>
+        <binding name="description" value="message:ejb.statistics.total_thread_count.description"/>
+        <binding name="renderBottom" value="true"/>
+        <binding name="range" value="stats.totalThreadCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="activeThreadCount" type="jeus:RangeStatisticField">
+        <binding name="label" value="message:ejb.statistics.active_thread_count.label"/>
+        <binding name="description" value="message:ejb.statistics.active_thread_count.description"/>
+        <binding name="renderBottom" value="true"/>
+        <binding name="range" value="stats.activeThreadCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="totalEJBObjectCount" type="jeus:RangeStatisticField">
+        <binding name="label" value="message:ejb.statistics.total_ejb_object_count.label"/>
+        <binding name="description" value="message:ejb.statistics.total_ejb_object_count.description"/>
+        <binding name="renderBottom" value="true"/>
+        <binding name="range" value="stats.totalEJBObjectCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="activeEJBObjectCount" type="jeus:RangeStatisticField">
+        <binding name="label" value="message:ejb.statistics.active_ejb_object_count.label"/>
+        <binding name="description" value="message:ejb.statistics.active_ejb_object_count.description"/>
+        <binding name="range" value="stats.activeEJBObjectCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="autoRemovedEJBObjectCount" type="jeus:CountStatisticField">
+        <binding name="label" value="message:ejb.statistics.auto_removed_ejb_object_count.label"/>
+        <binding name="description" value="message:ejb.statistics.auto_removed_ejb_object_count.description"/>
+        <binding name="count" value="stats.autoRemovedEJBObjectCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="fileDBSizeCount" type="jeus:RangeStatisticField">
+        <binding name="label" value="message:ejb.statistics.file_db_size_count.label"/>
+        <binding name="description" value="message:ejb.statistics.file_db_size_count.description"/>
+        <binding name="range" value="stats.fileDBSizeCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="readyCount" type="jeus:RangeStatisticField">
+        <binding name="label" value="message:ejb.statistics.ready_count.label"/>
+        <binding name="description" value="message:ejb.statistics.ready_count.description"/>
+        <binding name="range" value="stats.readyCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="pooledCount" type="jeus:RangeStatisticField">
+        <binding name="label" value="message:ejb.statistics.pooled_count.label"/>
+        <binding name="description" value="message:ejb.statistics.pooled_count.description"/>
+        <binding name="range" value="stats.pooledCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="messageCount" type="jeus:CountStatisticField">
+        <binding name="label" value="message:ejb.statistics.message_count.label"/>
+        <binding name="description" value="message:ejb.statistics.message_count.description"/>
+        <binding name="count" value="stats.messageCount"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+
+    <component id="refreshButton" type="Any">
+        <binding name="element" value="literal:input"/>
+        <binding name="value" value="message:common.label.refresh"/>
+    </component>
+
+</page-specification>

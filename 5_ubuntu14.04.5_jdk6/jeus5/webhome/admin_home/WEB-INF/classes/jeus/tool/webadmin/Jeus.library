@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE library-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<library-specification>
+    <component-type type="ViewBorder" specification-path="component/ViewBorder.jwc"/>
+    <component-type type="MainBorder" specification-path="component/MainBorder.jwc"/>
+    <component-type type="PopupMainBorder" specification-path="component/PopupMainBorder.jwc"/>
+    <component-type type="Navigation" specification-path="component/Navigation.jwc"/>
+    <component-type type="IFrame" specification-path="component/IFrame.jwc"/>
+    <component-type type="ImageButton" specification-path="component/ImageButton.jwc"/>
+    <component-type type="Applet" specification-path="component/Applet.jwc"/>
+    <component-type type="JeusTreeNodeView" specification-path="component/JeusTreeNodeView.jwc"/>
+    <component-type type="MBeanForm" specification-path="component/MBeanForm.jwc"/>
+    <component-type type="JEUSForm" specification-path="component/JEUSForm.jwc"/>
+    <component-type type="FormSection" specification-path="component/FormSection.jwc"/>
+    <component-type type="Section" specification-path="component/Section.jwc"/>
+    <component-type type="TabPanel" specification-path="component/TabPanel.jwc"/>
+    <component-type type="WizardTabPanel" specification-path="component/WizardTabPanel.jwc"/>
+    <component-type type="InnerTabPanel" specification-path="component/InnerTabPanel.jwc"/>
+    <component-type type="ModuleInnerTabPanel" specification-path="component/ModuleInnerTabPanel.jwc"/>
+    <component-type type="Blind" specification-path="component/Blind.jwc"/>
+    <component-type type="Field" specification-path="component/Field.jwc"/>
+    <component-type type="ErrorField" specification-path="component/ErrorField.jwc"/>
+    <component-type type="Subtabs" specification-path="component/Subtabs.jwc"/>
+
+    <component-type type="DownloadLink" specification-path="component/DownloadLink.jwc"/>
+    <component-type type="JEUSTable" specification-path="component/JEUSTable.jwc"/>
+    <component-type type="JEUSTableView" specification-path="component/table/JEUSTableView.jwc"/>
+    <component-type type="JEUSTablePages" specification-path="component/JEUSTablePages.jwc"/>
+
+    <page name="SimpleTableColumnPage" specification-path="component/table/SimpleTableColumnPage.page"/>
+    <page name="CustomizeColumn" specification-path="component/table/CustomizeColumn.page"/>
+
+    <component-type type="TossBody" specification-path="component/TossBody.jwc"/>
+    <component-type type="ReceiveBody" specification-path="component/ReceiveBody.jwc"/>
+
+    <component-type type="JAXBTextField" specification-path="component/JAXBTextField.jwc"/>
+    <component-type type="JAXBTextArea" specification-path="component/JAXBTextArea.jwc"/>
+    <component-type type="JAXBCheckbox" specification-path="component/JAXBCheckbox.jwc"/>
+    <component-type type="JAXBPropertySelection" specification-path="component/JAXBPropertySelection.jwc"/>
+    <component-type type="JAXBInsert" specification-path="component/JAXBInsert.jwc"/>
+    <component-type type="JAXBPasswordField" specification-path="component/JAXBPasswordField.jwc"/>
+    <component-type type="JAXBAlgorithmField" specification-path="component/JAXBAlgorithmField.jwc"/>
+
+    <component-type type="ConfirmSubmit" specification-path="component/ConfirmSubmit.jwc"/>
+
+    <component-type type="CountStatisticField" specification-path="component/CountStatisticField.jwc"/>
+    <component-type type="RangeStatisticField" specification-path="component/RangeStatisticField.jwc"/>
+    <component-type type="TimeStatisticField" specification-path="component/TimeStatisticField.jwc"/>
+    <component-type type="ReadOnlyTextField" specification-path="component/ReadOnlyTextField.jwc"/>
+    <component-type type="Dynamite" specification-path="component/Dynamite.jwc"/>
+    <component-type type="ModuleExplorer" specification-path="component/ModuleExplorer.jwc"/>
+    <component-type type="TargetExplorer" specification-path="component/TargetExplorer.jwc"/>
+    <component-type type="DeployTarget" specification-path="component/DeployTarget.jwc"/>
+    <component-type type="FileExplorer" specification-path="component/FileExplorer.jwc"/>
+    <component-type type="ModuleController" specification-path="component/ModuleController.jwc"/>
+    <component-type type="Logging" specification-path="component/Logging.jwc"/>
+    <component-type type="HandlerList" specification-path="component/HandlerList.jwc"/>
+    <component-type type="XTree" specification-path="component/XTree.jwc"/>
+    <component-type type="ErrorMessageBox" specification-path="component/ErrorMessageBox.jwc"/>
+    <component-type type="SyncDirectLink" specification-path="component/SyncDirectLink.jwc"/>
+    <component-type type="NoteIO" specification-path="component/NoteIO.jwc"/>
+
+    <component-type type="DojoCheckbox" specification-path="component/dojo/DojoCheckbox.jwc"/>
+    <component-type type="DojoRadio" specification-path="component/dojo/DojoRadio.jwc"/>
+    <component-type type="DojoTextArea" specification-path="component/dojo/DojoTextArea.jwc"/>
+    <component-type type="DojoTextField" specification-path="component/dojo/DojoTextField.jwc"/>
+    <component-type type="DojoXTree" specification-path="component/dojo/DojoXTree.jwc"/>
+    <component-type type="DojoJAXBCheckbox" specification-path="component/dojo/DojoJAXBCheckbox.jwc"/>   
+
+    <component-type type="TopTabPanel" specification-path="component/TopTabPanel.jwc"/>
+	<component-type type="ExtendedCheckbox" specification-path="component/ExtendedCheckbox.jwc"/>
+	<component-type type="ExtendedSelection" specification-path="component/ExtendedSelection.jwc"/>	
+    <library id="contrib" specification-path="/org/apache/tapestry/contrib/Contrib.library"/>
+</library-specification>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-services-config xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+	<service>
+		<service-name>EmployeeService</service-name>
+		<target-namespace>urn:EmployeeService</target-namespace>
+		<output-wsdl-file>EmployeeService.wsdl</output-wsdl-file>
+		<output-jaxrpc-mapping-file>EmployeeService-mapping.xml</output-jaxrpc-mapping-file>
+		<style>wrapped</style>
+		<use>literal</use>
+		<interface>
+			<endpoint-interface-class>com.tmax.webservices.emp.service.EmployeeServiceIF</endpoint-interface-class>
+			<operation>
+			    <java-method-name>addEmployee</java-method-name>
+                	    <soap-action>empAction</soap-action>
+			    <one-way>false</one-way>
+			</operation>
+			<operation>
+			    <java-method-name>modifyEmployee</java-method-name>
+                	    <soap-action>empAction</soap-action>
+			    <one-way>false</one-way>
+			</operation>
+			<operation>
+			    <java-method-name>removeEmployee</java-method-name>
+                	    <soap-action>empAction</soap-action>
+			    <one-way>false</one-way>
+			</operation>
+			<operation>
+			    <java-method-name>findEmployee</java-method-name>
+                	    <soap-action>empAction</soap-action>
+			    <one-way>false</one-way>
+			</operation>
+			<operation>
+			    <java-method-name>findEmployees</java-method-name>
+                	    <soap-action>empAction</soap-action>
+			    <one-way>false</one-way>
+			</operation>
+		</interface>
+	</service>
+</web-services-config>
+

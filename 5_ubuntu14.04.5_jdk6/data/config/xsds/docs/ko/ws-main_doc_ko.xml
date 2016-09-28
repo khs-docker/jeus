@@ -1,0 +1,1541 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+<description>     
+    <text key="ws-engine"><![CDATA[
+                [Description]: JEUS Web Server의 내용을 설정하는 최상위 레벨 테그
+            ]]>     
+    </text>
+     
+    <text key="ws-engineType.domain"><![CDATA[
+                        [Description]: 독립적인 JEUS Web Server 시스템의 전반적인 환경에 대해 정의하는 부분이다.
+                    ]]>     
+    </text>
+     
+    <text key="domainType.name"><![CDATA[
+                        [Description]: DOMAIN의 이름을 설정한다.
+                                                DOMAIN의 이름은 호스트 이름과 함께 암호화 되어 JEUS Web Server의 License 확인에 사용된다.
+                        [Value Description]: string 형식으로 31자 이내로 이름을 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="domainType.node"><![CDATA[
+                        [Description]: Web Server를 이루는 각 Node들에 대한 구체적인 환경을 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="domainType.vhost"><![CDATA[
+                        [Description]: Web Server로 Virtual Hosting이 필요한 경우, 이에 대한 환경 설정을 한다.
+                                                Virtual Host 기능은 실제로는 하나의 Web Server가 동작하지만 각기 다른 URL로 다른 문서를 제공하도록 함으로써
+                                                마치 여러 개의 Server가 Service를 제공하는 것처럼 보이도록 하는 기능이다.
+                    ]]>     
+    </text>
+     
+    <text key="domainType.svrgroup"><![CDATA[
+                        [Description]: Web Server를 통해 응용 Server Process를 접근하는 경우 Server Process의 논리적인 연관성에 따라 이들을 그룹으로 관리할 필요가 있게 된다.
+                                                이 항목에서는 이러한 그룹에 대한 환경 설정이 이루어 진다.
+                    ]]>     
+    </text>
+     
+    <text key="domainType.server"><![CDATA[
+                        [Description]: 이 항목에서는 실질적으로 제공하는 Service들을 등록한다.
+                                                Web Server는 등록된 Service만을 처리하기 때문에 새로운 Server 프로그램이 추가되는 경우는 반드시 등록하여야 한다.
+                    ]]>     
+    </text>
+     
+    <text key="domainType.service"><![CDATA[
+                        [Description]: 이 항목은 Web Server를 통해 비즈니스 로직을 바로 수행할 경우에만 설정이 필요하다.
+                    ]]>     
+    </text>
+     
+    <text key="domainType.directory"><![CDATA[
+                        [Description]: Node내의 특정 Directory의 속성을 정하기 위한 환경설정을 한다.
+                    ]]>     
+    </text>
+     
+    <text key="domainType.uri"><![CDATA[
+                        [Description]: Client 요구의 URI(Uniform Resource Identifier)값에 따라 이를 처리하는 Service를 구분할 수 있도록 한다.
+                                                즉, 특정 URI가 입력으로 들어온 경우, 이를 특정 Service에서 처리하도록 할 수 있다는 것이다.
+                    ]]>     
+    </text>
+     
+    <text key="domainType.alias"><![CDATA[
+                        [Description]: 실제 Server 안의 물리적 Directory 경로와 URI를 Alias시키도록 설정할 수 있다.
+                                                즉, 어떤 특정한 URI에 대한 요구가 들어오면 이를 실제의 물리적인 Directory에 Mapping시켜서 이곳에서 원하는 Resource를 찾아 처리하게 하는 방식이다.
+                                                이는 사용자가 Document Root에 상관없이 지정할 수 있기 때문에 관리적 입장에서 매우 편리할 것이다.
+                                                그러나, 이곳에 지정되는 물리적인 Directory는 반드시 절대경로 이어야 한다.
+                    ]]>     
+    </text>
+     
+    <text key="domainType.dirindex"><![CDATA[
+                        [Description]: Client가 요구한 index.html과 같은 특정 파일이 존재하지 않는 경우, 전체 Directory 구조를 보여줄 수 있도록 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="domainType.logging"><![CDATA[
+                        [Description]: Client의 요구 내역을 기록하는 형식을 지정한다. 접근 내역과 에러 내역이 따로 저장되며 저장 형식을 지정할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="domainType.access"><![CDATA[
+                        [Description]: 클라이언트의 IP에 따라 서버의 resource에 대한 접근 권한을 제한하거나 허가하는데 사용된다.
+                                                Access 절은 DIRECTORY/URI/EXT 절에 적용될 수 있으며, 각각에서 정의한 resource를 허용/제한하게 된다.
+                    ]]>     
+    </text>
+     
+    <text key="domainType.authent"><![CDATA[
+                        [Description]: Client의 접근을 제한하기 위한 인증과정을 유저와 그룹 단위로 통제할 수 있도록 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="domainType.ext"><![CDATA[
+                        [Description]:	Client가 요구한 파일의 확장자명에 따라 처리 담당 Process를 지정할 수 있다.
+                                                기본적인 모든 MIMETYPE에 대한 처리 담당 Process가 설정되어 있으나, 필요에 따른 추가적인 설정을 할 경우 이 절에서 할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="domainType.ssl"><![CDATA[
+                        [Description]: Web Server에서 사용할 SSL의 기능을 설정하는 곳이다. 이곳에서 정의된 형태로 SSL 서비스를 하게 된다.
+                    ]]>     
+    </text>
+     
+    <text key="domainType.errordocument"><![CDATA[
+                        [Description]: Web Server에서 에러 문제가 발생했을 때 다음과 같은 네 가지 방법으로 대응할 수 있다.
+	                                            1. 소스코드에 정의된 에러 메시지를 출력한다.
+	                                            2. 사용자가 정의한 에러 메시지를 출력한다.
+                                                3. 로컬 URL로 재전송한다.
+                                                4. 외부 URL로 재전송한다.
+                    ]]>     
+    </text>
+     
+    <text key="domainType.filter"><![CDATA[
+                        [Description]: 클라이언트 HTTP request를 처리하기 전 또는 클라이언트로 보낼 HTTP response를
+                                                보내기 직전에 그 내용을 수정(필터링)할 수 있게 한다.
+                        [Hidden]: true                                                
+                    ]]>     
+    </text>
+     
+    <text key="domainType.expires"><![CDATA[
+                        [Description]: 클라이언트 요청에 따라 전송되는 서버응답 헤더의 정보를 설정한다.
+                                                특정 Mimetype 문서 전송시 서버응답 헤더내에 전송되는 문서의 expiry date를 설정한다.
+                                                클라이언트 브라우저 프로그램이 같은 웹사이트에 재접속했을 때 이미 캐시에 해당 사이트의 웹 문서가 저장되어 있다면,
+                                                수정된 문서만을 받으려고 할것이다. 이때, 클라이언트의 브라우저는 웹서버에게 특정 Mimetype과 해당 MIME의 만료일자를 보내면서
+                                                만료일자가 경과된 문서만을 재전송해달라고 웹서버에게 요청하게 된다.
+                                                웹서버는 클라이언트의 요청헤더속에 포함된 MIME-TYPE 과 만료일자를 분석하고해당 Mimetype문서가
+                                                현재일자보다 기간이 경과되었을때는 재전송하게 되는 것이다.
+                                                이때, 클라이언트가 웹서버에게 보내는 만료일자는 웹서버가 자신의 설정화일을 참조로 클라이언트에게 전송했던 것이다.
+                                                expires 항목은 바로 이 만료일자의 설정과 관계되는 것을 정의한다.
+                    ]]>     
+    </text>
+     
+    <text key="domainType.tcpgw"><![CDATA[
+                        [Description]: Client Request를 listener와 request를 처리할 server와 관련된 정보를 설정한다.
+                                                설정된 port를 listen하고 있다 data가 오면 그 data를 그대로 설정된 서버로 분배한다.
+                                                사용 예로써는 Web Server의 tcpgw를 사용해서 JEUS의 tcp-servlet에 Round-robin으로 data를 분배해주는 경우가 있다.
+                                                그리고 방화벽 때문에 특정 port만 open이 가능한 경우 WebtoB를 Proxy server로 사용하는 것도 가능하다.
+                    ]]>     
+    </text>
+     
+    <text key="domainType.nlive-inq"><![CDATA[
+                        [Description]: JEUS Web Server가 여러 Node로 구성되었을 경우 Node간 감시 Interval(초 단위) 시간을 정하는 항목이다.
+                                                NLiveInq 시간이 짧으면 양 Node 간에 빈번한 감시로 시스템의 이상을 빨리 발견할 수 있으나 많은 통신량으로 인해 통신 부하가 발생할 수 있다.
+                                                반대로 NLiveInq 시간이 너무 길면 통신량은 적으나 Node의 이상 상태를 즉시 감지 할 수 없다.
+                                                따라서 시스템 성능을 최적화하기 위하여 네트워크 부하량, 업무의 중요도 등을 고려하여야 한다.
+                        [Value Description]: Second 단위
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.name"><![CDATA[
+                        [Description]: Node의 물리적인 이름으로 Node 이름을 설정한다. 즉, 실제 등록된 Host의 이름을 말한다.
+                                                예를 들어 UNIX의 경우 “uname -n” 명령으로 각 Host의 이름을 확인할 수 있다.
+                                                또한 논리적인 node name을 사용할 수 도 있다. 이 경우 node명이 “/etc/hosts” 파일에 등록되어 있지 않아도 된다.
+                                                하지만 논리적인 name을 사용할 경우에는 nodename element에 기술한 이름을 사용해야 한다.
+                                                하나의 Domain은 하나 이상의 Node로 이루어지므로, NODE절에는 최소한 하나 이상의 Node 이름이 정의되어야 한다.
+                        [Value Description]: string으로 정의한다.
+                                                          31자를 초과하는 이름을 사용할 경우에는 컴파일 에러는 나지 않으나 내부적으로 31자까지만 인식한다
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.webtob-dir"><![CDATA[
+                        [Description]: JEUS Web Server가 설치되어 있는 홈 Directory의 절대 경로명이다.
+                                                경로명은 환경 변수 WEBTOBDIR과 동일한 값이 정의 되어야 한다.
+                                                JEUS Web Server관련 작업은 JEUS Web Server 디렉토리 하에서 모두 이루어진다
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.shmkey"><![CDATA[
+                        [Description]: 공유 메모리 세그먼트(Shared Memory Segment)를 가리키는 값이다.
+                                                JEUS Web Server를 이루는 Process들이, 서로 정보를 공유하기 위한 공유 메모리 Key값을 정의할 필요가 있다.
+                                                공유 메모리 Key 값을 정의하기 전에 이 Key 값들이, 다른 프로그램 또는 다른 업무에서 사용되는지 반드시 확인해야 한다.
+                                                그렇지 않으면 JEUS Web Server가 Booting시에 이 프로그램과 충돌을 일으켜서 실행이 되지 않는다.
+                        [Value Description]: 현재 JEUS Web Server에서 정의되는 Shared Memory의 Key값은 최소 32768에서 최대 262143까지 이다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.docroot"><![CDATA[
+                        [Description]: JEUS Web Server가 Web을 통해 Service 하는 모든 문서를 포함하는 루트 디렉토리의 경로이다.
+                                                즉, JEUS Web Server는 DOCROOT가 지정한 디렉토리를 최상위로 하여 문서를 Service하게 된다.
+                                                Client가 요구한 URL은 DOCROOT의 경로 뒤에 추가되어 ,실제 경로명을 이루게 된다.
+                                                JEUS Web Server는 이 경로를 가지고 파일에 접근하게 된다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.tcpgw-name"><![CDATA[
+                        [Description]: TcpGW의 이름을 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.hostname"><![CDATA[
+                        [Description]: 이 항목을 설정하면 Http Response Header의 host name Field에 기록을 남겨준다.
+                        [Example]: JEUS Web Server 가 설치된 machine의 Domain name을 “www.tmaxsoft.com”과 같이 넣어주면 된다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.nodename"><![CDATA[
+                        [Description]: 이 항목의 값으로는 해당 머신의 HostName을 적어 주면 되는데, 특별히 $(NODENAME)이라고 적어주면,
+                                                Web Server가 자동적으로 해당 머신의 HostName을 적용하게 된다.
+                                                이 NodeName항목이 추가됨으로해서 Virtual Node개념이 추가 되었다.
+                        [Value Description]: 그동안 노드명의 제약사항이였던 31자 이상의 이름이나, 한글 또는 공백문자가 포함된 HostName도 사용할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.hth"><![CDATA[
+                        [Description]: JEUS Web Server에서 가장 중요한 역할을 담당하고 있는 HTH (HTTP Request Handler) Process의 개수를 설정한다.
+                                                HTH는 실질적으로 Client Browser와 JEUS Web Server 내부 Service Process 사이를 중계하는 Process이다.
+                                                즉, Client의 요청을 받아 Service를 받을 수 있도록 적당한 Process에 넘겨주고, 다시 처리된 결과를 수신하여 Client에게 되돌려 준다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.node-port"><![CDATA[
+                        [Description]: Node간 연결 Port 번호를 설정한다. Node간 통신은 이 Port 번호를 통하여 이루어 진다.
+                                                JEUS Web Server를 여러 Node에 설치하였을 때, 각 Node에 있는 JEUS Web Server는 서로 연결을 맺고 정보를 공유한다.
+                                                따라서 이 Port는 Multi Node에 JEUS Web Server를 설치한 경우 반드시 필요하다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.jsv-port"><![CDATA[
+                        [Description]: JEUS Web Server와 Java Servlet 수행 Server간의 연결 Port 번호이다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.rac-port"><![CDATA[
+                        [Description]: JEUS Web Server가 여러 Node로 구성되어 있을 경우, Node 관리 차원에서 Node간 통신을 위한 Port번호를 정의한다.
+                                                위의 NodePort와는 달리 이것은 관리 Process 중 하나인 wsracd Daemon에서 사용하는 Port번호이다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.client-check-interval"><![CDATA[
+                        [Description]: WebtoB Server에서 접속한 Client가 살았나 죽었나를 확인할 필요가 있을 때 설정하는 항목이다.
+                                                항목 시간 간격을 설정함으로써 WebtoB는 Client의 생존 여부를 주어진 시간 간격마다 확인하고 죽었을 경우 Web Server쪽에서 접속을 끊는다.
+                        [Value Description]: milisecond 단위
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.cache-use"><![CDATA[
+                        [Description]: cache 기능 사용에 대한 설정을 한다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.max-user"><![CDATA[
+                        [Description]: 서버 프로세스에 속한 노드의 최대 동시 접속자 수를 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.txlog-dir"><![CDATA[
+                        [Description]: 트랜젝션 관련 로그를 기록하는 디렉토리의 경로명을 설정한다. 경로명은 절대 경로와 WEBTOBDIR을 기준으로 한 상대 경로를 사용할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.syslog-dir"><![CDATA[
+                        [Description]: 시스템 메시지가 기록될 Directory의 경로명을 설정한다. 경로명은 절대 경로와 WEBTOBDIR을 기준으로 한 상대 경로를 사용할 수 있다.
+                                                시스템 메시지란 wsm, htl, hth등 JEUS Web Server 기동의 핵심 Process들이 발생한 메시지들과 시스템 내부적으로 발생한 메시지들을 일컫는다.
+                                                이 항목은 오직 SysLogDir를 재정의하여 사용하기 위한 것으로, 이 항목을 설정하지 않는 경우에는 Default Path에 Log가 남는다.
+                                                Default Path를 수정하여 사용할 경우 주의를 요한다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.language-priority"><![CDATA[
+                        [Description]: 접속 Client가 사용 언어를 지정하지 않았을 경우 Server쪽에서 지정된 언어 순서대로 Multiview request 등의 처리가 이루어지도록 한다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.ip-permission"><![CDATA[
+                        [Description]: IPCPERM(inter-process communication permission mask)은  Web Server 시스템에 대한 관리자가 아닌 개발자와 같은 다른 사용자가
+                                                wsdown이나 특정 프로세스를 기동 및 종료를 할 수 있으며 이를 wsadmin를 통해 확인할 수 있도록 한다.
+                                                Unix 시스템 환경 하에서는 관리자 개인이나 그룹,기타에게  각각 파일 접속 제어(판독기능/기록기능/수행기능)를 지정 할 수 있다.
+                                                즉 default인 경우에는 다른 사용자들은 위의 기능을 사용할 수 없으나 IPCPERM이 0777인 경우에는 다른 사용자들은 위의 모든 기능을 사용할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.listen-backlog"><![CDATA[
+                        [Description]: 접속을 기다리는 큐(queue)의 길이를 제한하는 것으로, 보통은 거의 필요하지 않지만
+                                                서버가 대량의 접속 시도를 한꺼번에 날려주는 TCP SYN해킹을 당하고 있다면 유용하게 사용될 수 있을 것이다.
+                                                만일, Request가 Web Server가 처리할수 있는 것보다 빠르게 요구되어지면, Listen queue는 Overflow가 되는데,
+                                                이때 추가적인 Request는 Listen queue에 여유가 생길때까지 OS에 의해 거절되어진다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.send-buffer-size"><![CDATA[
+                        [Description]: TCP 전송 Buffer의 크기를 설정하는 것으로, 이 항목을 이용하면 특정한 환경에서 동작 속도를 향상시킬 수 있다.
+                        [Defined Value]: [0]: OS default값을 사용함을 의미한다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.limit-request-body"><![CDATA[
+                        [Description]: 클라이언트의 요청시 HTTP 프로토콜을 통해 서버가 제공할 수 있는 Request Body 크기를 바이트 단위로 정의한다.
+                        [Defined Value]: [0]: 크기에 제한이 없음을 의미한다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.limit-request-fields"><![CDATA[
+                        [Description]: 클라이언트의 요청시 허용되는 HTTP Request header field의 수를 설정한다.
+                        [Value Description]: Request Header Field의 수
+                        [Defined Value]: [0]: 제한이 없음을 의미한다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.limit-request-fieldsize"><![CDATA[
+                        [Description]: 클라이언트의 요청시 허용되는 각 HTTP Request header field의 크기를 설정한다.
+                        [Value Description]: 바이트(bytes)
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.limit-request-line"><![CDATA[
+                        [Description]: 클라이언트의 요청시 허용되는 HTTP Request line의 최대 크기를 설정한다.
+                        [Value Description]: 바이트(bytes)
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.server-tokens"><![CDATA[
+                        [Description]: HTTP 응답 헤더의 Server에 관한 정보를 어떻게 다룰지 결정한다.
+                        [Defined Value]: [Off]: server에 관한 정보를 보내지않음.
+                                         [Prod[uctOnly]]: ex. WebtoB
+                                         [Min[imal]]: ex. WebtoB/3.1.5
+                                         [OS]: ex. WebtoB/3.1.5 (LINUX_i386)
+                                         [Full]: ex. WebtoB/3.1.5 (LINUX_i386)
+                                         [Custom=xxx/x.x]: ex. xxx/x.x
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.ipc-base-port"><![CDATA[
+                        [Description]: Web Server에서 내부 프로세스간 IPC통신을 하기 위해서 해당 포트를 설정한다.
+                                                현재 Windows에서만 지원되며, 이전 버전에서는 환경변수에 WEBTOB_WINDOWS_PORT를 설정함으로써 같은 기능을 제공하며,
+                                                두 가지가 같이 설정이 된 경우에는 환경변수에 설정된 Port가 우선순위를 갖는다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.user"><![CDATA[
+                        [Description]: 설정된 User의 권한으로 JEUS Web Server는 요구를 수행하게 된다.
+                                                Client 요구 실행을 위해 따로 User 이름을 설정하는 것을 권장한다. 꼭 필요하지 않다면 root 권한 설정을 피하도록 한다.
+                                                이 항목은 NT OS에서는 지원하지 않으므로 Unix계열의 OS에서만 적용이 가능하다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.group"><![CDATA[
+                        [Description]: 설정된 Group의 권한으로 JEUS Web Server는 요구를 수행하게 된다.
+                                                Client 요구 실행을 위해 따로 Group 이름을 설정하는 것을 권장한다. 꼭 필요하지 않다면 root 권한 설정을 피하도록 한다.
+                                                이 항목은 NT OS에서는 지원하지 않으므로 Unix계열의 OS에서만 적용이 가능하다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.admin"><![CDATA[
+                        [Description]: 관리자의 정보를 나타낸다. 여기에는 관리자에게 연락할 수 있는 E-mail 주소를 설정할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.method"><![CDATA[
+                        [Description]: Client가 보내는 Request Method에 대한 정의를 할 수 있다.
+                                                이 때 기본적으로 GET, POST, HEAD 등이 있어 이를 기본적으로 지원하고 만약 이들 중 특정 Method를 쓰고 싶지 않은 경우  ? Option을 이용하여 제거할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.port"><![CDATA[
+                        [Description]: JEUS Web Server의 HTTP Listener 포트 번호를 설정한다.
+                                                이는 기본적으로 Web Service를 하기 위해서는 반드시 필요한 설정으로, 이 항목은 반드시 설정해야 한다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.listen"><![CDATA[
+                        [Description]: JEUS Web Server가 Booting 될 때, 원하는 IP Address에서 연결을 맺도록 할 수 있다.
+                                                즉, 여러 개의 IP Address를 가진 Server에서 자신이 원하는 IP Address 에서만 Service를 원하는 경우, 이 값을 정할 수 있다.
+                                                이 때 여러 개의 것을 복수로 설정하는 것도 가능하다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.ssl-use"><![CDATA[
+                        [Description]: ssl에 대한 설정을 한다. ssl-name과 ssl-flag를 설정할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.app-dir"><![CDATA[
+                        [Description]: JEUS Web Server를 통해 응용 프로그램을 바로 호출하는 경우 설정이 필요하다.
+                                                응용 프로그램의 실행 파일이 존재하는 Directory의 경로명을 설정한다. 경로명은 절대 경로와 WEBTOBDIR을 기준으로 한 상대 경로를 사용할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.usrlog-dir"><![CDATA[
+                        [Description]: 사용자 메시지가 기록될 Directory의 경로명을 설정한다. 경로명은 절대 경로와 WEBTOBDIR을 기준으로 한 상대 경로를 사용할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.icon-dir"><![CDATA[
+                        [Description]: dir index에 사용하는 아이콘 파일의 디렉토리 이름이다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.user-dir"><![CDATA[
+                        [Description]: JEUS Web Server를 통해 여러 사용자를 동시에 서비스 하려는 경우 필요하다. 이 때 들어가는 값은 각 사용자의 디렉토리의 이름이다.
+                                                이를 설정하면 JEUS Web Server 는 각 사용자의 디렉토리를 찾아서 서비스를 시작한다
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.env-file"><![CDATA[
+                        [Description]: JEUS Web Server에서 특정 정보를 읽어 들일 필요가 있는 경우 이용된다.
+                                                즉, 어떤 파일에 변수와 변수에 대한 정보를 기록한 후,  JEUS Web Server 기동 시에 이 정보를 읽어야 하는 경우 이 EnvFile에 등록된 파일을 읽어 들인다.
+                                                즉, JEUS Web Server가 기동 시에 이 파일을 읽어서 그 정보를 가지고 있게 된다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.index-name"><![CDATA[
+                        [Description]: Client가 특정 파일 이름을 지정하지 않고 Service Directory에 요구를 보낼 때 기본적으로 Service되는 파일 이름을 설정한다. 따로 설정하지 않으면 index.html이 설정된다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.dir-index-name"><![CDATA[
+                        [Description]: 뒤의 DIRINDEX절에서 설정하는 Directory 인덱스의 이름을 적어준다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.options"><![CDATA[
+                        [Description]: Client가 특정 파일 이름을 지정하지 않고 Service Directory에 요구를 보낼 때의 동작을 지정한다.
+                                                보통 사용자가 특정 URI를 보내고 디렉토리 이름만 요구 하였다면 사용자에게 Directory의 내용을 보여주는 것이 가능하다.
+                                                물론 원하지 않는 다면 보여 주지 않을 수 있다. 기본적인 설정은 보여주지 않는 것으로 되어 있다.
+                                                이 때 ‘+’ 나 ‘?’ Option들을 이용하는데, 만약 디렉토리 정보를 보여주길 원한다면 “+Index”와 같이 설정하면 된다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.error-document-name"><![CDATA[
+                        [Description]: Web Server에서 서비스 도중 특정 HTTP Error Code에 대한 특정 Page 로 Redirect를 시켜 주는 것이다.
+                                                HTTP 401 Status Code를 제외한 HTTP Status Code를 모두 설정할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.logging"><![CDATA[
+                        [Description]: 뒤의 Logging절에서 설정하는 Logging Name을 써준다. 이 이름을 가지고 이 Node에서 그에 해당하는 Log를 남기게 되는 것이다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.error-log"><![CDATA[
+                        [Description]: 오류 발생시 설정하는 Logging 정보 이름을 써준다. 이 이름 또한 뒤의 Logging절에서 설정하는 Logging Name을 써준다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.filter-name"><![CDATA[
+                        [Description]: HTTP request 및 HTTP response 내용을 수정(필터링)할 필터를 설정한다.
+                        [Hidden]: true
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.node-type"><![CDATA[
+                        [Description]: JEUS Web Server 는 Node단위로 Server에 특정한 역할을 부여할 수 있다.
+                                                예를 들어 하나의 Node를 프락시 Server(Proxy Server)로 쓰고 싶다면 NodeType에서 Proxy로 설정하면 된다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.default-charset"><![CDATA[
+                        [Description]: HTTP header 중에서 content type에 character set 관련 파라미터가 없는 응답에 추가될 character set의 이름을 설정한다. 
+												여러 section에서 적용되는 우선순위는 NODE<VHOST<SVRGROUP<DIRECTORY 순으로 우선순위를 가진다.
+						[Defined Value]: [On]: 기본 character set인 iso-8859-1로 설정한다.
+										 [Off]: 해당 기능을 중단한다.
+										 [_charset_]: 사용자가 기술한 _charset_으로 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.default-mimetype"><![CDATA[
+                        [Description]: MIME-Type을 결정할 수 없는 문서의 Default Content-Type을 설정한다.
+                        				Default Content-Type은 SvrGroup, Vhost, Node절의 순으로 결정된다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.expires-name"><![CDATA[
+                        [Description]: Web Server에서의 Expire 환경을 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.service-order"><![CDATA[
+                        [Description]: HTTP 요청으로부터 해당 Server와 Service를 결정할때, URI절과 EXT절의  우선순위를 결정한다.
+                                                Vhost절에 이 항목이 설정되지 않은 경우는 Node절에 설정된 값이나 기본값을 Vhost가 따르게 된다.
+                        [Defined Value]: [uri, ext]: URI, EXT Section 순으로 Server와 Service를 결정한다.
+										 [ext,uri]: EXT, URI Section 순으로 Server와 Service를 결정한다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.keep-alive-use"><![CDATA[
+                        [Description]: keep-alive 기능에 대한 설정을 한다.
+                                                keep-alive 기능 사용 여부, keep-alive-timeout, keep-alive-max 값을 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="nodeType.timeout"><![CDATA[
+                        [Description]: 사용자가 접속을 하여 Data를 내려 받거나, 사용자의 요구를 내려 받는 시간을 지정하는 것이 가능하다.
+                                                이 때 이 Timeout Field를 이용하게 되는데, 이 Field를 통해서 사용자의 최대 접속시간을 지정할 수 있다.
+                                                이는 사용자와 맺은 연결이 문제가 생겨 계속해서 의미 없는 Data 전송이 발생할 때 이를 방지하기 위해서 이용한다.
+                        [Value Description]: Milisecond단위
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.name"><![CDATA[
+                        [Description]: string으로 사용자 임의로 정의할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.node-name"><![CDATA[
+                        [Description]: Virtual Host가 속해있는 Node의 이름을 적어준다. 이 Node 이름은 NODE 절에 정의되어 있어야 한다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.docroot"><![CDATA[
+                        [Description]: 정의된 Virtual Host가 Service하게 될 HTML문서가 있는 최상위 디렉토리 경로명을 적어준다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.user"><![CDATA[
+                        [Description]: 설정된 User의 권한으로 JEUS Web Server가 요구를 수행하게 된다.
+                                                Client 요구 실행을 위해 따로 User 이름을 설정하는 것을 권장한다. 꼭 필요하지 않다면 root 권한 설정을 피하도록 한다.
+                                                이 항목은 NT OS에서는 지원하지 않으므로 Unix계열의 OS에서만 적용이 가능하다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.group"><![CDATA[
+                        [Description]: 설정된 Group의 권한으로 JEUS Web Server가 요구를 수행하게 된다.
+                                                Client 요구 실행을 위해 따로 User 이름을 설정하는 것을 권장한다. 꼭 필요하지 않다면 root 권한 설정을 피하도록 한다.
+                                                이 항목은 NT OS에서는 지원하지 않으므로 Unix계열의 OS에서만 적용이 가능하다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.hostname"><![CDATA[
+                        [Description]: Virtual Host에 접근할 때 유저가 사용할 호스트 이름을 적어준다.
+                                                Name-based Virtual Hosting을 하는 경우 각각의 VHOST 절에서 호스트 이름을 다르게 정의한다.
+                                                이 경우는 호스트 이름으로 Virtual Host가 구분된다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.host-alias"><![CDATA[
+                        [Description]: Vhost절에 정의된 호스트 이름 이외의 다른 HostName으로 Alias 설정할 수 있다.
+                                                이 때 HostAlias값 설정시 WildCard(*,?) 사용이 가능하다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.admin"><![CDATA[
+                        [Description]: 관리자의 정보를 나타낸다. 여기에는 관리자에게 연락할 수 있는 E-mail 주소를 설정할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.method"><![CDATA[
+                        [Description]: Client가 보내는 Request Method에 대한 정의를 할 수 있다.
+                                                이 때 기본적으로 GET, POST, HEAD 등이 있어 이를 기본적으로 지원하고 만약 이들 중 특정 Method를 쓰고 싶지 않은 경우  ? Option을 이용하여 제거할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.port"><![CDATA[
+                        [Description]: JEUS Web Server의 HTTP Listener 포트 번호를 설정한다.
+                                                이는 기본적으로 Web Service를 하기 위해서는 반드시 필요한 설정으로, 이 항목은 반드시 설정해야 한다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.listen"><![CDATA[
+                        [Description]: JEUS Web Server가 Booting 될 때, 원하는 IP Address에서 연결을 맺도록 할 수 있다.
+                                                즉, 여러 개의 IP Address를 가진 Server에서 자신이 원하는 IP Address 에서만 Service를 원하는 경우, 이 값을 정할 수 있다.
+                                                이 때 여러 개의 것을 복수로 설정하는 것도 가능하다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.ssl-use"><![CDATA[
+                        [Description]: ssl에 대한 설정을 한다. ssl-name과 ssl-flag를 설정할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.app-dir"><![CDATA[
+                        [Description]: JEUS Web Server를 통해 응용 프로그램을 바로 호출하는 경우 설정이 필요하다.
+                                                응용 프로그램의 실행 파일이 존재하는 Directory의 경로명을 설정한다. 경로명은 절대 경로와 WEBTOBDIR을 기준으로 한 상대 경로를 사용할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.usrlog-dir"><![CDATA[
+                        [Description]: 사용자 메시지가 기록될 Directory의 경로명을 설정한다. 경로명은 절대 경로와 WEBTOBDIR을 기준으로 한 상대 경로를 사용할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.icon-dir"><![CDATA[
+                        [Description]: dir index에 사용하는 아이콘 파일의 디렉토리 이름이다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.user-dir"><![CDATA[
+                        [Description]: JEUS Web Server를 통해 여러 사용자를 동시에 서비스 하려는 경우 필요하다. 이 때 들어가는 값은 각 사용자의 디렉토리의 이름이다.
+                                                이를 설정하면 JEUS Web Server 는 각 사용자의 디렉토리를 찾아서 서비스를 시작한다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.env-file"><![CDATA[
+                        [Description]: JEUS Web Server에서 특정 정보를 읽어 들일 필요가 있는 경우 이용된다.
+                                                즉, 어떤 파일에 변수와 변수에 대한 정보를 기록한 후,  JEUS Web Server 기동 시에 이 정보를 읽어야 하는 경우 이 EnvFile에 등록된 파일을 읽어 들인다.
+                                                즉, JEUS Web Server가 기동 시에 이 파일을 읽어서 그 정보를 가지고 있게 된다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.index-name"><![CDATA[
+                        [Description]: Client가 특정 파일 이름을 지정하지 않고 Service Directory에 요구를 보낼 때 기본적으로 Service되는 파일 이름을 설정한다.
+                                                따로 설정하지 않으면 index.html이 설정된다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.dir-index-name"><![CDATA[
+                        [Description]: 뒤의 DIRINDEX절에서 설정하는 Directory 인덱스의 이름을 적어준다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.options"><![CDATA[
+                        [Description]: Client가 특정 파일 이름을 지정하지 않고 Service Directory에 요구를 보낼 때의 동작을 지정한다.
+                                                보통 사용자가 특정 URI를 보내고 디렉토리 이름만 요구 하였다면 사용자에게 Directory의 내용을 보여주는 것이 가능하다.
+                                                물론 원하지 않는 다면 보여 주지 않을 수 있다. 기본적인 설정은 보여주지 않는 것으로 되어 있다.
+                                                이 때 ‘+’ 나 ‘?’ Option들을 이용하는데, 만약 디렉토리 정보를 보여주길 원한다면 “+Index”와 같이 설정하면 된다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.error-document-name"><![CDATA[
+                        [Description]: Web Server에서 서비스 도중 특정 HTTP Error Code에 대한 특정 Page 로 Redirect를 시켜 주는 것이다.
+                                                HTTP 401 Status Code를 제외한 HTTP Status Code를 모두 설정할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.logging"><![CDATA[
+                        [Description]: 뒤의 Logging절에서 설정하는 Logging Name을 써준다. 이 이름을 가지고 이 Node에서 그에 해당하는 Log를 남기게 되는 것이다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.error-log"><![CDATA[
+                        [Description]: 오류 발생시 설정하는 Logging 정보 이름을 써준다. 이 이름 또한 뒤의 Logging절에서 설정하는 Logging Name을 써준다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.filter-name"><![CDATA[
+                        [Description]: HTTP request 및 HTTP response 내용을 수정(필터링)할 필터를 설정한다.
+                        [Hidden]: true
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.node-type"><![CDATA[
+                        [Description]: JEUS Web Server 는 Node단위로 Server에 특정한 역할을 부여할 수 있다.
+                                                예를 들어 하나의 Node를 프락시 Server(Proxy Server)로 쓰고 싶다면 NodeType에서 Proxy로 설정하면 된다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.default-charset"><![CDATA[
+                        [Description]: HTTP header 중에서 content type에 character set 관련 파라미터가 없는 응답에 추가될 character set의 이름을 설정한다.
+												여러 section에서 적용되는 우선순위는 NODE<VHOST<SVRGROUP<DIRECTORY 순으로 우선순위를 가진다.
+						[Defined Value]: [On]: 기본 character set인 iso-8859-1로 설정한다.
+ 										 [Off]: 해당 기능을 중단한다.
+										 [_charset_]: 사용자가 기술한 _charset_으로 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.default-mimetype"><![CDATA[
+                        [Description]: MIME-Type을 결정할 수 없는 문서의 Default Content-Type을 설정한다.
+                        			   Default Content-Type은 SvrGroup, Vhost, Node절의 순으로 결정된다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.expires-name"><![CDATA[
+                        [Description]: Web Server에서의 Expire 환경을 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.service-order"><![CDATA[
+                        [Description]: HTTP 요청으로부터 해당 Server와 Service를 결정할때, URI절과 EXT절의  우선순위를 결정한다.
+                                                Vhost절에 이 항목이 설정되지 않은 경우는 Node절에 설정된 값이나 기본값을 Vhost가 따르게 된다.
+                        [Defined Value]: [uri, ext]: URI, EXT Section 순으로 Server와 Service를 결정한다.
+                                         [ext,uri]: EXT, URI Section 순으로 Server와 Service를 결정한다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.keep-alive-use"><![CDATA[
+                        [Description]: keep-alive 기능에 대한 설정을 한다.
+                                                keep-alive 기능 사용 여부, keep-alive-timeout, keep-alive-max 값을 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="vhostType.timeout"><![CDATA[
+                        [Description]: 사용자가 접속을 하여 Data를 내려 받거나, 사용자의 요구가 내려 받는 시간을 지정하는 것이 가능하다.
+                                                이 때 이 Timeout Field를 이용하게 되는데, 이 Field를 통해서 사용자의 최대 접속시간을 지정할 수 있다.
+                                                이는 사용자와 맺은 연결이 문제가 생겨 계속해서 의미 없는 Data 전송이 발생할 때 이를 방지하기 위해서 이용한다.
+                        [Value Description]: Milisecond 단위의 시간
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.name"><![CDATA[
+                        [Description]: Server Group에 대한 논리적인 이름으로써 SVRGROUP절 내에서 유일한 값이어야 한다.
+                                                SVRGROUP절 이름은 SERVER 절의 SVGNAME 항목에서 사용된다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.svr-type"><![CDATA[
+                        [Description]: Server Group의 속성, 즉 어떠한 Service를 제공하는가를 명시한다.
+                                                Server 타입으로 HTML, CGI, SSI, JSV, PHP, WEBSTD 등을 명시할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.node-name"><![CDATA[
+                        [Description]: Server Group이 존재하는 Node를 정의한다. 사용되는 NODENAME은 NODE 절에서 정의한 Node 이름이어야 하며,
+                                                Node 이름은 유닉스 명령어 “uname -n”을 이용해서 확인해 볼 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.vhost-name"><![CDATA[
+                        [Description]: Server Group이 virtual host에 속할 경우 소속된 호스트 이름을 적어준다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.cousin"><![CDATA[
+                        [Description]: multi-node 환경에서는 반드시 설정해 주어야 하는 항목이다.
+                                                다른 그룹 이름을 지정해 주면 그룹별로 서로 서버 프로세스를 공유하게 되어 지정한 그룹에는 서버 프로세스를 등록하지 않아도 해당 프로세스가 서비스를 처리할 수 있게 된다.
+                                                같은 Node이거나 다른 Node에 있는 그룹인 경우 모두 연속하여 지정 할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.backup"><![CDATA[
+                        [Description]: 장애대처 방안을 위한 항목이다. 백업 되어야 할 그룹 이름을 지정하면 장애 시 중단 없이 Service를 수행할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.load"><![CDATA[
+                        [Description]: 이 항목은 부하 분산을 위하여 제공되며 부하 분산 방법을 지정한다.
+                        [Defined Value]: [0]: Dynamic Load Balancing을 의미하며, 한 노드에서 더 이상 사용자 요구를 처리할 여력이 없다면 다른 노드에서 처리하도록 사용자 요구를 다른 노드로 넘긴다.
+                                         [1~255]: Rule based routing을 의미하며, 분산을 하고자 하는 그룹들에 대하여 각각 Load값을 지정하면 지정한 비율대로 부하를 분산할 수 있다. 1부터 255 사이의 값을 사용할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.app-dir"><![CDATA[
+                        [Description]: JEUS Web Server를 통해 응용 프로그램을 바로 호출하는 경우 설정이 필요하다.
+                                                응용 프로그램의 실행 파일이 존재하는 Directory의 경로명을 설정한다. 경로명은 절대 경로와 WEBTOBDIR을 기준으로 한 상대 경로를 사용할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.usrlog-dir"><![CDATA[
+                        [Description]: 사용자 메시지가 기록될 Directory의 경로명을 설정한다. 경로명은 절대 경로와 WEBTOBDIR을 기준으로 한 상대 경로를 사용할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.db-name"><![CDATA[
+                        [Description]: TMS로 설정이 되는 경우 지정한다. 데이터베이스 고유의 이름을 지정하면 된다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.open-info"><![CDATA[
+                        [Description]: 이 항목은 데이터베이스와 연결을 하기위해  TMS가 필요할 때 정의한다.
+                                                데이터 베이스로 연결을 초기화하고 각 데이터베이스에서 제공되는 문법으로 정의 한다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.close-info"><![CDATA[
+                        [Description]: 이 항목은 데이터베이스와 연동하는 그룹, 즉 TMS로 설정이 되는 경우 지정한다.
+                                                데이터베이스와 연결을 끊기 위한 것으로 각 데이터베이스에서 제공되는 문법으로 정의 한다.
+                                                <주의>  INFORMIX database은 특정한 경우이므로 주의한다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.min-tms"><![CDATA[
+                        [Description]: 이 항목은 데이터베이스와 연동하는 그룹, 즉 TMS로 설정이 되는 경우, 부팅 시 기동되는 TMS프로세스수를 지정한다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.max-tms"><![CDATA[
+                        [Description]: 이 항목은 데이터베이스와 연동하는 그룹, 즉 TMS로 설정이 되는 경우,  최대 기동 될 수 있는 TMS프로세스수를 지정한다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.tms-name"><![CDATA[
+                        [Description]: TMSNAME은 해당 서버그룹의 데이터베이스 관리를 담당할 TMS 프로세스 이름을 정의한다.
+                                                데이터베이스의 open 정보(OPENINFO항목)를 등록한 경우에는 반드시 TMSNAME에 대한 정의가 필요하다.
+                                                TMS프로세스는 데이터베이스와 관련된 시스템에서 해당 서버그룹의 데이터베이스 관리를 담당하기 위하여 반드시 필요하다.
+                                                그러므로 Tmax 시스템에서 데이터베이스를 관리하도록 하기 위해서는 데이터베이스의 Open/Close 정보를 등록하고,
+                                                서버그룹별로 반드시 TMSNAME을 정의하여 TMS 프로세스를 기동 시켜야 한다.
+                                               	TMS 프로세스는 데이터베이스와 연동하는 XA로 업무(transaction)를 처리하는 트렌잭션 매니저이다.
+                                                이 프로세스는 $TMAXDIR/lib에 있는 libtms.a 와 SVRGROUP 절에 있는 DBNAME의 데이터베이스 라이브러리를 연결하여 생성된다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.env-file"><![CDATA[
+                        [Description]: 지정 그룹에 속한 Server들에게 환경 변수로 값을 전달하고자 할 때나, 같은 Node에 복수 개의 동종 데이터베이스 연동이 필요한 경우 지정한다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.authent-name"><![CDATA[
+                        [Description]: Web Server에서는 Server Group 단위의 보안을 제공한다. 만약 한 서버 그룹에 Authentication을 사용하고자 한다면,
+                                                해당 Server Group의 AuthentName 항목에 AUTHENT 절에 미리 선언된 Authent 이름을 설정해 주면 된다.
+                                                물론 Authentication을 사용하려면 미리 AUTHENT 절에 Authent 이름이 선언되어 있어야 하고
+                                                Web Server에서 제공하는 wsmkpw utility를 통해 user 명과 password를 설정해 주어야 한다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.logging"><![CDATA[
+                        [Description]: 뒤의 Logging절에서 설정하는 Logging Name을 써준다. 이 이름을 가지고 이 Node에서 그에 해당하는 Log를 남기게 되는 것이다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.script-location"><![CDATA[
+                        [Description]: php에 관련된 Server Group을 설정할 경우 php 실행 모듈이 실제로 존재하는 곳의 경로를 설정하는 항목이다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.filter-name"><![CDATA[
+                        [Description]: HTTP request 및 HTTP response 내용을 수정(필터링)할 필터를 설정한다.
+                        [Hidden]: true
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.default-charset"><![CDATA[
+                        [Description]: HTTP header 중에서 content type에 character set 관련 파라미터가 없는 응답에 추가될 character set의 이름을 설정한다. 
+												여러 section에서 적용되는 우선순위는 NODE<VHOST<SVRGROUP<DIRECTORY 순으로 우선순위를 가진다.
+						[Defined Value]: [On]: 기본 character set인 iso-8859-1로 설정한다.
+										 [Off]: 해당 기능을 중단한다.
+										 [_charset_]: 사용자가 기술한 _charset_으로 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.default-mimetype"><![CDATA[
+                        [Description]: 지정 디렉토리 안의 리소스가 요구되었는데 이 요청이 Server가 인식하고 있지 않은 Mimetype일 경우 DefaultMimetype이 설정한 Mimetype으로 처리하게 된다.
+                                                다시 말하면 DefaultMimetype을 맡고 있는 Server가 요구한 Service를 처리하게 된다.
+                    ]]>     
+    </text>
+     
+    <text key="svrgroupType.expires-name"><![CDATA[
+                        [Description]: Web Server에서의 Expire 환경을 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="serverType.name"><![CDATA[
+                        [Description]: Server의 실행 파일 이름으로써 일반적으로 Server 이름은 유일(Unique) 해야 한다.
+                                                즉 하나의 Server 이름은 SERVER절에 단 한번만 정의되어야 한다.
+                                                같은 이름을 중복하여 이용하면 환경 파일의 Compile시에 Error가 발생하게 된다.
+                    ]]>     
+    </text>
+     
+    <text key="serverType.svg-name"><![CDATA[
+                        [Description]: Server가 속해 있는 Server Group을 정의한다.
+                                                여기에 사용되는 값은 반드시 SVRGROUP 절에서 정의된 Server Group 이름이어야 한다.
+                                                Server와 SVRGROUP 절의 연결을 통해서 Server가 어떤 Node에서 동작할 것인지, 어떤 리소스 매니저(데이터 베이스(데이터 베이스)를 사용하는지 알 수 있으며,
+                                                해당 리소스 매니저를 열 때 필요한 파라미터를 넘겨 줄 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="serverType.cl-opt"><![CDATA[
+                        [Description]: Server Process가 기동 될 때 그 Server Process로 전달되는 명령어 옵션이 있을 경우 이 항목에서 정의할 수 있다.
+                                                정의된 옵션들 중에 ‘--’ 이전에 지정된 옵션들은 시스템에서 사용하고, 그 이후에 지정된 옵션들은 사용자가 자유롭게 사용할 수 있다.
+                        [Defined Value]: [-e]: -e 파일명
+	                                                        standard error를 저장한다.
+	                                                        “서버프로세스명_파일명”의 파일이 생성되어 서버 프로세스 동작 중에 발생하는 표준에러를 파일에 기록한다.
+	                                                        표준에러는 fprintf(stderr, format, args) 함수를 사용하게 된다.
+                                         [-o]: -o 파일명
+                                                            standard output을 저장한다.
+                                                            “서버프로세스명_파일명”의 파일이 생성되어 서버 프로세스 동작 중에 발생하는 표준 출력을 파일에 기록한다.
+                                                            표준출력은 일반적인 printf() 함수나 표준에러 출력과 마찬가지로 fprintf(stdout, format, args) 함수를 사용하면 된다.
+                    ]]>     
+    </text>
+     
+    <text key="serverType.min-proc"><![CDATA[
+                        [Description]: 기본적으로 기동 될 Server Process의 개수를 결정한다.
+                                                기존의 Client/Server 모델에서는 Client 당 Server Process가 하나씩 기동 되는 형식으로 동작하였으나 JEUS Web Server는 그보다 효율적인 구조를 가지고 있다.
+                                                JEUS Web Server에서는 Server Process의 수는 일정하게 유지하고 하나의 Server Process가 여러 개의 Client 요구를 Service 할 수 있다.
+                                                MinProc는 이러한 Server Process의 개수를 조절하는 것으로써 운영 경험을 통해 적절한 개수를 지정할 필요가 있다.
+                                                이 MinProc는 Server Process의 최소 개수를 나타내는 것으로 처음 JEUS Web Server가 Booting 될 때 시작되는 Process의 수와 같다고 생각하면 된다.
+                    ]]>     
+    </text>
+     
+    <text key="serverType.max-proc"><![CDATA[
+                        [Description]: MinProc와 더불어 Server Process 개수를 결정하는 항목이다.
+                                                MaxProc는 MinProc를 포함하여 추가적으로 기동 시킬 수 있는 Process의 최대 개수이다.
+                                                Server Process는 기본적으로 JEUS Web Server Booting 시점에 위에서 정의된 MinProc 개수 만큼만 기동 되고, 부하가 높아지는 경우 MaxProc 개수까지 Server Process가 자동적으로 기동 될 수 있다.
+                                                이 값 또한 운영 경험을 통해 적절한 개수 조정이 필요하다. 이는 특히 Web Server의 성능에 많은 영향을 줄 수 있는 것이다.
+                                                만약 관리자가 자신의 Web Server가 주로 HTML Service를 위주로 한다면, 이에 대한 Service의 MinProc와 MaxProc를 적당히 큰 값으로 설정하고 다른 것들을 적은 값으로 설정한다면
+                                                다른 Web Server들과 유사한 Hardware Overhead를 가지면서도 좋은 성능을 낼 수 있게 된다.
+                    ]]>     
+    </text>
+     
+    <text key="serverType.userlog-dir"><![CDATA[
+                        [Description]: 사용자 메시지가 기록될 Directory의 경로명을 설정한다. 경로명은 절대 경로와 WEBTOBDIR을 기준으로 한 상대 경로를 사용할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="serverType.uri-dir"><![CDATA[
+                        [Description]: 지정한 Server에 특정 URI(Uniform Resource Identifier) 값에 따라 이를 처리하는 Server을 지정해 주는 항목이다.
+                                                특정 URI가 입력으로 들어온 경우, 이를 지정한 Server에서 처리하도록 mapping시켜 놓을 수 있다.
+                                                이렇게 하면 한 Server process에서 특정 URI의 서비스를 전담하여 서비스 할 수 있으므로 우선순위가 매우 높게 설정되고 속도가 매우 빠르다.
+                                                주의할 점은 여기에 선언된 UriDir은 아래의 URI절과 ALIAS절에 반드시 필요한 정보들이 정의되어야 한다는 점이다.
+                    ]]>     
+    </text>
+     
+    <text key="serverType.maxq-count"><![CDATA[
+                        [Description]: Client의 요청이 엄청난 폭주를 이루어 정상적인 Service 처리가 어려운 정도에 이를 경우 계속되는 Service 요청을 무시할 필요가 있다.
+                                                큐에 적체된 Client의 요구수가 어느 정도 이상이 되면 새로 도착한 요구는 큐에 적체되지 않고 Client에 즉시 에러로 응답한다.
+                                                MaxQCount는 이러한 적체 요구 한계를 설정한다. 즉, MaxQCount 만큼의 사용자 요구를 저장하여 기다리게 할 수 있다는 것이다.
+                                                만약 이 값이 크다면 사용자의 요구를 문제없이 처리할 수 있다는 장점이 있으나 너무 크게 하면 사용자에게 응답을 너무 늦게 줄 수도 있다는 문제점이 있다.
+                    ]]>     
+    </text>
+     
+    <text key="serverType.asq-count"><![CDATA[
+                        [Description]: 자동으로 Server Process가 추가 기동 되기 위한 조건으로 큐에 쌓여진 요구 개수를 정의한다.
+                                                즉, 이 큐에 설정된 이상의 것이 적체되면 MinProc에서 MaxProc에 설정된 수만큼 차례대로 증가하게 된다.
+                    ]]>     
+    </text>
+     
+    <text key="serverType.max-restart"><![CDATA[
+                        [Description]: 서버프로세스의 최대 재시작 가능 횟수를 결정한다.
+                    ]]>     
+    </text>
+     
+    <text key="serverType.svr-cpc"><![CDATA[
+                        [Description]: 특수한 Server Process에서 HTH Process와 병렬 통신 채널 수를 결정하는 항목이다.
+                                                Server Process의 처리량이 아주 많아 하나의 채널로는 처리속도가 저하될 때 병렬 통신으로 처리 속도를 증가시킬 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="serverType.svr-type"><![CDATA[
+                        [Description]: Service 속성 즉, 지정된 URI를 포함하는 Request가 왔을 때 이를 처리할 Server를 지정한다.
+                                                예를 들어 /jsv/ 라는 URI를 포함하는 Request에 대해 Server타입이 JSV인 Server가 지정되도록 할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="serverType.http-out-buf-size"><![CDATA[
+                        [Description]: SERVER절에서 정의되 Server에 사용자의 요청에 response를 보낼 때 사용하는 버퍼의 크기를 설정한다.
+                                                Cache기능을 사용하려면 0으로 설정해야 한다.
+                    ]]>     
+    </text>
+     
+    <text key="serverType.http-in-buf-size"><![CDATA[
+                        [Description]: SERVER절에서 정의되 Server에 사용자의 request를 받을 때 사용하는 버퍼의 크기를 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="serverType.max-requests"><![CDATA[
+                        [Description]: SERVER절에 각 server에 정의된 MaxRequests값에 따라, 각 server의 프로세서들이 그 값만큼의 사용자 request를 처리한 후, auto-rebooting된다.
+                                                WB API로 작성된 WEBSTD server인 경우, ap에 메모리관련 bug가 있는 경우 유용하다.
+                                                서비스가 많은 경우 사용자 서비스의 연속성을  위해 MaxRequests보다 많은 request를 처리한 후, reboot될 수도 있다.
+                    ]]>     
+    </text>
+     
+    <text key="ws-serviceType.name"><![CDATA[
+                        [Description]: JEUS Web Server를 통해 바로 수행시키고자 하는 비즈니스 로직에 해당하는 Server프로그램 내의 함수 이름 (Service 루틴명)을 명시한다.
+                        [Value Description]: 15자 이내의 string으로 반드시 SERVICE절 내에서 고유한 이름이어야 한다.
+                    ]]>     
+    </text>
+     
+    <text key="ws-serviceType.priority"><![CDATA[
+                        [Description]: Client의 요구를 처리하는 우선순위 값이다.
+                                                1부터 50까지 설정이 가능하며 숫자가 클수록 높은 우선순위를 갖는다.
+                    ]]>     
+    </text>
+     
+    <text key="ws-serviceType.svc-time"><![CDATA[
+                        [Description]: Service 처리의 제한 시간이다.
+                                                즉, 각 Service는 Service 처리가 시작되는 순간부터 끝날 때까지 지정된 SvcTime 시간 안에 처리되어야 한다.
+                                                지정 시간을 초과하면 Server Process는 Service를 중지하고, Client에게 에러를 응답한다.
+                    ]]>     
+    </text>
+     
+    <text key="directoryType.name"><![CDATA[
+                        [Description]: Directory의 이름을 넣어주면 된다.
+                    ]]>     
+    </text>
+     
+    <text key="directoryType.dir-path"><![CDATA[
+                        [Description]: 설정을 적용할 Directory의 경로명으로 경로명을 설정한다. 경로명은 절대 경로와 WEBTOBDIR을 기준으로 한 상대 경로를 사용할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="directoryType.default-charset"><![CDATA[
+                        [Description]: HTTP header 중에서 content type에 character set 관련 파라미터가 없는 응답에 추가될 character set의 이름을 설정한다. 
+												여러 section에서 적용되는 우선순위는 NODE<VHOST<SVRGROUP<DIRECTORY 순으로 우선순위를 가진다.
+						[Defined Value]: [On]: 기본 character set인 iso-8859-1로 설정한다.
+										 [Off]: 해당 기능을 중단한다.
+										 [_charset_]: 사용자가 기술한 _charset_으로 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="directoryType.default-mimetype"><![CDATA[
+                        [Description]: 지정 디렉토리 안의 리소스가 요구되었는데 이 요청이 Server가 인식하고 있지 않은 Mimetype일 경우 DefaultMimetype이 설정한 Mimetype으로 처리하게 된다.
+                                                다시 말하면 DefaultMimetype을 맡고 있는 Server가 요구한 Service를 처리하게 된다.
+                    ]]>     
+    </text>
+     
+    <text key="directoryType.force-mimetype"><![CDATA[
+                        [Description]: 지정 디렉토리 안의 모든 리소스들은 ForceMimetype이 정한 Mimetype으로 처리하게 된다.
+                                                예를 들어 ForceMimetype이 CGI로 되어있다면 디렉토리 내의 모든 리소스들은 Client의 요구가 있을 시 CGI로 처리가 된다.
+                                                즉, CGI 처리를 담당하고 있는 Server가 Service를 처리하게 된다
+                    ]]>     
+    </text>
+     
+    <text key="directoryType.access-name"><![CDATA[
+                        [Description]: ACCESS절의 access_name에 설정된 규칙에 따라 사용자 접속의 허용 여부를 결정한다.
+                    ]]>     
+    </text>
+     
+    <text key="uriType.name"><![CDATA[
+                        [Description]: string으로 사용자 임의로 정할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="uriType.uri-def"><![CDATA[
+                        [Description]: Service 속성을 지정할 URI 값을 쓰도록 한다.
+                    ]]>     
+    </text>
+     
+    <text key="uriType.svr-type"><![CDATA[
+                        [Description]: Service 속성 즉, 지정된 URI를 포함하는 Request가 왔을 때 이를 처리할 Server를 지정한다.
+                                                예를 들어 /jsv/ 라는 URI를 포함하는 Request에 대해 Server타입이 JSV인 Server가 지정되도록 할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="uriType.svr-name"><![CDATA[
+                        [Description]: JEUS Web Server에서는 같은 Server 타입을 갖고 있는 Service 개체들이 Server Group과 Server로 구분이 될 수 있고,
+                                                각각의 Server는 Service처리 Process의 최소 및 최대 개수를 지정할 수 있다.
+                                                URI절에서는 처리를 담당할 Server를 지정하여 세분화된 Service 제어를 할 수 있게 된다. SVRNAME은 처리 담당 Server의 이름을 지정한다.
+                                                WB API 사용 시에는 URI 절에서 SVRNAME항목을 반드시 설정해 주어야 한다.
+                                                즉, URI절의 선택 항목인 SVRNAME은 WB API의 사용 시에는 반드시 명시해 주어야 하는 필수 항목이 된다.
+                                                이 항목의 값은 SERVER절에 있는 WB API 담당 서버 중 하나의 이름이 된다
+                    ]]>     
+    </text>
+     
+    <text key="uriType.svc-name"><![CDATA[
+                        [Description]: JEUS Web Server에서는 같은 Server 타입을 갖고 있는 Service 개체들이 Server Group과 Server로 구분이 될 수 있고,
+                                                각각의 Server는 Service처리 Process의 최소 및 최대 개수를 지정할 수 있다.
+                                                URI절에서는 처리를 담당할 Server를 지정하여 세분화된 Service 제어를 할 수 있게 된다. SVRNAME은 처리 담당 Server의 이름을 지정한다.
+                                                WB API 사용 시에는 URI 절에서 SVRNAME항목을 반드시 설정해 주어야 한다.
+                                                즉, URI절의 선택 항목인 SVRNAME은 WB API의 사용 시에는 반드시 명시해 주어야 하는 필수 항목이 된다.
+                                                이 항목의 값은 SERVER절에 있는 WB API 담당 서버 중 하나의 이름이 된다.
+                    ]]>     
+    </text>
+     
+    <text key="uriType.redirect"><![CDATA[
+                        [Description]: 지정 URI에 대한 요구를 다른 URI에 Mapping 시키도록 하는 기능으로서 RedirectStatus의 값에 따라
+                                                Redirect에 설정된 값이 http response의 Location header에 설정되어 사용자에게 보내지게 된다.
+                                                RedirectStatus의 값이 생략된 채로 Redirect만 사용된 경우 그 값은 found(302)를 사용하게 된다.
+                    ]]>     
+    </text>
+     
+    <text key="uriType.redirect-status"><![CDATA[
+                        [Description]: redirect 기능 사용시 발생될 http status 설정한다. 이 값은 http response의 Location header에 설정되어 사용자에게 보내진다.
+                        				설정하지 않은 경우에는 found(302)를 사용한다.
+                    ]]>     
+    </text>
+     
+    <text key="uriType.vhost-name"><![CDATA[
+                        [Description]: 특정 Vhost에 대한 URI를 설정하거나 Vhost마다 URI는 동일하나 다른 SVRTYPE을 쓰고 싶을 때 지정한다.
+                                                이 항목의 값은 VHOST절에 정의된 Vhost 이름이 중 하나가 된다.
+                    ]]>     
+    </text>
+     
+    <text key="uriType.access-name"><![CDATA[
+                        [Description]: ACCESS절의 access_name에 설정된 규칙에 따라 사용자 접속의 허용 여부를 결정한다.
+                    ]]>     
+    </text>
+     
+    <text key="ws-aliasType.name"><![CDATA[
+                        [Description]: string으로 사용자 임의로 정할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="ws-aliasType.uri-def"><![CDATA[
+                        [Description]: Service 속성을 지정할 URI 값을 쓰도록 한다.
+                    ]]>     
+    </text>
+     
+    <text key="ws-aliasType.real-path"><![CDATA[
+                        [Description]: Server 안의 물리적 Directory의 경로명으로 절대 경로명을 명시한다.
+                    ]]>     
+    </text>
+     
+    <text key="ws-aliasType.svr-type"><![CDATA[
+                        [Description]: Alias가 실행될 때 이를 수행할 Server의 Type을 지정할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="ws-aliasType.node-name"><![CDATA[
+                        [Description]: Alias 절이 적용되는 Node를 지정한다. 즉, 이 경우엔 다른 Node의 Directory에 있는 것을 이용할 수 있다는 것이다.
+                    ]]>     
+    </text>
+     
+    <text key="ws-aliasType.vhost-name"><![CDATA[
+                        [Description]: Alias 절이 적용되는 Virtual Host를 제한하고 싶을 때 명시한다.
+                    ]]>     
+    </text>
+     
+    <text key="dir-indexType.name"><![CDATA[
+                        [Description]: string으로 사용자 임의로 정할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="dir-indexType.option"><![CDATA[
+                        [Description]: Indexing 하는 방식을 여러 가지 option을 사용하여 설정할 수 있다.
+                        [Defined Value]: [FancyIndexing]: JEUS Web Server가 제공하는 Fancy Indexing을 on/off로 설정할 수 있다.
+                                                    컬럼 Title을 Click함으로써 Value별로 Entry들을 정렬할 수 있으며 한번 더 Click하면 정렬 순서가 바뀌게 된다
+                                                    Option을 넣는 경우에 FANCY로 넣으면 된다.
+                    ]]>     
+    </text>
+     
+    <text key="dir-indexType.ignore"><![CDATA[
+                        [Description]: Ignore 항목에서는 Indexing시 필요에 따라 표시하고 싶지 않은 파일들이 Index 리스트에 나타나지 않도록 해준다.
+                                                Indexing에서 제외하고 싶은 파일의 List를 파일명을 써주거나 Wildcard(*)를 사용하여 명시한다.
+                    ]]>     
+    </text>
+     
+    <text key="dir-indexType.default-icon"><![CDATA[
+                        [Description]: Unknown File Type에 대한 Icon을 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="dir-indexType.description"><![CDATA[
+                        [Description]: 특정한 파일에 대한 Description을 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="dir-indexType.header-file"><![CDATA[
+                        [Description]: Indexing의 가장 윗부분에 집어 넣을 Header를 지정된 파일에서 읽어 올 수 있도록 한다.
+                                                파일명은 Indexing 하고 있는 Directory에서 상대적인 경로명으로 간주한다.
+                    ]]>     
+    </text>
+     
+    <text key="dir-indexType.tail-file"><![CDATA[
+                        [Description]: Indexing의 가장 아래 부분에 집어 넣는 내용을 TailFile에서 지정한 파일에서 읽어 온다.
+                                                HeaderFile과 마찬가지로 파일명은 Indexing 하고 있는 Directory에서 상대적인 경로명으로 간주한다.
+                    ]]>     
+    </text>
+     
+    <text key="dir-indexType.icon-ext"><![CDATA[
+                        [Description]: 파일의 extension 값에 따라 그에 맞는 Icon으로 Indexing을 할 수 있도록 설정한다.
+                                                즉, Icon 파일의 URL과 Mimetype을 매칭시킨다.
+                    ]]>     
+    </text>
+     
+    <text key="ws-loggingType.name"><![CDATA[
+                        [Description]: string으로 사용자 임의로 정할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="ws-loggingType.format"><![CDATA[
+                        [Description]: Log File에 기록될 내용과 기록 방식을 설정한다.
+                                                Format이 따로 설정되지 않으면 JEUS Web Server가 지원하는 default 로그 파일 형식이 사용된다.
+                    ]]>     
+    </text>
+     
+    <text key="ws-loggingType.file-name"><![CDATA[
+                        [Description]: 로그를 저장할 파일의 경로명과 파일 이름을 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="ws-loggingType.valid-days"><![CDATA[
+                        [Description]:  Log를 하나의 파일에 저장할 것인지, 하루 단위로 다른 이름으로 저장할 것인지를 결정한다.
+                        [Defined Value]: [1]:  하루 단위(0시 기준)로 Log 파일을 저장한다.
+                                         [0 or disable]: 하나의 파일에 로그를 저장한다.
+                    ]]>     
+    </text>
+     
+    <text key="ws-loggingType.option"><![CDATA[
+                        [Description]: Logging 방식을 Option을 줌으로써 바꿀 수 있다.
+                        [Defined Value]: [Sync]: Logging 내역이 메모리에 버퍼링 되지 않고 바로 디스크에 기록 되도록 한다.
+                                                 증권업무나 은행업무 등, 사용자의 Log를 바로 확인하여야 하는 곳에서는 이러한 Option을
+												 주어서 사용하면 문제시 쉽게 확인 할 수 있는 장점이 있다.
+                                                 그러나 계속 I/O가 발생하기 때문에 성능 저하가 발생할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="accessType.name"><![CDATA[
+                        [Description]: Access의 이름을 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="accessType.order"><![CDATA[
+                        [Description]: Allow와 Deny가 적용되는 순서를 설정한다.
+                        [Value Description]: {"deny,allow"|"allow,deny"|"mutual-failure"}
+                        [Defined Value]: [deny, allow]: Deny가 Allow전에 적용된다. 일치하지 않는 요청은 허용된다.
+										 [allow, deny]: Allow가 Deny전에 적용된다. 일치하지 않는 요청은 거절된다.
+                                         [mutual-failure]: Allow와 일치하고, Deny와 일치하지 않는 요청만 허용된다.
+                    ]]>     
+    </text>
+     
+    <text key="accessType.allow"><![CDATA[
+                        [Description]: 요청이 허용되는 IP address나 network/netmask들을 설정한다.
+                        [Value Description]: {"all"|"{ipaddr|ipaddr/netmask},..."}
+                    ]]>     
+    </text>
+     
+    <text key="accessType.deny"><![CDATA[
+                        [Description]: 요청이 거절되는 IP address나 network/netmask들을 설정한다.
+                        [Value Description]: {"all"|"{ipaddr|ipaddr/netmask},..."}
+                    ]]>     
+    </text>
+     
+    <text key="authentType.name"><![CDATA[
+                        [Description]: string으로 사용자 임의로 정할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="authentType.type"><![CDATA[
+                        [Description]: Authorization control (인가 제어) 방식을 설정한다.  Basic 방식을 지원한다.
+                    ]]>     
+    </text>
+     
+    <text key="authentType.user-file"><![CDATA[
+                        [Description]: Authorization을 실행하기 위한 사용자명과 암호명이 기록되는 파일을 지정한다.
+                                                JEUS Web Server는 USERFILE 관리의 편의를 돕기 위해 wsmkpw라는 유틸리티를 제공한다.
+                                                이 유틸리티를 사용하여 사용자명과 암호화 (encrypted)된 암호명을 USERFILE에 기록할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="authentType.group-file"><![CDATA[
+                        [Description]: Authorization을 그룹단위로 실행하기 위해 사용자명과 암호명을 기록하는 파일을 따로 지정할 필요가 있을 때 사용된다.
+                                                이 파일에는 그룹의 이름과 이에 속한 구성원의 정보가 기록된다.
+                    ]]>     
+    </text>
+     
+    <text key="extType.name"><![CDATA[
+                        [Description]: string으로 사용자 임의로 정할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="extType.mimetype"><![CDATA[
+                        [Description]: SVRTYPE을 설정하고자 하는 MIMETYPE을 기록한다.
+                    ]]>     
+    </text>
+     
+    <text key="extType.svr-type"><![CDATA[
+                        [Description]: 앞에서 설정된 MIMETYPE의 요구가 들어오면 이를 처리할 Server 타입을 정한다.
+                    ]]>     
+    </text>
+     
+    <text key="extType.svr-name"><![CDATA[
+                        [Description]: 특정한 Server가 처리하도록 설정할 경우 Server의 이름을 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="extType.charset"><![CDATA[
+                        [Description]: 주어진 파일이름의 확장자에 대한 character set은 명시한 charset으로 강제화한다.
+                    ]]>     
+    </text>
+     
+    <text key="extType.access-name"><![CDATA[
+                        [Description]: ACCESS절의 access_name에 설정된 규칙에 따라 사용자 접속의 허용 여부를 결정한다.
+                    ]]>     
+    </text>
+     
+    <text key="sslType.name"><![CDATA[
+                        [Description]: string으로 사용자 임의로 정할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="sslType.certificate-file"><![CDATA[
+                        [Description]: 이것은 PEM 방식으로 인코딩된 서버의 인증서이다.
+                                                이것은 DER 규칙으로 인코딩되어 있으며, 웹 상에서 전송하기 위해서 아스키 코드 처럼 이용된다.
+                                                만일 인증 역시 암호화 된 상태라면, 비밀 번호나 문장 등을 물어볼 것이다.
+                    ]]>     
+    </text>
+     
+    <text key="sslType.certificate-key-file"><![CDATA[
+                        [Description]: 서버에서 쓰이는 PEM 방식으로 인코딩된 인증서의 개인키를 지정한다.
+                                                만일 키가 인증서와 함께 조합되지 않았다면 이 지시자를 이용하여 키의 위치를 지정하여야 한다.
+                                                일반적으로 JEUS Web Server의 SSL Directory에 가져다 두게 된다.
+                    ]]>     
+    </text>
+     
+    <text key="sslType.CA-certificate-path"><![CDATA[
+                        [Description]: 이 지시자를 이용하여 인증서를 저장할 디렉토리를 지정할 수 있다.
+                                                이 인증서는 받아들이기 위해 준비할 사용자의 인증서를 인증할 내용을 담고 있다.
+                                                이것은 보통 PEM 방식으로 인코딩 되어 있어야 한다.
+                    ]]>     
+    </text>
+     
+    <text key="sslType.CA-certificate-file"><![CDATA[
+                        [Description]: 만약 단일 CA(Certificate Agent: 인증을 대신해 주는 기업)로 부터의 사용자 인증만 받고 싶다면
+                                                CACertificatePath 지시자가 아닌, 이 지시자를 이용하여 단일 PEM으로 인코딩된 인증 파일을 사용해야 한다.
+                    ]]>     
+    </text>
+     
+    <text key="sslType.certificate-chain-file"><![CDATA[
+                        [Description]: 서버 인증서(Certificate)의 인증서 연쇄(Certificate Chain)를 구성할 때 필요한,
+                                                상위 인증기관들(CAs)의 인증서(certificate) 경로를 설정한다.
+                                                단, Client의 인증 (authentication)사용하기 위해서는 CACertificateFile이나, CACertificatePath에 설정해야 한다.
+                    ]]>     
+    </text>
+     
+    <text key="sslType.verify-depth"><![CDATA[
+                        [Description]: 실제 업무에 적용되는 경우에 인증에서 개입할 부분은 순서대로 다른 CA에 의해서 서로를 인증하는 CA에 관한 것이다.
+                                                이 지시자는 얼마나 깊은 레벨로 연결된 CA들을 추적하여 인증할 것인지를 지시하는 것이다.
+                                                단 하나의 인증 CA만 필요하다면 1로 설정 하면 된다.
+                    ]]>     
+    </text>
+     
+    <text key="sslType.verify-client"><![CDATA[
+                        [Description]: 이 지시자는 사용자에게 요청할 인증 레벨을 설정한다.
+                        [Defined Value]: [0]: 아무런 인증 요청을 하지 않는다.
+                                         [1]: 사용자는 사용 가능한 인증을 서버에게 보여 주어야 한다.
+                                         [2]: 사용자는 사용 가능한 인증을 반드시 서버에게 보여 주어야 한다.
+                                         [3]: 사용자는 사용 가능한 인증을 보여 주어야 하며 만일 서버가 인증서를 가지고 있지 않은 상황에서는 인증서 인증 과정이 필요없다.
+                    ]]>     
+    </text>
+     
+    <text key="sslType.fake-basic-auth"><![CDATA[
+                        [Description]: 사용자측의 인증 버전인 한줄짜리 사용자 이름을 배제한 기본 인증 과정을 통해서 마치 인증한 것처럼 보여 준다.
+                                                만약 이 지시자를 VerifyClient 지시자와 함께 설정하면 결과는 로그 파일에서 볼 수 있을 것이다.
+                                                그리고 코드는 미리 정해진 비밀 번호를 추가하여 둔다.
+                    ]]>     
+    </text>
+     
+    <text key="sslType.required-ciphers"><![CDATA[
+                        [Description]: Client가 서버와의 SSL 접속을 시작하면 정보를 암호화하는데 선호하는 Cipher를 서버에 알리게 된다.
+                                                이 항목은 사용할 cipher를 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="sslType.random-file"><![CDATA[
+                        [Description]: 이 지시자는 SSL에서 이용할 Random Seed를 위한 파일을 선택하는 것이다.
+                                                이 파일을 임의로 선택하면, JEUS Web Server는 SSL을 위한 암호를 만들 때
+                                                이 파일에서 임의의 값을 추출하여 Random Seed를 만드는 것이다.
+                    ]]>     
+    </text>
+     
+    <text key="sslType.random-file-per-conn"><![CDATA[
+                        [Description]: RandomFile을 설정할 때 실제 각 SSL을 통한 연결을 맺을 때 몇 개의 파일을 이용하여 Random Seed를 만들 것인지 결정하는 것이다.
+                    ]]>     
+    </text>
+     
+    <text key="sslType.pass-phrase-dialog"><![CDATA[
+                        [Description]: Web Server에서 SSL 사용시에 암호화된 개인키(encrypted private key) 파일들에 대한 암호문을 얻기위한 방식을 설정한다.
+                        [Defined Value]: [builtin]: Web Server 기동시 암호문을 입력할 것을 요구한다.
+                                         [exec:/path/to/program]: Web Server 기동시 해당 program을 실행하고, 그 출력 결과를 암호문으로 사용한다.
+                                                                  exec로 실행되는 파일은 컴파일된 실행파일이나, 쉘 스크립트가 이용될 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="sslType.crypto-device"><![CDATA[
+                        [Description]: SSL external Crypto Device의 종류를 설정한다.
+                        [Defined Value]: [builtin]: standard builtin implementations
+                                         [cswift]: CryptoSwift hardware engine support
+                    ]]>     
+    </text>
+     
+    <text key="error-docType.name"><![CDATA[
+                        [Description]: ERRORDOCUMENT 이름을 설정한다.
+                        [Value Description]: String으로 31자 이내
+                    ]]>     
+    </text>
+     
+    <text key="error-docType.status"><![CDATA[
+                        [Description]: HTTP Status Code값을 설정한다
+                    ]]>     
+    </text>
+     
+    <text key="error-docType.url"><![CDATA[
+                        [Description]: DOCROOT 이하의 상대경로가 되거나 Client가 해석할 수 있는 전체 경로 값을 설정해 주면 된다.
+                    ]]>     
+    </text>
+     
+    <text key="filterType.name"><![CDATA[
+                        [Description]: Filter의 이름을 설정한다.
+                        [Hidden]: true
+                    ]]>     
+    </text>
+     
+    <text key="filterType.real-path"><![CDATA[
+                        [Description]: Filter class의 실제 경로를 설정한다.
+                        [Hidden]: true
+                    ]]>     
+    </text>
+     
+    <text key="expiresType.name"><![CDATA[
+                        [Description]: Expires의 이름을 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="expiresType.mimetype"><![CDATA[
+                        [Description]: Response의 MIME type에 따라 expiry date를 설정할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="expiresType.url"><![CDATA[
+                        [Description]: Request URL이 일치하면 해당 expiry date를 설정할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="expiresType.expires-time"><![CDATA[
+                        [Description]: 아래와 같이 2가지 방법으로 Expiry Date를 명시할 수 있다.
+                                                선택항목 없이 필수 항목만 명시한 경우, 무조건적으로 Expiry Date가 Response Header에 설정된다.
+                        [Value Description]: 1) <code><seconds>
+                                                                <code>:  'M': file Modification date + <seconds>로 expiry date설정
+                                                                                'A': Access time + <seconds>로 expiry date설정
+                                                                <seconds>: Integer value
+	                                                                                일반적으로 사용되는 시간 주기 (seconds):
+                                                                                    1 hour : 3600
+                                                                                    1 day : 86400
+                                                                                    1 week : 604800
+                                                                                    1 month : 2419200
+                                                          2) <base> [plus] {<num> <type>}*
+                                                                <base>:  'access' or 'now': access time
+                                                                                'modification': file modification date
+                                                                [plus]: optional
+                                                                <num>: integer value
+                                                                <type>: 'years', 'months', 'weeks', 'days', 'hours', 'minutes',
+                                                                              'seconds', 'year', 'month', 'week', 'day', 'hour', 'minute' or
+                                                                              'second'
+                        [Example]: ExpiresTime = "A604800",  ExpiresTime = "M3600"
+                                           ExpiresTime = "access plus 1 month", ExpiresTime = "now plus 4 weeks", ExpiresTime = "access 1 month 15 days 2 hours"
+                    ]]>     
+    </text>
+     
+    <text key="ssl-useType.ssl-name"><![CDATA[
+                        [Description]: JEUS Web Server 에서 SSL을 이용하는 경우, 이에 대한 설정을 나타내는 것이다.
+                                                이는 반드시 SSLFLAG가 on이 된 상태에서 적용되어야 하며 off나 설정이 되지 않은 상황에서는 아무런 의미가 없다.
+                                                이 때 지정되는 이름은 반드시 SSL 절에서 선언이 되어 있어야 한다.
+                    ]]>     
+    </text>
+     
+    <text key="ssl-useType.ssl-flag"><![CDATA[
+                        [Description]: JEUS Web Server 에서 SSL을 이용할 때 반드시 지정하여야 하는 항목이다.
+                                                이 SSLFLAG가 true 상태이면, 그 Node에서 SSL을 이용하겠다는 것이고, false상태이면, 이용하지 않는다는 것이다.
+                                                기본 설정은 SSL을 이용하지 않는 것으로 되어 있다
+                    ]]>     
+    </text>
+     
+    <text key="tcpgwType.name"><![CDATA[
+                        [Description]: TcpGW의 이름을 설정한다.
+                    ]]>     
+    </text>
+     
+    <text key="tcpgwType.server-address"><![CDATA[
+                        [Description]: Client의 Request를 처리 할 서버들의 IP Address와 Port를 설정한다.
+                                                여러개의 서버 IP Address와 Port를 설정하는 것도 가능하며, 현재는 최대 100개 까지의 서버 IP Address와 Port를 동시에 설정 하는 것이 가능하다.
+                                                현재 설정된 서버들간의 분배규칙은 Round Robin만 지원한다.
+                    ]]>     
+    </text>
+     
+    <text key="tcpgwType.timeout"><![CDATA[
+                        [Description]: 사용자가 Request 후, 해당 서버로부터 지정된 시간동안 응답이 없는 경우, 접속을 종료하기 위한 시간을 설정한다.
+                        [Value Description]: milisecond 단위
+                        [Defined Value]: [0]: 해당시간을 설정하지 않겠다는 의미이다.
+                    ]]>     
+    </text>
+     
+    <text key="tcpgwType.connect-timeout"><![CDATA[
+                        [Description]: Client의 Request를 Web Server TCP Gateway가 받아서, 설정된 상대 서버로 접속을 시도할 때,
+                                                일정시간 동안 접속 요구에 대한 응답이 없으면, 다른 서버로 재분배 되도록 시간을 설정한다.
+                        [Value Description]: milisecond 단위
+                        [Defined Value]: [0]: 해당시간을 설정하지 않겠다는 의미이다.
+                    ]]>     
+    </text>
+     
+    <text key="tcpgwType.access-name"><![CDATA[
+                        [Description]: ACCESS절의 access_name에 설정된 규칙에 따라 사용자 접속의 허용 여부를 결정한다.
+                    ]]>     
+    </text>
+     
+    <text key="tcpgwType.schedule"><![CDATA[
+                        [Description]: 클라이언트로 부터의 Request을 처리할 때, 해당 Request을 받아서 처리할 Server Processor(MinProc개)를 지정하는 방법을 결정한다.
+                        [Defined Value]: [RR]: Round Robin방식으로 Idle한 Server Processor에 요청을 할당한다.
+	                                     [FA]: First Assign방식으로 우선순위(index)가 높고 Idle한 Server Processor에 요청을 할당한다.
+                    ]]>     
+    </text>
+     
+    <text key="tcpgwType.port"><![CDATA[
+                            [Description]: Web Server에서 Client의 Request를 Listen하는 Port를 설정한다.
+                                                    여러 Port를 동시에 정의하는 것도 가능하며, 현재는 최대 100개까지의 Port를 동시에 설정할 수 있다.
+                                                    즉, Port의 설정을 통해서 여러 개의 Port가 동시에 Listen하는 것이 가능하다.
+                                                    주의할 점은 Port항목은 Listen 항목과 동시에 운영할 수 없다는 것이다.
+                        ]]>     
+    </text>
+     
+    <text key="tcpgwType.listen"><![CDATA[
+                            [Description]: Web Server에서 Client의 Request를 Listen하는 IP Address와 Port를 설정하게 된다.
+                                                    여러개의 IP Address와 Port 번호를 설정하는 것도 가능하며, 현재는 최대 100개까지의 IP Address와 Port를 동시에 설정 하는 것이 가능하다.
+                                                    여러개의 IP Address를 가진 서버인 경우, 특정 IP Address를 통한 요청만 받아들이기 위해서 사용할 수 있다.
+                                                    주의할 점은 Port항목은 Listen 항목과 동시에 운영할 수 없다는 것이다.
+                        ]]>     
+    </text>
+     
+    <text key="cache-useType.cache-entry"><![CDATA[
+                        [Description]: Cache의 총 Hashing Key 엔트리 개수를 설정한다.
+                                                Web Server에서는 Hashing 방식을 이용하기 때문에 이의 값에 따라서 Cache 기능의 성능이 영향을 받게 된다.
+                                                만약 이 값이 적게 설정되면 Hashing Key값이 적게 되어  Key는 쉽게 찾지만,
+                                                각 Key에서의 값을 찾는 문제가 발생하고 Key 값이 많게 되면 다양한 Key에 대한 값이 나오지만 각 Entry가 적게 되어 쉽게 찾을 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="cache-useType.cache-size"><![CDATA[
+                        [Description]: Web Server는 Server 내부 Caching 기능을 지원한다. 따라서 많은 Web Application이 용이하게 이루어 질 수 있다.
+                                                예를 들어 세션 정보를 관리해야 하는 경우 기존의 방식처럼 쿠키를 쓰지 않고 Web Server가 내부적으로 제공하고 있는
+                                                Cache에 정보를 저장함으로써 더 편리하고 효율적인 작업을 수행할 수 있다.
+                                                이러한 내부 Cache의 사이즈를 필요에 따라 조정할 수 있다.
+                        [Value Description]: 여기서는 Cache의 한 엔트리의 크기로서 기본단위는 Kbyte이다.
+                    ]]>     
+    </text>
+     
+    <text key="cache-useType.cache-refresh-html"><![CDATA[
+                        [Description]: html file에 대한 cache refresh time을 설정한다.
+                        [Value Description]: second단위
+                    ]]>     
+    </text>
+     
+    <text key="cache-useType.cache-refresh-dir"><![CDATA[
+                        [Description]: dirindex에 대한 cache refresh time을 설정한다.
+                        [Value Description]: second단위
+                    ]]>     
+    </text>
+     
+    <text key="keep-alive-useType.keep-alive"><![CDATA[
+                        [Description]: KeepAlive는 HTTP 1.1 스펙에 포함된 기술로, 어떤 사용자가 웹사이트에 접속할 때,
+                                       그들이 웹사이트내의 다른 웹페이지를 읽어들이기 위해 곧 다시 접속을 시도하려는 경우가 매우 많다는 것을 쉽게 예상할 수 있을 것이다.
+                                       이럴 경우에 불필요한 시간 지연이 없도록 하려면 이 항목을 지정함으로써 접속을 단절하지 않고 유지할 수 있다.
+                    ]]>     
+    </text>
+     
+    <text key="keep-alive-useType.keep-alive-timeout"><![CDATA[
+                        [Description]: 하나의 Client가 불필요하게 커넥션을 오래 잡고 있는 경우를 막기 위해서
+                                                요구간, 시간 간격이 일정 시간 이상이 되면 커넥션을 끊을 수 있도록 설정할 수 있다.
+                        [Value Description]: milisecond단위
+                    ]]>     
+    </text>
+     
+    <text key="keep-alive-useType.keep-alive-max"><![CDATA[
+                        [Description]: 보통은 하나의 Client가 한 개 이상의 요구를 연속적으로 Server에 요청하는 경우가 많다.
+                                                이러한 경우 매 요구마다 연결을 다시 맺어야 한다면 비효율적일 것이다.
+                                                따라서 일정 개수의 요구는 처음 커넥션을 유지한 상태로 Service를 하고 커넥션을 끊도록 한다.
+                                                커넥션을 끊기 전에 들어주는 요구의 개수를 KeepAliveMax에서 지정한다
+                    ]]>     
+    </text>
+     
+    <text key="svrElementType.HTML"><![CDATA[
+                        [Description]: HTML(HyperText Markup Language)
+                    ]]>     
+    </text>
+     
+    <text key="svrElementType.CGI"><![CDATA[
+                        [Description]: CGI(Commom Gateway Inteface)
+                    ]]>     
+    </text>
+     
+    <text key="svrElementType.SSI"><![CDATA[
+                        [Description]: SSI(Server Side Include)
+                    ]]>     
+    </text>
+     
+    <text key="svrElementType.JSV"><![CDATA[
+                        [Description]: JSV(Java SerVlet)
+                    ]]>     
+    </text>
+     
+    <text key="svrElementType.PHP"><![CDATA[
+                        [Description]: PHP(Personal HomePage)
+                    ]]>     
+    </text>
+     
+    <text key="svrElementType.WEBSTD"><![CDATA[
+                        [Description]: WEB API
+                    ]]>     
+    </text>
+ </description>

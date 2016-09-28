@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="Shift-JIS"?>
+<xs:schema 
+    attributeFormDefault="unqualified" 
+    elementFormDefault="qualified" 
+    targetNamespace="http://www.tmaxsoft.com/xml/ns/jeus" version="5.0" 
+    xmlns="http://www.tmaxsoft.com/xml/ns/jeus" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">      
+    <xs:element name="user-cert-map" type="UserCertMapType">         
+        <xs:annotation>             
+            <xs:documentation><![CDATA[
+                        [Description]: ユーザと証明書間のマッピング情報を定義します。
+            ]]>
+            </xs:documentation>         
+        </xs:annotation>     
+    </xs:element>      
+    <xs:complexType name="UserCertMapType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="user-cert" type="UserCertType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                                [Description]: グループを定義します。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="UserCertType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="1" minOccurs="1" name="username" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: keystore内の証明書に対するユーザ名を定義します。keystore内で唯一である必要があります。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="1" name="alias" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                            [Description]:  keystore内の証明書に対するaliasを定義します。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="0" name="keypassword" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                            [Description]: keystore内の証明書に対するprivate keyを取得するためのkeypasswordを定義します。
+ ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="0" name="secretkey" type="SecretKeyType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+					[Description]: secretkeyを定義します。
+			    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="SecretKeyType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="1" minOccurs="1" name="keyname" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: secretkeyの名前を定義します。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="1" name="keyalgorithm" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: secretkeyのキーアルゴリズムを示します。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="1" name="keyvalue" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: secretkeyの値をbase64のタイプに示します。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType> 
+</xs:schema>

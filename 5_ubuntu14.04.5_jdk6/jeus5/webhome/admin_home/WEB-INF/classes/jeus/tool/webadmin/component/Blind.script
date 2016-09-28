@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+
+<input-symbol key="panel_id"          class="java.lang.String"  required="yes"/>
+<input-symbol key="id"                class="java.lang.String"  required="yes"/>
+<input-symbol key="image_name"         class="java.lang.String"  required="yes"/>
+<input-symbol key="opened_image_url"  class="java.lang.String"  required="yes"/>
+<input-symbol key="closed_image_url"  class="java.lang.String"  required="yes"/>
+
+<let key="toggle">
+	toggle_${id}
+</let>
+
+<let key="attribute">
+	document.${image_name}.src
+</let>
+
+<body><![CDATA[
+function ${toggle}(){
+    var blindBody = document.getElementById("${id}");
+
+    if(blindBody && blindBody.style && blindBody.style.display){
+        if(blindBody.style.display == "none"){
+            blindBody.style.display = "block";
+            ${attribute} = ${opened_image_url};
+            setCookie("${id}", true);
+        }else{
+            blindBody.style.display = "none";
+            ${attribute} = ${closed_image_url};
+            deleteCookie("${id}");
+        }
+    }
+}
+
+]]></body>
+
+<initialization><![CDATA[
+    if(navigator.appVersion.indexOf('MSIE') >= 0){
+        var version = parseFloat(navigator.appVersion.split('MSIE')[1]);
+        if(version < 5.5){
+            var blindBody = document.getElementById("${id}");
+            blindBody.style.width = "100%";
+        }
+    }
+]]></initialization>
+
+
+
+</script>

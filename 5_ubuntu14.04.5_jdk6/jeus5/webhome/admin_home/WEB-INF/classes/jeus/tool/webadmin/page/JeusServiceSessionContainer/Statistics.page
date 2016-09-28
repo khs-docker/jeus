@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceSessionContainer.StatisticsPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:EJB Monitor"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:new java.lang.String[]{pageName}"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:sc.statistics.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="container_type" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:sc.statistics.container_type.label"/>
+        <binding name="value" value="ognl:containerTypeString"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="choose_container_type" type="contrib:Choose"/>
+    <component id="whenLocal" type="contrib:When">
+        <binding name="condition" value="ognl:containerType==@jeus.management.j2ee.servlet.SessionContainerMoMBean@LOCAL_TYPE"/>
+    </component>
+    <component id="whenCentral" type="contrib:When">
+        <binding name="condition" value="ognl:containerType==@jeus.management.j2ee.servlet.SessionContainerMoMBean@CENTRAL_TYPE"/>
+    </component>
+    <component id="whenP2P" type="contrib:When">
+        <binding name="condition" value="ognl:containerType==@jeus.management.j2ee.servlet.SessionContainerMoMBean@P2P_TYPE"/>
+    </component>
+
+    <component id="localSessionCount" type="jeus:CountStatisticField">
+        <binding name="label" value="message:sc.statistics.local_session_count.label"/>
+        <binding name="count" value="ognl:stats.localSessionCount"/>
+    </component>
+
+    <component id="remoteActiveSessionCount" type="jeus:CountStatisticField">
+        <binding name="label" value="message:sc.statistics.remote_active_count.label"/>
+        <binding name="count" value="ognl:stats.remoteActiveSessionCount"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="remotePassivatedSessionCount" type="jeus:CountStatisticField">
+        <binding name="label" value="message:sc.statistics.remote_passivated_count.label"/>
+        <binding name="count" value="ognl:stats.remotePassivatedSessionCount"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="totalConnectionCount" type="jeus:CountStatisticField">
+        <binding name="label" value="message:sc.statistics.total_connection_count.label"/>
+        <binding name="count" value="ognl:stats.totalConnectionCount"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="inuseConnectionCount" type="jeus:CountStatisticField">
+        <binding name="label" value="message:sc.statistics.inuse_connection_count.label"/>
+        <binding name="count" value="ognl:stats.inuseConnectionCount"/>
+    </component>
+
+    <component id="passivatedSessionCount" type="jeus:CountStatisticField">
+        <binding name="label" value="message:sc.statistics.passivated_session_count.label"/>
+        <binding name="count" value="ognl:stats.passivatedSessionCount"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+    <component id="localFileDbSize" type="jeus:CountStatisticField">
+        <binding name="label" value="message:sc.statistics.local_file_db_size.label"/>
+        <binding name="count" value="ognl:stats.localFileDbSize"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+    <component id="backupSessionCount" type="jeus:CountStatisticField">
+        <binding name="label" value="message:sc.statistics.backup_session_count.label"/>
+        <binding name="count" value="ognl:stats.backupSessionCount"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="passivatedBackupSessionCount" type="jeus:CountStatisticField">
+        <binding name="label" value="message:sc.statistics.passivated_backup_session_count.label"/>
+        <binding name="count" value="ognl:stats.passivatedBackupSessionCount"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="backupFileDbSize" type="jeus:CountStatisticField">
+        <binding name="label" value="message:sc.statistics.backup_file_db_size.label"/>
+        <binding name="count" value="ognl:stats.backupFileDbSize"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="connectionCount" type="jeus:CountStatisticField">
+        <binding name="label" value="message:sc.statistics.connection_count.label"/>
+        <binding name="count" value="ognl:stats.connectionCount"/>
+    </component>
+
+    <component id="sessionForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:sc.statistics.sessionId.label"/>
+        <binding name="subform" value="ognl:true"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="dayText" type="jeus:Field">
+        <binding name="field" value="components.dayTextField"/>
+    </component>
+
+    <component id="dayTextField" type="jeus:DojoTextField">
+        <binding name="value" value="day"/>
+        <binding name="displayName" value="message:sc.statistics.sessionAccessedTime.day"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="sessionTime" type="jeus:Field">
+        <binding name="field" value="components.sessionTimeField"/>
+    </component>
+
+    <component id="sessionTimeField" type="jeus:DojoTextField">
+        <binding name="value" value="sessionTime"/>
+        <binding name="displayName" value="message:sc.statistics.sessionAccessedTime.time"/>
+        <binding name="validators" value="validators:$sessionTimeValidator"/>
+    </component>
+
+
+    <component id="filterButton" type="Submit">
+        <binding name="value" value="message:tpmo.overview.filterButton.label"/>
+        <binding name="listener" value="ognl:listeners.onFilter"/>
+    </component>
+
+    <component id="sessionListForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:sc.statistics.sessionIdList.label"/>
+        <binding name="subform" value="ognl:true"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="sessionListTable" type="jeus:JEUSTable">
+        <binding name="source" value="ognl:sessionList"/>
+        <binding name="columns" value="literal:sc.statistics.sessionIdList.id:id,sc.statistics.sessionMaxInactiveInterval.label:maxInactiveInterval,sc.statistics.sessionAccessedTime.label:lastAccessedTime,sc.statistics.sessionCreationTime.label:creationTime"/>
+        <binding name="row" value="ognl:currentStats"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+        <binding name="showCustomize" value="false"/>
+    </component>
+
+    <component id="refreshButton" type="Any">
+        <binding name="element" value="literal:input"/>
+        <binding name="value" value="message:common.label.refresh"/>
+    </component>
+
+    <bean name="sessionTimeValidator" class="jeus.tool.webadmin.page.JeusServiceSessionContainer.SessionTimeValidator">
+        <set name="sessionTime" value="sessionTime"/>
+    </bean>
+
+    <property name="currentStats"/>
+    <property name="day"/>
+
+</page-specification>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="Shift-JIS"?>
+<description>        
+    <text key="jnlp-resourceType.rsc-path"><![CDATA[
+                    [Description]: JNLPServerで提供するresourceファイルに対する実際の 物理的な経路情報を指定します。
+                    例) &lt;rsc-path>c:\jeus50\webhome\client_home\HelloJeus\HelloJeus.jar&lt;/rsc-path>
+                    ]]>        
+    </text>
+         
+    <text key="jnlp-resourceType.arch"><![CDATA[
+                    [Description]: resource項目が使用されるハードウェアの構造を指定します。
+                    この属性の値がシステムパラメーターos.archのスタート部分と同じであればリソースの項目は使用できます。もしこの属性が指定されていなければ、あらゆるハードウェアで使用することができます。
+                    この値は&lt;os-name>と同じ形式に記述する。			
+                    ]]>        
+    </text>
+         
+    <text key="jnlp-resourceType.rsc-name"><![CDATA[
+                    [Description]: JNLPServerで提供するリソースの名前。clientでは該当 resourceを要請する場合、rsc-nameをURLで使用します。
+ 例) http://localhost:9744/jnlp/HelloJeus/rsc-name
+                    ]]>        
+    </text>
+         
+    <text key="jnlp-resource-config"><![CDATA[
+            [Description]: JNLPMain.xmlの設定項目中に最上位のelement。JNLPServerで提供するリソースに対する
+            あらゆる設定をこのelementの下位に作成します。JNLPMain.xmlファイルにはこの elementが必ず存在します。
+            ]]>        
+    </text>
+         
+    <text key="jnlp-resourceType.os-name"><![CDATA[
+                    [Description]: resourceが考慮するosを指定します。この値がJVMのスステムパラメーターーos.nameののprefixであれば 
+                    Resourceを使用できます。もしこの属性が指定されていなければ、あらゆるOSで使用できます。
+                    この値はJavaのシステムPropertyであるos.nameと一致しなければなりません。複数の&lt;os-name>, &lt;arch>, &lt;locale>値を入れる場合にはスペースで区別します。もしスペースが値の一部として使用されれば、スペースの前に"\"を入れます。たとえば、"Windows\ 95 Windows\ 2000"は、 
+                    "Windows 95"と"Windows 2000"をサポートするとの意味です。ここで、"95"と"2000"の前にスペースを入れるために"\"が使用されました。
+                    ]]>        
+    </text>
+         
+    <text key="jnlp-resourceType.version"><![CDATA[
+                    [Description]: このリソースのバージョンを指定します。クライアント・システムが求めるバージョンと一致する場合にのみこのリソースを使用することができ、
+                    指定された値がない場合にはあらゆるクライアント・システムで使用することができます。
+                    ]]>        
+    </text>
+         
+    <text key="jnlp-resourceType.locale"><![CDATA[
+                    [Description]: 項目が特定領域に依存するresourceであることを指定します。もしこの値段が指定されていれば、resource項目は指定されたローカルの情報を基本値として持っているJNLPクライアントでのみ使用することができます。
+                    この値が指定されていないと、あらゆるクライアントで使用可能です。
+                    この値は&lt;os-name>と同じ形式に記述します。
+                    ]]>        
+    </text>
+         
+    <text key="jnlp-resource-configType.jnlp-resource"><![CDATA[
+                    [Description]: JNLPServerで提供するリソースに対する情報を提供します。
+                   リソースに対する詳細な情報は、このelementの下に作成されます。
+                    ]]>        
+    </text>
+ </description>

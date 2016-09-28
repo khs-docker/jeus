@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="urn:Calculator3Service" xmlns:impl="urn:Calculator3Service" xmlns:intf="urn:Calculator3Service" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+   <schema targetNamespace="urn:Calculator3Service" xmlns="http://www.w3.org/2001/XMLSchema">
+    <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    <complexType name="CalcData">
+     <sequence>
+      <element name="num1" type="xsd:double"/>
+      <element name="num2" type="xsd:double"/>
+      <element name="op" type="xsd:string"/>
+      <element name="result" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </schema>
+  </wsdl:types>
+  <wsdl:message name="calcRequest">
+    <wsdl:part name="in0" type="impl:CalcData"/>
+  </wsdl:message>
+  <wsdl:message name="calcResponse">
+    <wsdl:part name="in0" type="impl:CalcData"/>
+  </wsdl:message>
+  <wsdl:portType name="CalculatorIF">
+    <wsdl:operation name="calc" parameterOrder="in0">
+      <wsdl:input name="calcRequest" message="impl:calcRequest"/>
+      <wsdl:output name="calcResponse" message="impl:calcResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CalculatorIFSoapBinding" type="impl:CalculatorIF">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="calc">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="calcRequest">
+        <soap:body use="literal" namespace="urn:Calculator3Service"/>
+      </wsdl:input>
+      <wsdl:output name="calcResponse">
+        <soap:body use="literal" namespace="urn:Calculator3Service"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Calculator3Service">
+    <wsdl:port name="CalculatorIFPort" binding="impl:CalculatorIFSoapBinding">
+      <soap:address location="http://localhost:8088/Calculator3Service/Calculator3Service"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

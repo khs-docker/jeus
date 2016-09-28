@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="Shift-JIS"?>
+<description>        
+    <text key="policies"><![CDATA[
+                        [Description]: JEUSの権限チェックに係わるPolicyを定義します。
+            ]]>        
+    </text>
+         
+    <text key="ResourcePermissionType.actions"><![CDATA[
+                        [Description]: 選択的な値でresource permissionクラスの生成子に渡すactionsの値
+                        [Value Description]: resource permission classに渡すactions データ値
+                        [Example]: &lt;actions>boot,down&lt;/actions>
+                    ]]>        
+    </text>
+         
+    <text key="RolePermissionsType.role-permission"><![CDATA[
+                        [Description]: 該当のPolicyに対するprincipal-roleマッピングを定義します。
+                    ]]>        
+    </text>
+         
+    <text key="ResourcePermissionsType.resource-permission"><![CDATA[
+                        [Description]: 該当のPolicyに対するrole-resourceマッピングを定義します。
+                    ]]>        
+    </text>
+         
+    <text key="PoliciesType.policy"><![CDATA[
+                        [Description]: JEUSのPolicyを定義します。
+                    ]]>        
+    </text>
+         
+    <text key="PolicyType.resource-permissions"><![CDATA[
+                        [Description]: 該当の Policyに大韓role-resourceマッピングを定義します。
+                    ]]>        
+    </text>
+         
+    <text key="ResourcePermissionType.role"><![CDATA[
+                        [Description]: 該当のResourceにマッピングされるRole
+                        [Value Description]: Role名
+                        [Example]: &lt;role>Administrator&lt;/role>
+                    ]]>        
+    </text>
+         
+    <text key="ResourcePermissionType.resource"><![CDATA[
+                        [Description]: RoleをマッピングするResource
+                        [Value Description]: Resource名
+                        [Example]: &lt;resource>jeus.server.*&lt;/resource>
+                    ]]>        
+    </text>
+         
+    <text key="ResourcePermissionType.classname"><![CDATA[
+                        [Description]: java.security.Permissionを継承したJavaクラス名
+                                       このクラスは、resource permissionに使われます。
+                        [Value Description]: Javaクラス名
+                        [Example]: &lt;classname>jeus.security.resource.TimeConstrainedResourcePermission&lt;/classname>
+                    ]]>        
+    </text>
+         
+    <text key="ResourcePermissionsType.context-id"><![CDATA[
+                        [Description]: role-resourceマッピングが適用されるcontext id(通常、このタッグは使用されない)
+                        [Value Description]: context id値
+                        [Example]: &lt;context-id>MyContext&lt;/context-id>
+                    ]]>        
+    </text>
+         
+    <text key="PolicyType.role-permissions"><![CDATA[
+                        [Description]: 該当Policyに大韓principal-roleマッピングを定義します。
+                    ]]>        
+    </text>
+         
+    <text key="ResourcePermissionType.unchecked"><![CDATA[
+                        [Description]: もしタッグがあれば、該当のResourceはチェックされない。(このResourceにアクセス可能)
+                        [Value Description]: 何の値も設定できない。Emptyタイプ
+                    ]]>        
+    </text>
+         
+    <text key="ResourcePermissionType.excluded"><![CDATA[
+                        [Description]: もしこのタッグがあれば、該当Resourceは排除されます。(該当Resourceにアクセスが禁じされます)
+                        [Value Description]: 何の値も設定できない。Emptyタイプ
+                    ]]>        
+    </text>
+ </description>

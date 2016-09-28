@@ -1,0 +1,1595 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusServiceSecurityDomain.ServicesPage">
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Security domain Overview"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@JEUSSERVICE_SECURITYDOMAIN_NAMES"/>
+        <binding name="subtabNames" value="{'authentication', 'authorization', 'login', 'idassertion', 'crdmapping', 'crdverification', 'audit', 'subject_validation', 'custom'}"/>
+    </component>
+
+    <component id="authentication" type="Block"/>
+    <component id="authorization" type="Block"/>
+    <component id="login" type="Block"/>
+    <component id="idassertion" type="Block"/>
+    <component id="crdmapping" type="Block"/>
+    <component id="crdverification" type="Block"/>
+    <component id="subject_validation" type="Block"/>
+    <component id="audit" type="Block"/>
+    <component id="custom" type="Block"/>
+
+    <component id="authenticationForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.services.authentication.title"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="authenticationTab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'domain.services.repository.label', 'domain.services.custom.label'}, new java.lang.String[]{'authentication_repository', 'custom_authentication'})"/>
+    </component>
+
+    <component id="authentication_repository" type="Block"/>
+    <component id="custom_authentication" type="Block"/>
+
+    <component id="authentication_repositoryTab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'domain.services.repository.xml.label', 'domain.services.repository.db.label', 'domain.services.repository.custom.label'}, new java.lang.String[]{'authen_xml_repository', 'authen_db_repository', 'authen_custom_repository'})"/>
+    </component>
+
+    <component id="authen_xml_repository" type="Block"/>
+    <component id="authen_db_repository" type="Block"/>
+    <component id="authen_custom_repository" type="Block"/>
+
+    <component id="authen_xml_repositoryForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="authen_xml_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.authen.xml.ok.confirm"/>
+        <binding name="listener" value="listeners.onAuthenXmlOk"/>
+    </component>
+    
+    <component id="authen_xml_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="authen_filename" type="jeus:Field">
+        <binding name="field" value="components.authen_filenameField"/>
+    </component>
+
+    <component id="authen_filenameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="authenConfigFile"/>
+        <binding name="elementName" value="literal:filename"/>
+    </component>
+
+    <component id="authen_filepath" type="jeus:Field">
+        <binding name="field" value="components.authen_filepathField"/>
+    </component>
+
+    <component id="authen_filepathField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="authenConfigFile"/>
+        <binding name="elementName" value="literal:filepath"/>
+    </component>
+
+    <component id="authen_db_repositoryTab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'domain.services.export.label', 'domain.services.dbconfig.label'}, new java.lang.String[]{'authen_dbexport_repository', 'authen_dbconfig_repository'})"/>
+<!--        <binding name="position" value="@jeus.tool.webadmin.component.InnerTabPanel@TOP"/>-->
+    </component>
+
+    <component id="authen_dbexport_repository" type="Block"/>
+    <component id="authen_dbconfig_repository" type="Block"/>
+
+    <component id="authen_db_repositoryForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="authen_db_configForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="authen_exportForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="authen_export_name" type="jeus:Field">
+        <binding name="field" value="components.authen_export_nameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="authen_export_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="authenDatabaseRepository"/>
+        <binding name="elementName" value="literal:datasourceExportName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="authen_export_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.authen.db.ok.confirm"/>
+        <binding name="listener" value="listeners.onAuthenExportOk"/>
+    </component>
+
+    <component id="authen_export_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="authen_db_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.authen.db.ok.confirm"/>
+        <binding name="listener" value="listeners.onAuthenDbOk"/>
+    </component>
+
+    <component id="authen_db_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="authen_vendor" type="jeus:Field">
+        <binding name="field" value="components.authen_vendorField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="authen_vendorField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="authenDbConfig"/>
+        <binding name="elementName" value="literal:vendor"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="authen_driver" type="jeus:Field">
+        <binding name="field" value="components.authen_driverField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="authen_driverField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="authenDbConfig"/>
+        <binding name="elementName" value="literal:driver"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="authen_url" type="jeus:Field">
+        <binding name="field" value="components.authen_urlField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="authen_urlField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="authenDbConfig"/>
+        <binding name="elementName" value="literal:url"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="authen_username" type="jeus:Field">
+        <binding name="field" value="components.authen_usernameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="authen_usernameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="authenDbConfig"/>
+        <binding name="elementName" value="literal:username"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="authen_password" type="jeus:Field">
+        <binding name="field" value="components.authen_passwordField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="authen_passwordField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="authenDbConfig"/>
+        <binding name="elementName" value="literal:password"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="authen_custom_repositoryForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="authen_custom_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.authen.custom.ok.confirm"/>
+        <binding name="listener" value="listeners.onAuthenticationCustomRepositoryOk"/>
+    </component>
+
+    <component id="authen_custom_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="authen_create_classname" type="jeus:Field">
+        <binding name="field" value="components.authen_create_classnameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="authen_create_classnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="authenCustomRepositoryService"/>
+        <binding name="elementName" value="literal:classname"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="authen_create_properties" type="jeus:Field">
+        <binding name="field" value="components.authen_create_propertiesField"/>
+        <binding name="label" value="message:domain.services.properties.label"/>
+    </component>
+
+    <component id="authen_create_propertiesField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="authenCustomRepositoryService"/>
+        <binding name="elementName" value="literal:property"/>
+        <binding name="translator" value="bean:securityServicePropertyTranslator"/>
+    </component>
+
+    <component id="custom_authenticationForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="custom_authentication_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.custom.authentication.ok.confirm"/>
+        <binding name="listener" value="listeners.onCustomAuthenticationOk"/>
+    </component>
+
+    <component id="custom_authentication_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="custom_authentication_classname" type="jeus:Field">
+        <binding name="field" value="components.custom_authentication_classnameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="custom_authentication_classnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="customAuthentication"/>
+        <binding name="elementName" value="literal:classname"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="custom_authentication_properties" type="jeus:Field">
+        <binding name="field" value="components.custom_authentication_propertiesField"/>
+        <binding name="label" value="message:domain.services.properties.label"/>
+    </component>
+
+    <component id="custom_authentication_propertiesField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="customAuthentication"/>
+        <binding name="elementName" value="literal:property"/>
+        <binding name="translator" value="bean:securityServicePropertyTranslator"/>
+    </component>
+
+    <component id="authorizationForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.services.authorization.title"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="authorizationTab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'domain.services.repository.label', 'domain.services.autho.jacc.label', 'domain.services.custom.label'}, new java.lang.String[]{'authorization_repository', 'authorization_jacc', 'custom_authorization'})"/>
+    </component>
+
+    <component id="authorization_repository" type="Block"/>
+    <component id="authorization_jacc" type="Block"/>
+    <component id="custom_authorization" type="Block"/>
+
+    <component id="authorization_repositoryTab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'domain.services.repository.xml.label', 'domain.services.repository.db.label', 'domain.services.repository.custom.label'}, new java.lang.String[]{'autho_xml_repository', 'autho_db_repository', 'autho_custom_repository'})"/>
+    </component>
+
+    <component id="autho_xml_repository" type="Block"/>
+    <component id="autho_db_repository" type="Block"/>
+    <component id="autho_custom_repository" type="Block"/>
+
+    <component id="autho_db_repositoryTab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'domain.services.export.label', 'domain.services.dbconfig.label'}, new java.lang.String[]{'authen_dbexport_repository', 'authen_dbconfig_repository'})"/>
+<!--        <binding name="position" value="@jeus.tool.webadmin.component.InnerTabPanel@TOP"/>-->
+    </component>
+
+    <component id="autho_dbexport_repository" type="Block"/>
+    <component id="autho_dbconfig_repository" type="Block"/>
+
+    <component id="autho_xml_repositoryForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="autho_xml_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.autho.xml.ok.confirm"/>
+        <binding name="listener" value="listeners.onAuthoXmlOk"/>
+    </component>
+
+    <component id="autho_xml_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="autho_filename" type="jeus:Field">
+        <binding name="field" value="components.autho_filenameField"/>
+    </component>
+
+    <component id="autho_filenameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="authoConfigFile"/>
+        <binding name="elementName" value="literal:filename"/>
+    </component>
+
+    <component id="autho_filepath" type="jeus:Field">
+        <binding name="field" value="components.autho_filepathField"/>
+    </component>
+
+    <component id="autho_filepathField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="authoConfigFile"/>
+        <binding name="elementName" value="literal:filepath"/>
+    </component>
+
+    <component id="autho_db_repositoryForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="autho_db_configForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="autho_exportForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="autho_export" type="Submit">
+        <binding name="value" value="message:domain.services.export.label"/>
+        <binding name="listener" value="listeners.onAuthoExport"/>
+    </component>
+
+    <component id="autho_dbconfig" type="Submit">
+        <binding name="value" value="message:domain.services.dbconfig.label"/>
+        <binding name="listener" value="listeners.onAuthoDBConfig"/>
+    </component>
+
+    <component id="autho_condExport" type="If">
+        <binding name="condition" value="command != null and @jeus.tool.webadmin.page.JeusServiceSecurityDomain.SecurityServiceCommand@AUTHO_EXPORTNAME_COMMAND.equals(command)"/>
+    </component>
+
+    <component id="autho_condDBConfig" type="If">
+        <binding name="condition" value="command != null and @jeus.tool.webadmin.page.JeusServiceSecurityDomain.SecurityServiceCommand@AUTHO_DBCONFIG_COMMAND.equals(command)"/>
+    </component>
+
+    <component id="autho_export_name" type="jeus:Field">
+        <binding name="field" value="components.authen_export_nameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="autho_export_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="authenDatabaseRepository"/>
+        <binding name="elementName" value="literal:datasourceExportName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="autho_export_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.authen.db.ok.confirm"/>
+        <binding name="listener" value="listeners.onAuthoExportOk"/>
+    </component>
+
+    <component id="autho_export_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="autho_db_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.autho.db.ok.confirm"/>
+        <binding name="listener" value="listeners.onAuthoDbOk"/>
+    </component>
+
+    <component id="autho_db_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="autho_vendor" type="jeus:Field">
+        <binding name="field" value="components.autho_vendorField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="autho_vendorField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="authoDbConfig"/>
+        <binding name="elementName" value="literal:vendor"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="autho_driver" type="jeus:Field">
+        <binding name="field" value="components.autho_driverField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="autho_driverField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="authoDbConfig"/>
+        <binding name="elementName" value="literal:driver"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="autho_url" type="jeus:Field">
+        <binding name="field" value="components.autho_urlField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="autho_urlField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="authoDbConfig"/>
+        <binding name="elementName" value="literal:url"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="autho_username" type="jeus:Field">
+        <binding name="field" value="components.autho_usernameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="autho_usernameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="authoDbConfig"/>
+        <binding name="elementName" value="literal:username"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="autho_password" type="jeus:Field">
+        <binding name="field" value="components.autho_passwordField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="autho_passwordField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="authoDbConfig"/>
+        <binding name="elementName" value="literal:password"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="autho_custom_repositoryForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="autho_custom_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.autho.custom.ok.confirm"/>
+        <binding name="listener" value="listeners.onAuthorizationCustomRepositoryOk"/>
+    </component>
+
+    <component id="autho_custom_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="autho_create_classname" type="jeus:Field">
+        <binding name="field" value="components.autho_create_classnameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="autho_create_classnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="authoCustomRepositoryService"/>
+        <binding name="elementName" value="literal:classname"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="autho_create_properties" type="jeus:Field">
+        <binding name="field" value="components.autho_create_propertiesField"/>
+        <binding name="label" value="message:domain.services.properties.label"/>
+    </component>
+
+    <component id="autho_create_propertiesField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="authoCustomRepositoryService"/>
+        <binding name="elementName" value="literal:property"/>
+        <binding name="translator" value="bean:securityServicePropertyTranslator"/>
+    </component>
+
+    <component id="authorization_jaccForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="use_authorization_jacc" type="jeus:Field">
+        <binding name="field" value="components.use_authorization_jaccField"/>
+        <binding name="label" value="message:domain.services.use_jacc.label"/>
+    </component>
+
+    <component id="use_authorization_jaccField" type="jeus:DojoCheckbox">
+        <binding name="value" value="useJacc"/>
+    </component>
+
+    <component id="authorization_jacc_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.autho.jacc.ok.confirm"/>
+        <binding name="listener" value="listeners.onAuthorizationJaccOk"/>
+    </component>
+
+    <component id="authorization_jacc_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="custom_authorizationForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="custom_authorization_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.custom.authorization.ok.confirm"/>
+        <binding name="listener" value="listeners.onCustomAuthorizationOk"/>
+    </component>
+
+    <component id="custom_authorization_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="custom_authorization_classname" type="jeus:Field">
+        <binding name="field" value="components.custom_authorization_classnameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="custom_authorization_classnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="customAuthorization"/>
+        <binding name="elementName" value="literal:classname"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="custom_authorization_properties" type="jeus:Field">
+        <binding name="field" value="components.custom_authorization_propertiesField"/>
+        <binding name="label" value="message:domain.services.properties.label"/>
+    </component>
+
+    <component id="custom_authorization_propertiesField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="customAuthorization"/>
+        <binding name="elementName" value="literal:property"/>
+        <binding name="translator" value="bean:securityServicePropertyTranslator"/>
+    </component>
+
+    <component id="loginForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.services.login.title"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="loginTab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'domain.services.jaas.login.label', 'domain.services.custom.label'}, new java.lang.String[]{'jaas_login', 'custom_login'})"/>
+    </component>
+
+    <component id="jaas_login" type="Block"/>
+    <component id="custom_login" type="Block"/>
+
+    <component id="jaas_loginForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="jaas_loginTab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'domain.services.jaas.handler.label','domain.services.jaas.loginmodule.label'}, new java.lang.String[]{'jaas_handler', 'jaas_login_module'})"/>
+    </component>
+
+    <component id="jaas_handler" type="Block"/>
+    <component id="jaas_login_module" type="Block"/>
+
+    <component id="jaas_handlerForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="jaas_handler_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.jaas.handler.ok.confirm"/>
+        <binding name="listener" value="listeners.onJaasHandlerOk"/>
+    </component>
+
+    <component id="jaas_handler_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="custom_loginForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="login_custom_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.login.custom.ok.confirm"/>
+        <binding name="listener" value="listeners.onCustomLoginOk"/>
+    </component>
+
+    <component id="login_custom_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="login_classname" type="jeus:Field">
+        <binding name="field" value="components.login_classnameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="login_classnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="customLoginService"/>
+        <binding name="elementName" value="literal:classname"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="login_properties" type="jeus:Field">
+        <binding name="field" value="components.login_propertiesField"/>
+        <binding name="label" value="message:domain.services.properties.label"/>
+    </component>
+
+    <component id="login_propertiesField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="customLoginService"/>
+        <binding name="elementName" value="literal:property"/>
+        <binding name="translator" value="bean:securityServicePropertyTranslator"/>
+    </component>
+
+    <component id="callback_handler_classname" type="jeus:Field">
+        <binding name="field" value="components.callback_handler_classnameField"/>
+    </component>
+
+    <component id="callback_handler_classnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="jaasLoginConfig"/>
+        <binding name="elementName" value="literal:callbackHandlerClassname"/>
+    </component>
+
+    <component id="jaas_login_moduleForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="module_classname_column" type="Insert">
+        <binding name="value" value="message:domain.services.jaas.loginmodule.classname.label"/>
+    </component>
+
+    <component id="control_flag_column" type="Insert">
+        <binding name="value" value="message:domain.services.jaas.loginmodule.controlflag.label"/>
+    </component>
+
+    <component id="option_name_column" type="Insert">
+        <binding name="value" value="message:domain.services.jaas.loginmodule.optionname.label"/>
+    </component>
+
+    <component id="option_value_column" type="Insert">
+        <binding name="value" value="message:domain.services.jaas.loginmodule.optionvalue.label"/>
+    </component>
+
+    <component id="eachLoginModule" type="Foreach">
+        <binding name="source" value="loginModules"/>
+        <binding name="value" value="moduleView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="module_classname_value" type="Insert">
+        <binding name="value" value="moduleView.className"/>
+    </component>
+
+    <component id="control_flag_value" type="Insert">
+        <binding name="value" value="moduleView.controlFlag"/>
+    </component>
+
+    <component id="option_name_value" type="Insert">
+        <binding name="value" value="moduleView.optionName"/>
+    </component>
+
+    <component id="option_value_value" type="Insert">
+        <binding name="value" value="moduleView.optionValue"/>
+    </component>
+
+    <component id="moduleDeleteLink" type="jeus:DirectLink">
+        <binding name="listener" value="listeners.onJaasLoginModuleDeleteOk"/>
+        <binding name="parameters" value="moduleView.className"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.resource.delete.confirm', moduleView.className)"/>
+    </component>
+
+    <component id="delete" type="Image">
+        <binding name="image" value="assets.delete"/>
+    </component>
+
+    <component id="jaas_login_module_addForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="jaas_login_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.jaas.login.ok.confirm"/>
+        <binding name="listener" value="listeners.onJaasLoginModuleAddOk"/>
+    </component>
+
+    <component id="jaas_login_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="login_module_classname" type="jeus:Field">
+        <binding name="field" value="components.login_module_classnameField"/>
+		<binding name="required" value="true"/>
+    </component>
+
+    <component id="login_module_classnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="loginModule"/>
+        <binding name="elementName" value="literal:loginModuleClassname"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="control_flag" type="jeus:Field">
+        <binding name="field" value="components.control_flagField"/>
+    </component>
+
+    <component id="control_flagField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="loginModule"/>
+        <binding name="elementName" value="literal:controlFlag"/>
+        <binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@getPropertySelectionModel(loginModule.controlFlagEnumeration)"/>
+    </component>
+
+    <component id="jaas_login_options" type="jeus:Field">
+        <binding name="field" value="components.jaas_login_optionsField"/>
+        <binding name="label" value="message:domain.services.properties.label"/>
+    </component>
+
+    <component id="jaas_login_optionsField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="loginModule"/>
+        <binding name="elementName" value="literal:option"/>
+        <binding name="translator" value="bean:securityServicePropertyTranslator"/>
+    </component>
+
+    <component id="identity_assertionForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.services.idassertion.title"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="identity_assertionTab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'domain.services.default.label','domain.services.custom.label'}, new java.lang.String[]{'identity_assertion_default', 'identity_assertion_custom'})"/>
+     </component>
+
+    <component id="identity_assertion_default" type="Block"/>
+    <component id="identity_assertion_custom" type="Block"/>
+
+    <component id="identity_assertion_defaultTab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'domain.services.id.config.label','domain.services.id.defaultUser.label', 'domain.services.id.customUser.label'}, new java.lang.String[]{'id_config', 'id_defaultUser', 'id_customUser'})"/>
+    </component>
+
+    <component id="id_config" type="Block"/>
+    <component id="id_defaultUser" type="Block"/>
+    <component id="id_customUser" type="Block"/>
+
+    <component id="identity_assertion_config_fileForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="id_config_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.id.config.ok.confirm"/>
+        <binding name="listener" value="listeners.onIdentityAssertionConfigFileOk"/>
+    </component>
+
+    <component id="id_config_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="id_filename" type="jeus:Field">
+        <binding name="field" value="components.id_filenameField"/>
+    </component>
+
+    <component id="id_filenameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="idConfigFile"/>
+        <binding name="elementName" value="literal:filename"/>
+    </component>
+
+    <component id="id_filepath" type="jeus:Field">
+        <binding name="field" value="components.id_filepathField"/>
+    </component>
+
+    <component id="id_filepathField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="idConfigFile"/>
+        <binding name="elementName" value="literal:filepath"/>
+    </component>
+
+    <component id="identity_assertion_default_userForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="id_def_mapper_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.id.default.user.ok.confirm"/>
+        <binding name="listener" value="listeners.onIdentityAssertionDefaultUserOk"/>
+    </component>
+
+    <component id="id_def_mapper_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="cert_attr_type" type="jeus:Field">
+        <binding name="field" value="components.cert_attr_typeField"/>
+    </component>
+
+    <component id="cert_attr_typeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="defUserMapper"/>
+        <binding name="elementName" value="literal:certAttrType"/>
+    </component>
+
+    <component id="attribute_type" type="jeus:Field">
+        <binding name="field" value="components.attribute_typeField"/>
+    </component>
+
+    <component id="attribute_typeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="defUserMapper"/>
+        <binding name="elementName" value="literal:attributeType"/>
+    </component>
+
+    <component id="attribute_value_delimiter" type="jeus:Field">
+        <binding name="field" value="components.attribute_value_delimiterField"/>
+    </component>
+
+    <component id="attribute_value_delimiterField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="defUserMapper"/>
+        <binding name="elementName" value="literal:attributeValueDelimiter"/>
+    </component>
+
+    <component id="identity_assertion_custom_userForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="id_cust_mapper_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.id.custom.user.ok.confirm"/>
+        <binding name="listener" value="listeners.onIdentityAssertionCustomUserOk"/>
+    </component>
+
+    <component id="id_cust_mapper_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="id_custom_user_properies" type="jeus:Field">
+        <binding name="field" value="components.id_custom_user_properiesField"/>
+        <binding name="label" value="message:domain.services.properties.label"/>
+    </component>
+
+    <component id="id_custom_user_properiesField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="custUserMapper"/>
+        <binding name="elementName" value="literal:property"/>
+        <binding name="translator" value="bean:securityServicePropertyTranslator"/>
+    </component>
+
+    <component id="identity_assertion_customForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="id_cust_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.id.custom.ok.confirm"/>
+        <binding name="listener" value="listeners.onIdentityAssertionCustomOk"/>
+    </component>
+
+    <component id="id_cust_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="identity_assertion_custom_classname" type="jeus:Field">
+        <binding name="field" value="components.identity_assertion_custom_classnameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="identity_assertion_custom_classnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="customIdAssertion"/>
+        <binding name="elementName" value="literal:classname"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="identity_assertion_custom_properties" type="jeus:Field">
+        <binding name="field" value="components.identity_assertion_custom_propertiesField"/>
+        <binding name="label" value="message:domain.services.properties.label"/>
+    </component>
+
+    <component id="identity_assertion_custom_propertiesField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="customIdAssertion"/>
+        <binding name="elementName" value="literal:property"/>
+        <binding name="translator" value="bean:securityServicePropertyTranslator"/>
+    </component>
+
+    <component id="credential_mappingForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.services.crdmapping.title"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="credential_mappingTab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'domain.services.default.label','domain.services.custom.label'}, new java.lang.String[]{'credential_mapping_default', 'credential_mapping_custom'})"/>
+    </component>
+
+    <component id="credential_mapping_default" type="Block"/>
+    <component id="credential_mapping_custom" type="Block"/>
+
+    <component id="credential_mapping_defaultForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="def_crd_mapping_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.crd.default.mapping.ok.confirm"/>
+        <binding name="listener" value="listeners.onCredentialMappingDefaultOk"/>
+    </component>
+
+    <component id="def_crd_mapping_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="credential_mapping_customForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="cust_crd_mapping_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.crd.custom.mapping.ok.confirm"/>
+        <binding name="listener" value="listeners.onCredentialMappingCustomOk"/>
+    </component>
+
+    <component id="cust_crd_mapping_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="crd_truststore_path" type="jeus:Field">
+        <binding name="field" value="components.crd_truststore_pathField"/>
+    </component>
+
+    <component id="crd_truststore_pathField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="x509CredentialMapping"/>
+        <binding name="elementName" value="literal:truststorePath"/>
+    </component>
+
+    <component id="crd_truststore_password" type="jeus:Field">
+        <binding name="field" value="components.crd_truststore_passwordField"/>
+    </component>
+
+    <component id="crd_truststore_passwordField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="x509CredentialMapping"/>
+        <binding name="elementName" value="literal:truststorePassword"/>
+    </component>
+
+    <component id="credential_mapping_custom_classname" type="jeus:Field">
+        <binding name="field" value="components.credential_mapping_custom_classnameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="credential_mapping_custom_classnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="customCredentialMapping"/>
+        <binding name="elementName" value="literal:classname"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="credential_mapping_custom_properties" type="jeus:Field">
+        <binding name="field" value="components.credential_mapping_custom_propertiesField"/>
+        <binding name="label" value="message:domain.services.properties.label"/>
+    </component>
+
+    <component id="credential_mapping_custom_propertiesField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="customCredentialMapping"/>
+        <binding name="elementName" value="literal:property"/>
+        <binding name="translator" value="bean:securityServicePropertyTranslator"/>
+    </component>
+
+    <component id="cre_mapping_class_name_column" type="Insert">
+        <binding name="value" value="message:domain.services.custom.classname.label"/>
+    </component>
+
+    <component id="cre_mapping_custom_option_name_column" type="Insert">
+        <binding name="value" value="message:domain.services.custom.optionname.label"/>
+    </component>
+
+    <component id="cre_mapping_custom_option_value_column" type="Insert">
+        <binding name="value" value="message:domain.services.custom.optionvalue.label"/>
+    </component>
+
+    <component id="creMapServiceLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceSecurityDomain_Configuration"/>
+        <binding name="parameters" value="{objectName, 'CREDENTIAL_MAPPING', serviceView.className}"/>
+    </component>
+
+    <component id="eachCreMapService" type="Foreach">
+        <binding name="source" value="customCredentialMappingList"/>
+        <binding name="value" value="serviceView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="eachCreMapOptionName" type="Foreach">
+        <binding name="source" value="serviceView.option"/>
+        <binding name="value" value="optionView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="eachCreMapOptionValue" type="Foreach">
+        <binding name="source" value="serviceView.option"/>
+        <binding name="value" value="optionView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="cre_mapping_class_name_value" type="Insert">
+        <binding name="value" value="serviceView.className"/>
+    </component>
+
+    <component id="cre_mapping_option_name_value" type="Insert">
+        <binding name="value" value="optionView.optionName"/>
+    </component>
+
+    <component id="cre_mapping_option_value_value" type="Insert">
+        <binding name="value" value="optionView.optionValue"/>
+    </component>
+
+    <component id="creMapDeleteLink" type="jeus:DirectLink">
+        <binding name="listener" value="listeners.onCustomCreMapDeleteOk"/>
+        <binding name="parameters" value="serviceView.className"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.resource.delete.confirm', serviceView.className)"/>
+    </component>
+
+    <component id="credential_mapping_tableForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.services.custom.title"/>
+        <binding name="description" value="message:domain.services.custom.description"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="credential_verificationForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.services.crdverification.title"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="credential_verificationTab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'domain.services.default.label','domain.services.custom.label'}, new java.lang.String[]{'credential_verification_default', 'credential_verification_custom'})"/>
+     </component>
+
+    <component id="credential_verification_default" type="Block"/>
+    <component id="credential_verification_custom" type="Block"/>
+
+    <component id="credential_verification_defaultForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="description" value="message:domain.services.crdverification.description"/>
+    </component>
+
+    <component id="cre_veri_class_name_column" type="Insert">
+        <binding name="value" value="message:domain.services.custom.classname.label"/>
+    </component>
+
+    <component id="cre_veri_custom_option_name_column" type="Insert">
+        <binding name="value" value="message:domain.services.custom.optionname.label"/>
+    </component>
+
+    <component id="cre_veri_custom_option_value_column" type="Insert">
+        <binding name="value" value="message:domain.services.custom.optionvalue.label"/>
+    </component>
+
+    <component id="creVerServiceLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceSecurityDomain_Configuration"/>
+        <binding name="parameters" value="{objectName, 'CREDENTIAL_VERIFICATION', serviceView.className}"/>
+    </component>
+
+    <component id="eachCreVerService" type="Foreach">
+        <binding name="source" value="customCredentialVerificationList"/>
+        <binding name="value" value="serviceView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="eachCreVerOptionName" type="Foreach">
+        <binding name="source" value="serviceView.option"/>
+        <binding name="value" value="optionView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="eachCreVerOptionValue" type="Foreach">
+        <binding name="source" value="serviceView.option"/>
+        <binding name="value" value="optionView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="cre_veri_class_name_value" type="Insert">
+        <binding name="value" value="serviceView.className"/>
+    </component>
+
+    <component id="cre_veri_custom_option_name_value" type="Insert">
+        <binding name="value" value="optionView.optionName"/>
+    </component>
+
+    <component id="cre_veri_custom_option_value_value" type="Insert">
+        <binding name="value" value="optionView.optionValue"/>
+    </component>
+
+    <component id="creVerDeleteLink" type="jeus:DirectLink">
+        <binding name="listener" value="listeners.onCustomCrdVarDeleteOk"/>
+        <binding name="parameters" value="serviceView.className"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.resource.delete.confirm', serviceView.className)"/>
+    </component>
+
+    <component id="credential_verification_tableForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.services.custom.title"/>
+        <binding name="description" value="message:domain.services.custom.description"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="def_crd_verification_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.crd.verification.cert.ok.confirm"/>
+        <binding name="listener" value="listeners.onCredentialVerificationDefaultOk"/>
+    </component>
+
+    <component id="def_crd_verification_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="verificationTypeRadioGroup" type="RadioGroup">
+        <binding name="selected" value="verificationType"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="noneRadio" type="jeus:DojoRadio">
+        <binding name="value" value="'none'"/>
+    </component>
+
+    <component id="noneField" type="Insert">
+        <binding name="value" value="message:domain.services.crd.verification.none.label"/>
+    </component>
+
+    <component id="password_verificationRadio" type="jeus:DojoRadio">
+        <binding name="value" value="'passwordVerification'"/>
+    </component>
+
+    <component id="password_verificationField" type="Insert">
+        <binding name="value" value="message:domain.services.crd.verification.password.label"/>
+    </component>
+
+    <component id="jeus_certificate_verificationRadio" type="jeus:DojoRadio">
+        <binding name="value" value="'jeusCertificateVerification'"/>
+    </component>
+
+    <component id="jeus_certificate_verificationField" type="Insert">
+        <binding name="value" value="message:domain.services.crd.verification.certificate.jeus.label"/>
+    </component>
+
+    <component id="credential_verification_customForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="cust_crd_verification_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.crd.verification.custom.ok.confirm"/>
+        <binding name="listener" value="listeners.onCredentialVerificationCustomOk"/>
+    </component>
+
+    <component id="cust_crd_verification_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="credential_verification_custom_classname" type="jeus:Field">
+        <binding name="field" value="components.credential_verification_custom_classnameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="credential_verification_custom_classnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="customCredentialVerification"/>
+        <binding name="elementName" value="literal:classname"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="credential_verification_custom_properties" type="jeus:Field">
+        <binding name="field" value="components.credential_verification_custom_propertiesField"/>
+        <binding name="label" value="message:domain.services.properties.label"/>
+    </component>
+
+    <component id="credential_verification_custom_propertiesField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="customCredentialVerification"/>
+        <binding name="elementName" value="literal:property"/>
+        <binding name="translator" value="bean:securityServicePropertyTranslator"/>
+    </component>
+
+    <component id="subject_validationForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.services.subvalidation.title"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="subject_validationTab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'domain.services.default.label','domain.services.custom.label'}, new java.lang.String[]{'subject_validation_default', 'subject_validation_custom'})"/>
+    </component>
+
+    <component id="subject_validation_default" type="Block"/>
+    <component id="subject_validation_custom" type="Block"/>
+
+    <component id="subject_validation_defaultForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="description" value="message:domain.services.subjectvalidation.description"/>
+    </component>
+
+    <component id="def_sub_class_name_column" type="Insert">
+        <binding name="value" value="message:domain.services.custom.classname.label"/>
+    </component>
+
+    <component id="def_sub_custom_option_name_column" type="Insert">
+        <binding name="value" value="message:domain.services.custom.optionname.label"/>
+    </component>
+
+    <component id="def_sub_custom_option_value_column" type="Insert">
+        <binding name="value" value="message:domain.services.custom.optionvalue.label"/>
+    </component>
+
+    <component id="subValidServiceLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceSecurityDomain_Configuration"/>
+        <binding name="parameters" value="{objectName, 'SUBJECT_VALIDATION', serviceView.className}"/>
+    </component>
+
+    <component id="eachSubValidService" type="Foreach">
+        <binding name="source" value="customSubjectValidationList"/>
+        <binding name="value" value="serviceView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="eachSubValidOptionName" type="Foreach">
+        <binding name="source" value="serviceView.option"/>
+        <binding name="value" value="optionView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="eachSubValidOptionValue" type="Foreach">
+        <binding name="source" value="serviceView.option"/>
+        <binding name="value" value="optionView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="sub_valid_class_name_value" type="Insert">
+        <binding name="value" value="serviceView.className"/>
+    </component>
+
+    <component id="sub_valid_custom_option_name_value" type="Insert">
+        <binding name="value" value="optionView.optionName"/>
+    </component>
+
+    <component id="sub_valid_custom_option_value_value" type="Insert">
+        <binding name="value" value="optionView.optionValue"/>
+    </component>
+
+    <component id="subValidDeleteLink" type="jeus:DirectLink">
+        <binding name="listener" value="listeners.onCustomSubValidDeleteOk"/>
+        <binding name="parameters" value="serviceView.className"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.resource.delete.confirm', serviceView.className)"/>
+    </component>
+
+    <component id="subject_validation_tableForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.services.custom.title"/>
+        <binding name="description" value="message:domain.services.custom.description"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="def_sub_validation_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.sub.valid.default.ok.confirm"/>
+        <binding name="listener" value="listeners.onSubjectValidationDefaultOk"/>
+    </component>
+
+    <component id="def_sub_validation_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="validationTypeRadioGroup" type="RadioGroup">
+        <binding name="selected" value="validationType"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="notusingRadio" type="jeus:DojoRadio">
+        <binding name="value" value="'none'"/>
+    </component>
+
+    <component id="notusingField" type="Insert">
+        <binding name="value" value="message:domain.services.sub.validation.none.label"/>
+    </component>
+
+    <component id="usingRadio" type="jeus:DojoRadio">
+        <binding name="value" value="'use'"/>
+    </component>
+
+    <component id="usingField" type="Insert">
+        <binding name="value" value="message:domain.services.sub.validation.using.label"/>
+    </component>
+
+    <component id="subject_validation_customForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="cust_sub_validation_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.sub.valid.custom.ok.confirm"/>
+        <binding name="listener" value="listeners.onSubjectValidationCustomOk"/>
+    </component>
+
+    <component id="cust_sub_validation_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="subject_validation_custom_classname" type="jeus:Field">
+        <binding name="field" value="components.subject_validation_custom_classnameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="subject_validation_custom_classnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="customSubjectValidation"/>
+        <binding name="elementName" value="literal:classname"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="subject_validation_custom_properties" type="jeus:Field">
+        <binding name="field" value="components.subject_validation_custom_propertiesField"/>
+        <binding name="label" value="message:domain.services.properties.label"/>
+    </component>
+
+    <component id="subject_validation_custom_propertiesField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="customSubjectValidation"/>
+        <binding name="elementName" value="literal:property"/>
+        <binding name="translator" value="bean:securityServicePropertyTranslator"/>
+    </component>
+
+    <component id="auditForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.services.audit.title"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="auditTab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'domain.services.default.label','domain.services.custom.label'}, new java.lang.String[]{'default_audit_service', 'custom_audit_service'})"/>
+    </component>
+
+    <component id="default_audit_service" type="Block"/>
+    <component id="custom_audit_service" type="Block"/>
+
+    <component id="default_audit_serviceForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="def_audit_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.audit.default.ok.confirm"/>
+        <binding name="listener" value="listeners.onDefaultAuditOk"/>
+    </component>
+
+    <component id="def_audit_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="custom_audit_serviceForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="cust_audit_ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.audit.custom.ok.confirm"/>
+        <binding name="listener" value="listeners.onCustomAuditOk"/>
+    </component>
+
+    <component id="cust_audit_cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="audit_class_name_column" type="Insert">
+        <binding name="value" value="message:domain.services.custom.classname.label"/>
+    </component>
+
+    <component id="audit_custom_option_name_column" type="Insert">
+        <binding name="value" value="message:domain.services.custom.optionname.label"/>
+    </component>
+
+    <component id="audit_custom_option_value_column" type="Insert">
+        <binding name="value" value="message:domain.services.custom.optionvalue.label"/>
+    </component>
+
+    <component id="auditLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceSecurityDomain_Configuration"/>
+        <binding name="parameters" value="{objectName, 'AUDIT', serviceView.className}"/>
+    </component>
+
+    <component id="eachAuditService" type="Foreach">
+        <binding name="source" value="customAuditList"/>
+        <binding name="value" value="serviceView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="eachAuditOptionName" type="Foreach">
+        <binding name="source" value="serviceView.option"/>
+        <binding name="value" value="optionView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="eachAuditOptionValue" type="Foreach">
+        <binding name="source" value="serviceView.option"/>
+        <binding name="value" value="optionView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="audit_class_name_value" type="Insert">
+        <binding name="value" value="serviceView.className"/>
+    </component>
+
+    <component id="audit_custom_option_name_value" type="Insert">
+        <binding name="value" value="optionView.optionName"/>
+    </component>
+
+    <component id="audit_custom_option_value_value" type="Insert">
+        <binding name="value" value="optionView.optionValue"/>
+    </component>
+
+    <component id="auditDeleteLink" type="jeus:DirectLink">
+        <binding name="listener" value="listeners.onAuditDeleteOk"/>
+        <binding name="parameters" value="serviceView.className"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.resource.delete.confirm', serviceView.className)"/>
+    </component>
+
+    <component id="custom_audit_tableForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.services.custom.title"/>
+        <binding name="description" value="message:domain.services.custom.description"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="audit_file_name" type="jeus:Field">
+        <binding name="field" value="components.audit_file_nameField"/>
+    </component>
+
+    <component id="audit_file_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="defAuditCfgFile"/>
+        <binding name="elementName" value="literal:filename"/>
+    </component>
+
+    <component id="audit_file_path" type="jeus:Field">
+        <binding name="field" value="components.audit_file_pathField"/>
+    </component>
+
+    <component id="audit_file_pathField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="defAuditCfgFile"/>
+        <binding name="elementName" value="literal:filepath"/>
+    </component>
+
+    <component id="audit_level" type="jeus:Field">
+        <binding name="field" value="components.audit_levelField"/>
+    </component>
+
+    <component id="audit_levelField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="defaultAudit"/>
+        <binding name="elementName" value="literal:auditLevel"/>
+    </component>
+
+    <component id="custom_audit_classname" type="jeus:Field">
+        <binding name="field" value="components.custom_audit_classnameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="custom_audit_classnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="customAudit"/>
+        <binding name="elementName" value="literal:classname"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="custom_audit_properties" type="jeus:Field">
+        <binding name="field" value="components.custom_audit_propertiesField"/>
+        <binding name="label" value="message:domain.services.properties.label"/>
+    </component>
+
+    <component id="custom_audit_propertiesField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="customAudit"/>
+        <binding name="elementName" value="literal:property"/>
+        <binding name="translator" value="bean:securityServicePropertyTranslator"/>
+    </component>
+
+    <component id="customForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.services.custom.title"/>
+        <binding name="description" value="message:domain.services.custom.description"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="customServiceForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="class_name_column" type="Insert">
+        <binding name="value" value="message:domain.services.custom.classname.label"/>
+    </component>
+
+    <component id="custom_option_name_column" type="Insert">
+        <binding name="value" value="message:domain.services.custom.optionname.label"/>
+    </component>
+
+    <component id="custom_option_value_column" type="Insert">
+        <binding name="value" value="message:domain.services.custom.optionvalue.label"/>
+    </component>
+
+    <component id="eachCustomService" type="Foreach">
+        <binding name="source" value="customServices"/>
+        <binding name="value" value="serviceView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="eachOptionName" type="Foreach">
+        <binding name="source" value="serviceView.option"/>
+        <binding name="value" value="optionView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="eachOptionValue" type="Foreach">
+        <binding name="source" value="serviceView.option"/>
+        <binding name="value" value="optionView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="serviceLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceSecurityDomain_Configuration"/>
+        <binding name="parameters" value="{objectName, 'CUSTOM_SERVICE', serviceView.className}"/>
+    </component>
+
+    <component id="class_name_value" type="Insert">
+        <binding name="value" value="serviceView.className"/>
+    </component>
+
+    <component id="custom_option_name_value" type="Insert">
+        <binding name="value" value="optionView.optionName"/>
+    </component>
+
+    <component id="custom_option_value_value" type="Insert">
+        <binding name="value" value="optionView.optionValue"/>
+    </component>
+
+    <component id="serviceDeleteLink" type="jeus:DirectLink">
+        <binding name="listener" value="listeners.onCustomDeleteOk"/>
+        <binding name="parameters" value="serviceView.className"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.resource.delete.confirm', serviceView.className)"/>
+    </component>
+
+    <component id="deleteCreMap" copy-of="delete"/>
+    <component id="deleteCreVeri" copy-of="delete"/>
+    <component id="deleteSubValid" copy-of="delete"/>
+    <component id="deleteAudit" copy-of="delete"/>
+    <component id="deleteCustom" copy-of="delete"/>
+
+    <component id="security_domain_service_custom_classname" type="jeus:Field">
+        <binding name="field" value="components.security_domain_service_custom_classnameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="security_domain_service_custom_classnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="securityDomainCustomService"/>
+        <binding name="elementName" value="literal:classname"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="security_domain_service_custom_properties" type="jeus:Field">
+        <binding name="field" value="components.security_domain_service_custom_propertiesField"/>
+        <binding name="label" value="message:domain.services.properties.label"/>
+    </component>
+
+    <component id="security_domain_service_custom_propertiesField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="securityDomainCustomService"/>
+        <binding name="elementName" value="literal:property"/>
+        <binding name="translator" value="bean:securityServicePropertyTranslator"/>
+    </component>
+
+    <component id="ok" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:domain.services.custom.ok.confirm"/>
+        <binding name="listener" value="listeners.onCustomAddOk"/>
+    </component>
+
+    <component id="cancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+   
+    <bean name="securityServicePropertyTranslator" class="jeus.tool.webadmin.component.translator.SecurityServicePropertyTranslator"/>
+
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+
+    <property name="moduleView"/>
+    <property name="serviceView"/>
+    <property name="optionView"/>
+    <property name="command" persist="session"/>
+    <property name="verificationType" persist="session" initial-value="literal:none"/>
+    <property name="validationType" persist="session" initial-value="literal:none"/>
+    <property name="keystorePasswordAlgorithm" persist="session"/>
+    <property name="keystoreKeypasswordAlgorithm" persist="session"/>
+    <property name="truststorePasswordAlgorithm" persist="session"/>
+    <property name="passwordVerification"/>
+    <property name="jeusVerification"/>
+    <property name="useJacc"/>
+
+</page-specification>

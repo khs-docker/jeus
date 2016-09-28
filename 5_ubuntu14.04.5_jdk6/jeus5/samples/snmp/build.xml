@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<project name="SNMPTest" default="all" basedir=".">
+
+    <property file="../sample.properties"/>
+    <property name="source" value="."/>
+    <property name="build" value="${source}/build"/>
+    <property name="dist" value="${source}/dist"/>
+    <import file="${jeus.home}/samples/common.xml"/>
+    <path id="jeus.classpath">
+        <pathelement location="${java.home}/lib/tools.jar"/>
+    </path>
+
+    <target name="all" depends="clean, init, compile"/>
+
+    <!-- Create the build directory structure used by compile -->
+    <target name="init">
+        <mkdir dir="${build}"/>
+        <mkdir dir="${dist}"/>
+        <copy todir="${build}" file="policy"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${build}"/>
+        <javac srcdir="${source}" destdir="${build}"
+               includes="TestClient.java" classpath="${JEUS_CLASS}"/>
+    </target>
+
+    <!-- Run the example -->
+    <target name="run">
+        <java classname="TestClient" fork="yes" failonerror="true">
+            <sysproperty key="java.naming.factory.initial" value="jeus.jndi.JEUSContextFactory"/>
+            <sysproperty key="java.naming.factory.url.pkgs" value="jeus.jndi.jns.url"/>
+            <sysproperty key="java.security.policy" value="policy"/>
+            <sysproperty key="jeus.baseport" value="${JEUS_BASEPORT}"/>
+            <classpath refid="jeus.libraries" />
+            <classpath>
+                <pathelement path="build"/>
+                <pathelement path="${JEUS_CLASS}"/>
+                <pathelement path="${JMX_CLASS}"/>
+            </classpath>
+            <arg line="9999 127.0.0.1 all"/>
+        </java>
+    </target>
+</project>

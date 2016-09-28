@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.J2EEServer.CreatePage">
+    <inject property="webadminVisit" type="state" object="visit"/>
+    <inject property="nodeControl" type="state" object="NodeControl"/>
+    <inject property="externalService" object="engine-service:external"/>
+	<inject property="jaxbSource" type="state" object="JAXBSource"/>
+    
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="message:dsc.title"/>
+    </component>
+
+    <component id="wizTabPanel" type="jeus:WizardTabPanel">
+        <binding name="tabNames" value="new java.lang.String[]{'create'}"/>
+    </component>
+
+    <component id="create" type="Block"/>
+
+    <component id="createForm" type="jeus:JEUSForm">
+        <binding name="title" value="duplicate ? messages.getMessage('container.duplicate.title') :messages.getMessage('container.create.title')"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="createOk" type="Submit">
+        <binding name="value" value="message:common.label.create"/>
+        <binding name="listener" value="listeners.onCreateOk"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+    <component id="container_name" type="jeus:Field">
+        <binding name="field" value="components.container_nameField"/>
+    </component>
+
+    <component id="container_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="engineContainer"/>
+        <binding name="elementName" value="literal:name"/>
+        <binding name="translator" value="bean:containerNameTranslator"/>
+        <binding name="validators" value="validators:required,$pattern,$containerNameValidator"/>
+    </component>
+    
+    <bean name="pattern" class="org.apache.tapestry.form.validator.Pattern">
+    	<set name="pattern" value="literal:[a-zA-Z0-9]*"/>
+    	<set name="message" value="message:common.exception.0066"/>
+    </bean>
+
+    <component id="id" type="jeus:Field">
+        <binding name="field" value="components.idField"/>
+    </component>
+
+    <component id="idField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="engineContainer"/>
+        <binding name="elementName" value="literal:id"/>
+        <binding name="validators" value="validators:$containerIdValidator"/>
+    </component>
+
+    <component id="baseport" type="jeus:Field">
+        <binding name="field" value="components.baseportField"/>
+    </component>
+
+    <component id="baseportField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="engineContainer"/>
+        <binding name="elementName" value="literal:basePort"/>
+        <binding name="validators" value="validators:$containerBaseportValidator"/>
+    </component>
+
+    <component id="condDuplicate" type="If">
+        <binding name="condition" value="duplicate"/>
+    </component>
+
+    <component id="condEJB" type="If">
+        <binding name="condition" value="engineCommand.type == 'ejb' "/>
+    </component>
+
+    <component id="condWEB" type="If">
+        <binding name="condition" value="engineCommand.type == 'servlet' "/>
+    </component>
+
+    <component id="condJMS" type="If">
+        <binding name="condition" value="engineCommand.type == 'jms' "/>
+    </component>
+
+    <component id="condWS" type="If">
+        <binding name="condition" value="!alreadyExistWSEngine and engineCommand.type == 'ws'"/>
+    </component>
+
+    <component id="condWSNotExist" type="If">
+        <binding name="condition" value="!alreadyExistWSEngine"/>
+    </component>
+
+    <component id="engines" type="Foreach">
+        <binding name="source" value="engineContainer.engineCommand"/>
+        <binding name="value" value="engineCommand"/>
+    </component>
+
+    <component id="ejb_name" type="jeus:Field">
+        <binding name="required" value="true"/>
+        <binding name="label" value="message:container.create.ejb_name.label"/>
+        <binding name="field" value="components.ejb_nameField"/>
+    </component>
+
+    <component id="ejb_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="engineCommand"/>
+        <binding name="elementName" value="literal:name"/>
+		<binding name="translator" value="bean:ejbNameTranslator"/>        
+        <binding name="validators" value="validators:required,$pattern,$ejbNameValidator"/>
+    </component>
+
+    <component id="servlet_name" type="jeus:Field">
+        <binding name="required" value="true"/>
+        <binding name="label" value="message:container.create.servlet_name.label"/>
+        <binding name="field" value="components.servlet_nameField"/>
+    </component>
+
+    <component id="servlet_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="engineCommand"/>
+        <binding name="elementName" value="literal:name"/>
+		<binding name="translator" value="bean:servletNameTranslator"/>        
+        <binding name="validators" value="validators:required,$pattern,$servletNameValidator"/>
+    </component>
+
+    <component id="jms_name" type="jeus:Field">
+        <binding name="required" value="true"/>
+        <binding name="label" value="message:container.create.jms_name.label"/>
+        <binding name="field" value="components.jms_nameField"/>
+    </component>
+
+    <component id="jms_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="engineCommand"/>
+        <binding name="elementName" value="literal:name"/>
+		<binding name="translator" value="bean:jmsNameTranslator"/>        
+        <binding name="validators" value="validators:required,$pattern,$jmsNameValidator"/>
+    </component>
+
+    <component id="ws_name" type="jeus:Field">
+        <binding name="required" value="true"/>
+        <binding name="label" value="message:container.create.ws_name.label"/>
+        <binding name="field" value="components.ws_nameField"/>
+    </component>
+
+    <component id="ws_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="engineCommand"/>
+        <binding name="elementName" value="literal:name"/>
+        <binding name="validators" value="validators:required,$pattern,$wsNameValidator"/>
+    </component>
+
+    <component id="enginesSection" type="jeus:FormSection">
+        <binding name="title" value="message:container.create.engines.title"/>
+        <!--<binding name="description" value="message:container.create.engines.description"/>-->
+    </component>
+
+    <component id="condCreation" type="If">
+        <binding name="condition" value="!duplicate"/>
+    </component>
+
+    <component id="enginesCreationSection" type="jeus:FormSection">
+        <binding name="title" value="message:container.create.engines.title"/>
+        <binding name="description" value="message:container.create.engines.description"/>
+    </component>
+
+<!--
+    <component id="ejb_engine_name" type="jeus:Field">
+        <binding name="field" value="components.ejb_engine_nameField"/>
+        <binding name="label" value="message:container.create.ejb_name.label"/>
+    </component>
+-->
+
+    <component id="ejb_engine_name" type="jeus:Field">
+        <binding name="field" value="components.ejb_engine_nameField"/>
+    </component>
+
+    <component id="ejb_engine_nameField" type="jeus:DojoTextField">
+        <binding name="value" value="ejbEngName"/>
+        <!--<binding name="displayName" value="message:container.create.ejb_name.label"/>-->
+        <binding name="displayName" value="literal:"/>
+		<binding name="translator" value="bean:ejbEngNameTranslator"/>        
+        <binding name="validators" value="validators:$pattern,$ejbEngNameValidator"/>
+    </component>
+
+<!--
+    <component id="ejb_engine_create" type="jeus:Field">
+        <binding name="field" value="components.ejb_engine_createField"/>
+        <binding name="label" value="message:container.create.engine.label"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+-->
+
+    <component id="ejb_engine_createField" type="Checkbox">
+        <binding name="value" value="createEjbEngine"/>
+    </component>
+
+<!--
+    <component id="servlet_engine_name" type="jeus:Field">
+        <binding name="field" value="components.servlet_engine_nameField"/>
+        <binding name="label" value="message:container.create.servlet_name.label"/>
+    </component>
+-->
+
+    <component id="ejb_engine_label" type="Insert">
+        <binding name="value" value="message:container.create.ejb_engine.label"/>
+    </component>
+
+    <component id="servlet_engine_name" type="jeus:Field">
+        <binding name="field" value="components.servlet_engine_nameField"/>
+    </component>
+
+    <component id="servlet_engine_nameField" type="jeus:DojoTextField">
+        <binding name="value" value="servletEngName"/>
+        <!--<binding name="displayName" value="message:container.create.servlet_name.label"/>-->
+        <binding name="displayName" value="literal:"/>
+		<binding name="translator" value="bean:servletEngNameTranslator"/>        
+        <binding name="validators" value="validators:$pattern,$servletEngNameValidator"/>
+    </component>
+
+<!--
+    <component id="servlet_listener_port" type="jeus:Field">
+        <binding name="field" value="components.servlet_listener_portField"/>
+        <binding name="label" value="message:container.create.servlet.listener_port.label"/>
+        <binding name="description" value="message:container.create.servlet.listener_port.description"/>
+    </component>
+-->
+
+    <component id="servlet_engine_label" type="Insert">
+        <binding name="value" value="message:container.create.servlet_engine.label"/>
+    </component>
+
+    <component id="servlet_listener_portField" type="jeus:DojoTextField">
+        <binding name="value" value="listenerPort"/>
+        <binding name="displayName" value="message:container.create.servlet.listener_port.label"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=1"/>
+        <binding name="disabled" value="!createServletEngine"/>
+    </component>
+
+<!--
+    <component id="servlet_listener_id" type="jeus:Field">
+        <binding name="field" value="components.servlet_listener_idField"/>
+        <binding name="label" value="message:container.create.servlet.listener_id.label"/>
+        <binding name="description" value="message:container.create.servlet.listener_id.description"/>
+    </component>
+-->
+
+    <component id="servlet_listener_idField" type="jeus:DojoTextField">
+        <binding name="value" value="listenerId"/>
+        <binding name="displayName" value="message:container.create.servlet.listener_id.label"/>
+        <!--<binding name="validator" value="beans.listenerIdValidator"/>-->
+        <binding name="disabled" value="!createServletEngine"/>
+    </component>
+
+<!--
+    <component id="servlet_engine_create" type="jeus:Field">
+        <binding name="field" value="components.servlet_engine_createField"/>
+        <binding name="label" value="message:container.create.engine.label"/>
+        <binding name="description" value="message:container.create.servlet.description"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+-->
+
+    <component id="servlet_engine_createField" type="Checkbox">
+        <binding name="value" value="createServletEngine"/>
+    </component>
+
+    <component id="servlet_engine_script" type="Script">
+    	<binding name="script" value="literal:/jeus/tool/webadmin/script/Checkbox.script"/>
+    	<binding name="source" value="component:servlet_engine_createField"/>
+    	<binding name="targets" value="{components.servlet_listener_portField, components.servlet_listener_idField}"/>
+    </component>
+
+<!--
+    <component id="jms_engine_name" type="jeus:Field">
+        <binding name="field" value="components.jms_engine_nameField"/>
+        <binding name="label" value="message:container.create.jms_name.label"/>
+    </component>
+-->
+
+    <component id="jms_engine_name" type="jeus:Field">
+        <binding name="field" value="components.jms_engine_nameField"/>
+    </component>
+
+    <component id="jms_engine_nameField" type="jeus:DojoTextField">
+        <binding name="value" value="jmsEngName"/>
+        <!--<binding name="displayName" value="message:container.create.jms_name.label"/>-->
+        <binding name="displayName" value="literal:"/>
+		<binding name="translator" value="bean:jmsEngNameTranslator"/>        
+        <binding name="validators" value="validators:$pattern,$jmsEngNameValidator"/>
+    </component>
+
+<!--
+    <component id="jms_channel_name" type="jeus:Field">
+        <binding name="field" value="components.jms_channel_nameField"/>
+        <binding name="label" value="message:container.create.jms.channel_name.label"/>
+    </component>
+-->
+
+    <component id="jms_engine_label" type="Insert">
+        <binding name="value" value="message:container.create.jms_engine.label"/>
+    </component>
+
+    <component id="jms_channel_nameField" type="jeus:DojoTextField">
+        <binding name="value" value="jmsChannelName"/>
+        <!--<binding name="displayName" value="message:container.create.jms.channel_name.label"/>-->
+        <binding name="disabled" value="!createJmsEngine"/>
+    </component>
+
+    <component id="jms_channel_portField" type="jeus:DojoTextField">
+    	<binding name="value" value="jmsChannelPort"/>
+    	<binding name="displayName" value="message:container.create.jms.channel_port.label"/>
+        <binding name="disabled" value="!createJmsEngine"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+<!--
+    <component id="jms_channel_port" type="jeus:Field">
+        <binding name="field" value="components.jms_channel_portField"/>
+        <binding name="label" value="message:container.create.jms.channel_port.label"/>
+    </component>
+-->
+
+<!--
+    <component id="jms_engine_create" type="jeus:Field">
+        <binding name="field" value="components.jms_engine_createField"/>
+        <binding name="label" value="message:container.create.engine.label"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+-->
+
+    <component id="jms_engine_createField" type="Checkbox">
+        <binding name="value" value="createJmsEngine"/>
+    </component>
+
+    <component id="jms_engine_script" type="Script">
+    	<binding name="script" value="literal:/jeus/tool/webadmin/script/Checkbox.script"/>
+    	<binding name="source" value="component:jms_engine_createField"/>
+    	<binding name="targets" value="{components.jms_channel_nameField, components.jms_channel_portField}"/>
+    </component>
+
+<!--
+    <component id="ws_engine_name" type="jeus:Field">
+        <binding name="field" value="components.ws_engine_nameField"/>
+        <binding name="label" value="message:container.create.ws_name.label"/>
+    </component>
+-->
+
+    <component id="ws_engine_name" type="jeus:Field">
+        <binding name="field" value="components.ws_engine_nameField"/>
+    </component>
+
+    <component id="ws_engine_nameField" type="jeus:DojoTextField">
+        <binding name="value" value="wsEngName"/>
+        <!--<binding name="displayName" value="message:container.create.ws_name.label"/>-->
+        <binding name="displayName" value="literal:"/>
+        <binding name="translator" value="bean:wsEngNameTranslator"/>
+        <binding name="validators" value="validators:$wsEngNameValidator"/>
+    </component>
+
+<!--
+    <component id="ws_engine_create" type="jeus:Field">
+        <binding name="field" value="components.ws_engine_createField"/>
+        <binding name="label" value="message:container.create.engine.label"/>
+        <binding name="renderUnderline" value="true"/>
+    </component>
+-->
+
+    <component id="ws_engine_label" type="Insert">
+        <binding name="value" value="message:container.create.ws_engine.label"/>
+    </component>
+
+<!--
+    <component id="eachEngine" type="Foreach">
+        <binding name="source" value="engineTypes"/>
+        <binding name="value" value="engineType"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+-->
+    <component id="creationColumn" type="Insert">
+        <binding name="value" value="message:container.create.creation.label"/>
+    </component>
+
+    <component id="engineTypeColumn" type="Insert">
+        <binding name="value" value="message:container.create.engine_type.label"/>
+    </component>
+
+    <component id="engineNameColumn" type="Insert">
+        <binding name="value" value="message:container.create.engine_name.label"/>
+    </component>
+
+    <component id="Id_or_NameColumn" type="Insert">
+        <binding name="value" value="message:container.create.ip_or_name.label"/>
+    </component>
+
+    <component id="portColumn" type="Insert">
+        <binding name="value" value="message:container.create.port.label"/>
+    </component>
+
+    <component id="ws_engine_createField" type="Checkbox">
+        <binding name="value" value="createWsEngine"/>
+    </component>
+
+    <bean name="containerNameValidator" class="jeus.tool.webadmin.page.J2EEServer.ContainerNameValidator">
+        <set name="node" value="node"/>
+    </bean>
+
+	<bean name="containerNameTranslator" class="jeus.tool.webadmin.translator.DefaultStringTranslator">
+		<set name="default" value="beans.containerNameValidator.generateName()"/>
+	</bean>
+	
+    <bean name="containerIdValidator" class="jeus.tool.webadmin.page.J2EEServer.ContainerIdValidator">
+        <set name="min" value="0"/>
+        <set name="max" value="127"/>
+        <set name="node" value="node"/>
+        <set name="containerName" value="engineContainer.name"/>
+    </bean>
+
+    <bean name="containerBaseportValidator" class="jeus.tool.webadmin.page.J2EEServer.ContainerBaseportValidator">
+        <set name="min" value="0"/>
+        <set name="node" value="node"/>
+        <set name="containerName" value="engineContainer.name"/>        
+    </bean>
+
+    <bean name="ejbNameValidator" class="jeus.tool.webadmin.page.JeusServiceEngine.NameValidator">
+        <set name="type" value="'ejb'"/>
+        <set name="node" value="node"/>
+    </bean>
+
+    <bean name="ejbNameTranslator" class="jeus.tool.webadmin.translator.DefaultStringTranslator">
+		<set name="default" value="beans.ejbNameValidator.generateName()"/>
+	</bean>
+
+    <bean name="servletNameValidator" class="jeus.tool.webadmin.page.JeusServiceEngine.NameValidator">
+        <set name="type" value="'servlet'"/>
+        <set name="node" value="node"/>
+    </bean>
+
+	<bean name="servletNameTranslator" class="jeus.tool.webadmin.translator.DefaultStringTranslator">
+		<set name="default" value="beans.servletNameValidator.generateName()"/>
+	</bean>
+	
+    <bean name="jmsNameValidator" class="jeus.tool.webadmin.page.JeusServiceEngine.NameValidator">
+        <set name="type" value="'jms'"/>
+        <set name="node" value="node"/>
+    </bean>
+    
+	<bean name="jmsNameTranslator" class="jeus.tool.webadmin.translator.DefaultStringTranslator">
+		<set name="default" value="beans.jmsNameValidator.generateName()"/>
+	</bean>    
+
+    <bean name="wsNameValidator" class="jeus.tool.webadmin.page.JeusServiceEngine.NameValidator">
+         <set name="type" value="'ws'"/>
+        <set name="node" value="node"/>
+    </bean>
+    
+	<bean name="wsNameTranslator" class="jeus.tool.webadmin.translator.DefaultStringTranslator">
+		<set name="default" value="beans.wsNameValidator.generateName()"/>
+	</bean>    
+
+    <bean name="ejbEngNameValidator" class="jeus.tool.webadmin.page.J2EEServer.EngineNameValidator">
+        <set name="type" value="'ejb'"/>
+        <set name="node" value="node"/>
+        <set name="create" value="createEjbEngine"/>
+    </bean>
+    
+	<bean name="ejbEngNameTranslator" class="jeus.tool.webadmin.translator.DefaultStringTranslator">
+		<set name="default" value="beans.ejbEngNameValidator.generateName()"/>
+	</bean>    
+
+    <bean name="servletEngNameValidator" class="jeus.tool.webadmin.page.J2EEServer.EngineNameValidator">
+        <set name="type" value="'servlet'"/>
+        <set name="node" value="node"/>
+        <set name="create" value="createServletEngine"/>
+    </bean>
+    
+	<bean name="servletEngNameTranslator" class="jeus.tool.webadmin.translator.DefaultStringTranslator">
+		<set name="default" value="beans.servletEngNameValidator.generateName()"/>
+	</bean>    
+
+    <bean name="jmsEngNameValidator" class="jeus.tool.webadmin.page.J2EEServer.EngineNameValidator">
+        <set name="type" value="'jms'"/>
+        <set name="node" value="node"/>
+        <set name="create" value="createJmsEngine"/>
+    </bean>
+    
+	<bean name="jmsEngNameTranslator" class="jeus.tool.webadmin.translator.DefaultStringTranslator">
+		<set name="default" value="beans.jmsEngNameValidator.generateName()"/>
+	</bean>    
+
+    <bean name="wsEngNameValidator" class="jeus.tool.webadmin.page.J2EEServer.EngineNameValidator">
+        <set name="type" value="'ws'"/>
+        <set name="node" value="node"/>
+        <set name="create" value="createWsEngine"/>
+    </bean>
+    
+	<bean name="wsEngNameTranslator" class="jeus.tool.webadmin.translator.DefaultStringTranslator">
+		<set name="default" value="beans.wsEngNameValidator.generateName()"/>
+	</bean>      
+
+    <property name="engineContainer" persist="session"/>
+    <property name="duplicatedEngineContainer" persist="session"/>
+    <property name="engineCommand"/>
+
+    <property name="ejbEngName"/>
+    <property name="servletEngName"/>
+    <property name="jmsEngName"/>
+    <property name="wsEngName"/>
+
+    <property name="createEjbEngine" initial-value="false"/>
+    <property name="createServletEngine" initial-value="false"/>
+    <property name="createJmsEngine" initial-value="false"/>
+    <property name="createWsEngine" initial-value="false"/>
+
+    <property name="listenerId"/>
+    <property name="listenerPort"/>
+    <property name="jmsChannelName"/>
+    <property name="jmsChannelPort"/>
+
+    <property name="engineType"/>
+
+</page-specification>

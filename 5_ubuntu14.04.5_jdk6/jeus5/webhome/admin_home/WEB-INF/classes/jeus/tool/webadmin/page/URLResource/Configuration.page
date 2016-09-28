@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.URLResource.ConfigurationPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:URL Resource Configuration"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:new java.lang.String[]{'URLResource_Configuration'}"/>
+    </component>
+
+    <component id="condFound" type="If">
+       <binding name="condition" value="ognl:urlEntry != null"/>
+    </component>
+    <component id="condNotFound" type="If">
+       <binding name="condition" value="ognl:urlEntry == null"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:url.configuration.title"/>
+        <binding name="listener" value="ognl:listeners.onOk"/>
+    </component>
+
+    <component id="form2" type="jeus:JEUSForm">
+        <binding name="title" value="message:url.configuration.title"/>
+        <binding name="useForm" value="ognl:false"/>
+    </component>
+
+    <component id="export_name" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="ognl:urlEntry"/>
+        <binding name="elementName" value="literal:exportName"/>
+    </component>
+
+    <component id="url" type="jeus:Field">
+
+        <binding name="field" value="ognl:components.urlField"/>
+    </component>
+
+    <component id="urlField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="urlEntry"/>
+        <binding name="elementName" value="literal:url"/>
+        <binding name="displayName" value="message:url.url.label"/>
+        <binding name="validators" value="validators:required,$urlValidator"/>
+    </component>
+
+    <component id="no_url" type="Insert">
+        <binding name="value" value="message:url.no.label"/>
+    </component>
+
+    <bean name="urlValidator" class="jeus.tool.webadmin.validator.URLValidator"/>
+
+</page-specification>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<webservices version="1.1" 
+    xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:tns="http://www.tmaxsoft.com/j2eews/SubmitBook">
+    <webservice-description>
+        <webservice-description-name>SubmitBookService</webservice-description-name>
+        <wsdl-file>WEB-INF/wsdl/SubmitBookService.wsdl</wsdl-file>
+        <jaxrpc-mapping-file>WEB-INF/mapping/SubmitBookService-mapping.xml</jaxrpc-mapping-file>
+        <port-component>
+            <port-component-name>SubmitBook</port-component-name>
+            <wsdl-port>tns:SubmitBookPort</wsdl-port>
+            <service-endpoint-interface>sample.datahandleronly.service.SubmitBook</service-endpoint-interface>
+            <service-impl-bean>
+                <servlet-link>SubmitBookService</servlet-link>
+            </service-impl-bean>
+        </port-component>
+    </webservice-description>
+</webservices>

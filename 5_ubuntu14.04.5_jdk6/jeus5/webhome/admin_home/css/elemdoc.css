@@ -1,0 +1,44 @@
+html{
+	overflow-y: auto;
+	overflow-x: hidden;
+	margin: 0;
+	padding: 0;
+}
+
+body{
+    font-family:Verdana;
+    font-size:12px;	
+    margin: 0;
+	padding: 5px;
+}
+
+.elemdoc{
+    border-width:0px 1px 1px 0px;
+    border-color:#AAAAAA;
+    border-style:solid;
+    border-collapse:collapse;
+    width: 100%;
+}
+.elemdoc td{
+    border-width:1px 0px 0px 1px;
+    border-style:solid;
+    border-color:#AAAAAA;
+    padding:5px;
+}
+.definedValues{
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+.definedValues td{
+	border: none;
+	padding: 1px;
+	padding-left: 0;
+}
+.elemdoc_label{
+    font-weight:bold;
+    color:#597FBF;
+    white-space:nowrap;
+    width: 120px;
+}
+

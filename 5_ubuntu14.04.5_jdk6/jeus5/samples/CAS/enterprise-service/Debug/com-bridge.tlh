@@ -1,0 +1,307 @@
+// Created by Microsoft (R) C/C++ Compiler Version 12.00.8168.0 (ae1ddeae).
+//
+// d:\util\java\com-bridge\cas\enterprise-service\debug\com-bridge.tlh
+//
+// C++ source equivalent of Win32 type library com-bridge.dll
+// compiler-generated file created 10/11/01 at 01:05:37 - DO NOT EDIT!
+
+#pragma once
+#pragma pack(push, 8)
+
+#include <comdef.h>
+
+namespace ComBridgeEngine {
+
+//
+// Forward references and typedefs
+//
+
+struct /* coclass */ JavaVirtualMachine;
+struct __declspec(uuid("aa61d5a0-cd5d-11d4-beab-0050da9986ea"))
+/* dual interface */ IJavaVirtualMachine;
+struct /* coclass */ JvmStarter;
+struct __declspec(uuid("561081c0-f883-11d4-beba-0050da9986ea"))
+/* dual interface */ IJvmStarter;
+struct /* coclass */ JavaProxy;
+struct __declspec(uuid("9050f297-4b8e-11d3-ba51-00105a1f1dab"))
+/* dual interface */ IJavaProxy;
+
+//
+// Smart pointer typedef declarations
+//
+
+_COM_SMARTPTR_TYPEDEF(IJavaVirtualMachine, __uuidof(IJavaVirtualMachine));
+_COM_SMARTPTR_TYPEDEF(IJvmStarter, __uuidof(IJvmStarter));
+_COM_SMARTPTR_TYPEDEF(IJavaProxy, __uuidof(IJavaProxy));
+
+//
+// Type library items
+//
+
+struct __declspec(uuid("9050f291-4b8e-11d3-ba51-00105a1f1dab"))
+JavaVirtualMachine;
+    // [ default ] interface IJavaVirtualMachine
+
+struct __declspec(uuid("aa61d5a0-cd5d-11d4-beab-0050da9986ea"))
+IJavaVirtualMachine : IDispatch
+{
+    //
+    // Wrapper methods for error-handling
+    //
+
+    IDispatchPtr GetSystemClassLoader ( );
+    IDispatchPtr FindClass (
+        IDispatch * aClassLoader,
+        _bstr_t className );
+    _variant_t New (
+        IDispatch * aClass,
+        const _variant_t & param1 = vtMissing,
+        const _variant_t & param2 = vtMissing,
+        const _variant_t & param3 = vtMissing,
+        const _variant_t & param4 = vtMissing,
+        const _variant_t & param5 = vtMissing,
+        const _variant_t & param6 = vtMissing,
+        const _variant_t & param7 = vtMissing,
+        const _variant_t & param8 = vtMissing,
+        const _variant_t & param9 = vtMissing,
+        const _variant_t & param10 = vtMissing );
+    _variant_t NewA (
+        IDispatch * aClass,
+        const _variant_t & array );
+    _variant_t NewS (
+        IDispatch * aClass,
+        _bstr_t signature,
+        const _variant_t & param1 = vtMissing,
+        const _variant_t & param2 = vtMissing,
+        const _variant_t & param3 = vtMissing,
+        const _variant_t & param4 = vtMissing,
+        const _variant_t & param5 = vtMissing,
+        const _variant_t & param6 = vtMissing,
+        const _variant_t & param7 = vtMissing,
+        const _variant_t & param8 = vtMissing,
+        const _variant_t & param9 = vtMissing,
+        const _variant_t & param10 = vtMissing );
+    _variant_t NewSA (
+        IDispatch * aClass,
+        _bstr_t signature,
+        const _variant_t & array );
+    IDispatchPtr Cast (
+        IDispatch * pJavaClass,
+        IDispatch * pIJavaProxy );
+    IDispatchPtr GetStatics (
+        IDispatch * pJavaClass );
+
+    //
+    // Raw methods provided by interface
+    //
+
+    virtual HRESULT __stdcall raw_GetSystemClassLoader (
+        IDispatch * * ppIJavaClassLoader ) = 0;
+    virtual HRESULT __stdcall raw_FindClass (
+        IDispatch * aClassLoader,
+        BSTR className,
+        IDispatch * * ppIClass ) = 0;
+    virtual HRESULT __stdcall raw_New (
+        IDispatch * aClass,
+        VARIANT param1,
+        VARIANT param2,
+        VARIANT param3,
+        VARIANT param4,
+        VARIANT param5,
+        VARIANT param6,
+        VARIANT param7,
+        VARIANT param8,
+        VARIANT param9,
+        VARIANT param10,
+        VARIANT * ppIProxy ) = 0;
+    virtual HRESULT __stdcall raw_NewA (
+        IDispatch * aClass,
+        VARIANT array,
+        VARIANT * ppIProxy ) = 0;
+    virtual HRESULT __stdcall raw_NewS (
+        IDispatch * aClass,
+        BSTR signature,
+        VARIANT param1,
+        VARIANT param2,
+        VARIANT param3,
+        VARIANT param4,
+        VARIANT param5,
+        VARIANT param6,
+        VARIANT param7,
+        VARIANT param8,
+        VARIANT param9,
+        VARIANT param10,
+        VARIANT * ppIProxy ) = 0;
+    virtual HRESULT __stdcall raw_NewSA (
+        IDispatch * aClass,
+        BSTR signature,
+        VARIANT array,
+        VARIANT * ppIProxy ) = 0;
+    virtual HRESULT __stdcall raw_Cast (
+        IDispatch * pJavaClass,
+        IDispatch * pIJavaProxy,
+        IDispatch * * ppIProxy ) = 0;
+    virtual HRESULT __stdcall raw_GetStatics (
+        IDispatch * pJavaClass,
+        IDispatch * * ppIProxy ) = 0;
+};
+
+struct __declspec(uuid("a1b3c8e0-f89b-11d4-beba-0050da9986ea"))
+JvmStarter;
+    // [ default ] interface IJvmStarter
+
+struct __declspec(uuid("561081c0-f883-11d4-beba-0050da9986ea"))
+IJvmStarter : IDispatch
+{
+    //
+    // Wrapper methods for error-handling
+    //
+
+    long IsStarted ( );
+    IDispatchPtr StartJvm ( );
+    HRESULT StopJvm ( );
+    HRESULT SetStartupProperty (
+        _bstr_t propertyName,
+        _bstr_t propertyValue );
+    HRESULT RemoveStartupProperty (
+        _bstr_t propertyName );
+    HRESULT SetStartupOption (
+        _bstr_t option,
+        const _variant_t & extra = vtMissing );
+    HRESULT RemoveStartupOption (
+        _bstr_t option );
+    long OptionCount ( );
+    _bstr_t GetOption (
+        long optionIndex );
+    HRESULT SetClasspath (
+        _bstr_t newPath );
+    HRESULT AppendToClasspath (
+        _bstr_t newPathEnd );
+    HRESULT PrependToClasspath (
+        _bstr_t newPathStart );
+    HRESULT SetBootclasspath (
+        _bstr_t newPath );
+    HRESULT AppendToBootclasspath (
+        _bstr_t newPathEnd );
+    HRESULT PrependToBootclasspath (
+        _bstr_t newPathStart );
+    HRESULT ClearStartupSettings ( );
+    HRESULT UseDefaultPathToJvm ( );
+    HRESULT UseJvmFromDefaultJdk ( );
+    HRESULT UseJvmFromDefaultJre ( );
+    HRESULT SetPathToJvm (
+        _bstr_t newPath );
+    _bstr_t GetPathToJvm ( );
+
+    //
+    // Raw methods provided by interface
+    //
+
+    virtual HRESULT __stdcall raw_IsStarted (
+        long * pJvmIsStarted ) = 0;
+    virtual HRESULT __stdcall raw_StartJvm (
+        IDispatch * * ppIJavaVirtualMachine ) = 0;
+    virtual HRESULT __stdcall raw_StopJvm ( ) = 0;
+    virtual HRESULT __stdcall raw_SetStartupProperty (
+        BSTR propertyName,
+        BSTR propertyValue ) = 0;
+    virtual HRESULT __stdcall raw_RemoveStartupProperty (
+        BSTR propertyName ) = 0;
+    virtual HRESULT __stdcall raw_SetStartupOption (
+        BSTR option,
+        VARIANT extra = vtMissing ) = 0;
+    virtual HRESULT __stdcall raw_RemoveStartupOption (
+        BSTR option ) = 0;
+    virtual HRESULT __stdcall raw_OptionCount (
+        long * numberOfOptionsSet ) = 0;
+    virtual HRESULT __stdcall raw_GetOption (
+        long optionIndex,
+        BSTR * theOption ) = 0;
+    virtual HRESULT __stdcall raw_SetClasspath (
+        BSTR newPath ) = 0;
+    virtual HRESULT __stdcall raw_AppendToClasspath (
+        BSTR newPathEnd ) = 0;
+    virtual HRESULT __stdcall raw_PrependToClasspath (
+        BSTR newPathStart ) = 0;
+    virtual HRESULT __stdcall raw_SetBootclasspath (
+        BSTR newPath ) = 0;
+    virtual HRESULT __stdcall raw_AppendToBootclasspath (
+        BSTR newPathEnd ) = 0;
+    virtual HRESULT __stdcall raw_PrependToBootclasspath (
+        BSTR newPathStart ) = 0;
+    virtual HRESULT __stdcall raw_ClearStartupSettings ( ) = 0;
+    virtual HRESULT __stdcall raw_UseDefaultPathToJvm ( ) = 0;
+    virtual HRESULT __stdcall raw_UseJvmFromDefaultJdk ( ) = 0;
+    virtual HRESULT __stdcall raw_UseJvmFromDefaultJre ( ) = 0;
+    virtual HRESULT __stdcall raw_SetPathToJvm (
+        BSTR newPath ) = 0;
+    virtual HRESULT __stdcall raw_GetPathToJvm (
+        BSTR * jvmPath ) = 0;
+};
+
+struct __declspec(uuid("9050f298-4b8e-11d3-ba51-00105a1f1dab"))
+JavaProxy;
+    // [ default ] interface IJavaProxy
+
+struct __declspec(uuid("9050f297-4b8e-11d3-ba51-00105a1f1dab"))
+IJavaProxy : IDispatch
+{
+    //
+    // Wrapper methods for error-handling
+    //
+
+    _variant_t Invoke (
+        _bstr_t name,
+        _bstr_t signature,
+        const _variant_t & param1 = vtMissing,
+        const _variant_t & param2 = vtMissing,
+        const _variant_t & param3 = vtMissing,
+        const _variant_t & param4 = vtMissing,
+        const _variant_t & param5 = vtMissing,
+        const _variant_t & param6 = vtMissing,
+        const _variant_t & param7 = vtMissing,
+        const _variant_t & param8 = vtMissing,
+        const _variant_t & param9 = vtMissing,
+        const _variant_t & param10 = vtMissing );
+    _variant_t InvokeA (
+        _bstr_t name,
+        _bstr_t signature,
+        const _variant_t & array );
+    IDispatchPtr GetJavaClass ( );
+
+    //
+    // Raw methods provided by interface
+    //
+
+    virtual HRESULT __stdcall raw_Invoke (
+        BSTR name,
+        BSTR signature,
+        VARIANT param1,
+        VARIANT param2,
+        VARIANT param3,
+        VARIANT param4,
+        VARIANT param5,
+        VARIANT param6,
+        VARIANT param7,
+        VARIANT param8,
+        VARIANT param9,
+        VARIANT param10,
+        VARIANT * result ) = 0;
+    virtual HRESULT __stdcall raw_InvokeA (
+        BSTR name,
+        BSTR signature,
+        VARIANT array,
+        VARIANT * result ) = 0;
+    virtual HRESULT __stdcall raw_GetJavaClass (
+        IDispatch * * ppIJavaClass ) = 0;
+};
+
+//
+// Wrapper method implementations
+//
+
+#include "d:\util\java\com-bridge\cas\enterprise-service\debug\com-bridge.tli"
+
+} // namespace ComBridgeEngine
+
+#pragma pack(pop)

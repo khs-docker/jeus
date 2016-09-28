@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<java-wsdl-mapping version="1.1" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee  http://www.ibm.com/webservices/xsd/j2ee_jaxrpc_mapping_1_1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <package-mapping>
+        <package-type>com.tmax.webservices.emp.service</package-type>
+        <namespaceURI>urn:EmployeeService</namespaceURI>
+    </package-mapping>
+    <package-mapping>
+        <package-type>com.tmax.webservices.emp.domain</package-type>
+        <namespaceURI>urn:EmployeeService</namespaceURI>
+    </package-mapping>
+    <java-xml-type-mapping>
+        <java-type>com.tmax.webservices.emp.domain.Employee</java-type>
+        <root-type-qname xmlns:typeNS="urn:EmployeeService">typeNS:Employee</root-type-qname>
+        <qname-scope>complexType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>commission</java-variable-name>
+            <xml-element-name>commission</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>deptNo</java-variable-name>
+            <xml-element-name>deptNo</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>empNo</java-variable-name>
+            <xml-element-name>empNo</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>hireDate</java-variable-name>
+            <xml-element-name>hireDate</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>job</java-variable-name>
+            <xml-element-name>job</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>manager</java-variable-name>
+            <xml-element-name>manager</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>name</java-variable-name>
+            <xml-element-name>name</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>salary</java-variable-name>
+            <xml-element-name>salary</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <service-interface-mapping>
+        <service-interface>com.tmax.webservices.emp.service.EmployeeService</service-interface>
+        <wsdl-service-name xmlns:serviceNS="urn:EmployeeService">serviceNS:EmployeeService</wsdl-service-name>
+        <port-mapping>
+            <port-name>EmployeeServiceIFPort</port-name>
+            <java-port-name>EmployeeServiceIFPort</java-port-name>
+        </port-mapping>
+    </service-interface-mapping>
+    <service-endpoint-interface-mapping>
+        <service-endpoint-interface>com.tmax.webservices.emp.service.EmployeeServiceIF</service-endpoint-interface>
+        <wsdl-port-type xmlns:portTypeNS="urn:EmployeeService">portTypeNS:EmployeeServiceIF</wsdl-port-type>
+        <wsdl-binding xmlns:bindingNS="urn:EmployeeService">bindingNS:EmployeeServiceIFSoapBinding</wsdl-binding>
+        <service-endpoint-method-mapping>
+            <java-method-name>addEmployee</java-method-name>
+            <wsdl-operation>addEmployee</wsdl-operation>
+            <wrapped-element/>
+            <method-param-parts-mapping>
+                <param-position>0</param-position>
+                <param-type>com.tmax.webservices.emp.domain.Employee</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:wsdlMsgNS="urn:EmployeeService">wsdlMsgNS:addEmployeeRequest</wsdl-message>
+                    <wsdl-message-part-name>parameters</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+        </service-endpoint-method-mapping>
+        <service-endpoint-method-mapping>
+            <java-method-name>modifyEmployee</java-method-name>
+            <wsdl-operation>modifyEmployee</wsdl-operation>
+            <wrapped-element/>
+            <method-param-parts-mapping>
+                <param-position>0</param-position>
+                <param-type>com.tmax.webservices.emp.domain.Employee</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:wsdlMsgNS="urn:EmployeeService">wsdlMsgNS:modifyEmployeeRequest</wsdl-message>
+                    <wsdl-message-part-name>parameters</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+        </service-endpoint-method-mapping>
+        <service-endpoint-method-mapping>
+            <java-method-name>removeEmployee</java-method-name>
+            <wsdl-operation>removeEmployee</wsdl-operation>
+            <wrapped-element/>
+            <method-param-parts-mapping>
+                <param-position>0</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:wsdlMsgNS="urn:EmployeeService">wsdlMsgNS:removeEmployeeRequest</wsdl-message>
+                    <wsdl-message-part-name>parameters</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+        </service-endpoint-method-mapping>
+        <service-endpoint-method-mapping>
+            <java-method-name>findEmployee</java-method-name>
+            <wsdl-operation>findEmployee</wsdl-operation>
+            <wrapped-element/>
+            <method-param-parts-mapping>
+                <param-position>0</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:wsdlMsgNS="urn:EmployeeService">wsdlMsgNS:findEmployeeRequest</wsdl-message>
+                    <wsdl-message-part-name>parameters</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping>
+                <method-return-value>com.tmax.webservices.emp.domain.Employee</method-return-value>
+                <wsdl-message xmlns:wsdlMsgNS="urn:EmployeeService">wsdlMsgNS:findEmployeeResponse</wsdl-message>
+                <wsdl-message-part-name>parameters</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+        </service-endpoint-method-mapping>
+        <service-endpoint-method-mapping>
+            <java-method-name>findEmployees</java-method-name>
+            <wsdl-operation>findEmployees</wsdl-operation>
+            <wrapped-element/>
+            <wsdl-return-value-mapping>
+                <method-return-value>com.tmax.webservices.emp.domain.Employee[]</method-return-value>
+                <wsdl-message xmlns:wsdlMsgNS="urn:EmployeeService">wsdlMsgNS:findEmployeesResponse</wsdl-message>
+                <wsdl-message-part-name>parameters</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+        </service-endpoint-method-mapping>
+    </service-endpoint-interface-mapping>
+</java-wsdl-mapping>
+

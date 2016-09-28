@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<project name="ejb_beanManaged" default="all" basedir=".">
+
+	<property name="applicationname" value="EJBSamples.ear"/>
+	
+	<!-- set global properties for this build -->
+	<property file="../sample.properties"/>
+	<property name="dist" value="${source}/../build"/>
+
+
+	<target name="all" depends="compile, ear, move"/>
+
+	<!-- Compile ejb classes into the build directory (jar preparation) -->
+	<target name="compile">
+		<ant
+         inheritAll="false"
+         inheritRefs="false"
+         antfile="build.xml"
+         dir="./BeanManaged"
+         target="all"/>
+      <ant
+         inheritAll="false"
+         inheritRefs="false"
+         antfile="build.xml"
+         dir="./ContainerManaged11"
+         target="all"/>
+      <ant
+         inheritAll="false"
+         inheritRefs="false"
+         antfile="build.xml"
+         dir="./ContainerManaged20"
+         target="all"/>
+      <ant
+         inheritAll="false"
+         inheritRefs="false"
+         antfile="build.xml"
+         dir="./StatefulSession"
+         target="all"/>
+      <ant
+         inheritAll="false"
+         inheritRefs="false"
+         antfile="build.xml"
+         dir="./StatelessSession"
+         target="all"/>
+
+	</target>
+
+	<!-- Update ejb jar file or create it if it doesn't exist; including XML
+	deployment descriptors -->
+	<target name="ear" depends="compile">
+	   <mkdir dir="build/META-INF"/>
+	   <copy todir="build/META-INF" file="application.xml"/>
+	   <copy todir="build/META-INF" file="jeus-application-dd.xml"/>
+		<jar jarfile="${applicationname}"
+			basedir="build"
+		   update="yes">
+		</jar>
+	</target>
+</project>

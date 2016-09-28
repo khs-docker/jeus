@@ -1,0 +1,234 @@
+// Created by Microsoft (R) C/C++ Compiler Version 12.00.8168.0 (21485d76).
+//
+// d:\util\java\com-bridge\cas\jeus-services\releaseumindependency\com-bridge.tli
+//
+// Wrapper implementations for Win32 type library com-bridge.dll
+// compiler-generated file created 10/11/01 at 01:08:19 - DO NOT EDIT!
+
+#pragma once
+
+//
+// interface IJavaVirtualMachine wrapper method implementations
+//
+
+inline IDispatchPtr IJavaVirtualMachine::GetSystemClassLoader ( ) {
+    IDispatch * _result;
+    HRESULT _hr = raw_GetSystemClassLoader(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return IDispatchPtr(_result, false);
+}
+
+inline IDispatchPtr IJavaVirtualMachine::FindClass ( IDispatch * aClassLoader, _bstr_t className ) {
+    IDispatch * _result;
+    HRESULT _hr = raw_FindClass(aClassLoader, className, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return IDispatchPtr(_result, false);
+}
+
+inline _variant_t IJavaVirtualMachine::New ( IDispatch * aClass, const _variant_t & param1, const _variant_t & param2, const _variant_t & param3, const _variant_t & param4, const _variant_t & param5, const _variant_t & param6, const _variant_t & param7, const _variant_t & param8, const _variant_t & param9, const _variant_t & param10 ) {
+    VARIANT _result;
+    VariantInit(&_result);
+    HRESULT _hr = raw_New(aClass, param1, param2, param3, param4, param5, param6, param7, param8, param9, param10, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _variant_t(_result, false);
+}
+
+inline _variant_t IJavaVirtualMachine::NewA ( IDispatch * aClass, const _variant_t & array ) {
+    VARIANT _result;
+    VariantInit(&_result);
+    HRESULT _hr = raw_NewA(aClass, array, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _variant_t(_result, false);
+}
+
+inline _variant_t IJavaVirtualMachine::NewS ( IDispatch * aClass, _bstr_t signature, const _variant_t & param1, const _variant_t & param2, const _variant_t & param3, const _variant_t & param4, const _variant_t & param5, const _variant_t & param6, const _variant_t & param7, const _variant_t & param8, const _variant_t & param9, const _variant_t & param10 ) {
+    VARIANT _result;
+    VariantInit(&_result);
+    HRESULT _hr = raw_NewS(aClass, signature, param1, param2, param3, param4, param5, param6, param7, param8, param9, param10, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _variant_t(_result, false);
+}
+
+inline _variant_t IJavaVirtualMachine::NewSA ( IDispatch * aClass, _bstr_t signature, const _variant_t & array ) {
+    VARIANT _result;
+    VariantInit(&_result);
+    HRESULT _hr = raw_NewSA(aClass, signature, array, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _variant_t(_result, false);
+}
+
+inline IDispatchPtr IJavaVirtualMachine::Cast ( IDispatch * pJavaClass, IDispatch * pIJavaProxy ) {
+    IDispatch * _result;
+    HRESULT _hr = raw_Cast(pJavaClass, pIJavaProxy, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return IDispatchPtr(_result, false);
+}
+
+inline IDispatchPtr IJavaVirtualMachine::GetStatics ( IDispatch * pJavaClass ) {
+    IDispatch * _result;
+    HRESULT _hr = raw_GetStatics(pJavaClass, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return IDispatchPtr(_result, false);
+}
+
+//
+// interface IJvmStarter wrapper method implementations
+//
+
+inline long IJvmStarter::IsStarted ( ) {
+    long _result;
+    HRESULT _hr = raw_IsStarted(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline IDispatchPtr IJvmStarter::StartJvm ( ) {
+    IDispatch * _result;
+    HRESULT _hr = raw_StartJvm(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return IDispatchPtr(_result, false);
+}
+
+inline HRESULT IJvmStarter::StopJvm ( ) {
+    HRESULT _hr = raw_StopJvm();
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT IJvmStarter::SetStartupProperty ( _bstr_t propertyName, _bstr_t propertyValue ) {
+    HRESULT _hr = raw_SetStartupProperty(propertyName, propertyValue);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT IJvmStarter::RemoveStartupProperty ( _bstr_t propertyName ) {
+    HRESULT _hr = raw_RemoveStartupProperty(propertyName);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT IJvmStarter::SetStartupOption ( _bstr_t option, const _variant_t & extra ) {
+    HRESULT _hr = raw_SetStartupOption(option, extra);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT IJvmStarter::RemoveStartupOption ( _bstr_t option ) {
+    HRESULT _hr = raw_RemoveStartupOption(option);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline long IJvmStarter::OptionCount ( ) {
+    long _result;
+    HRESULT _hr = raw_OptionCount(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t IJvmStarter::GetOption ( long optionIndex ) {
+    BSTR _result;
+    HRESULT _hr = raw_GetOption(optionIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline HRESULT IJvmStarter::SetClasspath ( _bstr_t newPath ) {
+    HRESULT _hr = raw_SetClasspath(newPath);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT IJvmStarter::AppendToClasspath ( _bstr_t newPathEnd ) {
+    HRESULT _hr = raw_AppendToClasspath(newPathEnd);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT IJvmStarter::PrependToClasspath ( _bstr_t newPathStart ) {
+    HRESULT _hr = raw_PrependToClasspath(newPathStart);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT IJvmStarter::SetBootclasspath ( _bstr_t newPath ) {
+    HRESULT _hr = raw_SetBootclasspath(newPath);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT IJvmStarter::AppendToBootclasspath ( _bstr_t newPathEnd ) {
+    HRESULT _hr = raw_AppendToBootclasspath(newPathEnd);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT IJvmStarter::PrependToBootclasspath ( _bstr_t newPathStart ) {
+    HRESULT _hr = raw_PrependToBootclasspath(newPathStart);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT IJvmStarter::ClearStartupSettings ( ) {
+    HRESULT _hr = raw_ClearStartupSettings();
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT IJvmStarter::UseDefaultPathToJvm ( ) {
+    HRESULT _hr = raw_UseDefaultPathToJvm();
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT IJvmStarter::UseJvmFromDefaultJdk ( ) {
+    HRESULT _hr = raw_UseJvmFromDefaultJdk();
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT IJvmStarter::UseJvmFromDefaultJre ( ) {
+    HRESULT _hr = raw_UseJvmFromDefaultJre();
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline HRESULT IJvmStarter::SetPathToJvm ( _bstr_t newPath ) {
+    HRESULT _hr = raw_SetPathToJvm(newPath);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline _bstr_t IJvmStarter::GetPathToJvm ( ) {
+    BSTR _result;
+    HRESULT _hr = raw_GetPathToJvm(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+//
+// interface IJavaProxy wrapper method implementations
+//
+
+inline _variant_t IJavaProxy::Invoke ( _bstr_t name, _bstr_t signature, const _variant_t & param1, const _variant_t & param2, const _variant_t & param3, const _variant_t & param4, const _variant_t & param5, const _variant_t & param6, const _variant_t & param7, const _variant_t & param8, const _variant_t & param9, const _variant_t & param10 ) {
+    VARIANT _result;
+    VariantInit(&_result);
+    HRESULT _hr = raw_Invoke(name, signature, param1, param2, param3, param4, param5, param6, param7, param8, param9, param10, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _variant_t(_result, false);
+}
+
+inline _variant_t IJavaProxy::InvokeA ( _bstr_t name, _bstr_t signature, const _variant_t & array ) {
+    VARIANT _result;
+    VariantInit(&_result);
+    HRESULT _hr = raw_InvokeA(name, signature, array, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _variant_t(_result, false);
+}
+
+inline IDispatchPtr IJavaProxy::GetJavaClass ( ) {
+    IDispatch * _result;
+    HRESULT _hr = raw_GetJavaClass(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return IDispatchPtr(_result, false);
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+
+<input-symbol key="id"  class="java.lang.String" required="yes"/>
+
+<let key="function">
+    ${id}_get
+</let>
+
+<let key="regist">
+    ${id}_regist
+</let>
+
+<let key="onchange">
+    ${id}_onchange
+</let>
+
+<body>
+        var ${id}_listeners = new Array();
+
+        function ${onchange}(){
+            var value = ${function}();
+
+            for(var i = 0; i &lt; ${id}_listeners.length; i++){
+                ${id}_listeners[i].call(this, value);
+            }
+        }
+
+        function ${regist}(listener){
+             ${id}_listeners[${id}_listeners.length] = listener;
+        }
+
+        function ${function}(){
+            var select = document.getElementById('${id}');
+
+            if(select == null)
+                return null;
+
+            return select.options[select.selectedIndex].value;
+        }
+</body>
+
+</script>

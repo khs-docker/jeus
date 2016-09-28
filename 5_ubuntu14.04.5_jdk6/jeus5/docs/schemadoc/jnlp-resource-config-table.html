@@ -1,0 +1,58 @@
+<html><header><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></header><body><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(1) <b>&lt;jnlp-resource-config&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">JNLPMain.xml의 설정항목중 최상위 element. JNLPServer에서 제공하는 resource에 대한
+            모든 설정을 이 element아래에 작성한다. JNLPMain.xml파일에는 이 element가 반드시 존재한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(2)jnlp-resource+<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(2) 
+		&lt;jnlp-resource-config&gt;
+	<b>&lt;jnlp-resource&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">JNLPServer에서 제공하는 resource에 대한 정보를 제공한다.
+                    resource에 대한 상세한 정보는 이 element아래에 작성된다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Child Elements</i></td><td width="70%" valign="top" style="font-family:Courier New;font-size:12px;">
+		(3)rsc-name<br>
+		(4)rsc-path<br>
+		(5)os-name?<br>
+		(6)arch?<br>
+		(7)locale?<br>
+		(8)version?<br></td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(3) 
+		&lt;jnlp-resource-config&gt;
+	
+		&lt;jnlp-resource&gt;
+	<b>&lt;rsc-name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">JNLPServer에서 제공하는 resource의 이름. client에서는 해당 resource를 요청할 경우 rsc-name을 
+                    URL에 사용한다. 
+                    예) http://localhost:9744/jnlp/HelloJeus/rsc-name</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(4) 
+		&lt;jnlp-resource-config&gt;
+	
+		&lt;jnlp-resource&gt;
+	<b>&lt;rsc-path&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">JNLPServer에서 제공하는 resource 파일에 대한 실제 물리적인 경로정보를 지정한다.
+                    예) &lt;rsc-path&gt;c:\jeus50\webhome\client_home\HelloJeus\HelloJeus.jar&lt;/rsc-path&gt;</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(5) 
+		&lt;jnlp-resource-config&gt;
+	
+		&lt;jnlp-resource&gt;
+	<b>&lt;os-name&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">resource가 고려해야할 os를 지정한다. 이 값이 JVM의 시스템 파라미터 os.name의 prefix라면 
+                    resource를 사용할 수 있다. 만약 이 속성이 지정되어 있지 않다면 모든 OS에서 사용할 수 있다.
+                    이 값은 Java의 시스템 프로퍼티인 os.name과 일치해야 한다. &lt;os-name&gt;, &lt;arch&gt;, &lt;locale&gt; 값을 여러 개 넣을 때는 
+                    공백으로 구별한다. 만약 공백이 값의 일부로 사용되면 공백 앞에 "\"를 넣는다. 예를 들면 "Windows\ 95 Windows\ 2000"는 
+                    "Windows 95"와 "Windows 2000"을 지원한다는 의미이다. 여기서 "95"와 "2000"앞에 공백을 넣기 위해서 "\"가 사용되었다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(6) 
+		&lt;jnlp-resource-config&gt;
+	
+		&lt;jnlp-resource&gt;
+	<b>&lt;arch&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">resource 항목이 사용되어야 하는 하드웨어 구조를 지정한다. 
+                    이 속성 값이 시스템 파라미터 os.arch의 시작부분과 같으면 resource 항목은 사용할 수 있다. 
+                    만약 이 속성이 지정되어 있지 않다면 모든 하드웨어에서 사용할 수 있다.
+                    이 값은 &lt;os-name&gt;과 같은 형식으로 기술한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(7) 
+		&lt;jnlp-resource-config&gt;
+	
+		&lt;jnlp-resource&gt;
+	<b>&lt;locale&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">항목이 특정 지역에서 의존하는 resource임을 지정한다. 
+                    만약 이 값이 지정되어 있으면 resource항목은 지정된 locale 정보를 기본값으로 가지고 있는 JNLP 클라이언트에서만 사용할 수 있다. 
+                    이 값이 지정되어 있지 않으면 모든 클라이언트에서 사용 가능하다.
+                    이 값은 &lt;os-name&gt;과 같은 형식으로 기술한다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table><table cellpadding="4" style="margin-left:1.24cm;width:90%;"><tr bgcolor="#DDDDDD"><td colspan="2" style="font-family:Courier New;font-size:12px;">
+						(8) 
+		&lt;jnlp-resource-config&gt;
+	
+		&lt;jnlp-resource&gt;
+	<b>&lt;version&gt;</b></td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Description</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">이 자원의 버전을 지정한다. 클라이언트 시스템이 원하는 버전과 일치할 경우에만 이 자원을 사용할 수 있고 
+                    지정된 값이 없는 경우 모든 클라이언트 시스템에서 사용 가능하다.</td></tr><tr><td width="30%" align="left" valign="top" style="font-family:Times New Roman;font-size:14px;"><i>Value Type</i></td><td width="70%" valign="top" style="font-family:Times New Roman;font-size:12px;">token</td></tr></table></body></html>

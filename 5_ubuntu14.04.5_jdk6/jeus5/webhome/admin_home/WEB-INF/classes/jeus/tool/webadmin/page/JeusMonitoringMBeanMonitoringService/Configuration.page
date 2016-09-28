@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusMonitoringMBeanMonitoringService.ConfigurationPage">
+    <inject property="webadminVisit" type="state" object="visit"/>
+   
+    <component id="popupMainBorder" type="jeus:PopupMainBorder">
+        <binding name="title" value="literal:Result"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="(statisticCheck) ? new java.lang.String[]{'JeusMonitoringMBeanMonitoringService_Configuration', 'JeusMonitoringMBeanMonitoringService_Statistics'} : new java.lang.String[]{'JeusMonitoringMBeanMonitoringService_Configuration'}"/>
+    </component>
+
+    <component id="informationForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:mmo.configure.mbean.info"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="node_name" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.configure.mbean.node.name"/>
+        <binding name="value" value="nodeName"/>
+    </component>
+
+    <component id="mbean_name" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.overview.mbean.objectname"/>
+        <binding name="value" value="objectName"/>
+    </component>
+
+    <component id="className" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.configure.mbean.classname"/>
+        <binding name="value" value="className"/>
+    </component>
+
+    <component id="description" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.configure.mbean.description"/>
+        <binding name="value" value="description"/>
+    </component>
+
+    <component id="config_tabpanel" type="jeus:InnerTabPanel">
+        <binding name="model" value="configTabModel"/>
+    </component>
+
+    <component id="attributeForm" type="jeus:JEUSForm">
+        <binding name="subform" value="ognl:true"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="attributeTable" type="jeus:JEUSTable">
+        <binding name="source" value="ognl:attributeList"/>
+        <binding name="columns" value="literal:mmo_configure_mbean_attribute_name:name, mmo.configure.mbean.access:access, mmo.configure.mbean.attributeType:type, mmo.configure.mbean.value:valueForField"/>
+        <binding name="row" value="ognl:currentAttributeStats"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+        <binding name="showCustomize" value="false"/>
+    </component>
+
+    <component id="attributeLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusMonitoringMBeanMonitoringService_Control"/>
+        <binding name="parameters" value="{currentAttributeStats.attributeObjectName.canonicalName, currentAttributeStats}"/>
+    </component>
+
+    <component id="attributeName" type="Insert">
+        <binding name="value" value="currentAttributeStats.name"/>
+    </component>
+
+    <component id="operationForm" type="jeus:JEUSForm">
+        <binding name="subform" value="ognl:true"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="operationTable" type="jeus:JEUSTable">
+        <binding name="source" value="ognl:operationList"/>
+        <binding name="columns" value="literal:mmo_configure_mbean_operation_name:name, mmo.configure.mbean.type:type, mmo.configure.mbean.impact:impact, mmo.configure.mbean.paramNum:paramNumber"/>
+        <binding name="row" value="ognl:currentOperationStats"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+        <binding name="showCustomize" value="false"/>
+    </component>
+
+    <component id="operationLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusMonitoringMBeanMonitoringService_Control"/>
+        <binding name="parameters" value="{currentOperationStats.operationObjectName.canonicalName, currentOperationStats}"/>
+    </component>
+
+    <component id="operationName" type="Insert">
+        <binding name="value" value="currentOperationStats.name"/>
+    </component>
+
+    <component id="notificationForm" type="jeus:JEUSForm">
+        <binding name="subform" value="ognl:true"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="notificationTable" type="jeus:JEUSTable">
+        <binding name="source" value="ognl:notificationList"/>
+        <binding name="columns" value="literal:mmo.configure.mbean.name:name, mmo.configure.mbean.description:description, mmo.configure.mbean.type:notifTypes"/>
+        <binding name="row" value="ognl:currentNotificationStats"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+        <binding name="showCustomize" value="false"/>
+    </component>
+
+    <property name="nodeName" persist="session"/>
+
+    <property name="currentOperationStats"/>
+    <property name="currentAttributeStats"/>
+    <property name="currentNotificationStats"/>
+
+    <asset name="form_css" path="context:/css/form.css"/>
+
+</page-specification>

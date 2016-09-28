@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.AppClientModule.ConfigurationPage">
+	<inject property="jaxbSource" type="state" object="JAXBSource"/>
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Application Client Module Configuration"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@APP_CLIENT_MODULE_NAMES"/>
+        <binding name="subtabNames" value="(jeusClientDdContent == null) ? {'application_client'} : {'jeus_client_dd','application_client'}"/>
+    </component>
+
+    <component id="jeus_client_dd" type="Block"/>
+
+    <component id="jeus_client_ddForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:client.jeus_client_dd.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="jeus_client_ddContent" type="InsertText">
+        <binding name="value" value="jeusClientDdContent"/>
+    </component>
+
+    <component id="application_client" type="Block"/>
+
+    <component id="application_clientForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:client.application_client.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="application_clientContent" type="InsertText">
+        <binding name="value" value="applicationClientContent"/>
+    </component>
+
+    <inject property="webadminVisit" type="state" object="visit"/>
+
+</page-specification>

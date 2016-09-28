@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--
+	JAXR Predefined Enumerations schema.  Version 0.1 July 5, 203
+	
+	Spec: This section defines the pre-defined enumerations used by the JAXR API.
+	      These enumerations are defined as Concept hierarchies
+	      (a ClassificationScheme and a set of child Concepts).
+-->
+	<xsd:element name="predefinedEnumerations">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="enumClassificationScheme" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="enumClassificationScheme">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="enumConcept" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="id"			type="xsd:string" use="required"/>
+			<xsd:attribute name="name"			type="xsd:string" use="required"/>
+			<xsd:attribute name="description"	type="xsd:string" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="enumConcept">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="enumConcept" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="id"		type="xsd:string" use="required"/>
+			<xsd:attribute name="name"		type="xsd:string" use="required"/>
+			<xsd:attribute name="parent"	type="xsd:string" use="required"/>
+			<xsd:attribute name="value"		type="xsd:string" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="namePattern">
+		<xsd:complexType mixed="true"/>
+	</xsd:element>
+</xsd:schema>

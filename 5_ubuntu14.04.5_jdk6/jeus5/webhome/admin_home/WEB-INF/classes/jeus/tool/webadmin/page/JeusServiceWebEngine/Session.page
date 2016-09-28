@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceWebEngine.SessionPage">
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Session Configuration"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@JEUSSERVICE_WEBENGINE_NAMES"/>
+        <binding name="subtabNames" value="ognl:{'general', 'p2p', 'central'}"/>
+    </component>
+
+    <component id="general" type="Block"/>
+    <component id="p2p" type="Block"/>
+    <component id="p2p_general" type="Block"/>
+    <component id="p2p_file_db" type="Block"/>
+    <component id="p2p_backup" type="Block"/>
+    <component id="central" type="Block"/>
+    
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:wec.session.general.title"/>
+        <binding name="listener" value="ognl:listeners.onGeneralOk"/>
+    </component>
+
+    <component id="session_routing" type="jeus:Field">
+        <binding name="field" value="ognl:components.session_routingField"/>
+    </component>
+
+    <component id="session_routingField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:sessionCluster"/>
+        <binding name="elementName" value="literal:sessionRouting"/>
+    </component>
+
+    <component id="shared" type="jeus:Field">
+        <binding name="field" value="ognl:components.sharedField"/>
+    </component>
+
+    <component id="sharedField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:sessionCluster"/>
+        <binding name="elementName" value="literal:shared"/>
+    </component>
+
+    <component id="p2pForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:wec.session.p2p.title"/>
+        <binding name="useForm" value="ognl:false"/>
+    </component>
+
+    <component id="condP2P" type="If">
+        <binding name="condition" value="ognl:p2PAvailable"/>
+    </component>
+
+    <component id="condCentral" type="If">
+        <binding name="condition" value="ognl:!p2PAvailable or setSessionServer"/>
+    </component>
+
+    <component id="p2p_warning" type="Insert">
+        <binding name="value" value="message:common.exception.0036"/>
+    </component>
+
+    <component id="condP2P2" type="If">
+        <binding name="condition" value="ognl:!centralAvailable"/>
+    </component>
+
+    <component id="condCentral2" type="If">
+        <binding name="condition" value="ognl:centralAvailable and setSessionManager"/>
+    </component>
+
+    <component id="central_warning" type="Insert">
+        <binding name="value" value="message:common.exception.0037"/>
+    </component>         
+
+    <component id="NotcondCentralManager" type="If">
+        <binding name="condition" value="ognl:!setSessionManager"/>
+    </component>
+
+    <component id="centralManager_warning" type="Insert">
+        <binding name="value" value="message:common.exception.0036_1"/>
+    </component>
+
+    <component id="p2p_tab" type="jeus:InnerTabPanel">
+        <binding name="model" value="ognl:new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'wec.session.p2p.file_db.label', 'wec.session.p2p.backup.label'}, new java.lang.String[]{'p2p_file_db','p2p_backup'})"/>
+    </component>
+
+    <component id="p2p_generalForm" type="jeus:JEUSForm">
+        <binding name="listener" value="ognl:listeners.onP2PGeneralOk"/>
+        <binding name="refresh" value="ognl:listeners.onP2PGeneralReset"/>
+    </component>
+
+    <component id="use_nio" type="jeus:Field">
+        <binding name="field" value="ognl:components.use_nioField"/>
+    </component>
+
+    <component id="use_nioField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:sessionRouter"/>
+        <binding name="elementName" value="literal:useNio"/>
+    </component>
+
+    <component id="p2p_file_dbForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="file_db_ok" type="jeus:ConfirmSubmit">
+        <binding name="label" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:JEUSForm.ok.confirm"/>
+        <binding name="listener" value="ognl:listeners.onP2PFileDBOk"/>
+    </component>
+
+    <component id="file_db_reset" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:session.config.reset.label"/>
+        <binding name="message" value="message:JEUSForm.release.confirm"/>
+        <binding name="listener" value="ognl:listeners.onP2PFileDBReset"/>
+    </component>
+
+    <component id="startup_clear_to" type="jeus:Field">
+        <binding name="field" value="ognl:components.startup_clear_toField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="startup_clear_toField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="fileDb"/>
+        <binding name="elementName" value="literal:startupClearTo"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="path" type="jeus:Field">
+        <binding name="field" value="ognl:components.pathField"/>
+    </component>
+
+    <component id="pathField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:fileDb"/>
+        <binding name="elementName" value="literal:path"/>
+    </component>
+
+    <component id="passivation_to" type="jeus:Field">
+        <binding name="field" value="ognl:components.passivation_toField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="passivation_toField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="fileDb"/>
+        <binding name="elementName" value="literal:passivationTo"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="min_hole" type="jeus:Field">
+        <binding name="field" value="ognl:components.min_holeField"/>
+    </component>
+
+    <component id="min_holeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="fileDb"/>
+        <binding name="elementName" value="literal:minHole"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="packing_rate" type="jeus:Field">
+        <binding name="field" value="ognl:components.packing_rateField"/>
+    </component>
+
+    <component id="packing_rateField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="fileDb"/>
+        <binding name="elementName" value="literal:packingRate"/>
+        <binding name="translator" value="translator:number2,valueType=float"/>
+        <binding name="validators" value="validators:min=0.0,max=1.0"/>
+    </component>
+
+    <component id="p2p_backupForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="backup_ok" type="jeus:ConfirmSubmit">
+        <binding name="label" value="message:JEUSForm.ok.label"/>
+        <binding name="message" value="message:JEUSForm.ok.confirm"/>
+        <binding name="listener" value="ognl:listeners.onP2PBackupOk"/>
+    </component>
+
+    <component id="backup_reset" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:session.config.reset.label"/>
+        <binding name="message" value="message:JEUSForm.release.confirm"/>
+        <binding name="listener" value="ognl:listeners.onP2PBackupReset"/>
+    </component>
+
+    <component id="node_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.node_nameField"/>
+    </component>
+
+    <component id="node_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:backup"/>
+        <binding name="elementName" value="literal:nodeName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="backup_servlet_engine_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.backup_servlet_engine_nameField"/>
+    </component>
+
+    <component id="backup_servlet_engine_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:backup"/>
+        <binding name="elementName" value="literal:servletEngineName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="container_baseport" type="jeus:Field">
+        <binding name="field" value="ognl:components.container_baseportField"/>
+    </component>
+
+    <component id="container_baseportField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:backup"/>
+        <binding name="elementName" value="literal:containerBasePort"/>
+        <binding name="translator" value="translator:number2"/>
+    </component>
+
+    <component id="centralForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:wec.session.central.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="central_ok" type="jeus:ConfirmSubmit">
+        <binding name="label" value="message:session.config.ok.label"/>
+        <binding name="message" value="message:JEUSForm.ok.confirm"/>
+        <binding name="listener" value="ognl:listeners.onCentralOk"/>
+    </component>
+
+    <component id="central_reset" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:session.config.reset.label"/>
+        <binding name="message" value="message:JEUSForm.release.confirm"/>
+        <binding name="listener" value="ognl:listeners.onCentralReset"/>
+    </component>
+
+    <component id="server_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.server_nameField"/>
+    </component>
+
+    <component id="server_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionServer"/>
+        <binding name="elementName" value="literal:serverName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>                             
+
+    <component id="connect_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.connect_timeoutField"/>
+        <binding name="unit" value="message:common.unit.minutes"/>
+    </component>
+
+    <component id="connect_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionServer"/>
+        <binding name="elementName" value="literal:connectTimeout"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="read_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.read_timeoutField"/>
+        <binding name="unit" value="message:common.unit.minutes"/>
+    </component>
+
+    <component id="read_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionServer"/>
+        <binding name="elementName" value="literal:readTimeout"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="backup_server_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.backup_server_nameField"/>
+    </component>
+
+    <component id="backup_server_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionServer"/>
+        <binding name="elementName" value="literal:backupServerName"/>
+    </component>
+  
+</page-specification>

@@ -1,0 +1,14 @@
+JEUS (Java Enterprise User Solution) Release JEUS5.x
+TmaxSoft Co., Ltd. (hereafter, TmaxSoft) End-User License Agreement
+
+Product : JEUS
+
+This is a legal agreement between you (either an individual or an company) and TmaxSoft, Incorporated.  By opening the sealed software package and/or by using the software, you agree to be bound by the terms of this agreement.
+
+TmaxSoft License
+1.  Grant of License:  This TmaxSoft License Agreement ("License") permits you to use one copy of the TmaxSoft product JEUS, on any single computer, provided the software is in use on only one computer at any one time.  If this package is a license pack, you may make and use additional copies of the software up to the number of licensed copies authorized.  If you have multiple licenses for the software, then at any time you may have as many copies of the software in use as you have licenses.
+  The software is "in use" on a computer when it is loaded into the temporary memory (i.e., RAM) or installed into the permanent memory (e.g., hard disk, CD-ROM, or other storage devices) of that computer, except that a copy installed on a network server for the sole purpose of distribution to other computers is not "in use".  If the anticipated number of users of the software will exceed the number of applicable licenses, then you must have a reasonable mechanism or process in place to ensure that the number of persons using the software concurrently does not exceed the number of licenses.
+  
+2.  Copyright:  The software (including any images, "applets," photographs, animations, video, audio, music and text incorporated into the software) is owned by TmaxSoft or its suppliers and international treaty provisions. Therefore, you must treat the software like any other copyrighted materials (e.g., a book or musical recording) except that you may either (a) make one copy of the software solely for backup or archival purposes, or (b) transfer the software to a single hard disk provided you keep the original solely for backup or archival purposes.  You may not copy the printed materials accompanying the software, nor print copies of any user documentation provided in "online" or electronic form.
+
+3.  Other restrictions: This license is your proof of license to exercise the rights granted herein and must be retained by you. You may not rent, lease, or transfer your rights under this license on a permanent basis provided you transfer this license, the software, and all accompanying printed materials, retain no copies, and the recipient agrees to the terms of this license. You may not reverse engine, decompile, or disassemble the software, except to the extent that the foregoing restriction is expressly prohibited by applicable law.

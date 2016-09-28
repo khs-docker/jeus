@@ -1,0 +1,21 @@
+<HTML>
+	<HEAD>
+		<TITLE>JEUS WEB Manager Guide</TITLE>
+		<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+	<script language="javascript">
+	    var mainSrc = "main.htm";
+
+		var query = location.search;
+		if(query != null && query.length > 1){
+			mainSrc = "main.htm"+ query ;
+		}
+
+	</script>
+	</HEAD>
+    <script language="javascript">
+        document.write("	<FRAMESET cols=\"250,*\" frameborder=\"YES\" >");
+        document.write("		<FRAME src=\"toc.htm\" name=\"toc\" >");
+        document.write("		<FRAME src=\""+mainSrc+"\" name=\"main\" >");
+        document.write("	</FRAMESET>");
+    </script>
+</HTML>

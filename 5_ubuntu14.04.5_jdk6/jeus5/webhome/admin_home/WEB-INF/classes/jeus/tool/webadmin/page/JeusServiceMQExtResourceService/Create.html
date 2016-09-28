@@ -1,0 +1,72 @@
+<html jwcid="mainBorder" >
+    <span jwcid="wizTabPanel">
+        <span jwcid="mqresource">
+            <script jwcid="mqresource_script"/>
+            <form jwcid="mqresourceForm">
+                <span jwcid="mq_vendor">
+                    <input jwcid="mq_vendorField" onChange="onChangeVendor(mqresource_listField, this.options[selectedIndex].value)"/>
+                </span>
+                <span jwcid="mqresource_list">
+                    <input jwcid="mqresource_listField" style="width:100%;"/>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="mqresourceNext" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+        </span>
+        <span jwcid="properties">
+            <form jwcid="propertiesForm">
+                <span jwcid="vendor"/>
+                <span jwcid="choose">
+                    <span jwcid="whenOtherVendor">
+                        <span jwcid="mq_other_class_name">
+                            <input jwcid="mq_other_class_nameField" style="width:70%;"/>
+                        </span>
+                    </span>
+                    <span jwcid="otherwise">
+                        <span jwcid="mq_factory_class_name"/>
+                    </span>
+                </span>
+                <span jwcid="mq_resource_type"/>
+                <span jwcid="export_name">
+                    <input jwcid="export_nameField"/>
+                </span>
+                <span jwcid="condQueueType">
+                    <span jwcid="queue">
+                        <input jwcid="queueField"/>
+                    </span>
+                </span>
+                <span jwcid="condQueueManager">
+                    <span jwcid="queue_manager">
+                        <input jwcid="queue_managerField"/>
+                    </span>
+                </span>
+                <span jwcid="condTopicType">
+                    <span jwcid="topic">
+                        <input jwcid="topicField"/>
+                    </span>
+                </span>
+                <span jwcid="additional_properties">
+                    <input jwcid="additional_propertiesField" style="width:98%;" rows="10" nowrap="true"/>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="propertiesNext" class="form_button" style="width:100px; float:right;"/>
+                    <input jwcid="propertiesPrevious" class="form_button" style="width:100px; float:left;"/>
+                </div>
+            </form>
+        </span>
+        <span jwcid="create">
+            <span jwcid="createForm">
+                <span jwcid="condBooted">
+                    <span jwcid="bind_now">
+                        <input jwcid="bind_nowField"/>
+                    </span>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="createOk" class="form_button" style="width:100px; float:right;"/>
+                    <input jwcid="createPrevious" class="form_button" style="width:100px; float:left;"/>
+                </div>
+            </span>
+        </span>
+    </span>
+</html>

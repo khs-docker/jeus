@@ -1,0 +1,31 @@
+<html jwcid="shell">
+    <span jwcid="condAvailable">
+        <body jwcid="@Body" class="tundra">
+            <script type="text/javascript" src="/webadmin/js/JeusDojo/release/dojo/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+            <script type="text/javascript" src="/webadmin/js/JeusDojo/release/dojo/dojo/jeus.js"/>
+            <script type="text/javascript">
+                dojo.require("dojo.parser");
+                dojo.require("dijit.layout.ContentPane");
+                dojo.require("dijit.layout.SplitContainer");
+            </script>
+            <div class="navigation">
+            </div>
+            <div dojoType="dijit.layout.SplitContainer" orientation="vertical" sizerWidth="4" style="width: 100%; height: 100%; padding: 0; margin: 0; border: 0;">
+                <div dojoType="dijit.layout.ContentPane" sizeMin="50" sizeShare="50" style="border: 1px solid #bfbfbf;">
+                    <iframe jwcid="logger" id="logger" name="main" frameborder="0"></iframe>
+                </div>
+                <div dojoType="dijit.layout.ContentPane" sizeMin="50" sizeShare="50" style="border: 1px solid #bfbfbf;">
+                    <iframe jwcid="handler" id="handler" name="main" frameborder="0"></iframe>
+                </div>
+            </div>
+        </body>
+    </span>
+    <span jwcid="condUnavailable">
+        <body style="margin:0px;">
+            <div class="accessTime">
+                <span jwcid="@Insert" value="message:MainBorder.lastAccessTime"/>:<span jwcid="@Insert" value="ognl:time"/>
+            </div>
+            <img jwcid="logo"/>
+        </body>
+    </span>
+</html>

@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script language="JavaScript">
+            window.onload = function(){
+                var top;
+
+                if(window.opener){
+                    top = window.opener.top;
+                }else
+                    top = window.top;
+
+                top.location.href="/webadmin/app?page=Login&service=page";
+
+                if(window.opener){
+                    window.close();
+                }
+            }
+        </script>
+    </head>
+    <body></body>
+</html>

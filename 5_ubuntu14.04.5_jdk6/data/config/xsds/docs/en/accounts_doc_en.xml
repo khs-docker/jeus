@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description>                  
+    <text key="userType.group"><![CDATA[
+                        [Description]: This element defines group identify on related user. It defines group in which user belongs to.
+										At this time, group should be defined in &lt;groups>&lt;group>&lt;name>&lt;/name>&lt;/group>&lt;/groups>. 
+                    ]]>                  
+    </text>
+                     
+    <text key="accounts"><![CDATA[
+                        [Description]: This element is configuration on account. Within it, users and groups can be defined.
+            ]]>                  
+    </text>
+                     
+    <text key="usersType.user"><![CDATA[
+                        [Description]: This element defines User.
+                    ]]>                  
+    </text>
+                     
+    <text key="userType.name"><![CDATA[
+                        [Description]: This element defines user name on related User. This should be unique as "primary" identify.
+                    ]]>                  
+    </text>
+                     
+    <text key="groupType.subgroup"><![CDATA[
+                        [Description]: It defines subgroup in which group belongs to.
+										At this time, group should be defined in &lt;groups>&lt;group>&lt;name>&lt;/name>&lt;/group>&lt;/groups>.
+                    ]]>                  
+    </text>
+                     
+    <text key="accountsType.groups"><![CDATA[                                [Description]: Define Groups.                    ]]>                  
+    </text>
+                     
+    <text key="userType.description"><![CDATA[
+                        [Description]: Explaination on User.
+                        [Value Description]: Temporary Explaination Statement 
+                        [Example]: &lt;description>A really nice guy!&lt;/description>
+                    ]]>                  
+    </text>
+                     
+    <text key="userType.password"><![CDATA[
+                            [Description]: This element configures Password on User.
+                    ]]>                  
+    </text>
+                     
+    <text key="groupsType.group"><![CDATA[
+                        [Description]: This element defines Group.
+                    ]]>                  
+    </text>
+                     
+    <text key="accountsType.users"><![CDATA[
+                                [Description]: This element defines users.
+                    ]]>                  
+    </text>
+                     
+    <text key="groupType.name"><![CDATA[
+                        [Description]: This deines group name on related Group. This should be unique as "primary" identify. 
+                    ]]>                  
+    </text>
+                     
+    <text key="groupType.description"><![CDATA[
+                        [Description]: Explaination on Group.
+                        [Value Description]: Temporary Explaination Statement 
+                    ]]>                  
+    </text>
+ </description>

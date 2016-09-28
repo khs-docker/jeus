@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp-resource-config xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <jnlp-resource>
+        <rsc-name>HelloJeus/HelloJeus.jar</rsc-name>
+        <os-name/>
+	<arch/>
+	<locale/>
+	<version/>
+	<rsc-path>HelloJeus/HelloJeus.jar</rsc-path>
+    </jnlp-resource>
+    <jnlp-resource>
+        <rsc-name>HelloJeus/HelloJeus.jnlp</rsc-name>
+        <os-name/>
+	<arch/>
+	<locale/>
+	<version/>
+	<rsc-path>HelloJeus/HelloJeus.jnlp</rsc-path>
+   </jnlp-resource>
+   <jnlp-resource>
+        <rsc-name>HelloJeus.jar</rsc-name>
+        <rsc-path>Update/HelloJeus1.0.jar</rsc-path>
+        <version>1.0</version>
+    </jnlp-resource>
+    <jnlp-resource>
+        <rsc-name>HelloJeus.jar</rsc-name>
+        <rsc-path>Update/HelloJeus2.0.jar</rsc-path>
+        <version>2.0</version>
+    </jnlp-resource>
+    <jnlp-resource>
+        <rsc-name>UpdateTest.jnlp</rsc-name>
+        <rsc-path>HelloJeus.jnlp</rsc-path>
+        <version>1.0</version>
+    </jnlp-resource>
+</jnlp-resource-config>
+
+
+
+

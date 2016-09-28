@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jeus-web-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <service-ref>            
+        <service-client>
+            <service-ref-name>service/DocLitEchoService</service-ref-name>
+            <port-info>
+                <wsdl-port xmlns:ns1="urn:DocLitService">ns1:Echo</wsdl-port>
+                <stub-property>
+                    <name>javax.xml.rpc.service.endpoint.address</name>
+                    <value>http://localhost:8088/DocLitEchoService/DocLitEchoService</value>
+                </stub-property>
+            </port-info>
+        </service-client>
+    </service-ref>
+</jeus-web-dd>

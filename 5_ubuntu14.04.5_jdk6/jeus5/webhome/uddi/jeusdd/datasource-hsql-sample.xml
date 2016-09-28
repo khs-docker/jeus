@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<jeus-system xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <resource>
+        <data-source>
+			<database>
+				<vendor>others</vendor>
+				<export-name>UDDIDB</export-name>
+				<data-source-class-name>jeus.jdbc.driver.blackbox.BlackboxConnectionPoolDataSource</data-source-class-name>
+				<data-source-type>ConnectionPoolDataSource</data-source-type>
+				<property>
+					<name>URL</name>
+					<type>java.lang.String</type>
+					<value>jdbc:hsqldb:hsql://localhost</value>
+				</property>
+				<property>
+					<name>DriverClassName</name>
+					<type>java.lang.String</type>
+					<value>org.hsqldb.jdbcDriver</value>
+				</property>
+				<property>
+					<name>User</name>
+					<type>java.lang.String</type>
+					<value>sa</value>
+				</property>
+				<property>
+					<name>Password</name>
+					<type>java.lang.String</type>
+					<value></value>
+				</property>
+			</database>
+        </data-source>
+    </resource>
+</jeus-system>
+

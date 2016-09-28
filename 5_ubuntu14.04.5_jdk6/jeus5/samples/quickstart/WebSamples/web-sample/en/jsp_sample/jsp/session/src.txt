@@ -1,0 +1,93 @@
+/* ====================================================================
+ * The Tmax soft License, Version 1.1
+ *
+ * Copyright (c) 1997-2004 The Tmax software.  
+ * All rights reserved.
+ * html code omitted for readability.
+/* ====================================================================
+
+/*
+	## item.jsp
+*/
+
+<form type=POST action=carts.jsp>
+	<b> Using JavaBeans for session scope, you can make a cart. </b>
+	<br><br>
+	Please select item to add or remove:<br>
+	<br>
+	Items:&nbsp;&nbsp;&nbsp;&nbsp;
+	
+	<SELECT NAME="item">
+		<OPTION>Tmax
+		<OPTION>WebToB
+		<OPTION>JEUS
+		<OPTION>WebT
+	</SELECT>
+	
+	<br><br>
+	<INPUT TYPE=submit name="submit" value="add">
+	<INPUT TYPE=submit name="submit" value="remove">
+</form>
+       
+
+
+/*
+	## carts.jsp
+*/
+
+
+
+<jsp:useBean id="cart" scope="session" class="sessions.Cart" />
+
+<jsp:setProperty name="cart" property="*" />
+<%
+	cart.processRequest(request);
+	pageContext.setAttribute("cart", cart, pageContext.SESSION_SCOPE);
+%>
+
+<br> You have the following items in your cart:
+<ol>
+<% 
+	String[] items = cart.getItems();
+	for (int i=0; i<items.length; i++) 
+	{
+%>
+		<li> <%= items[i] %> 
+<%
+	}
+%>
+</ol>
+
+<hr>
+
+<%@ include file ="item.html" %>
+
+/*
+	## item.html
+*/
+
+<html>
+<body>
+
+<form type=POST action=carts.jsp>
+<input type="hidden" name="home" value="<%= home%>">
+	<b> Using JavaBeans for session scope, you can make a cart. </b>
+	<br><br>
+	Please select item to add or remove:<br>
+	<br>
+	Items:&nbsp;&nbsp;&nbsp;&nbsp;
+	
+	<SELECT NAME="item">
+		<OPTION>Tmax
+		<OPTION>WebToB
+		<OPTION>JEUS
+		<OPTION>WebT
+	</SELECT>
+	
+	<br><br>
+	<INPUT TYPE=submit name="submit" value="add">
+	<INPUT TYPE=submit name="submit" value="remove">
+</form>
+
+</body>
+</html>

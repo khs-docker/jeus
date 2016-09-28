@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusServiceSecurityDomain.ResourceConfigurationPage">
+
+    <inject property="jaxbSource" type="state" object="JAXBSource"/>
+    
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Security Domain Configuration"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{'JeusServiceSecurityDomain_ResourceConfiguration'}"/>
+    </component>
+
+    <component id="condCtxID" type="If">
+        <binding name="condition" value="conditionCtxID"/>
+    </component>
+
+    <component id="condResource" type="If">
+        <binding name="condition" value="!conditionCtxID"/>
+    </component>
+
+    <component id="repositoryConfigResourceForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:policies.resource.title"/>
+        <binding name="listener" value="listeners.onRepositoryResourceOk"/>
+    </component>
+
+    <component id="repository_resource_ctxid" type="jeus:Field">
+        <binding name="field" value="components.repository_resource_ctxidField"/>
+    </component>
+
+    <component id="repository_resource_ctxidField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="resourcePermissions"/>
+        <binding name="elementName" value="literal:contextId"/>
+    </component>
+
+    <component id="repository_resource_name" type="jeus:Field">
+        <binding name="field" value="components.repository_resource_nameField"/>
+    </component>
+
+    <component id="repository_resource_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="resourcePermission"/>
+        <binding name="elementName" value="literal:resource"/>
+    </component>
+    
+    <component id="repository_resource_readonlyname" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="resourcePermission"/>
+        <binding name="elementName" value="literal:resource"/>
+    </component>
+
+    <component id="repository_resource_readonlyctxid" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="resourcePermissions"/>
+        <binding name="elementName" value="literal:contextId"/>
+    </component>
+
+    <component id="repository_resource_classname" type="jeus:Field">
+        <binding name="field" value="components.repository_resource_classnameField"/>
+    </component>
+
+    <component id="repository_resource_classnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="resourcePermission"/>
+        <binding name="elementName" value="literal:classname"/>
+    </component>
+
+    <component id="repository_resource_actions" type="jeus:Field">
+        <binding name="field" value="components.repository_resource_actionsField"/>
+    </component>
+
+    <component id="repository_resource_actionsField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="resourcePermission"/>
+        <binding name="elementName" value="literal:actions"/>
+    </component>
+
+    <component id="repository_resource_roles" type="jeus:Field">
+        <binding name="field" value="components.repository_resource_rolesField"/>
+        <binding name="label" value="message:policies.resource.roles.label"/>
+    </component>
+
+    <component id="repository_resource_rolesField" type="contrib:Palette">
+        <binding name="model" value="repositoryRoleModel"/>
+        <binding name="selected" value="selectedRepositoryRole"/>
+        <binding name="selectedTitleBlock" value="components.nullBlock"/>
+        <binding name="availableTitleBlock" value="components.nullBlock"/>
+    </component>
+
+    <component id="repository_resource_unchecked" type="jeus:Field">
+       <binding name="field" value="components.repository_resource_uncheckedField"/>
+       <binding name="label" value="message:policies.resource.unchecked.label"/>
+   </component>
+
+   <component id="repository_resource_uncheckedField" type="jeus:Checkbox">
+       <binding name="selected" value="selectedResourceUnchecked"/>
+   </component>
+
+   <component id="repository_resource_excluded" type="jeus:Field">
+       <binding name="field" value="components.repository_resource_excludedField"/>
+       <binding name="label" value="message:policies.resource.excluded.label"/>
+   </component>
+
+   <component id="repository_resource_excludedField" type="jeus:Checkbox">
+       <binding name="selected" value="selectedResourceExcluded"/>
+   </component>
+
+
+    <bean name="requiredValidator" class="org.apache.tapestry.valid.StringValidator">
+        <set name="required" value="true"/>
+    </bean>
+
+    <!--<property-specification name="userGroupSelected" type="java.util.List"/>-->
+    <property name="selectedPolicyId" />
+    <property name="selectedRole" />
+    <property name="selectedResource" />
+    <property name="policyId" />
+
+    <property name="roleView" />
+    <property name="rolePrincipalView"/>
+    <property name="resourceView"/>
+    <property name="resourceRoleView"/>
+
+    <property name="command"/>
+    <property name="tabCommand"/>
+
+</page-specification>

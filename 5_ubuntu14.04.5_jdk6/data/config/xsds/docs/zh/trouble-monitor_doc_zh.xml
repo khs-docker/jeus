@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="GB2312"?>
+<description>                                           
+    <text key="MbeanType.property"><![CDATA[
+                        [Description]: 指定除了Mbean的j2eeType和jeusType之外的附加属性。设定该值，就能设定特定Mbean。
+                        [Example]: 该例只适用于叫tmax_servlet_engine1的WebEngine。
+                        <j2ee-type>JeusService</j2ee-type>
+                        <j2ee-type>WebEngine</j2ee-type>
+                        <property>
+                            <key>name</key>
+                            <value>tmax_servlet_engine1</value>
+                        </property>
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="MbeanType.j2ee-type"><![CDATA[
+                        [Description]: 输入Mbean的j2eeType key value。所有Mbean具有j2eeType。 
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="MbeanType.jeus-type"><![CDATA[
+                        [Description]: 输入Mbean的jeusType key value。通常j2eeType为JeusService时，必须存在jeusType。
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="MbeanType.constraint"><![CDATA[
+                        [Description]: 输入要监控的限制事项。
+                        [Example]:
+                        <constraint>
+                            <key>servlet-session-session-count</key>
+                            <value>10000</value>                    
+                        </constraint>
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="trouble-monitor"><![CDATA[
+                [Description]:故障监控设定文件的root要素。故障监控相关的所有设定都设置在该要素内。
+            ]]>                                           
+    </text>
+                                                   
+    <text key="TroubleMonitorType.mbean"><![CDATA[
+                        [Description]: 设定成为故障监控对象的Mbean和限制值的要素。 
+                    ]]>                                           
+    </text>
+</description>

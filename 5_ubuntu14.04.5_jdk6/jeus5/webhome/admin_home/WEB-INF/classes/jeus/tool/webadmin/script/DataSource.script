@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+
+<input-symbol key="specifications"  class="jeus.tool.webadmin.jdbc.IDatasourceSpecifications" required="yes"/>
+<let key="init">
+    initDatasources
+</let>
+
+<body>
+    var vendors = new Object();
+    ${init}();
+
+    function ${init}(){
+        var datasources = null;
+        var datasource = null;
+        <foreach key="dbms" expression="specifications.dbmsList">
+             datasources = new Array();
+            <foreach key="spec" expression="specifications.getSpecificationsByDbms(dbms)">
+                datasource = new Object();
+                datasource.id = "${spec.id}";
+                datasource.label = "${spec.label}"
+                datasources[datasources.length]=datasource;
+            </foreach>
+            vendors["${dbms}"] = datasources;
+       </foreach>
+   }
+
+    function onChangeVendor(list, dbms){
+        var drivers = vendors[dbms];
+        var length = list.length;
+        for(var i = length - 1; i >= 0; i--)
+            list.options[i] = null;
+
+        if( !drivers )
+            return;
+
+        for(var i = 0; i &lt; drivers.length; i++){
+            list.options[i] = new Option(drivers[i].label, drivers[i].id);
+        }
+    }
+
+</body>
+
+</script>

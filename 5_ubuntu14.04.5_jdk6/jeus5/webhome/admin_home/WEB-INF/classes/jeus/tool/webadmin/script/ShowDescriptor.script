@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+
+<input-symbol key="link" required="yes"/>
+<input-symbol key="target" required="yes"/>
+<let key="funcName" unique="yes">showDescriptorTarget</let>
+<body>
+	<unique>
+	function showDescriptor(targetName){
+		var target = document.getElementById(targetName);
+		var display = target.style.display;
+		if(target.style.display == 'none'){
+			display = 'block';
+		}else{
+			display = 'none';
+		}
+		target.style.display = display;
+	}
+	</unique>
+	
+	function ${funcName}(){
+		showDescriptor("${target.id}");
+	}
+</body>
+<initialization>
+document.getElementById("${link.id}").onclick=${funcName};
+</initialization>
+
+</script>

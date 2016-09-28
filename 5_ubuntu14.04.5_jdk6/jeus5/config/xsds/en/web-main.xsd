@@ -1,0 +1,2068 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    attributeFormDefault="unqualified" 
+    elementFormDefault="qualified" 
+    targetNamespace="http://www.tmaxsoft.com/xml/ns/jeus" version="5.0" 
+    xmlns="http://www.tmaxsoft.com/xml/ns/jeus" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">       
+    <xs:include schemaLocation="jeus-common.xsd"/>      
+    <xs:element name="web-container" type="web-containerType">         
+        <xs:annotation>             
+            <xs:documentation><![CDATA[
+                [Description]: The top level element inside WEBMain.xml, which is used for configuring all aspects of the JEUS Web module.
+            ]]>
+            </xs:documentation>         
+        </xs:annotation>     
+    </xs:element>      
+    <xs:complexType name="web-containerType">         
+        <xs:sequence>             
+            <xs:element minOccurs="0" name="monitoring" type="monitoringType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This is the element for configuring environment of monitoring thread of Web Container. 
+			 Monitoring thread is thread of inspecting on satus of several resources or pools for certain interval. 
+			 When checking each of them, connection in connection pool is removed or other action is done. 
+			 Child element of this element sets essentially the time for status inspection of other pools.
+                   ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="redirect-stdout" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: It determines whether to retransmit as JEUS_HOME\logs\JeusSystem\[nodename]_[container name]\stdout_[date].log file which is displacement of Web Container
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="redirect-stderr" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: It determines whether to retransmit as JEUS_HOME\logs\JeusSystem\[nodename]_[container name]\stdout_[date].log file 
+			                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="-1" minOccurs="0" name="shutdown-timeout" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Value of one second for worker thread to wait while executing prior to terminte Web Container. 
+			This option waits forcibly the completion of operation on worker threads before downing the Continer. 
+			This will allow to down container after ignoring the related cycle if worker thread to execute the operation does not exisit. 
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="1" name="context-group" type="context-groupType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures a JEUS specific construct called a "context group". Context groups
+                                                may be viewed as virtual servers hosting any number of contexts (Web applications). 
+                                                The settings inside this element will be used by every context it includes.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="session-cluster" type="session-clusterType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element is used to configure the management and routing of client session objects across several clustered Web containers.
+                                               Three techniques are possible: 1) routing, 2) use of a session server and 3) both methods 1 and 2 combined. 
+                                               This element will configure session management for all context groups and their sub-contexts (i.e. a container wide configuration). 
+                                                Any session cluster settings inside the context groups will be overridden by the settings in this element.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>                         
+            <xs:element minOccurs="0" name="logging" type="loggingType"/>             
+            <xs:element minOccurs="0" name="properties" type="propertiesType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Sets the property of container-wide.
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="monitoringType">         
+        <xs:sequence>             
+            <xs:element default="300000" minOccurs="0" name="check-thread-pool" type="xs:long">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                          [Description]:  This element sets the time interval used for checking the status of worker threads in the worker thread pools. 
+                                                Worker threads are responsible for handling client requests to the container. The worker threads exist in worker thread pools 
+                                                and there exist one such pool for each Web server connection. The check interval set here will be applied to all worker thread 
+                                                pools in the container.&lt;p>When this time period expires, a check will be performed on each thread pool. If some condition is
+                                                met (such as an max idle time has expired for a particular thread) an action will be taken (such as removing the thread).
+                        [Value Description]: A time interval with the unit of milliseconds (the time period will be rounded to the nearest second). The shortest time period possible is 1000 milliseconds (1 second).
+                        [Value Type Description]: Integer
+                        [Defined Value]: [-1] : Never use this value except for benchmark test purposes. A greater time period will increase the perfomance slightly.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="300000" minOccurs="0" name="check-class-reload" type="xs:long">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element sets the time interval used for checking the status of class reloading as defined in the &amp;lt;auto-reload&amp;gt;&amp;lt;enable-reload&amp;gt element.
+                                                 The monitor thread for check-class-reload does not check contexts for which the check-on-demand setting is true 
+                                                  (this setting is found in the jeus-web-dd file).
+                        [Value Description]:  A time interval with the unit of milliseconds (the time period will be rounded to the nearest second). The shortest time period possible is 1000 milliseconds (1 second).
+                        [Value Type Description]: Integer
+                        [Defined Value]: [-1]:  finalized production environment for inactivating class reloading.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="300000" minOccurs="0" name="check-session" type="xs:long">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:This element sets how often session time out conditions should be checked. Session time out conditions are defined either in
+                                               &lt;context-group>&lt;session-timeout>element  or in web.xml for each context.
+                        [value Description]: A time interval with the unit of milliseconds (the time period will be rounded to the nearest second). The shortest time period possible
+                                                        is 1000 milliseconds (1 second).
+                        [Value Type Description]: Integer
+                        [Defined Value]: [-1]:  Disables all checking of session time out meaning that all sessions will be preserved until an explicit HTTPSession.invalidate() is issued.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="context-groupType">         
+        <xs:sequence>             
+            <xs:element name="group-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:This is an internally used name for the group.
+                        [Value Description]: context group name
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="virtual-host" type="virtual-hostType">                 
+                <xs:annotation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="webserver-connection" type="webserver-connectionType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Each &lt;webserver-connection> element configures a set of Web server front end connections.
+                                                This means that normally there will be a Web server sitting in front of the Web container and receiving client HTTP requests. 
+                                                The Web server analyzes the request and determines whether it requires processing by the Web container (i.e. a request for a Servlet).
+                                                 Any Web container requests are then forwarded from the Web server to the appropriate Web container. 
+                                                 The component in the Web container that is responsible for receiving these requests is called a "listener". This element is used to 
+                                                 configure and connect such a listener to a Web server. Note that several Web server listeners may be configured on the same machine 
+                                                 and the same Web container as long as each &amp;lt;port&amp;gt; assignment is unique and unused. Using several Web server listeners is accomplished
+                                                 simply by using several &amp;lt;webserver-connection&amp;gt;&amp;lt;xxxxx-listener&amp;gt; sub-elements.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="session-config" type="session-configType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:  The settings below this element pertains to the internal management of session objects (HTTPSession objects) of the context group.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="print-error-to-browser" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Determines whether detailed error descriptions should be sent to the browser in case of 
+                                              a server-side failure. These messages are useful during development time but should be turned of in a production environment.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="encoding" type="encodingType">                 
+                <xs:annotation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="jsp-engine" type="jsp-engineType">                 
+                <xs:annotation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="logging" type="loggingType">                 
+                <xs:annotation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="session-cluster" type="session-clusterType">                 
+                <xs:annotation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="response-header" type="response-headerType">                 
+                <xs:annotation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="properties" type="propertiesType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: Configure context-group-wide property.                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="virtual-hostType">         
+        <xs:sequence>             
+            <xs:element name="virtual-host-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Internal distinct name of Virtual Host.
+                        [Value Description]: Temporary unique name.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="1" name="host-list" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                       [Description]: Each host-list element contains a DNS name (e.g. "www.foo.com") or an IP address. 
+                        The virtual host will be known under all of the DNS names specifed within these elements. The DNS names or IP addresses
+                        must be unique within the same context group (two virtual hosts within the same context group cannot share the same DNS name(s)).
+                        [Value Description]: A DNS name or IP address.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="properties" type="propertiesType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: Configure virtual-host-wide property.                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="webserver-connectionType">         
+        <xs:choice maxOccurs="unbounded" minOccurs="1">             
+            <xs:element name="webtob-listener" type="webtob-listenerType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                [Description]:This element is web server listener used for setting WebtoB web serser. The setting of relative listener is differentiated from other listener types.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="http-listener" type="http-listenerType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+               [Description]: The HTTP listener represents a default internal Web server of the JEUS Web container. This internal Web server is rather basic and 
+                                        should only be used in a development environment or a small size production environment. For a large production environment, a 
+                                        "real" Web server such as WebtoB or Apache should be used. When this listener element is configured, the Web container will
+                                        thus be capable of receiving and processing simple HTTP requests on its own.           
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="tcp-listener" type="tcp-listenerType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+              [Description]: The TCP listener works like the HTTP listener but supports custom network protocols other than HTTP.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="udp-listener" type="udp-listenerType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                [Description]:Use UDP listener working just like the TCP listener.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="ajp13-listener" type="ajp13-listenerType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                [Description]: The AJP1.3 listener works exactly like the &lt;apache-listeneer> except that this listener supports the AJP13 protocol, which is used by the Apache mod_jk module 
+                                      (apache-listener supports the AJP12 protocol).
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="tmax-listener" type="tmax-listenerType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                [Description]: This element used for the configurations when connecting with Tmax.  This element is identical with Webtob listener.
+                 ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>          
+        </xs:choice>     
+    </xs:complexType>      
+    <xs:complexType name="webtob-listenerType">         
+        <xs:sequence>             
+            <xs:element name="listener-id" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                         [Description]: A unique name that identifies this listener. This name is used to refer to the listener from other parts of the configuration file.
+                        [Value Description]:An arbitrary but unique name
+                       ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="port" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: The port used to receive requests from the Web server. This port must match some port setting in the Web server's configuration files.
+                        [Value Description]: A port number greater than 0 and configuration file of WebtoB is identical with the value of JSVPORT
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="6666" minOccurs="0" name="webtob-ipcbaseport" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element sets the port number for IPC between internal processes. This option is only supported in Windows. You can also set this port number in the environment variable of 'WEBTOB_IPCBASEPORT'. If the port number is set in both places, the value in web-main.xml has the precedence.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="8192" minOccurs="0" name="output-buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: Setting the size of temporarily displaying buffer for storing JSP/Servlet result from out.write() method. temporaily displaying the size of buffers out.write() methods.Web Browser will flush if this buffer is full.
+                        [Value Description]: Buffer size in Byte unit
+                        [Value Type Description]: Integer
+                        [Example]: &lt;output-buffer-size>16384&lt;/output-buffer-size>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="thread-pool" type="thread-poolType"/>             
+            <xs:element default="30000" minOccurs="0" name="postdata-read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description] : Setting Maximum waiting time to read post-data from web server/web client.  Execute it through request.getInputStream().read() method.
+                        [Value Description]: Time Interval in Millisecond
+                        [Value Type Description]: Long
+                        [Example]: &lt;postdata-read-timeout>40000&lt;/postdata-read-timeout>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="http" minOccurs="0" name="scheme" type="schemeType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                  [Description]: The protocol d returned value on Javax.servlet.http.HttpServletRequest.getScheme() method can be set for this field
+                      [Value Description]: http or https
+                        [Defined Value]: [http]: The value will be used if SSL is not used.
+                                                [https]: The related value will be sued when using SSL from Web Server with http listener.
+                        [Example]: &lt;scheme>https&lt;/scheme>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="1" minOccurs="0" name="hth-count" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Specifies the number of HTH processes in the WebtoB server.
+                        [Value Description]: Set equal to the number of HTH processes in the WebtoB server.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="true" minOccurs="0" name="request-prefetch" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: The function of prefetching webtob request. If this function is set as true,
+                        performance on process will be enhanced through storing it in request queue
+                        In case where web container is downing abnormally,webtob request to be prefeched can be lost
+                        [Value Description]: true or false
+                        [Value Type Description]: Boolean
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="disable-pipe" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: When WebtoB server is executed in the same machine with Listener, more efficient network communication than pipe communication can be selected.
+                                               At this case, related element is set as "false" If listener and WebtoB server operate in different machine, it will inactivate pipe network communcation
+                                               and activates socket communication.
+                        [Value Description]:Activating or inactivating this configuration as Boolean value.
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: Enables Socket Communication
+                                                [false]: Enables Pipe Communicaiton
+                        [Example]: &lt;disable-pipe>true&lt;/disable-pipe>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="127.0.0.1" minOccurs="0" name="webtob-address" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: The IP address of the WebtoB server that should be connected to this listener. This has to be set since it is up to the listener to actively
+                         locate and connect to the WebtoB server. This is different from the other types of Web server connections where the Web container is passive and
+                         waits for a connection from the Web server.
+                        [Value Description]: IP address of WebtoB Server.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="default" minOccurs="0" name="registration-id" type="xs:token">                 
+                <xs:annotation>                       
+                    <xs:documentation><![CDATA[
+                        [Description]: Registration ID name to be used when connecting with WebtoB server.
+                        [Value Description]: Registration ID name should be identical with value below *SERVER statement in WebtoB configuration file.
+                     [Example]: &lt;registration-id>MyGroup&lt;/registration-id>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="webtob-home" type="xs:token">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: Configuring Home directory of WebtoB server enabling efficient pipe communication between Web Container and Web Server
+                        [Value Description]: Absolute Directory Path in which Path classifier is placed at the end of String.(“\” : Windows,”/”: Unix)
+                        [Example]: &lt;webtob-home>c:\WebtoB\&lt;/webtob-home>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="0" minOccurs="0" name="read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: WebtoB Web Server sends "ping" continuously to Web Container for set interval on "svrchktime" variable of WebtoB configuration file.
+                         Web Container sets time interval in this element for checking on "ping" in which WebtoB has sent.
+                        If WebtoB ping is not inspected in the set time interval, it will reset by considering network link as broken.
+                        [Value Description]: millisecond  value. The value is set more than "svrchktime" in WebtoB configuration file.
+                        [Defined Value]: [0]: Infinity
+                        [Example]:&lt;read-timeout>120000&lt;/read-timeout>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="-1" minOccurs="0" name="reconnect-timeout" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Some connections between the WebtoB server and the webtob-listener may be disconnected during the operation.
+                                                Reconnect-timeout (this element) is applied as a timeout value of the reconnect attempt that follows in such cases.
+                                                If the timeout is expired with all of the current WebtoB connections disconnected and if some WebtoB backups are defined,
+                                                then the Web container tries to fail-over to the next WebtoB backup. If that WebtoB backup is also failed, it tries the next and so on.
+                                                If the last WebtoB backup is failed, it tries the (main) webtob-listener again.
+                        [Value Description]: The timeout value unit is milliseconds
+                        [Value Type Description]: Long
+                        [Defined Value]:  [-1]: Infinite timout period (the listener will attempt to reconnect forever).
+                                                     [0]:  No reconnection will ever be attempted.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="webtob-backup" type="webtob-backupType">                 
+                <xs:annotation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="tmax-listenerType">         
+        <xs:sequence>             
+            <xs:element name="listener-id" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                         [Description]: A unique name that identifies this listener. This name is used to refer to the listener from other parts of the configuration file.
+                        [Value Description]:An arbitrary but unique name
+                       ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="port" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:Port used for connecting tmax server.
+                        [Value Description]: Port number greater than 0.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="8192" minOccurs="0" name="output-buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: Setting the size of temporarily displaying buffer for storing JSP/Servlet result from out.write() method. temporaily displaying the size of buffers out.write() methods.Web Browser will flush if this buffer is full.
+                        [Value Description]: Buffer size in Byte unit
+                        [Value Type Description]: Integer
+                        [Example]: &lt;output-buffer-size>16384&lt;/output-buffer-size>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="thread-pool" type="thread-poolType"/>             
+            <xs:element default="30000" minOccurs="0" name="postdata-read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description] : Setting Maximum waiting time to read post-data from web server/web client.  Execute it through request.getInputStream().read() method.
+                        [Value Description]: Time Interval in Millisecond
+                        [Value Type Description]: Long
+                        [Example]: &lt;postdata-read-timeout>40000&lt;/postdata-read-timeout>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="-1" minOccurs="0" name="reconnect-timeout" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Some connections between the WebtoB server and the webtob-listener may be disconnected during the operation.
+                        	        Reconnect-timeout (this element) is applied as a timeout value of the reconnect attempt that follows in such cases. If the timeout is
+                        		expired with all of the current WebtoB connections disconnected and if some WebtoB backups are defined, then the Web container
+                       			tries to fail-over to the next WebtoB backup. If that WebtoB backup is also failed, it tries the next and so on. If the last WebtoB backup is failed, it tries the (main) webtob-listener again
+                         [Value Description]:  The timeout value unit is milliseconds.
+                        [Value Type Description]: Long
+                        [Defined Value]:  default -1
+                                                    [-1]: Infinite timout period (the listener will attempt to reconnect forever).
+                                                    [0]: No reconnection will ever be attempted
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="127.0.0.1" minOccurs="0" name="tmax-address" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Set IP address of tmax server.
+                        [Value Description]: IP address of tmax server
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="tmax-version" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: This is the version of tmax server to connect to.It supports the versions both 			40 and 3x.                         [Value Description]: version fo tmax server                     ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="server-type" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: This is a type of tmax server to connect to.			Configure in case where it is a specialized server including tms and httpgw.                        [Value Description]: tmax server Type                     ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="xaresource-class" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: XAResource configures the class name when using Transaction Recovery function.                        [Value Description]: XAResource Class Name                     ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="server-group-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Group including tmax server to be connected.
+                        [Value Description]: tmax server group  name
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="server-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Name of tmax server to be connected.
+                        [Value Description]:Name of tmax server
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="127.0.0.1" minOccurs="0" name="tmax-backup-address" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: IP address of Tmax server used as backup.
+                        [Value Description]: IP address of tmax server
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="tmax-backup-port" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Port of Tmax server used as backup.
+                        [Value Description]: Port number which is greater than 0 .
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="backup-server-group-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Refer to the group containing the tmax backup server.
+                        [Value Description]: The group name of  tmax backup server group 
+                    
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="dispatcher-config-class" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Sets the class setting dispatcher. At this time, class should locate in classpath which has been set and class name should be quailifed class name.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="use-nio" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Determine whether to use nio type communication in TmaxListener.
+                    
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:simpleType name="schemeType">         
+        <xs:restriction base="xs:string">             
+            <xs:enumeration value="http">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Protocl used in Hypertext Transfer Protocol. Web.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:enumeration>             
+            <xs:enumeration value="https">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This represents the SSL connection adding security above HTTP.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:enumeration>         
+        </xs:restriction>     
+    </xs:simpleType>      
+    <xs:complexType name="webtob-backupType">         
+        <xs:sequence>             
+            <xs:element name="port" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Port to be connected to WebtoB Server. This port number is identical with "JSVPORT" value in WebtoB server configuration file.
+                        [Value Description]: Port number greater than 0 and is identical with JSVPORT value of WebtoB configuration file.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="8192" minOccurs="0" name="output-buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: Setting the size of temporarily displaying buffer for storing JSP/Servlet result from out.write() method. temporaily displaying the size of buffers out.write() methods.Web Browser will flush if this buffer is full.
+                        [Value Description]: Buffer size in Byte unit
+                        [Value Type Description]: Integer
+                        [Example]: &lt;output-buffer-size>16384&lt;/output-buffer-size>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="thread-pool" type="thread-poolType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Thread pool is used for maintaining worker threads which handle requests entering into Web Container.
+                                               Through set port, the operation will be processed according to request by receiving new worker thread from related pool.
+				In case of WebtoB Listener, configuration on thread pool is related to HTH process in WebtoB server.
+				Therefore, the maximum number will be set as 10 if the number of HTH processes are 3 and actual number of thread pool to be generated are
+                                                30. Each worker thread gets the continous connection with WebtoB server.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="30000" minOccurs="0" name="postdata-read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description] : Setting Maximum waiting time to read post-data from web server/web client.  Execute it through request.getInputStream().read() method.
+                        [Value Description]: Time Interval in Millisecond
+                        [Value Type Description]: Long
+                        [Example]: &lt;postdata-read-timeout>40000&lt;/postdata-read-timeout>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="http" minOccurs="0" name="scheme" type="schemeType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: Setting the returned value classfier on Javax.servlet.http.HttpServletRequest.getScheme() method protocol.
+                                               Setting value of "https" when using SSL function or using http listener which supports SSL in WebtoB or Apache
+                        [Value Description]: http or https
+                        [Defined Value]: [http]: Certain value will be used if SSL is used.
+                                                [https]: Related value will be used when using SSL in Web Server with http listener.
+                        [Example]: &lt;scheme>https&lt;/scheme>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="1" minOccurs="0" name="hth-count" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Specifies the number of HTH processes in the WebtoB server.
+                        [Value Description]: Set equal to the number of HTH processes in the WebtoB server.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="disable-pipe" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: When WebtoB server is executed in the same machine with Listener, more efficient network communication than pipe communication can be selected.
+                                               At this case, related element is set as "false" If listener and WebtoB server operate in different machine, it will inactivate pipe network communcation
+                                               and activates socket communication.
+                        [Value Description]:Activating or inactivating this configuration as Boolean value.
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: Enables Socket Communication
+                                                [false]: Enables Pipe Communicaiton
+                        [Example]: &lt;disable-pipe>true&lt;/disable-pipe>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="127.0.0.1" minOccurs="0" name="webtob-address" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: The IP address of the WebtoB server that should be connected to this listener. This has to be set since it is up
+                        to the listener to actively locate and connect to the WebtoB server. This is different from the other types of Web server connections
+                        where the Web container is passive and waits for a connection from the Web server.
+                        [Value Description]:  An IP address of a WebtoB server.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="default" minOccurs="0" name="registration-id" type="xs:token">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: Registration ID name to be used when connecting with WebtoB server.
+                        [Value Description]: Registration ID name should be identical with value below *SERVER statement in WebtoB configuration file.
+                     [Example]: &lt;registration-id>MyGroup&lt;/registration-id>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="webtob-home" type="xs:token">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: Configuring Home directory of WebtoB server enabling efficient pipe communication between Web Container and Web Server
+                        [Value Description]: Absolute Directory Path in which Path classifier is placed at the end of String.(“\” : Windows,”/”: Unix)
+                        [Example]: &lt;webtob-home>c:\WebtoB\&lt;/webtob-home>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="0" minOccurs="0" name="read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: WebtoB web server is continuously sending "ping" to Web Container for the interval "svrchktime" variable of WebtoB configuration file is set.
+                                       Time Interval is set for checking "ping" in which WebtoB sends.
+				       If WebtoB ping is not inspected in set time interval, it will reset as being considered as broken.
+				       Therefore, the value of this elemnt should be set greater than "svrchktime" value.
+                        [Value Description]: millisecond value. For WebtoB configurtion file, sets the value greater than "svrchktime" value.
+                        [Defined Value]: [0]:  Infinity
+                        [Example]:&lt;read-timeout>120000&lt;/read-timeout>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="-1" minOccurs="0" name="reconnect-timeout" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Some connections between the WebtoB server and the webtob-listener may be disconnected during the operation.
+                                       Reconnect-timeout (this element) is applied as a timeout value of the reconnect attempt that follows in such cases.
+                                       If the timeout is expired with all of the current WebtoB connections disconnected and if some WebtoB backups are
+                                       defined, then the Web container tries to fail-over to the next WebtoB backup. If that WebtoB backup is also failed,
+                                       it tries the next and so on. If the last WebtoB backup is failed, it tries the (main) webtob-listener again.
+                        [Value Description]: Timeout value in Millisecond unit.
+                        [Value Type Description]: Long
+                        [Defined Value]: [-1]: Infinite number of Timeout Period(Listener will attempt to establish on reconnnection.)
+                                          [0]: Will not attempt to reconnect.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="ajp13-listenerType">         
+        <xs:sequence>             
+            <xs:element name="listener-id" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                       [Description]: A unique name that identifies this listener. This name is used to refer to the listener from other parts of the configuration file.
+                        [Value Description]: An arbitrary but unique name.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="port" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Port is used to receive HTTP requests from the client. The port should be identical with the value of ApJServDefaultPort of jeus-apache.conf file
+                        [Value Description]:  Port value greater than 0
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="8192" minOccurs="0" name="output-buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: Setting the size of temporarily displaying buffer for storing JSP/Servlet result from out.write() method. temporaily displaying the size of buffers out.write() methods.Web Browser will flush if this buffer is full.
+                        [Value Description]: Buffer size in Byte unit
+                        [Value Type Description]: Integer
+                        [Example]: &lt;output-buffer-size>16384&lt;/output-buffer-size>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="thread-pool" type="thread-poolType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                         [Description]: The thread pool is used to maintain a set of worker threads that will handle incoming requests to the Web container. Each time a new request
+                                                  is received on the port specified, a new worker thread is drawn from this pool and assigned to process the request.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="30000" minOccurs="0" name="postdata-read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description] : Setting Maximum waiting time to read post-data from web server/web client.  Execute it through request.getInputStream().read() method.
+                        [Value Description]: Time Interval in Millisecond
+                        [Value Type Description]: Long
+                        [Example]: &lt;postdata-read-timeout>40000&lt;/postdata-read-timeout>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="http" minOccurs="0" name="scheme" type="schemeType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: Setting the returned value classfier on Javax.servlet.http.HttpServletRequest.getScheme() method protocol.
+                                               Setting value of "https" when using SSL function or using http listener which supports SSL in WebtoB or Apache
+                        [Value Description]: http or https
+                        [Defined Value]: [http]: Certain value will be used if SSL is used.
+                                                [https]: Related value will be used when using SSL in Web Server with http listener.
+                        [Example]: &lt;scheme>https&lt;/scheme>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="50" minOccurs="0" name="back-log" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                       [Description]: Sets the socket's backlog value (the maximum size of the socket request wait queue as specified in the "java.net.ServerSocket(int port, int backlog)" constructor).
+                        [Value Description]: Value greater than 0
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="busy-notify-page" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: When queue is full, sends the page set in &lt;busy-notify-page> element
+                        [Value Description]: value greater than 0
+                        [Value Type Description]: Setting static content file included in absolute path.
+                        [Example]: &lt;busy-notify-page>c:\web\errorpages\busypage.html&lt;/busy-notify-page>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="server-access-control" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Activates or inactivates access control on server. If this option is activated and the server has permission in &lt;allowed-server> element, this listener can be connected.
+                        [Value Description]: Time interval in Millisecond. Activating or inactivating this configuration as Boolean value.
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]:Activates Server Access Control.
+                                                [false]: Inactivates Server Access Control.
+                        [Example]: &lt;server-access-control>true&lt;/server-access-control>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="allowed-server" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+		  [Description]: &lt;allowed-server> element sets IP address of one server to be connected to the certain listener.
+                         These elements are used only when the value  of &lt;server-acces-control> element is true.
+                          It rejects all the requests from server excluded in this element.
+                         [Value Description]: IP address of server allowing to connect this listener
+                        [Example]: &lt;allowed-server>127.0.0.1&lt;/allowed-server>
+                     ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="http-listenerType">         
+        <xs:sequence>             
+            <xs:element name="listener-id" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                       [Description]: A unique name that identifies this listener. This name is used to refer to the listener from other parts of the configuration file.
+                        [Value Description]:An arbitrary but unique name.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="port" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [[Description]: The port used to receive HTTP requests from the client. According to IANA (www.iana.org), the port assigned to HTTP is 80.
+                        [Value Description]:A port number greater than 0.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="8192" minOccurs="0" name="output-buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: Setting the size of temporarily displaying buffer for storing JSP/Servlet result from out.write() method. temporaily displaying the size of buffers out.write() methods.Web Browser will flush if this buffer is full.
+                        [Value Description]: Buffer size in Byte unit
+                        [Value Type Description]: Integer
+                        [Example]: &lt;output-buffer-size>16384&lt;/output-buffer-size>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="thread-pool" type="thread-poolType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                         [Description]: The thread pool is used to maintain a set of worker threads that will handle incoming requests to the Web container. Each time a new request
+                                                  is received on the port specified, a new worker thread is drawn from this pool and assigned to process the request.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="300000" minOccurs="0" name="read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Setting Maximum waiting time to read a request from web server/web client. If you use a keep-alive algorithm (HTTP version 1.1), this read-timeout value will be able to be resetting by a thread state.
+                  ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="30000" minOccurs="0" name="postdata-read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description] : Setting Maximum waiting time to read post-data from web server/web client.  Execute it through request.getInputStream().read() method.
+                        [Value Description]: Time Interval in Millisecond
+                        [Value Type Description]: Long
+                        [Example]: &lt;postdata-read-timeout>40000&lt;/postdata-read-timeout>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="100" minOccurs="0" name="max-keep-alive-request" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:  &lt;max-keep-alive-request> element means maximum value of requests allowed by keep-alive listener. If this value is less than 1, the maximum is unlimitedless.
+                        [Value Description]: Integer
+                        [Example]: &lt;max-keep-alive-request>256&lt;/max-keep-alive-request>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="true" minOccurs="0" name="keep-alive" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Activates or inactivates keep-alive algorithm on this listener. If this option is activated, this listener can use HTTP Keep-alive.
+                        [Value Description]: boolean( true or false )
+                        [Example]: &lt;keep-alive>true&lt;/keep-alive>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element default="http" minOccurs="0" name="scheme" type="schemeType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                          [Description]: The protocol d returned value on Javax.servlet.http.HttpServletRequest.getScheme() method can be set for this field
+                      [Value Description]: http or https
+                        [Defined Value]: [http]: The value will be used if SSL is not used.
+                                                [https]: The related value will be sued when using SSL from Web Server with http listener.
+                        [Example]: &lt;scheme>https&lt;/scheme>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="50" minOccurs="0" name="back-log" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                       [Description]: Sets the socket's backlog value (the maximum size of the socket request wait queue as specified in the "java.net.ServerSocket(int port, int backlog)" constructor).
+                        [Value Description]: value greater than 0.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="server-access-control" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                     [Description]: Activates or inactivates access control on server. If this option is activated and the server has permission in &lt;allowed-server> element, this listener can be connected.
+                         [Value Description]: Time interval in Millisecond
+                        [Value Description]: Activating or inactivating this configuration as Boolean value.
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]:Activates Server Access Control.
+                                                [false]: Inactivates Server Access Control.
+                        [Example]: &lt;server-access-control>true&lt;/server-access-control>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="allowed-server" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+		  [Description]: &lt;allowed-server> element sets IP address of one server to be connected to the certain listener.
+                         These elements are used only when the value  of &lt;server-acces-control> element is true.
+                          It rejects all the requests from server excluded in this element.
+                         [Value Description]: IP address of server allowing to connect this listener
+                        [Example]: &lt;allowed-server>127.0.0.1&lt;/allowed-server>
+                     ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="ssl-config" type="ssl-configType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: Configure the support for SSL communication.                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="use-nio" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Specify whether to use nio type commnunication in Http Listener. If using persistent connection for blocking mode, the performance gets improved in proportion to the number of pool, but if using nio, it provides nonblocking mode, so that the performance will be improved regardless of the number of pool.
+                    
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>          
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="tcp-listenerType">         
+        <xs:sequence>             
+            <xs:element name="listener-id" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                       [Description]: A unique name that identifies this listener. This name is used to refer to the listener from other parts of the configuration file.
+                        [Value Description]: An arbitrary but unique name.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="port" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Port used for receiving request from client.
+                        [Value Description]: Port value greater than 0.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="8192" minOccurs="0" name="output-buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: Setting the size of temporarily displaying buffer for storing JSP/Servlet result from out.write() method. temporaily displaying the size of buffers out.write() methods.Web Browser will flush if this buffer is full.
+                        [Value Description]: Buffer size in Byte unit
+                        [Value Type Description]: Integer
+                        [Example]: &lt;output-buffer-size>16384&lt;/output-buffer-size>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="thread-pool" type="thread-poolType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                         [Description]: The thread pool is used to maintain a set of worker threads that will handle incoming requests to the Web container. Each time a new request
+                                                  is received on the port specified, a new worker thread is drawn from this pool and assigned to process the request.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="30000" minOccurs="0" name="postdata-read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description] : Setting Maximum waiting time to read post-data from web server/web client.  Execute it through request.getInputStream().read() method.
+                        [Value Description]: Time Interval in Millisecond
+                        [Value Type Description]: Long
+                        [Example]: &lt;postdata-read-timeout>40000&lt;/postdata-read-timeout>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="http" minOccurs="0" name="scheme" type="schemeType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Setting the returned value classfier on Javax.servlet.http.HttpServletRequest.getScheme() method protocol.
+                                               Setting value of "https" when using SSL function or using http listener which supports SSL in WebtoB or Apache
+                        [Value Description]: http or https
+                        [Defined Value]: [http]: Certain value will be used if SSL is used.
+                                                [https]: Related value will be used when using SSL in Web Server with http listener.
+                        [Example]: &lt;scheme>https&lt;/scheme>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="50" minOccurs="0" name="back-log" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                       [Description]: Sets the socket's backlog value (the maximum size of the socket request wait queue as specified in the "java.net.ServerSocket(int port, int backlog)" constructor).
+                        [Value Description]: Value greater than 0
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="ssl-config" type="ssl-configType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: Configure the support for SSL communication.                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="server-access-control" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                     [Description]: Activates or inactivates access control on server. If this option is activated and the server has permission in &lt;allowed-server> element, this listener can be connected.
+                         [Value Description]: Time interval in Millisecond
+                        [Value Description]: Activating or inactivating this configuration as Boolean value.
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]:Activates Server Access Control.
+                                                [false]: Inactivates Server Access Control.
+                        [Example]: &lt;server-access-control>true&lt;/server-access-control>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="allowed-server" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+		  [Description]: &lt;allowed-server> element sets IP address of one server to be connected to the certain listener.
+                         These elements are used only when the value  of &lt;server-acces-control> element is true.
+                          It rejects all the requests from server excluded in this element.
+                         [Value Description]: IP address of server allowing to connect this listener
+                        [Example]: &lt;allowed-server>127.0.0.1&lt;/allowed-server>
+                     ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="dispatcher-config-class" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Sets the class setting dispatcher. At this time, class should locate in the classpath which has been set and the name of class is full qualified class name.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="connection-handshaker-class" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Specify handshaker class. The class must be located in the specified classpath, and have full qualified class name. 
+                    
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="use-nio" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: Determine whether to use nio method communication within TCP Listener. 			In case of using persistent connection, the performance will be enhanced in propertional 			to the number of pools. However, in case of using nio, it can sustain preminum performance.                     ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="connection-listener-class" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Specify the connection listener class. Connection Listener is applicable only when using NIO. The class must be located in the specified classpath and have full qualified class name.
+                    
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="udp-listenerType">         
+        <xs:sequence>             
+            <xs:element name="listener-id" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                       [Description]: A unique name that identifies this listener. This name is used to refer to the listener from other parts of the configuration file.
+                        [Value Description]: An arbitrary but unique name.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="port" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Port used for receiving request from client.
+                        [Value Description]: Port value greater than 0.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="8192" minOccurs="0" name="input-buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Maximum value of DatagramPacket when reading input.
+                        [Value Description]: Port value greater than 0.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="8192" minOccurs="0" name="output-buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: Setting the size of temporarily displaying buffer for storing JSP/Servlet result from out.write() method. temporaily displaying the size of buffers out.write() methods.Web Browser will flush if this buffer is full.
+                        [Value Description]: Buffer size in Byte unit
+                        [Value Type Description]: Integer
+                        [Example]: &lt;output-buffer-size>16384&lt;/output-buffer-size>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="thread-pool" type="thread-poolType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                         [Description]: The thread pool is used to maintain a set of worker threads that will handle incoming requests to the Web container. Each time a new request
+                                                  is received on the port specified, a new worker thread is drawn from this pool and assigned to process the request.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="30000" minOccurs="0" name="postdata-read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description] : Setting Maximum waiting time to read post-data from web server/web client.  Execute it through request.getInputStream().read() method.
+                        [Value Description]: Time Interval in Millisecond
+                        [Value Type Description]: Long
+                        [Example]: &lt;postdata-read-timeout>40000&lt;/postdata-read-timeout>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="http" minOccurs="0" name="scheme" type="schemeType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: The protocol d returned value on Javax.servlet.http.HttpServletRequest.getScheme() method can be set for this field
+                      [Value Description]: http or https
+                        [Defined Value]: [http]: The value will be used if SSL is not used.
+                                                [https]: The related value will be sued when using SSL from Web Server with http listener.
+                        [Example]: &lt;scheme>https&lt;/scheme>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="50" minOccurs="0" name="back-log" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                       [Description]: Sets the socket's backlog value (the maximum size of the socket request wait queue as specified in the "java.net.ServerSocket(int port, int backlog)" constructor).
+                        [Value Description]: Value greater than 0
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="server-access-control" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                     [Description]: Activates or inactivates access control on server. If this option is activated and the server has permission in &lt;allowed-server> element, this listener can be connected.
+                         [Value Description]: Time interval in Millisecond
+                        [Value Description]: Activating or inactivating this configuration as Boolean value.
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]:Activates Server Access Control.
+                                                [false]: Inactivates Server Access Control.
+                        [Example]: &lt;server-access-control>true&lt;/server-access-control>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="allowed-server" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+		  [Description]: &lt;allowed-server> element sets IP address of one server to be connected to the certain listener.
+                         These elements are used only when the value  of &lt;server-acces-control> element is true.
+                          It rejects all the requests from server excluded in this element.
+                         [Value Description]: IP address of server allowing to connect this listener
+                        [Example]: &lt;allowed-server>127.0.0.1&lt;/allowed-server>
+                     ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="dispatcher-config-class" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Sets the class setting dispatcher. At this time, class should locate in classpath which has been set and class name should be quailifed class name.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>     
+    <xs:complexType name="ssl-configType">         
+        <xs:sequence>             
+            <xs:element default="false" minOccurs="0" name="enable-secure" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: Configure whether or not to support SSL(Secure Socket Layer) communication.                        [Value Description]: If it is true, SSL communication is supported,                                             If not, SSL communnication is not supported.                                             The default value is false.                     ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="client-auth" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: Configure whether or not to authenticate client.                        [Value Description]: If it is true, server requests client certification to client to authenticate client,                                             If it is false, it does not conduct client client authentication.                                             In most of cases, except B2B, client authentication is not conducted.                                             The default value is false.                     ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="TLS" minOccurs="0" name="ssl-protocol" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: Configure SSL protocol used for encryption/decryption.                        [Value Description]: Configure TLS for Sun JVM,                                             and SSL for IBM JVM.                                             The default value is TLS.                     ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="cipher-suite" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: Configure cipher suite used to send actual data after SSL handshaking.                        [Value Description]: Generally, use cipher-suite from JDK,                                             and it is for using the non-default cipher suite.                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="keystore-file" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: Configure the file containing key and certification.                        [Value Description]: Both absolute path and relative path are allowed.                                             When using a relative path, it searches the file in jeus_home/config/nodename.                                             As JVM factor for the configuration, jeus.ssl.keystore and javax.net.ssl.keyStore are used for this configuration.                                             Priority order is webmain > jeus > javax.                                             The default value is jeus_home/config/nodename/keystore.                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="keystore-pass" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: It is password to open keystore file.                        [Value Description]: As JVM factor for the configuration, jeus.ssl.keypass and javax.net.ssl.keyStorePasswordis are used for this configuration.                                             Priority order is webmain > jeus > javax.                                             The default value is jeuskeypass.                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="keystore-type" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: Configure keystore type                        [Value Description]: Use JKS(Java's Key Store) when generating keystore by using keytool from Sun,                                             As JVM factor for the configuration, javax.net.ssl.keyStoreType is used for this configuration.                                             Priority order is  webmain > javax .                                             The default value is JKS.                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="key-management-algorithm" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: Configure management algorithm for key to be stored in keystore.                        [Value Description]: Use SunX509 for Sun JVM,                                             and IbmX509 and IBM JVM.                                             As JVM factor for the configuration, ssl.KeyManagerFactory.algorithm is used for this configuration.                                             Priority order is webmain > javax.                                             The default value is SunX509.                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="truststore-file" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: Save client certification and Configure the file.                        [Value Description]: Both absolute path and relative path are allowed.                                             When using a relative path, it searches the file in jeus_home/config/nodename.                                             As JVM factor for the configuration, jeus.ssl.truststore and javax.net.ssl.trustStore are used for this configuration.                                             Priority order is webmain > jeus > javax.                                             The default value is jeus_home/config/nodename/truststore.                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="truststore-pass" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: It is password to open truststore file.                        [Value Description]: As JVM factor for the configuration, jeus.ssl.trustpass and javax.net.ssl.trustStorePasswordare used for this configuration.                                             Priority order is  webmain > jeus > javax.                                             The default value is jeustrustpass.                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="truststore-type" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: Configure truststore type.                        [Value Description]: Use JKS(Java's Key Store) when generating keystore by using keytool from Sun,                                             and use PKCS12 when generating keystore by using OpenSSL or Microsoft KeyManager.                                             As JVM factor for the configuration, javax.net.ssl.trustStoreType is used for this configuration.                                             Priority order is  webmain > javax.                                             The default value is JKS .                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="trust-management-algorithm" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: Configure management algorithm for trust to be stored in truststore.                        [Value Description]: Use SunX509 for Sun JVM, and IbmX509 and IBM JVM.                                             As JVM factor for the configuration, ssl.TrustManagerFactory.algorithm is used for this configuration.                                             Priority order is  webmain > javax.                                             The default value is SunX509.                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>     
+    <xs:complexType name="thread-poolType">         
+        <xs:sequence>             
+            <xs:element name="min" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:Initial number or maximum number for maintaining worker thread in the Pool.
+                        [Value Description]: The number of threads.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="max" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:  Maximum number for maintaining worker thread in Pool.
+                        [Value Description]: The number of threads.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="1" minOccurs="0" name="step" type="nonNegativeIntType">                 
+                <xs:annotation>                       
+                    <xs:documentation><![CDATA[
+                        [Description]: This represents the number of worker threads when adding in the pool as pool size is increased. 
+                        [Value Description]: The number of threads to be added.
+                        [Value Type Description]: Integer
+                        [Example] : &lt;step>4&lt;/step>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="300000" minOccurs="0" name="max-idle-time" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                         [Description]: The maximum amount of time that a worker thread may stay in the idle waiting state before being removed from the pool.
+                        [Value Description]:  A number of milliseconds.
+                        [Value Type Description]: Long
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="4" minOccurs="0" name="max-wait-queue" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element sets the maximum number of requests to be placed in request wait queue prior to generate new worker thread for handling the requests. 
+                        [Value Description]: Maximum number of request to be placed in Queue 
+                        [Value Type Description]: Integer
+                  ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="-1" minOccurs="0" name="max-queue" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:  Page informing "busy" status will be returned to the client when more additional reqeusts are arrived. 
+                                        Setting maximum request value to be waited in queue. 
+					This element is not used in Tmax/WebtoB listener. The queue size of WebtoB listener configures MaxQCount value 
+					in WebtoB configuration file.
+					After this queue is full, busy page will be returned to client  when additional requests are arrived.
+                                                            This element is not used in Tmax/WebtoB listener.Queue size of WebtoB listener is composed with MaxQCount value in WebtoB configuration file.
+                  ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="thread-state-notify" type="thread-state-notifyType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element defines worker thread which is blocked and determine whether to send notification on the number of blocked threads. 
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="thread-state-notifyType">         
+        <xs:sequence>             
+            <xs:element minOccurs="0" name="max-thread-active-time" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:Sets the time for defining when a thread should be regarded as blocked. When a thread has executed for this amount of time, it is regarded as blocked.
+                        [Value Description]: A number of milliseconds. Set this value to roughly 1.5 times the execution time of the thread that takes the longest to execute.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="notify-threshold" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:  Sets the maximum number of blocked threads that may exist at any given time before a warning notification is sent out using an e-mail notifier.
+                        [Value Description]: A number of Worker thread.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="restart-threshold" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                         [Description]: Sets the maximum number of blocked worker threads that may exist at any given time before a restart of the Web container is performed.
+                        [Value Description]: A number of Servlet threads.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="notifier-id" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: The ID of the email notifier to use.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="notify-subject" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                         [Description]:Sets the subject line of the e-mail that is sent out when the notify-treshold is exceeded.
+                        [Value Description]: A message allowing the receiver (the adminstrator) to quickly determine what this e-mail is about.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="restart-subject" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:Sets the subject line of the e-mail that is sent out when the notify-treshold is exceeded.
+                        [Value Description]: A message allowing the receiver (the adminstrator) to quickly determine what this e-mail is about.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>       
+    <xs:complexType name="session-configType">         
+        <xs:sequence>             
+            <xs:element default="30" minOccurs="0" name="timeout" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element determines the time after which a session object is considered stale and should be removed. 
+                                                The session timeout settings in web.xml takes precedence over any settings defined here, 
+                        [Value Description]:  A time period expressed as a number of minutes after which a shared session should be removed. 
+                        [Value Type Description]: Integer
+                        [Defined Value]: [-1]: When this value has been set, the inspection for session timeout would not be executed. Session will be preserved when other elements have not been set in web.xml.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="shared" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element activates or inactivates shared session of entire Contexts below context group.  
+                        Session sharing means to be used in other Context when generating HTTPSession object to a context 
+                        [Value Description]: Activating or inactivating this setting as Boolean value.
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]:  Sharing session.
+                                                [false]: Non-sharing session.
+                     ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="persistent" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: If this element is set as "false" and Session Server is configured, Session object (&lt;session-cluster>element of JEUSMain.xml)
+                        and property value on Servlet Context will be deleted when it is reloaded after being updated. However, if this element is set as "true" and 
+                        Session Server is not defined, Session object and property value on Servlet Context will be maintained even when it is reloaded after being updated.  
+                        If Session Server is defined, this element will be uselsee(Doesn't affect Servlet engine). If Session Server is defined, Session Object and 
+                        property of Servlet Context will be maintained despite of the value of this element. 
+                        [Value Description]: Activating or inactivating this configuration as Boolean value.
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: Activating the related configuration. 
+                                                [false]: Inactivating the related configuration. 
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="encodingType">         
+        <xs:sequence>             
+            <xs:element minOccurs="0" name="request-encoding" type="encodingSubType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                         [Description]: This element governs the encoding to be applied to received requests from a Web browser. The encoding is applied when converting the HTTP byte array (including HTTP URI, query strings, cookies and any post data) to a java.lang.String object inside the Web container.
+                     ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="response-encoding" type="encodingSubType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                      [Description]:This element determines which encoding to use for the Web container's responses when converting from PrintWriter.println() to a byte array and also sets the "XXX" part of the HTTP header "Content-Type: text/html;charset=XXX".
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="postdata-encoding" type="encodingSubType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Setting encoded data sent using HTTP POST method.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="encodingSubType">         
+        <xs:sequence>             
+            <xs:element minOccurs="0" name="default" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:The default encoding to use if the user has not set the encoding explicitly through standard Servlet API, the forced tag is not used and if no encoding was specified in the HTTP request                          
+                        [Value Description]: Standard character encoding.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="forced" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]:  If specified, the encoding set here will always be used when converting HTTP data to java.lang.String objects. It thus has the highest priority.
+                        [Value Description]: A standard character encoding
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="loggingType">         
+        <xs:sequence>             
+            <xs:element minOccurs="0" name="user-log" type="user-logType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:This element sets the defined message handling through ServletContext.log() method. 
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="access-log" type="access-logType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This element configures on handling log of client of Container. 
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:simpleType name="targetType">         
+        <xs:restriction base="xs:string">             
+            <xs:enumeration value="stdout">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Displaying log data in standard dispalying stream
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:enumeration>             
+            <xs:enumeration value="file">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Dispalying logging data in default error.log file or file specified in <file-name> element 
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:enumeration>         
+        </xs:restriction>     
+    </xs:simpleType>       
+    <xs:simpleType name="levelType">         
+        <xs:restriction base="xs:string">             
+            <xs:enumeration value="fatal">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Records the most important message.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:enumeration>             
+            <xs:enumeration value="notice">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Recording a less important message added with "fatal" message.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:enumeration>             
+            <xs:enumeration value="information">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Recording a less important message with "notice" and "fatal".
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:enumeration>             
+            <xs:enumeration value="debug">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Recording debugging message.(including previous three types of message.) Used for the purpose of Debugging.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:enumeration>             
+            <xs:enumeration value="test">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:
+                        [Hidden]: true
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:enumeration>         
+        </xs:restriction>     
+    </xs:simpleType>      
+    <xs:complexType name="access-logType">      
+        <xs:complexContent>       
+            <xs:extension base="system-loggingType">         
+                <xs:sequence>             
+                    <xs:element default="true" minOccurs="0" name="enable" type="xs:boolean">                 
+                        <xs:annotation>                     
+                            <xs:documentation><![CDATA[
+                        [Description]: Setting for the availabiltiy of analyzing an access logging.
+                    ]]>
+                            </xs:documentation>                 
+                        </xs:annotation>             
+                    </xs:element>             
+                    <xs:element default="false" minOccurs="0" name="enable-analysis" type="xs:boolean">                 
+                        <xs:annotation>                     
+                            <xs:documentation><![CDATA[
+                        [Description]: Setting for the availability of  analyzing an access loging.
+                    ]]>
+                            </xs:documentation>                 
+                        </xs:annotation>             
+                    </xs:element>             
+                    <xs:element minOccurs="0" name="format" type="xs:token">                 
+                        <xs:annotation>                     
+                            <xs:documentation><![CDATA[
+                        [Description]:Setting the format for time-stamp. This configuration is only used for access log. 
+                    ]]>
+                            </xs:documentation>                 
+                        </xs:annotation>             
+                    </xs:element>         
+                </xs:sequence>       
+            </xs:extension>      
+        </xs:complexContent>     
+    </xs:complexType>      
+    <xs:complexType name="session-clusterType">         
+        <xs:sequence>             
+            <xs:element default="true" minOccurs="0" name="session-routing" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:         Session routing is a technique to manage sessions across clustered Web containers. This essentially means 
+                                               that special information, a Web container "ID number", will be attached to each outgoing cookie (session object). 
+                                               Using this ID, Web servers may later redirect (or "route") a client request back to the same Web container that issued the ID 
+                                              (that Web container also holds the actual HTTPSession object associated with the ID). &lt;p>This technique is rather efficient in
+                                               terms of performance but is not completely reliable since a failure in the Web container while processing a client request 
+                                                might cause the session object data to be lost. For better reliability is should be combined with the use of a session server 
+                                               as described in the &amp;lt;session-server&amp;gt; element. &lt;p>Session routing is used when either WebtoB or Apache Web servers 
+                                                are connected to multiple Web containers. WebtoB handles session routing without any special configurations while Apache 
+                                               will require some setup before it can be used with this feature.
+                        [Value Description]: Activating or inactivating this configuration as Boolean value.
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: Activating session sharing between Cluster Web Containers.
+                                                [false]: Inactivating session sharing between Cluster Web Containers. 
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="shared" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: When session routing is set as false and session server is used, all the context group 
+			               and contexts in it can share the session. 
+				       However, session can be shared among groups if session server is not used or session routing is true. 
+				       For such environment, this option should be set as true for maintaining session among context groups.  
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="session-server" type="session-serverType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:          This element enables and configures the use of  a session server for session sharing and backup functionality. The session server
+                                                is configured for use with this context group but it will not run in the Web container but rather in a JEUS server. Session servers are 
+                                                therefore configured in the file JEUSMain.xml. This element will merely configure the connection to such a session server.&lt;p>
+                                                The use of a session server essentially means that all session data will be "backed up" in the session server so that it can be recreated 
+                                                at a later time if the Web container experiences a failure and the data is lost. It also enables other Web containers than the one that originally 
+                                                created the session to fetch the session object, which is good if one Web container is downed and another container has to take over its 
+                                                session information.&lt;p>For even better reliability, each Web container may also be configured to use a backup session server in case the main server is downed.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="session-serverType">         
+        <xs:sequence>             
+            <xs:element name="server-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:  This element configures Session Server name(JNDI export name) for using Session Server in this Context group 
+                                                This export name sets the value in &lt;session-manager>&lt;name> in JEUSMain.xml 
+                        [Value Description]: JNDI export name distingushes Primary Session Server to be used in this Context group.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="backup-server-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: The name of the backup session server to use if the main session server is unreachable.
+                        [Value Description]: JNDI export name of Session Server to be used as  Backup Session Server.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="5000" minOccurs="0" name="connect-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Maximum time taken for waiting for establishing a new connection with Session Server when connection is initially generated.
+                  ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="20000" minOccurs="0" name="read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Maximum number of time taken for reading the data from Session Server.
+                  ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="response-headerType">         
+        <xs:sequence>             
+            <xs:element minOccurs="0" name="session-id-cookie" type="session-id-cookieType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:This element constructs the property of session id cookie sending to client by Web Container for maintaining client session. 
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="custom-header" type="custom-headerType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                      [Description]:This element defines custom field for containing HTTP response message. 
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="session-id-cookieType">         
+        <xs:sequence>             
+            <xs:element default="JSESSIONID" minOccurs="0" name="jsessionid-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This configuration will be used when using other names instead of standard name "JSESSIONID" as the name of session ID. 
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="0" minOccurs="0" name="version" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                           [Description]: Configuring cookie ID version. 
+                        [Value Description]: Either 0 or 1
+                        [Value Type Description]: Integer
+                        [Defined Value]: default 0
+                                                    [0] : Default NS cookie type.
+                                                    [1] : RFC spec.default cookie type 
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="domain" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Sets the domain name of the server that sent the session id cookie. The cookie will only be returned with requests to this domain.
+                        [Value Description]: A valid domain name. It must start with a dot and must not specify the hostname (by RFC spec: RFC-2109).
+                         ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="/" minOccurs="0" name="path" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Sets the URL path within a domain for which a session id cookie will be sent. The cookie is sent along with any request to this URL
+                                               as long as the domain also matches (see the &amp;lt;domain&amp;gt; element). For instance, if the path is set to "/examples", the domain to 
+                                               ".foo.com" and the client requests "www.foo.com/examples", the client's cookie will be sent along with the request.
+                        [Value Description]: Proper URL path below domain/
+                        [Defined Value]: [/]: Cookie is sent despite of the request path.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="-1" minOccurs="0" name="max-age" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:  Sets the "expires" attribute of the session id cookie. When this time period expires, the cookie is considered stale and is removed 
+                                                from the client and not sent out anymore.
+                        [Value Description]: Time period in second unit 
+                        [Defined Value]: [-1]: This value represents that it does not use "expires" property. Therefore, cookie will be terminated after terminating the session of user. 
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="secure" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                         [Description]: "secure" property of Session id cookie is set. If this element has been set as "true", seesion id cookie is sent to secure HTTPS connection. 
+                        [Value Description]: Boolean value to determine wheter cookie is shown above only HTTPS.
+                        [Defined Value]: default : false
+                                                    [true] : session id cookie is sent to only secure HTTPS connection.  
+                                                    [false] : Session id cookie will be sent despite of connection type .
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="custom-headerType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="header-field" type="header-fieldType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                       [Description]:A field name and a value to include in all HTTP responses of this context group.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="header-fieldType">         
+        <xs:sequence>             
+            <xs:element name="field-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: HTTP Responding Field Name.
+                        [Value Description]: Field name.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="field-value" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Value used for the field.
+                        [Value Description]: Value.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType> 
+</xs:schema>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jeus-ejb-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <module-info/>
+    <beanlist>
+        <jeus-bean>
+            <ejb-name>AddressEJB</ejb-name>
+            <export-name>AddressEJB</export-name>
+            <local-export-name>AddressEJB_local</local-export-name>
+            <local-invoke-optimize>false</local-invoke-optimize>
+            <security-interop>
+                <integrity-confidentiality>Supports</integrity-confidentiality>
+                <trust-in-client>Supports</trust-in-client>
+                <client-auth>NotSupported</client-auth>
+                <identity-assertion>Supports</identity-assertion>
+            </security-interop>
+            <ejb-ref>
+                <jndi-info>
+                    <ref-name>ejb/AddressEJB</ref-name>
+                    <export-name>AddressEJB</export-name>
+                </jndi-info>
+            </ejb-ref>
+            <persistence-optimize>
+                <engine-type>SINGLE_OBJECT</engine-type>
+            </persistence-optimize>
+            <destination>AddressEJB</destination>
+        </jeus-bean>
+    </beanlist>
+</jeus-ejb-dd>
+

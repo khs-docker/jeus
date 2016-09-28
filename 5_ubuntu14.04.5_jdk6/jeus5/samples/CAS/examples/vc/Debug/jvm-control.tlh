@@ -1,0 +1,242 @@
+// Created by Microsoft (R) C/C++ Compiler Version 12.00.8168.0 (fe13709e).
+//
+// d:\tmaxsoft\jeus5\samples\cas\examples\vc\debug\jvm-control.tlh
+//
+// C++ source equivalent of Win32 type library D:\j2ee-cas-com-bridge\bin\jvm-control.dll
+// compiler-generated file created 04/04/05 at 15:28:19 - DO NOT EDIT!
+
+#pragma once
+#pragma pack(push, 8)
+
+#include <comdef.h>
+
+namespace ComBridgeJvmControl {
+
+//
+// Forward references and typedefs
+//
+
+struct __declspec(uuid("360f0008-6087-4ce8-8196-93dbf211b81b"))
+/* dispinterface */ _IJvmControlEvents;
+struct /* coclass */ JvmControl;
+struct __declspec(uuid("2ce6720f-393c-4572-a390-a0e81d37eb90"))
+/* dual interface */ IJvmControl;
+struct /* coclass */ JvmProperties;
+struct /* coclass */ JvmOptions;
+struct /* coclass */ JvmPathPP;
+struct /* coclass */ ClasspathPP;
+struct /* coclass */ BootpathPP;
+
+//
+// Smart pointer typedef declarations
+//
+
+_COM_SMARTPTR_TYPEDEF(_IJvmControlEvents, __uuidof(IDispatch));
+_COM_SMARTPTR_TYPEDEF(IJvmControl, __uuidof(IJvmControl));
+
+//
+// Type library items
+//
+
+struct __declspec(uuid("360f0008-6087-4ce8-8196-93dbf211b81b"))
+_IJvmControlEvents : IDispatch
+{};
+
+struct __declspec(uuid("2117654c-452a-42f7-92f3-d9f2d21ca668"))
+JvmControl;
+    // [ default ] interface IJvmControl
+    // [ default, source ] dispinterface _IJvmControlEvents
+
+struct __declspec(uuid("2ce6720f-393c-4572-a390-a0e81d37eb90"))
+IJvmControl : IDispatch
+{
+    //
+    // Property data
+    //
+
+    __declspec(property(get=GetClasspath,put=PutClasspath))
+    _bstr_t Classpath;
+    __declspec(property(get=GetBootclasspath,put=PutBootclasspath))
+    _bstr_t Bootclasspath;
+    __declspec(property(get=GetPrependClasspath,put=PutPrependClasspath))
+    _bstr_t PrependClasspath;
+    __declspec(property(get=GetPrependBootclasspath,put=PutPrependBootclasspath))
+    _bstr_t PrependBootclasspath;
+    __declspec(property(get=GetAppendClasspath,put=PutAppendClasspath))
+    _bstr_t AppendClasspath;
+    __declspec(property(get=GetAppendBootclasspath,put=PutAppendBootclasspath))
+    _bstr_t AppendBootclasspath;
+    __declspec(property(get=GetJvmProperties,put=PutJvmProperties))
+    _bstr_t JvmProperties;
+    __declspec(property(get=GetJvmOptions,put=PutJvmOptions))
+    _bstr_t JvmOptions;
+    __declspec(property(get=GetJvmPath,put=PutJvmPath))
+    _bstr_t JvmPath;
+    __declspec(property(get=GetNotSpecified))
+    _bstr_t NotSpecified;
+
+    //
+    // Wrapper methods for error-handling
+    //
+
+    _bstr_t GetClasspath ( );
+    void PutClasspath (
+        _bstr_t pVal );
+    _bstr_t GetBootclasspath ( );
+    void PutBootclasspath (
+        _bstr_t pVal );
+    _bstr_t GetPrependClasspath ( );
+    void PutPrependClasspath (
+        _bstr_t pVal );
+    _bstr_t GetPrependBootclasspath ( );
+    void PutPrependBootclasspath (
+        _bstr_t pVal );
+    _bstr_t GetAppendClasspath ( );
+    void PutAppendClasspath (
+        _bstr_t pVal );
+    _bstr_t GetAppendBootclasspath ( );
+    void PutAppendBootclasspath (
+        _bstr_t pVal );
+    _bstr_t GetJvmProperties ( );
+    void PutJvmProperties (
+        _bstr_t pVal );
+    _bstr_t GetJvmOptions ( );
+    void PutJvmOptions (
+        _bstr_t pVal );
+    _bstr_t GetJvmPath ( );
+    void PutJvmPath (
+        _bstr_t pVal );
+    _bstr_t GetNotSpecified ( );
+    HRESULT RemoveAllProperties ( );
+    HRESULT AddProperty (
+        _bstr_t propertyName,
+        _bstr_t propertyValue );
+    HRESULT RemoveProperty (
+        _bstr_t propertyName );
+    long GetPropertyCount ( );
+    _bstr_t GetPropertyName (
+        long propertyIndex );
+    _bstr_t GetPropertyValue (
+        _bstr_t propertyName );
+    HRESULT Load (
+        _bstr_t filename );
+    HRESULT Save (
+        _bstr_t filename );
+    HRESULT AddOption (
+        _bstr_t option );
+    HRESULT RemoveOption (
+        _bstr_t option );
+    long GetOptionCount ( );
+    _bstr_t GetOption (
+        long optionIndex );
+    HRESULT RemoveAllOptions ( );
+    IDispatchPtr GetJvmStarter ( );
+    IDispatchPtr StartJvm ( );
+    HRESULT ClearAll ( );
+
+    //
+    // Raw methods provided by interface
+    //
+
+    virtual HRESULT __stdcall get_Classpath (
+        BSTR * pVal ) = 0;
+    virtual HRESULT __stdcall put_Classpath (
+        BSTR pVal ) = 0;
+    virtual HRESULT __stdcall get_Bootclasspath (
+        BSTR * pVal ) = 0;
+    virtual HRESULT __stdcall put_Bootclasspath (
+        BSTR pVal ) = 0;
+    virtual HRESULT __stdcall get_PrependClasspath (
+        BSTR * pVal ) = 0;
+    virtual HRESULT __stdcall put_PrependClasspath (
+        BSTR pVal ) = 0;
+    virtual HRESULT __stdcall get_PrependBootclasspath (
+        BSTR * pVal ) = 0;
+    virtual HRESULT __stdcall put_PrependBootclasspath (
+        BSTR pVal ) = 0;
+    virtual HRESULT __stdcall get_AppendClasspath (
+        BSTR * pVal ) = 0;
+    virtual HRESULT __stdcall put_AppendClasspath (
+        BSTR pVal ) = 0;
+    virtual HRESULT __stdcall get_AppendBootclasspath (
+        BSTR * pVal ) = 0;
+    virtual HRESULT __stdcall put_AppendBootclasspath (
+        BSTR pVal ) = 0;
+    virtual HRESULT __stdcall get_JvmProperties (
+        BSTR * pVal ) = 0;
+    virtual HRESULT __stdcall put_JvmProperties (
+        BSTR pVal ) = 0;
+    virtual HRESULT __stdcall get_JvmOptions (
+        BSTR * pVal ) = 0;
+    virtual HRESULT __stdcall put_JvmOptions (
+        BSTR pVal ) = 0;
+    virtual HRESULT __stdcall get_JvmPath (
+        BSTR * pVal ) = 0;
+    virtual HRESULT __stdcall put_JvmPath (
+        BSTR pVal ) = 0;
+    virtual HRESULT __stdcall get_NotSpecified (
+        BSTR * pVal ) = 0;
+    virtual HRESULT __stdcall raw_RemoveAllProperties ( ) = 0;
+    virtual HRESULT __stdcall raw_AddProperty (
+        BSTR propertyName,
+        BSTR propertyValue ) = 0;
+    virtual HRESULT __stdcall raw_RemoveProperty (
+        BSTR propertyName ) = 0;
+    virtual HRESULT __stdcall raw_GetPropertyCount (
+        long * numProperties ) = 0;
+    virtual HRESULT __stdcall raw_GetPropertyName (
+        long propertyIndex,
+        BSTR * thePropertyName ) = 0;
+    virtual HRESULT __stdcall raw_GetPropertyValue (
+        BSTR propertyName,
+        BSTR * thePropertyValue ) = 0;
+    virtual HRESULT __stdcall raw_Load (
+        BSTR filename ) = 0;
+    virtual HRESULT __stdcall raw_Save (
+        BSTR filename ) = 0;
+    virtual HRESULT __stdcall raw_AddOption (
+        BSTR option ) = 0;
+    virtual HRESULT __stdcall raw_RemoveOption (
+        BSTR option ) = 0;
+    virtual HRESULT __stdcall raw_GetOptionCount (
+        long * numOptions ) = 0;
+    virtual HRESULT __stdcall raw_GetOption (
+        long optionIndex,
+        BSTR * theOption ) = 0;
+    virtual HRESULT __stdcall raw_RemoveAllOptions ( ) = 0;
+    virtual HRESULT __stdcall raw_GetJvmStarter (
+        IDispatch * * pJvmStarterDisp ) = 0;
+    virtual HRESULT __stdcall raw_StartJvm (
+        IDispatch * * ppIJavaVirtualMachine ) = 0;
+    virtual HRESULT __stdcall raw_ClearAll ( ) = 0;
+};
+
+struct __declspec(uuid("d44ed075-ae3b-47af-9cbb-8d2d7896f384"))
+JvmProperties;
+    // [ default ] interface IUnknown
+
+struct __declspec(uuid("0cb4a9f0-838a-45f7-a30a-268de8439b7d"))
+JvmOptions;
+    // [ default ] interface IUnknown
+
+struct __declspec(uuid("0b1d6363-0aa4-48ab-8911-8925c11c95ad"))
+JvmPathPP;
+    // [ default ] interface IUnknown
+
+struct __declspec(uuid("94f44582-2eac-4b28-be5a-8febc40eceaa"))
+ClasspathPP;
+    // [ default ] interface IUnknown
+
+struct __declspec(uuid("804ce647-a532-4d31-b549-3c6776e282c9"))
+BootpathPP;
+    // [ default ] interface IUnknown
+
+//
+// Wrapper method implementations
+//
+
+#include "d:\tmaxsoft\jeus5\samples\cas\examples\vc\debug\jvm-control.tli"
+
+} // namespace ComBridgeJvmControl
+
+#pragma pack(pop)

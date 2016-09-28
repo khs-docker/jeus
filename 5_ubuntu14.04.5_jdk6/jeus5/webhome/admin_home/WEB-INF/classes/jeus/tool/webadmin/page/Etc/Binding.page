@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+"-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.Etc.BindingPage">
+    <component id="popupMainBorder" type="jeus:PopupMainBorder">
+        <binding name="title" value="literal:Binding"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@ETC_JNDI_NAMES"/>
+    </component>
+
+    <component id="bindingForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:Etc_Binding.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="condHasName" type="If">
+        <binding name="condition" value="ognl:name != null"/>
+    </component>
+
+    <component id="condNotHasName" type="If">
+        <binding name="condition" value="ognl:name == null"/>
+    </component>
+
+    <component id="name" type="jeus:ReadOnlyTextField">
+        <binding name="value" value="ognl:name"/>
+        <binding name="label" value="message:Etc_Binding.name.label"/>
+    </component>
+
+    <component id="location" type="jeus:ReadOnlyTextField">
+        <binding name="value" value="ognl:jNDILocation"/>
+        <binding name="label" value="message:Etc_Binding.location.label"/>
+    </component>
+
+    <component id="class" type="jeus:ReadOnlyTextField">
+        <binding name="value" value="ognl:binding.class"/>
+        <binding name="label" value="message:Etc_Binding.class.label"/>
+    </component>
+
+    <component id="logo" type="Image">
+        <binding name="image" value="ognl:assets.logo"/>
+    </component>
+
+    <asset name="logo" path="context:/image/binding.gif"/>
+
+    <asset name="form_css" path="context:/css/jeus.css"/>
+</page-specification>

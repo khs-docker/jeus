@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.StatisticsBasePage">
+    <meta key="alternative.page.name" value="JTAResource_Configuration"/>
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JTA Resource Statistics"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@getJTARESOURCE_NAMES(objectName)"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:jta.statistics.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="active_count" type="jeus:CountStatisticField">
+        <binding name="label" value="message:jta.statistics.active_count.label"/>
+        <binding name="count" value="ognl:stats.activeCount"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="committed_count" type="jeus:CountStatisticField">
+        <binding name="label" value="message:jta.statistics.committed_count.label"/>
+        <binding name="count" value="ognl:stats.committedCount"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="rolledback_count" type="jeus:CountStatisticField">
+        <binding name="label" value="message:jta.statistics.rolledback_count.label"/>
+        <binding name="count" value="ognl:stats.rolledbackCount"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="timeout_count" type="jeus:CountStatisticField">
+        <binding name="label" value="message:jta.statistics.timeout_count.label"/>
+        <binding name="count" value="ognl:stats.timeoutCount"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="active_timeout_count" type="jeus:CountStatisticField">
+        <binding name="label" value="message:jta.statistics.active_timeout_count.label"/>
+        <binding name="count" value="ognl:stats.activeTimeoutCount"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="prepare_timeout_count" type="jeus:CountStatisticField">
+        <binding name="label" value="message:jta.statistics.prepare_timeout_count.label"/>
+        <binding name="count" value="ognl:stats.prepareTimeoutCount"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="prepared_timeout_count" type="jeus:CountStatisticField">
+        <binding name="label" value="message:jta.statistics.prepared_timeout_count.label"/>
+        <binding name="count" value="ognl:stats.preparedTimeoutCount"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="timeout_rolledback_count" type="jeus:CountStatisticField">
+        <binding name="label" value="message:jta.statistics.timeout_rolledback_count.label"/>
+        <binding name="count" value="ognl:stats.timeoutRolledbackCount"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="commit_timeout_count" type="jeus:CountStatisticField">
+        <binding name="label" value="message:jta.statistics.commit_timeout_count.label"/>
+        <binding name="count" value="ognl:stats.commitTimeoutCount"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+   <component id="incomplete_commit_count" type="jeus:CountStatisticField">
+        <binding name="label" value="message:jta.statistics.incomplete_commit_count.label"/>
+        <binding name="count" value="ognl:stats.incompleteCommitCount"/>
+       <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="execution_time" type="jeus:TimeStatisticField">
+         <binding name="label" value="message:jta.statistics.execution_time.label"/>
+         <binding name="time" value="ognl:stats.executionTime"/>
+    </component>
+
+    <component id="refreshButton" type="Any">
+        <binding name="element" value="literal:input"/>
+        <binding name="value" value="message:common.label.refresh"/>
+    </component>
+
+</page-specification>

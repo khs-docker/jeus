@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.EJBModule.ConfigurationPage">
+	<inject property="jaxbSource" type="state" object="JAXBSource"/>
+
+    <inject property="webadminVisit" type="state" object="visit"/>
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:EJB Configuration"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@EJB_MODULE_NAMES"/>
+        <binding name="subtabNames" value="(jeusEjbDdContent == null) ? {'general', 'ejb_jar'} : {'general', 'jeus_ejb_dd', 'ejb_jar'}"/>
+    </component>
+
+    <component id="general" type="Block"/>
+    <component id="jeus_ejb_dd" type="Block"/>
+    <component id="ejb_jar" type="Block"/>
+
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:emc.general.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="bean_listSection" type="jeus:FormSection">
+        <binding name="title" value="message:emc.general.bean_list.title"/>
+    </component>
+
+    <component id="condApplicationName" type="If">
+        <binding name="condition" value="objectName.getKeyProperty('J2EEApplication') != null and  objectName.getKeyProperty('J2EEApplication') != 'null'"/>
+    </component>
+
+    <component id="applicationName" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:emc.general.application_name.label"/>
+        <!--<binding name="value" value="objectName.getKeyProperty('J2EEApplication')"/>-->
+        <binding name="value" value="objectName.getKeyProperty('J2EEApplication')"/>
+        <binding name="renderBottom" value="true"/>
+    </component>
+
+    <component id="moduleName" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:emc.general.module_name.label"/>
+        <binding name="value" value="objectName.getKeyProperty('name')"/>
+        <binding name="renderBottom" value="true"/>
+    </component>
+
+    <component id="bean_listTable" type="jeus:JEUSTable">
+        <binding name="source" value="beanList"/>
+        <binding name="columns" value="literal:!ejb_name_label:name, !ejb.bean_type.label:beanType, !ejb.export_name.label:exportName, !ejb.local_export_name.label:localExportName"/>
+        <binding name="row" value="currentView"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+    </component>
+
+    <component id="beanLink" type="ExternalLink">
+        <binding name="page" value="literal:EJB_Statistics"/>
+        <binding name="parameters" value="currentView.objectName.canonicalName"/>
+    </component>
+
+    <component id="beanName" type="Insert">
+        <binding name="value" value="currentView.name"/>
+    </component>
+
+    <component id="jeus_ejb_ddForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:emc.jeus_ejb_dd.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="jeus_ejb_ddContent" type="InsertText">
+        <binding name="value" value="jeusEjbDdContent"/>
+    </component>
+
+    <component id="ejb_jarForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:emc.ejb_jar.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="ejb_jarContent" type="InsertText">
+        <binding name="value" value="ejbJarContent"/>
+    </component>
+
+    <property name="currentView"/>
+
+</page-specification>

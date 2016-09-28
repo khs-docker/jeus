@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="Shift-JIS"?>
+<description>   <document>     <key>/jtmax-server/webt-config/log-level/    </key>     <documentation><![CDATA[
+                    [Description]:Webt loggerのレベルを設定します。NONE、INFOそしてDEBUG値が有効であり、基本値はNONEです。
+                ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/formatter-property/    </key>     <documentation><![CDATA[
+                        [Description]: handlerが生成されるときに生成されたformatterに渡すpropertyを設定します。
+                        このpropertyは、key-valueでMapに格納され、
+JeusFormatter.setProperty() methodを通じて
+                        Formatterに伝達されます。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/from-address/    </key>     <documentation><![CDATA[
+                        [Description]: メール送信者のアドレスを指定します。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/console-handler/level/    </key>     <documentation><![CDATA[
+                      [Description]: このHandlerのレベルを設定します。ロガーををパスしたメッセージのレベルがこのHandlerに含まれる場合のみこのHandlerにより出力されます。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/level/    </key>     <documentation><![CDATA[
+                      [Description]: このHandlerのレベルを設定します。ロガーををパスしたメッセージのレベルがこのHandlerに含まれる場合のみこのHandlerにより出力されます。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/handler-class/    </key>     <documentation><![CDATA[
+                        [Description]: ユーザが作成したhandlerの完全な記述によるクラス名（fully qualified class name）を設定します。このクラスは
+                        java.util.logging.Handlerを相続してもらい
+jeus.util.logging.JeusHandlerを実現します。
+                        [Example]: &lt;handler-class>com.tmax.logging.handler.MyHandler&lt;/handler-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/filter-class/    </key>     <documentation><![CDATA[
+                        [Description]: このHandlerに指定するfiler classの完全な記述によるクラス名（fully qualified class name）を設定します。
+                        [Example]: &lt;filter-class>com.tmax.logging.filter.MyFilter&lt;/filter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/service/method-name/    </key>     <documentation><![CDATA[
+						[Description]:呼び出すメソッドの名前を指定します。
+					]]>    </documentation>  </document>   <document>     <key>/jtmax-server/    </key>     <documentation><![CDATA[
+		[Description]: jTmax設定の最上位elementでjtmaxMain.xmlには必ず存在する必要があります。
+		]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/    </key>     <documentation><![CDATA[
+                  [Description]:　ロガーで使用するHandlerを設定します。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/service/arg-types/    </key>     <documentation><![CDATA[
+		[Description]:メソッドの因子を設定する部分で、クラスに定義された因子のタイプを指定します。
+		      もし、使用する因子がなければこのタッグは必要ありません。
+		      使用可能な因子タイプは次の通りです。;
+                                   short,char,int,long,double,float,String,bytes,webt
+		      例. &lt;input-args>int,int,String&lt;/input-args>
+					]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/level/    </key>     <documentation><![CDATA[
+                      [Description]: このHandlerのレベルを設定します。ロガーををパスしたメッセージのレベルがこのHandlerに含まれる場合のみこのHandlerにより出力されます。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/service/ejb-name/    </key>     <documentation><![CDATA[
+		[Description]:DeployされたEJBモジュールのejb-nameに該当し、
+		モジュールのDDファイルであるejb-jar.xmlのejb-nameと同じでなければなりません。
+		]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/console-handler/    </key>     <documentation><![CDATA[
+                      [Description]: ロギングをスクリーンに表示する場合に使用するHandlerです。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/level/    </key>     <documentation><![CDATA[
+                  [Description]: ロギングのレベルを設定します。それぞれのレベルの意味は、J2SEのロギングAPIのレベル・クラスを参照してください。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/send-for-all-messages/    </key>     <documentation><![CDATA[
+                        [Description]: このhandlerが登録したロガーのlog() methodを通じて入って来たメッセージがこのhandlerで入った場合、これをイメールで送る対象とするかを設定します。もしfalseで設定されていれば、ロガーの特別なsend() methodで呼び出されたメッセージのみイメールで伝送されます。
+                        すなわち、最初からイメールで送る目的で指定されたメッセージのみイメールで伝送されます。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/formatter-property/property/    </key>     <documentation><![CDATA[
+                        [Description]: handlerに伝達するpropertyを設定します。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/name/    </key>     <documentation><![CDATA[
+                      [Description]: Handlerの名前を設定します。このとき名前は、1つのロガー内でのみユニークな名前を設定します。この名前はツールなどでHandlerを示すときに使用します。
+                      [Example]: &lt;name>handler1&lt;/name>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/name/    </key>     <documentation><![CDATA[
+                      [Description]: Handlerの名前を設定します。このとき名前は、1つのロガー内でのみユニークな名前を設定します。この名前はツールなどでHandlerを示すときに使用します。
+                      [Example]: &lt;name>handler1&lt;/name>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/    </key>     <documentation><![CDATA[
+                      [Description]: ロギングをイメールで送る場合に使用するHandlerです。
+                      [Performance Recommandation]: ロギングメッセージ1つが1つのイメールで伝送されるため、適切なフィルターなしで使用することはおびただしい量のイメールを発生させますので注意を要します。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/listener/backlog/    </key>     <documentation><![CDATA[
+		[Description]:JTmaxサーバーのTmaxのJeusGWのためのbacklog値です。
+		]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/valid-day/    </key>     <documentation><![CDATA[
+                          [Description]: このHandlerが使用するファイルをこの設定で指定された期間中だけ使って引き続き更新する場合に使用します。この設定は、日付段位でファイルを変更するときに使います。この場合、Handlerが使用するファイル名の後ろにファイルが使用された日付が自動生成されます。
+                          [Value Description]: day
+                          [Example]: &lt;valid-day>1&lt;/valid-day>
+                        ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/file-name/    </key>     <documentation><![CDATA[
+                        [Description]: このHandlerが使用するファイル名前を設定します。もしユーザがこの設定を行わない場合は、それぞれのロガーのディフォルトファイル名が使用されます。それぞれのディフォルトファイル名は、JEUS Serverマニュアルを参照してください。
+                        [Example]: &lt;file-name>C:\logs\mylog.log&lt;/file-name>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/maxThreadPoolSize/    </key>     <documentation><![CDATA[
+		[Description]:Tmax clientのreeqeustを処理するスレッドプールの最大サイズ
+		]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/    </key>     <documentation><![CDATA[
+                      [Description]: ロギングを指定されたソケットに送る場合に使用するHandlerです。
+                      [Performance Recommandation]: ロギングメッセージが1つづつソケットに伝送されるので、適切なフィルターなしで使用することは性能低下をもたらします。
+                  ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/filter-class/    </key>     <documentation><![CDATA[
+                  [Description]: ロガーに指定するfiler classの完全な記述によるクラス名（fully qualified class name）を設定します。
+                  [Example]: &lt;filter-class>com.tmax.logging.filter.MyFilter&lt;/filter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/webt-config/default-charset/    </key>     <documentation><![CDATA[
+		[Description]:設定されてなければwebt propertyのcharsetに設定されます。
+		]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/encoding/    </key>     <documentation><![CDATA[
+                      [Description]: このHandlerがメッセージを残すときに使用するエンコーディングを設定します。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/bcc-address/    </key>     <documentation><![CDATA[
+                        [Description]: 参照者（Bcc）のアドレスの指定します。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/level/    </key>     <documentation><![CDATA[
+                      [Description]: このHandlerのレベルを設定します。ロガーををパスしたメッセージのレベルがこのHandlerに含まれる場合のみこのHandlerにより出力されます。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/filter-class/    </key>     <documentation><![CDATA[
+                        [Description]: このHandlerに指定するfiler classの完全な記述によるクラス名（fully qualified class name）を設定します。
+                        [Example]: &lt;filter-class>com.tmax.logging.filter.MyFilter&lt;/filter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/buffer-size/    </key>     <documentation><![CDATA[
+                        [Description]: このHandlerがファイルに出力するときに使用するバッファーのサイズを指定します。
+                        [Value Description]: バイト単位です。
+                        [Performance Recommandation]: この値が大きいほどファイルに出力されるメッセージは遅れて出力されるが、ロギングの性能はよくなります。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/formatter-property/property/key/    </key>     <documentation><![CDATA[
+                        [Description]: propertyのkey値です。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/name/    </key>     <documentation><![CDATA[
+                      [Description]: Handlerの名前を設定します。このとき名前は、1つのロガー内でのみユニークな名前を設定します。この名前はツールなどでHandlerを示すときに使用します。
+                      [Example]: &lt;name>handler1&lt;/name>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/handler-property/    </key>     <documentation><![CDATA[
+                        [Description]: handlerが生成されるときに渡すpropertyを設定します。このpropertyは
+                        key-valueでMapに格納され、JeusHandler.setProperty() methodを通じてhandlerに
+                        伝達されます。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/console-handler/name/    </key>     <documentation><![CDATA[
+                      [Description]: Handlerの名前を設定します。このとき名前は、1つのロガー内でのみユニークな名前を設定します。この名前はツールなどでHandlerを示すときに使用します。
+                      [Example]: &lt;name>handler1&lt;/name>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/webt-config/    </key>     <documentation><![CDATA[
+		[Description]:webt関連情報設定
+		]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/address/    </key>     <documentation><![CDATA[
+                        [Description]: このhandlerが生成されるときにメッセージの送信先IP Addressを設定します。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/    </key>     <documentation><![CDATA[
+                      [Description]: ユーザがJ2SE logging APIに従って作ったHandlerを使用する場合の設定です。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/handler-property/property/    </key>     <documentation><![CDATA[
+                        [Description]: handlerに伝達するpropertyを設定します。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/name/    </key>     <documentation><![CDATA[
+                      [Description]: Handlerの名前を設定します。このとき名前は、1つのロガー内でのみユニークな名前を設定します。この名前はツールなどでHandlerを示すときに使用します。
+                      [Example]: &lt;name>handler1&lt;/name>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/use-parent-handlers/    </key>     <documentation><![CDATA[
+                  [Description]: 新しいロガーのHandlerをこのロガーでも使用するかを決定します。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/encoding/    </key>     <documentation><![CDATA[
+                      [Description]: このHandlerがメッセージを残すときに使用するエンコーディングを設定します。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/filter-class/    </key>     <documentation><![CDATA[
+                        [Description]: このHandlerに指定するfiler classの完全な記述によるクラス名（fully qualified class name）を設定します。
+                        [Example]: &lt;filter-class>com.tmax.logging.filter.MyFilter&lt;/filter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/formatter-property/property/value/    </key>     <documentation><![CDATA[
+                        [Description]: propertyのvalue値です。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/console-handler/filter-class/    </key>     <documentation><![CDATA[
+                        [Description]: このHandlerに指定するfiler classの完全な記述によるクラス名（fully qualified class name）を設定します。
+                        [Example]: &lt;filter-class>com.tmax.logging.filter.MyFilter&lt;/filter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/append/    </key>     <documentation><![CDATA[
+                        [Description]: このHandlerが使用するファイルがすでに存在する場合、ファイルの後ろに追加するかを決定します。
+                        Falseで設定されていれば既存のファイルは除去されます。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/port/    </key>     <documentation><![CDATA[
+                        [Description]: このhandlerが生成されるときにメッセージの送信先Portを設定します。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/    </key>     <documentation><![CDATA[
+                      [Description]: ロギングをファイルとして出力する場合に使用するHandlerです。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/handler-property/property/value/    </key>     <documentation><![CDATA[
+                        [Description]: propertyのvalue値です。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/service/name/    </key>     <documentation><![CDATA[
+						[Description]:Tmaxで呼び出すサービス名を示します。
+					]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/smtp-host-address/    </key>     <documentation><![CDATA[
+                        [Description]: メールを送信するsmtp serverのアドレスを指定します。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/    </key>     <documentation><![CDATA[
+		[Description]:ロギング関連情報設定
+		]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/console-handler/encoding/    </key>     <documentation><![CDATA[
+                      [Description]: このHandlerがメッセージを残すときに使用するエンコーディングを設定します。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/cc-address/    </key>     <documentation><![CDATA[
+                        [Description]: 参照者（Cc）のアドレスを指定します。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/listener/port/    </key>     <documentation><![CDATA[
+		[Description]:Tmaxシステムに機動されるJeusGWがJtmax Serverにアクセスするフォト番号です。
+		]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/formatter-class/    </key>     <documentation><![CDATA[
+                        [Description]: このhandlerが使用するformatterの完全な記述によるクラス名（fully qualified class name）を設定します。このクラスは
+                        java.util.logging.Formatterを相続してもらい、
+jeus.util.logging.JeusFormatterを実現します。
+                        [Example]: &lt;formatter-class>com.tmax.logging.handler.MyHandler&lt;/formatter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/encoding/    </key>     <documentation><![CDATA[
+                      [Description]: このHandlerがメッセージを残すときに使用するエンコーディングを設定します。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/filter-class/    </key>     <documentation><![CDATA[
+                        [Description]: このHandlerに指定するfiler classの完全な記述によるクラス名（fully qualified class name）を設定します。
+                        [Example]: &lt;filter-class>com.tmax.logging.filter.MyFilter&lt;/filter-class>
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/socket-handler/encoding/    </key>     <documentation><![CDATA[
+                      [Description]: このHandlerがメッセージを残すときに使用するエンコーディングを設定します。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/file-handler/valid-hour/    </key>     <documentation><![CDATA[
+                          [Description]: このHandlerが使用するファイルをこの設定で指定された期間中だけ使って引き続き更新する場合に使用します。この設定は、日付段位でファイルを変更するときに使います。この場合、Handlerが使用するファイル名の後ろにファイルが使用された日付と時間が自動生成されます。
+                          [Value Description]: 時間を示し、24の約数 + n*24 (nは0以上の正数)の値を持ちます。
+                          [Example]: &lt;valid-hour>3&lt;/valid-hour>
+                        ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/service/    </key>     <documentation><![CDATA[
+		[Description]:Tmaxで呼び出すEJBサービスに対する情報を記述する箇所です。
+		]]>    </documentation>  </document>   <document>     <key>/jtmax-server/fdl-file/    </key>     <documentation><![CDATA[
+		[Description]:Tmaxとデータ通信のために定義したFieldKeyファイルの絶対パスです。
+			      値がないと $JEUS_HOME/lib/system/tmax.fdlを探します。
+		]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/user-handler/handler-property/property/key/    </key>     <documentation><![CDATA[
+                        [Description]: propertyのkey値です。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/level/    </key>     <documentation><![CDATA[
+                      [Description]: このHandlerのレベルを設定します。ロガーををパスしたメッセージのレベルがこのHandlerに含まれる場合のみこのHandlerにより出力されます。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/listener/    </key>     <documentation><![CDATA[
+						[Description]:TmaxのJeusGWでアクセスするJtmaxServerのリスナーに対する情報を設定します。
+						]]>    </documentation>  </document>   <document>     <key>/jtmax-server/webt-config/inbuffer-size/    </key>     <documentation><![CDATA[
+                        [Description]:データを受信するWebTの受信バッファーサイズ指定
+                                  設定した入力バッファーのサイズが4096以上の場合はその値を使用し、
+                                  4096未満の場合は4096値で指定(最小値>4096)
+                        ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/logging/handler/smtp-handler/to-address/    </key>     <documentation><![CDATA[
+                        [Description]: メール受信者のアドレスを指定します。
+                    ]]>    </documentation>  </document>   <document>     <key>/jtmax-server/webt-config/outbuffer-size/    </key>     <documentation><![CDATA[
+                        [Description]:データを受信するWebTの受信バッファーサイズ指定
+                                  設定した出力バッファーサイズが1024の場合はその値を使用し、
+                                  1024未満の場合は1024値で指定(最小値>1024)
+                    ]]>    </documentation>  </document></description>

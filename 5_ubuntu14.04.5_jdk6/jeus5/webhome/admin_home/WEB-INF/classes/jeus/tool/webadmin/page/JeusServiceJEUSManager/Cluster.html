@@ -1,0 +1,36 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="clusterForm">
+            <span jwcid="targets">
+                <table cellspacing="0" cellpadding="0" border="0">
+                    <tr>
+                        <td width="200">
+                            <input jwcid="targetsField"/>
+                        </td>
+                        <td jwcid="@Any" element="td" width="3" background="ognl:assets.dot">
+                        </td>
+                        <td valign="top">
+                            <!--<input jwcid="remove" style="width:100px;margin-left:10px;padding-left:10px;text-align:center;" class="form_button"/>-->
+                            <input jwcid="remove" style="width:100px;margin-left:10px;text-align:center;" class="form_button"/>
+                        </td>
+                    </tr>
+                </table>
+            </span>
+        </form>
+        <br/>
+        <form jwcid="add_nodeForm">
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                    <td>
+                        <span jwcid="node_name">
+                            <input jwcid="node_nameField"/>
+                        </span>
+                    </td>
+                    <td valign="top">
+                        <input jwcid="add_node" class="form_button" style="width:100px;"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </span>
+</html>

@@ -1,0 +1,38 @@
+<span jwcid="$content$">
+    <!-- form title -->
+    <h1 jwcid="@If" condition="ognl:title != null" class="ognl:subform ? 'subform_title' : 'form_title'" element="h1"><span jwcid="@Insert" value="ognl:title"/></h1>
+	<!-- form description -->
+	<p class="form_description" jwcid="@If" id="form_description" condition="ognl:description != null and settings.showDescription" element="p">
+        <span jwcid="@Insert" value="ognl:description"/>
+    </p>
+    <span jwcid="@If" condition="ognl:useForm" renderTag="ognl:false">
+        <span jwcid="@If" condition="ognl:mbean" renderTag="ognl:false">
+            <form jwcid="mbeanForm" onsubmit="return progress_bar();">
+                <span jwcid="@RenderBlock" block="component:formBody"/>
+            </form>
+            <script jwcid="@Script" script="JEUSForm.script" target="component:mbeanForm"/>
+        </span>
+        <span jwcid="@Else" renderTag="ognl:false">
+            <form jwcid="form" onsubmit="return progress_bar();">
+                <span jwcid="@RenderBlock" block="component:formBody"/>
+            </form>
+            <script jwcid="@Script" script="JEUSForm.script" target="component:form"/>
+        </span>
+    </span>
+    <span jwcid="formBody@Block">
+        <!-- message for fail -->
+        <div class="form_error" jwcid="@If" id="form_error" condition="ognl:submitted and !result and ( failMessage != null or detailMessage != null )" element="div">
+			<h2 jwcid="@Insert" value="ognl:failMessage" renderTag="ognl:true">failMessage</h2>
+			<input jwcid="error_button@Any" id="error_button" class="form_button" type="button" style="width:100px;" value="message:Form.fail.showDetail.label"/>
+	        <textarea jwcid="detail@TextArea" value="ognl:detailMessage" style="display: none;"></textarea>
+			<script jwcid="@Script" script="/jeus/tool/webadmin/script/Toggle.script" button="component:error_button" target="component:detail" showText="message:Form.fail.showDetail.label" hideText="message:Form.fail.hideDetail.label"/>	        
+		</div>
+        <span jwcid="@RenderBody"/>
+        <!-- action buttons -->
+		<div class="form_button_layer" jwcid="@If" id="form_button_layer" condition="ognl:useDefaultButtons" element="div">
+			<input jwcid="ok" class="form_button"/>
+            <input jwcid="cancel" class="form_button"/>
+            <span jwcid="@If" condition="ognl:refresh neq null and useRefreshButton" renderTag="ognl:false"><input jwcid="refresh" class="form_button"/></span>
+		</div>
+    </span>
+</span>

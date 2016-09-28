@@ -1,0 +1,692 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 26 세션 추적 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('26 세션 추적', 'wm-25.htm', 'wm-27.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left"><A NAME="session"></A>26 세션 추적
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMHeading2"><A NAME="session_clustering"></A>26.1 세션 클러스터링 설정
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMHeading3">26.1.1 세션 클러스터링 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng_conf">설정
+ </A>&gt;세션 클러스터
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">서블릿 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">세션
+ </SPAN>탭을 클릭한다.
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">기본 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMNormalText">3. 각 입력사항을 입력한다. 입력된 항목은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="516" SRC="images/image252.jpg" HEIGHT="341"></P>
+
+<P CLASS="JMCaption">그림 216 세션 클러스터링 설정
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMHeading2"><A NAME="p2p"></A><A NAME="session_p2p"></A>26.2 분산 세션 서버
+ </P>
+<A NAME="1008"></A>
+<P CLASS="JMNormalText">분산 세션 서버는 JEUS 5부터 새롭게 소개되는 세션 서버 방식이다. 기존의 중압 집중식 세션 서버의 문제점들을 개선하여 보다 높은 성능을 발휘 
+할 수 있으므로 가능하면 이 세션서버를 사용할 것을 적극 권장한다.
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMHeading3"><A NAME="p2p_conf_general"></A>26.2.1 분산 세션 서버 기본 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng_conf">설정
+ </A>&gt; 분산 세션 서버 &gt; 기본 설정
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">서블릿 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">세션
+ </SPAN>탭을 클릭한다.
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 분산
+ <SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMNormalText">3. 폼내의 탭 패널에서 
+ <SPAN CLASS="JMGUIWidget">기본 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMNormalText">4. 설정 값들을 입력하고, 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다. 
+ <A NAME="p2p_conf_thrdpool"></A></P>
+<A NAME="1014"></A>
+<P CLASS="JMHeading3"><A NAME="p2p_conf_filedb"></A>26.2.2 분산 세션 서버 파일 DB 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng_conf">설정
+ </A>&gt; 분산 세션 서버 &gt; 파일 DB 
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">서블릿 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">세션
+ </SPAN>탭을 클릭한다.
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">분산 
+ </SPAN><SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMNormalText">3. 폼내의 탭 패널에서 
+ <SPAN CLASS="JMGUIWidget">파일DB
+ </SPAN>를 선택한다.
+ </P>
+<A NAME="1018"></A>
+<P CLASS="JMNormalText">4. 각 입력 사항을 입력한다. 입력된 내용은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1020"></A>
+<P CLASS="JMHeading3"><A NAME="p2p_conf_backup"></A>26.2.3 분산 세션 서버 백업 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng_conf">설정
+ </A>&gt; 분산 
+ <A HREF="wm-26.htm#session_p2p">세션 서버
+ </A>&gt; 백업
+ </P>
+<A NAME="1021"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">서블릿 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">세션
+ </SPAN>탭을 클릭한다.
+ </P>
+<A NAME="1022"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">분산 
+ </SPAN><SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1023"></A>
+<P CLASS="JMNormalText">3. 폼내의 탭 패널에서 
+ <SPAN CLASS="JMGUIWidget">백업
+ </SPAN>을 선택한다.
+ </P>
+<A NAME="1024"></A>
+<P CLASS="JMNormalText">4. 각 입력 사항을 입력한다. 입력된 내용은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1025"></A>
+<P CLASS="JMNormalText">5. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1026"></A>
+<P CLASS="JMHeading3"><A NAME="p2p_conf_common"></A>26.2.4 분산 세션 서버 공통 기본 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-26.htm#session_p2p">분산 세션 서버
+ </A>&gt; 기본 설정
+ </P>
+<A NAME="1027"></A>
+<P CLASS="JMNormalText">이 설정은 모든 분산 세션 서버에 공통적으로 영향을 미치는 설정이다. 이 설정을 하기 앞서 적어도 하나 이상의 분산 세션 서버가 설정되어 있어야 
+하므로 각 서블릿 엔진에서 분산 세션 서버를 미리 설정하기 바란다.
+ </P>
+<A NAME="1028"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">분산 
+ </SPAN><SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버
+ </SPAN>를클릭한 후 
+ <SPAN CLASS="JMGUIWidget">기본 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 클릭한다.
+ </P>
+<A NAME="1029"></A>
+<P CLASS="JMNormalText">2. 각 입력 사항을 입력한다. 입력된 내용은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1030"></A>
+<P CLASS="JMNormalText">3. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image253.jpg" HEIGHT="355"></P>
+
+<P CLASS="JMCaption">그림 217 세션 서버 공통 기본 설정
+ </P>
+<A NAME="1031"></A>
+<P CLASS="JMHeading3"><A NAME="p2p_conf_common_filedb"></A>26.2.5 분산 세션 서버 공통 기본 파일 DB 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-26.htm#session_p2p">분산 세션 서버
+ </A>&gt; 기본 파일 DB 설정
+ </P>
+<A NAME="1032"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">분산 
+ </SPAN><SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버
+ </SPAN>를클릭한 후 
+ <SPAN CLASS="JMGUIWidget">기본 
+ </SPAN><SPAN CLASS="JMGUIWidget">파일 DB
+ </SPAN>탭을 클릭한다.
+ </P>
+<A NAME="1033"></A>
+<P CLASS="JMNormalText">2. 각 입력 사항을 입력한다. 입력된 내용은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1034"></A>
+<P CLASS="JMNormalText">3. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image254.jpg" HEIGHT="355"></P>
+
+<P CLASS="JMCaption">그림 218 세션 서버 공통 기본 파일 DB설정
+ </P>
+<A NAME="1035"></A>
+<P CLASS="JMHeading3">26.2.6 분산 세션 서버 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 세션 컨테이너
+ </P>
+<A NAME="1036"></A>
+<P CLASS="JMNormalText">세션 서버의 모니터링은 세션 컨테이너를 통해서 한다. 세션 컨테이너는 세션 객체를 관리하는 서블릿 엔진 내부의 객체로서 세션 서버 설정에 따라 나타나는 
+위치가 다르다. 세션 클러스터링 설정에서 shared를 &ldquo;true&rdquo;로하였을 경우에는 서블릿 엔진 밑에 나타나며 그렇지 않을 
+경우에는 각 컨텍스트 그룹 밑에 나타나게 된다.
+ </P>
+<A NAME="1037"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">컨테이너
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1038"></A>
+<P CLASS="JMNormalText">2. 모니터링 정보가 출력된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="523" SRC="images/image255.gif" HEIGHT="309"></P>
+
+<P CLASS="JMCaption">그림 219 분산 세션 서버 통계
+ </P>
+<A NAME="1039"></A>
+<P CLASS="JMHeading2"><A NAME="sessionsvr_conf"></A><A NAME="session_central"></A>26.3 중앙집중식 세션 서버
+ </P>
+<A NAME="1040"></A>
+<P CLASS="JMHeading3"><A NAME="sessionsvr_conf_general"></A>26.3.1 중앙집중식 세션 서버 기본 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-26.htm#session_central">중앙집중식 세션 서버
+ </A>&gt; 기본 설정
+ </P>
+<A NAME="1041"></A>
+<P CLASS="JMNormalText">이 설정은 중앙집중식 세션 서버를 가동 시키기위한 설정이다. 세션 서버를 가동하기 위해서는 세션 관리자를 적어도 하나이상 가지고 있어야 한다.
+ 
+</P>
+<A NAME="1042"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">중앙 
+ </SPAN><SPAN CLASS="JMGUIWidget">집중식 
+ </SPAN><SPAN CLASS="JMGUIWidget">세션서버
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1043"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">기본 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1044"></A>
+<P CLASS="JMNormalText">3. Resolution을입력한다. Resolution은 세션 데이터의 무효화여부를 검사하는 주기를 설정한다.
+ </P>
+<A NAME="1045"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1046"></A>
+<P CLASS="JMHeading3"><A NAME="centralized_conf_thrdpool"></A><A NAME="sessionsvr_conf_thrdpool"></A><A NAME="sessionmgr_create"></A>26.3.2 세션 관리자 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-26.htm#session_central">중앙집중식 세션 서버
+ </A>&gt; 새 세션 서버 매니저 생성
+ </P>
+<A NAME="1047"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">중앙집중식 
+ </SPAN><SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버
+ </SPAN>를 클릭한다.
+ </P>
+<A NAME="1048"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">관리자
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1049"></A>
+<P CLASS="JMNormalText">3. 세션 관리자 목록 아래에 있는 
+ <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">관리자 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>을클릭한다.
+ </P>
+<A NAME="1050"></A>
+<P CLASS="JMNormalText">4. 세션 관리자의 일반 설정을 입력한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="518" SRC="images/image256.jpg" HEIGHT="506"></P>
+
+<P CLASS="JMCaption">그림 220 세션 관리자 생성 - 1단계 기본 설정
+ </P>
+<A NAME="1051"></A>
+<P CLASS="JMNormalText">5. 세션 관리자의 스토리지를 입력한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="521" SRC="images/image257.jpg" HEIGHT="311"></P>
+
+<P CLASS="JMCaption">그림 221 세션 관리자 생성 - 2단계 스토리지 설정
+ </P>
+<A NAME="1052"></A>
+<P CLASS="JMNormalText">6. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1053"></A>
+<P CLASS="JMNormalText">7. 노드 트리에 비활성화된 세션 매니져 아이콘(
+ <IMG BORDER="0" WIDTH="16" SRC="images/image258.gif" HEIGHT="16">)이추가되고 세션 매니져 목록 페이지로 이동한다.
+ </P>
+<A NAME="1054"></A>
+<P CLASS="JMHeading3"><A NAME="sessionmgr_remove"></A>26.3.3 세션 관리자 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-26.htm#session_central">중앙집중식 세션 서버
+ </A>&gt; 새 세션 서버매니저 삭제
+ </P>
+<A NAME="1055"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">중앙집중식 
+ </SPAN><SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버
+ </SPAN>를 클릭한다.
+ </P>
+<A NAME="1056"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">관리자
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1057"></A>
+<P CLASS="JMNormalText">3. 세션 관리자 목록에서 삭제하고자 하는 세션 관리자를 선택한 후 
+ <A HREF="http://localhost:9744/webadmin/application?service=direct/1/JeusServiceSessionServerService_Configuration/deleteLink&amp;sp=Ssessionmgr2"><IMG BORDER="0" WIDTH="11" SRC="images/image033.gif" HEIGHT="13"></A>를 클릭한다.
+ </P>
+<A NAME="1058"></A>
+<P CLASS="JMNormalText">4. 세션 관리자가 목록과 노드트리에서 사라진다.
+ </P>
+<A NAME="1059"></A>
+<P CLASS="JMHeading3"><A NAME="sessionmgr_conf_general"></A>26.3.4 세션 관리자 기본 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-26.htm#sessionmgr_create">중앙집중식 세션 서버
+ </A>&gt; 세션 관리자 &gt; 기본 설정
+ </P>
+<A NAME="1060"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">중앙 
+ </SPAN><SPAN CLASS="JMGUIWidget">집중식 
+ </SPAN><SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1061"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">관리자
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1062"></A>
+<P CLASS="JMNormalText">3. 세션 관리자 목록에서 수정하고자 하는 세션 관리자를 클릭한다.
+ </P>
+<A NAME="1063"></A>
+<P CLASS="JMNormalText">4. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">기본 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1064"></A>
+<P CLASS="JMNormalText">5. 각 입력 항목을 입력한다. 각 입력항목에대한 설명은 
+ <A HREF="wm-26.htm#sessionmgr_create">26.3.2세션 관리자 추가
+ </A>를참조하기 바란다.
+ </P>
+<A NAME="1065"></A>
+<P CLASS="JMNormalText">6. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1066"></A>
+<P CLASS="JMHeading3"><A NAME="sessionmgr_conf_storage"></A>26.3.5 세션 관리자 스토리지 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-26.htm#sessionmgr_create">중앙집중식 세션 서버
+ </A>&gt; 세션 관리자 &gt; 스토리지 설정
+ </P>
+<A NAME="1067"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">중앙 
+ </SPAN><SPAN CLASS="JMGUIWidget">집중식 
+ </SPAN><SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1068"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">관리자
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1069"></A>
+<P CLASS="JMNormalText">3. 세션 관리자 목록에서 수정하고자 하는 세션 관리자를 클릭한다.
+ </P>
+<A NAME="1070"></A>
+<P CLASS="JMNormalText">4. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">스토리지
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1071"></A>
+<P CLASS="JMNormalText">5. 각 입력 항목을 입력한다. 각 입력항목에대한 설명은 
+ <A HREF="wm-26.htm#sessionmgr_create">26.3.2세션 관리자 추가
+ </A>를참조하기 바란다.
+ </P>
+<A NAME="1072"></A>
+<P CLASS="JMNormalText">6. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1073"></A>
+<P CLASS="JMHeading3"><A NAME="sessionmgr_stats"></A>26.3.6 세션 관리자 모니터링
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-26.htm#sessionmgr_create">중앙집중식 세션 서버
+ </A>&gt; 세션 관리자 &gt; 스토리지 설정
+ </P>
+<A NAME="1074"></A>
+<P CLASS="JMNormalText">이 모니터링은 세션 관리자가 관리하는 세션의 수를 보여준다.
+ </P>
+<A NAME="1075"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">중앙 
+ </SPAN><SPAN CLASS="JMGUIWidget">집중식 
+ </SPAN><SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1076"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">매니저
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1077"></A>
+<P CLASS="JMNormalText">3. 세션 관리자 목록에서 모니터링하고자 하는 세션 관리자를 클릭한다.
+ </P>
+<A NAME="1078"></A>
+<P CLASS="JMNormalText">4. 하위 탭에서
+ <SPAN CLASS="JMGUIWidget">통계
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1079"></A>
+<P CLASS="JMNormalText">5. 통계 정보가 출력된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="505" SRC="images/image259.gif" HEIGHT="206"></P>
+
+<P CLASS="JMCaption">그림 222 세션 관리자 통계
+ </P>
+<A NAME="1080"></A>
+<P CLASS="JMHeading3"><A NAME="sessionsvr_regist"></A>26.3.7 서블릿 엔진에 중앙집중식 세션 서버 연결 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng_conf">설정
+ </A>&gt; 중앙집중식 세션 서버
+ </P>
+<A NAME="1081"></A>
+<P CLASS="JMNormalText">서블릿 엔진에서 세션 서버를 이용하기 위해서는 세션서버에 대한 정보를 입력해야한다. 서블릿 엔진은 이 설정을 통해 세션 서버에 세션을 저장하게 된다.
+ 
+</P>
+<A NAME="1082"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">서블릿 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">세션
+ </SPAN>탭을 클릭한다.
+ </P>
+<A NAME="1083"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">중앙 
+ </SPAN><SPAN CLASS="JMGUIWidget">집중식 
+ </SPAN><SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버를
+ </SPAN>선택한다.
+ </P>
+<A NAME="1084"></A>
+<P CLASS="JMNormalText">3. 각 입력 항목을 입력한다.
+ </P>
+<A NAME="1085"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="505" SRC="images/image260.jpg" HEIGHT="372"></P>
+
+<P CLASS="JMCaption">그림 223 서블릿 엔진에 중앙집중식 세션 서버 설정
+ </P>
+<A NAME="1086"></A>
+<P CLASS="JMHeading3"><A NAME="sessionctn_stats"></A>26.3.8 중앙집중식 세션 서버 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 세션 컨테이너
+ </P>
+<A NAME="1087"></A>
+<P CLASS="JMNormalText">세션 서버의 통계는 세션 컨테이너를 통해서 한다. 세션 컨테이너는 세션 객체를 관리하는 서블릿 엔진 내부의 객체로서 세션 설정에 따라 나타나는 위치가 
+다르다. 세션 클러스터링 설정에서 shared를 &ldquo;true&rdquo;로하였을 경우에는 서블릿 엔진 밑에 나타나며 그렇지 않을 경우에는 
+각 컨텍스트 그룹 밑에 나타나게 된다.
+ </P>
+<A NAME="1088"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">컨테이너
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1089"></A>
+<P CLASS="JMNormalText">2. 통계 정보가 출력된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="429" SRC="images/image261.jpg" HEIGHT="216"></P>
+
+<P CLASS="JMCaption">그림 224 중앙집중식 세션 서버 통계
+ </P>
+<A NAME="1090"></A>
+<P CLASS="JMHeading2">26.4 로컬 세션 서버
+ </P>
+<A NAME="1091"></A>
+<P CLASS="JMNormalText">분산이나 중앙집중식 세션 서버설정을 하지 않을 경우에는 서블릿 엔진 자체 내에서 세션을 관리한다. 로컬 세션 서버의 경우 별도의 설정이 없으므로 
+이 절에서는 통계만 설명할 것이다.
+ </P>
+<A NAME="1092"></A>
+<P CLASS="JMHeading3">26.4.1 로컬 세션 서버 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-09.htm#servleteng">서블릿 엔진
+ </A>&gt; 세션 컨테이너
+ </P>
+<A NAME="1093"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">세션 
+ </SPAN><SPAN CLASS="JMGUIWidget">컨테이너
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1094"></A>
+<P CLASS="JMNormalText">2. 통계 정보가 출력된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="388" SRC="images/image262.jpg" HEIGHT="170"></P>
+
+<P CLASS="JMCaption">그림 225 로컬 세션 서버 통계
+ </P>
+<BR><!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

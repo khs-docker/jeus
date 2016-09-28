@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.NodeListPage">
+
+    
+	<inject property="webadminStateObject" type="state" object="WebadminStateObject"/>
+	
+	<inject property="settings" type="state" object="Settings"/>
+	
+    <component id="shell" type="Shell">
+        <binding name="title" value="literal:"/>
+        <binding name="refresh" value="settings.clusterInterval"/>
+        <binding name="stylesheet" value="asset:css"/>
+        <binding name="delegate" value="bean:cacheControlRender"/>
+    </component>
+
+    <component id="eachNode" type="Foreach">
+        <binding name="source" value="nodeList"/>
+        <binding name="value" value="node"/>
+        <binding name="index" value="index"/>
+    </component>
+
+    <component id="choose" type="contrib:Choose"/>
+    <component id="whenRunning" type="contrib:When">
+        <binding name="condition" value="node.state == @jeus.management.j2ee.StateManageable@RUNNING"/>
+    </component>
+
+    <component id="whenStopped" type="contrib:When">
+        <binding name="condition" value="node.state == @jeus.management.j2ee.StateManageable@STOPPED or node.state == @jeus.tool.webadmin.util.JMXUtils@STATE_NONCLUSTERED_STOPPED"/>
+    </component>
+
+    <component id="whenFailed" type="contrib:When">
+        <binding name="condition" value="node.state == @jeus.management.j2ee.StateManageable@FAILED"/>
+    </component>
+
+    <component id="otherwise" type="contrib:Otherwise"/>
+
+    <component id="runningNodeName" type="Insert">
+        <binding name="value" value="node.name"/>
+    </component>
+
+    <component id="stoppedNodeName" copy-of="runningNodeName"/>
+    <component id="failedNodeName" copy-of="runningNodeName"/>
+    <component id="exitedNodeName" copy-of="runningNodeName"/>
+
+    <component id="updateLink" type="ExternalLink">
+        <binding name="page" value="literal:NodeTree"/>
+        <binding name="parameters" value="node.objectName.canonicalName"/>
+		<binding name="target" value="literal:nodeTree"/>
+    </component>
+
+    <component id="updateLink2" copy-of="updateLink"/>
+    <component id="updateLink3" copy-of="updateLink"/>
+
+    <component id="runningIcon" type="Image">
+        <binding name="image" value="asset:running_icon"/>
+    </component>
+
+    <component id="stoppedIcon" type="Image">
+        <binding name="image" value="asset:stopped_icon"/>
+    </component>
+
+    <component id="failedIcon" type="Image">
+        <binding name="image" value="asset:failed_icon"/>
+    </component>
+
+    <component id="exitedIcon" type="Image">
+        <binding name="image" value="asset:exited_icon"/>
+    </component>
+
+    <component id="condHasNext" type="If">
+        <binding name="condition" value="nodeList.size - 1 > index"/>
+    </component>
+
+    <bean name="cacheControlRender" class="jeus.tool.webadmin.component.CacheControlRender"/>
+
+    <!-- icons -->
+    <asset name="running_icon" path="context:/image/node_running.gif"/>
+    <asset name="stopped_icon" path="context:/image/node_stopped.gif"/>
+    <asset name="failed_icon" path="context:/image/node_failed.gif"/>
+    <asset name="exited_icon" path="context:/image/node_stopped.gif"/>
+
+    <!--buttons-->
+    <asset name="dot" path="context:/image/dot.gif"/>
+    <asset name="css" path="context:/css/nodelist.css"/>
+
+    <property name="node"/>
+    <property name="index"/>
+
+</page-specification>

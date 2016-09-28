@@ -1,0 +1,306 @@
+<html jwcid="mainBorder" >
+    <span jwcid="wizTabPanel">
+        <span jwcid="type">
+            <form jwcid="typeForm">
+                <input jwcid="typeRadioGroup">
+                <table border="0" align="center" cellpadding="5">
+                    <tr>
+                        <td jwcid="eachType" align="center" class="field_radio_label">
+                            <span jwcid="type_label"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td jwcid="eachTypeRadio" align="center">
+                            <span jwcid="typeRadio"/>
+                        </td>
+                    </tr>
+                </table>
+                </input>
+                <div class="form_button_layer">
+                    <input jwcid="typeNext" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+        </span>
+        <span jwcid="general">
+            <form jwcid="generalForm">
+                <span jwcid="listener_id">
+                    <span jwcid="listener_idField"/>
+                </span>
+                <span jwcid="condTmax">
+                    <span jwcid="tmax_port">
+                        <input jwcid="tmax_portField"/>
+                    </span>
+                </span>
+                <span jwcid="condNotTmaxWebtob">
+                    <span jwcid="port">
+                        <input jwcid="portField"/>
+                    </span>
+                </span>
+                <span jwcid="condWebtob">
+                    <span jwcid="webtob_port">
+                        <input jwcid="webtob_portField"/>
+                    </span>
+                    <span jwcid="webtob_ipcbaseport">
+                        <input jwcid="webtob_ipcbaseportField"/>
+                    </span>
+                </span>
+                <span jwcid="general_blind">
+                    <span jwcid="condInputBufferSize">
+                        <span jwcid="input_buffer_size">
+                            <input jwcid="input_buffer_sizeField"/>
+                        </span>
+                    </span>
+                    <span jwcid="output_buffer_size">
+                        <input jwcid="output_buffer_sizeField"/>
+                    </span>
+                    <span jwcid="listener_read_timeout">
+                        <input jwcid="listener_read_timeoutField"/>
+                    </span>
+                    <span jwcid="condHttp">
+						<span jwcid="http_use_nio">
+                            <input jwcid="http_use_nioField"/>
+                        </span>    
+                    </span>
+                    <span jwcid="postdata_read_timeout">
+                        <input jwcid="postdata_read_timeoutField"/>
+                    </span>
+                    <span jwcid="condScheme">
+                        <span jwcid="scheme">
+                            <input jwcid="schemeField"/>
+                        </span>
+                    </span>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="generalNext" class="form_button" style="width:100px; float:right;"/>
+                    <input jwcid="generalPrevious" class="form_button" style="width:100px; float:left;"/>
+                </div>
+            </form>
+        </span>
+        <span jwcid="thread_pool">
+            <form jwcid="thread_poolForm">
+                <span jwcid="min">
+                    <input jwcid="minField"/>
+                </span>
+                <span jwcid="thread_pool_blind">
+                    <span jwcid="max">
+                        <input jwcid="maxField"/>
+                    </span>
+                    <span jwcid="step">
+                        <input jwcid="stepField"/>
+                    </span>
+                    <span jwcid="max_idle_time">
+                        <input jwcid="max_idle_timeField"/>
+                    </span>
+                    <span jwcid="max_wait_queue">
+                        <input jwcid="max_wait_queueField"/>
+                    </span>
+                    <span jwcid="condMaxQueue">
+                        <span jwcid="max_queue">
+                            <input jwcid="max_queueField"/>
+                        </span>
+                    </span>
+                    <span jwcid="thread_state_notifySection"/>
+                    <span jwcid="max_thread_active_time">
+                        <input jwcid="max_thread_active_timeField"/>
+                    </span>
+                    <span jwcid="notify_threshold">
+                        <input jwcid="notify_thresholdField"/>
+                    </span>
+                    <span jwcid="restart_threshold">
+                        <input jwcid="restart_thresholdField"/>
+                    </span>
+                    <span jwcid="notifier_id">
+                        <input jwcid="notifier_idField"/>
+                    </span>
+                    <span jwcid="notify_subject">
+                        <input jwcid="notify_subjectField"/>
+                    </span>
+                    <span jwcid="restart_subject">
+                        <input jwcid="restart_subjectField"/>
+                    </span>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="thread_poolNext" class="form_button" style="width:100px; float:right;"/>
+                    <input jwcid="thread_poolPrevious" class="form_button" style="width:100px; float:left;"/>
+                </div>
+            </form>
+        </span>
+        <span jwcid="ssl">
+            <form jwcid="sslForm">
+                <span jwcid="@RenderBlock" block="ognl:components.sslConfig"/>
+                <div class="form_button_layer">
+                    <input jwcid="sslNext" class="form_button" style="width:100px; float:right;"/>
+                    <input jwcid="sslPrevious" class="form_button" style="width:100px; float:left;"/>
+                </div>
+            </form>
+        </span>
+        <span jwcid="miscellaneous">
+            <form jwcid="miscellaneousForm">
+                <span jwcid="chooseListener">
+                    <span jwcid="whenWebtoB">
+                        <span jwcid="hth_count">
+                            <input jwcid="hth_countField"/>
+                        </span>
+                        <span jwcid="request_prefetch">
+                            <input jwcid="request_prefetchField"/>
+                        </span>
+                        <span jwcid="disable_pipe">
+                            <input jwcid="disable_pipeField"/>
+                        </span>
+                        <span jwcid="webtob_address">
+                            <input jwcid="webtob_addressField"/>
+                        </span>
+                        <span jwcid="registration_id">
+                            <input jwcid="registration_idField"/>
+                        </span>
+                        <span jwcid="webtob_home">
+                            <input jwcid="webtob_homeField"/>
+                        </span>
+                        <span jwcid="read_timeout">
+                            <input jwcid="read_timeoutField"/>
+                        </span>
+                        <span jwcid="reconnect_timeout">
+                            <input jwcid="reconnect_timeoutField"/>
+                        </span>
+                    </span>
+                    <span jwcid="whenTmax">
+                        <span jwcid="tmax_address">
+                            <input jwcid="tmax_addressField"/>
+                        </span>
+                        <span jwcid="server_group_name">
+                            <input jwcid="server_group_nameField"/>
+                        </span>
+                        <span jwcid="server_name">
+                            <input jwcid="server_nameField"/>
+                        </span>
+                        <span jwcid="reconnect_timeout1">
+                            <input jwcid="reconnect_timeoutField1"/>
+                        </span>
+                        <span jwcid="tmax_backup_address">
+                            <input jwcid="tmax_backup_addressField"/>
+                        </span>
+                        <span jwcid="tmax_backup_port">
+                            <input jwcid="tmax_backup_portField"/>
+                        </span>
+                        <span jwcid="tmax_use_nio">
+                            <input jwcid="tmax_use_nioField"/>
+                        </span>
+                        <span jwcid="@RenderBlock" block="ognl:components.dispatcherCommon"/>
+                    </span>
+                    <span jwcid="whenTcp">
+<!--
+                        <span jwcid="dispatcher_config_class2">
+                            <input jwcid="dispatcher_config_classField2" style="width:300px;"/>
+                        </span>
+-->
+                        <span jwcid="@RenderBlock" block="ognl:components.dispatcherCommon"/>
+                        <span jwcid="@RenderBlock" block="ognl:components.listenerCommon"/>
+                        <!--<span jwcid="@RenderBlock" block="ognl:components.sslConfig"/>-->
+                        <span jwcid="tcp_connection_handshaker_class">
+                            <input jwcid="tcp_connection_handshaker_classField" style="width:300px;"/>
+                        </span>
+                    </span>
+                    <span jwcid="whenHttp">
+                        <span jwcid="@RenderBlock" block="ognl:components.listenerCommon"/>
+                        <!--span jwcid="version">
+                            <input jwcid="versionField"/>
+                        </span-->
+                        <span jwcid="max_keep_alive_request">
+                            <input jwcid="max_keep_alive_requestField"/>
+                        </span>
+
+                        <span jwcid="keep_alive">
+                            <input jwcid="keep_aliveField"/>
+                        </span>
+                    </span>
+                    <span jwcid="whenUdp">
+<!--
+                        <span jwcid="dispatcher_config_class3">
+                            <input jwcid="dispatcher_config_classField" style="width:300px;"/>
+                        </span>
+-->
+                        <span jwcid="@RenderBlock" block="ognl:components.dispatcherCommon"/>
+                        <span jwcid="@RenderBlock" block="ognl:components.listenerCommon"/>
+                    </span>
+                    <span jwcid="otherwise">
+                        <span jwcid="@RenderBlock" block="ognl:components.listenerCommon"/>
+                    </span>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="miscellaneousNext" class="form_button" style="width:100px; float:right;"/>
+                    <input jwcid="miscellaneousPrevious" class="form_button" style="width:100px; float:left;"/>
+                </div>
+            </form>
+            <span jwcid="dispatcherCommon@Block">
+                <span jwcid="dispatcher_config_class">
+                    <input jwcid="dispatcher_config_classField" style="width:300px;"/>
+                </span>
+            </span>
+            <span jwcid="listenerCommon@Block">
+                <span jwcid="back_log">
+                    <input jwcid="back_logField"/>
+                </span>
+                <span jwcid="condAllowedServer">
+                    <span jwcid="server_access_control">
+                        <input jwcid="server_access_controlField"/>
+                    </span>
+                    <span jwcid="allowed_server">
+                        <input jwcid="allowed_serverField"/>
+                    </span>
+                </span>
+            </span>
+            <span jwcid="sslConfig@Block">
+                <!--<span jwcid="sslConfigSection"/>-->
+                <span jwcid="condHttp_or_Tcp">
+                    <span jwcid="enable_secure">
+                        <input jwcid="enable_secureField"/>
+                    </span>
+                    <span jwcid="client_auth">
+                        <input jwcid="client_authField"/>
+                    </span>
+                    <span jwcid="ssl_protocol">
+                        <input jwcid="ssl_protocolField"/>
+                    </span>
+                    <span jwcid="cipher_suite">
+                        <input jwcid="cipher_suiteField" rows="4"/>
+                    </span>
+                    <span jwcid="keystore_file">
+                        <input jwcid="keystore_fileField" style="width:98%"/>
+                    </span>
+                    <span jwcid="keystore_password">
+                        <input jwcid="keystore_passwordField"/>
+                    </span>
+                    <span jwcid="keystore_type">
+                        <input jwcid="keystore_typeField"/>
+                    </span>
+                    <span jwcid="key_management_algorithm">
+                        <input jwcid="key_management_algorithmField"/>
+                    </span>
+                    <span jwcid="truststore_file">
+                        <input jwcid="truststore_fileField" style="width:98%"/>
+                    </span>
+                    <span jwcid="truststore_password">
+                        <input jwcid="truststore_passwordField"/>
+                    </span>
+                    <span jwcid="truststore_type">
+                        <input jwcid="truststore_typeField"/>
+                    </span>
+                    <span jwcid="trust_management_algorithm">
+                        <input jwcid="trust_management_algorithmField"/>
+                    </span>
+                </span>
+                <span jwcid="condNotHttp_and_Tcp">
+                    <span jwcid="notSupport" class="field_label"/>
+                </span>
+            </span>
+        </span>
+        <span jwcid="create">
+            <form jwcid="createForm">
+                <div class="form_button_layer">
+                    <input jwcid="createOk" class="form_button" style="width:100px; float:right;"/>
+                    <input jwcid="createPrevious" class="form_button" style="width:100px; float:left;"/>
+                </div>
+            </form>
+        </span>
+    </span>
+</html>

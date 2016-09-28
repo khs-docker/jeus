@@ -1,0 +1,35 @@
+img {
+	border:none;
+}
+
+body{
+    margin:5px;
+    background-color:white;
+    font-family:Tahoma, Verdana;
+    font-size:11px;    
+}
+
+
+a.running_node, a.running_node:link,a.running_node:active,a.running_node:visited {
+    text-decoration: none;
+}
+
+a.running_node:hover {
+    text-decoration: underline;
+}
+
+.running_node {
+    font-weight:bold;
+    color: #597FBF;
+    text-decoration:none;
+}
+
+.stopped_node, .failed_node, .exited_node{
+    font-weight:bold;
+    color: #AAAAAA;
+}
+
+.normal_node {
+    font-weight:bold;
+    color: black;
+}

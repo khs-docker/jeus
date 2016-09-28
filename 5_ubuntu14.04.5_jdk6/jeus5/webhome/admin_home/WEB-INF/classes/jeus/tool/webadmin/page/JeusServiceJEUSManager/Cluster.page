@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusServiceJEUSManager.ClusterPage">
+
+	<inject property="webadminStateObject" type="state" object="WebadminStateObject"/>
+	<inject property="pageService" object="engine-service:page"/>
+    
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JEUSManager Cluster"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@JEUSSERVICE_JEUSMANAGER_NAMES"/>
+    </component>
+
+    <component id="clusterForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jm.cluster.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="targets" type="jeus:Field">
+        <binding name="layout" value="@jeus.tool.webadmin.component.Field@EXTENDED_LAYOUT"/>
+        <binding name="label" value="message:jm.cluster.targets.label"/>
+    </component>
+
+    <component id="targetsField" type="jeus:TargetExplorer">
+        <binding name="model" value="model"/>
+        <binding name="selectionModel" value="selectionModel"/>
+        <binding name="renderUnderline" value="false"/>
+    </component>
+
+    <component id="remove" type="jeus:ConfirmSubmit">
+        <binding name="label" value="message:jm.control.remove.label"/>
+        <binding name="listener" value="listener:onRemoveOk"/>
+        <binding name="message" value="message:jm.cluster.remove.confirm"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+        <binding name="disabled" value="model.getNodeNames().length == 0"/>
+    </component>
+
+    <component id="add_nodeForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+    <component id="node_name" type="jeus:Field">
+        <binding name="field" value="components.node_nameField"/>
+    </component>
+
+    <component id="node_nameField" type="jeus:DojoTextField">
+        <binding name="value" value="nodeName"/>
+        <binding name="displayName" value="message:jm.control.node_name.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="add_node" type="Submit">
+        <binding name="value" value="message:common.label.add"/>
+        <binding name="listener" value="listener:onAddNodeOk"/>
+    </component>
+
+    <property name="nodeName"/>  
+    <asset name="dot" path="context:/image/dot.gif"/>
+</page-specification>

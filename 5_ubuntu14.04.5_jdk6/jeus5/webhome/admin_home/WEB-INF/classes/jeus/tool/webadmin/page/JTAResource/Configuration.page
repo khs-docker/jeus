@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JTAResource.ConfigurationPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JTA Resource Configuration"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@getJTARESOURCE_NAMES(objectName)"/>
+        <binding name="subtabNames" value="ognl:{'general', 'pooling', 'recovery_log'}"/>
+    </component>
+
+    <component id="general" type="Block"/>
+    <component id="pooling" type="Block"/>
+    <component id="recovery_log" type="Block"/>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:jta.configuration.title"/>
+        <binding name="listener" value="ognl:listeners.onOk"/>
+        <binding name="mbean" value="ognl:true"/>
+        <binding name="parentElement" value="ognl:engineContainer"/>
+        <binding name="elementName" value="literal:tmConfig"/>
+    </component>
+
+    <component id="blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="use_nio" type="jeus:Field">
+        <binding name="field" value="ognl:components.use_nioField"/>
+    </component>
+
+    <component id="use_nioField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:tmConfig"/>
+        <binding name="elementName" value="literal:useNio"/>
+    </component>
+
+    <component id="active_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.active_timeoutField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="active_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="tmConfig"/>
+        <binding name="elementName" value="literal:activeTimeout"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="prepare_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.prepare_timeoutField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="prepare_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="tmConfig"/>
+        <binding name="elementName" value="literal:prepareTimeout"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="prepared_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.prepared_timeoutField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="prepared_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="tmConfig"/>
+        <binding name="elementName" value="literal:preparedTimeout"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="commit_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.commit_timeoutField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="commit_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="tmConfig"/>
+        <binding name="elementName" value="literal:commitTimeout"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="recovery_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.recovery_timeoutField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="recovery_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="tmConfig"/>
+        <binding name="elementName" value="literal:recoveryTimeout"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="uncompleted_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.uncompleted_timeoutField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="uncompleted_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="tmConfig"/>
+        <binding name="elementName" value="literal:uncompletedTimeout"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="capacity" type="jeus:Field">
+        <binding name="field" value="ognl:components.capacityField"/>
+    </component>
+
+    <component id="capacityField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="tmConfig"/>
+        <binding name="elementName" value="literal:capacity"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+   <component id="poolingForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jta.pooling.title"/>
+        <binding name="listener" value="ognl:listeners.onPoolingOk"/>
+        <binding name="resetListener" value="ognl:listeners.onPoolingReset"/>
+        <binding name="mbean" value="ognl:true"/>
+        <binding name="objectName" value="ognl:poolingName"/>
+        <binding name="parentElement" value="ognl:tmConfig"/>
+        <binding name="elementName" value="literal:pooling"/>
+    </component>
+
+    <component id="min" type="jeus:Field">
+        <binding name="field" value="ognl:components.minField"/>
+    </component>
+
+    <component id="minField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="pooling"/>
+        <binding name="elementName" value="literal:min"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="max" type="jeus:Field">
+        <binding name="field" value="ognl:components.maxField"/>
+    </component>
+
+    <component id="maxField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="pooling"/>
+        <binding name="elementName" value="literal:max"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="period" type="jeus:Field">
+        <binding name="field" value="ognl:components.periodField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="periodField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="pooling"/>
+        <binding name="elementName" value="literal:period"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="recovery_logForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jta.recovery_log.title"/>
+        <binding name="listener" value="ognl:listeners.onRecoveryLogFileOk"/>
+        <binding name="resetListener" value="ognl:listeners.onRecoveryLogFileReset"/>
+        <binding name="mbean" value="ognl:true"/>
+        
+        <binding name="parentElement" value="ognl:tmConfig"/>
+        <binding name="elementName" value="literal:recoveryLogFile"/>
+    </component>
+
+    <component id="name" type="jeus:Field">
+        <binding name="field" value="ognl:components.nameField"/>
+
+    </component>
+
+    <component id="nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="recoveryLogFile"/>
+        <binding name="elementName" value="literal:name"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="level" type="jeus:Field">
+        <binding name="field" value="ognl:components.levelField"/>
+    </component>
+
+    <component id="levelField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="ognl:recoveryLogFile"/>
+        <binding name="elementName" value="literal:level"/>
+        <binding name="model" value="ognl:@jeus.tool.webadmin.page.EnumerationSet@LOG_LEVELS"/>
+        <binding name="uppercase" value="ognl:true"/>
+    </component>
+
+    <component id="file_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.file_nameField"/>
+    </component>
+
+    <component id="file_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:recoveryLogFile"/>
+        <binding name="elementName" value="literal:fileName"/>
+    </component>
+
+    <component id="valid" type="jeus:Field">
+        <binding name="field" value="ognl:components.validField"/>
+    </component>
+
+    <component id="validField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="recoveryLogFile"/>
+        <binding name="elementName" value="validUnit == 'Hours' ? 'validHour' : 'validDay'"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="valid_unitField" type="jeus:PropertySelection">
+        <binding name="value" value="ognl:validUnit"/>
+        <binding name="model" value="ognl:@jeus.tool.webadmin.page.EnumerationSet@getPropertySelectionModel({'Days','Hours'})"/>
+    </component>
+
+    <component id="buffer_size" type="jeus:Field">
+        <binding name="field" value="ognl:components.buffer_sizeField"/>
+        <binding name="unit" value="message:common.unit.bytes"/>
+    </component>
+
+    <component id="buffer_sizeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="recoveryLogFile"/>
+        <binding name="elementName" value="literal:bufferSize"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="append" type="jeus:Field">
+        <binding name="field" value="ognl:components.appendField"/>
+    </component>
+
+    <component id="appendField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:recoveryLogFile"/>
+        <binding name="elementName" value="literal:append"/>
+    </component>
+
+    <component id="advanced_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="encoding" type="jeus:Field">
+        <binding name="field" value="ognl:components.encodingField"/>
+    </component>
+
+    <component id="encodingField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:recoveryLogFile"/>
+        <binding name="elementName" value="literal:encoding"/>
+    </component>
+
+    <component id="filter_class" type="jeus:Field">
+        <binding name="field" value="ognl:components.filter_classField"/>
+    </component>
+
+    <component id="filter_classField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:recoveryLogFile"/>
+        <binding name="elementName" value="literal:filterClass"/>
+    </component>
+
+</page-specification>

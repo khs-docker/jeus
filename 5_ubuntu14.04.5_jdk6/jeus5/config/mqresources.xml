@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- JEUS MQ Resource Specifications -->
+<!-- Supported MQ vendors are IBM, Sonic.-->
+
+<mqresource-specifications>
+	<mqresource-specification id="ibm-1" mq="IBM" vendor="ibmmq" label="IBM - QCF Type">
+		<fixed-property name="factory-class-name" value="com.ibm.mq.jms.MQQueueConnectionFactory"/>
+		<fixed-property name="resource-type" value="QCF"/>		
+	</mqresource-specification>
+
+	<mqresource-specification id="ibm-2" mq="IBM" vendor="ibmmq" label="IBM - TCF Type">
+		<fixed-property name="factory-class-name" value="com.ibm.mq.jms.MQTopicConnectionFactory"/>
+		<fixed-property name="resource-type" value="TCF"/>		
+	</mqresource-specification>
+
+	<mqresource-specification id="ibm-3" mq="IBM" vendor="ibmmq" label="IBM - Q Type">
+		<fixed-property name="factory-class-name" value="com.ibm.mq.jms.MQQueue"/>
+        <fixed-property name="resource-type" value="Q"/>
+	</mqresource-specification>
+
+	<mqresource-specification id="ibm-4" mq="IBM" vendor="ibmmq" label="IBM - T Type">
+		<fixed-property name="factory-class-name" value="com.ibm.mq.jms.MQTopic"/>
+		<fixed-property name="resource-type" value="T"/>		
+	</mqresource-specification>
+
+	<mqresource-specification id="ibm-5" mq="IBM" vendor="ibmmq" label="IBM - XAQCF Type">
+		<fixed-property name="factory-class-name" value="com.ibm.mq.jms.MQXAQueueConnectionFactory"/>
+		<fixed-property name="resource-type" value="XAQCF"/>		
+	</mqresource-specification>
+
+	<mqresource-specification id="ibm-6" mq="IBM" vendor="ibmmq" label="IBM - XATCF Type">
+		<fixed-property name="factory-class-name" value="com.ibm.mq.jms.MQXATopicConnectionFactory"/>
+		<fixed-property name="resource-type" value="XATCF"/>		
+	</mqresource-specification>
+
+	<mqresource-specification id="ibm-7" mq="IBM" vendor="ibmmq" label="IBM - LOCALXAQCF Type">
+		<fixed-property name="factory-class-name" value="com.ibm.mq.jms.MQQueueConnectionFactory"/>
+		<fixed-property name="resource-type" value="LOCALXAQCF"/>		
+	</mqresource-specification>
+
+	<mqresource-specification id="ibm-8" mq="IBM" vendor="ibmmq" label="IBM - LOCALXATCF Type">
+		<fixed-property name="factory-class-name" value="com.ibm.mq.jms.MQTopicConnectionFactory"/>
+		<fixed-property name="resource-type" value="LOCALXATCF"/>		
+	</mqresource-specification>
+
+	<mqresource-specification id="sonic-1" mq="SONIC" vendor="sonicmq" label="SONIC - QCF Type">
+		<fixed-property name="factory-class-name" value="progress.message.jclient.QueueConnectionFactory"/>
+		<fixed-property name="resource-type" value="QCF"/>		
+	</mqresource-specification>
+
+	<mqresource-specification id="sonic-2" mq="SONIC" vendor="sonicmq" label="SONIC - TCF Type">
+		<fixed-property name="factory-class-name" value="progress.message.jclient.TopicConnectionFactory"/>
+		<fixed-property name="resource-type" value="TCF"/>		
+	</mqresource-specification>
+
+	<mqresource-specification id="sonic-3" mq="SONIC" vendor="sonicmq" label="SONIC - Q Type">
+		<fixed-property name="factory-class-name" value="progress.message.jclient.Queue"/>
+		<fixed-property name="resource-type" value="Q"/>		
+	</mqresource-specification>
+
+	<mqresource-specification id="sonic-4" mq="SONIC" vendor="sonicmq" label="SONIC - T Type">
+		<fixed-property name="factory-class-name" value="progress.message.jclient.Topic"/>
+		<fixed-property name="resource-type" value="T"/>		
+	</mqresource-specification>
+
+	<mqresource-specification id="sonic-5" mq="SONIC" vendor="sonicmq" label="SONIC - XAQCF Type">
+		<fixed-property name="factory-class-name" value="progress.message.jclient.xa.XAQueueConnectionFactory"/>
+		<fixed-property name="resource-type" value="XAQCF"/>		
+	</mqresource-specification>
+
+	<mqresource-specification id="sonic-6" mq="SONIC" vendor="sonicmq" label="SONIC - XATCF Type">
+		<fixed-property name="factory-class-name" value="progress.message.jclient.xa.XATopicConnectionFactory"/>
+		<fixed-property name="resource-type" value="XATCF"/>		
+	</mqresource-specification>
+
+	<mqresource-specification id="sonic-7" mq="SONIC" vendor="sonicmq" label="SONIC - LOCALXAQCF Type">
+		<fixed-property name="factory-class-name" value="progress.message.jclient.QueueConnectionFactory"/>
+		<fixed-property name="resource-type" value="LOCALXAQCF"/>		
+	</mqresource-specification>
+
+	<mqresource-specification id="sonic-8" mq="SONIC" vendor="sonicmq" label="SONIC - LOCALXATCF Type">
+		<fixed-property name="factory-class-name" value="progress.message.jclient.TopicConnectionFactory"/>
+		<fixed-property name="resource-type" value="LOCALXATCF"/>		
+	</mqresource-specification>
+	
+	<mqresource-specification id="other-1" mq="OTHERS" vendor="others" label="OTHERS - XAQCF Type">
+		<!--<fixed-property name="factory-class-name" value="other.mq.QueueConnectionFactory"/>-->
+		<fixed-property name="resource-type" value="XAQCF"/>		
+	</mqresource-specification>
+
+	<mqresource-specification id="other-2" mq="OTHERS" vendor="others" label="OTHERS - XATCF Type">
+		<!--<fixed-property name="factory-class-name" value="other.mq.TopicConnectionFactory"/>-->
+		<fixed-property name="resource-type" value="XATCF"/>		
+	</mqresource-specification>
+
+</mqresource-specifications>

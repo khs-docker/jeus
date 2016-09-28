@@ -1,0 +1,37 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="troublesForm"/>
+        <table width="100%" cellpadding="0" cellspacing="0" class="table" border="1">
+            <tr>
+                <td class="table_columns"><span jwcid="j2eeType_column"/></td>
+                <td class="table_columns"><span jwcid="jeusType_column"/></td>
+                <td class="table_columns"><span jwcid="name_column"/></td>
+                <td class="table_columns"><span jwcid="constraint_key_column"/></td>
+                <td class="table_columns"><span jwcid="constraint_value_column"/></td>
+                <td class="table_columns"><span jwcid="cause_column"/></td>
+                <td class="table_columns"><span jwcid="status_column"/></td>
+            </tr>
+            <tr jwcid="eachTrouble">
+                <td class="table_values" ><span jwcid="j2eeType_value"/></td>
+                <td class="table_values" ><span jwcid="jeusType_value"/></td>
+                <td class="table_values"><span jwcid="name_value"/></td>
+                <td class="table_values" ><span jwcid="constraint_key_value"/></td>
+                <td class="table_values" ><span jwcid="constraint_value_value"/></td>
+                <td class="table_values" ><span jwcid="cause_value"/></td>
+
+                <span jwcid="chooseStatus">
+                    <td class="table_values" align="center" style="background-color:yellow;" jwcid="whenWarning">
+                        <span jwcid="status_value2"/>
+                    </td>
+                    <td class="table_values" align="center" style="background-color:red;font-weight:bold;" jwcid="whenFatal">
+                        <span jwcid="status_value3"/>
+                    </td>
+                    <td class="table_values" align="center" jwcid="whenSafe" >
+                        <span jwcid="status_value"/>
+                    </td>
+                </span>
+
+            </tr>
+        </table>
+    </span>
+</html>

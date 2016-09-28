@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jeus-system xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <node>
+	...
+	</node>
+    <resource>
+        <data-source>
+            <database>
+                <vendor>oracle</vendor>
+                <export-name>datasource1</export-name>
+                <data-source-class-name>oracle.jdbc.pool.OracleConnectionPoolDataSource</data-source-class-name>
+                <data-source-type>ConnectionPoolDataSource</data-source-type>
+                <database-name>orcl</database-name>
+                <data-source-name>oracle.jdbc.pool.OracleConnectionPoolDataSource</data-source-name>
+                <description>Employee DB</description>
+                <encryption>false</encryption>
+                <port-number>1521</port-number>
+                <server-name>localhost</server-name>
+                <user>scott</user>
+                <password>tiger</password>
+                <driver-type>thin</driver-type>
+                <connection-pool>
+                    <pooling>
+                        <min>6</min>
+                        <max>10</max>
+                        <period>30000</period>
+                    </pooling>
+                    <wait-free-connection>
+                        <enable-wait>true</enable-wait>
+                        <wait-time>10000</wait-time>
+                    </wait-free-connection>
+                    <operation-to>30000</operation-to>
+                </connection-pool>
+            </database>
+        </data-source>
+    </resource>
+</jeus-system>

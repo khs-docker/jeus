@@ -1,0 +1,456 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 22 WebT데이터 소스 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('22 WebT데이터 소스', 'wm-21.htm', 'wm-23.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left"><A NAME="webt"></A>22 WebT데이터 소스
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMNormalText">WebT는&ldquo;Web Transaction&rdquo;의 약자로C/S환경의 미들웨어 제품인 Tmax와 웹환경의 WAS(Web Application 
+Server)제품인 JEUS간의 트랜잭션 서비스를 지원하는 제품이다.
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMNormalText">WebT 데이터 소스는 JEUS내의 어플리케이션에서 WebT를 이용해 Tmax서버와 연결하려 할 경우 사용하는 리소스이다. WebT 데이터 소스의 
+추가 및 삭제는 JEUS 관리자에서 이루어지며 JEUS 관리자에 바인딩된 객체를 각 엔진 컨테이너에서 Lookup하여 사용한다.
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMNormalText" ALIGN="left">JEUS에서 WebT 데이터 소스를 사용하고자 한다면 $
+ <SPAN CLASS="JMFileNameReferenceChar">JEUS_HOME$/lib/system
+ </SPAN>디렉토리안에 WebT 라이브러리 (webt.jar)가 있는지 먼저 확인해야한다.
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMHeading2">22.1 WebT 데이터 소스 구성
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMHeading3"><A NAME="webt_overview"></A>22.1.1 개요
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt">WebT
+ </A>&gt; WebT 데이터 소스 개요
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMNormalText">이 화면에는 현재 JEUS 매니저에 등록된 WebT 데이터 소스의 목록이 출력된다. 또한 클러스터WebT 데이터 소스가 있다면 클러스터 WebT 
+데이터 소스 목록에 설정된 클러스터 목록이 나타난다. 각 목록에서 해당 WebT 데이터 소스 이름을 클릭하면 해당 설정을 볼 수 있으며 명령에서 
+바인드를 클릭하면 WebT 데이터 소스가 JNDI에 등록된다. 
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMNormalText">JNDI에대한 자세한 내용은 JEUS Server 안내서를 참고하기 바란다
+ </P>
+<A NAME="1008"></A>
+<P CLASS="JMHeading3"><A NAME="webt_create"></A>22.1.2 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt">WebT
+ </A>&gt; 새 WebT데이터 소스 생성
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">리소스
+ </SPAN>의
+ <SPAN CLASS="JMGUIWidget">WebT
+ </SPAN>폴더를 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">새 WebT 
+ </SPAN><SPAN CLASS="JMGUIWidget">데이터 
+ </SPAN><SPAN CLASS="JMGUIWidget">소스 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>링크를 클릭하거나 
+ <SPAN CLASS="JMGUIWidget">WebT
+ </SPAN>폴더의 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">새 WebT 
+ </SPAN><SPAN CLASS="JMGUIWidget">데이터 
+ </SPAN><SPAN CLASS="JMGUIWidget">소스 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>를 선택한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="273" SRC="images/image208.jpg" HEIGHT="211"></P>
+
+<P CLASS="JMCaption">그림177 새 WebT 데이터소스 생성 선택
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMNormalText">2. 기본 설정을 입력한다. 이 설정에서는 Tmax 서버와의 연결 정보와 기본적인 설정을 입력한다. 고급 선택 사항의 Tmax Property에는 
+&ldquo;키=값&rdquo;의형식으로 입력하면 된다. 키값에 해당하는 값은 WebT 안내서를 참고 하기 바란다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="448" SRC="images/image209.jpg" HEIGHT="226"></P>
+
+<P CLASS="JMCaption">그림178 새WebT 데이터소스 생성 - 기본 설정
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMNormalText">3. 다음 단계의 풀링에서는 WebT 연결에 대한 풀링을 설정한다. 
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="487" SRC="images/image210.jpg" HEIGHT="408"></P>
+
+<P CLASS="JMCaption">그림179 새 WebT 데이터소스 생성 - 연결 풀
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMNormalText">4. 다음 단계의 로깅 설정에서는 WebT와 Tmax간의 통신중 발생하는 로그를 저장하는 설정을 한다. 
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="506" SRC="images/image211.jpg" HEIGHT="250"></P>
+
+<P CLASS="JMCaption">그림180 새 WebT 데이터소스 생성 - 로깅
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMNormalText">5. 마지막 단계인 기타 설정에서는 보안에 관한 설정을 한다. 
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="512" SRC="images/image212.jpg" HEIGHT="259"></P>
+
+<P CLASS="JMCaption">그림181 새 WebT 데이터소스 생성 - 기타(보안)
+ </P>
+<A NAME="1014"></A>
+<P CLASS="JMNormalText">6. 모든 설정을 완료하였으면 생성을 한다. 생성시JNDI에 바인드 하고자 한다면 바인드 선택사항을 선택하고 생성 버튼을 눌러야 한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="506" SRC="images/image213.jpg" HEIGHT="109"></P>
+
+<P CLASS="JMCaption">그림182 새 WebT 데이터소스 생성 - 생성
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMNormalText">7. WebT 데이터 소스가 생성되면 노드 트리에 WebT 데이터 소스 아이콘(
+ <IMG BORDER="0" WIDTH="17" SRC="images/image214.gif" HEIGHT="16">)이추가되며 WebT데이터 소스 개요 화면의 WebT 데이터 소스 목록에 새로 생성된 WebT 데이터 소스가 추가된다(그림 187 참조).
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMHeading3"><A NAME="webt_remove"></A>22.1.3 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt">WebT
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt_overview">WebT 데이터 소스 개요
+ </A>&gt; 삭제
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">리소스
+ </SPAN>의
+ <SPAN CLASS="JMGUIWidget">WebT
+ </SPAN>폴더를 클릭하면 WebT 데이터소스 개요 화면이 나타난다.
+ </P>
+<A NAME="1018"></A>
+<P CLASS="JMNormalText">2. 화면의 WebT 데이터 소스 목록에서 삭제하고자 하는 WebT 데이터 소스의 
+ <A HREF="http://localhost:9744/webadmin/application?service=direct/1/JeusServiceTmaxExtResourceService_Overview/deleteLink&amp;sp=Swebtdatasource1"><IMG BORDER="0" WIDTH="11" SRC="images/image033.gif" HEIGHT="13"></A>아이콘을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="496" SRC="images/image215.jpg" HEIGHT="123"></P>
+
+<P CLASS="JMCaption">그림183 WebT 데이터 소스개요 - 데이터 소스 목록
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMNormalText">3. WebT 데이터 소스가 목록에서 사라지며 노드트리에서도 사라진다.
+ </P>
+<A NAME="1020"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMNoteWarningChar">참고
+ </SPAN><SPAN CLASS="JMNoteWarningChar">:
+ </SPAN>WebT 데이터 소스가 목록에서 사라진다 해도 실제 JNDI에서 사라진 것은 아니다. 따라서 삭제를 완전하게 하기 위해서는 JEUS 매니저를 재시작 
+해야한다.
+ </P>
+<A NAME="1021"></A>
+<P CLASS="JMHeading2"><A NAME="webt_conf"></A>22.2 WebT 데이터 소스 설정
+ </P>
+<A NAME="1022"></A>
+<P CLASS="JMHeading3"><A NAME="webt_conf_general"></A>22.2.1 기본 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt">WebT
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt_overview">WebT 데이터 소스 개요
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt_conf">설정
+ </A>&gt; 기본 설정
+ </P>
+<A NAME="1023"></A>
+<P CLASS="JMNormalText">1. 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">WebT
+ </SPAN>폴더에서 수정하고자 하는 WebT 데이터 소스를 클릭하거나 
+ <SPAN CLASS="JMGUIWidget">WebT 
+ </SPAN><SPAN CLASS="JMGUIWidget">데이터 
+ </SPAN><SPAN CLASS="JMGUIWidget">소스 
+ </SPAN><SPAN CLASS="JMGUIWidget">개요
+ </SPAN>화면에서 WebT 데이터 소스를 클릭한다.
+ </P>
+<A NAME="1024"></A>
+<P CLASS="JMNormalText">2. 탭에서 
+ <SPAN CLASS="JMGUIWidget">기본 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1025"></A>
+<P CLASS="JMNormalText">3. 속성을 변경한다. 변경된 사항은 다음 부트 혹은 바인드 시에 적용된다.
+ </P>
+<A NAME="1026"></A>
+<P CLASS="JMNormalText">4. <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1027"></A>
+<P CLASS="JMHeading3"><A NAME="webt_conf_pool"></A><A NAME="webt_conf_pooling"></A>22.2.2 연결 풀 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt">WebT
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt_overview">WebT 데이터 소스 개요
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt_conf">설정
+ </A>&gt; 연결 풀
+ </P>
+<A NAME="1028"></A>
+<P CLASS="JMNormalText">1. 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">WebT
+ </SPAN>폴더에서 수정하고자 하는 WebT 데이터 소스를 클릭하거나 
+ <SPAN CLASS="JMGUIWidget">WebT 
+ </SPAN><SPAN CLASS="JMGUIWidget">데이터 
+ </SPAN><SPAN CLASS="JMGUIWidget">소스 
+ </SPAN><SPAN CLASS="JMGUIWidget">개요
+ </SPAN>화면에서 WebT 데이터 소스를 클릭한다.
+ </P>
+<A NAME="1029"></A>
+<P CLASS="JMNormalText">2. 탭에서 
+ <SPAN CLASS="JMGUIWidget">연결 
+ </SPAN><SPAN CLASS="JMGUIWidget">풀
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1030"></A>
+<P CLASS="JMNormalText">3. 속성을 변경한다. 변경된 사항은 다음 부트 혹은 바인드 시에 적용된다.
+ </P>
+<A NAME="1031"></A>
+<P CLASS="JMNormalText">4. <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1032"></A>
+<P CLASS="JMHeading3"><A NAME="webt_conf_logging"></A>22.2.3 로깅 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt">WebT
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt_overview">WebT 데이터 소스 개요
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt_conf">설정
+ </A>&gt; 로깅
+ </P>
+<A NAME="1033"></A>
+<P CLASS="JMNormalText">1. 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">WebT
+ </SPAN>폴더에서 수정하고자 하는 WebT 데이터 소스를 클릭하거나 
+ <SPAN CLASS="JMGUIWidget">WebT 
+ </SPAN><SPAN CLASS="JMGUIWidget">데이터 
+ </SPAN><SPAN CLASS="JMGUIWidget">소스 
+ </SPAN><SPAN CLASS="JMGUIWidget">개요
+ </SPAN>화면에서 WebT 데이터 소스를 클릭한다.
+ </P>
+<A NAME="1034"></A>
+<P CLASS="JMNormalText">2. 탭에서 
+ <SPAN CLASS="JMGUIWidget">로깅
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1035"></A>
+<P CLASS="JMNormalText">3. 속성을 변경한다. 변경된 사항은 다음 부트 혹은 바인드 시에 적용된다.
+ </P>
+<A NAME="1036"></A>
+<P CLASS="JMNormalText">4. <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1037"></A>
+<P CLASS="JMHeading3"><A NAME="webt_conf_misc"></A>22.2.4 보안 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt">WebT
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt_overview">WebT 데이터 소스 개요
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt_conf">설정
+ </A>&gt; 기타 &gt; 보안
+ </P>
+<A NAME="1038"></A>
+<P CLASS="JMNormalText">1. 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">WebT
+ </SPAN>폴더에서 수정하고자 하는 WebT 데이터 소스를 클릭하거나 
+ <SPAN CLASS="JMGUIWidget">WebT 
+ </SPAN><SPAN CLASS="JMGUIWidget">데이터 
+ </SPAN><SPAN CLASS="JMGUIWidget">소스 
+ </SPAN><SPAN CLASS="JMGUIWidget">개요
+ </SPAN>화면에서 WebT 데이터 소스를 클릭한다.
+ </P>
+<A NAME="1039"></A>
+<P CLASS="JMNormalText">2. 탭에서 
+ <SPAN CLASS="JMGUIWidget">기타 
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1040"></A>
+<P CLASS="JMNormalText">3. 보안관련된 속성을 변경한다. 변경된 사항은 다음 부트 혹은 바인드 시에 적용된다.
+ </P>
+<A NAME="1041"></A>
+<P CLASS="JMNormalText">4. <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1042"></A>
+<P CLASS="JMHeading2"><A NAME="webt_control"></A>22.3 WebT 데이터 소스 제어
+ </P>
+<A NAME="1043"></A>
+<P CLASS="JMHeading3">22.3.1 WebT 데이터 소스 바인드
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt">WebT
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt_overview">WebT 데이터 소스 개요
+ </A>&gt; 바인드
+ </P>
+<A NAME="1044"></A>
+<P CLASS="JMNormalText">1. WebT 데이터 소스 개요 화면에서 바인드 하고자 하는 WebT 데이터 소스의 
+ <SPAN CLASS="JMGUIWidget">바인드
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1045"></A>
+<P CLASS="JMNormalText">2. 바인드가 완료되면 노드트리의 WebT 데이터 소스 아이콘(
+ <IMG BORDER="0" WIDTH="17" SRC="images/image216.gif" HEIGHT="16">)이활성화 되고 
+ <SPAN CLASS="JMGUIWidget">바인드
+ </SPAN>버튼이 비활성화 된다.
+ </P>
+<A NAME="1046"></A>
+<P CLASS="JMHeading2">22.4 클러스터WebT 데이터 소스 구성
+ </P>
+<A NAME="1047"></A>
+<P CLASS="JMHeading3">22.4.1 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt">WebT
+ </A>&gt; 새 WebT 클러스터 데이터 소스 생성
+ </P>
+<A NAME="1048"></A>
+<P CLASS="JMNormalText">1. 노드 트리의
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">리소스
+ </SPAN>의
+ <SPAN CLASS="JMGUIWidget">WebT
+ </SPAN>폴더를 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">클러스터 WebT
+ </SPAN><SPAN CLASS="JMGUIWidget">데이터 
+ </SPAN><SPAN CLASS="JMGUIWidget">소스
+ </SPAN>링크를 클릭한다.
+ </P>
+<A NAME="1049"></A>
+<P CLASS="JMNormalText">2. 기본설정을 입력한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="499" SRC="images/image217.jpg" HEIGHT="219"></P>
+
+<P CLASS="JMCaption">그림184 새클러스터 WebT 데이터소스 생성 - 기본 설정
+ </P>
+<A NAME="1050"></A>
+<P CLASS="JMNormalText">3. 클러스터링할 데이터소스들을 선택한다. 선택된 데이터 소스가 라운드 로빈 방식으로 사용되므로 순서를 고려하여 선택해야한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="506" SRC="images/image218.jpg" HEIGHT="194"></P>
+
+<P CLASS="JMCaption">그림185 새클러스터 WebT 데이터소스 생성 - 데이터 소스들
+ </P>
+<A NAME="1051"></A>
+<P CLASS="JMNormalText">4. 추가할 데이터소스를 생성과 동시에 바인딩 하고 싶다면 바인딩 선택 항목을 선택한 후 
+ <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="501" SRC="images/image219.jpg" HEIGHT="96"></P>
+
+<P CLASS="JMCaption">그림186 새클러스터 WebT 데이터소스 생성 - 생성
+ </P>
+<A NAME="1052"></A>
+<P CLASS="JMNormalText">5. 데이터 소스가 추가되면 노드 트리의 WebT 폴더에 클러스터WebT 데이터 소스가 나타난다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="260" SRC="images/image220.jpg" HEIGHT="281"></P>
+
+<P CLASS="JMCaption">그림 187 노드트리에서의 WebT 데이터소스
+ </P>
+<A NAME="1053"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMNoteWarningChar">참고
+ </SPAN><SPAN CLASS="JMNoteWarningChar">:
+ </SPAN>클러스터 WebT 데이터 소스는 클러스터 JDBC 데이터 소스와는 달리 하나의 클러스터 데이터 소스만을 생성할 수 있다. 따라서 클러스터 데이터 
+소스가 하나 생성되었다면, 새 WebT 클러스터 데이터 소스 생성 링크는 비활성화 된다.
+ </P>
+<A NAME="1054"></A>
+<P CLASS="JMHeading3">22.4.2 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt">WebT
+ </A>&gt; 새 WebT 클러스터 데이터 소스 삭제
+ </P>
+<A NAME="1055"></A>
+<P CLASS="JMNormalText">1. 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">리소스
+ </SPAN>의
+ <SPAN CLASS="JMGUIWidget">WebT
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1056"></A>
+<P CLASS="JMNormalText">2. 클러스터 WebT 데이터 소스 목록에서 삭제하고자 하는 데이터 소스를 선택한 후 
+ <A HREF="http://localhost:9744/webadmin/application?service=direct/1/JeusServiceJDBCDataSourceService_Overview/cds_deleteLink&amp;sp=Sdatasource3"><IMG BORDER="0" WIDTH="11" SRC="images/image033.gif" HEIGHT="13"></A>아이콘을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image221.jpg" HEIGHT="112"></P>
+
+<P CLASS="JMCaption">그림188 클러스터 WebT 데이터소스 개요
+ </P>
+<A NAME="1057"></A>
+<P CLASS="JMNormalText">3. 클러스터 WebT 데이터 소스 목록에서 해당 클러스터 WebT 데이터 소스가 사라지며 바인딩 되지 않은 데이터 소스라면 노드 트리에서 사라진다.
+ 
+</P>
+<A NAME="1058"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMNoteWarningChar">참고
+ </SPAN><SPAN CLASS="JMNoteWarningChar">:
+ </SPAN>클러스터 WebT 데이터 소스가 이미 바인딩 되어있다면 삭제를 하더라도 바인딩 객체는 사라지지 않으므로 주의해야한다.
+ </P>
+<A NAME="1059"></A>
+<P CLASS="JMHeading2">22.5 클러스터WebT 데이터 소스 제어
+ </P>
+<A NAME="1060"></A>
+<P CLASS="JMHeading3">22.5.1 클러스터 WebT 데이터소스 바인드
+ </P>
+<A NAME="1061"></A>
+<P CLASS="JMNormalText">1. 클러스터 WebT 데이터 소스 목록에 설정된 클러스터WebT 데이터 소스의 
+ <SPAN CLASS="JMGUIWidget">바인드
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1062"></A>
+<P CLASS="JMNormalText">2. 바인드가 완료되면 노드트리의 WebT 데이터 소스 아이콘(
+ <IMG BORDER="0" WIDTH="16" SRC="images/image222.gif" HEIGHT="16">)이활성화 되고 
+ <SPAN CLASS="JMGUIWidget">바인드
+ </SPAN>버튼이 비활성화 된다.
+ </P>
+<BR><!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusServiceSecurityDomain.GroupConfigurationPage">
+	
+	<inject property="jaxbSource" type="state" object="JAXBSource"/>
+	
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Security Domain Configuration"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{'JeusServiceSecurityDomain_GroupConfiguration'}"/>
+    </component>
+
+    <component id="repositoryConfigGroupForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.accounts.repository.group.label"/>
+        <binding name="listener" value="listeners.onRepositoryGroupOk"/>
+    </component>
+
+    <component id="group_name" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="group"/>
+        <binding name="elementName" value="literal:name"/>
+    </component>
+
+    <component id="sub_group" type="jeus:Field">
+        <binding name="field" value="components.sub_groupField"/>
+        <binding name="label" value="'Sub Group'"/>
+    </component>
+
+    <component id="sub_groupField" type="contrib:Palette">
+        <binding name="model" value="groupModel"/>
+        <binding name="selected" value="subGroupSelected"/>
+        <binding name="selectedTitleBlock" value="components.nullBlock"/>
+        <binding name="availableTitleBlock" value="components.nullBlock"/>
+    </component>
+
+    <component id="group_description" type="jeus:Field">
+        <binding name="field" value="components.group_descriptionField"/>
+    </component>
+
+    <component id="group_descriptionField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="group"/>
+        <binding name="elementName" value="literal:description"/>
+    </component>
+
+    <bean name="requiredValidator" class="org.apache.tapestry.valid.StringValidator">
+        <set name="required" value="true"/>
+    </bean>
+
+</page-specification>

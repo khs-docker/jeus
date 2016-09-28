@@ -1,0 +1,31 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: EnterpriseService - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP56A.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\..\..\..\..\bin" /I "..\..\..\bin" /I "C:\lang\j2ee-cas-com-bridge\bin" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /D "COMBRIDGE_SAMPLE" /Fp"Debug/enterpriseservice.pch" /YX"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\util\java\com-bridge\cas\enterprise-service\EnterpriseService.cpp"
+"D:\util\java\com-bridge\cas\enterprise-service\StdAfx.cpp"
+"D:\util\java\com-bridge\cas\enterprise-service\Util.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP56A.tmp" 
+Creating command line "link.exe -lib /nologo /out:"..\..\..\lib\enterprise-service_g.lib"  ".\Debug\EnterpriseService.obj" ".\Debug\StdAfx.obj" ".\Debug\Util.obj" "
+<h3>Output Window</h3>
+Compiling...
+EnterpriseService.cpp
+StdAfx.cpp
+Util.cpp
+Creating library...
+
+
+
+<h3>Results</h3>
+enterprise-service_g.lib - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

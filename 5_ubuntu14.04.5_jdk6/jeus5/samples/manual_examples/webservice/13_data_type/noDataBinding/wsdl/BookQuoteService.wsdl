@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="BookQuoteService"
+             targetNamespace="http://www.tmaxsoft.com/j2eews/BookQuote"
+             xmlns:mh="http://www.tmaxsoft.com/j2eews/BookQuote"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <types>
+        <xsd:schema targetNamespace="http://www.tmaxsoft.com/j2eews/BookQuote">
+            <xsd:complexType name="Book">
+                <xsd:sequence>
+                    <xsd:element name="title" type="xsd:string" />
+                    <xsd:element name="isbn" type="xsd:string" />
+                    <xsd:element name="author" type="xsd:string" />
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="Book" type="mh:Book" />
+            <xsd:element name="Result" type="xsd:float" />
+        </xsd:schema>
+    </types>
+
+    <message name="getBookPriceRequest">
+        <part name="book" element="mh:Book" />
+    </message>
+    <message name="getBookPriceResponse">
+        <part name="result" element="mh:Result" />
+    </message>
+
+    <portType name="BookQuote">
+        <operation name="getBookPrice">
+            <input message="mh:getBookPriceRequest" />
+            <output message="mh:getBookPriceResponse" />
+        </operation>
+    </portType>
+
+    <binding name="BookServiceSoapBinding" type="mh:BookQuote">
+        <soap:binding style="document"
+                      transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="getBookPrice">
+            <input>
+                <soap:body use="literal"
+                           namespace="http://www.tmaxsoft.com/j2eews/BookQuote" />
+            </input>
+            <output>
+                <soap:body use="literal"
+                           namespace="http://www.tmaxsoft.com/j2eews/BookQuote" />
+            </output>
+        </operation>
+    </binding>
+    
+    <service name="BookQuoteService">
+        <port name="BookQuotePort" binding="mh:BookServiceSoapBinding">
+            <soap:address location="http://localhost:8088/sample/BookQuoteService" />
+        </port>
+    </service>
+</definitions>

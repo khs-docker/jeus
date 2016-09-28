@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceSnmpAgentService.ConfigurationPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Snmp Agent Service Configuration"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@SNMPAGENTSERVICE_NAMES"/>
+        <binding name="subtabNames" value="ognl:{'general', 'trap_demon'}"/>
+    </component>
+
+    <component id="general" type="Block"/>
+    <component id="trap_demon" type="Block"/>
+
+    <component id="generalForm" type="jeus:MBeanForm">
+        <binding name="title" value="message:snmp.general.title"/>
+        <binding name="listener" value="ognl:listeners.onGeneralOk"/>
+        <binding name="objectName" value="ognl:@jeus.tool.webadmin.util.JMXUtils@getSnmpAgentServiceName(objectName)"/>
+    </component>
+
+    <component id="snmp_adaptor_port" type="jeus:Field">
+        <binding name="field" value="ognl:components.snmp_adaptor_portField"/>
+
+    </component>
+
+    <component id="snmp_adaptor_portField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="snmpAdaptor"/>
+        <binding name="elementName" value="literal:snmpAdaptorPort"/>
+        <binding name="displayName" value="message:snmp.general.snmp_adaptor_port.label"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:required,min=1"/>
+    </component>
+
+    <component id="general_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="snmp_max_packet_size" type="jeus:Field">
+        <binding name="field" value="ognl:components.snmp_max_packet_sizeField"/>
+    </component>
+
+    <component id="snmp_max_packet_sizeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="snmpAdaptor"/>
+        <binding name="elementName" value="literal:snmpMaxPacketSize"/>
+        <binding name="displayName" value="message:snmp.general.snmp_max_packet_size.label"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=256"/>
+        <binding name="MBeanAttributeName" value="literal:MaxPacketSize"/>
+    </component>
+
+    <component id="snmp_security" type="jeus:Field">
+        <binding name="field" value="ognl:components.snmp_securityField"/>
+        <binding name="label" value="message:snmp.general.snmp_security.label"/>
+    </component>
+
+    <component id="snmp_securityField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:snmpAdaptor"/>
+        <binding name="elementName" value="literal:snmpSecurity"/>
+    </component>
+
+    <component id="snmp_version" type="jeus:Field">
+        <binding name="field" value="ognl:components.snmp_versionField"/>
+        <binding name="label" value="message:snmp.general.snmp_version.label"/>
+    </component>
+
+    <component id="snmp_versionField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="ognl:snmpAdaptor"/>
+        <binding name="elementName" value="literal:snmpVersion"/>
+        <binding name="model" value="ognl:snmpVersionModel"/>
+    </component>
+
+    <component id="trap_demonForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:snmp.trap_demon.title"/>
+        <binding name="useForm" value="ognl:false"/>
+    </component>
+
+
+    <component id="eachTrapDemon" type="Foreach">
+        <binding name="source" value="ognl:trapDemons"/>
+        <binding name="value" value="ognl:trapDemon"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="ip_address_column" type="Insert">
+        <binding name="value" value="message:snmp.trap_demon.ip_address.label"/>
+    </component>
+
+    <component id="port_column" type="Insert">
+        <binding name="value" value="message:snmp.trap_demon.port.label"/>
+    </component>
+
+    <component id="ip_address_value" type="Insert">
+        <binding name="value" value="ognl:trapDemon.ipAddress"/>
+    </component>
+
+    <component id="port_value" type="Insert">
+        <binding name="value" value="ognl:trapDemon.port"/>
+    </component>
+
+    <component id="deleteLink" type="jeus:DirectLink">
+        <binding name="listener" value="ognl:listeners.onDelete"/>
+        <binding name="parameters" value="ognl:{trapDemon.ipAddress, trapDemon.port}"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="ognl:messages.format('common.message.delete.confirm', trapDemon.ipAddress+':'+trapDemon.port)"/>
+    </component>
+
+    <component id="delete" type="Image">
+        <binding name="image" value="ognl:assets.delete"/>
+    </component>
+
+    <component id="addForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="ip_address" type="jeus:Field">
+        <binding name="field" value="ognl:components.ip_addressField"/>
+    </component>
+
+    <component id="ip_addressField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="newTrapDemon"/>
+        <binding name="elementName" value="literal:ipAddress"/>
+        <binding name="displayName" value="message:snmp.trap_demon.ip_address.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="port" type="jeus:Field">
+        <binding name="field" value="ognl:components.portField"/>
+    </component>
+
+    <component id="portField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="newTrapDemon"/>
+        <binding name="elementName" value="literal:port"/>
+        <binding name="displayName" value="message:snmp.trap_demon.port.label"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:required,min=1"/>
+    </component>
+
+    <component id="add_trap_demon" type="Submit">
+        <binding name="value" value="message:common.label.add"/>
+        <binding name="listener" value="ognl:listeners.onAddOk"/>
+    </component>
+
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+    <property name="trapDemon"/>
+</page-specification>

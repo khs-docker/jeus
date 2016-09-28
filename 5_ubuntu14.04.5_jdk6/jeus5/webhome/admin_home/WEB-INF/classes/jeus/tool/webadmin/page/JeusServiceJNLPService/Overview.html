@@ -1,0 +1,86 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="jnlpForm">
+        </form>
+        <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+            <tr>
+                <td class="table_columns">
+                    <span jwcid="resource_name_column"/>
+                </td>
+                <td class="table_columns">
+                    <span jwcid="resource_path_column"/>
+                </td>
+                <td class="table_columns">
+                    <span jwcid="os_name_column"/>
+                </td>
+                <td class="table_columns">
+                    <span jwcid="architecture_column"/>
+                </td>
+                <td class="table_columns">
+                    <span jwcid="locale_column"/>
+                </td>
+                <td class="table_columns">
+                    <span jwcid="version_column"/>
+                </td>
+                <td  class="table_columns" width="20">
+                    &nbsp;
+                </td>
+            </tr>
+            <tr jwcid="eachJNLP">
+                <td class="table_values">
+                    <a jwcid="JNLPLink"><span jwcid="resource_name_value"/></a>
+                </td>
+                <td class="table_values">
+                    <span jwcid="resource_path_value"/>
+                </td>
+                <td class="table_values">
+                    <span jwcid="os_name_value"/>
+                </td>
+                <td class="table_values">
+                    <span jwcid="architecture_value"/>
+                </td>
+                <td class="table_values">
+                    <span jwcid="locale_value"/>
+                </td>
+                <td class="table_values">
+                    <span jwcid="version_value"/>
+                </td>
+                <td class="table_values" align="center">
+                    <a jwcid="deleteLink"><img jwcid="delete" border="0"/></a>
+                </td>
+            </tr>
+        </table>
+        <br/>
+        <br/>
+        <span jwcid="condConfig">
+        <form jwcid="createForm">
+            <span jwcid="resource_name">
+                <input jwcid="resource_nameField"/>
+            </span>
+            <span jwcid="resource_path">
+                <input jwcid="resource_pathField"/>
+            </span>
+            <span jwcid="os_name">
+                <input jwcid="os_nameField"/>
+            </span>
+            <span jwcid="architecture">
+                <input jwcid="architectureField"/>
+            </span>
+            <span jwcid="locale">
+                <input jwcid="localeField"/>
+            </span>
+            <span jwcid="version">
+                <input jwcid="versionField"/>
+            </span>
+            <div class="form_button_layer">
+                <input jwcid="add" class="form_button" style="width:100px;"/>
+            </div>
+        </form>
+        </span>
+        <span jwcid="condNoConfig">
+            <form jwcid="messageForm">
+                <span jwcid="message" class="form_fail_message"/>
+            </form>
+        </span>
+    </span>
+</html>

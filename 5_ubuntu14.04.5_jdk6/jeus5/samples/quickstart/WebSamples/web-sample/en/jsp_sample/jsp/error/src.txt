@@ -1,0 +1,62 @@
+/* ====================================================================
+ * The Tmax soft License, Version 1.1
+ *
+ * Copyright (c) 1997-2004 The Tmax software.  
+ * All rights reserved.
+ * html code omitted for readability.
+/* ====================================================================
+
+/*
+	## error.html
+*/
+
+<h2> This sample uses <b>errorpage</b> directive </h2>
+<br>
+<h3> Select a fruit that I think.</h3>
+<h3> If you want to show the error page, don't select the middle one.</h3>
+
+<form method=get action=err.jsp>
+<!-- <br> Make a choice: -->
+	<SELECT NAME="name" SIZE=3>
+		<OPTION VALUE="apple"> Apple <BR>
+		<OPTION VALUE="orange"> Orange <BR>
+		<OPTION VALUE="grape"> Grape <BR>
+	</SELECT>
+	<br> <INPUT TYPE=submit name=submit Value="Submit">
+</form>
+
+
+/*
+	## err.jsp
+*/
+<!-- upper.jsp -->
+
+<%@ page errorPage="errorpge.jsp" %>
+<% 
+	String name = null;
+	String query = null;
+	
+		query = request.getParameter("name");
+
+	  	if (query.equalsIgnoreCase("orange")) 
+	  		name = query;
+	  	
+	  	// if you don't select a orange, name is null object
+	  	// so name.equalsIgnoreCase("orange") will make a Null Pointer Exception 
+	  	// and request will be forwarded to the Error page specified in the page directive
+	  	if (name.equalsIgnoreCase("orange"))
+	  	{
+%>
+			<H2> Yes. I think a orange.
+<% 
+	  	}
+%>	
+
+/*
+	## errorpage.jsp
+*/
+<html>
+
+	<%@ page isErrorPage="true" %>
+	<h2> The exception <%= exception.getMessage() %> tells me you
+	     made a wrong choice. 

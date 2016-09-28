@@ -1,0 +1,633 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 16 엔진 컨테이너 리소스 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('16 엔진 컨테이너 리소스', 'wm-15.htm', 'wm-17.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left">16 엔진 컨테이너 리소스
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMNormalText">엔진 컨테이너의 리소스에는 JDBC 데이터 소스, JCA, WebT, JTA, JMS가 있다. JDBC데이터 소스와 WebT 데이터 소스는 JEUS 
+매니저에서 추가 가능하며 엔진 컨테이너에서는 단지 모니터링과 제어만 가능하다. JTA는 엔진 컨테이너마다 항상 존재하는 리소스이며 JMS 리소스는 
+JMS 엔진이 작동할때만 사용가능하다. JCA 리소스는 리소스 아답터 모듈을 배치하였을 경우 사용가능하다. 
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMNormalText">따라서 JDBC데이터 소스와 WebT데이터 소스의 구성에 관한 내용은 각각
+ <A HREF="wm-16.htm#jdbc">18 JDBC 데이터 소스
+ </A>와22 WebT을참조하고 JMS 리소스는 
+ <A HREF="wm-19.htm#jmsresource">19JMS 리소스
+ </A>, JCA 리소스는 
+ <A HREF="wm-14.htm#deploy">14배치
+ </A>를참조하기 바란다.
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMHeading2"><A NAME="jdbc"></A>16.1 JDBC 데이터 소스
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMNormalText">JDBC 데이터 소스는 JEUS 매니저 리소스에서 정의되며 어떤 엔진 컨테이너에서 JNDI를 통해 특정 JDBC 데이터소스를 처음으로 Lookup 
+하였을 경우엔진 컨테이너에 JDBC 데이터 소스가 나타난다.
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMHeading3"><A NAME="jdbc_stats"></A>16.1.1 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-16.htm#jdbc_stats">JDBC 데이터 소스
+ </A>&gt; 통계
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMNormalText">현재 이 엔진 컨테이너에서 사용중인 JDBC 데이터 소스를 모두 모니터링 할 수 있는 기능이다. 
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">JDBC
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1008"></A>
+<P CLASS="JMNormalText">2. JDBC 데이터 소스의 목록과 통계 정보가 출력된다.
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMNormalText">3. 필요에 따라 아래쪽의 
+ <SPAN CLASS="JMGUIWidget">새로 
+ </SPAN><SPAN CLASS="JMGUIWidget">고침
+ </SPAN>버튼을 이용하여 통계 정보를 갱신한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image167.jpg" HEIGHT="174"></P>
+
+<P CLASS="JMCaption">그림 146JDBC 데이터 소스 모니터링
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMHeading3"><A NAME="jdbc_enable"></A>16.1.2 가능
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-16.htm#jdbc_stats">JDBC 데이터 소스
+ </A>&gt; 
+ <A HREF="wm-16.htm#jdbc_stats">통계
+ </A>&gt; 가능
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMNormalText">이 기능은 불가능 명령에 의해 작동이 정지된 데이터 소스를 작동 가능하게 하는 명령이다.
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">JDBC
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMNormalText">2. JDBC 데이터 소스의 목록에서 
+ <SPAN CLASS="JMGUIWidget">가능
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1014"></A>
+<P CLASS="JMNormalText">3. 데이터 소스가 가능되면 버튼의 레이블이 
+ <SPAN CLASS="JMGUIWidget">불가능
+ </SPAN>으로 변경된다.
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMHeading3"><A NAME="jdbc_disable"></A>16.1.3 불가능
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-16.htm#jdbc_stats">JDBC 데이터 소스
+ </A>&gt; 
+ <A HREF="wm-16.htm#jdbc_stats">통계
+ </A>&gt; 불가능
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMNormalText">이 기능은 현재 작동중인 데이터 소스의 서비스를 정시시킬 때 사용한다. 
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서
+ <SPAN CLASS="JMGUIWidget">JDBC
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1018"></A>
+<P CLASS="JMNormalText">2. JDBC 데이터 소스의 목록에서 
+ <SPAN CLASS="JMGUIWidget">불가능
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMNormalText">3. 데이터 소스가 불가능 하게되면 버튼의 레이블이 
+ <SPAN CLASS="JMGUIWidget">가능
+ </SPAN>으로 변경된다.
+ </P>
+<A NAME="1020"></A>
+<P CLASS="JMHeading3"><A NAME="jdbc_shrink"></A>16.1.4 연결 재조정(Shrink)
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-16.htm#jdbc_stats">JDBC 데이터 소스
+ </A>&gt; 
+ <A HREF="wm-16.htm#jdbc_stats">통계
+ </A>&gt; 연결 재조정
+ </P>
+<A NAME="1021"></A>
+<P CLASS="JMNormalText">이 기능은 휴지 상태의 JDBC 연결들을 제거함으로서 연결 풀의 크기를 줄여준다.
+ </P>
+<A NAME="1022"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서
+ <SPAN CLASS="JMGUIWidget">JDBC
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1023"></A>
+<P CLASS="JMNormalText">2. JDBC 데이터 소스의 목록에서 
+ <SPAN CLASS="JMGUIWidget">재조정
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1024"></A>
+<P CLASS="JMNormalText">3. 풀의 크기가 줄어들었는지 확인한다.
+ </P>
+<A NAME="1025"></A>
+<P CLASS="JMHeading3"><A NAME="jdbc_resync"></A>16.1.5 XA 트랜잭션 재시작(Resync)
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-16.htm#jdbc_stats">JDBC 데이터 소스
+ </A>&gt; 
+ <A HREF="wm-16.htm#jdbc_stats">통계
+ </A>&gt; 연결 재조정
+ </P>
+<A NAME="1026"></A>
+<P CLASS="JMNormalText">이 기능은 JDBC 데이터 소스의XA 트랜잭션이 DB 의 장애로 인해 중단되었을 때 재시도 하도록 한다.
+ </P>
+<A NAME="1027"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서
+ <SPAN CLASS="JMGUIWidget">JDBC
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1028"></A>
+<P CLASS="JMNormalText">2. JDBC 데이터 소스의 목록에서 
+ <SPAN CLASS="JMGUIWidget">XA
+ </SPAN><SPAN CLASS="JMGUIWidget">트랜잭션 
+ </SPAN><SPAN CLASS="JMGUIWidget">재시작
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1029"></A>
+<P CLASS="JMHeading3"><A NAME="jdbc_reconf"></A>16.1.6 재설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-16.htm#jdbc_stats">JDBC 데이터 소스
+ </A>&gt; 재설정
+ </P>
+<A NAME="1030"></A>
+<P CLASS="JMNormalText">이 기능은 데이터 소스의 일부 속성을 실행 시간에에 변경하는 기능이다. 재설정을 사용한 변경은 
+ <SPAN CLASS="JMFileNameReferenceChar">JEUSMain.xml
+ </SPAN>에저장되지 않는다.
+ </P>
+<A NAME="1031"></A>
+<P CLASS="JMNormalText">변경가능한 속성에는 
+ <SPAN CLASS="JMEmphasizeChar">사용자
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">이름
+ </SPAN><SPAN CLASS="JMEmphasizeChar">, 
+ </SPAN><SPAN CLASS="JMEmphasizeChar">암호
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">그리고
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">연결풀의
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">최대값
+ </SPAN><SPAN CLASS="JMEmphasizeChar">, 
+ </SPAN><SPAN CLASS="JMEmphasizeChar">최소값
+ </SPAN><SPAN CLASS="JMEmphasizeChar">, 
+ </SPAN><SPAN CLASS="JMEmphasizeChar">증가
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">폭
+ </SPAN>이있다.
+ </P>
+<A NAME="1032"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 재설정하고자 하는 JDBC 데이터 소스를 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">재설정
+ </SPAN>탭을 선택한다. 혹은 컨텍스트 메뉴에서 해당 데이터소스의 
+ <SPAN CLASS="JMGUIWidget">재설정 
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1033"></A>
+<P CLASS="JMNormalText">2. 안 쪽의 탭에서 
+ <SPAN CLASS="JMGUIWidget">보안
+ </SPAN>혹은 
+ <SPAN CLASS="JMGUIWidget">연결 
+ </SPAN><SPAN CLASS="JMGUIWidget">풀
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1034"></A>
+<P CLASS="JMNormalText">3. 변경하고자 하는 속성에 새로운 값을 입력한다.
+ </P>
+<A NAME="1035"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1036"></A>
+<P CLASS="JMNormalText">5. 연결 풀을 변경하였다면 JDBC 데이터 소스 모니터링 화면을 통해서 변경된 값이 적용되었는지 확인해 볼 수 있다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="450" SRC="images/image168.jpg" HEIGHT="216"></P>
+
+<P CLASS="JMCaption">그림 147JDBC 데이터 소스의 보안 재설정
+ </P>
+
+<P CLASS="JMCaption"><IMG BORDER="0" WIDTH="451" SRC="images/image169.jpg" HEIGHT="240"></P>
+
+<P CLASS="JMCaption">그림 148JDBC 데이터 소스의 연결 풀 재설정
+ </P>
+<A NAME="1037"></A>
+<P CLASS="JMHeading2"><A NAME="jca"></A>16.2 JCA 리소스
+ </P>
+<A NAME="1038"></A>
+<P CLASS="JMHeading3"><A NAME="jca_stats"></A><A NAME="jcaconn_stats"></A><A NAME="jca_conn_stats"></A>16.2.1 연결 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-16.htm#jca_stats">JCA 리소스
+ </A>&gt; 연결 통계
+ </P>
+<A NAME="1039"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">트리
+ </SPAN>에서 모니터링 하고자 하는 
+ <SPAN CLASS="JMGUIWidget">JCA 
+ </SPAN><SPAN CLASS="JMGUIWidget">리소스
+ </SPAN>를클릭한 후 하위 탭에서 연결탭을 선택한다.
+ </P>
+<A NAME="1040"></A>
+<P CLASS="JMNormalText">2. JCA 리소스의 연결 통계 정보가 출력된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="500" SRC="images/image170.jpg" HEIGHT="152"></P>
+
+<P CLASS="JMCaption">그림 149JCA 연결의연결 통계
+ </P>
+<A NAME="1041"></A>
+<P CLASS="JMHeading3"><A NAME="jca_connpool_stats"></A>16.2.2 연결 풀 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-16.htm#jca_stats">JCA 리소스
+ </A>&gt; 연결 통계
+ </P>
+<A NAME="1042"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">트리
+ </SPAN>에서 모니터링 하고자 하는 
+ <SPAN CLASS="JMGUIWidget">JCA 
+ </SPAN><SPAN CLASS="JMGUIWidget">리소스
+ </SPAN>를클릭한 후 하위 탭에서 연결탭을 선택한다.
+ </P>
+<A NAME="1043"></A>
+<P CLASS="JMNormalText">2. JCA 리소스의 연결 풀 통계 정보가 출력된다.
+ </P>
+<A NAME="1044"></A>
+<P CLASS="JMNormalText">3. 필요에 따라 아래쪽의 
+ <SPAN CLASS="JMGUIWidget">재설정
+ </SPAN>버튼을 이용하여 모니터링 정보를 갱신한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="500" SRC="images/image171.jpg" HEIGHT="171"></P>
+
+<P CLASS="JMCaption">그림 150 JCA 리소스의 연결 풀 통계
+ </P>
+<A NAME="1045"></A>
+<P CLASS="JMHeading3"><A NAME="jca_connpool_enable"></A>16.2.3 연결 풀의 가능
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-16.htm#jca_stats">JCA 리소스
+ </A>&gt; 제어 &gt;가능
+ </P>
+<A NAME="1046"></A>
+<P CLASS="JMNormalText">이 기능은 불가능 명령에 의해 작동이 정지된 JCA 리소스 연결 풀을 작동 가능하게 하는 명령이다.
+ </P>
+<A NAME="1047"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">트리
+ </SPAN>에서 가능하게 하고자 하는 JCA 리소스를 클릭한 후 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">제어
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1048"></A>
+<P CLASS="JMNormalText">2. 연결 풀목록에서 
+ <SPAN CLASS="JMGUIWidget">가능
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1049"></A>
+<P CLASS="JMNormalText">3. 연결 풀이 가능 하게되면 버튼의 레이블이 
+ <SPAN CLASS="JMGUIWidget">불가능
+ </SPAN>으로 변경된다.
+ </P>
+<A NAME="1050"></A>
+<P CLASS="JMHeading3"><A NAME="jca_connpool_disable"></A>16.2.4 연결 풀의 불가능
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-16.htm#jca_stats">JCA 리소스
+ </A>&gt; 제어 &gt;불가능
+ </P>
+<A NAME="1051"></A>
+<P CLASS="JMNormalText">이 기능은 현재 작동중인 JCA 리소스 연결 풀을 정지 시키는 기능이다.
+ </P>
+<A NAME="1052"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">트리
+ </SPAN>에서 불가능하게 하고자 하는 
+ <SPAN CLASS="JMGUIWidget">JCA 
+ </SPAN><SPAN CLASS="JMGUIWidget">리소스
+ </SPAN>를클릭한 후 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">제어
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1053"></A>
+<P CLASS="JMNormalText">2. 연결 풀 목록에서 
+ <SPAN CLASS="JMGUIWidget">불가능
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1054"></A>
+<P CLASS="JMNormalText">3. 연결 풀이 불가능 하게되면 버튼의 레이블이 
+ <SPAN CLASS="JMGUIWidget">가능
+ </SPAN>로 변경된다.
+ </P>
+<A NAME="1055"></A>
+<P CLASS="JMHeading3"><A NAME="jca_connpool_shrink"></A>16.2.5 연결 풀의 연결 재조정(Shrink)
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-16.htm#jca_stats">JCA 리소스
+ </A>&gt; 제어 &gt; 연결 재조정
+ </P>
+<A NAME="1056"></A>
+<P CLASS="JMNormalText">이 기능은 휴지 상태의 연결들을 제거함으로서 연결 풀의 크기를 줄여준다.
+ </P>
+<A NAME="1057"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">트리
+ </SPAN>에서 연결 재조정을 할 
+ <SPAN CLASS="JMGUIWidget">JCA 
+ </SPAN><SPAN CLASS="JMGUIWidget">리소스
+ </SPAN>를클릭한 후 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">제어
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1058"></A>
+<P CLASS="JMNormalText">2. 연결 풀 목록에서 
+ <SPAN CLASS="JMGUIWidget">연결 
+ </SPAN><SPAN CLASS="JMGUIWidget">재조정
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1059"></A>
+<P CLASS="JMNormalText">3. 풀의 크기가 줄어들었는지 확인한다.
+ </P>
+<A NAME="1060"></A>
+<P CLASS="JMHeading3"><A NAME="jca_connpool_resync"></A>16.2.6 연결 풀의 XA 트랜잭션 재시작
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-16.htm#jca_stats">JCA 리소스
+ </A>&gt; 제어 &gt; XA 트랜잭션 재시작
+ </P>
+<A NAME="1061"></A>
+<P CLASS="JMNormalText">이 기능은 연결 풀의XA 트랜잭션이 장애로 인해 중단되었을 때 재시도 하도록 한다.
+ </P>
+<A NAME="1062"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">트리
+ </SPAN>에서 XA 트랜잭션을 재시도할 
+ <SPAN CLASS="JMGUIWidget">JCA 
+ </SPAN><SPAN CLASS="JMGUIWidget">리소스
+ </SPAN>를클릭한 후 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">제어
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1063"></A>
+<P CLASS="JMNormalText">2. 연결 풀 목록에서 
+ <SPAN CLASS="JMGUIWidget">XA 
+ </SPAN><SPAN CLASS="JMGUIWidget">트랜잭션 
+ </SPAN><SPAN CLASS="JMGUIWidget">재시작
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1064"></A>
+<P CLASS="JMHeading2">16.3 WebT 데이터 소스
+ </P>
+<A NAME="1065"></A>
+<P CLASS="JMHeading3"><A NAME="webt_stats"></A>16.3.1 WebT 데이터 소스 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; WebT &gt; 통계
+ </P>
+<A NAME="1066"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">트리
+ </SPAN>에서 모니터링 하고자 하는 WebT를 클릭한다.
+ </P>
+<A NAME="1067"></A>
+<P CLASS="JMNormalText">2. WebT의통계 정보가 출력된다.
+ </P>
+<A NAME="1068"></A>
+<P CLASS="JMHeading2"><A NAME="jta"></A>16.4 트랜잭션 관리자
+ </P>
+<A NAME="1069"></A>
+<P CLASS="JMHeading3"><A NAME="jta_conf_general"></A>16.4.1 기본 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 리소스 &gt; 트랜잭션 &gt; 기본 설정
+ </P>
+<A NAME="1070"></A>
+<P CLASS="JMNormalText">트랜잭션 관리자의 기본적인 설정을 한다. 
+ </P>
+<A NAME="1071"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 설정을 변경하고자 하는 
+ <SPAN CLASS="JMGUIWidget">트랜잭션 
+ </SPAN><SPAN CLASS="JMGUIWidget">관리자
+ </SPAN>를클릭한 후 설정탭을 선택하거나 트랜잭션 관리자의 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">트랜잭션 
+ </SPAN><SPAN CLASS="JMGUIWidget">관리자 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1072"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">기본 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1073"></A>
+<P CLASS="JMNormalText">3. 각 항목의 값을 입력한다. 설정된 값은 런타임에 바로 적용된다.
+ </P>
+<A NAME="1074"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="499" SRC="images/image172.jpg" HEIGHT="666"></P>
+
+<P CLASS="JMCaption">그림 151 트랜잭션 관리자의기본 설정
+ </P>
+<A NAME="1075"></A>
+<P CLASS="JMHeading3">16.4.2 쓰레드 풀 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-16.htm#jta">트랜잭션 관리자
+ </A>&gt; 쓰레드 풀
+ </P>
+<A NAME="1076"></A>
+<P CLASS="JMNormalText">JEUS 트랜잭션 매니저에서는 다른 트랜잭션 매니저간의 내부 통신을 처리하거나 글로벌 트랜잭션의 커밋처리를 위해서 여러 개의 작업 쓰레드를 사용한다.
+ 
+</P>
+<A NAME="1077"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 설정을 변경하고자 하는 
+ <SPAN CLASS="JMGUIWidget">트랜잭션 
+ </SPAN><SPAN CLASS="JMGUIWidget">관리자
+ </SPAN>를클릭한 후 
+ <SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 선택하거나 트랜잭션 관리자의 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">트랜잭션 
+ </SPAN><SPAN CLASS="JMGUIWidget">관리자 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1078"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">쓰레드 
+ </SPAN><SPAN CLASS="JMGUIWidget">풀
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1079"></A>
+<P CLASS="JMNormalText">3. 각 항목의 값을 입력한다. 최소값은 런타임에 의미가 없으므로 최소값을 제외한 설정된 값은 실행중에 바로 적용된다.
+ </P>
+<A NAME="1080"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="459" SRC="images/image173.jpg" HEIGHT="308"></P>
+
+<P CLASS="JMCaption">그림 152 트랜잭션 관리자의쓰레드 풀 설정
+ </P>
+<A NAME="1081"></A>
+<P CLASS="JMHeading3"><A NAME="jta_stats"></A>16.4.3 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-16.htm#jta">트랜잭션 관리자
+ </A>&gt; 통계
+ </P>
+<A NAME="1082"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 설정을 변경하고자 하는 
+ <SPAN CLASS="JMGUIWidget">트랜잭션 
+ </SPAN><SPAN CLASS="JMGUIWidget">관리자
+ </SPAN>를클릭한 후 
+ <SPAN CLASS="JMGUIWidget">통계
+ </SPAN>탭을 선택하거나 트랜잭션 관리자의 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">트랜잭션 
+ </SPAN><SPAN CLASS="JMGUIWidget">관리자 
+ </SPAN><SPAN CLASS="JMGUIWidget">통계
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1083"></A>
+<P CLASS="JMNormalText">2. 트랜잭션 관리자의 통계정보가 출력된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="412" SRC="images/image174.jpg" HEIGHT="370"></P>
+
+<P CLASS="JMCaption">그림 153 트랜잭션 관리자의통계
+ </P>
+<A NAME="1084"></A>
+<P CLASS="JMHeading2">16.5 JMS 리소스
+ </P>
+<A NAME="1085"></A>
+<P CLASS="JMNormalText">JMS 리소스는 
+ <A HREF="wm-19.htm#jmsresource">19 JMS 리소스
+ </A>을참조하라.
+ </P>
+<BR><!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

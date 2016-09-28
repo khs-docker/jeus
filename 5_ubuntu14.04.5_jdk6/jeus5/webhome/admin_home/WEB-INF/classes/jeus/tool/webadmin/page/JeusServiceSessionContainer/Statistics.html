@@ -1,0 +1,96 @@
+<html jwcid="mainBorder" >
+        <script type="text/javascript" src="/webadmin/js/jquery-1.1.2.pack.js"></script>
+        <script type="text/javascript" src="/webadmin/js/jquery.placement.below.js"></script>
+        <script type="text/javascript" src="/webadmin/js/jquery.timepicker-list.js"></script>
+        <script type="text/javascript">
+        $(
+            function()
+            {
+                $('#sessionTimeField').timePicker({step: 30, startTime: "00:00", endTime: "23:30", columns: 10});
+            }
+        );
+        </script>
+        <style type="text/css">
+            div.time-holder {
+                position: relative;
+                display: none;
+                z-index: 99;
+                width: 100px;
+            }
+            div.time-holder div.times {
+                position: absolute;
+                top: 0;
+                height: 120px;
+                overflow: auto;
+                background: #ccc;
+                border: 2px solid #fff;
+            }
+            div.time-holder div.times ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                width: 80px;
+            }
+
+            div.time-holder div.times li {
+                padding: 1px;
+            }
+
+            div.time-holder div.times li.selected {
+                background: #316ac5;
+                color: #000;
+            }
+        </style>
+        <span jwcid="tabPanel">
+            <form jwcid="form"/>
+            <span jwcid="container_type"/>
+            <span jwcid="choose_container_type">
+                <span jwcid="whenLocal">
+                    <span jwcid="localSessionCount"/>
+                </span>
+                <span jwcid="whenCentral">
+                    <span jwcid="remoteActiveSessionCount"/>
+                    <span jwcid="remotePassivatedSessionCount"/>
+                    <span jwcid="totalConnectionCount"/>
+                    <span jwcid="inuseConnectionCount"/>
+                </span>
+                <span jwcid="whenP2P">
+                    <span jwcid="passivatedSessionCount"/>
+                    <span jwcid="localFileDbSize"/>
+                    <span jwcid="backupSessionCount"/>
+                    <span jwcid="passivatedBackupSessionCount"/>
+                    <span jwcid="backupFileDbSize"/>
+                    <span jwcid="connectionCount"/>
+                </span>
+            </span>
+            <form jwcid="sessionForm">
+                <br/>
+                <table cellspacing="0" cellpadding="0" border="0">
+                    <tr>
+                        <td>
+                            <span jwcid="dayText">
+                                <input jwcid="dayTextField"/>
+                            </span>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span jwcid="sessionTime">
+                                <input jwcid="sessionTimeField"/>
+                            </span>
+                        </td>
+                        <td valign="top">
+                            <input jwcid="filterButton" style="width:100px" class="form_button"/>
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <br/>
+            </form>
+            <form jwcid="sessionListForm">
+                <table border="1" cellpadding="3"style="width:100%;" jwcid="sessionListTable"/>
+            </form>
+        </span>
+</html>

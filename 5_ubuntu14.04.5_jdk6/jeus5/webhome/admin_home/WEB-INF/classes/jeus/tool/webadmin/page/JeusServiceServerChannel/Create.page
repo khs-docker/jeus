@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceServerChannel.CreatePage">
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Create JMS Server Channel"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:new java.lang.String[]{pageName}"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:channel.create.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="name" type="jeus:Field">
+        <binding name="field" value="ognl:components.nameField"/>
+    </component>
+
+    <component id="nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:serviceConfig"/>
+        <binding name="elementName" value="literal:name"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="typeSelection" type="jeus:ExtendedSelection">
+        <binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@JMS_SERVER_CONFIG_TYPES"/>
+		<binding name="value" value="serviceConfigType"/>
+    </component>
+
+    <component id="type" type="jeus:Field">
+        <binding name="field" value="ognl:components.typeField"/>
+        <binding name="label" value="message:jms.server_config.select_type.label"/>
+    </component>
+
+    <component id="typeField" type="jeus:PropertySelection">
+        <binding name="value" value="ognl:serviceConfigType"/>
+        <binding name="submitOnChange" value="ognl:true"/>
+        <binding name="model" value="ognl:@jeus.tool.webadmin.page.EnumerationSet@JMS_SERVER_CONFIG_TYPES"/>
+    </component>
+
+    <component id="serverUrl" type="jeus:Field">
+        <binding name="field" value="ognl:components.serverUrlField"/>
+    </component>
+
+    <component id="serverUrlField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:serviceConfig"/>
+        <binding name="elementName" value="literal:serverUrl"/>
+        <binding name="validators" value="validators:required,$urlValidator"/>
+    </component>
+
+    <component id="port" type="jeus:Field">
+        <binding name="field" value="ognl:components.portField"/>
+    </component>
+
+    <component id="portField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:serviceConfig"/>
+        <binding name="elementName" value="literal:port"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:required,min=0"/>
+    </component>
+
+    <component id="server_address" type="jeus:Field">
+        <binding name="field" value="ognl:components.server_addressField"/>
+    </component>
+
+    <component id="server_addressField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:serviceConfig"/>
+        <binding name="elementName" value="literal:serverAddress"/>
+        <binding name="validators" value="validators:$addressPatternValidator"/>
+    </component>
+
+    <component id="general_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="client_limit" type="jeus:Field">
+        <binding name="field" value="ognl:components.client_limitField"/>
+    </component>
+
+    <component id="client_limitField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:serviceConfig"/>
+        <binding name="elementName" value="literal:clientLimit"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="blocking_socket" type="jeus:Field">
+        <binding name="field" value="ognl:components.blocking_socketField"/>
+    </component>
+
+    <component id="blocking_socketField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:serviceConfig"/>
+        <binding name="elementName" value="literal:blockingSocket"/>
+    </component>
+
+    <component id="read_buffer_size" type="jeus:Field">
+        <binding name="field" value="ognl:components.read_buffer_sizeField"/>
+        <binding name="unit" value="message:common.unit.bytes"/>
+    </component>
+
+    <component id="read_buffer_sizeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:serviceConfig"/>
+        <binding name="elementName" value="literal:readBufferSize"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="write_buffer_size" type="jeus:Field">
+        <binding name="field" value="ognl:components.write_buffer_sizeField"/>
+        <binding name="unit" value="message:common.unit.bytes"/>
+    </component>
+
+    <component id="write_buffer_sizeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:serviceConfig"/>
+        <binding name="elementName" value="literal:writeBufferSize"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="backlog_size" type="jeus:Field">
+        <binding name="field" value="ognl:components.backlog_sizeField"/>
+    </component>
+
+    <component id="backlog_sizeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:serviceConfig"/>
+        <binding name="elementName" value="literal:backlogSize"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="connection_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.connection_timeoutField"/>
+        <binding name="unit" value="message:common.unit.minutes"/>
+    </component>
+
+    <component id="connection_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:serviceConfig"/>
+        <binding name="elementName" value="literal:connectionTimeout"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="client_keepalive_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.client_keepalive_timeoutField"/>
+        <binding name="unit" value="message:common.unit.sec"/>
+    </component>
+
+    <component id="client_keepalive_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:serviceConfig"/>
+        <binding name="elementName" value="literal:clientKeepaliveTimeout"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="check_security" type="jeus:Field">
+        <binding name="field" value="ognl:components.check_securityField"/>
+    </component>
+
+    <component id="check_securityField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:serviceConfig"/>
+        <binding name="elementName" value="literal:checkSecurity"/>
+    </component>
+
+    <component id="createOk" type="Submit">
+        <binding name="value" value="message:common.label.create"/>
+        <binding name="listener" value="ognl:listeners.onCreateOk"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+    <bean name="addressPatternValidator"
+		class="org.apache.tapestry.form.validator.Pattern">
+		<set name="pattern" value="literal:(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)" />
+		<set name="message" value="message:common.exception.0016" />
+	</bean>
+
+    <property name="serviceConfigType" initial-value="literal:jms-tcp-address"/>
+
+    <bean name="urlValidator" class="jeus.tool.webadmin.page.JeusServiceServerChannel.ServerURLValidator"/>
+
+</page-specification>

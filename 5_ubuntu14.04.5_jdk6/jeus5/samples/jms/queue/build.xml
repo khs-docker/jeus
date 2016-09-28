@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+
+<project name="jms_queue" default="all" basedir=".">
+
+  <!-- set global properties for this build -->
+  <property file="../../sample.properties"/>
+  <import file="${jeus.home}/samples/common.xml"/>
+  <property name="source" value="."/>
+  <property name="build.dir" value="${source}/build"/>
+  <property name="warfile" value="jms_queue.war"/>
+  <property name="build.wardir" value="${source}/build/jms_queue"/>
+  <property name="app.name" value="jms_queue"/>
+  <path id="build.classpath">
+    <path refid="jeus.libraries"/>
+    <pathelement location="${build.dir}"/>
+  </path>
+	
+  <target name="all" depends="clean, init, compile, war, move.war, deploy"/>
+
+  <!-- Create the build directory structure used by compile
+       and copy the deployment descriptors into it-->
+  <target name="init">
+    <mkdir dir="${build.dir}"/>
+  </target>
+
+  <!-- Compile ejb classes into the build directory (jar preparation) -->
+  <target name="compile" depends="init">
+    <javac srcdir="${source}" destdir="${build.dir}" classpath  ="${jeus.libraries}"/>
+  </target>
+  
+  <target name="war">
+    <delete dir="${build.wardir}" quiet="true"/>
+    <mkdir dir="${build.wardir}"/>
+    <mkdir dir="${build.wardir}/WEB-INF"/>
+    <copy file="${source}/MsgSender.jsp"  todir="${build.wardir}" />
+    <copy file="${source}/web.xml"  todir="${build.wardir}/WEB-INF" />
+    <jar jarfile="${build.dir}/${warfile}" basedir="${build.wardir}">
+       <manifest>
+         <attribute name="Class-Path" value=""/>
+       </manifest>
+    </jar>
+  </target> 
+
+   <target name="move.war">
+        <copy todir="${jeus.apphome}" file="${build.dir}/${app.name}.war"/>
+   </target>
+    <target name="deploy">
+      <distribute
+           deployURI="deployer:Jeus:example"
+           user="${jeus.username}"
+           password="${jeus.password}"
+           targetNames="${jeus.target}"
+           modulePath="${jeus.apphome}/${app.name}.war"
+           fastdeploy="false" />
+      <modulecommand
+           deployURI="deployer:Jeus:example"
+           command="start"
+           modulename="${app.name}"
+           moduletype="WebModule"
+           targetNames="${jeus.target}"
+           user="${jeus.username}"
+           password="${jeus.password}" />
+    </target>
+    <target name="undeploy">
+            <modulecommand
+       deployURI="deployer:Jeus:example"
+       command="undeploy"
+       modulename="${app.name}"
+       moduletype="WebModule"
+       targetNames="${jeus.target}"
+       user="${jeus.username}"
+       password="${jeus.password}" />
+    </target>
+
+	<!-- Clean all the directories and files that have created -->
+  <target name="clean">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- Run the example -->
+   <target name="run_sender">
+	 <java dir="${build.dir}" classname="jms.queue.QueueSend" fork="yes" failonerror="true">
+	 	<sysproperty key="java.naming.factory.initial" value="jeus.jndi.JEUSContextFactory"/>
+	 	<sysproperty key="java.naming.factory.url.pkgs" value="jeus.jndi.jns.url"/>
+	 	<sysproperty key="java.security.policy" value="policy"/>
+	 	<sysproperty key="jeus.tm.not_use" value="true"/>
+	 	<sysproperty key="jeus.baseport" value="${jeus.baseport}"/>
+	 	<classpath refid="build.classpath"/>
+	 </java>
+   </target>
+
+  
+
+   <target name="run_receiver">
+	   <java dir="${build.dir}" classname="jms.queue.QueueReceive" fork="yes" failonerror="true">
+	   	<sysproperty key="java.naming.factory.initial" value="jeus.jndi.JEUSContextFactory"/>
+	   	<sysproperty key="java.naming.factory.url.pkgs" value="jeus.jndi.jns.url"/>
+	   	<sysproperty key="java.security.policy" value="policy"/>
+	   	<sysproperty key="jeus.tm.not_use" value="true"/>
+	   	<sysproperty key="jeus.baseport" value="${jeus.baseport}"/>
+	   	<classpath refid="build.classpath"/>
+	   </java>
+   </target>
+
+   <target name="run_browser">
+	   <java dir="${build.dir}" classname="jms.queue.QueueBrowse" fork="yes" failonerror="true">
+	   	<sysproperty key="java.naming.factory.initial" value="jeus.jndi.JEUSContextFactory"/>
+	   	<sysproperty key="java.naming.factory.url.pkgs" value="jeus.jndi.jns.url"/>
+	   	<sysproperty key="java.security.policy" value="policy"/>
+	   	<sysproperty key="jeus.tm.not_use" value="true"/>
+	   	<sysproperty key="jeus.baseport" value="${jeus.baseport}"/>
+	   	<classpath refid="build.classpath"/>
+	   </java>
+   </target>
+</project>

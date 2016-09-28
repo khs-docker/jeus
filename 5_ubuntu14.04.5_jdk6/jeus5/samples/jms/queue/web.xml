@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE jms-server PUBLIC "-//Tmax Soft, Inc.//DTD JMS Main Config 4.0//EN"
+                            "http://www.tmaxsoft.com/jeus/dtd/4.0/jms-main-config.dtd">
+<web-app>
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    <servlet>
+        <servlet-name>jspSender</servlet-name>
+        <jsp-file>/MsgSender.jsp</jsp-file>
+        <load-on-startup>-1</load-on-startup>
+    </servlet>
+</web-app>

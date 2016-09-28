@@ -1,0 +1,26 @@
+HKCR
+{
+	J2EECAS.JeusServices.1 = s 'JeusServices Class'
+	{
+		CLSID = s '{9478E828-10AF-487d-AAB0-2580357B0E02}'
+	}
+	J2EECAS.JeusServices = s 'JeusServices Class'
+	{
+		CLSID = s '{9478E828-10AF-487d-AAB0-2580357B0E02}'
+		CurVer = s 'JeusServices.JeusServices.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {9478E828-10AF-487d-AAB0-2580357B0E02} = s 'JeusServices Class'
+		{
+			ProgID = s 'J2EECAS.JeusServices.1'
+			VersionIndependentProgID = s 'J2EECAS.JeusServices'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			'TypeLib' = s '{E8C2EDEB-E251-4e03-8DF5-02EECF136ED0}'
+		}
+	}
+}

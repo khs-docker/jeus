@@ -1,0 +1,26 @@
+HKCR
+{
+	Math.Arithmetic.1 = s 'Arithmetic Class'
+	{
+		CLSID = s '{50354DC9-E6FF-4A88-9CB7-8C1C4BE1E5BE}'
+	}
+	Math.Arithmetic = s 'Arithmetic Class'
+	{
+		CLSID = s '{50354DC9-E6FF-4A88-9CB7-8C1C4BE1E5BE}'
+		CurVer = s 'Math.Arithmetic.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {50354DC9-E6FF-4A88-9CB7-8C1C4BE1E5BE} = s 'Arithmetic Class'
+		{
+			ProgID = s 'Math.Arithmetic.1'
+			VersionIndependentProgID = s 'Math.Arithmetic'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{E318B006-A72E-429E-92BB-4C59CD2D53B9}'
+		}
+	}
+}

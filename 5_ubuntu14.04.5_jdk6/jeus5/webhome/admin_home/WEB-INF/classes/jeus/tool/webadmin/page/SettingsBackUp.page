@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.SettingsBackUpPage">
+
+    <inject property="webadminVisit" type="state" object="visit"/>
+    <inject property="externalService" object="engine-service:external"/>
+
+    <component id="name_column" type="Insert">
+        <binding name="value" value="message:SettingsBackUp.name.label"/>
+    </component>
+
+    <component id="time_column" type="Insert">
+        <binding name="value" value="message:SettingsBackUp.time.label"/>
+    </component>
+
+    <component id="description_column" type="Insert">
+        <binding name="value" value="message:SettingsBackUp.description.label"/>
+    </component>
+
+    <component id="actions_column" type="Insert">
+        <binding name="value" value="message:SettingsBackUp.actions.label"/>
+    </component>
+
+    <component id="applyLink" type="DirectLink">
+        <binding name="listener" value="listener:onApply"/>
+        <binding name="parameters" value="ognl:backup.name"/>
+    </component>
+
+    <component id="apply" type="Button">
+        <binding name="label" value="message:common.label.apply"/>
+        <binding name="disabled" value="ognl:backup.apply"/>
+    </component>
+
+    <component id="deleteLink" type="DirectLink">
+        <binding name="listener" value="listener:onDelete"/>
+        <binding name="parameters" value="backup.name"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.delete.confirm', backup.name)"/>
+    </component>
+
+    <component id="delete" type="Image">
+        <binding name="image" value="asset:delete"/>
+    </component>
+
+    <component id="rollBackLink" type="DirectLink">
+        <binding name="listener" value="listener:onRollBack"/>
+    </component>
+
+    <component id="rollBack" type="Button">
+        <binding name="label" value="message:common.label.rollback"/>
+        <binding name="disabled" value="ognl:backup.rollback"/>
+    </component>
+
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+
+    <property name="config" persist="session"/>
+    <property name="rollBack" persist="session"/>
+    <property name="applyedConfig" persist="session"/>
+</page-specification>

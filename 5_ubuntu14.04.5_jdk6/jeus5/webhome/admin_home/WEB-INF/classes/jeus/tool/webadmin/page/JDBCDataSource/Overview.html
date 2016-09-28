@@ -1,0 +1,30 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+            <form jwcid="statisticsForm">
+                <span jwcid="condHasDataSources">
+                    <table border="1" cellpadding="3" width="100%" jwcid="statisticsTable"/>
+                    <!-- render module name column -->
+                    <span jwcid="jds_export_name_labelColumnValue@Block">
+                        <a jwcid="datasourceLink"><span jwcid="export_name"/></a>
+                    </span>
+                    <span jwcid="jds_actions_labelColumnValue@Block">
+                        <div style="text-align:center;">
+                            <a jwcid="enable_disableLink"></a><input jwcid="enable_disable" class="form_button" onclick="window.location = previousSibling.href;"/>
+                            <span jwcid="condCP">
+                                <a jwcid="shrinkLink"></a><input jwcid="shrink" class="form_button" onclick="window.location = previousSibling.href;"/>
+                            </span>
+                            <span jwcid="condXA">
+                                <a jwcid="resyncLink"></a><input jwcid="resync" class="form_button" onclick="window.location = previousSibling.href;"/>
+                            </span>
+                        </div>
+                    </span>
+                <div class="form_button_layer">
+                    <input jwcid="refreshButton" type="button" class="form_button" onclick="window.location.reload();"/>
+                </div>
+                </span>
+                <span jwcid="condHasNoDataSources">
+                    <span jwcid="no_datasources" class="field_label"/>
+                </span>
+            </form>
+    </span>
+</html>

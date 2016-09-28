@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.J2EEServer.OverviewPage">
+	<inject property="stateObject" type="state" object="WebadminStateObject"/>
+	<inject property="externalService" object="engine-service:external"/>
+	
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:J2EEServer Overview"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{'J2EEServer_Overview'}"/>
+    </component>
+
+    <component id="containersForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:container.overview.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="container_name_column" type="Insert">
+        <binding name="value" value="message:container.overview.name.label"/>
+    </component>
+    <component id="status_column" type="Insert">
+        <binding name="value" value="message:container.overview.status.label"/>
+    </component>
+    <component id="actions_column" type="Insert">
+        <binding name="value" value="message:container.overview.actions.label"/>
+    </component>
+
+    <component id="eachContainer" type="Foreach">
+        <binding name="source" value="containers"/>
+        <binding name="value" value="econtainer"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="containerLink" type="ExternalLink">
+        <binding name="page" value="literal:J2EEServer_Configuration"/>
+        <binding name="parameters" value="econtainer.objectName.canonicalName"/>
+    </component>
+
+    <component id="container_name_value" type="Insert">
+        <binding name="value" value="econtainer.name"/>
+    </component>
+
+    <component id="status_value" type="Insert">
+        <binding name="value" value="econtainer.status"/>
+    </component>
+
+    <component id="startLink" type="DirectLink">
+        <binding name="listener" value="listeners.onStart"/>
+        <binding name="parameters" value="econtainer.name"/>
+    </component>
+
+    <component id="start" type="Button">
+        <binding name="label" value="message:container.overview.start.label"/>
+        <binding name="disabled" value="econtainer.running or !nodeRunning"/>
+    </component>
+
+    <component id="downLink" type="DirectLink">
+        <binding name="listener" value="listeners.onDown"/>
+        <binding name="parameters" value="econtainer.name"/>
+    </component>
+
+    <component id="down" type="Button">
+        <binding name="label" value="message:container.overview.down.label"/>
+        <binding name="disabled" value="!econtainer.running or !nodeRunning"/>
+    </component>
+
+   <component id="start_allLink" type="DirectLink">
+        <binding name="listener" value="listeners.onStartAll"/>
+    </component>
+
+    <component id="start_all" type="Button">
+        <binding name="label" value="message:container.overview.start_all.label"/>
+        <binding name="disabled" value="!nodeRunning or isAllStarted()"/>
+    </component>
+
+    <component id="down_allLink" type="DirectLink">
+         <binding name="listener" value="listeners.onDownAll"/>
+     </component>
+
+     <component id="down_all" type="Button">
+         <binding name="label" value="message:container.overview.down_all.label"/>
+		 <binding name="disabled" value="!nodeRunning or !isAllStarted()"/>
+     </component>
+
+    <component id="condStopped" type="If">
+        <binding name="condition" value="!econtainer.running"/>
+    </component>
+
+    <component id="condRunning" type="If">
+        <binding name="condition" value="econtainer.running"/>
+    </component>
+
+    <component id="deleteLink" type="DirectLink">
+        <binding name="listener" value="listener:onDeleteContainer"/>
+        <binding name="parameters" value="econtainer.xmlName"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.delete.confirm', econtainer.xmlName)"/>
+    </component>
+
+    <component id="delete" type="Image">
+        <binding name="image" value="assets.delete"/>
+    </component>
+
+    <component id="condNotAcademic" type="If">
+        <binding name="condition" value="academic == false"/>
+    </component>
+
+    <component id="condNotAcademic2" copy-of="condNotAcademic"/>
+
+    <component id="condAcademic" type="If">
+        <binding name="condition" value="academic == true"/>
+    </component>
+
+    <component id="condAcademic2" copy-of="condAcademic"/>
+
+    <component id="duplicateLink" type="ExternalLink">
+        <binding name="page" value="literal:J2EEServer_Create"/>
+        <binding name="parameters" value="{econtainer.objectName.canonicalName, 'Duplicate'}"/>
+    </component>
+
+    <component id="duplicateImpossibleLink" type="DirectLink">
+        <binding name="listener" value="listeners.onWarnDeplicate"/>
+        <binding name="parameters" value="econtainer.name"/>
+    </component>
+
+    <component id="duplicate" type="Image">
+        <binding name="image" value="assets.duplicate"/>
+        <binding name="alt" value="message:container.overview.duplicate.label"/>
+    </component>
+
+    <component id="duplicate2" copy-of="duplicate"/>
+
+    <component id="createLink" type="ExternalLink">
+        <binding name="page" value="literal:J2EEServer_Create"/>
+        <binding name="parameters" value="{objectName.canonicalName, 'New'}"/>
+    </component>
+
+    <component id="createImpossibleLink" type="DirectLink">
+        <binding name="listener" value="listeners.onWarnCreate"/>
+        <binding name="parameters" value="econtainer.name"/>
+    </component>
+
+    <component id="create" type="Image">
+        <binding name="image" value="assets.create"/>
+    </component>
+
+    <component id="create2" copy-of="create"/>
+
+    <component id="empty" type="Image">
+        <binding name="image" value="assets.empty"/>
+    </component>
+
+
+    <component id="create_label" type="Insert">
+        <binding name="value" value="message:container.overview.create.label"/>
+    </component>
+
+    <component id="create_label2" copy-of="create_label"/>
+
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+    <asset name="duplicate" path="context:/image/duplicate.gif"/>
+    <asset name="create" path="context:/image/create.gif"/>
+    <asset name="empty" path="context:/image/empty.gif"/>
+
+    <property name="econtainer"/>
+</page-specification>

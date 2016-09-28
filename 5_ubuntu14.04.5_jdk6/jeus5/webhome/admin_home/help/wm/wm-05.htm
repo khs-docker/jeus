@@ -1,0 +1,367 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 5 클러스터링 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('5 클러스터링', 'wm-04.htm', 'wm-06.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left"><A NAME="jm_cluster"></A>5 클러스터링
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMNormalText">일반적으로 시스템 과부하를 신뢰성있게 처리하기 위해 여러 JEUS를 연결해서 하나의 클러스터링을 구성한다.
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMNormalText">이 번장에서는 웹 관리자를 통해서 클러스터링을 어떻게 구성하고 클러스터링된 노드들을 어떻게 제어하는지에 대해서 알아보도록 할 것이다.
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMHeading2">5.1 클러스터링 구성
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMHeading3"><A NAME="jm_cluster_add"></A>5.1.1 클러스터링에 노드 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-05.htm#jm_cluster">클러스터링
+ </A>&gt; 추가
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMNormalText">클러스터링을 구성하는 방법에는 정적인 방법과 동적인 방법이 존재한다. 
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMNormalText">정적으로 클러스터링을 구성한다는 것은 JEUSMain.xml에 클러스터링에 참여하는 노드들을 미리 등록하고 부팅시에 클러스터링을 구성하는 것을 말한다. 
+JEUS 웹 관리자를 통해서 정적 클러스터링을 구성하기 위해서는 다음의 조건을 만족해야 한다.
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMNormalText">&middot; 클러스터링에 참여하고자 하는 노드들의 JEUS 매니저가 동작중-
+ <SPAN CLASS="JMConsoleTextChar">&ldquo;JEUS_HOME/bin/jeus&rdquo;
+ </SPAN>명령을 수행 시킴-이어야 한다.
+ </P>
+<A NAME="1008"></A>
+<P CLASS="JMNormalText">&middot; 각 노드들은 시스템의 hosts 파일에 등록되어 있거나 JEUS의 가상 호스트 설정 파일 - JEUS_HOME/config/vhost.xml-에등록되어 
+있어야 한다.
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMNormalText">&middot; 가상 호스트가 아닌 실제 물리적인 노드를 사용할 경우에는 JEUS_BASEPORT가 같아야 한다.
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMNormalText">&middot; 가상 호스트는 가상 호스트끼리 물리적 노드는 물리적 노드끼리만 클러스터링이 가능하다. 가상 호스트 설정은 
+ <A HREF="wm-29.htm#vnode">29가상 호스트 서비스
+ </A>를참조하기 바란다.
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMNoteWarningChar">참고
+ </SPAN><SPAN CLASS="JMNoteWarningChar"></SPAN>: 동적인 클러스터링 대한 설명은 JEUS Server 안내서를 참고하기 바란다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="248" SRC="images/image018.jpg" HEIGHT="215"></P>
+
+<P CLASS="JMCaption">그림 12JEUS 노드 클러스터링 선택
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 최상위에 위치한 JEUS 매니저를 바로 클릭하여 주화면에 나타난 탭에서 
+ <SPAN CLASS="JMGUIWidget">클러스터링
+ </SPAN>탭을 선택하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">클러스터링
+ </SPAN>메뉴를 클릭한다. 메뉴를 클릭하면 주화면에 현재 클러스터링 되어있는 노드가 트리형식으로 나타난다.
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMNormalText">2. <SPAN CLASS="JMGUIWidget">노드
+ </SPAN>필드에 추가하고자 하는 노드 이름을 입력한다.
+ </P>
+<A NAME="1014"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">추가
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMNormalText">4. 노드가 성공적으로 추가되면 
+ <SPAN CLASS="JMGUIWidget">Cluster View
+ </SPAN>에 등록된 노드가 추가된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="458" SRC="images/image019.jpg" HEIGHT="179"></P>
+
+<P CLASS="JMCaption">그림 13 JEUS 클러스터에 노드 추가
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMNoteWarningChar">참고
+ </SPAN><SPAN CLASS="JMNoteWarningChar">:
+ </SPAN>클러스터링에 추가된 노드들이 비록 
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">매니저
+ </SPAN>만동작하는 경우라도 
+ <SPAN CLASS="JMGUIWidget">Cluster View
+ </SPAN>의 노드를 클릭하면 
+ <SPAN CLASS="JMGUIWidget">Node View
+ </SPAN>에서 XML파일들에 설정된 값에 따라 트리가 나타나며 각각의 값들을 수정을 할 수있다.
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMHeading3"><A NAME="jm_cluster_remove"></A><SPAN CLASS="JMNoteWarningChar">5.1.2 </SPAN><SPAN CLASS="JMNoteWarningChar">클러스터링에서
+ </SPAN><SPAN CLASS="JMNoteWarningChar"></SPAN><SPAN CLASS="JMNoteWarningChar">노드
+ </SPAN><SPAN CLASS="JMNoteWarningChar"></SPAN><SPAN CLASS="JMNoteWarningChar">삭제
+ </SPAN></P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt;
+ <A HREF="wm-05.htm#jm_cluster">클러스터링
+ </A>&gt; 삭제
+ </P>
+<A NAME="1018"></A>
+<P CLASS="JMNormalText">JEUS의클러스터링에서 노드를 삭제하는 것은 단순히 JEUSMain.xml 의 노드 목록에서 삭제하는 것을 말한다. 곧 운영중인 클러스터링에서의 
+동적 삭제는 불가능 하며 노드를 삭제하고 전체 시스템을 리부팅 할 경우에만 클러스터링에서 삭제가 완전히 되므로 주의해야 한다.
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 최상위에 위치한 
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">매니저
+ </SPAN>를바로 클릭한 후 주화면에 나타난 탭에서 
+ <SPAN CLASS="JMGUIWidget">클러스터링
+ </SPAN>탭을 선택하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">클러스터링
+ </SPAN>메뉴를 클릭한다.
+ </P>
+<A NAME="1020"></A>
+<P CLASS="JMNormalText">2. 화면 안쪽의 
+ <SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">탐색기
+ </SPAN>에서 삭제하고자 하는 노드를 선택한다.
+ </P>
+<A NAME="1021"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">삭제
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1022"></A>
+<P CLASS="JMNormalText">4. 노드가 성공적으로 삭제되면 
+ <SPAN CLASS="JMGUIWidget">Cluster View
+ </SPAN>에 등록된 노드가 삭제된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="469" SRC="images/image020.jpg" HEIGHT="203"></P>
+
+<P CLASS="JMCaption">그림 14 클러스터에서 노드 삭제
+ </P>
+<A NAME="1023"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMNoteWarningChar">참고
+ </SPAN><SPAN CLASS="JMNoteWarningChar">:
+ </SPAN>현재 동작중이던 클러스터링에서 노드들을 삭제한 후에는 클러스터링에 참여했던 노드들이 모두 리부팅 하기 전까지 다른 새로운 노드를 추가하지 않도록 
+해야한다. 이런 경우 클러스터링된 노드들의 순서가 엉켜버릴 수가 있다.
+ </P>
+<A NAME="1024"></A>
+<P CLASS="JMHeading2"><A NAME="jm_control"></A>5.2 클러스터링 제어
+ </P>
+<A NAME="1025"></A>
+<P CLASS="JMHeading3"><A NAME="jm_control_boot"></A>5.2.1 노드 부팅
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS매니저
+ </A>&gt;
+ <A HREF="wm-05.htm#jm_control">제어
+ </A>&gt; 부트
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="248" SRC="images/image021.jpg" HEIGHT="220"></P>
+
+<P CLASS="JMCaption">그림 15JEUS Manager Control 선택
+ </P>
+<A NAME="1026"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 최상위에 위치한 
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">매니저
+ </SPAN>를바로 클릭한 후 주화면에 나타난 탭에서 
+ <SPAN CLASS="JMGUIWidget">제어
+ </SPAN>탭을 선택하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">제어
+ </SPAN>메뉴를 클릭한다.
+ </P>
+<A NAME="1027"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMGUIWidget">2. </SPAN>안쪽의 탭 패널에서
+ <SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">부트
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN>탭을 선택한다
+ <SPAN CLASS="JMGUIWidget">.
+ </SPAN></P>
+<A NAME="1028"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">탐색기
+ </SPAN>에서 부팅하고자 하는 노드들을 선택한다.
+ </P>
+<A NAME="1029"></A>
+<P CLASS="JMNormalText">4. <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1030"></A>
+<P CLASS="JMNormalText">5. 선택된 노드들이 성공적으로 부팅되면 
+ <SPAN CLASS="JMGUIWidget">Cluster View
+ </SPAN>에 부팅된 노드의 아이콘 상태가 변경된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="419" SRC="images/image022.jpg" HEIGHT="207"></P>
+
+<P CLASS="JMCaption">그림 16 노드 부트
+ </P>
+<A NAME="1031"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMNoteWarningChar">참고
+ </SPAN><SPAN CLASS="JMNoteWarningChar"></SPAN>: 노드를 부팅하기 위해서는 JEUS매니저가 실행되고 있어야 한다. 실행에 앞서 각 노드에서&rdquo;jeus&rdquo; 명령을 실행하였는지 
+확인해 봐야 한다.
+ </P>
+<A NAME="1032"></A>
+<P CLASS="JMHeading3"><A NAME="jm_control_down"></A>5.2.2 노드 다운
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-05.htm#jm_control">제어
+ </A>&gt; 다운
+ </P>
+<A NAME="1033"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 최상위에 위치한 
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">매니저
+ </SPAN>를바로 클릭한 후 주 화면에 나타난 탭에서 
+ <SPAN CLASS="JMGUIWidget">제어
+ </SPAN>탭을 선택하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">제어
+ </SPAN>메뉴를 클릭한다.
+ </P>
+<A NAME="1034"></A>
+<P CLASS="JMNormalText">2. 안쪽의 탭 패널에서
+ <SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">다운
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1035"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">탐색기
+ </SPAN>에서 다운하고자 하는 노드들을 선택한다.
+ </P>
+<A NAME="1036"></A>
+<P CLASS="JMNormalText">4. <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1037"></A>
+<P CLASS="JMNormalText">5. 노드들이 성공적으로 다운되면 
+ <SPAN CLASS="JMGUIWidget">Cluster View
+ </SPAN>에 다운된 노드의 아이콘이 변경된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="441" SRC="images/image023.jpg" HEIGHT="215"></P>
+
+<P CLASS="JMCaption">그림 17 노드 다운
+ </P>
+<A NAME="1038"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMNoteWarningChar">참고
+ </SPAN><SPAN CLASS="JMNoteWarningChar">:
+ </SPAN>JEUS 웹관리자가 실행되고 있는 노드를 다운할 경우 서버와의 연결이 종료되어 브라우저에 오류 메시지가 출력되므로 다운하기 전에 웹 관리자가 실행중인 
+노드가 포함되어있는지 여부를 확인해 보아야 한다.
+ </P>
+<A NAME="1039"></A>
+<P CLASS="JMHeading3"><A NAME="jm_control_exit"></A>5.2.3 노드 종료
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-05.htm#jm_control">제어
+ </A>&gt; 종료
+ </P>
+<A NAME="1040"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 최상위에 위치한 
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">매니저
+ </SPAN>를바로 클릭한 후 주 화면에 나타난 탭에서 
+ <SPAN CLASS="JMGUIWidget">제어
+ </SPAN>탭을 선택하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">제어
+ </SPAN>메뉴를 클릭한다.
+ </P>
+<A NAME="1041"></A>
+<P CLASS="JMNormalText">2. 안쪽의 탭 패널에서 
+ <SPAN CLASS="JMGUIWidget">종료
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1042"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">탐색기
+ </SPAN>에서 다운하고자 하는 노드들을 선택한다.
+ </P>
+<A NAME="1043"></A>
+<P CLASS="JMNormalText">4. <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1044"></A>
+<P CLASS="JMNormalText">5. 노드들이 성공적으로 종료되면 
+ <SPAN CLASS="JMGUIWidget">Cluster View
+ </SPAN>에 종료된 노드의 아이콘이 변경되며 노드의 정보를 볼 수 있는 링크가 사라진다.
+ </P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMGUIWidget"><IMG BORDER="0" WIDTH="453" SRC="images/image024.jpg" HEIGHT="222"></SPAN></P>
+
+<P CLASS="JMCaption">그림 18 노드 종료
+ </P>
+<A NAME="1045"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMNoteWarningChar">참고
+ </SPAN><SPAN CLASS="JMNoteWarningChar">:
+ </SPAN>JEUS 웹관리자가 실행되고 있는 노드를 종료할 경우 서버와의 연결이 종료되어 브라우저에 오류 메시지가 출력되므로 종료하기 전에 웹 관리자가 실행중인 
+노드가 포함되어있는지 여부를 확인해 보아야 한다.
+ </P>
+<A NAME="1046"></A>
+<P CLASS="JMHeading2"><A NAME="jm_distribute"></A>5.3 JEUSMain.xml 분배
+ </P>
+<A NAME="1047"></A>
+<P CLASS="JMNormalText">JEUSMain.xml 분배는 현재 선택된 노드의 JEUSMain.xml을 전체 노드에 동일하게 복사하는 것을 말한다. 이 기능은 노드들을 부팅하기 
+전에 분배를 통해서 동일한 설정을 적용 할 경우에만 사용하는것으로 노드들이 이미 부팅되었을 경우에는 사용하지 않는 것이 좋다.
+ </P>
+<A NAME="1048"></A>
+<P CLASS="JMHeading3">5.3.1 JEUSMain.xml 분배
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 분배
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="248" SRC="images/image025.jpg" HEIGHT="223"></P>
+
+<P CLASS="JMCaption">그림 19JEUSMain.xml 분배 선택
+ </P>
+<A NAME="1049"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 최상위에 위치한 
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">매니저
+ </SPAN>를바로 클릭한 후 주 화면에서 
+ <SPAN CLASS="JMGUIWidget">분배
+ </SPAN>탭을 선택하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">분배
+ </SPAN>메뉴를 클릭한다.
+ </P>
+<A NAME="1050"></A>
+<P CLASS="JMNormalText">2. <SPAN CLASS="JMGUIWidget">노드 
+ </SPAN><SPAN CLASS="JMGUIWidget">탐색기에서
+ </SPAN>에서 JEUSMain.xml분배하고자 하는 노드들을 선택한다.
+ </P>
+<A NAME="1051"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">확인 
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="440" SRC="images/image026.jpg" HEIGHT="177"></P>
+
+<P CLASS="JMCaption">그림 20JEUSMain.xml 분배
+ </P>
+<BR><!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

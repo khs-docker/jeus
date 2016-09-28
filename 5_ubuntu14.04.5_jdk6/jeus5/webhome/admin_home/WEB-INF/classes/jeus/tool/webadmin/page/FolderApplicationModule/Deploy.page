@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.FolderApplicationModule.DeployPage">
+
+	<inject property="webadminVisit" type="state" object="visit"/>
+    <inject property="nodeControl" type="state" object="NodeControl"/>
+    <inject property="deploymentCommander" type="state" object="deploymentCommander"/>
+    <inject property="externalService" object="engine-service:external"/>
+    <inject property="jAXBSource" type="state" object="JAXBSource"/>
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Deploy New Application Module"/>
+    </component>
+
+    <component id="wizTabPanel" type="jeus:WizardTabPanel">
+        <binding name="tabNames" value="new java.lang.String[]{'select','targets','options', 'options2', 'deploy', 'result'}"/>
+    </component>
+
+    <component id="module_tabpanel" type="jeus:InnerTabPanel">
+        <binding name="model" value="moduleTabModel"/>
+    </component>
+
+    <component id="module_selection_tabpanel" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'amd.select.existing_module_tab.apphome.label','amd.select.existing_module_tab.selected_dir.label'}, new java.lang.String[]{'module_at_apphome', 'module_at_selected_dir'})"/>
+    </component>
+
+    <component id="module_at_apphomeForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="apphome_module" type="jeus:Field">
+        <binding name="layout" value="@jeus.tool.webadmin.component.Field@EXTENDED_LAYOUT"/>
+    </component>
+
+    <component id="apphome_moduleField" type="jeus:ModuleExplorer">
+        <binding name="model" value="apphomeModuleExplorerModel"/>
+        <binding name="selectedModel" value="apphomeModuleExplorerSelectionModel"/>
+    </component>
+
+    <component id="module_at_selected_dirForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="explorer" type="jeus:Field">
+        <binding name="label" value="literal:"/>
+        <binding name="layout" value="@jeus.tool.webadmin.component.Field@EXTENDED_LAYOUT"/>
+    </component>
+
+    <component id="explorerField" type="jeus:FileExplorer">
+        <binding name="model" value="fileExplorerModel"/>
+        <binding name="selected" value="docbase"/>
+        <binding name="currentPath" value="currentPath"/>
+    </component>
+
+    <component id="module" type="jeus:Field">
+        <binding name="layout" value="@jeus.tool.webadmin.component.Field@EXTENDED_LAYOUT"/>
+    </component>
+
+    <component id="moduleField" type="jeus:ModuleExplorer">
+        <binding name="model" value="moduleExplorerModel"/>
+        <binding name="selectedModel" value="moduleExplorerSelectionModel"/>
+    </component>
+
+    <component id="appHomeModuleNext" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="listener:onApphomeModuleNext"/>
+    </component>
+
+    <component id="moduleNext" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="listener:onModuleNext"/>
+    </component>
+
+    <component id="absolute_pathForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="absolute_path" type="jeus:Field">
+        <binding name="field" value="component:absolutePathField"/>
+        <binding name="label" value="message:amd.select.absolute_path.label"/>
+    </component>
+
+    <component id="absolutePathField" type="TextField">
+        <binding name="value" value="absolutePath"/>
+    </component>
+
+    <component id="absolute_pathNext" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="listener:onAbsolutePathNext"/>
+    </component>
+    
+    <component id="modified" type="jeus:Field">
+        <binding name="field" value="component:modifiedField"/>
+        <binding name="label" value="message:amd.version.control.modified"/>
+    </component>
+
+    <component id="modifiedField" type="jeus:DojoTextArea">
+        <binding name="value" value="modifiedContent"/>
+    </component>
+
+    <component id="uploadForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="upload" type="jeus:Field">
+        <binding name="field" value="component:uploadField"/>
+        <binding name="label" value="message:amd.select.upload_file.label"/>
+    </component>
+
+    <component id="uploadField" type="Upload">
+        <binding name="file" value="uploadFile"/>
+        <!--<binding name="disabled" value="!containerCreated or !objectName.keyPropertyList.J2EEServer.startsWith(objectName.keyPropertyList.JeusManager)"/>-->
+        <!--
+        <binding name="disabled" value="!containerCreated"/>
+         -->
+    </component>
+
+    <component id="upload_target" type="jeus:Field">
+        <binding name="field" value="component:upload_targetField"/>
+        <binding name="label" value="message:amd.select.upload_target.label"/>
+    </component>
+
+    <component id="upload_targetField" type="jeus:PropertySelection">
+        <binding name="value" value="uploadTargetPath"/>
+        <binding name="model" value="uploadTargetModel"/>
+    </component>
+
+    <component id="uploadNext" type="Submit">
+        <binding name="listener" value="listener:onUploadNext"/>
+        <binding name="value" value="message:common.label.upload"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+    <component id="targetsForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:amd.targets.title"/>
+        <binding name="description" value="message:amd.targets.description"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="noTargetsForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:amd.targets.title"/>
+        <binding name="description" value="message:amd.targets.description"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="_targets" type="jeus:Field">
+        <binding name="label" value="message:amd.targets.targets.label"/>
+        <binding name="layout" value="@jeus.tool.webadmin.component.Field@EXTENDED_LAYOUT"/>
+    </component>
+
+    <component id="targetsField" type="jeus:TargetExplorer">
+        <binding name="model" value="ognl:targetExplorerModel"/>
+        <binding name="selectionModel" value="ognl:targetExplorerSelectionModel"/>
+        <binding name="useOption" value="ognl:renderContextGroup"/>
+        <binding name="optionLabel" value="message:amd.targets.context_group.label"/>
+        <binding name="optionLabelClass" value="literal:field_label"/>
+        <binding name="useOption2" value="ognl:renderContextGroup"/>
+        <binding name="optionLabel2" value="message:amd.targets.virtual_host.label"/>
+    </component>
+
+    <component id="condNoTarget" type="If">
+        <binding name="condition" value="targetExplorerModel == null"/>
+    </component>
+
+    <component id="noTarget" type="Insert">
+        <binding name="value" value="message:common.exception.0041"/>
+    </component>
+
+    <component id="targetsPrevious" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="listener:onTargetsPrevious"/>
+    </component>
+
+    <component id="targetsPrevious2" copy-of="targetsPrevious"/>
+
+    <component id="targetsNext" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="listener:onTargetsNext"/>
+    </component>
+
+    <component id="components" type="Insert">
+        <binding name="value" value="message:amd.options.components.label"/>
+    </component>
+
+    <component id="componentsField" type="jeus:ModuleInnerTabPanel">
+        <binding name="model" value="tabModel"/>
+        <binding name="sessionSave" value="true"/>
+    </component>
+
+     <component id="componentsForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="title" value="message:amd.options.title"/>
+    </component>
+
+	<component id="ejb_componentFormSection" type="jeus:FormSection">
+		<binding name="title" value="message:amd.options.ejb_component.title"/>
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:ejb-component"/>
+	</component>
+
+    <component id="keep_generated" type="jeus:Field">
+        <binding name="field" value="component:keep_generatedField"/>
+    </component>
+
+    <component id="keep_generatedField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="component"/>
+        <binding name="elementName" value="literal:keepGenerated"/>
+    </component>
+
+    <component id="client_view_path" type="jeus:Field">
+        <binding name="field" value="component:client_view_pathField"/>
+    </component>
+
+    <component id="client_view_pathField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="component"/>
+        <binding name="elementName" value="literal:clientViewPath"/>
+    </component>
+
+    <component id="contextRoot" type="jeus:Field">
+    	<binding name="field" value="component:contextRootField"/>
+    </component>
+
+    <component id="contextRootField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="component"/>
+        <binding name="elementName" value="literal:contextRoot"/>
+    </component>
+
+    <component id="web_componentFormSection" type="jeus:FormSection">
+        <binding name="title" value="message:amd.options.web_component.title"/>
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:web-component"/>
+	</component>
+    
+    <component id="session_timeout" type="jeus:Field">
+        <binding name="field" value="component:session_timeoutField"/>
+        <binding name="unit" value="message:common.unit.minutes"/>
+    </component>
+
+    <component id="session_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="component"/>
+        <binding name="elementName" value="literal:sessionTimeout"/>
+		<binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>        
+    </component>    
+    
+
+    <component id="uri" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="component"/>
+        <binding name="elementName" value="literal:uri"/>
+    </component>
+
+	<component id="client_componentFormSection" type="jeus:FormSection">
+        <binding name="title" value="message:amd.options.client_component.title"/>
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:client-component"/>
+	</component>
+
+	<component id="connector_componentFormSection" type="jeus:FormSection">
+        <binding name="title" value="message:amd.options.connector_component.title"/>
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:connector-component"/>
+	</component>
+
+	<component id="check_java_permission" type="jeus:ExtendedCheckbox">
+		<binding name="value" value="securityPermissionCheck2"/>
+		<binding name="parentElement" value="component"/>
+        <binding name="elementName" value="literal:javaSecurityPermission"/>
+		<binding name="targets" value="{components.java_permission_descriptionField, components.java_permission_specField}"/>
+	</component>
+	
+    <component id="java_permission_description" type="jeus:Field">
+        <binding name="field" value="component:java_permission_descriptionField"/>
+    </component>
+
+    <component id="java_permission_descriptionField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="securityPermission"/>
+        <binding name="elementName" value="literal:description"/>
+        <binding name="disabled" value="!securityPermissionCheck2"/>
+    </component>
+
+
+    <component id="java_permission_spec" type="jeus:Field">
+        <binding name="field" value="component:java_permission_specField"/>
+    </component>
+
+    <component id="java_permission_specField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="securityPermission"/>
+        <binding name="elementName" value="literal:securityPermissionSpec"/>
+        <binding name="validators" value="validators:required"/>
+        <binding name="disabled" value="!securityPermissionCheck2"/>
+    </component>                                    
+    
+
+    <component id="app_keep_generated" type="jeus:Field">
+        <binding name="field" value="component:app_keep_generatedField"/>
+    </component>
+
+    <component id="app_keep_generatedField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:keepGenerated"/>
+    </component>
+
+    <component id="check_autodeploy" type="jeus:ExtendedCheckbox">
+		<binding name="value" value="autoDeployCheck"/>
+		<binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:autoDeploy"/>
+		<binding name="targets" value="{components.check_absolute_pathField, components.auto_deployField}"/>
+	</component>
+
+    <component id="check_absolute_path" type="jeus:Field">
+        <binding name="field" value="component:check_absolute_pathField"/>
+    </component>
+
+    <component id="check_absolute_pathField" type="jeus:JAXBCheckbox">
+        <binding name="parentElement" value="autoDeploy"/>
+        <binding name="elementName" value="literal:checkAbsolutePath"/>
+        <binding name="disabled" value="!autoDeployCheck"/>
+    </component>
+
+    <component id="auto_deploy" type="jeus:Field">
+        <binding name="field" value="component:auto_deployField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="auto_deployField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="autoDeploy"/>
+        <binding name="elementName" value="literal:autoDeployCheckInterval"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=1"/>
+        <binding name="disabled" value="!autoDeployCheck"/>
+    </component>
+
+     <component id="check_java_security_permission" type="jeus:ExtendedCheckbox">
+		<binding name="value" value="javaSecurityPermissionCheck"/>
+		<binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:javaSecurityPermission"/>
+		<binding name="targets" value="{components.security_permission_descriptionField, components.security_permission_specField}"/>
+	</component>
+	
+    <component id="security_permission_description" type="jeus:Field">
+        <binding name="field" value="component:security_permission_descriptionField"/>
+    </component>
+
+    <component id="security_permission_descriptionField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="javaSecurityPermission"/>
+        <binding name="elementName" value="literal:description"/>
+        <binding name="disabled" value="!javaSecurityPermissionCheck"/>
+    </component>
+
+    <component id="security_permission_spec" type="jeus:Field">
+        <binding name="field" value="component:security_permission_specField"/>
+    </component>
+
+    <component id="security_permission_specField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="javaSecurityPermission"/>
+        <binding name="elementName" value="literal:securityPermissionSpec"/>
+        <binding name="validators" value="validators:required"/>
+        <binding name="disabled" value="!javaSecurityPermissionCheck"/>
+    </component>
+
+    <component id="optionsForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="title" value="message:amd.options2.title"/>
+    </component>
+
+    <component id="fast_deploy" type="jeus:Field">
+        <binding name="field" value="component:fast_deployField"/>
+    </component>
+
+    <component id="fast_deployField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:fastDeploy"/>
+    </component>
+
+    <component id="deploy_when_booting" type="jeus:Field">
+        <binding name="field" value="component:deploy_when_bootingField"/>
+    </component>
+
+    <component id="deploy_when_bootingField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:deployWhenBooting"/>
+    </component>
+
+    <component id="class_ftp_unit" type="jeus:Field">
+        <binding name="field" value="component:class_ftp_unitField"/>
+    </component>
+
+    <component id="class_ftp_unitField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:classFtpUnit"/>
+        <binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@getPropertySelectionModel(application.classFtpUnitEnumeration)"/>
+        <binding name="defaultWrite" value="true"/>
+    </component>
+
+    <component id="security_domain_name" type="jeus:Field">
+        <binding name="field" value="component:security_domain_nameField"/>
+    </component>
+
+    <component id="security_domain_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:securityDomainName"/>
+    </component>
+
+ <!--    <component id="role_permission" type="jeus:Field">
+        <binding name="field" value="component:role_permissionField"/>
+    </component>
+
+   <component id="role-permissionField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:securityPermissionSpec"/>
+    </component>    -->
+
+<!--    <component id="alias_name" type="jeus:Field">
+        <binding name="field" value="component:alias_nameField"/>
+    </component>
+
+    <component id="alias_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:name"/>
+    </component>-->
+
+    <component id="classloading" type="jeus:Field">
+        <binding name="field" value="component:classloadingField"/>
+    </component>
+
+    <component id="classloadingField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="application"/>
+        <binding name="elementName" value="literal:classloading"/>
+        <binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@getPropertySelectionModel(application.classloadingEnumeration)"/>
+    </component>
+
+    <component id="optionsPrevious" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="listener:onOptionsPrevious"/>
+    </component>
+
+    <component id="optionsNext" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="listener:onOptionsNext"/>
+    </component>
+
+    <component id="optionsPrevious2" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="listener:onOptionsPrevious2"/>
+    </component>
+
+    <component id="optionsNext2" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="listener:onOptionsNext2"/>
+    </component>
+
+    <component id="deployForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:amd.deploy.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="permanentDeployForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:amd.select.title"/>
+        <binding name="description" value="message:amd.deploy.permanent_deploy.description2"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="condContainerCreated" type="If">
+        <binding name="condition" value="containerCreated"/>
+    </component>
+
+    <component id="condContainerNotCreated" type="If">
+        <binding name="condition" value="!containerCreated"/>
+    </component>
+    
+    <component id="runtimeDeploy" type="jeus:Field">
+        <binding name="field" value="component:runtimeDeployField"/>
+        <binding name="label" value="message:amd.deploy.runtime.deploy.label"/>
+        <binding name="description" value="message:amd.deploy.runtime.deploy.description"/>
+    </component>
+
+    <component id="runtimeDeployField" type="jeus:DojoCheckbox">
+        <binding name="value" value="runtimeDeploy"/>
+    </component>
+
+    <component id="permanent_deploy" type="jeus:Field">
+        <binding name="field" value="component:permanent_deployField"/>
+        <binding name="label" value="message:amd.deploy.permanent_deploy.label"/>
+        <binding name="description" value="message:amd.deploy.permanent_deploy.description"/>
+    </component>
+
+    <component id="permanent_deployField" type="jeus:DojoCheckbox">
+        <binding name="value" value="permanentDeploy"/>
+    </component>
+
+    <component id="deployPrevious" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="listener:onDeployPrevious"/>
+    </component>
+
+    <component id="deployPrevious2" copy-of="deployPrevious"/>
+
+    <component id="deploySubmit" type="Submit">
+        <binding name="value" value="message:amd.deploy.deploy.label"/>
+        <binding name="listener" value="listener:onDeployOk"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+    <component id="deploySubmit2" type="Submit">
+        <binding name="value" value="message:amd.deploy.deploy.label"/>
+        <binding name="listener" value="listener:onPermanentDeployOk"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+
+    <component id="resultForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:amd.result.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="condCompleted" type="If">
+        <binding name="condition" value="completedList != null and completedList.size &gt; 0"/>
+    </component>
+
+    <component id="condFailed" type="If">
+        <binding name="condition" value="failedList != null and failedList.size &gt; 0"/>
+    </component>
+
+    <component id="completedSection" type="jeus:FormSection">
+        <binding name="title" value="message:amd.result.completed.label"/>
+    </component>
+
+    <component id="completed" type="jeus:Field">
+        <binding name="label" value="''"/>
+        <binding name="layout" value="@jeus.tool.webadmin.component.Field@EXTENDED_LAYOUT"/>
+    </component>
+
+    <component id="eachCompletedTarget" type="For">
+        <binding name="source" value="completedList"/>
+        <binding name="value" value="target"/>
+    </component>
+
+    <component id="completedTarget" type="Insert">
+        <binding name="value" value="'- ' + target"/>
+    </component>
+
+    <component id="failedSection" type="jeus:FormSection">
+        <binding name="title" value="message:amd.result.failed.label"/>
+    </component>
+
+    <component id="failed" type="jeus:Field">
+        <binding name="label" value="''"/>
+        <binding name="layout" value="@jeus.tool.webadmin.component.Field@EXTENDED_LAYOUT"/>
+    </component>
+
+    <component id="eachFailedTarget" type="For">
+        <binding name="source" value="failedList"/>
+        <binding name="value" value="target"/>
+    </component>
+
+    <component id="failure" type="jeus:ErrorMessageBox">
+        <binding name="message" value="'- '+target"/>
+        <binding name="messageClass" value="literal:normal_text"/>
+        <binding name="detailMessage" value="failures != null and failures.get(target) != null ? failures.get(target).description : null"/>
+        <binding name="detailMessageClass" value="literal:form_fail_detail_message"/>
+        <binding name="buttonClass" value="literal:form_button"/>
+        <binding name="rows" value="20"/>
+    </component>
+
+    <property name="target" />
+
+    <property name="selectedModule" persist="session"/>
+    <property name="selectedVhostList" persist="session"/>
+    <property name="multiNodeTarget" persist="session"/>
+    <property name="application" persist="session"/>
+    <property name="tabModel" persist="session"/>
+    <property name="docbase" persist="session"/>
+    <property name="currentPath" persist="session"/>
+    <property name="enabledVersion" persist="session"/>
+    <property name="enableUndeploy" persist="session"/>
+    <property name="transferMode" persist="session"/>
+    <property name="modifiedContent" persist="session"/>
+
+    <property name="runtimeDeploy" initial-value="true"/>
+</page-specification>

@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+<description>          
+    <text key="security-manager"><![CDATA[
+                        [Description]: security-manager element는 JEUS security 정보 관리에 대한 설명이다.
+                    ]]>          
+    </text>
+           
+    <text key="security-managerType.use-nio"><![CDATA[
+                        [Description]: security manager Nonblocking I/O를 사용해서 통신을 할지의 여부를 지정한다.
+                        [Performance Recommendation]: 많은 수의 Engine Container 및 client를 사용할 경우에는
+                        Nonblocking I/O가 더 좋은 효율을 보인다. security manager를 사용하는 client의 수가 적다면
+                        Blocking I/O가 더 효율적일수 있다.
+                    ]]>          
+    </text>
+           
+    <text key="security-managerType.connect-retries"><![CDATA[
+                        [Description]: Security Network service중 connection retry count값을 정의함.
+                     ]]>          
+    </text>
+           
+    <text key="security-managerType.security-domains"><![CDATA[
+                        [Description]: 이 JEUS Manager에서 사용할 security domain들을 설정한다. 자세한 것은
+                        JEUS Security 메뉴얼을 참고하기 바란다.
+                     ]]>          
+    </text>
+           
+    <text key="security-domainsType.security-domain"><![CDATA[
+                            [Description]: JEUS에서 사용할 security domain들을 설정한다.
+                        ]]>          
+    </text>
+           
+    <text key="security-domainType.name"><![CDATA[
+                            [Description]: Domain에 대한 name을 설정한다.
+                        ]]>          
+    </text>
+           
+    <text key="security-domainType.cache-config"><![CDATA[
+                        [Description]: JEUS Security Framwrok에서 적용하는 cache관련 설정을 함.
+                    ]]>          
+    </text>
+           
+    <text key="security-domainType.keystore-config"><![CDATA[
+                        [Description]: keystore/truststore file에 대한 설정을 함.
+                    ]]>          
+    </text>
+           
+    <text key="security-domainType.custom-service"><![CDATA[
+                        [Description]: 해당 domain에 JEUS Security Framework에서 제공하는 서비스 속성에 상관없이
+                                       JEUS Security SPI를 implement한 서비스 속성에 별도의 보안 서비스 등록할 수 있다.
+                   ]]>          
+    </text>
+      <ref key="security-domainType">SecurityServices</ref>
+           
+    <text key="authenticationType.repository-service"><![CDATA[
+                        [Description]: repository service를 정의함.
+                    ]]>          
+    </text>
+           
+    <text key="authenticationType.custom-authentication-service"><![CDATA[
+                        [Description]: custom authentication service를 정의함.
+                    ]]>          
+    </text>
+           
+    <text key="repository-serviceType.xml-file-repository"><![CDATA[
+                        [Description]: authentication 혹은 authorization service를 위한 xml repository service 관련 정의
+                    ]]>          
+    </text>
+           
+    <text key="repository-serviceType.database-repository"><![CDATA[
+                        [Description]: authentication 혹은 authorization service를 위한 db repository service 관련 정의
+                    ]]>          
+    </text>
+           
+    <text key="repository-serviceType.custom-repository"><![CDATA[
+                        [Description]: custom repository service를 정의.
+                                       jeus.security.spi.AuthenticationRepositoryService 혹은 jeus.security.spi.AuthorizationRepositoryService를
+                                       implement한 repository 서비스를 등록하면 해당 서비스가 create 될때 필요한 property값들을 정의할 수 있다.
+                    ]]>          
+    </text>
+           
+    <text key="xml-file-repositoryType.config-file"><![CDATA[
+                           [Description]: xml repository 파일 정보 정의
+                       ]]>          
+    </text>
+           
+    <text key="database-repositoryType.datasource-export-name"><![CDATA[
+                           [Description]: db authentication repository service를 위한 db export-name 설정.
+                       ]]>          
+    </text>
+           
+    <text key="database-repositoryType.dbdriver-config"><![CDATA[
+                           [Description]: db authentication repository service를 위한 db export-name 설정.
+                       ]]>          
+    </text>
+           
+    <text key="dbdriver-configType.vendor"><![CDATA[
+                           [Description]: db authentication repository service를 위한 db vendor 설정.
+                       ]]>          
+    </text>
+           
+    <text key="dbdriver-configType.driver"><![CDATA[
+                           [Description]: db authentication repository service를 위한 db driver 설정.
+                       ]]>          
+    </text>
+           
+    <text key="dbdriver-configType.url"><![CDATA[
+                           [Description]: db authentication repository service를 위한 db url 설정.
+                       ]]>          
+    </text>
+           
+    <text key="dbdriver-configType.username"><![CDATA[
+                           [Description]: db authentication repository service를 위한 db connection시 적용되는 username 설정.
+                       ]]>          
+    </text>
+           
+    <text key="dbdriver-configType.password"><![CDATA[
+                           [Description]: db authentication repository service를 위한 db connection시 적용되는 password 설정.
+                       ]]>          
+    </text>
+           
+    <text key="config-fileType.filename"><![CDATA[
+                               [Description]: user/group security 정보를 포함한 xml configuration file 이름
+                           ]]>          
+    </text>
+           
+    <text key="config-fileType.filepath"><![CDATA[
+                               [Description]: user/group security 정보를 포함한 xml configuration file 경로
+                           ]]>          
+    </text>
+           
+    <text key="cache-configType.min"><![CDATA[
+                           [Description]: authentication service에 적용할 cache min size값
+                       ]]>          
+    </text>
+           
+    <text key="cache-configType.max"><![CDATA[
+                           [Description]: authentication service에 적용할 cache max size값
+                       ]]>          
+    </text>
+           
+    <text key="cache-configType.timeout"><![CDATA[
+                           [Description]: authentication service에 적용할 cache timeout size값
+                       ]]>          
+    </text>
+           
+    <text key="identity-assertionType.default-identity-assertion-service"><![CDATA[
+                           [Description]: 현 도메인에 default로 적용할 Identity Assertion Service 설정.
+                       ]]>          
+    </text>
+           
+    <text key="identity-assertionType.custom-identity-assertion-service"><![CDATA[
+                           [Description]: certificate와 user간의 mapping 정보를 정의한 configuration 파일 경로
+                       ]]>          
+    </text>
+           
+    <text key="default-identity-assertionType.x509-identity-assertion"><![CDATA[
+                           [Description]: X509Certificate에 대한 Identity Assertion Service 설정.
+                       ]]>          
+    </text>
+           
+    <text key="x509-identity-assertionType.config-file"><![CDATA[
+                                        [Description]: X509Certificate 파일 경로 정의
+                                    ]]>          
+    </text>
+           
+    <text key="x509-identity-assertionType.default-user-mapper"><![CDATA[
+                                        [Description]: X509Certificate token에 대한 user mapping을 하기 위한 정보 정의
+                                    ]]>          
+    </text>
+           
+    <text key="x509-identity-assertionType.custom-user-mapper"><![CDATA[
+                                        [Description]: X509Certificate token에 대한 user mapping을 하기 위한 추가 속성 정의
+                                    ]]>          
+    </text>
+           
+    <text key="custom-propertyType.property"><![CDATA[
+                                        [Description]: credential을 mapping하기 위한 관련 정보들를 property 값으로 정의한다.
+                                    ]]>          
+    </text>
+           
+    <text key="default-user-mapperType.cert-attr-type"><![CDATA[
+                                        [Description]: credential을 mapping하기 위한 관련 정보들를 property 값으로 정의한다.
+                                    ]]>          
+    </text>
+           
+    <text key="default-user-mapperType.attribute-type"><![CDATA[
+                                        [Description]: credential을 mapping하기 위한 관련 정보들를 property 값으로 정의한다.
+                                    ]]>          
+    </text>
+           
+    <text key="default-user-mapperType.attribute-value-delimiter"><![CDATA[
+                                        [Description]: credential을 mapping하기 위한 관련 정보들를 property 값으로 정의한다.
+                                    ]]>          
+    </text>
+           
+    <text key="login-serviceType.jaas-login-config"><![CDATA[
+                            [Description]: jaas login service를 정의한다.
+                        ]]>          
+    </text>
+           
+    <text key="login-serviceType.custom-login-service"><![CDATA[
+                        [Description]: custom login service를 정의함.
+                    ]]>          
+    </text>
+           
+    <text key="jaas-login-configType.callback-handler-classname"><![CDATA[
+                                            [Description]: JAAS callback handler factory 클래스 이름
+                                            ]]>          
+    </text>
+           
+    <text key="jaas-login-configType.login-module"><![CDATA[
+                                            [Description]: login module 설정
+                                        ]]>          
+    </text>
+           
+    <text key="login-moduleType.login-module-classname"><![CDATA[
+                                        [Description]: LoginModule를 implements한 패키지를 포함한 클래스 이름
+                                    ]]>          
+    </text>
+           
+    <text key="login-moduleType.control-flag"><![CDATA[
+                                        [Description]: authentication 적용 방식에 대한 정의
+                                    ]]>          
+    </text>
+           
+    <text key="login-moduleType.option"><![CDATA[
+                                        [Description]: LoginModule 초기화시에 적용하고자 하는 속성을 정의한다.
+                                    ]]>          
+    </text>
+           
+    <text key="optionType.name"><![CDATA[
+                                        [Description]: LoginModule 초기화시에 적용될 속성 이름
+                                    ]]>          
+    </text>
+           
+    <text key="optionType.value"><![CDATA[
+                                        [Description]: LoginModule 초기화시에 적용될 속성 값
+                                    ]]>          
+    </text>
+           
+    <text key="credential-mappingType.default-credential-mapping-service"><![CDATA[
+                        [Description]: default credential mapping service를 정의함.
+                    ]]>          
+    </text>
+           
+    <text key="credential-mappingType.custom-credential-mapping-service"><![CDATA[
+                        [Description]: custom credential mapping service를 정의함.
+                    ]]>          
+    </text>
+           
+    <text key="default-credential-mapping-serviceType.x509-credential-mapping"><![CDATA[
+                           [Description]: X509Certificate에 대한 Identity Assertion Service 설정.
+                       ]]>          
+    </text>
+           
+    <text key="x509-credential-mappingType.truststore-path"><![CDATA[
+                        [Description]: 현 도메인에 적용할 truststore file 경로를 정의함.
+                    ]]>          
+    </text>
+           
+    <text key="x509-credential-mappingType.truststore-password"><![CDATA[
+                        [Description]: 현 도메인에 적용할 truststore file에 대한 password를 정의함..
+                    ]]>          
+    </text>
+           
+    <text key="credential-verificationType.default-credential-verification-service"><![CDATA[
+                        [Description]: default credential verification service를 정의함.
+                    ]]>          
+    </text>
+           
+    <text key="credential-verificationType.custom-credential-verification-service"><![CDATA[
+                        [Description]: custom credential verification service를 정의함.
+                    ]]>          
+    </text>
+           
+    <text key="default-credential-verification-serviceType.password-verification"><![CDATA[
+                           [Description]: PasswordFactory 클래스에 대한 credential verification 설정.
+                       ]]>          
+    </text>
+           
+    <text key="default-credential-verification-serviceType.jeus-certificate-verification"><![CDATA[
+                           [Description]: X509Certificate에 대한 credential verification 설정.
+                       ]]>          
+    </text>
+           
+    <text key="subject-validationType.default-subject-validation-service"><![CDATA[
+                        [Description]: default subject-validation service를 정의함.
+                    ]]>          
+    </text>
+           
+    <text key="subject-validationType.custom-subject-validation-service"><![CDATA[
+                        [Description]: custom subject-validation service를 정의함.
+                    ]]>          
+    </text>
+           
+    <text key="auditType.default-audit-service"><![CDATA[
+                        [Description]: default audit service를 정의함.
+                    ]]>          
+    </text>
+           
+    <text key="auditType.custom-audit-service"><![CDATA[
+                        [Description]: custom audit service를 정의함.
+                    ]]>          
+    </text>
+           
+    <text key="default-audit-serviceType.config-file"><![CDATA[
+                           [Description]: audit log 파일 정보 정의
+                       ]]>          
+    </text>
+           
+    <text key="default-audit-serviceType.audit-level"><![CDATA[
+                           [Description]: audit log level
+                       ]]>          
+    </text>
+           
+    <text key="authorizationType.custom-authorization-service"><![CDATA[
+                        [Description]: custom authorization service를 정의함.
+                    ]]>          
+    </text>
+           
+    <text key="authorizationType.repository-service"><![CDATA[
+                        [Description]: default repository service를 정의함.
+                    ]]>          
+    </text>
+           
+    <text key="authorizationType.jacc-service"><![CDATA[
+                        [Description]: JACC Service 사용 유무를 정의함.
+                    ]]>          
+    </text>
+           
+    <text key="SecurityServices.authentication"><![CDATA[
+                            [Description]: authenticaiton service를 정의한다.
+                        ]]>          
+    </text>
+           
+    <text key="SecurityServices.authorization"><![CDATA[
+                            [Description]: authorizaiton service를 정의한다.
+                        ]]>          
+    </text>
+           
+    <text key="SecurityServices.login"><![CDATA[
+                            [Description]: Login service를 정의한다.
+                        ]]>          
+    </text>
+           
+    <text key="SecurityServices.identity-assertion"><![CDATA[
+                            [Description]: identity assertion service를 정의한다.
+                        ]]>          
+    </text>
+           
+    <text key="SecurityServices.credential-mapping"><![CDATA[
+                            [Description]: credential mapping service를 정의한다.
+                        ]]>          
+    </text>
+           
+    <text key="SecurityServices.credential-verification"><![CDATA[
+                            [Description]: credential verification service를 정의한다.
+                        ]]>          
+    </text>
+           
+    <text key="SecurityServices.audit"><![CDATA[
+                            [Description]: audit service를 정의한다.
+                        ]]>          
+    </text>
+           
+    <text key="SecurityServices.subject-validation"><![CDATA[
+                            [Description]: subject valdation service를 정의한다.
+                        ]]>          
+    </text>
+           
+    <text key="control-flagType.required"><![CDATA[
+                                        [Description]: 로그인이 성공하려면 이 LoginModule의 허가가 필요하다. LoginModule 수행이 성공 혹은 실패인 경우 계속적으로 LoginModule List를 차래로 수행한다.
+                                    ]]>          
+    </text>
+           
+    <text key="control-flagType.requisite"><![CDATA[
+                                        [Description]: 로그인이 성공하려면 이 LoginModule의 허가가 필요하다. LoginModule 수행이 성공한 경우 계속적으로 LoginModule List를 차례로 수행한다. 만약 실패한 경우엔 이후 LoginModule List를 수행하지 않고 application으로 control를 리턴한다.
+                                    ]]>          
+    </text>
+           
+    <text key="control-flagType.sufficient"><![CDATA[
+                                        [Description]: 로그인이 성공하려면 이 LoginModule의 허가가 필요하지 않다. 만약 성공한다면 LoginModule List를 수행하지 않고 application으로 control를 리턴한다. 만약 실패한다면 다음 LoginModule List에 대해서 계속적으로 authentication을 수행한다.
+                                    ]]>          
+    </text>
+           
+    <text key="control-flagType.optional"><![CDATA[
+                                        [Description]: 로그인이 성공하려면 이 LoginModule의 허가가 필요하지 않다. 만약 성공 혹은 실패 한다면 LoginModule List에 대한 authentication을 계속적으로 수행한다.
+                                    ]]>          
+    </text>
+  <ref key="security-domainType">SecurityServices</ref>
+ <ref key="security-domainType">SecurityServices</ref>
+</description>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JEUSBasePage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="message:main.title"/>
+         <!--<binding name="helpURL" value="helpURL"/>-->
+    </component>
+
+    <asset name="introduction_css" path="context:/css/introduction.css"/>
+    <asset name="node" path="context:/image/node_intro.gif"/>
+    <asset name="engine_container" path="context:/image/engine_container_intro.gif"/>
+    <asset name="resource" path="context:/image/resource_intro.gif"/>
+    <asset name="service" path="context:/image/service_intro.gif"/>
+    <asset name="deployment" path="context:/image/deployment_intro.gif"/>
+</page-specification>

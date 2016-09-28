@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="GB2312"?>
+<description>                                                
+    <text key="timer-serviceType.thread-pool"><![CDATA[
+                    [Description]: 运行Timer service? timeout() method时使用的thread pool有关的设置。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="ejb-engineType.invoke-http"><![CDATA[
+                      [Description]:设置了该功能，客户端的EJB stub与远程的RMI运行环境根据HTTP-RMI请求( Request )进行通信。此功能主要是隔着防火墙连接EJB时使用。使用该模式( HTTP呼叫模式)时，客户端从EJB stub呼叫method，HTTP-RMI请求 ( Request )将其发送给Web container的Web server。
+		      之后其被传输到RMI Handler Servlet (jeus. rmi.http.ServletHandler )，Handler Servlet在此从请求( Request )解除HTTP header 后再将其传输到RMI运行环境。在设置 element之前，jeus.rmi.http. ServletHandler Servlet应必须配置于JEUS Web container。(请参考 JEUS Web指南)
+		      [Performance Recommendation]: 使用HTTP呼叫模式，可提高性能。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="timer-serviceType.durable-setting"><![CDATA[
+                    [Description]: Timer service持续管理timer所需的设置。
+                    如果未进行设置，无法持续管理timer。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="durable-settingType.table-name"><![CDATA[
+                    [Description]: 设置Timer service使用的DB的Table 名称。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="ejb-engineType.active-management"><![CDATA[
+                      [Description]: 对EJB引擎进行监控，对错误进行处理，并通过电子邮件方式向管理员通知其结果。
+                      [Value Description]: millisecond
+                      [Example]: <resolution>100000</resolution>
+                      [Performace Recommendation]:与EJBMain.xml的 active-management相比，用户一般使用Servlet引擎中的
+                      active-management ( 参照JEUS Web server指南)。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="timer-serviceType.redelivery-interval"><![CDATA[
+                    [Description]: 该值是发生再传输状况到再传输为止的时间。
+                    [Value Description]: millisecond单位。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="active-managementType.max-blocked-thread"><![CDATA[
+                      [Description]: 该element设置Block的thread最多数量。若该EJB的block的Thread数量大于该设置时，重新启动Container。应注意的是，若该值过于小，EJB引擎频繁重启。
+                      [Value Description]: thread 数量
+                      [Defined Value]:
+                        [-1]:
+                        表示对该值的block thread数量没有限制。即，EJB引擎绝对不会因为block的thread而重启。
+                      [Example]: <max-blocked-thread>200</max-blocked-thread>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="ejb-engineType.timer-service"><![CDATA[
+                      [Description]: 对该EJB engine提供的Timer service进行设置。若想对Timer Service进行持续管理，必须设置该项内容。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="active-managementType.email-notify"><![CDATA[
+                      [Description]: 如果由于active management或其他非正常状态，引擎重启时，向element定义的地方发送邮件通知状况。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="durable-settingType.db-vendor"><![CDATA[
+                    [Description]: Timer service为了 persistence而使用的DB的vendor设置。值如jeus-ejb-dd.xml的 <schema-info>的 <db-vendor>。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="ejb-engineType.enable-user-notify"><![CDATA[
+                      [Description]: 该特性被激活时，EJB exception被记录到 JEUSMain.xml的引擎container 中定义的用户日志中。
+                      [Example]: <enable-user-notify>true</enable-user-notify>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="ejb-engineType.resolution"><![CDATA[
+                      [Description]: EJB的非激活状态与Garbage Collection根据该element中定义的时间间距进行操作。
+                      在EJB引擎中正在服务的某个Bean，从客户端不再发生请求时， 
+                      EJB引擎对该Bean进行非激活操作。设置该操作的运行周期。
+                      [Value Description]: millisecond
+                      [Example]: <resolution>100000</resolution>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="durable-settingType.data-source-name"><![CDATA[
+                    [Description]: Timer service为了persistence而使用的DB的datasource的export name 设置。
+                    值如jeus-ejb-dd.xml的 <schema-info>的 <data-source-name>。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="timer-serviceType.min-delivery-interval"><![CDATA[
+                    [Description]: 该值是特定timer生成之后，到timer event发生为止的最少时间。
+                    [Value Description]: millisecond 单位
+                    [Performance Recommendation]: 该值越小，向EJB引擎造成负荷的可能性越大。因此要根据使用的timer interval进行设置。 
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="active-managementType.max-idle-time"><![CDATA[
+                      [Description]: 该element对判断为EJB thread被block的状态进行定义。该element的值表示时间，如果某种thread超过该时间的idle状态，该thread认为被block。
+                      [Value Description]: millisecond
+                      [Example]: <max-idle-time>180000</max-idle-time>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="ejb-engine"><![CDATA[
+                [Description]: 这是EJBMain.xml中EJB引擎设置部分的最上级 element。
+                该element与其下属element应对一个EJB引擎。
+                [Description]:[en] This is the root element of EJBMain.xml.
+                [Example]: <ejb-engine> ... </ejb-engine>
+            ]]>                                                
+    </text>
+                                                         
+    <text key="timer-serviceType.max-redelivery-count"><![CDATA[
+                    [Description]: 该值表示的是，在timer callback函数中发生exception或transaction被rollback，而发生重新传输的状况时的最大再传输次数。
+                    [Value Description]: 再传输次数
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="durable-settingType.engine-type"><![CDATA[
+                    [Description]: 设置Timer service连接DB的方式。
+                    值如jeus-ejb-dd.xml的 <persistence-optimize>的<engine-type>。
+                    ]]>                                                
+    </text>
+ </description>

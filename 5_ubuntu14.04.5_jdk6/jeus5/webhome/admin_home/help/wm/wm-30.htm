@@ -1,0 +1,520 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 30 장애 모니터링 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('30 장애 모니터링', 'wm-29.htm', 'wm-31.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left"><A NAME="tmonitor"></A>30 장애 모니터링
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMNormalText">시스템을 운영하다 보면 때때로 시스템의 구성요소중 일부에 장애(Trouble)가 발생할 수가 있다. 여기서 장애란 반드시 문제가 발생하여 시스템을 
+다운시키거나 서비스를 중지시키는 것만을 말하지 않는다. 여기서의 장애란 시스템의 어떤 한 구성요소가 사용중인 자원이 시스템 관리자가 관심을 가지는 
+수준이상으로 사용되는 경우를 말하며 일반적인 장애도 이 범주에 속한다고 할 수 있다.
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMNormalText">예를 들어, JDBC의 데이터 소스의 최대 컨넥션 수를 30개로 설정하고, 25개 이상이 동시에 사용되면 경고(Warning) 수준, 28이이상이면 
+위험(Fatal) 수준이라고 시스템 관리자가 설정하였다고 가정하자. 시스템을 운영중에 과부하로 인해서 26개의 컨넥션을 사용하였다면 경고수준으로서 
+컨넥션 풀의 재설정을 이용하여 컨텍션의 수를 조절 한다든지 하는 조치를 취해야할 것이다. 또한, 위험 수준에 도달한다면 시스템을 확장해서 부하를 
+분산하는 등의 조치를 취해야 할 것이다.
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMNormalText">장애 모니터링 기능은 바로 이런 장애상황들을 통계해서 보다 시스템을 효율적으로 관리하기 위한 기능이다.
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMNormalText">이번 장에서는 장애 모니터링을 하기 위한 설정 및 모니터링에 관해 알아 볼것이다.
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMHeading2"><A NAME="tmonitor_conf"></A>30.1 장애 모니터링 설정
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMNormalText">장애 모니터링을 하기 위해서는 JEUS_HOME/config/tmonitor.xml에장애 모니터링을 할 대상과 값을 입력해야한다. 
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMNormalText">다음의 예를 보자.
+ </P>
+
+<P CLASS="JMFileNameReference">&lt;&lt;tmonitor.xml&gt;&gt;
+ </P>
+
+<PRE CLASS="JMXML">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;trouble-monitor xmlns=&quot;http://www.tmaxsoft.com/xml/ns/jeus&quot;&gt;
+    &lt;mbean&gt;
+        &lt;j2ee-type&gt;JeusService&lt;/j2ee-type&gt;
+        &lt;jeus-type&gt;EJBEngine&lt;/jeus-type&gt;
+        &lt;constraint&gt;
+            &lt;key&gt;ejb_active_management_ratio&lt;/key&gt;
+            &lt;value&gt;0.8&lt;/value&gt;                    
+        &lt;/constraint&gt;
+&lt;/mbean&gt;
+&lt;/trouble-monitor&gt;
+</PRE>
+<A NAME="1008"></A>
+<P CLASS="JMNormalText">위의 예는 EJB 엔진의Active Management에서 Block된 Thread를모니터링하기 위한 설정을 보여준다. 모니터링을 하는 MBean의 
+J2EE Type은 JeusService이며 JEUS Type은 EJB엔진이고 관찰 대상은 ejb_active_management_ratio로서 
+0.8을 설정 하였다. 이렇게 설정하게되면 EJB를 운영하던중에 Block된 Thread의비율이 80%이상이 될경우 Warning이라는 표시를 해주게 
+된다. 
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMNormalText">각 요소에 관한 자세한 설명은 를 참조하기 바란다.
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMHeading2">30.2 장애 모니터링
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMHeading3"><A NAME="tmonitor_stats"></A>30.2.1 장애 모니터링
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMNormalText"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 장애 모니터링
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMNormalText">웹 관리자의 장애 모니터링은 SnapShot개념을 이용한다. 즉, 노드 트리의 최상위 노드인 JEUS 매니저가 갱신되는 시점(노드를 변경하거나 컨텍스트 
+메뉴에서 
+ <SPAN CLASS="JMGUIWidget">새로고침
+ </SPAN>를클릭하거나 JEUS 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">새로고침
+ </SPAN>를클릭할 경우)에 해당 노드의 모든 장애 상황을 검사하여 내부적으로 가지고 있다가(SnapShot) 검색을 요청 하면 보여주는 방식이다.
+ </P>
+<A NAME="1014"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">클러스터
+ </SPAN>의
+ <SPAN CLASS="JMGUIWidget">새로고침 
+ </SPAN>버튼을 클릭하여 클러스터링 내의 어떤 노드에 장애가 발생하였는지 관찰한다.
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMNormalText">2. 클러스트내의 어떤 노드에 장애가 발생하면 노드의 아이콘이 
+ <IMG BORDER="0" WIDTH="16" SRC="images/image288.gif" HEIGHT="16">으로 변한다. 장애가 발생한 노드가 있으면 해당 노드를 클릭한다.
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMNormalText">3. 노드 트리에서 JEUS 매니저의 컨텍스트 메뉴에서 장애 모니터를 선택한다.
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMNormalText">4. 현재 문제가 발생한 상황에 대해서 출력이 된다.
+ </P>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" CLASS="normal">
+	<TR>
+		<TD WIDTH="33%" CLASS="thead">이름 
+ </TD>
+		<TD WIDTH="66%" CLASS="thead">설명 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="33%" CLASS="normal">J2EE Type 
+ </TD>
+		<TD WIDTH="66%" CLASS="normal">문제가 발생한 구성요소의 ObjectName의 J2EE Type이다. 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="33%" CLASS="normal">JEUS Type 
+ </TD>
+		<TD WIDTH="66%" CLASS="normal">문제가 발생한 구성요소의 ObjectName의 JEUS Type이다. 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="33%" CLASS="normal">이름 
+ </TD>
+		<TD WIDTH="66%" CLASS="normal">문제가 발생한 구성요소의이름이다. 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="33%" CLASS="normal">제약 키 
+ </TD>
+		<TD WIDTH="66%" CLASS="normal">모니터링 대상이 되는 설정의 키 이름이다. 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="33%" CLASS="normal">제약 값 
+ </TD>
+		<TD WIDTH="66%" CLASS="normal">모니터링 대상이 되는 설정의 값이다. 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="33%" CLASS="normal">원인 
+ </TD>
+		<TD WIDTH="66%" CLASS="normal">문제가 생긴 원인. 대체로 제약 값과 동일한 형식의 값으로서 현재 값을 나타낸다. 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="33%" CLASS="normal">상태 
+ </TD>
+		<TD WIDTH="66%" CLASS="normal">현재 상태에 대한 레벨이 표신된다. SAFE, WARNING, FATAL이 있으며 각각의 레벨은 구성요소마다 판단 기준이 다르므로 각 구성요소에 
+대한 안내서를 참고하기 바란다. 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+<A NAME="1018"></A>
+<P CLASS="JMHeading2">30.3 장애 모니터링 대상 목록
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMNormalText">이 절에서는 현재 JEUS에서 가능한 장애 통계 목록에 대해서 설명할 것이다. 
+ </P>
+<A NAME="1020"></A>
+<P CLASS="JMHeading3">30.3.1 EJB 엔진 ejb-active-management-ratio
+ </P>
+
+<P CLASS="JMCaption">표7 장애통계 목록 : EJB엔진ejb-active-management-ratio
+ </P>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" CLASS="normal">
+	<TR>
+		<TD CLASS="thead">J2EE Type 
+ </TD>
+		<TD CLASS="thead">JeusService 
+ </TD>
+		<TD CLASS="thead">JEUS Type 
+ </TD>
+		<TD CLASS="thead">EJB엔진 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Constraint Key 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">ejb-active-management-ratio 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Constraint Value 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">0.0~1.0 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Description 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">EJB 엔진의 active manager에서 block되는 thread가 전체 thread중에 차지하는 비율이 이 값 이상이면 WARNING이 발생한다. 
+
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+<A NAME="1021"></A>
+<P CLASS="JMHeading3">30.3.2 EntityBean thread-max-warning-ratio
+ </P>
+
+<P CLASS="JMCaption">표8 장애통계 목록 : EntityBean thread-max-warning-ratio
+ </P>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" CLASS="normal">
+	<TR>
+		<TD CLASS="thead">J2EE Type 
+ </TD>
+		<TD CLASS="thead">EntityBean 
+ </TD>
+		<TD CLASS="thead">JEUS Type 
+ </TD>
+		<TD CLASS="thead"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Constraint Key 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">thread-max-warning-ratio 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Constraint Value 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">0.0~1.0 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Description 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">EJB의 thread-max 설정에 대해 현재 운영되는 thread의 갯수가 차지하는 비율이 이 값 이상이면 WARNING이 발생한다. 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+<A NAME="1022"></A>
+<P CLASS="JMHeading3">30.3.3 EntityBean thread-max-fatal-ratio
+ </P>
+
+<P CLASS="JMCaption">표9 장애 통계 목록 : EntityBean thread-max-fatal-ratio
+ </P>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" CLASS="normal">
+	<TR>
+		<TD CLASS="thead">J2EE Type 
+ </TD>
+		<TD CLASS="thead">EntityBean 
+ </TD>
+		<TD CLASS="thead">JEUS Type 
+ </TD>
+		<TD CLASS="thead"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Constraint Key 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">thread-max-fatal-ratio 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Constraint Value 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">0.0~1.0 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Description 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">EJB의 thread-max 설정에 대해 현재 운영되는 thread의 갯수가 차지하는 비율이 이 값 이상이면 FATAL이 발생한다. 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+<A NAME="1023"></A>
+<P CLASS="JMHeading3">30.3.4 Stateless세션Bean thread-max-warning-ratio
+ </P>
+
+<P CLASS="JMCaption">표10 장애통계 목록 : Stateless세션Bean thread-max-warning-ratio
+ </P>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" CLASS="normal">
+	<TR>
+		<TD CLASS="thead">J2EE Type 
+ </TD>
+		<TD CLASS="thead">Stateless세션Bean 
+ </TD>
+		<TD CLASS="thead">JEUS Type 
+ </TD>
+		<TD CLASS="thead"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Constraint Key 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">thread-max-warning-ratio 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Constraint Value 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">0.0~1.0 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Description 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">EJB의 thread-max 설정에 대해 현재 운영되는 thread의 갯수가 차지하는 비율이 이 값 이상이면 WARNING이 발생한다. 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+<A NAME="1024"></A>
+<P CLASS="JMHeading3">30.3.5 Stateless세션Bean thread-max-fatal-ratio
+ </P>
+
+<P CLASS="JMCaption">표11 장애통계 목록 : Stateless세션Bean thread-max-fatal-ratio
+ </P>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" CLASS="normal">
+	<TR>
+		<TD CLASS="thead">J2EE Type 
+ </TD>
+		<TD CLASS="thead">Stateless세션Bean 
+ </TD>
+		<TD CLASS="thead">JEUS Type 
+ </TD>
+		<TD CLASS="thead"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Constraint Key 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">thread-max-fatal-ratio 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Constraint Value 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">0.0~1.0 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Description 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">EJB의 thread-max 설정에 대해 현재 운영되는 thread의 갯수가 차지하는 비율이 이 값 이상이면 FATAL이 발생한다. 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+<A NAME="1025"></A>
+<P CLASS="JMHeading3">30.3.6 Stateful세션Bean thread-max-warning-ratio
+ </P>
+
+<P CLASS="JMCaption">표 12 장애 통계 목록 : Stateful세션Bean thread-max-warning-ratio
+ </P>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" CLASS="normal">
+	<TR>
+		<TD CLASS="thead">J2EE Type 
+ </TD>
+		<TD CLASS="thead">Stateful세션Bean 
+ </TD>
+		<TD CLASS="thead">JEUS Type 
+ </TD>
+		<TD CLASS="thead"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Constraint Key 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">thread-max-warning-ratio 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Constraint Value 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">0.0~1.0 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Description 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">EJB의 thread-max 설정에 대해 현재 운영되는 thread의 갯수가 차지하는 비율이 이 값 이상이면 WARNING이 발생한다. 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+<A NAME="1026"></A>
+<P CLASS="JMHeading3">30.3.7 Stateful세션Bean thread-max-fatal-ratio
+ </P>
+
+<P CLASS="JMCaption">표 13 장애 통계 목록 : Stateful세션Bean thread-max-fatal-ratio
+ </P>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" CLASS="normal">
+	<TR>
+		<TD CLASS="thead">J2EE Type 
+ </TD>
+		<TD CLASS="thead">Stateful세션Bean 
+ </TD>
+		<TD CLASS="thead">JEUS Type 
+ </TD>
+		<TD CLASS="thead"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Constraint Key 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">thread-max-fatal-ratio 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Constraint Value 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">0.0~1.0 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Description 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">EJB의 thread-max 설정에 대해 현재 운영되는 thread의 갯수가 차지하는 비율이 이 값 이상이면 FATAL이 발생한다. 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+<A NAME="1027"></A>
+<P CLASS="JMHeading3">30.3.8 MessageDrivenBean thread-max-warning-ratio
+ </P>
+
+<P CLASS="JMCaption">표14 장애통계 목록 : MessageDrivenBean thread-max-warning-ratio
+ </P>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" CLASS="normal">
+	<TR>
+		<TD CLASS="thead">J2EE Type 
+ </TD>
+		<TD CLASS="thead">MessageDrivenBean 
+ </TD>
+		<TD CLASS="thead">JEUS Type 
+ </TD>
+		<TD CLASS="thead"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Constraint Key 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">thread-max-warning-ratio 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Constraint Value 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">0.0~1.0 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Description 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">EJB의 thread-max 설정에 대해 현재 운영되는 thread의 갯수가 차지하는 비율이 이 값 이상이면 WARNING이 발생한다. 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+<A NAME="1028"></A>
+<P CLASS="JMHeading3">30.3.9 MessageDrivenBean thread-max-fatal-ratio
+ </P>
+
+<P CLASS="JMCaption">표15 장애통계 목록 : MessageDrivenBean thread-max-fatal-ratio
+ </P>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" CLASS="normal">
+	<TR>
+		<TD CLASS="thead">J2EE Type 
+ </TD>
+		<TD CLASS="thead">MessageDrivenBean 
+ </TD>
+		<TD CLASS="thead">JEUS Type 
+ </TD>
+		<TD CLASS="thead"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Constraint Key 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">thread-max-fatal-ratio 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Constraint Value 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">0.0~1.0 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Description 
+ </TD>
+		<TD COLSPAN="3" CLASS="normal">EJB의 thread-max 설정에 대해 현재 운영되는 thread의 갯수가 차지하는 비율이 이 값 이상이면 FATAL이 발생한다. 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+<BR><!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

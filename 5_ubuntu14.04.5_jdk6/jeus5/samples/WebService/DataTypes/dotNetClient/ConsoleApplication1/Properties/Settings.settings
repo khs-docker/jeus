@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='ks_c_5601-1987'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)" GeneratedClassNamespace="DataEchoClient.Properties" GeneratedClassName="Settings">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings>
+    <Setting Name="setting" Type="System.String" Scope="Application" />
+  </Settings>
+</SettingsFile>

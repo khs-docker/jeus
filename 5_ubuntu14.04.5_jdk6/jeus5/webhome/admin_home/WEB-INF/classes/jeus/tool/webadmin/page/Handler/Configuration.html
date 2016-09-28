@@ -1,0 +1,103 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="form">
+            <span jwcid="common_required">
+                <span jwcid="type"/>
+                <span jwcid="name"/>
+                <span jwcid="level">
+                    <input jwcid="levelField"/>
+                </span>
+            </span>
+            <span jwcid="common_advanced">
+                <span jwcid="encoding">
+                    <input jwcid="encodingField"/>
+                </span>
+                <span jwcid="filter_class">
+                    <input jwcid="filter_classField" style="width:98%;"/>
+                </span>
+            </span>
+
+            <span jwcid="choose">
+                <span jwcid="condConsole">
+                    <span jwcid="@RenderBlock" block="ognl:components.common_required"/>
+                    <span jwcid="console_blind">
+                        <span jwcid="@RenderBlock" block="ognl:components.common_advanced"/>
+                    </span>
+                </span>
+                <span jwcid="condFile">
+                    <span jwcid="@RenderBlock" block="ognl:components.common_required"/>
+                    <span jwcid="file_name">
+                        <input jwcid="file_nameField" style="width:98%;"/>
+                    </span>
+                    <span jwcid="valid">
+                        <input jwcid="valid_unitField"/>&nbsp;<input jwcid="validField"/>
+                    </span>
+                    <span jwcid="buffer_size">
+                        <input jwcid="buffer_sizeField"/>
+                    </span>
+                    <span jwcid="append">
+                        <input jwcid="appendField"/>
+                    </span>
+                    <span jwcid="file_blind">
+                        <span jwcid="@RenderBlock" block="ognl:components.common_advanced"/>
+                    </span>
+                </span>
+                <span jwcid="condSmtp">
+                    <span jwcid="@RenderBlock" block="ognl:components.common_required"/>
+                    <span jwcid="smtp_host_address">
+                        <input jwcid="smtp_host_addressField"/>
+                    </span>
+                    <span jwcid="from_address">
+                        <input jwcid="from_addressField"/>
+                    </span>
+                    <span jwcid="to_address">
+                        <input jwcid="to_addressField"/>
+                    </span>
+                    <span jwcid="cc_address">
+                        <input jwcid="cc_addressField" style="width:98%"/>
+                    </span>
+                    <span jwcid="bcc_address">
+                        <input jwcid="bcc_addressField" style="width:98%"/>
+                    </span>
+                    <span jwcid="send_for_all_messages">
+                        <input jwcid="send_for_all_messagesField"/>
+                    </span>
+                    <span jwcid="smtp_blind">
+                        <span jwcid="@RenderBlock" block="ognl:components.common_advanced"/>
+                    </span>
+                </span>
+                <span jwcid="condUser">
+                    <span jwcid="handler_class">
+                        <input jwcid="handler_classField" style="width:98%;"/>
+                    </span>
+                    <span jwcid="@RenderBlock" block="ognl:components.common_required"/>
+                    <span jwcid="user_blind">
+                        <span jwcid="@RenderBlock" block="ognl:components.common_advanced"/>
+                        <span jwcid="handler_property">
+                            <input jwcid="handler_propertyField" style="width:98%;" rows="6"/>
+                        </span>
+                        <span jwcid="formatter_class">
+                            <input jwcid="formatter_classField" style="width:98%;"/>
+                        </span>
+                        <span jwcid="formatter_property">
+                            <input jwcid="formatter_propertyField" style="width:98%;" rows="6"/>
+                        </span>
+                    </span>
+                </span>
+                <span jwcid="condSocket">
+                    <span jwcid="@RenderBlock" block="ognl:components.common_required"/>
+                    <span jwcid="address">
+                        <input jwcid="addressField"/>
+                    </span>
+                    <span jwcid="port">
+                        <input jwcid="portField"/>
+                    </span>
+                    <span jwcid="socket_blind">
+                        <span jwcid="@RenderBlock" block="ognl:components.common_advanced"/>
+                    </span>
+                </span>
+            </span>
+        </form>
+    </span>
+</html>
+

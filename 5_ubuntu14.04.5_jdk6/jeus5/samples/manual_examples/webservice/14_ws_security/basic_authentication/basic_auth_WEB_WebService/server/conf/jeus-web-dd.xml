@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jeus-web-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <role-mapping>
+        <role-permission>
+            <principal>jeus</principal>
+            <role>Administrator</role>
+        </role-permission>
+    </role-mapping>
+</jeus-web-dd>

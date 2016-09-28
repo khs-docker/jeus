@@ -1,0 +1,21 @@
+TABLE.paletteTable {
+	width:100%;
+    border-width:0px;
+}
+
+TABLE.paletteTable TH {
+    font-size: 11pt;
+    font-weight: bold;
+    text-align: center;
+}
+
+TABLE.paletteTable SELECT {
+    width:100%;
+    border:1px solid #AAAAAA;
+}
+
+TABLE.paletteTable TD.controls {
+    text-align: center;
+    vertical-align: middle;
+    width: 110px;
+}

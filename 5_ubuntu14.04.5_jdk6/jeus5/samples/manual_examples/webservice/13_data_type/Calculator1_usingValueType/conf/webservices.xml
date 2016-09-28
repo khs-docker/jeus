@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<webservices version="1.1" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <webservice-description>
+        <webservice-description-name>Calculator1Service</webservice-description-name>
+        <wsdl-file>WEB-INF/wsdl/Calculator1Service.wsdl</wsdl-file>
+        <jaxrpc-mapping-file>WEB-INF/Calculator1Service-mapping.xml</jaxrpc-mapping-file>
+        <port-component>
+            <port-component-name>CalculatorIFPort</port-component-name>
+            <wsdl-port xmlns:ns2="urn:Calculator1Service">ns2:CalculatorIFPort</wsdl-port>
+            <service-endpoint-interface>calc.CalculatorIF</service-endpoint-interface>
+            <service-impl-bean>
+                <servlet-link>Calculator1Servlet</servlet-link>
+            </service-impl-bean>           
+        </port-component>
+    </webservice-description>
+</webservices>
+

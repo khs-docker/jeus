@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <servlet>
+        <servlet-name>Calculator3Servlet</servlet-name>
+        <servlet-class>calc.Calculator</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Calculator3Servlet</servlet-name>
+        <url-pattern>/Calculator3Service</url-pattern>
+    </servlet-mapping>
+</web-app>
+

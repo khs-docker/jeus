@@ -1,0 +1,93 @@
+<html>
+    <head>
+    <script language="JavaScript">
+        if(window.opener){
+            window.opener.top.location.href = window.location.href;
+            window.close();
+        }else if(window != window.top){
+            window.top.location.href = window.location.href;
+        }
+        window.scrolling ="no";
+    </script>
+    </head>
+
+    <body jwcid="@Body" style="margin:0px;background-color:white;" scroll="no">
+        <span jwcid="condFailed">
+            <script jwcid="alertScript"/>
+        </span>
+        <span jwcid="dynamite"/>
+        <form jwcid="loginForm">
+        <table jwcid="wrapper" width="100%" cellpadding="0" cellspacing="0" border="0">
+
+            <tr>
+                <td width="72" height="74">&nbsp;</td>
+                <td height="74" colspan="3" valign="bottom"><img jwcid="tmax_logo"/></td>
+            </tr>
+            <tr>
+                <td height="150" colspan="4">&nbsp;</td>
+            </tr>
+            <!--
+            <tr>
+                <td width="72"  height="6" jwcid="L_line_01" style="background-repeat:repeat-x;"><span style="font-size:1px;">&nbsp;</span></td>
+                <td width="527" height="6" jwcid="L_line_02" style="background-repeat:repeat-x;"><span style="font-size:1px;">&nbsp;</span></td>
+                <td width="424" height="6" jwcid="L_line_03" style="background-repeat:repeat-x;"><span style="font-size:1px;">&nbsp;</span></td>
+                <td jwcid="L_line_04" height="6" style="background-repeat:repeat-x;"><span style="font-size:1px;">&nbsp;</span></td>
+            </tr>
+            -->
+            <tr>
+                <td width="72" jwcid="L_bg_01">&nbsp;</td>
+                <td width="527" height="216" valign="top" jwcid="L_bg_webtob" style="background-repeat:no-repeat;">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td height="102">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td height="30">
+                                    <input jwcid="usernameField" style="background-color:white;"/>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <input jwcid="passwordField" style="background-color:white;"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="30">
+                                <img jwcid="b_ok" width="84" height="18"/>
+                                <a href="javascript:document.forms[0].reset();"><img jwcid="b_cancel" width="84" height="18" border="0"/></a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="424" jwcid="L_bg_03">&nbsp;</td>
+                <td jwcid="L_bg_04">&nbsp;</td>
+            </tr>
+            <tr>
+                <td id="space" jwcid="L_bg_01_1">&nbsp;</td>
+                <td jwcid="L_bg_02_1">&nbsp;</td>
+                <td jwcid="L_bg_03_1">&nbsp;</td>
+                <td jwcid="L_bg_04_1">&nbsp;</td>
+            </tr>
+            <tr>
+                <td jwcid="L_bg_01_2">&nbsp;</td>
+                <td height="64" valign="top" jwcid="L_bg_02_2"><img jwcid="L_copy" width="246" height="18"/></td>
+                <td jwcid="L_bg_03_2">&nbsp;</td>
+                <td jwcid="L_bg_04_2">&nbsp;</td>
+            </tr>
+        </table>
+        </form>
+        <span jwcid="@Block">
+            <span jwcid="L_bg_02"/>
+        </span>
+        <script language="javascript">
+            function redraw(){
+                var space = document.getElementById("space");
+                space.height = window.innerHeight - 504;
+        	}
+
+            var ns = !document.all;
+            if(ns){
+                redraw();
+                window.resize = redraw();
+            }
+        </script>
+    </body>
+</html>
+

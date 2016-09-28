@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="GB2312"?>
+<description>                                           
+    <text key="parameterType.class-name"><![CDATA[
+                     [Description]: 输入参数的数据种类映射到java class时的java class名称。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="parameterType.mime-type"><![CDATA[
+                       [Description]: 定义将要生成的WSDL上显示之参数的MIME类型。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="service-impl-beanType.endpoint-url"><![CDATA[
+                        [Description]: 设置服务连接所需的url。
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="operationType.return"><![CDATA[
+                            [Description]: <return>元素定义web服务operation的返还值。每个operation只能定义一个<return>元素。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="interfaceType.wsdl-port-name"><![CDATA[
+                           [Description]: 可以任意设定WSDL上显示的实际端口名称。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="web-services-config"><![CDATA[
+                    [Description]: web服务设定文件的根元素(root element)。
+                ]]>                                           
+    </text>
+                                                   
+    <text key="returnType.wsdl-name"><![CDATA[
+                           [Description]: 将要生成的WSDL上使用的返还参数的名称。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="service-configType.output-jaxrpc-mapping-file"><![CDATA[
+                            [Description]: 将生成的输出映射文件的名称。 
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="interfaceType.operation"><![CDATA[
+                      [Description]: 叙述服务上公开的operation各自的附加设定。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="parameterType.wsdl-name"><![CDATA[
+                            [Description]: 要生成的WSDL上使用的输入参数名称。没有特别输入时的默认值为，method signature的参数名称。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="service-configType.use"><![CDATA[
+                            [Description]: 定义encoding style。'encoded'或'literal'中选择一个。默认设置为'literal'。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="service-impl-beanType.servlet-name"><![CDATA[
+                          [Description]: 服务终点为servlet时，设置servlet名称。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="service-configType.target-namespace"><![CDATA[
+                            [Description]: 服务将具有的target name space。                 设定服务固有的name space，成为与其他服务之间的逻辑区分标准。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="returnType.location"><![CDATA[
+                            [Description]: 定义SOAP message中返还参数要位于的部分。取'header', 'body', 'attachment'当中的一个值。默认值为'body'。设定为'attachment'时，参数并非从SOAP envelop，而是从SOAP message的附件(attachment)中提取，只有在JAX-RPC spec中定义的类型(java.awt.Image、java.lang.String、javax.mail.internet.MimeMultipart、javax.xml.transform.Source、javax.activation.DataHandler)才能从SOAP message附件中提取。 
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="interfaceType.wsdl-port-type-name"><![CDATA[
+                       [Description]: 可以任意设定WSDL上显示的实际端口type名称。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="operationType.one-way"><![CDATA[
+                            [Description]: 非请求-应答机制，而是允许单向(one-way)呼叫的设定。对于非同步单向呼叫，客户端不接收SOAP应答。当发生故障(fault)或意外情况(exception)时，也同样不接收应答。默认值为'false'。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="package-mappingType.namespace-uri"><![CDATA[
+                            [Description]: 设定java package名称相应的name space。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="web-services-configType.service"><![CDATA[
+		                    [Description]: 为了制作WSDL和映射(JARX-RPC Mapping)文件，叙述endpoint interface和messaging style等服务信息。
+		                ]]>                                           
+    </text>
+                                                   
+    <text key="operationType.parameter"><![CDATA[
+                            [Description]: <parameter>元素定义一个operation的一个参数。该元素应在体现operation的method内，按定义的顺序罗列。<parameter>元素的数量应与method上定义的参数数量一致。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="service-configType.package-mapping"><![CDATA[
+                            [Description]: 将某个java package映射到特定name space的设定。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="interfaceType.wsdl-binding-name"><![CDATA[
+                        [Description]: 可以任意设定WSDL上显示的实际binding名称。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="service-impl-beanType.context-path"><![CDATA[
+                            [Description]: 设置要处理服务的context名称。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="service-configType.interface"><![CDATA[
+                            [Description]: 设定服务端点接口(Service Endpoint Interface)。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="service-configType.map-mime-to-anytype"><![CDATA[
+                            [Description]: 对于是否允许使用自定义的任意type，具有xs:Boolean type值。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="returnType.mime-type"><![CDATA[
+                       [Description]: 定义将要生成的WSDL上显示之参数的MIME类型。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="interfaceType.service-impl-bean"><![CDATA[
+                        [Description]: 对服务执行(service-implementation)有关的附加设置进行说明。
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="service-impl-beanType.ejb-name"><![CDATA[
+                            [Description]: 服务终点为EJB时，设置EJB名称。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="interfaceType.endpoint-interface-class"><![CDATA[
+                        [Description]: 表示在后端(back-end)工作的java class名称。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="package-mappingType.package-name"><![CDATA[
+                       [Description]: 作为name space，映射到java package的名称。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="service-impl-beanType.endpoint-implementation-class"><![CDATA[
+                        [Description]: 对实现服务功能的bean class名称进行设置。
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="service-configType.service-name"><![CDATA[
+                            [Description]: 叙述要制作的服务名称。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="parameterType.mode"><![CDATA[
+                            [Description]: 指定输入参数为标准输入参数，还是用于返还值的输出参数，还是输入和输出都使用的输入-输出(in-out)参数。取'IN', 'INOUT', 'OUT'三个值之一。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="operationType.soap-action"><![CDATA[
+                            [Description]: 设定operation的SOAP-ACTION。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="parameterType.location"><![CDATA[
+                            [Description]: 定义SOAP message中输入参数要位于的部分。具有'header'、'body'、'attachment'之中的一个值。默认值为'body'。设为'attachment'时，参数不是从SOAP envelop，而是从SOAP message的附件(attachment)中提取。只有在JAX-RPC spec中指定的type(java.awt.Image、java.lang.String、javax.mail.internet.MimeMultipart、javax.xml.transform.Source、javax.activation.DataHandler)才能从SOAP message附件中提取。 
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="operationType.wsdl-name"><![CDATA[
+                            [Description]: 设定WSDL上公开的operation名称。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="operationType.java-method-name"><![CDATA[
+                            [Description]: 要设定的operation名称作为值。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="service-configType.output-wsdl-file"><![CDATA[
+                            [Description]: 将生成的输出WSDL文件的名称。
+                        ]]>                                           
+    </text>
+                                                   
+    <text key="service-configType.style"><![CDATA[
+                            [Description]: 定义将生成之服务的messaging style。
+                                'rpc', 'document', 'wrapped' 三个当中选择一个。
+                                默认设置为'wrapped'。
+                        ]]>                                           
+    </text>
+</description>

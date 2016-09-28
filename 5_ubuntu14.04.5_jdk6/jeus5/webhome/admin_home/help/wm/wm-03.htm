@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 3 웹 관리자 시작 및 종료 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('3 웹 관리자 시작 및 종료', 'wm-02.htm', 'wm-04.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left">3 웹 관리자 시작 및 종료
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMNormalText">이번 장에서는 웹 관리자를 사용하기에 앞서, 웹 관리자를 시작하고 종료하는 방법에 대해서 설명할 것이다. 
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMHeading2">3.1 웹 관리자 시작
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMHeading3">3.1.1 웹관리자 설정
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMNormalText" ALIGN="left">웹관리자를 시작하기 위해서는 
+ <SPAN CLASS="JMFileNameReferenceChar">JEUSMain.xml
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN>파일의 
+ <SPAN CLASS="JMXMLNoBoxChar">&rdquo;
+ </SPAN>/
+ <SPAN CLASS="JMXMLNoBoxChar">jeus-
+ </SPAN><SPAN CLASS="JMXMLNoBoxChar">system/node/enable-webadmin&rdquo;
+ </SPAN>요소를 
+ <SPAN CLASS="JMXMLNoBoxChar">&rdquo;
+ </SPAN>true
+ <SPAN CLASS="JMXMLNoBoxChar">&rdquo;
+ </SPAN>로 설정하여야 한다. 다음은JEUS 부팅시 웹 관리자를 시동하도록 설정한 &ldquo;
+ <SPAN CLASS="JMEmphasizeChar">JEUSMain.xml&rdquo; 
+ </SPAN>파일의 일부를 보여주고 있다.
+ </P>
+
+<P CLASS="JMFileNameReference">&lt;&lt;JEUSMain.xml&gt;&gt;
+ </P>
+
+<PRE CLASS="JMXML">&lt;jeus-system&gt;
+    &lt;node&gt;
+        &lt;name&gt;sebong&lt;/name&gt;
+        &lt;class-ftp&gt;true&lt;/class-ftp&gt;
+        &lt;sequential-start&gt;false&lt;/sequential-start&gt;
+        &lt;enable-webadmin&gt;true&lt;/enable-webadmin&gt;
+              . . .
+    &lt;/node&gt;
+    . . .
+&lt;/jeus-system&gt;
+</PRE>
+<A NAME="1005"></A>
+<P CLASS="JMHeading3">3.1.2 로그 인
+ </P>
+
+<P CLASS="JMFigure"><IMG WIDTH="520" SRC="images/image009.jpg" HEIGHT="251"></P>
+
+<P CLASS="JMCaption">그림 3 로그인 폼
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMNormalText">1. 웹 브라우저의 주소 창에 &rdquo;
+ <SPAN CLASS="JMFileNameReferenceChar">http://&lt;IP address&gt;:9744/webadmin
+ </SPAN>&rdquo;을 입력한다. 9744는 JEUS_BASEPORT에 8을 더한 값이며 JEUS_BASEPORT의 기본값은 9736이다. 설정한 JEUS_BASEPORT에 
+맞게 입력하면 된다.
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMNormalText">2. 로그인 페이지에서 관리자 아이디와 암호를 입력한 후 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1008"></A>
+<P CLASS="JMNormalText">3. 로그인 성공시 관리자 메인 페이지로 이동되며 실패시 오류 메시지가 출력된다.
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMHeading2">3.2 웹 관리자 종료
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMHeading3">3.2.1 로그아웃
+ </P>
+
+<P CLASS="JMFigure"><IMG WIDTH="342" SRC="images/image010.jpg" HEIGHT="54"></P>
+
+<P CLASS="JMCaption">그림 4 로그 아웃 링크
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMNormalText">1. 로그인을 한 후 주화면 상단에 위치한 
+ <SPAN CLASS="JMGUIWidget">로그아웃
+ </SPAN>링크를 클릭한다.
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMNormalText">2. 로그아웃을 클릭하면 웹 관리자 사용자 세션이 종료되며 로그인 페이지로 이동된다.
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMHeading3">3.2.2 웹관리자 종료
+ </P>
+<A NAME="1014"></A>
+<P CLASS="JMNormalText">웹 관리자는 JEUS가 다운될 때 같이 종료된다. 따라서JEUS 노드를 다운시킬 때 다운시키고자 하는 노드 목록에 웹 관리자가 실행되고 있는 노드가 
+포함되어 있는지 확인해야 한다.
+ </P>
+<BR><!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

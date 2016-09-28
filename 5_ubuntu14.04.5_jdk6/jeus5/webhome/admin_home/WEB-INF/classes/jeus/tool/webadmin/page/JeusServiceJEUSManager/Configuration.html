@@ -1,0 +1,138 @@
+<html jwcid="mainBorder" >
+    <div style="margin:0px;width:100%;text-align:right;">
+        <img jwcid="link_icon" align="absmiddle"/>&nbsp;<a id="jnditree" jwcid="jnditreeLink" class="link"><span jwcid="jnditree" /></a>
+        <div dojoType="dijit.Tooltip" connectId="jnditree" label="message:NodeTree.JeusService.JeusManager.jnditree" jwcid="@Any"></div>
+        <img jwcid="link_icon2" align="absmiddle"/>&nbsp;<a id="tmonitor" jwcid="tmonitorLink" class="link"><span jwcid="tmonitor" /></a>
+        <div dojoType="dijit.Tooltip" connectId="tmonitor" label="message:NodeTree.JeusService.JeusManager.tmonitor" jwcid="@Any"></div>
+    </div>
+    <span jwcid="tabPanel">
+        <span jwcid="general">
+            <form jwcid="generalForm">
+                <span jwcid="name"/>
+                <span jwcid="general_blind">
+                    <span jwcid="backup_node">
+                        <input jwcid="backup_nodeField"/>
+                    </span>
+                    <span jwcid="sequential_start">
+                        <input jwcid="sequential_startField"/>
+                    </span>
+                    <span jwcid="note">
+                        <input jwcid="noteField"/>
+                    </span> 
+                </span>
+            </form>
+        </span>
+        <span jwcid="listener">
+            <form jwcid="listenerForm"/>
+            <span jwcid="listener_tab">
+                <span jwcid="listener_general">
+                    <br/>
+                    <form jwcid="listener_generalForm">
+                        <span jwcid="backlog">
+                            <input jwcid="backlogField"/>
+                        </span>                       
+                    </form>
+                </span>
+                <span jwcid="ssl">
+                    <br/>
+                    <form jwcid="sslForm">
+                        <span jwcid="ssl_port">
+                            <input jwcid="ssl_portField"/>
+                        </span>
+                    </form>
+                </span>
+                <span jwcid="pooling">
+                    <br/>
+                    <form jwcid="poolingForm">
+                        <span jwcid="min">
+                            <input jwcid="minField"/>
+                        </span>
+                        <span jwcid="max">
+                            <input jwcid="maxField"/>
+                        </span>
+                        <span jwcid="period">
+                            <input jwcid="periodField"/>
+                        </span>
+                    </form>
+                </span>
+            </span>
+        </span>
+        <span jwcid="services">
+            <form jwcid="servicesForm">
+                <span jwcid="class_ftp">
+                    <input jwcid="class_ftpField"/>
+                </span>
+                <span jwcid="enable_jnlp">
+                    <input jwcid="enable_jnlpField"/>
+                </span>
+                <span jwcid="webadminSection"/>
+                <span jwcid="enable_webadmin">
+                    <input jwcid="enable_webadminField"/>
+                </span>
+                <span jwcid="webadmin_allowed_server">
+                    <input jwcid="webadmin_allowed_serverField"/>
+                </span>
+            </form>
+        </span>
+        <span jwcid="logging">
+            <form jwcid="loggingForm">
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns"><span jwcid="logging_table_name_column"/></td>
+                        <td class="table_columns"><span jwcid="logging_table_level_column"/></td>
+                        <td class="table_columns" width="20">&nbsp;</td>
+                    </tr>
+                    <tr jwcid="eachLogging">
+                        <td class="table_values">
+                            <a jwcid="loggingLink">
+                                <span jwcid="logging_table_name"/>
+                            </a>
+                        </td>
+                        <!--<td class="table_values"><span jwcid="accounts_value"/></td>-->
+                        <td class="table_values"><span jwcid="logging_table_level"/></td>
+                        <td class="table_values" align="center">
+                            <a jwcid="logging_table_deleteLink">
+                                <img jwcid="logging_table_delete" border="0"/>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                <p style="text-align:right;"><a jwcid="create_loggerLink"><img jwcid="create2" align="absmiddle"/>&nbsp;<span jwcid="create_logger_label"/></a><p/>
+                <!--<span jwcid="logging_panel"/>-->
+            </form>
+<!--            <form jwcid="handlerForm">
+                <span jwcid="handler_panel"/>
+            </form>-->
+        </span>
+        <span jwcid="security">
+            <form jwcid="titleForm"/>
+            <form jwcid="securityForm">
+                <span jwcid="use_nio">
+                    <input jwcid="use_nioField"/>
+                </span>
+                <span jwcid="connect_retries">
+                    <input jwcid="connect_retriesField"/>
+                </span>
+            </form>
+            <form jwcid="securityDomainForm">
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns"><span jwcid="domain_name_column"/></td>
+                        <!--<td class="table_columns"><span jwcid="accounts_column"/></td>-->
+                        <td  class="table_columns" width="20">&nbsp;</td>
+                    </tr>
+                    <tr jwcid="eachDomain">
+                        <td class="table_values"><a jwcid="domainLink"><span jwcid="domain_name_value"/></a></td>
+                        <!--<td class="table_values"><span jwcid="accounts_value"/></td>-->
+                        <td class="table_values" align="center">
+                            <span jwcid="condNotReserved">
+                                <a jwcid="deleteLink"><img jwcid="delete" border="0"/></a>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <p style="text-align:right;"><a jwcid="createLink"><img jwcid="create" align="absmiddle"/>&nbsp;<span jwcid="create_label"/></a></p>
+        </span>
+    </span>
+</html>

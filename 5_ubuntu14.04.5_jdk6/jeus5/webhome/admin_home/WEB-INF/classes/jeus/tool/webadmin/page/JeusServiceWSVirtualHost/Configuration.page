@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceWSVirtualHost.ConfigurationPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Create Web Server Engine Virtual Host"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:new java.lang.String[]{pageName}"/>
+        <binding name="subtabNames" value="ognl:{'vhost_general','vhost_info', 'vhost_supplement', 'vhost_connection', 'vhost_log', 'vhost_user_info', 'vhost_ssl', 'vhost_directory'}"/>
+    </component>
+
+    <component id="vhost_general" type="Block"/>
+    <component id="vhost_info" type="Block"/>
+    <component id="vhost_supplement" type="Block"/>
+    <component id="vhost_connection" type="Block"/>
+    <component id="vhost_log" type="Block"/>
+    <component id="vhost_user_info" type="Block"/>
+    <component id="vhost_ssl" type="Block"/>
+    <component id="vhost_directory" type="Block"/>
+
+
+    <component id="target_node" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ws.overview.target_node.label"/>
+        <binding name="value" value="ognl:nodeName"/>
+    </component>
+
+
+    <component id="vhost_generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ws.vhost.general.title"/>
+        <binding name="listener" value="ognl:listeners.onVhostOk"/>
+    </component>
+
+    <component id="vhost_name" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:name"/>
+    </component>                 
+
+    <component id="vhost_node_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_node_nameField"/>
+        
+    </component>
+
+    <component id="vhost_node_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="vhost"/>
+        <binding name="elementName" value="literal:nodeName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="vhost_docroot" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_docrootField"/>
+
+    </component>
+
+    <component id="vhost_docrootField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="vhost"/>
+        <binding name="elementName" value="literal:docroot"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="vhost_port" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_portField"/>
+    </component>
+
+    <component id="vhost_portField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:port"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+    <component id="vhost_node_infoForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ws.vhost.info.title"/>
+        <binding name="listener" value="ognl:listeners.onVhostOk"/>
+    </component>
+
+    <component id="vhost_node_type" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_node_typeField"/>
+    </component>
+
+    <component id="vhost_node_typeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:nodeType"/>
+    </component>
+
+    <component id="vhost_hostname" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_hostnameField"/>
+    </component>
+
+    <component id="vhost_hostnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:hostname"/>
+    </component>
+
+    <component id="vhost_alias" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_aliasField"/>
+    </component>
+
+    <component id="vhost_aliasField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:hostAlias"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+    <component id="vhost_listen" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_listenField"/>
+    </component>
+
+    <component id="vhost_listenField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:listen"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+    <component id="vhost_supplementForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ws.vhost.supplement.title"/>
+        <binding name="listener" value="ognl:listeners.onVhostOk"/>
+    </component>
+
+    <component id="vhost_default_charset" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_default_charsetField"/>
+    </component>
+
+    <component id="vhost_default_charsetField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:defaultCharset"/>
+    </component>
+
+    <component id="vhost_default_mimetype" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_default_mimetypeField"/>
+    </component>
+
+    <component id="vhost_default_mimetypeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:defaultMimetype"/>
+    </component>
+
+    <component id="vhost_supplement_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="vhost_error_document_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_error_document_nameField"/>
+    </component>
+
+    <component id="vhost_error_document_nameField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:errorDocumentName"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+    <component id="vhost_expires_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_expires_nameField"/>
+    </component>
+
+    <component id="vhost_expires_nameField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:expiresName"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+    <component id="vhost_service_order" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_service_orderField"/>
+    </component>
+
+    <component id="vhost_service_orderField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:serviceOrder"/>
+    </component>
+
+    <component id="vhost_env_file" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_env_fileField"/>
+    </component>
+
+    <component id="vhost_env_fileField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:envFile"/>
+    </component>
+
+    <component id="vhost_options" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_optionsField"/>
+    </component>
+
+    <component id="vhost_optionsField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:options"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+    <component id="vhost_index_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_index_nameField"/>
+    </component>
+
+    <component id="vhost_index_nameField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:indexName"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+    <component id="vhost_dir_index_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_dir_index_nameField"/>
+    </component>
+
+    <component id="vhost_dir_index_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:dirIndexName"/>
+    </component>
+
+    <component id="vhost_method" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_methodField"/>
+    </component>
+
+    <component id="vhost_methodField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:method"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+    <component id="vhost_connectionForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ws.vhost.connection.title"/>
+        <binding name="listener" value="ognl:listeners.onVhostOk"/>
+    </component>
+
+    <component id="vhost_keep_alive" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_keep_aliveField"/>
+    </component>
+
+    <component id="vhost_keep_aliveField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:vhostKeepAliveUse"/>
+        <binding name="elementName" value="literal:keepAlive"/>
+    </component>
+
+    <component id="vhost_keep_alive_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_keep_alive_timeoutField"/>
+    </component>
+
+    <component id="vhost_keep_alive_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:vhostKeepAliveUse"/>
+        <binding name="elementName" value="literal:keepAliveTimeout"/>
+    </component>
+
+    <component id="vhost_keep_alive_max" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_keep_alive_maxField"/>
+    </component>
+
+    <component id="vhost_keep_alive_maxField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:vhostKeepAliveUse"/>
+        <binding name="elementName" value="literal:keepAliveMax"/>
+    </component>
+
+    <component id="vhost_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_timeoutField"/>
+    </component>
+
+    <component id="vhost_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:timeout"/>
+    </component>
+
+    <component id="vhost_logForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ws.vhost.log.title"/>
+        <binding name="listener" value="ognl:listeners.onVhostOk"/>
+    </component>
+
+    <component id="vhost_usrlog_dir" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_usrlog_dirField"/>
+    </component>
+
+    <component id="vhost_usrlog_dirField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:usrlogDir"/>
+    </component>
+
+    <component id="vhost_logging" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_loggingField"/>
+        <binding name="label" value="message:ws.vhost.logging.label"/>
+    </component>
+
+    <component id="vhost_loggingField" type="contrib:Palette">
+        <binding name="model" value="ognl:loggingModel"/>
+        <binding name="selected" value="ognl:vhostLogging"/>
+        <binding name="selectedTitleBlock" value="ognl:components.nullBlock"/>
+        <binding name="availableTitleBlock" value="ognl:components.nullBlock"/>
+        <binding name="rows" value="ognl:4"/>
+    </component>
+
+    <component id="vhost_error_log" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_error_logField"/>
+    </component>
+
+    <component id="vhost_error_logField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:errorLog"/>
+        <binding name="model" value="ognl:errorLoggingModel"/>
+    </component>
+
+    <component id="vhost_userForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ws.vhost.user.title"/>
+        <binding name="listener" value="ognl:listeners.onVhostOk"/>
+    </component>
+
+    <component id="vhost_user" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_userField"/>
+    </component>
+
+    <component id="vhost_userField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:user"/>
+    </component>
+
+    <component id="vhost_group" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_groupField"/>
+    </component>
+
+    <component id="vhost_groupField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:group"/>
+    </component>
+
+    <component id="vhost_admin" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_adminField"/>
+    </component>
+
+    <component id="vhost_adminField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:admin"/>
+    </component>
+
+    <component id="vhost_sslForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ws.vhost.ssl.title"/>
+        <binding name="listener" value="ognl:listeners.onVhostOk"/>
+    </component>
+
+    <component id="vhost_ssl_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_ssl_nameField"/>
+
+    </component>
+
+    <component id="vhost_ssl_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="vhostSslUse"/>
+        <binding name="elementName" value="literal:sslName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="vhost_ssl_flag" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_ssl_flagField"/>
+    </component>
+
+    <component id="vhost_ssl_flagField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:vhostSslUse"/>
+        <binding name="elementName" value="literal:sslFlag"/>
+    </component>
+
+    <component id="vhost_directoryForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ws.vhost.directory.title"/>
+        <binding name="listener" value="ognl:listeners.onVhostOk"/>
+    </component>
+
+    <component id="vhost_app_dir" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_app_dirField"/>
+    </component>
+
+    <component id="vhost_app_dirField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:appDir"/>
+    </component>
+
+    <component id="vhost_icon_dir" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_icon_dirField"/>
+    </component>
+
+    <component id="vhost_icon_dirField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:iconDir"/>
+    </component>
+
+    <component id="vhost_user_dir" type="jeus:Field">
+        <binding name="field" value="ognl:components.vhost_user_dirField"/>
+    </component>
+
+    <component id="vhost_user_dirField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:vhost"/>
+        <binding name="elementName" value="literal:userDir"/>
+    </component>
+
+    <component id="createOk" type="Submit">
+        <binding name="value" value="message:common.label.create"/>
+        <binding name="listener" value="ognl:listeners.onCreateOk"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+    <bean name="listTranslator" class="jeus.tool.webadmin.component.translator.ListTranslator"/>
+
+</page-specification>

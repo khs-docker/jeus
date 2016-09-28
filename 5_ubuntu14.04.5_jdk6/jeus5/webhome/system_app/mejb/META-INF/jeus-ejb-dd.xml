@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jeus-ejb-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <beanlist>
+        <jeus-bean>
+            <ejb-name>MEJB</ejb-name>
+            <export-name>ejb/mgmt/MEJB</export-name>
+            <local-invoke-optimize>false</local-invoke-optimize>
+            <object-management>
+                <bean-pool>
+                    <pool-min>0</pool-min>
+                    <pool-max>100</pool-max>
+                </bean-pool>
+                <connect-pool>
+                    <pool-min>0</pool-min>
+                    <pool-max>100</pool-max>
+                </connect-pool>
+                <capacity>10000</capacity>
+                <passivation-timeout>-1</passivation-timeout>
+                <disconnect-timeout>-1</disconnect-timeout>
+            </object-management>
+            <persistence-optimize>
+                <engine-type>SINGLE_OBJECT</engine-type>
+                <update-delay-till-tx>true</update-delay-till-tx>
+            </persistence-optimize>
+            <destination>mejb</destination>
+        </jeus-bean>
+    </beanlist>
+</jeus-ejb-dd>

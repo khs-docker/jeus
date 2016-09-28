@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description>        
+    <text key="security-services"><![CDATA[
+                        [Description]: This element defines security services used in security system. 
+            ]]>        
+    </text>
+         
+    <text key="SecurityServicesType.security-service"><![CDATA[
+                        [Description]: This element defines security service. 
+                    ]]>        
+    </text>
+ </description>

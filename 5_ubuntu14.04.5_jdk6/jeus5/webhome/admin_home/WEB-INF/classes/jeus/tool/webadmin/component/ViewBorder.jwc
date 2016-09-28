@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://tapestry.apache.org/dtd/Tapestry_4_0.dtd">
+
+<component-specification allow-body="yes" allow-informal-parameters="yes">
+    <parameter name="title" required="yes"/>
+    <parameter name="refresh"/>
+
+    <parameter name="useTree" default-value="false"/>
+
+	<component id="shell" type="Shell">
+        <binding name="stylesheet" value="asset:stylesheet"/>
+        <binding name="title" value="title"/>
+        <!--
+        <binding name="disableCaching" value="true"/>
+        <binding name="doctype" value="literal:"/>
+         --> 
+        <binding name="doctype" value='literal:html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"'/>
+
+        <inherited-binding name="refresh" parameter-name="refresh"/>
+    </component>
+
+    <component id="condTree" type="If">
+        <binding name="condition" value="useTree"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <asset name="stylesheet" path="context:/css/jeus.css"/>
+
+    <asset name="poslib" path="context:/js/poslib.js"/>
+    <asset name="menu4" path="context:/js/menu4.js"/>
+    <asset name="scrollbutton" path="context:/js/scrollbutton.js"/>
+</component-specification>

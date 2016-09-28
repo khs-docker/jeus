@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JMSClientResource.OverviewPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JMS Client Resource Overview"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:new java.lang.String[]{pageName}"/>
+    </component>
+
+    <component id="overviewForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:clr.overview.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="refreshButton" type="Any">
+        <binding name="element" value="literal:input"/>
+        <binding name="value" value="message:common.label.refresh"/>
+    </component>
+
+    <component id="clientsTable" type="jeus:JEUSTable">
+        <binding name="source" value="ognl:clients"/>
+        <binding name="columns" value="literal:clr_overview_name_label, clr.overview.host_address.label:hostAddress, clr.overview.port.label:port, clr.overview.transaction_count.label:transactionCount, clr.overview.rollback_count.label:rollbackCount, clr.overview.commit_count.label:commitCount, clr_overview_connection_count_label"/>
+        <binding name="row" value="ognl:currentView"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+    </component>
+
+    <component id="clr_overview_name_labelColumnValue" type="Block"/>
+    <component id="clientLink" type="ExternalLink">
+        <binding name="page" value="literal:JMSClientResource_Statistics"/>
+        <binding name="parameters" value="ognl:currentView.objectName.canonicalName"/>
+    </component>
+
+    <component id="client" type="Insert">
+        <binding name="value" value="ognl:currentView.name"/>
+    </component>
+
+    <component id="clr_overview_connection_count_labelColumnValue" type="Block"/>
+    <component id="connection_countLink" type="ExternalLink">
+        <binding name="page" value="literal:JMSClientResource_Connections"/>
+        <binding name="parameters" value="ognl:currentView.objectName.canonicalName"/>
+    </component>
+
+    <component id="connection_count" type="Insert">
+        <binding name="value" value="ognl:currentView.connectionCount"/>
+    </component>
+
+    <property name="currentView"/>
+</page-specification>

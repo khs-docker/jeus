@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="Shift-JIS"?>
+<description>        
+    <text key="auditType.custom-audit-service"><![CDATA[
+
+                        [Description]: custom audit serviceを定義する
+                    
+                    ]]>   
+    </text>
+
+    <text key="security-manager"><![CDATA[
+                        [Description]: security-manager elementは、JEUS securityの情報管理に対する説明です。
+                    ]]>                                                                                            
+    </text>
+             
+    <text key="security-domainsType.security-domain"><![CDATA[
+
+                        [Description]: JEUSで使用するsecurity domainを設定します。
+                        
+                    ]]>   
+    </text>
+         
+    <text key="x509-credential-mappingType.truststore-path"><![CDATA[
+
+                        [Description]: 現在のドメインに適用するtruststore fileのパスを定義します。
+                    
+                    ]]>   
+    </text>
+         
+    <text key="config-fileType.filename"><![CDATA[
+
+                               [Description]: user/group security情報を含んだxml configuration fileの名前
+                           
+                    ]]>   
+    </text>
+         
+    <text key="security-managerType.security-domains"><![CDATA[
+                        [Description]: このJEUS Managerで使用するsecurity domainを設定します。詳しくは、
+                        JEUSセキュリティガイドを参照してください。
+                     
+                    ]]>   
+    </text>
+         
+    <text key="x509-identity-assertionType.config-file"><![CDATA[
+
+                        [Description]: X509Certificateファイルパスの定義
+                                    
+                    ]]>   
+    </text>
+         
+    <text key="SecurityServices.subject-validation"/>            
+    <text key="database-repositoryType.dbdriver-config"><![CDATA[
+
+                           [Description]: db authentication repository serviceのためのdb export-nameの設定
+                       
+                    ]]>   
+    </text>               
+    <text key="security-domainType.cache-manager"><![CDATA[
+                        [Description]: JEUS Security Framwrok?? ???? cache?? ??? ?.
+                    ]]>                
+    </text>
+                 
+    <text key="subject-validationType.default-subject-validation-service"><![CDATA[
+
+                        [Description]: default subject-validation serviceを定義する
+                    
+                    ]]>   
+    </text>                    
+    <text key="login-moduleType.control-flag"><![CDATA[
+
+                           [Description]: authenticationの適用方式の定義
+                                    
+                    ]]>   
+    </text>
+                     
+    <text key="default-user-mapperType.cert-attr-type"><![CDATA[
+
+                           [Description]: credentialをマッピングするための関連情報をプロパティ値で定義します。
+                                    
+                    ]]>   
+    </text>
+                     
+    <text key="credential-verificationType.custom-credential-verification-service"><![CDATA[
+
+                        [Description]: custom credential verification serviceを定義します。
+                    
+                    ]]>   
+    </text>
+     
+     <text key="credential-mappingType.default-credential-mapping-service"><![CDATA[
+
+                        [Description]: default credential mapping serviceを定義する
+                    
+                    ]]>   
+    </text>                      
+    <text key="authorizationType.jacc-service"><![CDATA[
+
+                        [Description]: JACC Serviceの使用可否を定義します。
+                    
+                    ]]>   
+    </text>
+                     
+    <text key="authorizationType.custom-authorization-service"><![CDATA[
+
+                        [Description]: custom authorization serviceを定義します。
+                    
+                    ]]>   
+    </text>
+                     
+    <text key="SecurityServices.authorization"><![CDATA[
+                            [Description]: authorizaiton service? ????.
+                        ]]>                    
+    </text>
+                     
+    <text key="subject-validationType.custom-subject-validation-service"><![CDATA[
+
+                        [Description]: custom subject-validation serviceを定義する
+                    
+                    ]]>   
+    </text>                      
+    <text key="authorizationType.repository-service"><![CDATA[
+
+                        [Description]: default repository serviceを定義します。
+                    
+                    ]]>   
+    </text>
+                         
+    <text key="authenticationType.custom-authentication-service"><![CDATA[
+                        [Description]: custom authentication serviceを定義する
+                    ]]>                        
+    </text>
+                         
+    <text key="SecurityServices.login"><![CDATA[
+                            [Description]: Login service? ????.
+                        ]]>                        
+    </text>
+                         
+    <text key="cache-serviceType.min"><![CDATA[
+
+                           [Description]: authentication serviceに定義するキャッシュの最小値
+                       
+                    ]]>   
+    </text>
+                         
+    <text key="SecurityServices.credential-verification"><![CDATA[
+                            [Description]: credential verification service? ????.
+                        ]]>                        
+    </text>
+                         
+    <text key="default-credential-mapping-serviceType.x509-credential-mapping"><![CDATA[
+
+                           [Description]: X509Certificateに対するIdentity Assertion Serviceの設定
+                       
+                    ]]>   
+    </text>
+                         
+    <text key="dbdriver-configType.vendor"><![CDATA[
+
+                           [Description]: db authentication repository serviceのためのdbベンダの設定
+                       
+                    ]]>   
+    </text>
+                               
+    <text key="repository-serviceType.custom-repository"><![CDATA[
+                        [Description]: ユーザ・リポジトリ・サービスを定義します。
+                                       jeus.security.spi.AuthenticationRepositoryService あるいは jeus.security.spi.AuthorizationRepositoryService
+                                       を実装したリポジトリサービスを登録すると、当該サービスが生成されるときに必要なプロパティ値を定義することができます。
+                    ]]>          
+    </text>
+                             
+    <text key="jaas-login-configType.login-module"><![CDATA[
+
+                    [Description]: ログイン・モジュールの設定
+                                        
+                    ]]>   
+    </text>
+                             
+    <text key="identity-assertionType.default-identity-assertion-service"><![CDATA[
+
+                           [Description]: 現在のドメインにデフォルトに適用するIdentity Assertion Serviceの設定
+                       
+                    ]]>   
+    </text>
+                             
+    <text key="dbdriver-configType.url"><![CDATA[
+
+                           [Description]: db authentication repository serviceのためのdb urlの設定
+                       
+                    ]]>   
+    </text>                             
+    <text key="login-serviceType.custom-login-service"><![CDATA[
+
+                        [Description]: custom login serviceを定義する
+                    
+                    ]]>   
+    </text>
+                                 
+    <text key="default-audit-serviceType.config-file"><![CDATA[
+
+                           [Description]: audit logファイル情報の定義
+                       
+                    ]]>   
+    </text>
+                                 
+    <text key="cache-serviceType.max"><![CDATA[
+
+                           [Description]: authentication serviceに適用するキャッシュの最大値
+                       
+                    ]]>   
+    </text>
+                                 
+    <text key="default-credential-verification-serviceType.jeus-certificate-verification"><![CDATA[
+
+                           [Description]: X509Certificateに対するcredential verificationの設定
+                       
+                    ]]>   
+    </text>
+                                 
+    <text key="custom-propertyType.property"><![CDATA[
+
+                        [Description]: credentialをマッピングするための関連情報を属性値で定義します。
+                                    
+                    ]]>   
+    </text>
+                                 
+    <text key="default-user-mapperType.attribute-value-delimiter"><![CDATA[
+
+                           [Description]: credentialをマッピングするための関連情報をプロパティ値で定義します。
+                                    
+                    ]]>   
+    </text>
+                                 
+    <text key="login-moduleType.option"><![CDATA[
+
+                        [Description]: LoginModuleの初期化時に適用する属性を定義します。
+                                    
+                    ]]>   
+    </text>
+                                 
+    <text key="x509-identity-assertionType.default-user-mapper"><![CDATA[
+                           [Description]: X509Certificate tokenに対してユーザをマッピングするための情報の定義
+                    ]]>   
+    </text>
+                                 
+    <text key="SecurityServices.credential-mapping"><![CDATA[
+                            [Description]: credential mapping service? ????.
+                        ]]>                                
+    </text>
+                                 
+    <text key="SecurityServices.identity-assertion"><![CDATA[
+                            [Description]: identity assertion service? ????.
+                        ]]>                                
+    </text>
+                                 
+    <text key="dbdriver-configType.password"><![CDATA[
+
+                           [Description]: db authentication repository serviceのためのdb connection時に適用されるパスワードの設定
+                       
+                    ]]>   
+    </text>
+                                     
+    <text key="xml-file-repositoryType.config-file"><![CDATA[
+
+                           [Description]: xmlリポジトリファイル情報の定義
+                       
+                    ]]>   
+    </text>
+                                     
+    <text key="repository-serviceType.xml-file-repository"><![CDATA[
+                        [Description]: 認証または権限付与サービスのためのXMLファイル・リポジトリ・サービスを定義します。
+                    ]]>
+    </text>
+                                     
+    <text key="authenticationType.repository-service"><![CDATA[
+                           [Description]: repository serviceを定義する 
+                    ]]>   
+    </text>
+                                     
+    <text key="cache-serviceType.timeout"><![CDATA[
+
+                           [Description]: authentication serviceに適用するキャッシュタイムアウトのサイズ
+                       
+                    ]]>   
+    </text>
+                                     
+    <text key="default-identity-assertionType.x509-identity-assertion"><![CDATA[
+                           [Description]: X509Certificateに対するIdentity Assertion Serviceの設定 
+                    ]]>   
+    </text>
+                                     
+    <text key="authenticationType.cache-service"><![CDATA[
+
+                        [Description]: JEUS Security Framwrokで適用するキャッシュ関連の設定をする。
+                    
+                    ]]>   
+    </text>
+                                     
+    <text key="dbdriver-configType.driver"><![CDATA[
+
+                           [Description]: db authentication repository serviceのためのdb driverの設定
+                       
+                    ]]>   
+    </text>                                        
+    <text key="jaas-login-configType.callback-handler-classname"><![CDATA[
+                           [Description]: JAAS callback handler factoryクラスの名前
+                                            
+                    ]]>   
+    </text>
+                                         
+    <text key="auditType.default-audit-service"><![CDATA[
+
+                        [Description]: default audit serviceを定義する
+                    
+                    ]]>   
+    </text>
+                                         
+    <text key="config-fileType.filepath"><![CDATA[
+
+                           [Description]: user/group security情報を含むxml configuration fileのパス
+                           
+                    ]]>   
+    </text>
+                                         
+    <text key="repository-serviceType.database-repository"><![CDATA[
+                        [Description]: 認証または権限付与サービスのためのデータベース・リポジトリ・サービスを定義します。
+                    ]]>
+    </text>
+                                         
+    <text key="database-repositoryType.datasource-export-name"><![CDATA[
+
+                           [Description]: db authentication repository serviceのためのdb export-nameの設定
+                       
+                    ]]>   
+    </text>                                   
+    <text key="authorizationType.cache-service"><![CDATA[
+
+                        [Description]: JEUS Security Framwrokで適用するキャッシュ関連設定をする
+                    
+                    ]]>   
+    </text>
+                                             
+    <text key="optionType.value"><![CDATA[
+
+                        [Description]: LoginModuleの初期化時に適用されるプロパティ値
+                                    
+                    ]]>   
+    </text>
+                                             
+    <text key="default-user-mapperType.attribute-type"><![CDATA[
+
+                         [Description]: credentialをマッピングするための関連情報をプロパティ値で定義します。
+                                    
+                    ]]>   
+    </text>
+                                             
+    <text key="SecurityServices.authentication"><![CDATA[
+                            [Description]: authenticaiton service? ????.
+                        ]]>                                            
+    </text>
+                                             
+    <text key="security-domainType.name"><![CDATA[
+                            [Description]: ドメインの名前を設定します。
+                    ]]>   
+    </text>
+                                             
+    <text key="credential-mappingType.custom-credential-mapping-service"><![CDATA[
+
+                        [Description]: custom credential mapping serviceを定義する
+                    
+                    ]]>   
+    </text>
+                                             
+    <text key="credential-verificationType.default-credential-verification-service"><![CDATA[
+
+                        [Description]: default credential verification serviceを定義する
+                    
+                    ]]>   
+    </text>
+                                             
+    <text key="default-credential-verification-serviceType.password-verification"><![CDATA[
+
+                           [Description]: PasswordFactoryクラスに対するcredential verificationの設定
+                       
+                    ]]>   
+    </text>
+                                             
+    <text key="security-domainType.keystore-manager"><![CDATA[
+
+                        [Description]: keystore/truststore fileに対する設定をする
+                    
+                    ]]>   
+    </text>
+                                             
+    <text key="security-managerType.connect-retries"><![CDATA[
+                        [Description]: Security Network serviceの中でconnection retry count値を定義する
+                     
+                    ]]>   
+    </text>
+                                             
+    <text key="dbdriver-configType.username"><![CDATA[
+
+                           [Description]: db authentication repository serviceのためのdb connection時に適用されるユーザ名の設定
+                       
+                    ]]>   
+    </text>
+                                                  
+    <text key="SecurityServices.audit"><![CDATA[
+                            [Description]: audit service? ????.
+                        ]]>                                                
+    </text>
+                                                 
+    <text key="optionType.name"><![CDATA[
+
+                         [Description]: LoginModuleの初期化時に適用される属性の名前
+                                    
+                    ]]>   
+    </text>
+                                                 
+    <text key="x509-identity-assertionType.custom-user-mapper"><![CDATA[
+                        [Description]: X509Certificate tokenに対するユーザのマッピングのための追加属性の定義
+                                    
+                    ]]>   
+    </text>
+                                                 
+    <text key="x509-credential-mappingType.truststore-password"><![CDATA[
+
+                        [Description]: 現在のドメインに適用するtruststore fileに対するパスワードを定義する
+                    
+                    ]]>   
+    </text>
+                                                 
+    <text key="login-serviceType.jaas-login-config"><![CDATA[
+
+                            [Description]: jaas login serviceを定義します。
+                        
+                    ]]>   
+    </text>
+                                                 
+    <text key="default-audit-serviceType.audit-level"><![CDATA[
+                           [Description]: audit log level
+                       ]]>                                                
+    </text>
+                                                 
+    <text key="security-managerType.use-nio"><![CDATA[
+                        [Description]: security manager Nonblocking I/Oを使用して通信するかどうかを指定します。
+                        [Performance Recommendation]:　数多いエンジン・コンテナおよびクライアントを使用する場合には
+                        Nonblocking I/Oがより高い効率を示し、security managerを使用するクライアントの数が少なければ、
+                        Blocking I/Oがより効率的です。
+                    ]]>   
+    </text>
+                                                 
+    <text key="identity-assertionType.custom-identity-assertion-service"><![CDATA[
+
+                           [Description]: 証明書とユーザ間のマッピング情報を定義したConfigurationファイルのパス
+                       
+                    ]]>   
+    </text>
+                                                 
+    <text key="security-domainType.custom-service"><![CDATA[
+
+                        [Description]: 該当ドメインにJEUS Security Frameworkで提供するサービスの属性に関係なく、
+                                       JEUS Security SPIを内装したサービスの属性に別途のセキュリティサービスを登録することができます。
+                   
+                    ]]>   
+    </text>
+                                                        
+    <text key="login-moduleType.login-module-classname"><![CDATA[
+
+                        [Description]: LoginModuleを内装したパッケージを含んだクラス名
+                                    
+                    ]]>   
+    </text>
+     
+    <ref key="security-domainType">SecurityServices</ref>
+                                           
+</description>

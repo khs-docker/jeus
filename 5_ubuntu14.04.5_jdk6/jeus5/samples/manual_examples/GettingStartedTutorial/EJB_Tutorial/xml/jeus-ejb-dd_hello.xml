@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jeus-ejb-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <module-info/>
+    <beanlist>
+        <jeus-bean>
+            <ejb-name>hello.HelloEJB</ejb-name>
+            <export-name>HelloApp</export-name>
+            <export-port>0</export-port>
+            <single-vm-only>false</single-vm-only>
+            <local-invoke-optimize>true</local-invoke-optimize>
+            <thread-max>100</thread-max>
+            <object-management>
+                <bean-pool>
+                    <pool-min>0</pool-min>
+                    <pool-max>100</pool-max>
+                </bean-pool>
+                <connect-pool>
+                    <pool-min>0</pool-min>
+                    <pool-max>100</pool-max>
+                </connect-pool>
+                <capacity>10000</capacity>
+                <passivation-timeout>-1</passivation-timeout>
+                <disconnect-timeout>-1</disconnect-timeout>
+            </object-management>
+        </jeus-bean>
+    </beanlist>
+</jeus-ejb-dd>

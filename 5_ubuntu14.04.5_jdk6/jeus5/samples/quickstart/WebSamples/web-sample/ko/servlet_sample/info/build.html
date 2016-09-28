@@ -1,0 +1,170 @@
+<html>
+<head>
+<title>JEUS 5.0 Sample Application</title>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+<link href="/web-sample/css/jmtable.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="/web-sample/js/common.js"></script>
+</head>
+
+	<div style="padding-left:11px"><br>
+	<table width="776" border="0" cellspacing="0" cellpadding="0">
+		<tr class="JMHeading5">
+		<td height="27" bgcolor="F0F0F0"><img src="/web-sample/images/point_01.gif" width="9" height="9" align="absmiddle">
+		<a href="/web-sample/ko/servlet_main.html">Servlet </a>&gt; RequestInfo</td>
+		</tr>
+	</table>
+	<br>
+	<table width="776" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+		<td width="22">&nbsp;</td>
+		<td width="145" valign="top" background="/web-sample/images/b_bg.gif"><a href="intro.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('sub01','','/web-sample/images/b_me1_up.gif',1)"><img src="/web-sample/images/b_me1.gif" name="sub01" width="145" height="26" border="0"></a><a href="/web-sample/a.info" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('sub02','','/web-sample/images/b_me2_up.gif',1)"><img src="/web-sample/images/b_me2.gif" name="sub02" width="145" height="26" border="0"></a><a href="build.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('sub03','','/web-sample/images/b_me3_up.gif',1)"><img src="/web-sample/images/b_me3.gif" name="sub03" width="145" height="26" border="0"></a>
+		</td>
+		<td valign="top"><table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		<td height="1" bgcolor="CCCCCC"></td>
+		</tr>
+		<tr>
+		<td background="/web-sample/images/con_bg.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+		<td height="39" valign="bottom" class="JMHeading6">
+		<img src="/web-sample/images/point_05.gif" width="11" height="12">빌드 및 배치</td>
+		</tr>
+		<tr>
+		<td align="right"><img src="/web-sample/images/line2.gif" width="597" height="6"></td>
+		</tr>
+		<tr>
+<td class="JMHeading4">
+                <p class="JMHeading4">
+                <B>예제의 위치</B><BR><BR>
+		예제는 <I>install_root</I>quickstart/WebSamples 디렉토리 안에 다음과 같이 있습니다.<BR>
+                이후 <I>install_root</I>quickstart/WebSamples 디렉토리를 <I>sample-dir</i>이라고 합니다.<BR><BR>
+                <B>JSP 예제 </B><BR>
+
+		<table border=1 cellspacing=0 cellpadding=0 class="JMHeading4">
+		<tr>
+		<td>
+		/web-sample\ko/jsp_sample/jsp/snp
+		</td>
+		<td>
+		Snoop 예제
+		</td>
+		</tr>
+		<tr>
+		<td>
+		/web-sample/ko/jsp_sample/jsp2/functions
+		</td>
+		<td>
+		Functions 예제
+		</td>
+		</tr>
+		<tr>
+		<td>
+		/web-sample/ko/jsp_sample/jsp2/basicel
+		</td>
+		<td>
+		EL(Expression Language) 예제
+		</td>
+		</tr>
+		<tr>
+		<td>
+		/web-sample/ko/jsp_sample/jsp2/simpletag
+		</td>
+		<td>
+		SimpleTag 예제
+		</td>
+		</tr>
+		</table>
+
+		<BR>
+
+                <B>Servlet 예제</B><BR>
+		<table border=1 cellspacing=0 cellpadding=0 class="JMHeading4">
+		<tr>
+		<td>
+		/src/RequestInfoTest.java
+		</td>
+		<td>
+		RequestInfo 예제
+		</td>
+		</tr>
+		<tr>
+		<td>
+		/src/SessionTest.java
+		</td>
+		<td>
+		Session 예제
+		</td>
+		</tr>
+		<tr>
+		<td>
+		/src/CookieTest 예제
+		</td>
+		<td>
+		Cookie 예제
+		</td>
+		</tr>
+		</table>
+
+                <HR>
+		<p class="JMHeading4">
+		<B>예제 컴파일하고 조립하기</B><BR>
+		예제는 ANT를 사용하면 손쉽게 컴파일하고, ear 모듈로 패키징 할 수 있습니다. <br />
+                다음의 순서대로 합니다.<br>
+		<OL>
+		<LI><I>sample_dir</I>/build 디렉토리로 이동한 다음, build.xml이 있는지 확인합니다.</LI>
+		<LI>jant를 입력합니다. 이 jant는 Windows 플랫폼에서는 <I>install_root</I>\bin\jant.cmd로, UNIX 플랫폼에서는 <I>install_root</I>/bin/jant로 있습니다.</LI>
+		</OL>
+		<I>sample_dir</I>/build/classes 디렉토리에는 컴파일된 .class 파일이 생기고, <I>sample_dir</I>/build/module 디렉토리에는 배치할 수 있는 형태의 webSample.ear 파일이 생성됩니다.
+		<BR>
+		<HR>
+		<p class="JMHeading4">
+		<B>예제 배치하기</B><BR>
+		WebSample의 배치는 두 가지 방법이 있습니다.<br>
+
+		<UL>
+		<LI>jeusadmin을 이용한 배치</LI>
+		<OL>
+		<LI>배치하고자하는 J2EE Application 파일(webSample.ear)을 <I>install_root</I>/config/<I>node_name</I>/webhome/app_home에 복사합니다.</LI>
+		<LI><B>jeusadmin <I>node_name</I> -U<I>username</I> -P<I>password</I> deploy webSample</B> 을 실행합니다.</LI>
+		</OL>
+		<BR>
+		<LI>자동 배치 기능을 이용한 배치</LI>
+		<OL>
+		<LI>배치하고자하는 J2EE Application 파일(webSample.ear)을 <I>install_root</I>/config/<I>node_name</I>/webhome/deploy_home에 복사합니다.</LI>
+		</OL>
+		</UL>
+		</P>
+		<br>
+		</P>
+		<HR>
+		<p class="JMHeading4">
+		<B>예제 실행하기</B><BR>
+		브라우저를 열고, http://host_url:http_port/web-sample/ko/index.htm으로 접근합니다.<br>
+		<!-- content end -->
+		</td>
+		</tr>
+		<tr>
+		<td height="1" bgcolor="CCCCCC"></td>
+		</tr>
+		</table>
+		</td>
+		</tr>
+		</table></td>
+		</tr>
+		</table></td>
+		</tr>
+		</table>
+		<br>
+		</div></td>
+		</tr>
+		<tr>
+		<td height="60"><div style="padding-left:11px"><table width="776" border="0" cellspacing="0" cellpadding="0">
+		<tr class="JMHeading5">
+		<td height="44"><img src="/web-sample/images/copy.gif" width="776" height="44"></td>
+		</tr>
+	</table>
+</div>
+
+</body>
+</html>
+

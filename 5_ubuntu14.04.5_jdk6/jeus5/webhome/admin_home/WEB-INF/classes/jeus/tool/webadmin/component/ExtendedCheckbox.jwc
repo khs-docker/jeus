@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://tapestry.apache.org/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="jeus.tool.webadmin.component.ExtendedCheckbox" allow-body="yes" allow-informal-parameters="yes">
+
+	<inject property="settings" type="state" object="Settings"/>
+    <inject property="XMLSchemaResourceSource" type="state" object="XMLSchemaResourceSource"/>
+
+    <parameter name="label" property="labelbinding"/>
+    <parameter name="description" property="descriptionbinding"/>
+
+    <inject property="externalService" object="engine-service:external" />
+
+    <parameter name="parentElement"/>
+    <parameter name="elementName"/>
+
+    <parameter name="usage"/>
+    
+    <parameter name="value"/>
+        
+    <parameter name="targets"/>
+
+	<component id="checkbox" type="Checkbox" inherit-informal-parameters="yes">
+		<inherited-binding name="value" parameter-name="value"/>
+        <binding name="id" value="id + 'Field'"/>
+    </component>
+	
+	<component id="script" type="Script">
+		<binding name="script" value="literal:ExtendedCheckbox.script"/>
+		<binding name="source" value="component:checkbox"/>
+        <binding name="id" value="id + 'Field'"/>
+        <inherited-binding name="targets" parameter-name="targets"/>
+	</component>
+	
+    <component id="condHasElemdocHref" type="If">
+        <binding name="condition" value="elemdocHref != null"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="elemdocLink" type="Any">
+    	<binding name="href" value="ognl:elemdocHref"/>
+        <binding name="onclick" value="'showElementDocument(this);return false;'"/>
+    </component>
+
+    <component id="label" type="Insert">
+        <binding name="value" value="ognl:label"/>
+    </component>
+    
+    <component id="label2" copy-of="label"/>
+
+    <component id="condShowDescription" type="If">
+        <binding name="condition" value="settings.showDescription"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="condShowDescription2" copy-of="condShowDescription"/>
+
+</component-specification>

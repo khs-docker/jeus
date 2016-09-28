@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.Handler.CreatePage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Handler Create"/>
+    </component>
+
+    <component id="wizTabPanel" type="jeus:WizardTabPanel">
+        <binding name="tabNames" value="ognl:new java.lang.String[]{'create'}"/>
+    </component>
+
+    <component id="create" type="Block"/>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:Handler.create.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="type" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:Handler.type.label"/>
+        <binding name="value" value="ognl:type"/>
+    </component>
+
+    <component id="name" type="jeus:Field">
+        <binding name="field" value="ognl:components.nameField"/>
+    </component>
+
+    <component id="nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="handler"/>
+        <binding name="elementName" value="literal:name"/>
+        <binding name="translator" value="bean:nameTranslator"/>
+        <binding name="validators" value="validators:required,pattern=\w*[%common.exception.0066],$nameValidator"/>
+    </component>
+
+    <component id="common_required" type="Block"/>
+    <component id="common_advanced" type="Block"/>
+
+    <component id="console_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="file_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="user_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="socket_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="level" type="jeus:Field">
+        <binding name="field" value="ognl:components.levelField"/>
+    </component>
+
+    <component id="levelField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="ognl:handler"/>
+        <binding name="elementName" value="literal:level"/>
+        <binding name="model" value="ognl:@jeus.tool.webadmin.page.EnumerationSet@LOG_LEVELS"/>
+        <binding name="uppercase" value="ognl:true"/>
+    </component>
+
+    <component id="encoding" type="jeus:Field">
+        <binding name="field" value="ognl:components.encodingField"/>
+    </component>
+
+    <component id="encodingField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:handler"/>
+        <binding name="elementName" value="literal:encoding"/>
+    </component>
+
+    <component id="choose" type="contrib:Choose"/>
+    <component id="condConsole" type="contrib:When">
+        <binding name="condition" value="ognl:console"/>
+    </component>
+    <component id="condFile" type="contrib:When">
+        <binding name="condition" value="ognl:file"/>
+    </component>
+    <component id="condSmtp" type="contrib:When">
+        <binding name="condition" value="ognl:smtp"/>
+    </component>
+    <component id="condUser" type="contrib:When">
+        <binding name="condition" value="ognl:user"/>
+    </component>
+    <component id="condSocket" type="contrib:When">
+        <binding name="condition" value="ognl:socket"/>
+    </component>
+
+    <component id="filter_class" type="jeus:Field">
+        <binding name="field" value="ognl:components.filter_classField"/>
+    </component>
+
+    <component id="filter_classField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:handler"/>
+        <binding name="elementName" value="literal:filterClass"/>
+    </component>
+
+    <component id="file_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.file_nameField"/>
+    </component>
+
+    <component id="file_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:handler"/>
+        <binding name="elementName" value="literal:fileName"/>
+    </component>
+
+    <component id="valid" type="jeus:Field">
+        <binding name="field" value="ognl:components.validField"/>
+    </component>
+
+    <component id="validField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="handler"/>
+        <binding name="elementName" value="validUnit == 'Hours' ? 'validHour' : 'validDay'"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="valid_unitField" type="jeus:PropertySelection">
+        <binding name="value" value="ognl:validUnit"/>
+        <binding name="model" value="ognl:@jeus.tool.webadmin.page.EnumerationSet@getPropertySelectionModel({'Days','Hours'})"/>
+    </component>
+
+    <component id="buffer_size" type="jeus:Field">
+        <binding name="field" value="ognl:components.buffer_sizeField"/>
+        <binding name="unit" value="message:common.unit.bytes"/>
+    </component>
+
+    <component id="buffer_sizeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="handler"/>
+        <binding name="elementName" value="literal:bufferSize"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="append" type="jeus:Field">
+        <binding name="field" value="ognl:components.appendField"/>
+    </component>
+
+    <component id="appendField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:handler"/>
+        <binding name="elementName" value="literal:append"/>
+    </component>
+
+    <component id="handler_class" type="jeus:Field">
+        <binding name="field" value="ognl:components.handler_classField"/>
+    </component>
+
+    <component id="handler_classField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="handler"/>
+        <binding name="elementName" value="literal:handlerClass"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="handler_property" type="jeus:Field">
+        <binding name="label" value="ognl:@jeus.tool.webadmin.util.JAXBUtils@getLabel(page, handler, 'handlerProperty')"/>
+        <binding name="description" value="ognl:@jeus.tool.webadmin.util.JAXBUtils@getDescription(page, handler, 'handlerProperty')"/>
+        <binding name="usage" value="message:common.usage.property"/>
+        <binding name="field" value="ognl:components.handler_propertyField"/>
+    </component>
+
+    <component id="handler_propertyField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:handlerProperty"/>
+        <binding name="elementName" value="literal:property"/>
+        <binding name="translator" value="bean:propertyTranslator"/>
+    </component>
+
+    <component id="formatter_class" type="jeus:Field">
+        <binding name="field" value="ognl:components.formatter_classField"/>
+    </component>
+
+    <component id="formatter_classField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:handler"/>
+        <binding name="elementName" value="literal:formatterClass"/>
+    </component>
+
+    <component id="formatter_property" type="jeus:Field">
+        <binding name="label" value="ognl:@jeus.tool.webadmin.util.JAXBUtils@getLabel(page, handler, 'formatterProperty')"/>
+        <binding name="description" value="ognl:@jeus.tool.webadmin.util.JAXBUtils@getDescription(page, handler, 'formatterProperty')"/>
+        <binding name="usage" value="message:common.usage.property"/>
+        <binding name="field" value="ognl:components.formatter_propertyField"/>
+    </component>
+
+    <component id="formatter_propertyField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:formatterProperty"/>
+        <binding name="elementName" value="literal:property"/>
+        <binding name="translator" value="bean:propertyTranslator"/>
+    </component>
+
+    <component id="smtp_host_address" type="jeus:Field">
+        <binding name="field" value="ognl:components.smtp_host_addressField"/>
+    </component>
+
+    <component id="smtp_host_addressField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="handler"/>
+        <binding name="elementName" value="literal:smtpHostAddress"/>
+		<binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="from_address" type="jeus:Field">
+        <binding name="field" value="ognl:components.from_addressField"/>
+    </component>
+
+    <component id="from_addressField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="handler"/>
+        <binding name="elementName" value="literal:fromAddress"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="to_address" type="jeus:Field">
+        <binding name="field" value="ognl:components.to_addressField"/>
+    </component>
+
+    <component id="to_addressField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="handler"/>
+        <binding name="elementName" value="literal:toAddress"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="cc_address" type="jeus:Field">
+        <binding name="field" value="ognl:components.cc_addressField"/>
+    </component>
+
+    <component id="cc_addressField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:handler"/>
+        <binding name="elementName" value="literal:ccAddress"/>
+    </component>
+
+    <component id="bcc_address" type="jeus:Field">
+        <binding name="field" value="ognl:components.bcc_addressField"/>
+    </component>
+
+    <component id="bcc_addressField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:handler"/>
+        <binding name="elementName" value="literal:bccAddress"/>
+    </component>
+
+    <component id="send_for_all_messages" type="jeus:Field">
+        <binding name="field" value="ognl:components.send_for_all_messagesField"/>
+    </component>
+
+    <component id="send_for_all_messagesField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:handler"/>
+        <binding name="elementName" value="literal:sendForAllMessages"/>
+    </component>
+
+    <component id="smtp_blind" copy-of="file_blind"/>
+
+    <component id="createOk" type="Submit">
+        <binding name="value" value="message:common.label.create"/>
+        <binding name="listener" value="ognl:listeners.onCreateOk"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+    <component id="address" type="jeus:Field">
+        <binding name="field" value="ognl:components.addressField"/>
+    </component>
+
+    <component id="addressField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="handler"/>
+        <binding name="elementName" value="literal:address"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="port" type="jeus:Field">
+        <binding name="field" value="ognl:components.portField"/>
+    </component>
+
+    <component id="portField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="handler"/>
+        <binding name="elementName" value="literal:port"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:required,min=1"/>
+    </component>
+
+    <bean name="propertyCodec" class="jeus.tool.webadmin.component.codec.HandlerPropertyCodec">
+        <set name="objectFactoryName" value="ognl:'jeus.xml.binding.jeusDD.ObjectFactory'"/>
+    </bean>
+
+    <bean name="nameValidator" class="jeus.tool.webadmin.page.Handler.NameValidator">
+        <set name="handlers" value="handlers"/>
+    </bean>
+    
+	<bean name="nameTranslator" class="jeus.tool.webadmin.translator.DefaultStringTranslator">
+		<set name="default" value="beans.nameValidator.generateName()"/>
+	</bean>
+
+    <bean name="propertyTranslator" class="jeus.tool.webadmin.component.translator.HandlerPropertyTranslator" lifecycle="none">
+        <set name="objectFactoryName" value="literal:jeus.xml.binding.jeusDD.ObjectFactory"/>
+    </bean>
+
+    <property name="handler" persist="session"/>
+    <property name="type" persist="session"/>
+    <property name="loggingName" persist="session"/>
+</page-specification>

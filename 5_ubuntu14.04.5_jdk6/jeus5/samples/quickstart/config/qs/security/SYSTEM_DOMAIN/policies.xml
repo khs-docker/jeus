@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<policies xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <policy>
+        <role-permissions>
+            <role-permission>
+                <principal>jeus</principal>
+                <principal>anonymous</principal>
+                <role>administrator</role>
+                <classname>jeus.security.resource.RolePermission</classname>
+            </role-permission>
+        </role-permissions>
+        <resource-permissions>
+            <context-id>default</context-id>
+            <resource-permission>
+                <role>administrator</role>
+                <resource>jeus.*</resource>
+                <actions>*</actions>
+                <classname>jeus.security.resource.ResourcePermission</classname>
+            </resource-permission>
+        </resource-permissions>
+    </policy>
+</policies>
+

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="Shift-JIS"?>
+<description>        
+    <text key="file-publishType.publish-path"><![CDATA[
+                            [Description]: ウェブサービス WSDLが保存されるディレクトリを表示します。
+                        ]]>        
+    </text>
+         
+    <text key="http-publishType.wsdl-url"><![CDATA[                        [Description]: 配置されたWebサービスのWSDLファイルをWebサービスのコンテキスト内で基本的に設定される既存のWSDL公開URL(一般的に'/{サービス名}?wsdl')に付加的にこのURLでも公開できます。                            (コンテキスト以後のURLのみ設定でき、'/specified_url'と同じ方式で設定します。)                    ]]>        
+    </text>
+         
+    <text key="securityType.response-sender"><![CDATA[
+                            [Description]: ウェブサービスが SOAPメッセージを処理した後に、応答を返すとき、保安が適用されたメッセージを送るための設定です。
+                        ]]>        
+    </text>
+         
+    <text key="serviceType.wsdl-publish"><![CDATA[
+                            [Description]: WSDLを公開する方式を設定します。
+                        ]]>        
+    </text>
+         
+    <text key="http-publishType.server-url"><![CDATA[
+                            [Description]: 配置されたウェブサービスのWSDLファイルを公開するサーバーの URLです。
+                        ]]>        
+    </text>
+         
+    <text key="portType.port-component-name"><![CDATA[
+                            [Description]: ウェブ・サービス・エンドポイントを区別するための名前を表示します。
+                                &lt;port-component-name>は、標準配置記述子
+webservice.xmlの
+                                &lt;port-component-name>に相応します。
+                            [Dependency]:/webservices/webservice-description/port-component/port-component-name 
+                        ]]>        
+    </text>
+         
+    <text key="file-publishType.secure-server-url"><![CDATA[
+                            [Description]: 配置されたウェブサービスの WSDLファイルを公開するサーバーの URLです。
+                        ]]>        
+    </text>
+         
+    <text key="portType.ejb-transport-guarantee"><![CDATA[
+                            [Description]: EJBエンドポイントで取り交わすメッセージに大韓
+                                気密性(confidentiality)と無欠性(integrity) 構成を表示する.
+                                設定可能な値は、 ‘NONE’, ‘CONFIDENTIAL’または‘INTEGRAL’です。 
+                        ]]>        
+    </text>
+         
+    <text key="wsdl-publishType.file-publish"><![CDATA[
+                                [Description]: file方式しい公開されるWSDLを示します。
+                                    公開されたWSDLで importするschemaは、ファイル相手パスによって参照されます。
+                            ]]>        
+    </text>
+         
+    <text key="file-publishType.server-url"><![CDATA[
+                            [Description]: 配置されたウェブサービスのWSDLファイルを公開するサーバーの URLです。
+                        ]]>        
+    </text>
+         
+    <text key="jeus-webservices-ddType.service-info-page"><![CDATA[                        [Description]: サービスがWebブラウザに呼び出されたときに出力される画面をカスタマイズするする際に使用します。担当するページの“/”で始まるコンテキスト相対パスを指定します。                    ]]>        
+    </text>
+         
+    <text key="ejb-login-configType.auth-method"><![CDATA[
+                            [Description]: 認証方法を設定します。
+                                'BASIC', 'CLIENT-CERT', 'DIGEST', 'FORM' の値のなかで1つを選択します。
+                        ]]>        
+    </text>
+         
+    <text key="portType.transaction"><![CDATA[                        [Description]: Webサービスのトランザクション(WS-Transaction)を使用することを示します。                    ]]>        
+    </text>
+         
+    <text key="securityType.request-receiver"><![CDATA[
+                            [Description]: ウェブサービス・クライアントの保安メッセージ要請を処理するための設定です。
+                        ]]>        
+    </text>
+         
+    <text key="portType.rm"><![CDATA[
+                            [Description]: ウェブサ?ビスの Reliable メッセ?ジング(WS-ReliableMessaging)を使います.
+                        ]]>        
+    </text>
+         
+    <text key="portType.tie-class"><![CDATA[
+                            [Description]: ウェブサービス・エンドポイントURLとウェブサービスEndpintインターフェースを
+                                連結するclassを表示します。
+                                配置時に自動生成されるのでウェブサービス配置子が表示する必要はありません。
+                        ]]>        
+    </text>
+         
+    <text key="portType.soapver"><![CDATA[
+                            [Description]: 配置されたウェブサービスで サービスする SOAP メッセージのバージョンを表示します。
+                        ]]>        
+    </text>
+         
+    <text key="portType.security"><![CDATA[
+                            [Description]: ウェブサービスの保安(WS-Security)のための設定です。 
+                        ]]>        
+    </text>
+         
+    <text key="ejb-login-configType.realm-name"><![CDATA[
+                            [Description]: 保安政策が適用されるドメインを設定します。
+                        ]]>        
+    </text>
+         
+    <text key="portType.ejb-endpoint-url"><![CDATA[
+                            [Description]: EJBエンドポイントにアクセスできるエンドポイント URLを表示します。
+                                EJBエンドポイントでのみ使用します。
+                        ]]>        
+    </text>
+         
+    <text key="serviceType.webservice-description-name"><![CDATA[
+                            [Description]: WSDLファイルで、関連されたウェブサービスエンドポイント名前です。
+                                &lt;webservice-description-name>は、標準配置記述者 webservice.xmlの 
+                                &lt;webservice-description-name>に対応します。
+                            [Dependency]:/webservices/webservice-description/webservice-description-name    
+                        ]]>        
+    </text>
+         
+    <text key="http-publishType.secure-server-url"><![CDATA[
+                            [Description]: 配置されたウェブサービスの WSDLファイルを公開するサーバーの URLです。
+                        ]]>        
+    </text>
+         
+    <text key="jeus-webservices-ddType.ejb-context-path"><![CDATA[
+                            [Description]: 配置するEJBウェブサービスのためのエンドポイントURLのコンテクスト(Context)のパスを表示します。
+                                EJBエンドポイントでのみ使用します。
+                        ]]>        
+    </text>
+         
+    <text key="jeus-webservices-ddType.ejb-login-config"><![CDATA[
+                            [Description]: EJBウェブサービスエンドポイントURLに対してクライアントが認証を受けるのに
+                                使われる認証方法と認証領域を表示します。EJBエンドポイントでのみ使用します。  
+                        ]]>        
+    </text>
+         
+    <text key="portType.service-property"><![CDATA[                        [Description]: 特定サービスのエンドポイント・ポートtに設定するプロパティを表示します。                    ]]>        
+    </text>
+         
+    <text key="jeus-webservices-dd"><![CDATA[
+                    [Description]: JEUSウェブサービス設定文書のroot element
+                ]]>        
+    </text>
+         
+    <text key="serviceType.port"><![CDATA[
+                            [Description]: ウェブサービスのport情報を設定します。
+                        ]]>        
+    </text>
+         
+    <text key="jeus-webservices-ddType.service"><![CDATA[
+                            [Description]: 配置されるウェブサービスを表示します。
+                        ]]>        
+    </text>
+         
+    <text key="wsdl-publishType.http-publish"><![CDATA[
+                                [Description]: http方式で公開されるWSDLを示します。
+                                    公開されたWSDLでimportするschemaは、HTTP URLによって参照されます。
+                            ]]>        
+    </text>
+         
+    <text key="rmType.client-provider"><![CDATA[
+                            [Description]: RM Web Serviceがクライアントモ?ドで動作することを現わします. デフォルトは "false"です
+                        ]]>        
+    </text>
+ </description>

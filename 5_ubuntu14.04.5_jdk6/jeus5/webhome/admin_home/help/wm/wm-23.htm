@@ -1,0 +1,232 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 23 MQ </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('23 MQ', 'wm-22.htm', 'wm-24.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left"><A NAME="mq">23 MQ
+ </A>리소스
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMNormalText" ALIGN="left">앞서 설명한 몇 가지 리소스 외 JEUS와연결 할 수 있는 비정규화된 리소스로 MQ리소스가 있다. JEUS에서 설정할 수 있는 MQ 리소스로는 IBM 
+MQ와 SonicMQ가 있다. IBM MQ는 IBM에서 Message Queue를 구현한 제품이고, Sonic MQ는 Sonic Software 
+사(www.sonicsoftware.com)에서 messaging을구현한 제품이다.
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMNormalText" ALIGN="left">IBM MQ는 JEUS의 JMS와통합되어있다. 그러므로 J2EE Connector로 IBM MQ를사용하는 것은 피하고, JMS API를 사용한다. 
+이는 SONIC MQ 제품도 마찬가지이다.
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMHeading2">23.1 MQ 리소스 구성
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMHeading3"><A NAME="mq_overview"></A>23.1.1 개요
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-23.htm#mq">MQ
+ </A>&gt; MQ 데이터 소스 개요
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMNormalText">이 화면에는 현재 JEUS 매니저에 등록된 MQ 데이터 소스의 목록이 출력된다. 목록에서 MQ 데이터 소스이름을 클릭하면 해당 설정을 볼 수 있으며 
+명령에서 바인드를 클릭하면 MQ 데이터 소스가 JNDI에 등록된다.
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMNormalText">JNDI에대한 자세한 내용은 JEUS Server 안내서를 참고하기 바란다
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMHeading3">23.1.2 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt">MQ
+ </A>&gt; 새 MQ데이터 소스 생성
+ </P>
+<A NAME="1008"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">리소스
+ </SPAN>의
+ <SPAN CLASS="JMGUIWidget">MQ
+ </SPAN>폴더를 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">새 MQ 
+ </SPAN><SPAN CLASS="JMGUIWidget">데이터 
+ </SPAN><SPAN CLASS="JMGUIWidget">소스 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>링크를 클릭하거나 
+ <SPAN CLASS="JMGUIWidget">MQ
+ </SPAN>폴더의 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">새 MQ 
+ </SPAN><SPAN CLASS="JMGUIWidget">데이터 
+ </SPAN><SPAN CLASS="JMGUIWidget">소스 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>를 선택한다.
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMNormalText">2. Vendor를선택한다. Vendor를 선택하면 아래 리소스 타입을 선택하는 필드가 업데이트 된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="517" SRC="images/image223.jpg" HEIGHT="179"></P>
+
+<P CLASS="JMCaption">그림 189 새 MQ 데이터 소스 생성 - 1단계 리소스 타입 설정
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMNormalText">3. 리소스 타입을 선택한 다음 다음 버튼을 누른다.
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMNormalText">4. 데이터 소스 속성들을 입력한다. 
+ <SPAN CLASS="JMGUIWidget">추가 
+ </SPAN><SPAN CLASS="JMGUIWidget">속성
+ </SPAN>에는 데이터 소스의 추가적인 속성들을 입력한다. 입력 형식은 &ldquo;키[:자료형]=값&rdquo;이다. 자료형이 생략될 경우는 java.lang.String이 
+기본 타입이다. 예를 들어 데이터소스 클래스에 setMaxStmtCount(int count) 라는 메소드가 존재하고 10이라는 값을 입력하고자 
+한다면, &ldquo;maxStmtCount:int=10&rdquo; 으로 입력하면 된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="517" SRC="images/image224.jpg" HEIGHT="383"></P>
+
+<P CLASS="JMCaption">그림 190 새 MQ 데이터 소스 생성 - 2단계 속성 설정
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMNormalText">5. 추가할 데이터소스를 생성과 동시에 바인딩 하고 싶다면 바인딩 선택 항목을 선택한 후 
+ <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다. 
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="511" SRC="images/image225.jpg" HEIGHT="100"></P>
+
+<P CLASS="JMCaption">그림 191 새 MQ 데이터 소스 생성 - 3단계 생성
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMNormalText">6. 데이터 소스가 추가되면 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">MQ
+ </SPAN>폴더에 MQ 데이터 소스가 나타난다.
+ </P>
+<A NAME="1014"></A>
+<P CLASS="JMHeading3">23.1.3 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt">MQ
+ </A>&gt; 
+ <A HREF="wm-23.htm#mq_overview">MQ 데이터 소스 개요
+ </A>&gt; 삭제
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">리소스
+ </SPAN>의
+ <SPAN CLASS="JMGUIWidget">MQ
+ </SPAN>폴더를 클릭하면 MQ 데이터소스 개요 화면이 나타난다.
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMNormalText">2. 화면의 WebT 데이터 소스 목록에서 삭제하고자 하는 MQ 데이터 소스의 
+ <A HREF="http://localhost:9744/webadmin/application?service=direct/1/JeusServiceTmaxExtResourceService_Overview/deleteLink&amp;sp=Swebtdatasource1"><IMG BORDER="0" WIDTH="11" SRC="images/image033.gif" HEIGHT="13"></A>아이콘을 클릭한다.
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMNormalText">3. MQ 데이터 소스가 목록에서 사라지며 노드트리에서도 사라진다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="505" SRC="images/image226.jpg" HEIGHT="145"></P>
+
+<P CLASS="JMCaption">그림 192MQ 데이터 소스 삭제
+ </P>
+<A NAME="1018"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMNoteWarningChar">참고
+ </SPAN><SPAN CLASS="JMNoteWarningChar">:
+ </SPAN>MQ 데이터 소스가 목록에서 사라진다 해도 실제 JNDI에서 사라진 것은 아니다. 따라서 삭제를 완전하게 하기 위해서는 JEUS 매니저를 재시작 
+해야한다.
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMHeading2"><A NAME="mq_conf"></A>23.2 MQ 데이터 소스 설정
+ </P>
+<A NAME="1020"></A>
+<P CLASS="JMHeading3">23.2.1 기본 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-22.htm#webt">MQ
+ </A>&gt; 
+ <A HREF="wm-23.htm#mq_overview">MQ 데이터 소스 개요
+ </A>&gt; 
+ <A HREF="wm-23.htm#mq_conf">설정
+ </A>&gt; 기본 설정
+ </P>
+<A NAME="1021"></A>
+<P CLASS="JMNormalText">1. 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">MQ
+ </SPAN>폴더에서 수정하고자 하는 MQ 데이터 소스를 클릭하거나 
+ <SPAN CLASS="JMGUIWidget">MQ 
+ </SPAN><SPAN CLASS="JMGUIWidget">데이터 
+ </SPAN><SPAN CLASS="JMGUIWidget">소스 
+ </SPAN><SPAN CLASS="JMGUIWidget">개요
+ </SPAN>화면에서 MQ 데이터 소스를 클릭한다.
+ </P>
+<A NAME="1022"></A>
+<P CLASS="JMNormalText">2. 탭에서 
+ <SPAN CLASS="JMGUIWidget">기본 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1023"></A>
+<P CLASS="JMNormalText">3. 속성을 변경한다. 변경된 사항은 다음 부트 혹은 바인드 시에 적용된다.
+ </P>
+<A NAME="1024"></A>
+<P CLASS="JMNormalText">4. <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1025"></A>
+<P CLASS="JMHeading2">23.3 MQ 데이터 소스 제어
+ </P>
+<A NAME="1026"></A>
+<P CLASS="JMHeading3">23.3.1 MQ 데이터 소스 바인드
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-23.htm#mq">MQ
+ </A>&gt; 바인드
+ </P>
+<A NAME="1027"></A>
+<P CLASS="JMNormalText">MQ 데이터 소스 바인드는 네이밍 서버에 데이터 소스 객체를 바인딩하여 어플리케이션이 Lookup하여 사용할 수 있게하는 기능이다.
+ </P>
+<A NAME="1028"></A>
+<P CLASS="JMNormalText">1. 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">리소스
+ </SPAN>의
+ <SPAN CLASS="JMGUIWidget">MQ
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1029"></A>
+<P CLASS="JMNormalText">2. MQ 데이터 소스 목록에서 바인딩하고자 하는 데이터 소스를 선택한 후 
+ <SPAN CLASS="JMGUIWidget">바인드
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1030"></A>
+<P CLASS="JMNormalText">3. MQ 데이터 소스 목록에서 해당 MQ이터 소스의 
+ <SPAN CLASS="JMGUIWidget">바인드
+ </SPAN>버튼이 비활성화 되며 노드 트리에는 활성화된 아이콘(
+ <IMG BORDER="0" WIDTH="16" SRC="images/image227.gif" HEIGHT="16">)이 나타난다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="518" SRC="images/image228.jpg" HEIGHT="29"></P>
+
+<P CLASS="JMCaption">그림 193MQ 데이터 소스 바인드
+ </P>
+<!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

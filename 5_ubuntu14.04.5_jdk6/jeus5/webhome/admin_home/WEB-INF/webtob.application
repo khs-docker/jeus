@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<application name="webadmin">
+
+    <description>JEUS Web Administration Application</description>
+
+    <meta key="org.apache.tapestry.accepted-locales" value="ko,en,ja,zh"/>
+    <meta key="jeus.tool.webadmin.supported-help-locales" value="ko"/>
+    
+    <!-- Main Pages -->
+    <page name="Login" 		    specification-path="/jeus/tool/webadmin/page/WebtobLogin.page"/>
+    <page name="Home" 		    specification-path="/jeus/tool/webadmin/page/WebtobHome.page"/>
+    <page name="Main" 		    specification-path="/jeus/tool/webadmin/page/RemoteWebtobControlService/Overview.page"/>
+    <!--<page name="Home" 		    specification-path="/jeus/tool/webadmin/page/RemoteWebtobControlService/Overview.page"/>-->
+    <page name="Settings" 		    specification-path="/jeus/tool/webadmin/page/Settings.page"/>
+
+    <page name="StaleSession" specification-path="/jeus/tool/webadmin/page/StaleSession.page"/>
+    <page name="StaleLink" specification-path="/jeus/tool/webadmin/page/StaleLink.page"/>
+    <page name="Exception" 	  specification-path="/jeus/tool/webadmin/page/Exception.page"/>
+
+    <page name="Etc_ElementDocument" 	specification-path="/jeus/tool/webadmin/page/Etc/ElementDocument.page"/>
+    
+    <!-- Remote Webtob Control -->
+    <page name="RemoteWebtobControlService_Overview" specification-path="/jeus/tool/webadmin/page/RemoteWebtobControlService/Overview.page"/>
+    <page name="RemoteWebtobControlService_Create" specification-path="/jeus/tool/webadmin/page/RemoteWebtobControlService/Create.page"/>
+    <page name="RemoteWebtobControlService_Configuration" specification-path="/jeus/tool/webadmin/page/RemoteWebtobControlService/Configuration.page"/>
+    <page name="RemoteWebtobControlService_Statistics" specification-path="/jeus/tool/webadmin/page/RemoteWebtobControlService/Statistics.page"/>
+
+    <library id="contrib" specification-path="/org/apache/tapestry/contrib/Contrib.library"/>
+    <library id="jeus"    specification-path="/jeus/tool/webadmin/Jeus.library"/>
+</application>

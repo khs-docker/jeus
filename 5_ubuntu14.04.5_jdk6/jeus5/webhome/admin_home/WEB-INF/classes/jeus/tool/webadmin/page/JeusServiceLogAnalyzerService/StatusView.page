@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceLogAnalyzerService.FramesetPage">
+
+	<inject property="userAgent" type="state" object="UserAgent"/>
+	
+    <component id="viewBorder" type="jeus:ViewBorder">
+        <binding name="title" value="message:la.status.title"/>
+    </component>
+
+	<component id="status" type="Any">
+        <binding name="element" value="literal:iframe"/>
+        <binding name="src" value="statusURL"/>
+    </component>
+
+    <asset name="refresh" path="context:/image/refresh_out.gif"/>
+    
+</page-specification>

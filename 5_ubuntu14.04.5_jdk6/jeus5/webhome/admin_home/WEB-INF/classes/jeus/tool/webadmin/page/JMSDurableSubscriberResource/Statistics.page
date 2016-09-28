@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JMSDurableSubscriberResource.StatisticsPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JMSDurableSubscriberResource Statistics"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@JMSDURABLESUBSCRIBERRESOURCE_NAMES"/>
+    </component>
+
+    <component id="refreshButton" type="Any">
+        <binding name="element" value="literal:input"/>
+        <binding name="value" value="message:common.label.refresh"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:dsr.statistics.title"/>
+        
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="id" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:dsr.statistics.id.label"/>
+        <binding name="value" value="ognl:durableSubscriber.uniqueId"/>
+    </component>
+
+    <component id="client_id" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:dsr.statistics.client_id.label"/>
+        <binding name="value" value="ognl:durableSubscriber.clientId"/>
+    </component>
+
+    <component id="name" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:dsr.statistics.name.label"/>
+        <binding name="value" value="ognl:durableSubscriber.name"/>
+    </component>
+
+    <component id="remainings" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:dsr.statistics.remaining_messages.label"/>
+        <binding name="value" value="ognl:durableSubscriber.remainings"/>
+    </component>
+
+    <component id="selector" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:dsr.statistics.selector.label"/>
+        <binding name="value" value="ognl:durableSubscriber.selector"/>
+    </component>
+
+</page-specification>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <servlet>
+        <servlet-name>DataEchoServlet</servlet-name>
+        <servlet-class>com.tmax.qa.datatypes.DataEchoImpl</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DataEchoServlet</servlet-name>
+        <url-pattern>/DataEchoService</url-pattern>
+    </servlet-mapping>
+</web-app>
+

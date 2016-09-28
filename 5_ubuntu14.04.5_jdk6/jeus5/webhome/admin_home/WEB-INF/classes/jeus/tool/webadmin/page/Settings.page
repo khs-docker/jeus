@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.SettingsPage">
+	<inject property="settings" type="state" object="Settings"/>
+	
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Settings"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{pageName, 'SettingsBackUp'}"/>
+        <binding name="subtabNames" value="{'appearance', 'xml', 'refresh'}"/>
+    </component>
+
+    <component id="appearance" type="Block"/>
+    <component id="xml" type="Block"/>
+    <component id="refresh" type="Block"/>
+
+    <component id="appearanceForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:settings.appearance.title"/>
+        <binding name="listener" value="listener:onAppearanceOk"/>
+        <binding name="description" value="message:settings.appearance.description"/>
+    </component>
+
+    <component id="show_description" type="jeus:Field">
+        <binding name="field" value="component:show_descriptionField"/>
+        <binding name="label" value="message:settings.show_description.label"/>
+        <binding name="description" value="message:settings.show_description.description"/>
+    </component>
+
+    <component id="show_descriptionField" type="Checkbox">
+        <binding name="value" value="settings.showDescription"/>
+    </component>
+
+    <component id="language" type="jeus:Field">
+        <binding name="field" value="component:languageField"/>
+        <binding name="label" value="message:settings.language.label"/>
+        <binding name="description" value="message:settings.language.description"/>
+    </component>
+
+    <component id="languageField" type="PropertySelection">
+        <binding name="value" value="engine.locale"/>
+        <binding name="model" value="new jeus.tool.webadmin.page.LanguagePropertySelectionModel(requestCycle)"/>
+    </component>
+
+    <component id="xmlForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:settings.xml.title"/>
+        <binding name="listener" value="listener:onXmlOk"/>
+        <binding name="description" value="message:settings.xml.description"/>
+    </component>
+
+    <component id="keep_comments" type="jeus:Field">
+        <binding name="field" value="component:keep_commentsField"/>
+        <binding name="label" value="message:settings.keep_comments.label"/>
+        <binding name="description" value="message:settings.keep_comments.description"/>
+    </component>
+
+    <component id="keep_commentsField" type="Checkbox">
+        <binding name="value" value="settings.keepComments"/>
+    </component>
+
+    <component id="use_element_ordering" type="jeus:Field">
+        <binding name="field" value="component:use_element_orderingField"/>
+        <binding name="label" value="message:settings.use_element_ordering.label"/>
+        <binding name="description" value="message:settings.use_element_ordering.description"/>
+    </component>
+
+    <component id="use_element_orderingField" type="Checkbox">
+        <binding name="value" value="settings.useElementOrdering"/>
+    </component>
+
+    <component id="refreshForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:settings.refresh.title"/>
+        <binding name="listener" value="listener:onRefreshOk"/>
+        <binding name="description" value="message:settings.refresh.description"/>
+    </component>
+
+    <component id="cluster_interval" type="jeus:Field">
+        <binding name="field" value="component:cluster_intervalField"/>
+        <binding name="unit" value="message:common.unit.sec"/>
+        <binding name="description" value="message:settings.main_interval.description"/>
+    </component>
+
+    <component id="cluster_intervalField" type="TextField">
+        <binding name="value" value="settings.clusterInterval"/>
+        <binding name="displayName" value="message:settings.main_interval.label"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="node_interval" type="jeus:Field">
+        <binding name="field" value="component:node_intervalField"/>
+        <binding name="unit" value="message:common.unit.sec"/>
+        <binding name="description" value="message:settings.node_interval.description"/>
+    </component>
+
+    <component id="node_intervalField" type="TextField">
+        <binding name="value" value="settings.nodeInterval"/>
+        <binding name="displayName" value="message:settings.node_interval.label"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="lastatus_interval" type="jeus:Field">
+        <binding name="field" value="component:lastatus_intervalField"/>
+        <binding name="unit" value="message:common.unit.sec"/>
+        <binding name="description" value="message:settings.lastatus_interval.description"/>
+    </component>
+
+    <component id="lastatus_intervalField" type="TextField">
+        <binding name="value" value="settings.lastatusInterval"/>
+        <binding name="displayName" value="message:settings.lastatus_interval.label"/>
+        <binding name="translator" value="translator:number"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="connect_timeout" type="jeus:Field">
+        <binding name="field" value="component:connect_timeoutField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+        <binding name="description" value="message:settings.connect_timeout.description"/>
+    </component>
+
+    <component id="connect_timeoutField" type="TextField">
+        <binding name="value" value="settings.connectTimeout"/>
+        <binding name="displayName" value="message:settings.connect_timeout.label"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="socket_timeout" type="jeus:Field">
+        <binding name="field" value="component:socket_timeoutField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+        <binding name="description" value="message:settings.socket_timeout.description"/>
+    </component>
+
+    <component id="socket_timeoutField" type="TextField">
+        <binding name="value" value="settings.socketTimeout"/>
+        <binding name="displayName" value="message:settings.socket_timeout.label"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+</page-specification>

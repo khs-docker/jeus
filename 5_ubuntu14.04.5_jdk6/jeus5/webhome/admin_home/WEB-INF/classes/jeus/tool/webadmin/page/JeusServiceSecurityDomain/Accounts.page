@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusServiceSecurityDomain.AccountsPage">
+
+    <inject property="webadminVisit" type="state" object="visit"/>
+    <inject property="jaxbSource" type="state" object="JAXBSource"/>
+    
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Security Accounts"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@JEUSSERVICE_SECURITYDOMAIN_NAMES"/>
+    </component>
+
+    <component id="accountsForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.accounts.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+    <component id="accountsTab" type="jeus:InnerTabPanel">
+        <binding name="model" value="new jeus.tool.webadmin.component.GeneralTabModel(new java.lang.String[]{'domain.accounts.memory.label', 'domain.accounts.repository.label'}, new java.lang.String[]{'memory', 'repository'})"/>
+    </component>
+
+    <component id="memory" type="Block"/>
+    <component id="repository" type="Block"/>
+
+    <component id="memoryForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="accounts" type="jeus:Field">
+        <binding name="field" value="components.accountsField"/>
+        <binding name="label" value="message:domain.accounts.accounts.label"/>
+    </component>
+
+    <component id="accountsField" type="jeus:PropertySelection">
+        <binding name="model" value="model"/>
+        <binding name="value" value="selectedAccount"/>
+        <binding name="size" value="10"/>
+    </component>
+
+    <component id="modify" type="Submit">
+        <binding name="value" value="message:domain.services.modify.label"/>
+        <binding name="listener" value="listeners.onModify"/>
+    </component>
+
+    <component id="remove" type="jeus:ConfirmSubmit">
+        <binding name="value" value="message:domain.services.remove.label"/>
+        <binding name="message" value="message:JEUSForm.remove.confirm"/>
+        <binding name="listener" value="listeners.onRemoveOk"/>
+    </component>
+
+    <component id="create" type="Submit">
+        <binding name="value" value="message:domain.services.create.label"/>
+        <binding name="listener" value="listeners.onCreate"/>
+    </component>
+
+    <component id="repositoryForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="userTableLabel" type="Insert">
+        <binding name="value" value="message:domain.accounts.repository.user_table.label"/>
+    </component>
+
+    <component id="groupTableLabel" type="Insert">
+        <binding name="value" value="message:domain.accounts.repository.group_table.label"/>
+    </component>
+
+    <component id="user_name_column" type="Insert">
+        <binding name="value" value="message:domain.accounts.name.label"/>
+    </component>
+
+    <component id="user_password_column" type="Insert">
+        <binding name="value" value="message:domain.accounts.password.label"/>
+    </component>
+
+    <component id="user_group_column" type="Insert">
+        <binding name="value" value="message:domain.accounts.group.label"/>
+    </component>
+
+    <component id="user_description_column" type="Insert">
+        <binding name="value" value="message:domain.accounts.description.label"/>
+    </component>
+
+    <component id="eachUser" type="Foreach">
+        <binding name="source" value="users"/>
+        <binding name="value" value="userView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="eachUserGroup" type="Foreach">
+        <binding name="source" value="userView.group"/>
+        <binding name="value" value="userGroupView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="user_name_value" type="Insert">
+        <binding name="value" value="userView.name"/>
+    </component>
+
+    <component id="user_password_value" type="Insert">
+        <binding name="value" value="userView.password"/>
+    </component>
+
+    <component id="user_group_value" type="Insert">
+        <binding name="value" value="userGroupView.name"/>
+    </component>
+
+    <component id="user_description_value" type="Insert">
+        <binding name="value" value="userView.description"/>
+    </component>
+
+    <component id="userDeleteLink" type="jeus:DirectLink">
+        <binding name="listener" value="listeners.onUserDeleteOk"/>
+        <binding name="parameters" value="userView.name"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.delete.confirm', userView.name)"/>
+    </component>
+
+    <component id="userConfigLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceSecurityDomain_UserConfiguration"/>
+        <binding name="parameters" value="{objectName, userView}"/>
+    </component>
+
+    <component id="delete" type="Image">
+        <binding name="image" value="assets.delete"/>
+    </component>
+
+    <component id="repositoryConfigUserForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.accounts.repository.user.label"/>
+        <binding name="listener" value="listeners.onRepositoryUserOk"/>
+        <binding name="subform" value="true"/>
+    </component>
+
+    <component id="user_name" type="jeus:Field">
+        <binding name="field" value="components.user_nameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="user_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="user"/>
+        <binding name="elementName" value="literal:name"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="user_password" type="jeus:Field">
+        <binding name="field" value="components.user_passwordField"/>
+    </component>
+
+    <component id="user_algorithmField" type="jeus:PropertySelection">
+        <binding name="value" value="userPasswordAlgorithm"/>
+        <binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@JEUS_CIPHER_ALGORITHM"/>
+    </component>
+
+    <component id="user_passwordField" type="jeus:JAXBAlgorithmField">
+        <binding name="hidden" value="true"/>
+        <binding name="parentElement" value="user"/>
+        <binding name="elementName" value="literal:password"/>
+        <binding name="algorithm" value="userPasswordAlgorithm"/>
+    </component>
+
+    <component id="user_group" type="jeus:Field">
+        <binding name="field" value="components.user_groupField"/>
+        <binding name="label" value="'Group'"/>
+    </component>
+
+    <component id="user_groupField" type="contrib:Palette">
+        <binding name="model" value="groupModel"/>
+        <binding name="selected" value="userGroupSelected"/>
+        <binding name="selectedTitleBlock" value="components.nullBlock"/>
+        <binding name="availableTitleBlock" value="components.nullBlock"/>
+    </component>
+
+    <component id="user_description" type="jeus:Field">
+        <binding name="field" value="components.user_descriptionField"/>
+    </component>
+
+    <component id="user_descriptionField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="user"/>
+        <binding name="elementName" value="literal:description"/>
+    </component>
+
+    <component id="group_name_column" type="Insert">
+        <binding name="value" value="message:domain.accounts.name.label"/>
+    </component>
+
+    <component id="sub_group_column" type="Insert">
+        <binding name="value" value="message:domain.accounts.subgroup.label"/>
+    </component>
+
+    <component id="group_description_column" type="Insert">
+        <binding name="value" value="message:domain.accounts.description.label"/>
+    </component>
+
+    <component id="eachGroup" type="Foreach">
+        <binding name="source" value="groups"/>
+        <binding name="value" value="groupView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="eachSubGroup" type="Foreach">
+        <binding name="source" value="groupView.subGroup"/>
+        <binding name="value" value="subGroupView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="group_name_value" type="Insert">
+        <binding name="value" value="groupView.name"/>
+    </component>
+
+    <component id="sub_group_value" type="Insert">
+        <binding name="value" value="subGroupView.name"/>
+    </component>
+
+    <component id="group_description_value" type="Insert">
+        <binding name="value" value="groupView.description"/>
+    </component>
+
+    <component id="groupDeleteLink" type="jeus:DirectLink">
+        <binding name="listener" value="listeners.onGroupDeleteOk"/>
+        <binding name="parameters" value="groupView.name"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.delete.confirm', groupView.name)"/>
+    </component>
+
+    <component id="delete2" copy-of="delete"/>
+
+    <component id="repositoryConfigGroupForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.accounts.repository.group.label"/>
+        <binding name="listener" value="listener:onRepositoryGroupOk"/>
+        <binding name="subform" value="true"/>
+    </component>
+
+    <component id="group_name" type="jeus:Field">
+        <binding name="field" value="components.group_nameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="group_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="group"/>
+        <binding name="elementName" value="literal:name"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="sub_group" type="jeus:Field">
+        <binding name="field" value="components.sub_groupField"/>
+        <binding name="label" value="'Sub Group'"/>
+    </component>
+
+    <component id="sub_groupField" type="contrib:Palette">
+        <binding name="model" value="groupModel"/>
+        <binding name="selected" value="subGroupSelected"/>
+        <binding name="selectedTitleBlock" value="components.nullBlock"/>
+        <binding name="availableTitleBlock" value="components.nullBlock"/>
+    </component>
+
+    <component id="group_description" type="jeus:Field">
+        <binding name="field" value="components.group_descriptionField"/>
+    </component>
+
+    <component id="group_descriptionField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="group"/>
+        <binding name="elementName" value="literal:description"/>
+    </component>
+
+    <component id="groupConfigLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceSecurityDomain_GroupConfiguration"/>
+        <binding name="parameters" value="{objectName, groupView.name}"/>
+    </component>
+
+    <component id="close" type="Submit">
+        <binding name="value" value="message:domain.services.close.label"/>
+        <binding name="listener" value="listeners.onClose"/>
+    </component>
+
+    <component id="condModify" type="If">
+        <binding name="condition" value="command != null and @jeus.tool.webadmin.page.JeusServiceSecurityDomain.SecurityCommand@MODIFY_COMMAND.equals(command)"/>
+    </component>
+
+    <component id="modifyForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.accounts.modify.title"/>
+        <binding name="subform" value="true"/>
+        <binding name="listener" value="listeners.onModifyOk"/>
+        <binding name="resetListener" value="null"/>
+    </component>
+
+    <component id="hiddenAccount" type="Hidden">
+        <binding name="value" value="selectedAccount"/>
+    </component>
+
+    <component id="modify_name" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:domain.accounts.name.label"/>
+        <binding name="value" value="selectedAccount"/>
+    </component>
+
+    <component id="modify_algorithm" type="jeus:Field">
+        <binding name="field" value="components.modify_algorithmField"/>
+        <binding name="label" value="message:domain.accounts.password.algorithm.label"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="modify_algorithmField" type="jeus:PropertySelection">
+        <binding name="value" value="modifyPasswordAlgorithm"/>
+        <binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@JEUS_CIPHER_ALGORITHM"/>
+    </component>
+
+    <component id="modify_password" type="jeus:Field">
+        <binding name="field" value="components.modify_passwordField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="modify_passwordField" type="jeus:DojoTextField">
+        <binding name="value" value="password"/>
+        <binding name="hidden" value="true"/>
+        <binding name="displayName" value="message:domain.accounts.password.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="modify_confirm_password" type="jeus:Field">
+        <binding name="field" value="components.confirm_passwordField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="modify_confirm_passwordField" type="jeus:DojoTextField">
+        <binding name="value" value="confirmPassword"/>
+        <binding name="hidden" value="true"/>
+        <binding name="displayName" value="message:domain.accounts.confirm_password.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="condCreate" type="If">
+        <binding name="condition" value="command != null and @jeus.tool.webadmin.page.JeusServiceSecurityDomain.SecurityCommand@CREATE_COMMAND.equals(command)"/>
+    </component>
+
+    <component id="createForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.accounts.create.title"/>
+        <binding name="subform" value="true"/>
+        <binding name="listener" value="listeners.onCreateOk"/>
+    </component>
+
+    <component id="name" type="jeus:Field">
+        <binding name="field" value="components.nameField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="nameField" type="jeus:DojoTextField">
+        <binding name="value" value="name"/>
+        <binding name="displayName" value="message:domain.accounts.name.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="algorithm" type="jeus:Field">
+        <binding name="field" value="components.algorithmField"/>
+        <binding name="label" value="message:domain.accounts.password.algorithm.label"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="algorithmField" type="jeus:PropertySelection">
+        <binding name="value" value="passwordAlgorithm"/>
+        <binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@JEUS_CIPHER_ALGORITHM"/>
+    </component>
+
+    <component id="password" type="jeus:Field">
+        <binding name="field" value="components.passwordField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="passwordField" type="jeus:DojoTextField">
+        <binding name="value" value="password"/>
+        <binding name="hidden" value="true"/>
+        <binding name="displayName" value="message:domain.accounts.password.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="confirm_password" type="jeus:Field">
+        <binding name="field" value="components.confirm_passwordField"/>
+        <binding name="required" value="true"/>
+    </component>
+
+    <component id="confirm_passwordField" type="jeus:DojoTextField">
+        <binding name="value" value="confirmPassword"/>
+        <binding name="hidden" value="true"/>
+        <binding name="displayName" value="message:domain.accounts.confirm_password.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+
+    <property name="selectedAccount"/>
+    <property name="userGroupSelected"/>
+    <property name="subGroupSelected"/>
+
+    <property name="modifyPasswordAlgorithm"/>
+    <property name="name"/>
+    <property name="passwordAlgorithm"/>
+    <property name="password"/>
+    <property name="confirmPassword"/>
+
+    <property name="command"/>
+    <property name="tabCommand"/>
+
+    <property name="userView"/>
+    <property name="userGroupView"/>
+    <property name="groupView"/>
+    <property name="subGroupView"/>
+    <!--<property name="gi" type="int"/>-->
+    <property name="userPasswordAlgorithm" persist="session"/>
+</page-specification>

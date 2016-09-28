@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://tapestry.apache.org/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="jeus.tool.webadmin.component.ExtendedSelection" allow-body="yes" allow-informal-parameters="yes">
+
+	<inject property="settings" type="state" object="Settings"/>
+
+    <inject property="XMLSchemaResourceSource" type="state" object="XMLSchemaResourceSource"/>
+
+    <parameter name="label" property="labelbinding"/>
+    <parameter name="description" property="descriptionbinding"/>
+
+    <inject property="externalService" object="engine-service:external" />
+
+    <parameter name="parentElement"/>
+    <parameter name="elementName"/>
+
+    <parameter name="usage"/>
+
+    <parameter name="model" required="yes"/>
+
+    <parameter name="value" required="yes"/>
+    
+	<component id="selection" type="PropertySelection" inherit-informal-parameters="yes">
+		<inherited-binding name="model" parameter-name="model"/>
+		<inherited-binding name="value" parameter-name="value"/>
+		<binding name="onChange" value="literal:this.form.events.refresh()"/>
+	</component>
+
+    <component id="condHasElemdocHref" type="If">
+        <binding name="condition" value="elemdocHref != null"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="elemdocLink" type="Any">
+    	<binding name="href" value="literal:#"/>
+        <binding name="onclick" value="'javascript:window.open(\''+elemdocHref+'\', \'elemdoc\', \'width=600,height=480,toolbars=no,resizable=yes,scrollbars=yes\');return false;return false;'"/>
+    </component>
+
+    <component id="label" type="Insert">
+        <binding name="value" value="ognl:label"/>
+    </component>
+
+    <component id="label2" copy-of="label"/>
+
+    <component id="condShowDescription" type="If">
+        <binding name="condition" value="settings.showDescription"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+</component-specification>

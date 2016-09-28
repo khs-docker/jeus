@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceWSNode.ConfigurationPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Create Web Server Engine Node"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:new java.lang.String[]{pageName}"/>
+        <binding name="subtabNames" value="ognl:{'node_general','node_info', 'node_supplement', 'node_connection', 'node_cache', 'node_log', 'node_http', 'node_user', 'node_ssl', 'node_directory'}"/>
+    </component>
+
+    <component id="node_general" type="Block"/>
+    <component id="node_info" type="Block"/>
+    <component id="node_supplement" type="Block"/>
+    <component id="node_connection" type="Block"/>
+    <component id="node_cache" type="Block"/>
+    <component id="node_log" type="Block"/>
+    <component id="node_http" type="Block"/>
+    <component id="node_user" type="Block"/>
+    <component id="node_ssl" type="Block"/>
+    <component id="node_directory" type="Block"/>
+
+
+     <component id="target_node" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:ws.overview.target_node.label"/>
+        <binding name="value" value="ognl:nodeName"/>
+    </component>
+
+    <component id="node_generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ws.node.general.title"/>
+        <binding name="listener" value="ognl:listeners.onNodeOk"/>
+    </component>
+
+    <component id="node_name" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:name"/>
+    </component>
+
+    <component id="webtob_dir" type="jeus:Field">
+        <binding name="field" value="ognl:components.webtob_dirField"/>
+    </component>
+
+    <component id="webtob_dirField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="node"/>
+        <binding name="elementName" value="literal:webtobDir"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="shmkey" type="jeus:Field">
+        <binding name="field" value="ognl:components.shmkeyField"/>
+    </component>
+
+    <component id="shmkeyField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="node"/>
+        <binding name="elementName" value="literal:shmkey"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:required,min=1"/>
+    </component>
+
+    <component id="docroot" type="jeus:Field">
+        <binding name="field" value="ognl:components.docrootField"/>
+    </component>
+
+    <component id="docrootField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="node"/>
+        <binding name="elementName" value="literal:docroot"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="node_general_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="hth" type="jeus:Field">
+        <binding name="field" value="ognl:components.hthField"/>
+    </component>
+
+    <component id="hthField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="node"/>
+        <binding name="elementName" value="literal:hth"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="port" type="jeus:Field">
+        <binding name="field" value="ognl:components.portField"/>
+    </component>
+
+    <component id="portField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:port"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+    <component id="jsv_port" type="jeus:Field">
+        <binding name="field" value="ognl:components.jsv_portField"/>
+    </component>
+
+    <component id="jsv_portField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="node"/>
+        <binding name="elementName" value="literal:jsvPort"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="node_infoForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ws.node.info.title"/>
+        <binding name="listener" value="ognl:listeners.onNodeOk"/>
+    </component>
+
+    <component id="node_type" type="jeus:Field">
+        <binding name="field" value="ognl:components.node_typeField"/>
+    </component>
+
+    <component id="node_typeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:nodeType"/>
+    </component>
+
+    <component id="ipc_base_port" type="jeus:Field">
+        <binding name="field" value="ognl:components.ipc_base_portField"/>
+    </component>
+
+    <component id="ipc_base_portField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="node"/>
+        <binding name="elementName" value="literal:ipcBasePort"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="hostname" type="jeus:Field">
+        <binding name="field" value="ognl:components.hostnameField"/>
+    </component>
+
+    <component id="hostnameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:hostname"/>
+    </component>
+
+    <component id="nodename" type="jeus:Field">
+        <binding name="field" value="ognl:components.nodenameField"/>
+    </component>
+
+    <component id="nodenameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:nodename"/>
+    </component>
+
+    <component id="node_port" type="jeus:Field">
+        <binding name="field" value="ognl:components.node_portField"/>
+    </component>
+
+    <component id="node_portField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="node"/>
+        <binding name="elementName" value="literal:nodePort"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="rac_port" type="jeus:Field">
+        <binding name="field" value="ognl:components.rac_portField"/>
+    </component>
+
+    <component id="rac_portField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="node"/>
+        <binding name="elementName" value="literal:racPort"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="listen" type="jeus:Field">
+        <binding name="field" value="ognl:components.listenField"/>
+    </component>
+
+    <component id="listenField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:listen"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+
+    <component id="node_supplementForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ws.node.supplement.title"/>
+        <binding name="listener" value="ognl:listeners.onNodeOk"/>
+    </component>
+
+    <component id="default_charset" type="jeus:Field">
+        <binding name="field" value="ognl:components.default_charsetField"/>
+    </component>
+
+    <component id="default_charsetField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:defaultCharset"/>
+    </component>
+
+    <component id="default_mimetype" type="jeus:Field">
+        <binding name="field" value="ognl:components.default_mimetypeField"/>
+    </component>
+
+    <component id="default_mimetypeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:defaultMimetype"/>
+    </component>
+
+    <component id="node_supplement_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="node_tcpgw_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.node_tcpgw_nameField"/>
+    </component>
+
+    <component id="node_tcpgw_nameField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:tcpgwName"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+    <component id="error_document_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.error_document_nameField"/>
+    </component>
+
+    <component id="error_document_nameField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:errorDocumentName"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+    <component id="expires_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.expires_nameField"/>
+    </component>
+
+    <component id="expires_nameField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:expiresName"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+    <component id="service_order" type="jeus:Field">
+        <binding name="field" value="ognl:components.service_orderField"/>
+    </component>
+
+    <component id="service_orderField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:serviceOrder"/>
+    </component>
+
+    <component id="env_file" type="jeus:Field">
+        <binding name="field" value="ognl:components.env_fileField"/>
+    </component>
+
+    <component id="env_fileField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:envFile"/>
+    </component>
+
+    <component id="options" type="jeus:Field">
+        <binding name="field" value="ognl:components.optionsField"/>
+    </component>
+
+    <component id="optionsField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:options"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+    <component id="max_user" type="jeus:Field">
+        <binding name="field" value="ognl:components.max_userField"/>
+    </component>
+
+    <component id="max_userField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:maxUser"/>
+    </component>
+
+    <component id="language_priority" type="jeus:Field">
+        <binding name="field" value="ognl:components.language_priorityField"/>
+    </component>
+
+    <component id="language_priorityField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:languagePriority"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+    <component id="index_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.index_nameField"/>
+    </component>
+
+    <component id="index_nameField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:indexName"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+    <component id="dir_index_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.dir_index_nameField"/>
+    </component>
+
+    <component id="dir_index_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:dirIndexName"/>
+    </component>
+
+    <component id="send_buffer_size" type="jeus:Field">
+        <binding name="field" value="ognl:components.send_buffer_sizeField"/>
+    </component>
+
+    <component id="send_buffer_sizeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:sendBufferSize"/>
+    </component>
+
+    <component id="method" type="jeus:Field">
+        <binding name="field" value="ognl:components.methodField"/>
+    </component>
+
+    <component id="methodField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:method"/>
+        <binding name="translator" value="bean:listTranslator"/>
+    </component>
+
+    <component id="server_tokens" type="jeus:Field">
+        <binding name="field" value="ognl:components.server_tokensField"/>
+    </component>
+
+    <component id="server_tokensField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:serverTokens"/>
+    </component>
+
+      <component id="node_connectionForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ws.node.connect.title"/>
+        <binding name="listener" value="ognl:listeners.onNodeOk"/>
+    </component>
+
+    <component id="listen_backlog" type="jeus:Field">
+        <binding name="field" value="ognl:components.listen_backlogField"/>
+    </component>
+
+    <component id="listen_backlogField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:listenBacklog"/>
+    </component>
+
+    <component id="client_check_interval" type="jeus:Field">
+        <binding name="field" value="ognl:components.client_check_intervalField"/>
+    </component>
+
+    <component id="client_check_intervalField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:clientCheckInterval"/>
+    </component>
+
+    <component id="keep_alive" type="jeus:Field">
+        <binding name="field" value="ognl:components.keep_aliveField"/>
+    </component>
+
+    <component id="keep_aliveField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:keepAliveUse"/>
+        <binding name="elementName" value="literal:keepAlive"/>
+    </component>
+
+    <component id="keep_alive_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.keep_alive_timeoutField"/>
+    </component>
+
+    <component id="keep_alive_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:keepAliveUse"/>
+        <binding name="elementName" value="literal:keepAliveTimeout"/>
+    </component>
+
+    <component id="keep_alive_max" type="jeus:Field">
+        <binding name="field" value="ognl:components.keep_alive_maxField"/>
+    </component>
+
+    <component id="keep_alive_maxField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:keepAliveUse"/>
+        <binding name="elementName" value="literal:keepAliveMax"/>
+    </component>
+
+    <component id="timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.timeoutField"/>
+    </component>
+
+    <component id="timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:timeout"/>
+    </component>
+    
+
+    <component id="node_cacheForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ws.node.cache.title"/>
+        <binding name="listener" value="ognl:listeners.onNodeOk"/>
+    </component>
+
+    <component id="cache_entry" type="jeus:Field">
+        <binding name="field" value="ognl:components.cache_entryField"/>
+    </component>
+
+    <component id="cache_entryField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:cacheUse"/>
+        <binding name="elementName" value="literal:cacheEntry"/>
+    </component>
+
+    <component id="cache_size" type="jeus:Field">
+        <binding name="field" value="ognl:components.cache_sizeField"/>
+    </component>
+
+    <component id="cache_sizeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:cacheUse"/>
+        <binding name="elementName" value="literal:cacheSize"/>
+    </component>
+
+    <component id="cache_refresh_html" type="jeus:Field">
+        <binding name="field" value="ognl:components.cache_refresh_htmlField"/>
+    </component>
+
+    <component id="cache_refresh_htmlField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:cacheUse"/>
+        <binding name="elementName" value="literal:cacheRefreshHtml"/>
+    </component>
+
+    <component id="cache_refresh_dir" type="jeus:Field">
+        <binding name="field" value="ognl:components.cache_refresh_dirField"/>
+    </component>
+
+    <component id="cache_refresh_dirField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:cacheUse"/>
+        <binding name="elementName" value="literal:cacheRefreshDir"/>
+    </component>
+
+    <component id="node_logForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ws.node.log.title"/>
+        <binding name="listener" value="ognl:listeners.onNodeOk"/>
+    </component>
+
+    <component id="txlog_dir" type="jeus:Field">
+        <binding name="field" value="ognl:components.txlog_dirField"/>
+    </component>
+
+    <component id="txlog_dirField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:txlogDir"/>
+    </component>
+
+    <component id="syslog_dir" type="jeus:Field">
+        <binding name="field" value="ognl:components.syslog_dirField"/>
+    </component>
+
+    <component id="syslog_dirField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:syslogDir"/>
+    </component>
+
+    <component id="usrlog_dir" type="jeus:Field">
+        <binding name="field" value="ognl:components.usrlog_dirField"/>
+    </component>
+
+    <component id="usrlog_dirField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:usrlogDir"/>
+    </component>
+
+    <component id="log" type="jeus:Field">
+        <binding name="field" value="ognl:components.logField"/>
+        <binding name="label" value="message:ws.node.logging.label"/>
+    </component>
+
+    <component id="logField" type="contrib:Palette">
+        <binding name="model" value="ognl:loggingModel"/>
+        <binding name="selected" value="ognl:nodeLogging"/>
+        <binding name="selectedTitleBlock" value="ognl:components.nullBlock"/>
+        <binding name="availableTitleBlock" value="ognl:components.nullBlock"/>
+        <binding name="rows" value="ognl:4"/>
+    </component>
+
+    <component id="error_log" type="jeus:Field">
+        <binding name="field" value="ognl:components.error_logField"/>
+    </component>
+
+    <component id="error_logField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:errorLog"/>
+        <binding name="model" value="ognl:errorLoggingModel"/>
+    </component>
+
+    <component id="node_httpForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ws.node.http.title"/>
+        <binding name="listener" value="ognl:listeners.onNodeOk"/>
+    </component>
+
+    <component id="limit_request_body" type="jeus:Field">
+        <binding name="field" value="ognl:components.limit_request_bodyField"/>
+    </component>
+
+    <component id="limit_request_bodyField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:limitRequestBody"/>
+    </component>
+
+    <component id="limit_request_fields" type="jeus:Field">
+        <binding name="field" value="ognl:components.limit_request_fieldsField"/>
+    </component>
+
+    <component id="limit_request_fieldsField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:limitRequestFields"/>
+    </component>
+
+    <component id="limit_request_fieldsize" type="jeus:Field">
+        <binding name="field" value="ognl:components.limit_request_fieldsizeField"/>
+    </component>
+
+    <component id="limit_request_fieldsizeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:limitRequestFieldsize"/>
+    </component>
+
+    <component id="limit_request_line" type="jeus:Field">
+        <binding name="field" value="ognl:components.limit_request_lineField"/>
+    </component>
+
+    <component id="limit_request_lineField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:limitRequestLine"/>
+    </component>
+
+    <component id="node_userForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ws.node.user.title"/>
+        <binding name="listener" value="ognl:listeners.onNodeOk"/>
+    </component>
+
+    <component id="user" type="jeus:Field">
+        <binding name="field" value="ognl:components.userField"/>
+    </component>
+
+    <component id="userField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:user"/>
+    </component>
+
+    <component id="group" type="jeus:Field">
+        <binding name="field" value="ognl:components.groupField"/>
+    </component>
+
+    <component id="groupField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:group"/>
+    </component>
+
+    <component id="admin" type="jeus:Field">
+        <binding name="field" value="ognl:components.adminField"/>
+    </component>
+
+    <component id="adminField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:admin"/>
+    </component>
+
+    <component id="ip_permission" type="jeus:Field">
+        <binding name="field" value="ognl:components.ip_permissionField"/>
+    </component>
+
+    <component id="ip_permissionField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:ipPermission"/>
+    </component>
+
+    <component id="node_sslForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ws.node.ssl.title"/>
+        <binding name="listener" value="ognl:listeners.onNodeOk"/>
+    </component>
+
+    <component id="node_ssl_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.node_ssl_nameField"/>
+    </component>
+
+    <component id="node_ssl_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="sslUse"/>
+        <binding name="elementName" value="literal:sslName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="node_ssl_flag" type="jeus:Field">
+        <binding name="field" value="ognl:components.node_ssl_flagField"/>
+    </component>
+
+    <component id="node_ssl_flagField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:sslUse"/>
+        <binding name="elementName" value="literal:sslFlag"/>
+    </component>
+
+    <component id="node_directoryForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ws.node.directory.title"/>
+        <binding name="listener" value="ognl:listeners.onNodeOk"/>
+    </component>
+
+    <component id="app_dir" type="jeus:Field">
+        <binding name="field" value="ognl:components.app_dirField"/>
+    </component>
+
+    <component id="app_dirField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:appDir"/>
+    </component>
+
+    <component id="icon_dir" type="jeus:Field">
+        <binding name="field" value="ognl:components.icon_dirField"/>
+    </component>
+
+    <component id="icon_dirField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:iconDir"/>
+    </component>
+
+    <component id="user_dir" type="jeus:Field">
+        <binding name="field" value="ognl:components.user_dirField"/>
+    </component>
+
+    <component id="user_dirField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:node"/>
+        <binding name="elementName" value="literal:userDir"/>
+    </component>
+    
+    <component id="createOk" type="Submit">
+        <binding name="value" value="message:common.label.create"/>
+        <binding name="listener" value="ognl:listeners.onCreateOk"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+    <bean name="listTranslator" class="jeus.tool.webadmin.component.translator.ListTranslator"/>
+
+</page-specification>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JMSDestinationResource.CreatePage">
+
+	<inject property="jaxbSource" type="state" object="JAXBSource"/>
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Create Destination"/>
+    </component>
+
+    <component id="choose" type="contrib:Choose"/>
+
+    <component id="condHasNoJMSEngine" type="contrib:When">
+        <binding name="condition" value="ognl:@jeus.tool.webadmin.util.EngineUtils@getEngines(objectName, jaxbSource).jms == null"/>
+    </component>
+
+    <component id="condHasJMSEngine" type="contrib:Otherwise"/>
+
+    <component id="condHasRunningJMS" type="If">
+        <binding name="condition" value="ognl:bindable"/>
+    </component>
+
+    <component id="no_jms_engine" type="Insert">
+        <binding name="value" value="message:cfc.no_jms_engine.label"/>
+    </component>
+
+    <component id="wizTabPanel" type="jeus:WizardTabPanel">
+        <binding name="tabNames" value="ognl:new java.lang.String[]{'general', 'create'}"/>
+    </component>
+
+    <component id="general" type="Block"/>
+    
+    <component id="create" type="Block"/>
+    
+
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="ognl:topic ? messages.format('cdn.general.title', 'Topic') : messages.format('cdn.general.title', 'Queue')"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="generalNext" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="ognl:listeners.onGeneralNext"/>
+    </component>
+
+    <component id="name" type="jeus:Field">
+        <binding name="field" value="ognl:components.nameField"/>
+    </component>
+
+    <component id="nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="destination"/>
+        <binding name="elementName" value="literal:name"/>
+        <binding name="validators" value="validators:required,$pattern,$exportNameValidator"/>
+    </component>
+
+    <component id="general_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+    
+    <component id="broker_name" type="jeus:Field">
+        <binding name="field" value="component:broker_nameField"/>
+    </component>
+
+    <component id="broker_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="destination"/>
+        <binding name="elementName" value="literal:brokerName"/>
+    </component>
+    
+    <component id="export_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.export_nameField"/>
+    </component>
+
+    <component id="export_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="destination"/>
+        <binding name="elementName" value="literal:exportName"/>
+        <binding name="validators" value="validators:$exportNameValidator"/>
+    </component>
+    
+    <component id="condQueueDestination" type="Else">
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="condTopicDestination" type="If">
+        <binding name="condition" value="topic"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="multiple_receiver" type="jeus:Field">
+        <binding name="field" value="ognl:components.multiple_receiverField"/>
+    </component>
+
+    <component id="multiple_receiverField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:destination"/>
+        <binding name="elementName" value="literal:multipleReceiver"/>
+    </component>
+
+    <component id="queue_cluster_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.queue_cluster_nameField"/>
+    </component>
+
+    <component id="queue_cluster_nameField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="ognl:destination"/>
+        <binding name="elementName" value="literal:queueClusterName"/>
+        <binding name="model" value="ognl:queueClusterModel"/>
+    </component>
+
+    <component id="topic_cluster_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.topic_cluster_nameField"/>
+    </component>
+
+    <component id="topic_cluster_nameField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="ognl:destination"/>
+        <binding name="elementName" value="literal:topicClusterName"/>
+        <binding name="model" value="ognl:topicClusterModel"/>
+    </component>
+
+    <component id="local_distribute" type="jeus:Field">
+        <binding name="field" value="ognl:components.local_distributeField"/>
+    </component>
+
+    <component id="local_distributeField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="ognl:destination"/>
+        <binding name="elementName" value="literal:localDistribute"/>
+        <binding name="model" value="ognl:@jeus.tool.webadmin.page.EnumerationSet@getPropertySelectionModel(destination.localDistributeEnumeration)"/>
+    </component>
+
+    <component id="limit" type="jeus:Field">
+        <binding name="field" value="ognl:components.limitField"/>
+    </component>
+
+    <component id="limitField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="destination"/>
+        <binding name="elementName" value="literal:limit"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="consumer_limit" type="jeus:Field">
+        <binding name="field" value="component:consumer_limitField"/>
+    </component>
+
+    <component id="consumer_limitField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="destination"/>
+        <binding name="elementName" value="literal:consumerLimit"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+    
+    <component id="high_mark" type="jeus:Field">
+        <binding name="field" value="ognl:components.high_markField"/>
+    </component>
+
+    <component id="high_markField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="destination"/>
+        <binding name="elementName" value="literal:highMark"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="low_mark" type="jeus:Field">
+        <binding name="field" value="ognl:components.low_markField"/>
+    </component>
+
+    <component id="low_markField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="destination"/>
+        <binding name="elementName" value="literal:lowMark"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+
+    <component id="max_pending_limit" type="jeus:Field">
+        <binding name="field" value="component:max_pending_limitField"/>
+    </component>
+
+    <component id="max_pending_limitField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="destination"/>
+        <binding name="elementName" value="literal:maxPendingLimit"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="resume_dispatch_factor" type="jeus:Field">
+        <binding name="field" value="component:resume_dispatch_factorField"/>
+    </component>
+
+    <component id="resume_dispatch_factorField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="destination"/>
+        <binding name="elementName" value="literal:resumeDispatchFactor"/>
+        <binding name="translator" value="translator:number2,valueType=Float"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="createForm" type="jeus:JEUSForm">
+        <binding name="title" value="ognl:topic ? messages.format('cdn.create.title', 'Topic') : messages.format('cdn.create.title', 'Queue')"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="bind_now" type="jeus:Field">
+        <binding name="field" value="ognl:components.bind_nowField"/>
+        <binding name="label" value="message:cdn.create.bind_now.label"/>
+    </component>
+
+    <component id="bind_nowField" type="jeus:DojoCheckbox">
+        <binding name="value" value="ognl:bindNow"/>
+    </component>
+
+    <component id="createPrevious" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="ognl:listeners.onCreatePrevious"/>
+    </component>
+
+   <component id="createOk" type="Submit">
+        <binding name="value" value="message:common.label.create"/>
+        <binding name="listener" value="ognl:listeners.onCreateOk"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+    <bean name="pattern" class="org.apache.tapestry.form.validator.Pattern">
+    	<set name="pattern" value="literal:[a-zA-Z0-9]*"/>
+    	<set name="message" value="message:common.exception.0066"/>
+    </bean>
+
+    <bean name="exportNameValidator" class="jeus.tool.webadmin.page.JMSConnectionFactoryResource.NameValidator">
+        <set name="jmsServer" value="jmsServer"/>
+    </bean>
+
+    <property name="destination" persist="session"/>
+    <property name="bindNow"/>
+    
+</page-specification>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceTmaxClusterExtResourceService.CreatePage">
+
+    <inject property="visit" type="state" object="visit"/>
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Clustered Tmax Ext Resource Service Create"/>
+    </component>
+
+    <component id="wizTabPanel" type="jeus:WizardTabPanel">
+        <binding name="tabNames" value="ognl:new java.lang.String[]{'general','tmax_delegation_source_block','create'}"/>
+    </component>
+
+    <component id="nullBlock" type="Block"/>
+    <component id="general" type="Block"/>
+    <component id="tmax_delegation_source_block" type="Block"/>
+    <component id="create" type="Block"/>
+
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:tcsc.general.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="export_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.export_nameField"/>
+    </component>
+
+    <component id="export_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:clusterTmax"/>
+        <binding name="elementName" value="literal:exportName"/>
+        <binding name="translator" value="bean:exportNameTranslator"/>
+        <binding name="validators" value="validators:required,$exportNameValidator"/>
+    </component>
+
+    <component id="general_next" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="ognl:listeners.onGeneralNext"/>
+    </component>
+
+    <component id="tmax_delegation_sourceForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:tcsc.tmax_delegation_source_block.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="tmax_delegation_source" type="jeus:Field">
+        <binding name="field" value="ognl:components.tmax_delegation_sourceField"/>
+        <binding name="label" value="message:tcs.tmax_delegation_source.label"/>
+    </component>
+
+    <component id="tmax_delegation_sourceField" type="contrib:Palette">
+        <binding name="model" value="ognl:tmaxModel"/>
+        <binding name="selected" value="ognl:tmaxDelegationSource"/>
+        <binding name="selectedTitleBlock" value="ognl:components.nullBlock"/>
+        <binding name="availableTitleBlock" value="ognl:components.nullBlock"/>
+        <binding name="sort" value="ognl:@org.apache.tapestry.contrib.palette.SortMode@USER"/>
+    </component>
+
+    <component id="tmax_delegation_source_previous" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="ognl:listeners.onBackupDataSourcePrevious"/>
+    </component>
+
+    <component id="tmax_delegation_source_next" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="ognl:listeners.onBackupDataSourceNext"/>
+    </component>
+
+    <component id="createForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:tcsc.create.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="condBooted" type="If">
+        <binding name="condition" value="ognl:@jeus.tool.webadmin.util.NodeUtils@isBooted(visit)"/>
+    </component>
+
+    <component id="bind_now" type="jeus:Field">
+        <binding name="field" value="ognl:components.bind_nowField"/>
+        <binding name="label" value="message:tcsc.create.bind_now.label"/>
+    </component>
+
+    <component id="bind_nowField" type="jeus:DojoCheckbox">
+        <binding name="value" value="ognl:bindNow"/>
+    </component>
+
+    <component id="create_previous" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="ognl:listeners.onCreatePrevious"/>
+    </component>
+
+    <component id="createOk" type="Submit">
+        <binding name="value" value="message:common.label.create"/>
+        <binding name="listener" value="ognl:listeners.onCreateOk"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+    <bean name="exportNameValidator" class="jeus.tool.webadmin.page.JeusServiceTmaxExtResourceService.ExportNameValidator">
+        <set name="jeusSystem" value="ognl:jaxbInstance"/>
+    </bean>
+
+    <bean name="exportNameTranslator" class="jeus.tool.webadmin.translator.DefaultStringTranslator">
+		<set name="default" value="beans.exportNameValidator.generateName()"/>
+	</bean>
+
+    <property name="bindNow"/>
+    <property name="clusterTmax" persist="session"/>
+</page-specification>

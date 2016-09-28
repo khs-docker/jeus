@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+<description>                                             
+    <text key="security-services"><![CDATA[
+                        [Description]: 보안 시스템에 사용될 보안 서비스들을 정의한다.
+            ]]>                                             
+    </text>
+                                                     
+    <text key="SecurityServicesType.security-service"><![CDATA[
+                        [Description]: 보안 서비스를 정의한다.
+                    ]]>                                             
+    </text>
+ </description>

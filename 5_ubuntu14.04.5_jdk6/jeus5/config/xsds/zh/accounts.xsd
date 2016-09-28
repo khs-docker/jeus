@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="GB2312"?>
+<xs:schema 
+    attributeFormDefault="unqualified" 
+    elementFormDefault="qualified" 
+    targetNamespace="http://www.tmaxsoft.com/xml/ns/jeus" version="5.0" 
+    xmlns="http://www.tmaxsoft.com/xml/ns/jeus" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">      
+    <xs:element name="accounts" type="accountsType">         
+        <xs:annotation>             
+            <xs:documentation><![CDATA[
+                        [Description]: 定义对帐户的设置。在此可定义用户与群组。
+            ]]>
+            </xs:documentation>         
+        </xs:annotation>     
+    </xs:element>      
+    <xs:complexType name="accountsType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="1" minOccurs="0" name="users" type="usersType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                                [Description]: 定义用户。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="0" name="groups" type="groupsType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                                [Description]: 定义group。                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="usersType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="user" type="userType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 定义用户。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="userType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="1" minOccurs="0" name="description" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 关于用户的说明
+                        [Value Description]: 任意的说明
+                        [Example]: <description>A really nice guy!</description>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 对相关用户的用户名进行定义。作为"primary" identify应该是唯一的。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="0" name="password" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                            [Description]: 对用户的密码进行设置。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="group" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 对用户有关的group identify进行定义。定义用户所属的群组。此时的群组应定义在<groups><group><name></name></group></groups>。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>         
+    <xs:complexType name="groupsType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="group" type="groupType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 定义群组。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="groupType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="1" minOccurs="0" name="description" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 群组有关说明
+                        [Value Description]: 任意的说明
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 定义相应群组的群组名。作为群组的"primary" identify，应该是唯一的。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="subgroup" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 定义下属群组。此时的群组应定义在 <groups><group><name></name></group></groups>。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType> 
+</xs:schema>

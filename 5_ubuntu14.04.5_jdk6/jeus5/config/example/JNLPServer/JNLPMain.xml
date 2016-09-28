@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<jnlp-resource-config xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <jnlp-resource>
+        <rsc-name>HelloJeus/HelloJeus.jar</rsc-name>
+        <os-name/>
+        <arch/>
+        <locale/>
+        <version/>
+        <rsc-path>HelloJeus/HelloJeus.jar</rsc-path>
+    </jnlp-resource>
+    <jnlp-resource>
+        <rsc-name>HelloJeus/HelloJeus.jnlp</rsc-name>
+        <os-name/>
+        <arch/>
+        <locale/>
+        <version/>
+        <rsc-path>HelloJeus/HelloJeus.jnlp</rsc-path>
+    </jnlp-resource>
+</jnlp-resource-config>

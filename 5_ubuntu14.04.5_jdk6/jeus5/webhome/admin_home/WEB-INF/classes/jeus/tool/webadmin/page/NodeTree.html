@@ -1,0 +1,177 @@
+<html jwcid="shell">
+    <style type="text/css">
+    <!--
+        body {
+            margin-left: 0px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            }
+    //-->
+    </style>
+    <body jwcid="@Body" class="tundra">
+        <script type="text/javascript" src="/webadmin/js/JeusDojo/release/dojo/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+        <script type="text/javascript" src="/webadmin/js/JeusDojo/release/dojo/dojo/jeus.js"></script>
+        <script type="text/javascript">
+            dojo.require("dojo.parser");
+            dojo.require("dijit.Menu");
+            dojo.require("dijit.Tooltip");            
+        </script>
+        <script language="javascript">
+        <!--
+            var notSelectedClass = "notSelectedNodeViewClass";
+            var selectedClass = "selectedNodeViewClass";
+            var tagName = "span";
+
+            function findSelectedNode(){
+                var elements = document.getElementsByTagName(tagName);
+
+                for(var i = 0; i < elements.length; i++){
+                    var node = elements.item(i);
+                    if( node.className == selectedClass ){
+                        return node;
+                    }
+                }
+
+                return null;
+            }
+
+            function changeClass(selectedNode){
+                var oldSelectedNode = findSelectedNode();
+                if( oldSelectedNode && oldSelectedNode != selectedNode ){
+                    oldSelectedNode.className = notSelectedClass;
+                }
+
+                selectedNode.className = selectedClass;
+            }
+
+            function onSelect(node){
+                if(node && node.target) {
+                    var target = eval('parent.parent.'+ node.target);
+
+                    if( target && node.href && node.href != '#'){
+                        target.href = node.href;
+                    }
+
+                }
+
+                if( node.firstChild ){
+                    changeClass(node.firstChild);
+                }
+
+            }
+
+        //-->
+        </script>
+        <script type="text/javascript">
+        <!--
+            function clone(/*anything*/ o){
+                // summary:
+                //		Clones objects (including DOM nodes) and all children.
+                //		Warning: do not clone cyclic structures.
+                if(!o){ return o; }
+                if(dojo.isArray(o)){
+                    var r = [];
+                    for(var i = 0; i < o.length; ++i){
+                        r.push(clone(o[i]));
+                    }
+                    return r; // Array
+                }
+                if(!dojo.isObject(o) || dojo.isFunction(o)){
+                    return o;	/*anything*/
+                }
+                if(o.nodeType && o.cloneNode){ // isNode
+                    return o.cloneNode(true); // Node
+                }
+                if(o instanceof Date){
+                    return new Date(o.getTime());	// Date
+                }
+                // Generic objects
+                var r = new o.constructor(); // specific to dojo.declare()'d classes!
+                for(var i in o){
+                    if(!(i in r) || r[i] != o[i]){
+                        r[i] = clone(o[i]);
+                    }
+                }
+                return r; // Object
+            }
+
+
+            function makeMenu(items, isTop){
+                var menu = dijit.byId("testMenu");
+                if(menu !== undefined){
+                    menu.destroy(true);
+                }
+
+                menu = new dijit.Menu({ contextMenuForWindow: isTop });
+                dojo.forEach(items, function(itemJson){
+                    if(itemJson.separator){
+                        menu.addChild(new dijit.MenuSeparator());
+                    }else{
+                        if(itemJson.submenu){
+                            var submenu = makeMenu(itemJson.submenu, false);
+                            itemJson.submenuId = submenu.widgetId;
+                        }
+                        itemJson.label = itemJson.label.replace(/\{0\}/, items.name);
+                        var item = new dijit.MenuItem(itemJson);
+                        if( items.state && itemJson.enableStates && itemJson.enableStates.indexOf(items.state) < 0 ){
+                            item.setDisabled(true);
+                        }else{
+                            item.objectName = items.objectName;
+                        }
+                         menu.addChild(item);
+                    }
+                });
+                return menu;
+            }
+
+            function showContextMenu(event) {
+                if( !parent.menus ) return;
+
+                var el = event.target;
+                var el2 = el;
+
+                // check for anchor
+                while( el != null && el.tagName != "A" )
+                    el = el.parentNode;
+
+                if( el && el.type ){
+                    var menu2 = parent.menus[el.type];
+                    if( menu2 ){
+                        var menu = [];
+                        menu = clone(menu2);
+                        menu.objectName = el.getAttribute("objectName");
+                        menu.state = el.getAttribute("state");
+                        menu.name = "";
+                        var keyList = el.getAttribute("displayName").split(",");
+                        for(var i = 0 ; i < keyList.length; i++){
+                            var pair = keyList[i];
+                            var hasName = pair.indexOf("name=");
+                            if( hasName == 0 ){
+                                menu.name = pair.substring(5);
+                            }
+                        }
+                        changeClass(el2);
+
+                        var final = makeMenu(menu, false);
+                        final.startup();
+                        final._openMyself(event);
+                    }else {
+
+                    }
+                }
+            }
+            dojo.addOnLoad(function(event){
+                dojo.connect(document, "oncontextmenu", "showContextMenu");
+            });
+        //-->
+        </script>
+        <span jwcid="treeView">
+            <span jwcid="treeData">
+                <span jwcid="treeNodeView"/>
+            </span>
+        </span>
+    </body>
+</html>

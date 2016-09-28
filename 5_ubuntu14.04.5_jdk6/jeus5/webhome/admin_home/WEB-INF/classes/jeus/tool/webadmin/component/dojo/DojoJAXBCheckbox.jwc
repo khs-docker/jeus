@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="jeus.tool.webadmin.component.dojo.DojoJAXBCheckbox" allow-body="no">
+
+  <parameter name="checkDefault" default-value="true"/>
+
+  <parameter name="parentElement" required="yes"/>
+
+  <parameter name="elementName" required="yes"/>
+
+  <parameter name="MBeanAttributeName" default-value="elementName"/>
+
+  <inject property="XMLSchemaResourceSource" type="state" object="XMLSchemaResourceSource"/>
+
+  <parameter name="disabled">
+    <description>
+    If true, then the checkbox will be disabled and any input from the checkbox
+    will be ignored.
+    </description>
+  </parameter>
+
+  <parameter name="validators"/>
+
+  <parameter name="id" property="idParameter" default-value="id"/>
+
+  <reserved-parameter name="type"/>
+  <reserved-parameter name="checked"/>
+  <reserved-parameter name="name"/>
+
+  <inject property="validatableFieldSupport" object="service:tapestry.form.ValidatableFieldSupport"/>
+
+</component-specification>

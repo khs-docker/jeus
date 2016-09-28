@@ -1,0 +1,1209 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <span jwcid="node">
+            <form jwcid="nodeForm"/>
+            <table width="100%" cellpadding="0" cellspacing="5">
+                <tr>
+                    <td width="100%" colspan="2">
+                        <table width="100%" cellpadding="0" cellspacing="0" class="table" border="1">
+                            <tr>
+                                <td class="table_columns"><span jwcid="node_name_column"/></td>
+                                <td class="table_columns"><span jwcid="webtob_dir_column"/></td>
+                                <td class="table_columns"><span jwcid="shmkey_column"/></td>
+                                <td class="table_columns"><span jwcid="docroot_column"/></td>
+                                <td class="table_columns" width="40">&nbsp;</td>
+                            </tr>
+                            <tr jwcid="eachNode">
+                                <td class="table_values"><a jwcid="nodeLink"><span jwcid="node_name_value"/></a></td>
+                                <td class="table_values"><span jwcid="webtob_dir_value"/></td>
+                                <td class="table_values"><span jwcid="shmkey_value"/></td>
+                                <td class="table_values"><span jwcid="docroot_value"/></td>
+                                <td class="table_values" align="center">
+                                    <span jwcid="condNodeDefault">
+                                        <a jwcid="deleteNode"><img jwcid="deleteNodeImage" border="0"/></a>
+                                    </span>
+                                </td>
+                           </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>&nbsp;
+                </tr>
+            </table>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td  width="100%">&nbsp;</td>
+                    <td  nowrap="true">
+                        <a jwcid="createNode"><img jwcid="createNodeImage" align="absmiddle"/>&nbsp;<span jwcid="create_nodelabel"/></a><br/>
+                    </td>
+                </tr>
+            </table>
+        </span>
+
+        <span jwcid="vhost">
+            <form jwcid="vhostForm"/>
+            <table width="100%" cellpadding="0" cellspacing="5">
+                <tr>
+                    <td width="100%" colspan="2">
+                        <table width="100%" cellpadding="0" cellspacing="0" class="table" border="1">
+                            <tr>
+                                <td class="table_columns"><span jwcid="vhost_name_column"/></td>
+                                <td class="table_columns"><span jwcid="vhost_node_name_column"/></td>
+                                <td class="table_columns"><span jwcid="vhost_docroot_column"/></td>
+                                <td class="table_columns" width="40">&nbsp;</td>
+                            </tr>
+                            <tr jwcid="eachVhost">
+                                <td class="table_values"><a jwcid="vhostLink"><span jwcid="vhost_name_value"/></a></td>
+                                <td class="table_values"><span jwcid="vhost_node_name_value"/></td>
+                                <td class="table_values"><span jwcid="vhost_docroot_value"/></td>
+                                <td class="table_values" align="center">
+                                    <span jwcid="condVhostDefault">
+                                        <a jwcid="deleteVhost"><img jwcid="deleteVhostImage" border="0"/></a>
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>&nbsp;
+                </tr>
+            </table>
+           <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td  width="100%">&nbsp;</td>
+                    <td  nowrap="true">
+                        <a jwcid="createVhost"><img jwcid="createVhostImage" align="absmiddle"/>&nbsp;<span jwcid="create_vhostlabel"/></a><br/>
+                    </td>
+                </tr>
+            </table>
+
+            <!--span jwcid="vhost_tab">
+                <span jwcid="vhost_general">
+                    <br/>
+                    <form jwcid="vhost_generalForm">
+                        <span jwcid="vhost_name">
+                            <input jwcid="vhost_nameField"/>
+                        </span>
+                        <span jwcid="vhost_node_name">
+                            <input jwcid="vhost_node_nameField"/>
+                        </span>
+                        <span jwcid="vhost_docroot">
+                            <input jwcid="vhost_docrootField" style="width:98%;"/>
+                        </span>
+                        <span jwcid="vhost_port">
+                            <input jwcid="vhost_portField" rows="4"/>
+                        </span>
+                    </form>
+                </span>
+                <span jwcid="vhost_info">
+                    <br/>
+                    <form jwcid="vhost_node_infoForm">
+                        <span jwcid="vhost_node_type">
+                            <input jwcid="vhost_node_typeField"/>
+                        </span>
+                        <span jwcid="vhost_hostname">
+                            <input jwcid="vhost_hostnameField"/>
+                        </span>
+                        <span jwcid="vhost_alias">
+                            <input jwcid="vhost_aliasField" rows="4"/>
+                        </span>
+                        <span jwcid="vhost_listen">
+                            <input jwcid="vhost_listenField" rows="4"/>
+                        </span>
+                    </form>
+                </span>
+                <span jwcid="vhost_supplement">
+                    <br/>
+                    <form jwcid="vhost_supplementForm">
+                        <span jwcid="vhost_default_charset">
+                            <input jwcid="vhost_default_charsetField"/>
+                        </span>
+                        <span jwcid="vhost_default_mimetype">
+                            <input jwcid="vhost_default_mimetypeField"/>
+                        </span>
+                        <span jwcid="vhost_service_order">
+                            <input jwcid="vhost_service_orderField"/>
+                        </span>
+                        <span jwcid="vhost_env_file">
+                            <input jwcid="vhost_env_fileField" style="width:98%;"/>
+                        </span>
+                        <span jwcid="vhost_supplement_blind">
+                            <span jwcid="vhost_error_document_name">
+                                <input jwcid="vhost_error_document_nameField"/>
+                            </span>
+                            <span jwcid="vhost_expires_name">
+                                <input jwcid="vhost_expires_nameField"/>
+                            </span>
+                            <span jwcid="vhost_options">
+                                <input jwcid="vhost_optionsField" rows="4"/>
+                            </span>
+                            <span jwcid="vhost_index_name">
+                                <input jwcid="vhost_index_nameField" rows="4"/>
+                            </span>
+                            <span jwcid="vhost_dir_index_name">
+                                <input jwcid="vhost_dir_index_nameField"/>
+                            </span>
+                            <span jwcid="vhost_method">
+                                <input jwcid="vhost_methodField"/>
+                            </span>
+                        </span>
+                    </form>
+                </span>
+                <span jwcid="vhost_connection">
+                    <br/>
+                    <form jwcid="vhost_connectionForm">
+                        <span jwcid="vhost_keep_alive">
+                            <input jwcid="vhost_keep_aliveField"/>
+                        </span>
+                        <span jwcid="vhost_keep_alive_timeout">
+                            <input jwcid="vhost_keep_alive_timeoutField"/>
+                        </span>
+                        <span jwcid="vhost_keep_alive_max">
+                            <input jwcid="vhost_keep_alive_maxField"/>
+                        </span>
+                        <span jwcid="vhost_timeout">
+                            <input jwcid="vhost_timeoutField"/>
+                        </span>
+                    </form>
+                </span>
+                <span jwcid="vhost_log">
+                    <br/>
+                    <form jwcid="vhost_logForm">
+                        <span jwcid="vhost_usrlog_dir">
+                            <input jwcid="vhost_usrlog_dirField" style="width:98%"/>
+                        </span>
+                        <span jwcid="vhost_logging">
+                            <input jwcid="vhost_loggingField"/>
+                        </span>
+                        <span jwcid="vhost_error_log">
+                            <input jwcid="vhost_error_logField"/>
+                        </span>
+                    </form>
+                </span>
+                <span jwcid="vhost_user_info">
+                    <br/>
+                    <form jwcid="vhost_userForm">
+                        <span jwcid="vhost_user">
+                            <input jwcid="vhost_userField"/>
+                        </span>
+                        <span jwcid="vhost_group">
+                            <input jwcid="vhost_groupField"/>
+                        </span>
+                        <span jwcid="vhost_admin">
+                            <input jwcid="vhost_adminField"/>
+                        </span>
+                    </form>
+                </span>
+                <span jwcid="vhost_ssl">
+                    <br/>
+                    <form jwcid="vhost_sslForm">
+                        <span jwcid="vhost_ssl_name">
+                            <input jwcid="vhost_ssl_nameField"/>
+                        </span>
+                        <span jwcid="vhost_ssl_flag">
+                            <input jwcid="vhost_ssl_flagField"/>
+                        </span>
+                    </form>
+                </span>
+                <span jwcid="vhost_directory">
+                    <br/>
+                    <form jwcid="vhost_directoryForm">
+                        <span jwcid="vhost_app_dir">
+                            <input jwcid="vhost_app_dirField" style="width:98%"/>
+                        </span>
+                        <span jwcid="vhost_icon_dir">
+                            <input jwcid="vhost_icon_dirField" style="width:98%"/>
+                        </span>
+                        <span jwcid="vhost_user_dir">
+                            <input jwcid="vhost_user_dirField" style="width:98%"/>
+                        </span>
+                    </form>
+                </span>
+            </span-->
+        </span>
+
+        <span jwcid="server_group">
+            <form jwcid="svg_listForm">
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns">
+                            <span jwcid="svg_name_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="svr_type_column"/>
+                        </td>
+                        <td  class="table_columns" width="20">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr jwcid="eachSvg">
+                        <td class="table_values">
+                            <span jwcid="svg_name_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="svr_type_value"/>
+                        </td>
+                        <td class="table_values" align="center">
+                            <a jwcid="svg_deleteLink"><img jwcid="svg_delete" border="0"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <br/>
+            <form jwcid="svgForm">
+                <span jwcid="svg_name">
+                    <input jwcid="svg_nameField"/>
+                </span>
+                <span jwcid="svr_type">
+                    <input jwcid="svr_typeField"/>
+                </span>
+                <span jwcid="svg_node_name">
+                    <input jwcid="svg_node_nameField"/>
+                </span>
+                <span jwcid="svg_vhost_name">
+                    <input jwcid="svg_vhost_nameField"/>
+                </span>
+                <span jwcid="svg_blind">
+                    <span jwcid="svg_cousin">
+                        <input jwcid="svg_cousinField"/>
+                    </span>
+                    <span jwcid="svg_backup">
+                        <input jwcid="svg_backupField"/>
+                    </span>
+                    <span jwcid="svg_load">
+                        <input jwcid="svg_loadField"/>
+                    </span>
+                    <span jwcid="svg_app_dir">
+                        <input jwcid="svg_app_dirField" style="width:98%"/>
+                    </span>
+                    <span jwcid="svg_userlog_dir">
+                        <input jwcid="svg_userlog_dirField" style="width:98%"/>
+                    </span>
+                    <span jwcid="svg_db_name">
+                        <input jwcid="svg_db_nameField"/>
+                    </span>
+                    <span jwcid="svg_open_info">
+                        <input jwcid="svg_open_infoField"/>
+                    </span>
+                    <span jwcid="svg_close_info">
+                        <input jwcid="svg_close_infoField"/>
+                    </span>
+                    <span jwcid="svg_min_tms">
+                        <input jwcid="svg_min_tmsField"/>
+                    </span>
+                    <span jwcid="svg_max_tms">
+                        <input jwcid="svg_max_tmsField"/>
+                    </span>
+                    <span jwcid="svg_tms_name">
+                        <input jwcid="svg_tms_nameField"/>
+                    </span>
+                    <span jwcid="svg_env_file">
+                        <input jwcid="svg_env_fileField" style="width:98%;"/>
+                    </span>
+                    <span jwcid="svg_authent_name">
+                        <input jwcid="svg_authent_nameField"/>
+                    </span>
+                    <span jwcid="svg_logging">
+                        <input jwcid="svg_loggingField"/>
+                    </span>
+                    <span jwcid="svg_script_location">
+                        <input jwcid="svg_script_locationField"/>
+                    </span>
+                    <span jwcid="svg_default_charset">
+                        <input jwcid="svg_default_charsetField"/>
+                    </span>
+                    <span jwcid="svg_default_mimetype">
+                        <input jwcid="svg_default_mimetypeField"/>
+                    </span>
+                    <span jwcid="svg_expires_name">
+                        <input jwcid="svg_expires_nameField"/>
+                    </span>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="svg_add" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+        </span>
+        <span jwcid="server">
+            <form jwcid="svr_listForm">
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns">
+                            <span jwcid="svr_name_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="svr_svg_name_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="min_proc_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="max_proc_column"/>
+                        </td>
+                        <td  class="table_columns" width="20">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr jwcid="eachSvr">
+                        <td class="table_values">
+                            <span jwcid="svr_name_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="svr_svg_name_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="min_proc_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="max_proc_value"/>
+                        </td>
+                        <td class="table_values" align="center">
+                            <a jwcid="svr_deleteLink"><img jwcid="svr_delete" border="0"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <br/>
+            <form jwcid="svrForm">
+                <span jwcid="svr_name">
+                    <input jwcid="svr_nameField"/>
+                </span>
+                <span jwcid="svr_svg_name">
+                    <input jwcid="svr_svg_nameField"/>
+                </span>
+                <span jwcid="min_proc">
+                    <input jwcid="min_procField"/>
+                </span>
+                <span jwcid="max_proc">
+                    <input jwcid="max_procField"/>
+                </span>
+                <span jwcid="server_blind">
+                    <span jwcid="svr_cl_opt">
+                        <input jwcid="svr_cl_optField"/>
+                    </span>
+                    <span jwcid="svr_userlog_dir">
+                        <input jwcid="svr_userlog_dirField" style="width:98%"/>
+                    </span>
+                    <span jwcid="svr_uri_dir">
+                        <input jwcid="svr_uri_dirField" style="width:98%"/>
+                    </span>
+                    <span jwcid="svr_maxq_count">
+                        <input jwcid="svr_maxq_countField"/>
+                    </span>
+                    <span jwcid="svr_asq_count">
+                        <input jwcid="svr_asq_countField"/>
+                    </span>
+                    <span jwcid="svr_max_restart">
+                        <input jwcid="svr_max_restartField"/>
+                    </span>
+                    <span jwcid="svr_svr_cpc">
+                        <input jwcid="svr_svr_cpcField"/>
+                    </span>
+                    <span jwcid="svr_svr_type">
+                        <input jwcid="svr_svr_typeField"/>
+                    </span>
+                    <span jwcid="svr_http_out_buf_size">
+                        <input jwcid="svr_http_out_buf_sizeField"/>
+                    </span>
+                    <span jwcid="svr_http_in_buf_size">
+                        <input jwcid="svr_http_in_buf_sizeField"/>
+                    </span>
+                    <span jwcid="svr_max_requests">
+                        <input jwcid="svr_max_requestsField"/>
+                    </span>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="svr_add" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+        </span>
+
+        <span jwcid="service">
+            <form jwcid="svc_listForm">
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns">
+                            <span jwcid="svc_name_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="svc_priority_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="svc_svc_time_column"/>
+                        </td>
+                        <td  class="table_columns" width="20">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr jwcid="eachSvc">
+                        <td class="table_values">
+                            <span jwcid="svc_name_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="svc_priority_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="svc_svc_time_value"/>
+                        </td>
+                        <td class="table_values" align="center">
+                            <a jwcid="svc_deleteLink"><img jwcid="svc_delete" border="0"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <br/>
+            <form jwcid="svcForm">
+                <span jwcid="svc_name">
+                    <input jwcid="svc_nameField"/>
+                </span>
+                <span jwcid="svc_priority">
+                    <input jwcid="svc_priorityField"/>
+                </span>
+                <span jwcid="svc_svc_time">
+                    <input jwcid="svc_svc_timeField"/>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="svc_add" class="form_button" style="width:100px;"/>
+                 </div>
+            </form>
+        </span>
+
+        <span jwcid="directory">
+            <form jwcid="directory_listForm">
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns">
+                            <span jwcid="directory_name_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="directory_path_column"/>
+                        </td>
+                        <td  class="table_columns" width="20">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr jwcid="eachDirectory">
+                        <td class="table_values">
+                            <span jwcid="directory_name_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="directory_path_value" style="width:98%"/>
+                        </td>
+                        <td class="table_values" align="center">
+                            <a jwcid="directory_deleteLink"><img jwcid="directory_delete" border="0"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <br/>
+            <form jwcid="directoryForm">
+                <span jwcid="directory_name">
+                    <input jwcid="directory_nameField"/>
+                </span>
+                <span jwcid="directory_dir_path">
+                    <input jwcid="directory_dir_pathField" style="width:98%"/>
+                </span>
+                <span jwcid="directory_default_charset">
+                    <input jwcid="directory_default_charsetField"/>
+                </span>
+                <span jwcid="directory_default_mimetype">
+                    <input jwcid="directory_default_mimetypeField"/>
+                </span>
+                <span jwcid="directory_force_mimetype">
+                    <input jwcid="directory_force_mimetypeField"/>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="directory_add" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+        </span>
+
+        <span jwcid="uri">
+            <form jwcid="uri_listForm">
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns">
+                            <span jwcid="uri_name_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="uri_def_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="uri_svr_type_column"/>
+                        </td>
+                        <td  class="table_columns" width="20">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr jwcid="eachUri">
+                        <td class="table_values">
+                            <span jwcid="uri_name_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="uri_def_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="uri_svr_type_value"/>
+                        </td>
+                        <td class="table_values" align="center">
+                            <a jwcid="uri_deleteLink"><img jwcid="uri_delete" border="0"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <br/>
+            <form jwcid="uriForm">
+                <span jwcid="uri_name">
+                    <input jwcid="uri_nameField"/>
+                </span>
+                <span jwcid="uri_def">
+                    <input jwcid="uri_defField"/>
+                </span>
+                <span jwcid="uri_svr_type">
+                    <input jwcid="uri_svr_typeField"/>
+                </span>
+                <span jwcid="uri_blind">
+                    <span jwcid="uri_svr_name">
+                        <input jwcid="uri_svr_nameField"/>
+                    </span>
+                    <span jwcid="uri_svc_name">
+                        <input jwcid="uri_svc_nameField"/>
+                    </span>
+                    <span jwcid="uri_redirect">
+                        <input jwcid="uri_redirectField"/>
+                    </span>
+                    <span jwcid="uri_redirect_status">
+                        <input jwcid="uri_redirect_statusField"/>
+                    </span>
+                    <span jwcid="uri_vhost_name">
+                        <input jwcid="uri_vhost_nameField"/>
+                    </span>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="uri_add" class="form_button" style="width:100px;"/>
+                 </div>
+            </form>
+
+        </span>
+
+        <span jwcid="alias">
+            <form jwcid="alias_listForm">
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns">
+                            <span jwcid="alias_name_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="alias_def_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="real_path_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="alias_svr_type_column"/>
+                        </td>
+                        <td  class="table_columns" width="20">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr jwcid="eachAlias">
+                        <td class="table_values">
+                            <span jwcid="alias_name_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="alias_def_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="real_path_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="alias_svr_type_value"/>
+                        </td>
+                        <td class="table_values" align="center">
+                            <a jwcid="alias_deleteLink"><img jwcid="alias_delete" border="0"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <br/>
+            <form jwcid="aliasForm">
+                <span jwcid="alias_name">
+                    <input jwcid="alias_nameField"/>
+                </span>
+                <span jwcid="alias_def">
+                    <input jwcid="alias_defField"/>
+                </span>
+                <span jwcid="real_path">
+                    <input jwcid="real_pathField"/>
+                </span>
+                <span jwcid="alias_svr_type">
+                    <input jwcid="alias_svr_typeField"/>
+                </span>
+                <span jwcid="alias_node_name">
+                    <input jwcid="alias_node_nameField"/>
+                </span>
+                <span jwcid="alias_vhost_name">
+                    <input jwcid="alias_vhost_nameField"/>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="alias_add" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+        </span>
+
+        <span jwcid="dirindex">
+            <form jwcid="dirindex_listForm">
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns">
+                            <span jwcid="dirindex_name_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="dirindex_option_column"/>
+                        </td>
+                        <td  class="table_columns" width="20">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr jwcid="eachDirindex">
+                        <td class="table_values">
+                            <span jwcid="dirindex_name_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="dirindex_option_value"/>
+                        </td>
+                        <td class="table_values" align="center">
+                            <a jwcid="dirindex_deleteLink"><img jwcid="dirindex_delete" border="0"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <br/>
+            <form jwcid="dirindexForm">
+                <span jwcid="dirindex_name">
+                    <input jwcid="dirindex_nameField"/>
+                </span>
+                <span jwcid="dirindex_option">
+                    <input jwcid="dirindex_optionField"/>
+                </span>
+                <span jwcid="dirindex_ignore">
+                    <input jwcid="dirindex_ignoreField" rows="4"/>
+                </span>
+                <span jwcid="dirindex_default_icon">
+                    <input jwcid="dirindex_default_iconField" style="width:98%"/>
+                </span>
+                <span jwcid="dirindex_description">
+                    <input jwcid="dirindex_descriptionField"/>
+                </span>
+                <span jwcid="dirindex_header_file">
+                    <input jwcid="dirindex_header_fileField" style="width:98%;"/>
+                </span>
+                <span jwcid="dirindex_tail_file">
+                    <input jwcid="dirindex_tail_fileField" style="width:98%;"/>
+                </span>
+                <span jwcid="dirindex_icon_ext">
+                    <input jwcid="dirindex_icon_extField" style="width:98%"/>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="dirindex_add" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+        </span>
+
+        <span jwcid="access">
+            <form jwcid="access_listForm">
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns">
+                            <span jwcid="access_name_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="access_order_column"/>
+                        </td>
+                        <td  class="table_columns" width="20">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr jwcid="eachAccess">
+                        <td class="table_values">
+                            <span jwcid="access_name_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="access_order_value"/>
+                        </td>
+                        <td class="table_values" align="center">
+                            <a jwcid="access_deleteLink"><img jwcid="access_delete" border="0"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <br/>
+            <form jwcid="accessForm">
+                <span jwcid="access_name">
+                    <input jwcid="access_nameField"/>
+                </span>
+                <span jwcid="access_order">
+                    <input jwcid="access_orderField"/>
+                </span>
+                <span jwcid="access_allow">
+                    <input jwcid="access_allowField" rows="4"/>
+                </span>
+                <span jwcid="access_deny">
+                    <input jwcid="access_denyField" rows="4"/>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="access_add" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+        </span>
+
+        <span jwcid="authent">
+            <form jwcid="authent_listForm">
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns">
+                            <span jwcid="authent_name_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="authent_type_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="authent_user_file_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="authent_group_file_column"/>
+                        </td>
+                        <td  class="table_columns" width="20">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr jwcid="eachAuthent">
+                        <td class="table_values">
+                            <span jwcid="authent_name_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="authent_type_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="authent_user_file_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="authent_group_file_value"/>
+                        </td>
+                        <td class="table_values" align="center">
+                            <a jwcid="authent_deleteLink"><img jwcid="authent_delete" border="0"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <br/>
+            <form jwcid="authentForm">
+                <span jwcid="authent_name">
+                    <input jwcid="authent_nameField"/>
+                </span>
+                <span jwcid="authent_type">
+                    <input jwcid="authent_typeField"/>
+                </span>
+                <span jwcid="authent_user_file">
+                    <input jwcid="authent_user_fileField" style="width:98%;"/>
+                </span>
+                <span jwcid="authent_group_file">
+                    <input jwcid="authent_group_fileField" style="width:98%;"/>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="authent_add" class="form_button" style="width:100px;"/>
+                 </div>
+            </form>
+        </span>
+
+        <span jwcid="ssl">
+            <form jwcid="ssl_listForm">
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns">
+                            <span jwcid="ssl_name_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="ssl_certificate_file_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="ssl_certificate_key_file_column"/>
+                        </td>
+                        <td  class="table_columns" width="20">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr jwcid="eachSsl">
+                        <td class="table_values">
+                            <span jwcid="ssl_name_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="ssl_certificate_file_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="ssl_certificate_key_file_value"/>
+                        </td>
+                        <td class="table_values" align="center">
+                            <a jwcid="ssl_deleteLink"><img jwcid="ssl_delete" border="0"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <br/>
+            <form jwcid="sslForm">
+                <span jwcid="ssl_name">
+                    <input jwcid="ssl_nameField"/>
+                </span>
+                <span jwcid="ssl_certificate_file">
+                    <input jwcid="ssl_certificate_fileField" style="width:98%;"/>
+                </span>
+                <span jwcid="ssl_certificate_key_file">
+                    <input jwcid="ssl_certificate_key_fileField" style="width:98%;"/>
+                </span>
+                <span jwcid="ssl_blind">
+                    <span jwcid="ssl_ca_certificate_path">
+                        <input jwcid="ssl_ca_certificate_pathField" style="width:98%;"/>
+                    </span>
+                    <span jwcid="ssl_ca_certificate_file">
+                        <input jwcid="ssl_ca_certificate_fileField" style="width:98%;"/>
+                    </span>
+                    <span jwcid="ssl_certificate_chain_file">
+                        <input jwcid="ssl_certificate_chain_fileField" style="width:98%;"/>
+                    </span>
+                    <span jwcid="ssl_verify_depth">
+                        <input jwcid="ssl_verify_depthField"/>
+                    </span>
+                    <span jwcid="ssl_verify_client">
+                        <input jwcid="ssl_verify_clientField"/>
+                    </span>
+                    <span jwcid="ssl_fake_basic_auth">
+                        <input jwcid="ssl_fake_basic_authField"/>
+                    </span>
+                    <span jwcid="ssl_required_ciphers">
+                        <input jwcid="ssl_required_ciphersField"/>
+                    </span>
+                    <span jwcid="ssl_random_file">
+                        <input jwcid="ssl_random_fileField" style="width:98%;"/>
+                    </span>
+                    <span jwcid="ssl_random_file_per_conn">
+                        <input jwcid="ssl_random_file_per_connField"/>
+                    </span>
+                    <span jwcid="ssl_pass_phrase_dialog">
+                        <input jwcid="ssl_pass_phrase_dialogField"/>
+                    </span>
+                    <span jwcid="ssl_crypto_device">
+                        <input jwcid="ssl_crypto_deviceField"/>
+                    </span>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="ssl_add" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+        </span>
+
+        <span jwcid="errdoc">
+           <form jwcid="errdoc_listForm">
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns">
+                            <span jwcid="errdoc_name_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="errdoc_status_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="errdoc_url_column"/>
+                        </td>
+                        <td  class="table_columns" width="20">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr jwcid="eacherrdoc">
+                        <td class="table_values">
+                            <span jwcid="errdoc_name_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="errdoc_status_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="errdoc_url_value"/>
+                        </td>
+                        <td class="table_values" align="center">
+                            <a jwcid="errdoc_deleteLink"><img jwcid="errdoc_delete" border="0"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <br/>
+            <form jwcid="errdocForm">
+                <span jwcid="errdoc_name">
+                    <input jwcid="errdoc_nameField"/>
+                </span>
+                <span jwcid="errdoc_status">
+                    <input jwcid="errdoc_statusField"/>
+                </span>
+                <span jwcid="errdoc_url">
+                    <input jwcid="errdoc_urlField" style="width:98%;"/>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="errdoc_add" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+        </span>
+
+        <span jwcid="expires">
+           <form jwcid="expire_listForm">
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns">
+                            <span jwcid="expire_name_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="expire_mimetype_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="expire_url_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="expire_expire_time_column"/>
+                        </td>
+                        <td  class="table_columns" width="20">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr jwcid="eachexpire">
+                        <td class="table_values">
+                            <span jwcid="expire_name_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="expire_mimetype_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="expire_url_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="expire_expire_time_value"/>
+                        </td>
+                        <td class="table_values" align="center">
+                            <a jwcid="expire_deleteLink"><img jwcid="expire_delete" border="0"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <br/>
+            <form jwcid="expireForm">
+                <span jwcid="expire_name">
+                    <input jwcid="expire_nameField"/>
+                </span>
+                <span jwcid="expire_mimetype">
+                    <input jwcid="expire_mimetypeField"/>
+                </span>
+                <span jwcid="expire_url">
+                    <input jwcid="expire_urlField" style="width:98%;"/>
+                </span>
+                <span jwcid="expire_expire_time">
+                    <input jwcid="expire_expire_timeField"/>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="expire_add" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+        </span>
+
+        <span jwcid="tcpgw">
+           <form jwcid="tcpgw_listForm">
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns">
+                            <span jwcid="tcpgw_name_column"/>
+                        </td>
+<!--
+                        <td class="table_columns">
+                            <span jwcid="mime_port_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="tcpgw_list_column"/>
+                        </td>
+-->
+                        <td  class="table_columns" width="20">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr jwcid="eachtcpgw">
+                        <td class="table_values">
+                            <span jwcid="tcpgw_name_value"/>
+                        </td>
+<!--
+                        <td class="table_values">
+                            <span jwcid="mime_type_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="tcpgw_svr_type_value"/>
+                        </td>
+-->
+                        <td class="table_values" align="center">
+                            <a jwcid="tcpgw_deleteLink"><img jwcid="tcpgw_delete" border="0"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <br/>
+            <form jwcid="tcpgwForm">
+                <span jwcid="tcpgw_name">
+                    <input jwcid="tcpgw_nameField"/>
+                </span>
+                <span jwcid="tcpgw_port">
+                    <input jwcid="tcpgw_portField"/>
+                </span>
+                <span jwcid="tcpgw_listen">
+                    <input jwcid="tcpgw_listenField"/>
+                </span>
+                <span jwcid="tcpgw_server_address">
+                    <input jwcid="tcpgw_server_addressField"/>
+                </span>
+                <span jwcid="tcpgw_timeout">
+                    <input jwcid="tcpgw_timeoutField"/>
+                </span>
+                <span jwcid="tcpgw_connect_timeout">
+                    <input jwcid="tcpgw_connect_timeoutField"/>
+                </span>
+                <span jwcid="tcpgw_access_name">
+                    <input jwcid="tcpgw_access_nameField"/>
+                </span>
+                <span jwcid="tcpgw_schedule">
+                    <input jwcid="tcpgw_scheduleField"/>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="tcpgw_add" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+        </span>
+
+        <span jwcid="ext">
+           <form jwcid="ext_listForm">
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns">
+                            <span jwcid="ext_name_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="mime_type_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="ext_svr_type_column"/>
+                        </td>
+                        <td  class="table_columns" width="20">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr jwcid="eachExt">
+                        <td class="table_values">
+                            <span jwcid="ext_name_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="mime_type_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="ext_svr_type_value"/>
+                        </td>
+                        <td class="table_values" align="center">
+                            <a jwcid="ext_deleteLink"><img jwcid="ext_delete" border="0"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <br/>
+            <form jwcid="extForm">
+                <span jwcid="ext_name">
+                    <input jwcid="ext_nameField"/>
+                </span>
+                <span jwcid="mime_type">
+                    <input jwcid="mime_typeField"/>
+                </span>
+                <span jwcid="ext_svr_type">
+                    <input jwcid="ext_svr_typeField"/>
+                </span>
+                <span jwcid="ext_svr_name">
+                    <input jwcid="ext_svr_nameField"/>
+                </span>
+                <span jwcid="ext_charset">
+                    <input jwcid="ext_charsetField"/>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="ext_add" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+        </span>
+
+        <span jwcid="logging">
+           <form jwcid="logging_listForm">
+                <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                    <tr>
+                        <td class="table_columns">
+                            <span jwcid="logging_name_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="file_name_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="format_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="valid_days_column"/>
+                        </td>
+                        <td class="table_columns">
+                            <span jwcid="option_column"/>
+                        </td>
+                        <td  class="table_columns" width="20">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr jwcid="eachLogging">
+                        <td class="table_values">
+                            <span jwcid="logging_name_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="file_name_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="format_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="valid_days_value"/>
+                        </td>
+                        <td class="table_values">
+                            <span jwcid="option_value"/>
+                        </td>
+                        <td class="table_values" align="center">
+                            <a jwcid="logging_deleteLink"><img jwcid="logging_delete" border="0"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <br/>
+            <form jwcid="loggingForm">
+                <span jwcid="logging_name">
+                    <input jwcid="logging_nameField"/>
+                </span>
+                <span jwcid="file_name">
+                    <input jwcid="file_nameField" style="width:98%"/>
+                </span>
+                <span jwcid="format">
+                    <input jwcid="formatField" style="width:98%"/>
+                </span>
+                <span jwcid="valid_days">
+                    <input jwcid="valid_daysField"/>
+                </span>
+                <span jwcid="option">
+                    <input jwcid="optionField"/>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="logging_add" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+        </span>
+
+        <span jwcid="nullBlock"></span>
+    </span>
+</html>

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+. jeus.properties
+
+${JAVA_HOME}/bin/java -classpath ${JEUS_HOME}/lib/etc/hsqldb.jar ${JAVA_ARGS} org.hsqldb.util.DatabaseManager
+

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="Shift-JIS"?>
+<description>        
+    <text key="worker-poolType.submit-timeout"><![CDATA[
+                    [Description]: クライアントのリクエストに対して指定された時間の間作業ができない場合、作業は拒否されます。
+                    ユーザは、サービスのリクエストによってexceptionを取得したり、eventを取得します。
+                    [Value Description]: 時間値のmsec単位。0 に設定する場合、作業が始まるまで待機状態となります。
+                    [Example]: &lt;submit-timeout>5000&lt;/submit-timeout>
+                    ]]>        
+    </text>
+         
+    <text key="wait-connectionType.wait-connection"><![CDATA[
+                    [Description]: Connectionを取得するために待つかを設定します。 
+                    [Example]: &lt;wait-connection>true&lt;/wait-connection>
+                    ]]>        
+    </text>
+         
+    <text key="pool-managementType.disposable-connection"><![CDATA[
+                    [Description]: Connectionを取得出来なかった場合、臨時のonnection を利用するかに対する設定です。
+                    ]]>        
+    </text>
+         
+    <text key="connection-poolType.dissociation-timeout"><![CDATA[
+                    [Description]: dissociationを適用する時間値を設定します。該当リソースアダプタでこの機能をサポートしない場合は無視されます。 
+                    [Value Description]: 時間値のmsec単位。0であればdissociationを使用しません。
+                    [Example]: &lt;dissociation-timeout>0&lt;/dissociation-timeout>
+                    ]]>        
+    </text>
+         
+    <text key="jeus-connector-ddType.module-name"><![CDATA[
+                    [Description]: コネクタモジュールの名前です。アプリケーション内のモジュールの場合はアプリケーション内でユニークであり、サーバモジュールの場合はJEUS システム内でユニークである必要があります。Message Driven Beanでinflowターゲットを指定するために使用されます。
+                    [Example]: &lt;module-name>whitebox-xa&lt;/module-name>
+                    ]]>        
+    </text>
+         
+    <text key="jeus-connector-ddType.worker-pool"><![CDATA[
+                    [Description]: Work Manager関連の設定を行います。
+                    ]]>        
+    </text>
+         
+    <text key="connection-poolType.skip-connection-matching"><![CDATA[
+                    [Description]: connectionの認証のためのconnection matchingの過程の省略します。 
+                    [Example]: &lt;skip-connection-matching>false&lt;/skip-connection-matching>
+                    ]]>        
+    </text>
+         
+    <text key="worker-poolType.step"><![CDATA[
+                    [Description]: スレッドの数が増加する必要がある場合に一度に増加されるスレッドの数です。総スレッド数は上記で設定されたmax値を超えることはできません。
+                    [Example]: &lt;max>1&lt;/max>
+                    ]]>        
+    </text>
+         
+    <text key="pool-managementType.min"><![CDATA[
+                    [Description]: Connection poolによって管理されるConnectionの数の最初値です。 
+                    この設定値より少ないconnectionが存在する場合、ユーザのリクエストによって直ちに新しいconnectionを生成します。
+                    これより多いconnectionが存在する場合、一定時間の間使用されないconnectionをpoolから除去します。
+                    [Example]: &lt;min>0&lt;/min>
+                    ]]>        
+    </text>
+         
+    <text key="connection-poolType.export-name"><![CDATA[
+                    [Description]: 該当connection poolがJNDI Naming Systemにバインディングされる名前です。
+                    [Value Description]: 任意に指定でき、該当のモジュールの中でユニークな名前である必要があります。
+                    [Example]: &lt;export-name>datasource1&lt;/export-name>
+                    ]]>        
+    </text>
+         
+    <text key="worker-poolType.min"><![CDATA[
+                    [Description]: Work Managerが管理するスレッドの数の最初値です。 
+                    この設定値より少ないスレッドが存在する場合にWork Managerはユーザの要求によって直ちにスレッドを増やします。
+                    この設定値より多いスレッドが存在する場合、一定時間の間、使用されないスレッドを減らし始め、min数のスレッドを維持ます。
+                    [Example]: &lt;min>3&lt;/min>
+                    ]]>        
+    </text>
+         
+    <text key="connection-poolType.log-file"><![CDATA[                    [Description]: 該当connection poolのmanaged connection factory が使用するログファイルに対する設定を指定します。                    ]]>        
+    </text>
+         
+    <text key="connection-poolType.use-wrapper"><![CDATA[
+                    [Description]: 付加的な機能のためにconnection wrapperを利用します。詳しい内容はマニュアルを参照してください。
+                    [Example]: &lt;use-wrapper>true&lt;/use-wrapper>
+                    ]]>        
+    </text>
+         
+    <text key="worker-poolType.shutdown-timeout"><![CDATA[
+                    [Description]: Work Managerが終了される瞬間進行中の作業がある場合、最大ここに設定されている時間だけ間待機します。
+                    [Value Description]: 時間値のmsec単位。0であれば待機せず、 -1 で設定する場合は作業が終了するまで待機します。作業中のスレッドは妨害されます。
+                    [Example]: &lt;shutdown-timeout>-1&lt;/shutdown-timeout>
+                    ]]>        
+    </text>
+         
+    <text key="disposable-connectionType.allow-disposable-connection"><![CDATA[
+                    [Description]: Connectionを取得出来なかった場合、臨時のConnectionを使用するかを設定します。
+                    [Example]: &lt;allow-disposable-connection>true&lt;/allow-disposable-connection>
+                    ]]>        
+    </text>
+         
+    <text key="worker-poolType.release-timeout"><![CDATA[
+                    [Description]: 作用が始まり、この時間が過ぎてからも作業が中止されなかったら、Work Managerは該当作業に対してrelease()メソッドを呼び出します。
+                    [Value Description]: 時間値のmsec単位。0に設定する場合、release()メソッドは呼び出されません。
+                    [Example]: &lt;release-timeout>60000&lt;/release-timeout>
+                    ]]>        
+    </text>
+         
+    <text key="connection-poolType.user"><![CDATA[
+                    [Description]: セキュリティをコンテナーで管理する場合、connection を生成するためにしようするユーザの名前です。
+                    [Example]: &lt;user>scott&lt;/user>
+                    ]]>        
+    </text>
+         
+    <text key="connection-poolType.property"><![CDATA[
+                    [Description]: ManagedConnectionFactoryに適用するpropertyを追加します。ra.xmlに設定された値より優先されます。
+                    ]]>        
+    </text>
+         
+    <text key="pool-managementType.pooled-timeout"><![CDATA[
+                    [Description]: Connection poolにmin値より多いConnectionがある場合、設定された時間の間使用されないConnectionをpoolから除去します。
+                    [Value Description]: 時間値のmsec単位。0に設定するとconnection は除去されません。
+                    [Example]: &lt;pooled-timeout>600000&lt;/pooled-timeout>
+                    ]]>        
+    </text>
+         
+    <text key="connection-poolType.validation-timeout"><![CDATA[
+
+                    [Description]: リソースアダプタがConnection Poolにあるコネクションを検証する時間単位を設定します。リソースアダプタのManagedConnectionFactoryがValidatingManagedConnectionFactoryインタフェースを実現した場合、この時間単位でInvalid ConnectionはConnection Poolから除去されます。
+                    [Value Description]: 時間値msec単位。0であればvalidationは無効になる
+                    [Example]: <validation-timeout>0</validation-timeout>
+                    
+                    ]]>   
+    </text>
+           
+    <text key="jeus-connector-ddType.use-workmanager"><![CDATA[
+                    [Description]: Work Managerを使用するかを設定します。Trueの場合、リソースアダプタがスタートされる前に設定によって初期化されます。
+                    [Example]: &lt;use-workmanager>true&lt;/use-workmanager>
+                    ]]>            
+    </text>
+             
+    <text key="wait-connectionType.max-wait-trial"><![CDATA[
+                    [Description]: この数だけconnection matchingを失敗したなら、Connectionを取得するのに失敗したことに見なされます。
+                    [Example]: &lt;max-waiter-trial>5&lt;/max-waiter-trial>
+                    ]]>            
+    </text>
+             
+    <text key="log-fileType.buffer-size"><![CDATA[                        [Description]: connection poolがログファイルに出力する時に使用するバッファサイズを指定します。                        [Value Description]: byte単位です。                        [Performance Recommandation]: この値が大きいほどメッセージはファイルに遅れて出力されるが、ロギングの性能はよくなります。                        [Example]: <buffer-size>512</buffer-size>                    ]]>            
+    </text>
+             
+    <text key="pool-managementType.max"><![CDATA[
+                    [Description]: Connection poolによって管理されるConnectionの数の最大値です。
+                    [Example]: &lt;max>20&lt;/max>
+                    ]]>            
+    </text>
+             
+    <text key="connection-poolType.invalidation-timeout"><![CDATA[
+                    [Description]: invalidationを適用する時間値を設定します。この時間が過ぎてもconnnection poolに戻らないconnectionは強制に除去されます。
+                    [Value Description]: 時間値のmsec単位。0であればinvalidationを使用しません。
+                    [Example]: &lt;invalidation-timeout>0&lt;/invalidation-timeout>
+                    ]]>            
+    </text>
+             
+    <text key="worker-poolType.pooled-timeout"><![CDATA[
+                    [Description]: Work Managerにmin値を超過する数のスレッドがある場合、設定された時間の間使用されないスレッドをpoolから除去します。
+                    [Value Description]: 時間値のmsec単位。0であれば除去しません。
+                    [Example]: &lt;pooled-timeout>600000&lt;/pooled-timeout>
+                    ]]>            
+    </text>
+             
+    <text key="log-fileType.file-name"><![CDATA[                        [Description]: connection poolが使用するログファイル名を設定します。                        [Example]: <file-name>C:\logs\mylog.log</file-name>                    ]]>            
+    </text>
+             
+    <text key="wait-connectionType.wait-timeout"><![CDATA[
+                    [Description]: この時間の間待ってもConnectionを取得出来なかった場合にはConnectionを取得するのに失敗したことに見なされます。
+                    [Example]: &lt;wait-timeout>10000&lt;/wait-timeout>
+                    ]]>            
+    </text>
+             
+    <text key="jeus-connector-ddType.connection-pool"><![CDATA[
+                    [Description]: Connection Poolに対する設定を行います。
+                    ]]>            
+    </text>
+             
+    <text key="pool-managementType.wait-connection"><![CDATA[
+                    [Description]: Connection PoolからConnectionを取得するために待つ必要がある場合、これに対する設定です。
+                    ]]>            
+    </text>
+             
+    <text key="disposable-connectionType.max-disposable-count"><![CDATA[
+                    [Description]: 臨時のConnectionの最大値です。臨時のConnectionは使用が終わったら自動的に除去されます。           
+         [Example]: &lt;max-disposable-count>3&lt;/max-disposable-count>
+                    ]]>            
+    </text>
+             
+    <text key="connection-poolType.pool-management"><![CDATA[
+                    [Description]: connection poolに関連された値を設定します。
+                    ]]>            
+    </text>
+             
+    <text key="connection-poolType.password"><![CDATA[
+                    [Description]: セキュリティをコンテナーで管理する場合、connection を生成するために使用するパスワードです。
+                    [Example]: &lt;password>tiger&lt;/password>
+                    ]]>            
+    </text>
+             
+    <text key="worker-poolType.max"><![CDATA[
+                    [Description]: Work Managerが管理するスレッドの数の最大値です。スレッドの数はこの値を超えることはできません。
+                    [Example]: &lt;max>10&lt;/max>
+                    ]]>            
+    </text>
+             
+    <text key="connection-poolType.transaction-support"><![CDATA[
+                    [Description]: 該当connection poolがサポートするトランザクションのタイプを設定します。ここで、設定された値は、ra.xmlに設定された値より優先されます。                    [Value Description]: NoTransaction, LocalTransaction, XATransaction, XATransactionOnlyの中で1つを設定します。
+                    [Example]: &lt;transaction-support>XATransaction&lt;/transaction-support>
+                    ]]>            
+    </text>
+             
+    <text key="jeus-connector-dd"><![CDATA[
+            [Description]: 単一JEUSコネクタモジュールの最上位element。それぞれの jeus-connector-dd.xmlファイルにはこのタッグが必ず存在します。
+		    ]]>            
+    </text>
+             
+    <text key="worker-poolType.pre-allocation"><![CDATA[
+                    [Description]: Work Managerが初期化されるときにmin値に設定された数だけのスレッドをすでに作っておきます。
+                    [Example]: &lt;pre-allocation>true&lt;/pre-allocation>
+                    ]]>            
+    </text>
+             
+    <text key="log-fileType.valid-day"><![CDATA[                      
+                    [Description]: 日付単位でログファイルを変更する時に使用します。1以上の値を指定すると、ログファイル名の後ろにファイルが使用された日付が自動に入力されます。                      
+                    [Value Description]: 日（day）                      
+                    [Example]: <valid-day>1</valid-day>                    
+                    ]]>            
+    </text>
+             
+    <text key="wait-connectionType.max-waiter-count"><![CDATA[
+                    [Description]: Connectionを取得するために待つクライアントの最大数です。これより多い場合は直ちに失敗したことに見なされます。
+                    [Example]: &lt;max-waiter-count>5&lt;/max-waiter-count>
+                    ]]>            
+    </text>
+   
+</description>

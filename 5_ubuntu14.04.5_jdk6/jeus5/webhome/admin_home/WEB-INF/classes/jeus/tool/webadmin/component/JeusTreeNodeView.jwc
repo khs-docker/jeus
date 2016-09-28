@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://tapestry.apache.org/dtd/Tapestry_4_0.dtd">
+
+<component-specification
+    class="jeus.tool.webadmin.component.JeusTreeNodeView"
+    allow-body="yes" allow-informal-parameters="yes">
+    
+    <parameter name="showIcons" default-value="true"/>
+
+    <component id="hasAction" type="If">
+        <binding name="condition" value="popup == null and linkPage != null and linkPage.trim().length() > 0"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="hasPopup" type="If">
+        <binding name="condition" value="popup != null and popup.trim().length() > 0"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="hasNotAction" type="If">
+        <binding name="condition" value="linkPage == null or linkPage.trim().length() == 0"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="action" type="ExternalLink">
+        <binding name="page" value="linkPage"/>
+        <binding name="parameters" value="linkParameters"/>
+        <binding name="target" value="linkTarget"/>
+    </component>
+
+    <component id="popup" type="Any">
+        <binding name="element" value="literal:a"/>
+        <!-- <binding name="href" value="literal:#"/> -->
+        <binding name="onclick" value="'onSelect(this);window.open(&quot;'+popupLink+'&quot;, &quot;'+ popupName +'&quot;, &quot;'+popup+'&quot;);'"/>
+    </component>
+
+    <component id="showIcons" type="If">
+        <binding name="condition" value="showIcons"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="iconNode" type="Any">
+    	<binding name="element" value="literal:img"/>
+        <binding name="src" value="icon"/>
+    </component>
+
+    <parameter name="showNodeImages" default-value="true"/>
+    <parameter name="makeNodeDirect" default-value="true"/>
+
+    <parameter name="nodeRenderFactory" required="no"  property="nodeRenderFactoryParameter"/>
+
+    <reserved-parameter name="treedataview"/>
+    <reserved-parameter name="nodeviewdirect"/>
+
+
+    <component id="expandCollapsDirect" type="DirectLink">
+        <binding name="parameters" value="nodeContext"/>
+        <binding name="listener" value="listeners.nodeExpandCollaps"/>
+        <binding name="stateful" value="false"/>
+        <binding name="name" value="selectedID"/>
+        <binding name="anchor" value="cleanSelectedID"/>
+        <binding name="disabled" value="disableLink"/>        
+    </component>
+    
+    
+    <component id="nodeDirect" type="DirectLink">
+        <binding name="parameters" value="nodeContext"/>
+        <binding name="listener" value="listeners.nodeSelect"/>
+        <binding name="stateful" value="false"/>
+        <binding name="name" value="selectedID"/>
+        <binding name="anchor" value="cleanSelectedID"/>
+    </component>
+    
+    <component id="showImages" type="If">
+        <binding name="condition" value="showImages"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="showImages2" copy-of="showImages"/>
+
+    <component id="makeNodeDirect" type="If">
+        <binding name="condition" value="makeNodeDirect"/>
+    </component>
+
+    <component id="makeNodeNoDirect" type="If">
+        <binding name="condition" value="makeNodeNoDirect"/>
+    </component>
+
+    <component id="imageNode" type="Image">
+        <binding name="image" value="nodeImage"/>
+    </component>
+    <component id="imageNode2" copy-of="imageNode"/>
+
+    <component id="insertValue" type="Delegator">
+		<binding name="delegate" value="currentRenderer"/>
+    </component>
+    <component id="insertValue2" copy-of="insertValue"/>
+    
+    <component id="insertValue4" copy-of="insertValue"/>
+
+    <component id="class" type="Any">
+        <binding name="element" value="literal:div"/>
+        <binding name="class" value="nodeStyleClass"/>
+    </component>
+
+    <asset name="_topCloseNodeImage" path="context:/image/tree/plus.gif"/>
+    <asset name="_topOpenNodeImage" path="context:/image/tree/minus.gif"/>
+    <asset name="_topLineImage" path="context:/image/tree/WhiteSpace.gif"/>
+    
+    <asset name="_topLastOpenNodeImage" path="context:/image/tree/minus.gif"/>
+    <asset name="_topLastCloseNodeImage" path="context:/image/tree/plus.gif"/>
+    
+    <asset name="_middleCloseNodeImage" path="context:/image/tree/plus.gif"/>
+    <asset name="_middleOpenNodeImage" path="context:/image/tree/minus.gif"/>
+    <asset name="_middleCrossLineImage" path="context:/image/tree/WhiteSpace.gif"/>
+    <asset name="_middleLineImage" path="context:/image/tree/WhiteSpace.gif"/>
+    
+    <asset name="_bottomCloseNodeImage" path="context:/image/tree/plus.gif"/>
+    <asset name="_bottomOpenNodeImage" path="context:/image/tree/minus.gif"/>
+    <asset name="_bottomLineImage" path="context:/image/tree/WhiteSpace.gif"/>
+    
+    <asset name="_whiteSpaceImage" path="context:/image/tree/WhiteSpace.gif"/> 
+
+    <component id="showConnectImage" type="If">
+        <binding name="condition" value="showConnectImage"/>
+    </component>
+
+    <component id="connectImage" type="Image">
+        <binding name="image" value="connectImage"/>
+    </component>
+    
+    <component id="foreachConnectImage" type="Foreach">
+        <binding name="source" value="foreachConnectImageList"/>
+        <binding name="value" value="currentForeachConnectImageValue"/>
+    </component>
+
+</component-specification>

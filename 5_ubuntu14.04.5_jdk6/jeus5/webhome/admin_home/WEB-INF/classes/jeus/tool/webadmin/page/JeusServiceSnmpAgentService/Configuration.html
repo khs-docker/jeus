@@ -1,0 +1,59 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <span jwcid="general">
+            <form jwcid="generalForm">
+                <span jwcid="snmp_adaptor_port">
+                    <input jwcid="snmp_adaptor_portField"/>
+                </span>
+                <span jwcid="general_blind">
+                    <span jwcid="snmp_version">
+                        <input jwcid="snmp_versionField"/>
+                    </span>
+                    <span jwcid="snmp_max_packet_size">
+                        <input jwcid="snmp_max_packet_sizeField"/>
+                    </span>
+                    <span jwcid="snmp_security">
+                        <input jwcid="snmp_securityField"/>
+                    </span>
+                </span>
+            </form>
+        </span>
+        <span jwcid="trap_demon">
+            <form jwcid="trap_demonForm">
+            </form>
+            <table width="100%" border="1" cellspacing="0" cellpadding="0" class="table">
+                <tr>
+                    <td class="table_columns">
+                        <span jwcid="ip_address_column"/>
+                    </td>
+                    <td class="table_columns">
+                        <span jwcid="port_column"/>
+                    </td>
+                    <td  class="table_columns" width="20">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr jwcid="eachTrapDemon">
+                    <td class="table_values">
+                        <span jwcid="ip_address_value"/>
+                    </td>
+                    <td class="table_values">
+                        <span jwcid="port_value"/>
+                    </td>
+                    <td class="table_values" align="center">
+                        <a jwcid="deleteLink"><img jwcid="delete" border="0"/></a>
+                    </td>
+                </tr>
+            </table>
+            <form jwcid="addForm">
+                <span jwcid="ip_address">
+                    <input jwcid="ip_addressField"/>
+                </span>
+                <span jwcid="port">
+                    <input jwcid="portField"/>
+                </span>
+                <input jwcid="add_trap_demon" class="form_button" style="width:100px;"/>
+            </form>
+        </span>
+    </span>
+</html>

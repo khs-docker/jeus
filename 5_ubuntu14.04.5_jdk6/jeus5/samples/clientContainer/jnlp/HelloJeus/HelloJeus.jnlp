@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<jnlp codebase="http://localhost:2108/jnlp/HelloJeus"
+      spec="1.0">
+    <information>
+    <locale>en_US</locale>
+        <title>HelloJeus Test</title>
+        <vendor>Tmax</vendor>
+        <homepage href="http://www.tmaxsoft.com"/>
+        <description kind="short">Hello Test</description>
+    </information>
+    <resources>
+    	<j2se version="1.3+"/>
+        <jar href="HelloJeus.jar" main="true" />
+    </resources>
+   <application-desc main-class="HelloJeus"/>
+</jnlp>
+
+
+  

@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="GB2312"?>
+<description>                                                
+    <text key="handlerPropertySetType.property"><![CDATA[
+                        [Description]: 设置向handler 等进行传输的property。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="rolePermissionType.principal"><![CDATA[
+                        [Description]: 指定相当于role的user principal。
+                        [Value Description]: 在security的subjects.xml中指定的principal名称
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="schedulerType.job-list"><![CDATA[
+                        [Description]: 指定要登录到scheduler的job list。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="rolePermissionType.role"><![CDATA[
+                        [Description]: 对principal分配的role 名称进行指定。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="smtp-propertyGroup.from-address"><![CDATA[
+                        [Description]: 指定email抄送人的地址。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="keystore-managerType.truststore-path"><![CDATA[
+                        [Description]: 定义要适用于目前DOMAIN的truststore file路径。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="propertyType.value"><![CDATA[
+                        [Description]: 是property的value值。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="file-handlerType.file-name"><![CDATA[
+                        [Description]: 设置该handler要使用的file name。如果user不进行此项设置，则使用各logger的 default file name。各个default file name请参考JEUS Server 指南。
+                        [Example]: <file-name>C:\logs\mylog.log</file-name>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jndi-refType.jndi-info"><![CDATA[
+                        [Description]: 该element将代码中使用的EJB参照捆绑(bind)到实际EJB JNDI名称。例如，实际JNDI名称为"ACCEJB"的account EJB，在代码中可以通过"ejb/account"来查找(lookup)。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="job-listType.job"><![CDATA[
+                        [Description]: 指定要在scheduler中注册的一个job。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jsp-engineType.compile-option"><![CDATA[
+                        [Description]: 使用为Servlet compiler的选项，一般情况下不使用。
+                        [Value Description]: 在编译中使用的编译选项(参照<java-compiler>element)
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="poolingType.period"><![CDATA[
+                        [Description]: 指定被pooling对象的整理时间。
+                        [Performance Recommendation]: 该值越大，整理周期越长，虽然能减少服务器运营的负载，但是相应地浪费内存，所以要指定适当的值。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="run-as-identityType.principal-name"><![CDATA[
+                    [Description]: 在ejb-jar.xml 或web.xml中使用为 run-as-specified-identity的role的principal 名称。
+                    [Value Description]: 在security的subjects.xml中指定的 principal名称
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="loggingGroup.handler"><![CDATA[
+                  [Description]: 设置要在logger中使用的handler。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jsp-engineType.jsp-work-dir"><![CDATA[
+                        [Description]: JSP workdir是Servlet source文件和 class文件的保存位置。开发人员或管理人员以调试为目的使用相关目录。
+                                                一般情况下无需使用该 element。
+                        [Value Description]: 为JSP编译而使用的绝对路径。.
+                        [Defined Value]: default : %SERVLET_HOME%\jspwork \enginename\GroupDocBase\DocBase
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="SecurityServicePropertyType.value"><![CDATA[
+                        [Description]: 作为选项，对属性的值。
+                        [Value Description]: 属性值
+                        [Example]: <value>c:\security\myAccounts.xml</value>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="rolePermissionType.classname"><![CDATA[
+                    [Description]: 指定要使用的role permission class name。若未指定，则使用JEUS基本提供的
+                    class。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="user-handlerType.formatter-class"><![CDATA[
+                        [Description]: 对此handler使用的formatter的fully qualified class name进行设置。该class继承
+                        java.util.logging.Formatter并实现jeus.util.logging.JeusFormatter。
+                        [Example]: <formatter-class>com.tmax.logging.handler.MyHandler</formatter-class>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="handlerType.user-handler"><![CDATA[
+                      [Description]: 是User使用根据J2SE logging API创建的handler时的设置
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="common-handlerType.filter-class"><![CDATA[
+                        [Description]: 设置要指定于该handler的filer class的 fully qualified class name。
+                        [Example]: <filter-class>com.tmax.logging.filter.MyFilter</filter-class>
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="handlerType.file-handler"><![CDATA[
+                      [Description]: 若想将logging输出为file时使用的handler。
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="user-handlerType.handler-property"><![CDATA[
+                        [Description]: 对生成handler时制作的formatter设置 property。该property以key-value方式保存到Map对象中，并通过 JeusFormatter.setProperty() method传输到formatter。
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="jsp-engineType.compile-encoding"><![CDATA[
+                        [Description]: 本属性是编译对JSP文件进行分析而生成的Servlet source 文件时，在?encoding选项中指定的值。
+                                     在一般情况下不使用此设置。Web Container自动选择合适的设置。
+                        [Value Description]: 表示要使用的encoding scheme的字符串。更详细内容请参考javac 编译文档。
+                        [Defined Value]: default : 在Web Container中进行自动选择。   
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="SecurityServiceType.property"><![CDATA[
+                        [Description]: 作为选项在相关安全服务中定义name-value方式的属性。可定义属性及各属性相关说明，请参考Service class相关文档。
+                    ]]>                                                    
+    </text>
+                                                             
+    <text key="rolePermissionType.unchecked"><![CDATA[
+                        [Description]: 在无任何确认下可使用role。
+                        [Example]: <unchecked/>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="smtp-propertyGroup.smtp-host-address"><![CDATA[
+                        [Description]: 指定email发送smtp server地址。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jobType.name"><![CDATA[
+                        [Description]: 指定该job的名称。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jsp-engineType.check-included-jspfile"><![CDATA[
+                        [Description]: 若此属性设置为“true”，在运行JSP文件时对“include” directive方式的JSP文件的变更与否进行确认，若变更时对相关JSP文件进行recompile。一般情况下，不对include的JSP文件进行变更确认。
+                        [Value Description]: 通过Boolean值，激活、非激活该设置。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: default : false
+                                                    true : 激活相关设置。
+                                                    false :非激活相关设置。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="handlerType.smtp-handler"><![CDATA[
+                      [Description]: 想以邮件方式发送logging时使用的handler。
+                      [Performance Recommandation]: 一个logging message 按一个邮件进行传输。若在无合适filter下使用，会造成大量邮件，必须注意由此发生的危险性。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="smtp-propertyGroup.to-address"><![CDATA[
+                        [Description]: 指定email抄送人的地址。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="invoke-httpType.http-port"><![CDATA[
+                        [Description]: 对接受HTTP-RMI请求后处理的Web服务器的端口编号进行设置。该Web服务器/Web container必须已配置并运行RMI Handler Servlet。
+                        [Value Description]: HTTP-RMI stub要连接的Web服务器端口编号。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="intervalType.millisecond"><![CDATA[
+                        [Description]: 以毫秒为单位指定周期。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jobType.count"><![CDATA[
+                        [Description]: 指定该job的执行次数。
+		[Defined Value]: [-1]:不限制执行的次数。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="keystore-managerType.truststore-password"><![CDATA[                        [Description]: 定义要适用于目前domain的truststore file密码。                    ]]>                                                
+    </text>
+                                                         
+    <text key="jobType.interval"><![CDATA[
+                        [Description]: 指定该job的执行周期。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="intervalType.minutely"><![CDATA[
+                        [Description]: 以分为单位指定周期。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="common-handlerType.encoding"><![CDATA[
+                      [Description]: 设置该handler保留message时使用的encoding。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="methodParamType.method-params"><![CDATA[
+                            [Description]: 按顺序指定method的参数。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="envType.value"><![CDATA[
+                        [Description]: 对应于该值的wrapper class 生成者的参数来使用。
+                        [Example]: <value>100</value>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="file-handlerType.buffer-size"><![CDATA[
+                        [Description]: 指定该handler输入file时使用的buffer大小。
+                        [Value Description]: byte 为单位。
+                        [Performance Recommandation]: 该值越大，file中输出的消息越被拖延，但logging性能反而更好。
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="file-handlerType.valid-hour"><![CDATA[
+                          [Description]: 根据该设置中指定期限及继续更新时使用此handler的file。该设置按时间变更file时使用。此时， handler使用的file名称后面自动出现file使用日期和时间。
+                          [Value Description]: 表示时间，应具有24的约数 + n*24 (n是0以上的整数)的值。
+                          [Example]: <valid-hour>3</valid-hour>
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="envType.type"><![CDATA[
+                        [Description]: 环境变量的java type。
+                        [Value Description]: 应从以下的java type中选择一个。java.lang.Boolean、java.lang.String、java.lang.Integer、java.lang.Double、java.lang.Byte、java.lang.Short、java.lang.Long、java.lang.Float、java.lang.Character。
+                        [Example]: <type>java.lang.Integer</type>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="handlerType.socket-handler"><![CDATA[
+                      [Description]:  将logging发送到指定socket时使用的handler。
+                      [Performance Recommandation]: 按每个logging message向 Socket进行传输，因此未指定合适filter下使用，会造成性能下降。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="securityPermissionType.security-permission-spec"><![CDATA[
+                  [Description]: 记述security permission。方式根据Java policy file。
+                  [Example]: grant {
+                                permission java.lang.RuntimePermission "foo";
+                            }
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="intervalType.hourly"><![CDATA[
+                        [Description]: 以小时为单位指定周期。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="poolingType.min"><![CDATA[
+                        [Description]: 指定被pooling对象的最小值。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jobType.end-time"><![CDATA[
+                        [Description]: 指定该job的结束时间。若不指定结束时间，job则不关闭。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="loggingGroup.level"><![CDATA[
+                  [Description]: 设置logging的level。各level的意义请参考J2SE的 logging API的Level class。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="file-handlerType.valid-day"><![CDATA[
+                          [Description]: 根据该设置中指定期限及继续更新时使用此handler的file。该设置按日期变更file时使用。此时， handler使用的file名称后面自动出现file使用日期。
+                          [Value Description]: day
+                          [Example]: <valid-day>1</valid-day>
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="jobType.description"><![CDATA[
+                        [Description]: 可以写下该job的说明。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="intervalType.daily"><![CDATA[
+                        [Description]: 以毫秒为单位指定周期。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="loggingGroup.name"><![CDATA[
+                  [Description]: 指定要使用设置的 logger name。省略时 在<node>或 <EngineContainer>里有的话是 jeus logger。
+		  Engine下面设置里的 name已指定时忽视。 忽视default container 下面指定的 logging 设置。
+                    ]]>                    
+    </text>
+                                                                         
+    <text key="oldPoolingType.min"><![CDATA[
+                        [Description]: 指定被pooling对象的最小值。
+                    ]]>                                                                            
+    </text>
+                                                                                     
+    <text key="handlerType.console-handler"><![CDATA[
+                      [Description]: 若想在画面中留下logging时使用的handler。
+                    ]]>                                                                            
+    </text>
+                                                                                     
+    <text key="socket-handlerType.port"><![CDATA[
+                        [Description]: 设置该handler生成时发送message的port。
+                    ]]>                                                                            
+    </text>
+                                                                                     
+    <text key="jndi-infoType.export-name"><![CDATA[
+                        [Description]: JEUS DD上定义的实际JNDI名称。
+                        [Example]: <export-name>ACCEJB</export-name>
+                    ]]>                                                                            
+    </text>
+                                                                                     
+    <text key="invoke-httpType.url"><![CDATA[
+                        [Description]: 必须设置由HTTP-RMI stub呼叫的RMI Handler Servlet (jeus.rmi.http.ServletHandler) URI路径。此URL不设置协议、Web 服务器IP、端口编号，只设置Servlet请求路径。假设协议的HTTP, RMI运行环境和Web服务器拥有相同的IP地址。(这表示Web服务器和Web container在相同机器中接受HTTP-RMI请求。) 端口编号在以后的element(HTTP-port)中设置。
+                        [Value Description]: 表示RMI Handler Servlet的Servlet context路径
+                        [Example]: <url>/mycontext/RMIHandlerServlet</url>
+                    ]]>                                                                            
+    </text>
+                                                                                     
+    <text key="method-paramsType.method-param"><![CDATA[
+                            [Description]: 指定method的 parameter fully qualified class name。
+                            [Example]: java.lang.String
+                    ]]>                                                                            
+    </text>
+                                                                                     
+    <text key="securityPermissionType.description"><![CDATA[
+                  [Description]: 记录该security permission 设置有关说明。
+                    ]]>                                                                            
+    </text>
+                                                                                     
+    <text key="schedulerType.enabled"><![CDATA[
+                        [Description]: 设置Scheduler Service启动与否。
+                        [Defined Value]: default : true
+                                                    true : 激活。
+                                                    false : 不激活。
+                    ]]>                                                                            
+    </text>
+                                                                                     
+    <text key="rolePermissionType.actions"><![CDATA[
+                        [Description]: 定义该role permission对象的 action。使用default的role permission无指定action。
+                    ]]>                                                                            
+    </text>
+                                                                                     
+    <text key="jsp-engineType.keep-generated"><![CDATA[
+                        [Description]: 该element对JSP页面生成的Java source文件进行编译，并生成Servlet class后，决定Java source文件的保存与否。
+                                                此文件用于调试。
+                        [Value Description]: 通过Boolean值，激活、非激活该设置。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: default : true
+                                                    true : 维持Java source文件。
+                                                   false : 删除Java source文件。
+                    ]]>                                                                            
+    </text>
+                                                                                     
+    <text key="socket-handlerType.address"><![CDATA[
+                        [Description]: 设置该handler生成时要发送的消息IP地址。
+                    ]]>                                                                            
+    </text>
+                                                                                     
+    <text key="file-handlerType.append"><![CDATA[
+                        [Description]: 决定如果该handler使用的file已存在时是否跟贴于file后面。
+                        若被设置为false，现有file则被清除。
+                    ]]>                                                                            
+    </text>
+                                                                                     
+    <text key="res-refType.jndi-info"><![CDATA[
+                        [Description]: 指定该Engine Container的JNDI中注册的各resource reference的export name和reference name。
+                    ]]>                                                                            
+    </text>
+                                                                                     
+    <text key="common-handlerType.name"><![CDATA[
+                      [Description]: 设置handler名称。此时，该名称在一个logger内应是唯一的。此名称在tool等中称呼handler时使用。
+                      [Example]: <name>handler1</name>
+                    ]]>                                                                            
+    </text>
+                                                                                     
+    <text key="keystore-managerType.keystore-keypassword"><![CDATA[
+                        [Description]: 在目前domain中使用的keystore file有关keypassword定义。
+                    ]]>                                                                            
+    </text>
+                                                                                     
+    <text key="jsp-engineType.compile-output-dir"><![CDATA[
+                        [Description]: 设置此属性，可将JSP文件生成的class文件保存到不是<jsp-work-dir>目录的其他目录中。
+                                                若不设置此属性，class文件位于jspwork 目录中。一般情况下不使用element。
+                        [Value Description]: 用于保存JSP class文件的绝对路径。
+                        [Defined Value]: default : %SERVLET_HOME%\jspwork \enginename\GroupDocBase\DocBase
+                    ]]>                                                                            
+    </text>
+                                                                                     
+    <text key="rolePermissionType.excluded"><![CDATA[
+                        [Description]: 不得使用role。
+                        [Example]: <excluded/>
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="smtp-handlerType.send-for-all-messages"><![CDATA[
+                        [Description]: 通过该handler注册的logger的log() method接受message时，决定是否将其设置为email发送对象。如果设置为false，通过email方式，只对logger的特殊send() method呼叫的消息进行传输。
+                        即，只传输最初指定为email发送对象的消息。
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="jobType.class-name"><![CDATA[
+                        [Description]: 是运行job的class fully qualified name。
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="user-handlerType.formatter-property"><![CDATA[
+                        [Description]: 向handler被生成时创建的formatter传送的 property进行设置。
+                        该property以key-value方式保存到Map，并通过JeusFormatter.setProperty() method传输到
+                        formatter。
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="oldPoolingType.period"><![CDATA[
+                        [Description]: 指定被pooling对象的整理时间。
+                        [Performance Recommendation]: 该值越大，整理周期越长，虽然能减少服务器运营的负载，但是相应地浪费内存，所以要指定适当的值。
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="schedulerType.thread-pool"><![CDATA[
+                    [Description]:在scheduler中向multi-thread运行job时使用的thread pool设置。  
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="jobType.begin-time"><![CDATA[
+                        [Description]: 指定该job的开始时间。如果没有给出开始时间时，job将立即开始。
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="loggingGroup.filter-class"><![CDATA[
+                  [Description]: 设置logger中指定的filer class的fully qualified class name。
+                  [Example]: <filter-class>com.tmax.logging.filter.MyFilter</filter-class>
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="oldPoolingType.max"><![CDATA[
+                        [Description]: 指定被pooling对象的最大值。
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="methodParamType.method-name"><![CDATA[
+                            [Description]: 指定method名称。
+                            [Example]: foo
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="oldPoolingType.step"><![CDATA[
+                        [Description]: 设定被pooling对象增加时的增加量。
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="common-handlerType.level"><![CDATA[
+                      [Description]: 设置该handler的level。只有通过logger的message的level包括于该handler level时，通过该handler进行输出。
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="propertyType.key"><![CDATA[
+                        [Description]: 角property?key令。
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="smtp-propertyGroup.bcc-address"><![CDATA[
+                        [Description]: 指定email抄送人的地址。
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="jsp-engineType.java-compiler"><![CDATA[
+                        [Description]: 为了将JSP的java source编译为Servlet class 文件，指定java compiler。
+                                                默认设置为最有效的，因此不建议使用该element。
+                        [Value Description]: 指定java  compiler的字符串。 Compiler必须包括于系统路径中，才能进行运行。
+                        [Defined Value]: default : sun.tools.javac
+                                                    sun.tools.javac : 使用JDK 程序库“tools.jar”在内的SUN Microsystems java compiler。(建议使用该设置)
+                                                    javac : 指定在系统pass中包括的外部"javac" compiler。
+                                                    com.sun.tools.javac: 在几个系统中运行。只要运行，与 sun.tools.javac 相比更有效而稳定，是优先选项。
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="keystore-managerType.keystore-path"><![CDATA[
+                        [Description]: 定义适用于现domain的 keystore file路径.
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="jndi-infoType.ref-name"><![CDATA[
+                        [Description]: 该element可以声明在源代码上可以使用的参照名称。
+                        [Value Description]: 实际捆绑(bind)到JNDI名称的参照名称。这与相应的J2EE标准descriptor element的ref-name对应。
+                        [Example]:<ref-name>ejb/AccountEJB</ref-name>
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="user-handlerType.handler-class"><![CDATA[
+                        [Description]: 设置user创建的handler的fully qualified class name。该class应继承java.util.logging.Handler，并实现 jeus.util.logging.JeusHandler。
+                        [Example]: <handler-class>com.tmax.logging.handler.MyHandler</handler-class>
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="keystore-managerType.keystore-password"><![CDATA[
+                        [Description]:定义适用于 现 domain的 keystore file的password
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="poolingType.max"><![CDATA[
+                        [Description]: 指定被pooling对象的最大值。
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="envType.name"><![CDATA[
+                        [Description]: 在代码中使用的环境变量名称。
+                        [Example]: <name>minAmount</name>
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="SecurityServiceType.classname"><![CDATA[
+                        [Description]: 在jeus.security.spi的class中扩展一个的Java class名
+                        [Value Description]: Java class名
+                        [Example]: <classname>mypackage.MyAutenticationService</classname>
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="smtp-propertyGroup.cc-address"><![CDATA[
+                        [Description]: 指定email抄送人的地址。
+                    ]]>                                                                        
+    </text>
+                                                                                 
+    <text key="loggingGroup.use-parent-handlers"><![CDATA[
+                  [Description]: 决定该logger中是否使用parent logger的handler。
+                    ]]>                                                                        
+    </text>
+    <text key="SecurityServicePropertyType.name"><![CDATA[
+                        [Description]: 属性名
+                        [Value Description]: 属性名
+                        [Example]: <name>filename</name>
+                    
+                    ]]>                                                
+    </text>      
+
+    <text key="loggingLevelType.FATAL"><![CDATA[
+                        [Description]: 相当于SEVERE的level。通过JEUS 4.x的logger的level，支持compatibility。
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.NOTICE"><![CDATA[
+                        [Description]: 相当于WARNING的level。通过JEUS 4.x的logger的level，支持compatibility。
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.INFORMATION"><![CDATA[
+                        [Description]: 相当于INFO的level。 通过JEUS 4.x的logger的level，支持compatibility。
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.DEBUG"><![CDATA[
+                        [Description]: 相当于FINE的level。通过JEUS 4.x的logger的level，支持compatibility。
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.fatal"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.notice"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.information"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.debug"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.SEVERE"><![CDATA[
+                        [Description]: 请参考J2SE Logging API的Level class documentation。
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.WARNING"><![CDATA[
+                        [Description]: 请参考J2SE Logging API的Level class documentation。
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.INFO"><![CDATA[
+                        [Description]: 请参考J2SE Logging API的Level class documentation。
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.CONFIG"><![CDATA[
+                        [Description]: 请参考J2SE Logging API的Level class documentation。
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.FINE"><![CDATA[
+                        [Description]: 请参考J2SE Logging API的Level class documentation。
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.FINER"><![CDATA[
+                        [Description]: 请参考J2SE Logging API的Level class documentation。
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.FINEST"><![CDATA[
+                        [Description]: 请参考J2SE Logging API的Level class documentation。
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.ALL"><![CDATA[
+                        [Description]: 请参考J2SE Logging API的Level class documentation。
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.severe"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.warning"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.info"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.config"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.fine"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.finer"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.finest"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="loggingLevelType.all"><![CDATA[
+                        [Enumeration Display]: false
+                    ]]>               
+    </text>
+                 
+    <text key="db-vendorType.oracle"><![CDATA[
+                        [Description]: Oracle DBMS时
+                    ]]>               
+    </text>
+                 
+    <text key="db-vendorType.informix"><![CDATA[
+                        [Description]: Informix DBMS时
+                    ]]>               
+    </text>
+                 
+    <text key="db-vendorType.db2"><![CDATA[
+                        [Description]: IBM DB2 DBMS时
+                    ]]>               
+    </text>
+                 
+    <text key="db-vendorType.mssql"><![CDATA[
+                        [Description]: Microsoft SQL Server DBMS时
+                    ]]>               
+    </text>
+                 
+    <text key="db-vendorType.sybase"><![CDATA[
+                        [Description]: Sybase DBMS时
+                    ]]>               
+    </text>
+                 
+    <text key="db-vendorType.hsql"><![CDATA[
+                        [Description]: HSQL DBMS 时
+                    ]]>               
+    </text>
+                 
+    <text key="db-vendorType.cloudscape"><![CDATA[
+                        [Description]: Cloudscape DBMS时
+                    ]]>               
+    </text>
+                 
+    <text key="db-vendorType.mysql"><![CDATA[
+                        [Description]: MySQL DBMS时
+                    ]]>               
+    </text>
+                 
+    <text key="engineType.EXCLUSIVE_ACCESS"><![CDATA[
+                    [Description]: 各个Entity Bean instance与其表示的数据库队列呈一对一关系，并对其进行垄断性连接。由此表示，一个instance存活期间其他Entity Bean无法对数据进行连接或变更，EJB 引擎完全省略ejbLoad() 呼叫。
+引擎在Bean生成时执行一次ejbLoad()呼叫，然后Bean在alive的期间内，假定数据库内没有进一步的变化，不再呼叫ejbLoad()。该Bean为集群Bean的一部分时，不能使用该bean。请务必记住数据库只允许通过WAS进行变更。(不允许非WAS的访问)
+                    ]]>               
+    </text>
+                 
+    <text key="engineType.SINGLE_OBJECT"><![CDATA[
+                    [Description]: 将element的值设定为这个时，其他EJB引擎的多个EJB可能映射到相同数据库列。ejbLoad()在请求进入到Entity Bean之前被呼叫。SINGLE_OBJECT和MULTIPLE_OBJECT是在集群相同种类的EJB时需要。SINGLE_OBJECT和MULTIPLE_OBJECT的差别而言，SINGLE_OBJECT时，在各个EJB引擎内只有一个EJB Entity Bean处理EJB客户端的所有请求。即，其他EJB客户端的请求到达相同EJB引擎时，直到首先形成连接的其他客户端请求结束为止，需要处于等待状态。
+                    ]]>               
+    </text>
+                 
+    <text key="engineType.MULTIPLE_OBJECT"><![CDATA[
+                    [Description]: 将该element的值设定为这个时，其他EJB引擎的多个EJB可能映射到相同数据库列。ejbLoad()在请求进入到Entity Bean之前被呼叫。SINGLE_OBJECT和MULTIPLE_OBJECT是在集群相同种类的EJB时需要。SINGLE_OBJECT和MULTIPLE_OBJECT的差异而言，MULTIPLE_OBJECT时，在各个EJB引擎内生成同时处理所有EJB客户端请求的多个EJB Entity Bean instance。即，不同于SINGLE_OBJECT模式，EJB客户端请求不需要等到先处理的其他请求结束。
+                    ]]>               
+    </text>
+                 
+    <text key="vendorType.oracle"><![CDATA[
+                        [Description]: Oracle JDBC driver
+                    ]]>               
+    </text>
+                 
+    <text key="vendorType.sybase"><![CDATA[
+                        [Description]: Sybase JDBC driver
+                    ]]>               
+    </text>
+                 
+    <text key="vendorType.mssql"><![CDATA[
+                        [Description]: JEUS MS SQL Server driver
+                    ]]>               
+    </text>
+                 
+    <text key="vendorType.db2"><![CDATA[
+                        [Description]: DB2 JDBC driver
+                    ]]>               
+    </text>
+                 
+    <text key="vendorType.others"><![CDATA[
+                        [Description]: 其他JDBC driver
+                    ]]>               
+    </text>
+
+    <text key="off-intType"><![CDATA[
+               [Value Type Description]: 基本设置为non-negative int型，但-1时不进行设置。即被off。
+            ]]>
+    </text>
+    <text key="nonNegativeIntType"><![CDATA[
+               [Value Type Description]: 0 以上的 int type。即在int范围内包括
+			   0 以上的值。
+            ]]>
+    </text>
+    <text key="nonNegativeLongType"><![CDATA[
+               [Value Type Description]: 0以上的long type。即，在long范围内包括
+               0以上的值。
+            ]]>
+    </text>
+    <text key="positiveIntType"><![CDATA[
+                [Value Type Description]: 基本设置为non-negative int型，但只允许1以上的值。
+            ]]>
+    </text>
+    <text key="positiveShortType"><![CDATA[
+                [Value Type Description]: 被使用为JMS broker的borkerID。0被定为local brokerID。
+            ]]>
+    </text>
+    <text key="off-longType"><![CDATA[
+                [Value Type Description]: 基本设置为unsigned long型。但是，如果-1时不进行设置。即被off。
+            ]]>
+    </text>
+    <text key="fractionType"><![CDATA[
+                [Value Type Description]: 表示0与1之间float型的比率。
+            ]]>
+    </text>
+                                                             
+    <ref key="console-handlerType">common-handlerType</ref>
+                                                     
+    <ref key="file-handlerType">common-handlerType</ref>
+                                                     
+    <ref key="smtp-handlerType">smtp-propertyGroup</ref>
+                                                     
+    <ref key="smtp-handlerType">common-handlerType</ref>
+                                                     
+    <ref key="smtp-senderType">smtp-propertyGroup</ref>
+                                                     
+    <ref key="socket-handlerType">common-handlerType</ref>
+                                                     
+    <ref key="user-handlerType">common-handlerType</ref>
+                                                     
+    <ref key="system-loggingType">loggingGroup</ref>
+                                                     
+    <ref key="user-logType">system-loggingType</ref>
+                           
+</description>

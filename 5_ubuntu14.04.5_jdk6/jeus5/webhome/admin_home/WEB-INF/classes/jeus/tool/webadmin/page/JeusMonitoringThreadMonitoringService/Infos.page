@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusMonitoringThreadMonitoringService.InfosPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Thread Monitoring Infos"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:new java.lang.String[] {'JeusMonitoringThreadMonitoringService_Infos'}"/>
+    </component>
+
+    <component id="infosForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:tmo.infos.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="poolName" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:tmo.infos.poolName.label"/>
+        <binding name="value" value="ognl:name"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="threadExecutionTime" type="jeus:TimeStatisticField">
+        <binding name="label" value="message:tmo.infos.threadExecutionTime.label"/>
+        
+        <binding name="time" value="ognl:threadExecutionTime"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="queueWaitingTime" type="jeus:TimeStatisticField">
+        <binding name="label" value="message:tmo.infos.queueWaitingTime.label"/>        
+        <binding name="time" value="ognl:queueWaitingTime"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="waitingQueueSize" type="jeus:RangeStatisticField">
+        <binding name="label" value="message:tmo.infos.waitingQueueSize.label"/>
+        <binding name="renderBottom" value="ognl:true"/>
+        <binding name="range" value="ognl:waitingQueueSize"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="keepAliveTime" type="jeus:Field">
+        <binding name="field" value="ognl:components.keepAliveTimeField"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="keepAliveTimeField" type="jeus:DojoTextField">
+        <binding name="displayName" value="message:tpmo.configuration.keepAliveTime.label"/>
+        <binding name="value" value="keepAliveTime"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="poolSize" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:tmo.infos.poolSize.label"/>
+        <binding name="value" value="ognl:poolSize"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="maxPoolSize" type="jeus:Field">
+        <binding name="field" value="ognl:components.maxPoolSizeField"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="maxPoolSizeField" type="jeus:DojoTextField">
+        <binding name="displayName" value="message:tpmo.configuration.maxPoolSize.label"/>
+        <binding name="value" value="maxPoolSize"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="corePoolSize" type="jeus:Field">
+        <binding name="field" value="ognl:components.corePoolSizeField"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="corePoolSizeField" type="jeus:DojoTextField">
+        <binding name="displayName" value="message:tpmo.configuration.corePoolSize.label"/>
+        <binding name="value" value="corePoolSize"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="largestPoolSize" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:tmo.infos.largestPoolSize.label"/>
+        <binding name="value" value="ognl:largestPoolSize"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="taskCount" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:tmo.infos.taskCount.label"/>
+        <binding name="value" value="ognl:taskCount"/>
+        <binding name="renderUnderline" value="ognl:true"/>
+    </component>
+
+    <component id="activeCount" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:tmo.infos.activeCount.label"/>
+        <binding name="value" value="ognl:activeCount"/>
+    </component>
+
+    <component id="condActive" type="If">
+        <binding name="condition" value="ognl:active"/>
+    </component>
+
+    <component id="name_column" type="Insert">
+        <binding name="value" value="message:tmo.infos.threadName.label"/>
+    </component>
+
+    <component id="beginTime_column" type="Insert">
+        <binding name="value" value="message:tmo.infos.beginTime.label"/>
+    </component>
+
+    <component id="runningTime_column" type="Insert">
+        <binding name="value" value="message:tmo.infos.runningTime.label"/>
+    </component>
+
+    <component id="eachThread" type="Foreach">
+        <binding name="source" value="ognl:threadInfos"/>
+        <binding name="value" value="ognl:thread"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="name_value" type="Insert">
+        <binding name="value" value="ognl:thread.threadName"/>
+    </component>
+
+    <component id="beginTime_value" type="Insert">
+        <binding name="value" value="ognl:thread.beginTime"/>
+    </component>
+
+    <component id="runningTime_value" type="Insert">
+        <binding name="value" value="ognl:thread.runningTime"/>
+    </component>
+
+    <component id="workerThreadLabel" type="Insert">
+        <binding name="value" value="message:tmo.infos.tableField.lable"/>
+    </component>
+
+    <component id="poolConfigOk" type="Submit">
+        <binding name="value" value="message:JEUSForm.ok.label"/>
+        <binding name="listener" value="ognl:listeners.onPoolConfigOk"/>
+    </component>
+
+    <component id="poolConfigCancel" type="Any">
+        <binding name="type" value="literal:reset"/>
+        <binding name="value" value="message:JEUSForm.cancel.label"/>
+    </component>
+
+    <component id="refreshButton" type="Any">
+        <binding name="element" value="literal:input"/>
+        <binding name="value" value="message:common.label.refresh"/>
+    </component>
+
+    <property name="keepAliveTime"/>
+    <property name="maxPoolSize"/>
+    <property name="corePoolSize"/>
+
+    <property name="thread"/>
+</page-specification>

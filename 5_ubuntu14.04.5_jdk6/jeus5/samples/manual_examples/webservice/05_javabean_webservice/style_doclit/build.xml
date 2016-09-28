@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<project name="Echo" default="all" basedir=".">	
+    <property file="../../../../sample.properties"/>
+    <import file="${jeus.home}/samples/common.xml"/>
+    <path id="jeus.classpath">
+	    <pathelement location="${java.home}/lib/tools.jar"/>
+    </path>
+
+    <taskdef name="java2wsdl" classname="jeus.util.ant.webservices.Java2WsdlTask">
+    </taskdef>
+
+  <property name="work.home" value="."/>
+
+  <property name="app.name" value="EchoDocLit"/>
+
+
+  <!-- The destination directory for the build -->
+  <property name="build.dir" value="${work.home}/build"/>
+  <property name="classes.dir" value="${build.dir}/classes"/>
+
+  <property name="src" value="${work.home}/src"/>
+  <property name="build.wardir" value="${build.dir}/war"/>
+  <property name="build.jardir" value="${build.dir}/jar"/>
+  <property name="build.eardir" value="${build.dir}/ear"/>
+  <property name="warfile" value="${build.dir}/DocLitEchoService.war"/>
+  <property name="earfile" value="${build.dir}/EchoDocLit.ear"/>
+
+  <property name="jaxrpc.wsdl" value="${build.dir}/DocLitEchoService.wsdl"/>
+  <property name="jaxrpc.mapping" value="${build.dir}/DocLitEchoService-mapping.xml"/>
+  
+  <property name="j2ee-webservice-dd" value="./conf/webservices.xml"/>
+  <property name="jeus-webservice-dd" value="./conf/jeus-webservices-dd.xml"/>
+  <property name="web-xml" value="./conf/web.xml"/>
+  <property name="application-xml" value="./conf/application.xml"/>
+  
+  <path id="build.classpath">
+    <path refid="jeus.classpath"/>
+    <pathelement location="${classes.dir}"/>
+  </path>
+
+  <target name="compile">
+    <mkdir dir="${classes.dir}"/>
+    <javac srcdir="${src}"
+           debug="${javac.debug}"
+           destdir="${classes.dir}"
+	   includes="**">
+      <classpath refid="build.classpath"/>
+    </javac>
+
+  </target>
+  
+  <target name="java2wsdl" depends="compile">
+  	<java2wsdl destDir="${build.dir}"
+			   verbose="true"
+			   configfilepath="./service-config.xml">
+			   <classpath refid="build.classpath"/>
+    </java2wsdl>
+  </target>
+  
+  <target name="wswar" depends="java2wsdl">
+    <delete dir="${build.wardir}" quiet="true"/>
+    <mkdir dir="${build.wardir}"/>
+    <mkdir dir="${build.wardir}/WEB-INF"/>
+    <mkdir dir="${build.wardir}/WEB-INF/wsdl"/>
+    <copy todir="${build.wardir}/WEB-INF/classes">
+        <fileset dir="${classes.dir}">
+           <exclude name="**/*.wsdl"/>
+        </fileset>
+    </copy>
+    <copy file="${jaxrpc.wsdl}"  todir="${build.wardir}/WEB-INF/wsdl" />
+    <copy file="${jaxrpc.mapping}"  todir="${build.wardir}/WEB-INF" />
+    <copy file="${j2ee-webservice-dd}"  todir="${build.wardir}/WEB-INF" />
+    <copy file="${jeus-webservice-dd}"  todir="${build.wardir}/WEB-INF" />
+    <copy file="${web-xml}"  todir="${build.wardir}/WEB-INF" />
+    <jar jarfile="${warfile}" basedir="${build.wardir}" excludes="cvs">
+       <manifest>
+         <attribute name="Class-Path" value=""/>
+       </manifest>
+    </jar>
+  </target>
+  
+  <target name="wsear" depends="wswar">
+    <mkdir dir="${build.eardir}"/>
+    <mkdir dir="${build.eardir}/META-INF"/>    
+    
+    <copy file="${application-xml}"  todir="${build.eardir}/META-INF" />
+    <copy file="${warfile}"  todir="${build.eardir}/" />
+    
+    <jar jarfile="${earfile}" basedir="${build.eardir}" excludes="cvs">
+       <manifest>
+         <attribute name="Class-Path" value=""/>
+       </manifest>
+    </jar>
+  </target>
+
+   <!-- Move .ear file to the app_home directory -->
+   <target name="move.ear">
+   	<copy todir="${jeus.apphome}" file="${build.dir}/${app.name}.ear"/>
+   </target>
+    <target name="deploy">
+      <distribute
+	   deployURI="deployer:Jeus:example"
+	   user="${jeus.username}"
+	   password="${jeus.password}"
+	   targetNames="${jeus.target}"
+	   modulePath="${jeus.apphome}/${app.name}.ear"
+	   fastdeploy="false" />
+      <modulecommand
+	   deployURI="deployer:Jeus:example"
+	   command="start"
+	   modulename="${app.name}"
+	   moduletype="J2EEApplication"
+	   targetNames="${jeus.target}"
+	   user="${jeus.username}"
+	   password="${jeus.password}" />
+    </target>
+    <target name="undeploy">
+	    <modulecommand
+       deployURI="deployer:Jeus:example"
+       command="undeploy"
+       modulename="${app.name}"
+       moduletype="J2EEApplication"
+       targetNames="${jeus.target}"
+       user="${jeus.username}"
+       password="${jeus.password}" />
+    </target>
+
+  
+  <target name="clean">
+    <delete dir="./build"/>
+  </target>
+
+  <target name="core" depends="compile" />
+  <target name="all" depends="clean, wsear, move.ear, deploy" />
+
+</project>

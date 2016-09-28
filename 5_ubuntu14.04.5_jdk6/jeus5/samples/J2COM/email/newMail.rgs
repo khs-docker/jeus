@@ -1,0 +1,26 @@
+HKCR
+{
+	Email.newMail.1 = s 'newMail Class'
+	{
+		CLSID = s '{16B17112-D1A1-4971-93CC-5D42D77F95F3}'
+	}
+	Email.newMail = s 'newMail Class'
+	{
+		CLSID = s '{16B17112-D1A1-4971-93CC-5D42D77F95F3}'
+		CurVer = s 'Email.newMail.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {16B17112-D1A1-4971-93CC-5D42D77F95F3} = s 'newMail Class'
+		{
+			ProgID = s 'Email.newMail.1'
+			VersionIndependentProgID = s 'Email.newMail'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{F757774E-C679-4673-916A-73DD9EED1FE3}'
+		}
+	}
+}

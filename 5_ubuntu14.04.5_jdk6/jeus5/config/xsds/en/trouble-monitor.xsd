@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    attributeFormDefault="unqualified" 
+    elementFormDefault="qualified" 
+    targetNamespace="http://www.tmaxsoft.com/xml/ns/jeus" version="5.0" 
+    xmlns="http://www.tmaxsoft.com/xml/ns/jeus" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">      
+    <xs:include schemaLocation="jeus-common.xsd"/>      
+    <xs:element name="trouble-monitor" type="TroubleMonitorType">         
+        <xs:annotation>             
+            <xs:documentation><![CDATA[
+                [Description]:Root element of configuration file for error monitoring. Entire configurations on error monitoring should be configured below this element. 
+            ]]>
+            </xs:documentation>         
+        </xs:annotation>     
+    </xs:element>          
+    <xs:complexType name="TroubleMonitorType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="mbean" type="MbeanType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: This is element to configure MBean and restriction value which are objectives of error monitoring.  
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="MbeanType">         
+        <xs:sequence>             
+            <xs:element name="j2ee-type" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: j2ee Type key value of MBean should be inserted. Entire MBean contains j2ee Type. 
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="jeus-type" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Insert jeusType key value of MBean.  In case where j2ee Type is JeusService, jeus Type should exist.  
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="property" type="propertyType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:This elemnt configures additional property excluding jeus Type and j2ee Type of MBean. If this value is configured, it enables to configure specific MBean.  
+                        [Example]: This example is only applied to WebEngine named as tmax_servlet_engine1. 
+                        &lt;j2ee-type>JeusService&lt;/j2ee-type>
+                        &lt;j2ee-type>WebEngine&lt;/j2ee-type>
+                        &lt;property>
+                            &lt;key>name&lt;/key>
+                            &lt;value>tmax_servlet_engine1&lt;/value>
+                        &lt;/property>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="constraint" type="propertyType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Type restrictions to be monitored.  
+                        [Example]:
+                        &lt;constraint>
+                            &lt;key>servlet-session-session-count&lt;/key>
+                            &lt;value>10000&lt;/value>                    
+                        &lt;/constraint>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      <!--
+        <trouble-monitor>
+            <mbean>
+                <j2ee-type>JeusService</j2ee-type>
+                <jeus-type>WebEngine</jeus-type>
+                <property>
+                    <key>name</key>
+                    <value>bongnara_servlet_engine1</value>
+                </property>
+                <constraint>
+                    <key>servlet-threadpool-blocked-thread-rate</key>
+                    <value>5.0</value>                    
+                </constraint>
+                <constraint>
+                    <key>servlet-session-session-count</key>
+                    <value>10000</value>                    
+                </constraint>
+            </mbean>
+        </trouble-monitor>
+    -->  
+</xs:schema>

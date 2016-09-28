@@ -1,0 +1,325 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 18 JDBC 데이터 소스 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('18 JDBC 데이터 소스', 'wm-17.htm', 'wm-19.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left"><A NAME="jdbcsvc"></A>18 JDBC 데이터 소스
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMNormalText">JEUS 데이터 소스는 어플리케이션에서 JDBC를 이용해 데이터 베이스에 연결하고 할 경우 사용하는 리소스이다. JDBC 데이터 소스의 추가 및 
+삭제는 JEUS 관리자에서 이루어지며 JEUS 관리자에 바인딩된 객체를 각 엔진 컨테이너에서 Lookup하여 사용한다.
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMNormalText" ALIGN="left">JEUS에서 JDBC 드라이버 구성을 시도할 때$
+ <SPAN CLASS="JMFileNameReferenceChar">JEUS_HOME\lib\datasource
+ </SPAN>디렉토리 안에 JDBC 드라이버 클래스 라이브러리가 있는지 먼저 확인해야한다.
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMHeading2">18.1 JDBC 데이터 소스 구성
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMHeading3"><A NAME="jdbcsvc_create"></A>18.1.1 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-18.htm#jdbcsvc">JDBC 데이터 소스
+ </A>&gt; 새 JDBC 데이터 소스 생성
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">리소스
+ </SPAN>의
+ <SPAN CLASS="JMGUIWidget">JDBC
+ </SPAN>폴더를 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">새 JDBC 
+ </SPAN><SPAN CLASS="JMGUIWidget">데이터 
+ </SPAN><SPAN CLASS="JMGUIWidget">소스 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>링크를 클릭하거나 
+ <SPAN CLASS="JMGUIWidget">JDBC
+ </SPAN>폴더의 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">새 JDBC 
+ </SPAN><SPAN CLASS="JMGUIWidget">데이터 
+ </SPAN><SPAN CLASS="JMGUIWidget">소스 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>를 선택한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="304" SRC="images/image175.jpg" HEIGHT="220"></P>
+
+<P CLASS="JMCaption">그림 154 새 JDBC 데이터 소스 생성 선택
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMNormalText">2. DBMS를선택한다. DBMS를 선택하면 아래 데이터 소스를 선택하는 필드가 업데이트 된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="500" SRC="images/image176.jpg" HEIGHT="195"></P>
+
+<P CLASS="JMCaption">그림 155JDBC 데이터 소스 생성 - 1단계 데이터 소스 선택
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMNormalText">3. 데이터 소스를 선택한 후 
+ <SPAN CLASS="JMGUIWidget">다음
+ </SPAN>를 클릭한다.
+ </P>
+<A NAME="1008"></A>
+<P CLASS="JMNormalText">4. 데이터 소스 속성들을 입력한다. 
+ <SPAN CLASS="JMGUIWidget">추가 
+ </SPAN><SPAN CLASS="JMGUIWidget">속성
+ </SPAN>에는 데이터 소스의 추가적인 속성들을 입력한다. 입력 형식은 &ldquo;키[:자료형]=값&rdquo;이다. 자료형이 생략될 경우는 java.lang.String이 
+기본 타입이다. 예를 들어 데이터소스 클래스에 setMaxStmtCount(int count) 라는 메소드가 존재하고 10이라는 값을 입력하고자 
+한다면, &ldquo;maxStmtCount:int=10&rdquo; 으로 입력하면 된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="488" SRC="images/image177.jpg" HEIGHT="548"></P>
+
+<P CLASS="JMCaption">그림 156JDBC 데이터 소스 생성 - 2단계 속성 설정
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMNormalText">5. 연결 풀 설정을 한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="511" SRC="images/image178.jpg" HEIGHT="548"></P>
+
+<P CLASS="JMCaption">그림 157JDBC 데이터 소스 생성 - 3단계 연결 풀 설정
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMNormalText">6. 추가할 데이터소스를 생성과 동시에 바인딩 하고 싶다면 바인딩 선택 항목을 선택한 후 
+ <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image179.jpg" HEIGHT="127"></P>
+
+<P CLASS="JMCaption">그림 158JDBC 데이터 소스 생성 - 4단계 생성
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMNormalText">7. 데이터 소스가 추가되면 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">JDBC
+ </SPAN>폴더에 JDBC 데이터 소스가 나타난다.
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMHeading3"><A NAME="jdbcsvc_remove"></A>18.1.2 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-18.htm#jdbcsvc">JDBC 데이터 소스
+ </A>&gt; 삭제
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMNormalText">1. 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">리소스
+ </SPAN>의
+ <SPAN CLASS="JMGUIWidget">JDBC
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1014"></A>
+<P CLASS="JMNormalText">2. JDBC 데이터 소스 목록에서 삭제하고자 하는 데이터 소스를 선택한 후 
+ <A HREF="http://localhost:9744/webadmin/application?service=direct/1/JeusServiceJDBCDataSourceService_Overview/deleteLink&amp;sp=Sdatasource2"><IMG BORDER="0" WIDTH="11" SRC="images/image033.gif" HEIGHT="13"></A>아이콘을 클릭한다.
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMNormalText">3. JDBC 데이터 소스 목록에서 해당 JDBC 데이터 소스가 사라지며 바인딩 되지 않은 데이터 소스라면 노드 트리에서 사라진다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image180.jpg" HEIGHT="298"></P>
+
+<P CLASS="JMCaption">그림 159JDBC 데이터 소스 삭제
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMNoteWarningChar">참고
+ </SPAN><SPAN CLASS="JMNoteWarningChar">:
+ </SPAN>JDBC 데이터 소스가 이미 바인딩 되어있다면 삭제를 하더라도 바인딩 객체는 사라지지 않으므로 주의해야한다.
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMHeading2">18.2 JDBC 데이터 소스 제어
+ </P>
+<A NAME="1018"></A>
+<P CLASS="JMHeading3"><A NAME="jdbcsvc_bind"></A>18.2.1 JDBC 데이터 소스 바인드
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-18.htm#jdbcsvc">JDBC 데이터 소스
+ </A>&gt; 바인드
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMNormalText">JDBC 데이터 소스 바인드는 네이밍 서버에 데이터 소스 객체를 바인딩하여 어플리케이션이 Lookup하여 사용할 수 있게하는 기능이다.
+ </P>
+<A NAME="1020"></A>
+<P CLASS="JMNormalText">1. 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">리소스
+ </SPAN>의
+ <SPAN CLASS="JMGUIWidget">JDBC
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1021"></A>
+<P CLASS="JMNormalText">2. JDBC 데이터 소스 목록에서 바인딩하고자 하는 데이터 소스를 선택한 후 
+ <SPAN CLASS="JMGUIWidget">바인드
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1022"></A>
+<P CLASS="JMNormalText">3. JDBC 데이터 소스 목록에서 해당 JDBC 데이터 소스의 
+ <SPAN CLASS="JMGUIWidget">바인드
+ </SPAN>버튼이 비활성화 되며 노드 트리에는 활성화된 아이콘(
+ <IMG BORDER="0" WIDTH="17" SRC="images/image181.gif" HEIGHT="16">)이 나타난다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image182.jpg" HEIGHT="28"></P>
+
+<P CLASS="JMCaption">그림 160JDBC 데이터 소스 바인드
+ </P>
+<A NAME="1023"></A>
+<P CLASS="JMHeading2"><A NAME="cjdbcsvc"></A>18.3 클러스터 JDBC 데이터 소스 구성
+ </P>
+<A NAME="1024"></A>
+<P CLASS="JMNormalText">클러스터 JDBC 데이터 소스는 여러 데이터 소스를 하나의 데이터 소스로 사용하여 어떤 데이터 소스에 장애가 발생할 시 다른 데이터 소스를 사용하여 
+안정된 서비스를 할 수 있도록 하는 데이터 소스이다.
+ </P>
+<A NAME="1025"></A>
+<P CLASS="JMNormalText">이 데이터 소스를 사용하기 위해서는 적어도 2개 이상의 데이터 소스가 존재해야한다.
+ </P>
+<A NAME="1026"></A>
+<P CLASS="JMHeading3"><A NAME="cjdbcsvc_create"></A>18.3.1 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-18.htm#jdbcsvc">JDBC 데이터 소스
+ </A>&gt; 새 클러스터 JDBC 데이터 소스 생성
+ </P>
+<A NAME="1027"></A>
+<P CLASS="JMNormalText">1. 노드 트리의
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">리소스
+ </SPAN>의
+ <SPAN CLASS="JMGUIWidget">JDBC
+ </SPAN>폴더를 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">클러스터 JDBC 
+ </SPAN><SPAN CLASS="JMGUIWidget">데이터 
+ </SPAN><SPAN CLASS="JMGUIWidget">소스
+ </SPAN>링크를 클릭하거나 
+ <SPAN CLASS="JMGUIWidget">JDBC
+ </SPAN>폴더의 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">클러스터 JDBC 
+ </SPAN><SPAN CLASS="JMGUIWidget">데이터 
+ </SPAN><SPAN CLASS="JMGUIWidget">소스
+ </SPAN>를선택한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="272" SRC="images/image183.jpg" HEIGHT="195"></P>
+
+<P CLASS="JMCaption">그림 161 클러스터 JDBC 데이터 소스 생성 선택
+ </P>
+<A NAME="1028"></A>
+<P CLASS="JMNormalText">2. 기본 설정을 입력한다. 
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="472" SRC="images/image184.jpg" HEIGHT="173"></P>
+
+<P CLASS="JMCaption">그림 162 클러스터 JDBC 데이터 소스 생성 -1단계 기본 설정
+ </P>
+<A NAME="1029"></A>
+<P CLASS="JMNormalText">3. 클러스터링할 데이터소스들을 선택한다. 선택된 데이터 소스가 라운드 로빈 방식으로 사용되므로 순서를 고려하여 선택해야한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="488" SRC="images/image185.jpg" HEIGHT="236"></P>
+
+<P CLASS="JMCaption">그림 163 클러스터 JDBC 데이터 소스 생성 - 2단계 데이터 소스 선택
+ </P>
+<A NAME="1030"></A>
+<P CLASS="JMNormalText">4. 추가할 데이터소스를 생성과 동시에 바인딩 하고 싶다면 바인딩 선택 항목을 선택한 후 
+ <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image186.jpg" HEIGHT="112"></P>
+
+<P CLASS="JMCaption">그림 164 클러스터 JDBC 데이터 소스 생성 - 3단계 데이터 소스 생성
+ </P>
+<A NAME="1031"></A>
+<P CLASS="JMNormalText">5. 데이터 소스가 추가되면 노드 트리의 JDBC 폴더에 클러스터JDBC 데이터 소스가 나타난다.
+ </P>
+<A NAME="1032"></A>
+<P CLASS="JMHeading3"><A NAME="cjdbcsvc_remove"></A>18.3.2 클러스터 JDBC 데이터 소스 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-18.htm#jdbcsvc">JDBC 데이터 소스
+ </A>&gt; 클러스터 JDBC 데이터 소스 삭제
+ </P>
+<A NAME="1033"></A>
+<P CLASS="JMNormalText">1. 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">리소스
+ </SPAN>의
+ <SPAN CLASS="JMGUIWidget">JDBC
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1034"></A>
+<P CLASS="JMNormalText">2. 클러스터 JDBC 데이터 소스 목록에서 삭제하고자 하는 데이터 소스를 선택한 후 
+ <A HREF="http://localhost:9744/webadmin/application?service=direct/1/JeusServiceJDBCDataSourceService_Overview/cds_deleteLink&amp;sp=Sdatasource3"><IMG BORDER="0" WIDTH="11" SRC="images/image033.gif" HEIGHT="13"></A>아이콘을 클릭한다.
+ </P>
+<A NAME="1035"></A>
+<P CLASS="JMNormalText">3. 클러스터 JDBC 데이터 소스 목록에서 해당 클러스터JDBC 데이터 소스가 사라지며 바인딩 되지 않은 데이터 소스라면 노드 트리에서 사라진다.
+ 
+</P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image187.jpg" HEIGHT="104"></P>
+
+<P CLASS="JMCaption">그림 165 클러스터 JDBC 데이터 소스의삭제
+ </P>
+<A NAME="1036"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMNoteWarningChar">참고
+ </SPAN><SPAN CLASS="JMNoteWarningChar">:
+ </SPAN>클러스터 JDBC 데이터 소스가 이미 바인딩 되어있다면 삭제를 하더라도 바인딩 객체는 사라지지 않으므로 주의해야한다. 
+ </P>
+<A NAME="1037"></A>
+<P CLASS="JMHeading2"><A NAME="cjdbcsvc_control"></A>18.4 클러스터 JDBC 데이터 소스 제어
+ </P>
+<A NAME="1038"></A>
+<P CLASS="JMHeading3"><A NAME="cjdbcsvc_control_bind"></A>18.4.1 클러스터 JDBC 데이터 소스 바인드
+ </P>
+<A NAME="1039"></A>
+<P CLASS="JMNormalText">클러스터 JDBC 데이터 소스 바인드는 네이밍 서버에 데이터 소스 객체를 바인딩하여 어플리케이션이 Lookup하여 사용할 수 있게하는 기능이다.
+ 
+</P>
+<A NAME="1040"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">JEUS 
+ </SPAN><SPAN CLASS="JMGUIWidget">리소스
+ </SPAN>의
+ <SPAN CLASS="JMGUIWidget">JDBC
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1041"></A>
+<P CLASS="JMNormalText">2. 클러스터 JDBC 데이터 소스 목록에서 바인딩하고자 하는 데이터 소스를 선택한 후 
+ <SPAN CLASS="JMGUIWidget">바인드
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1042"></A>
+<P CLASS="JMNormalText">3. 클러스터 JDBC 데이터 소스 목록에서 해당 클러스터JDBC 데이터 소스의 
+ <SPAN CLASS="JMGUIWidget">바인드
+ </SPAN>버튼이 비활성화 되며 노드트리에는 활성화된 아이콘(
+ <IMG BORDER="0" WIDTH="19" SRC="images/image188.gif" HEIGHT="16">)이 나타난다.
+ </P>
+<BR><!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

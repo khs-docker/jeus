@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="GB2312"?>
+<xs:schema 
+    attributeFormDefault="unqualified" 
+    elementFormDefault="qualified" 
+    targetNamespace="http://www.tmaxsoft.com/xml/ns/jeus" version="5.0" 
+    xmlns="http://www.tmaxsoft.com/xml/ns/jeus" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">      
+    <xs:include schemaLocation="jeus-common.xsd"/>     
+    <xs:include schemaLocation="jeus-webservices-client-dd.xsd"/>      
+    <xs:element name="jeus-web-dd" type="contextType">         
+        <xs:annotation>             
+            <xs:documentation><![CDATA[
+                [Description]: JEUS Application(Servlet Application) Deployment Descriptor
+                                        该element(<context>)的下级element包括适合于deployment和Context登录(Web application)的信息。
+            ]]>
+            </xs:documentation>         
+        </xs:annotation>     
+    </xs:element>      
+    <xs:complexType name="contextType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="1" minOccurs="0" name="context-path" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 表示context的 URL path。该path位于域名(和端口编号)后端。例：如果A context的context path为“/examples”时，“http://www.foo.com/examples/index.html” URL执行A context的index.html文件。                                               注意：如果在WEBMain.xml内未设定该element时，应在这里设定。
+                        [Value Description]: URL应该以“/”开头。该路径在Virtual Host内应具有唯一性。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="docbase" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element设定保存Web application所有文件的Context的document base目录。该目录包括并添加到Context group的document base目录内。(犹如context-group><group-docbase>element上的设定).这还可以指定为绝对路径。如果没有设定该element时，Context保存到默认Context目录内(表示Context group目录下)。
+                        [Value Description]: 对该Context的绝对或相对路径。如果指定相对路径时，该路径添加到Context group的document base。(不是以目录区别符号“\”或“/”开头)。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="user-log" type="user-logType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element设定，编程人员在Servlet内通过ServletContext.log()method的使用定义的message处理。适用<context-group><logging><user-log>element设定值和Context的名称(例如.”Examples.log”). 使用该element来获取对Context的各个日志文件。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="true" minOccurs="0" name="enable-jsp" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定JSP引擎的使用与否。
+                        [Value Description]: 通过Boolean值，使该设定处于激活或非激活状态。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: 激活在Web Container中JSP的提供
+                        [false]: 非激活在Web Container中JSP的提供
+                                                              如果设定时，该值将导致所有JSP文件无法访问(Service Unavailable message将返还到browser)。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="auto-reload" type="auto-reloadType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 决定当class变更时是否自动reload，Servlet class和custom tag class。该设定在变更与否的检查和reload的执行上，要求剩余的资源，所以只在开发运营环境中激活。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="-1" minOccurs="0" name="max-instance-pool-size" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 如果使用single thread model时(只对像这样继承SingleThreadedModel interface的Servlet)，设定Servlet instance的最多数量。如果对single threaded Servlet的请求超出这里的设定值时，请求将等待，直到能使用single threaded Servlet instance。
+                        [Value Description]: 为了该Context group而生成的single threaded Servlet instance的最大数
+                        [Value Type Description]: Integer
+                        [Defined Value]: [-1]: 如果使用该值时，对single threaded Servlets的instance个数将没有限制。
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="added-classpath" type="added-classpathType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element在Servlet被编译或执行时，附加到class路径，指定额外的class。基本上“\WEB-INF\classes”目录内，不仅包括class和package，“\WEB-INF\lib”下面的JAR文件也包括到class path。\WEB-INF\目录只是位于Context的文件base目录内。
+                   ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="allow-indexing" type="allow-indexingType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element的下级element设定为能查找URL路径内的文件。Indexing意味着，URL路径下目录的Content罗列到web browser窗口。如果满足三个条件时，将发生indexing。1.用户在URL路径上不包括明确的文件或资源名。(例如，不指定index.html). 2.Web application的web.xml Descriptor文件上未指定default welcome file。3.indexing允许请求的目录(允许的目录罗列该element的下级element)。如果上述所有条件都得到满足时，目录列表将发送到客户端。
+                   ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="deny-download" type="deny-downloadType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element指定在某种情况下不能下载的文件。例如，如果名为secret.dat的文件存在于www.foo.com domain内/customers context路径下的data目录内，客户端请求URL www.foo.com/customers/data/secret.dat时，通常下载secret.dat文件。为了防止这种现象，拒绝下载secret.dat文件时，需要使用该XML element。
+                  ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="aliasing" type="aliasingType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Aliasing用于在请求URL路径和实际文件系统目录之间生成象征性链接(symbolic link)。默认的Context路径下各URL路径反映Context的document base目录的下级目录。但不是这种情况，URL路径为其他目录时，该element用于强行替代（override）默认设定。
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="file-caching" type="file-cachingType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element构成向image文件或HTML文件的静态资源的cache。Cache意味着没有将频繁的请求文件保存到辅助贮存器(例如:硬盘)，而临时保存到主记忆体调用。这提高调用静态资源的性能。
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="role-mapping" type="role-mappingType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element将实际系统用户名映射到相关Context的web.xml的 <security-role>element上使用的J2EE role名称。web.xml文件位于相关Context的document base目录的“\WEB-INF\”下。
+                        [Dependency]:
+                                    role : /web-app/security-role/role-name
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="ejb-ref" type="ejb-refType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element连接到web.xml中设定的EJB reference和实际系统中使用的JNDI名称。
+                        [Dependency]:
+                                    ref-name : /web-app/ejb-ref/ejb-ref-name
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="res-ref" type="res-refType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element连接到web.xml的资源参照(例如 datasource参照)和实际系统中使用的JNDI名称。
+                        [Dependency]:
+                                    ref-name : /web-app/resource-ref/res-ref-name
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="res-env-ref" type="res-env-refType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element连接到web.xml的资源环境参照和实际系统中使用的JNDI名称。
+                        [Dependency]:
+                                    ref-name : /web-app/resource-env-ref/resource-env-ref-name
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="service-ref" type="jeus-webservices-client-ddType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                 [Description]: JEUS web服务客户端设定文件的根元素(root element).
+                        ]]>                     
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element default="false" minOccurs="0" name="url-rewriting" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 基本上Web Container为了对各种请求维持客户端的session id，使用cookie。此时存在的一个问题是cookie原来生成时的域名和请求所具有的域名不同时，大部分的web browser将对新的请求不发送任何session id cookie信息。如果将该选项设为true时，即使web browser支持cookie，也不会依赖cookie，取而代之的是强行执行URL rewriting的使用。此时，即使通过其他域名使用多个呼叫，也将会执行session跟踪。这将添加所有URL的唯一JSESSIONID URL参数，请求到Context。如果设定为false时，该设定将不被采用，以默认cookie为准。
+                        [Value Description]: 通过Boolean值，使该设定处于激活或非激活状态。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: 激活该设定
+                                         [false]: 非激活该设定
+                   ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="jsp-engine" type="jsp-engineType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                     [Description]: 该element对于本Context，形成JSP相关的设定。本设定适用于相关Context的所有JSP page。
+                ]]>
+                    </xs:documentation>                    
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="keep-generated" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 当该web component为web服务或包括web服务客户端时，指定是否要保留所生成web服务的Tie以及web服务客户端Stub的java source file。如果没有该设定时，使用<application>的设定。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="fast-deploy" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 指定该web component为web服务或包括web服务客户端时，是否要新生成web服务的Tie 以及web服务客户端的Stub，不进行编译，使用与已经生成的web component一起安装的class文件。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="servlet" type="servletType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element包括context内的jeus独有的servlet相关的信息。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="webinf-first" type="xs:boolean">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[                        [Description]: 设定loading class时，是否在web-inf目录下首先查找。                            设定为true时，首先在web-inf目录下查找，设定为false时，首先在上级classloader中查找。                            设定为true时，应注意重复的class引起的ClassCastException。                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="0" name="jsp-resource" type="jsp-resourceType">                 
+                <xs:annotation>                  
+                    <xs:documentation><![CDATA[                		[Description]: 该element为了将保存在Repository的JSP资源提供给JspEngine，指定provider-class。                	]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="1" minOccurs="0" name="jndi-properties" type="jndi-propertiesType">                 
+                <xs:annotation>                  
+                    <xs:documentation><![CDATA[
+	                	[Description]: 设置jndi 关联的 property 
+                	]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="properties" type="propertiesType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 指定context-wide属性。
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:simpleType name="target-RestrictedType">         
+        <xs:restriction base="xs:string">             
+            <xs:enumeration value="default"/>             
+            <xs:enumeration value="stdout"/>             
+            <xs:enumeration value="file"/>         
+        </xs:restriction>     
+    </xs:simpleType>      
+    <xs:complexType name="auto-reloadType">         
+        <xs:sequence>             
+            <xs:element default="false" minOccurs="0" name="enable-reload" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 决定要激活还是非激活Servlet auto-reload。
+                        [Value Description]: 通过Boolean值，使该设定处于激活或非激活状态。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: 激活该设定
+                                         [false]:非激活该设定
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="check-on-demand" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element指定，每当有请求到达时，是否要检查Servlet class reload。
+                        [Value Description]: 通过Boolean值，使该设定处于激活或非激活状态。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: 激活该设定
+                                         [false]: 非激活该设定
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="added-classpathType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="class-path" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                       [Description]: 声名(declare)编译和执行Servlet时添加的一个用户自定义classpath。
+                        [Value Description]: 可以指定目录或JAR文件等。指定为目录时，应以目录separator结束(“\”windows,”/” unix)。
+                        [Example]: <class-path>c:\mylib\subdir\</class-path>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="allow-indexingType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="directory" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element在指定的URL路径上激活目录indexing。
+                        [Value Description]: 开头和结尾为“/”的URL路径.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="deny-downloadType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="file" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element保证指定的文件绝对不被下载。
+                        [Value Description]: URL context路径上跟随文件名的路径
+                        [Example]: <file>/data/secret.dat</file>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="extension" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 拒绝下载Context内以该element值作为扩展名的所有文件。
+                        [Value Description]:文件扩展名
+                        [Example]: <extension>dat</extension>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="directory" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 为了阻止对特定目录内所有文件的下载，使用该element(context的URL路径有关)。
+                        [Value Description]: 开头和结尾为“/”的目录。Context的URL路径有关的目录。
+                        [Example]: <directory>/data/</directory>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="aliasingType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="alias" type="aliasType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该<alias>element在请求URL和唯一的目录之间定义一个映射。例如，用户请求URL为www.foo.com/examples/images/hello.gif时，作为默认，Container将从Context的基本目录“Examples”内的“/images/”目录中查找“hello.gif”。如果，“hello.gif”文件位于“c:\web\images”目录内，Context内没有时，就需要<alias>element。如果需要多个映射时，多设定几个该element。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="aliasType">         
+        <xs:sequence>             
+            <xs:element name="alias-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 要映射到指定目录的URL路径.
+                        [Value Description]: 开头和结尾为“/”的目录。Context的URL路径有关的目录。
+                        [Example]: <alias-name>/images/</alias-name>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="real-path" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 定义<alias-name>element的URL路径将映射到的实际目录。
+                        [Value Description]:以合适的separator结束的绝对目录路径(“\”windows,”/”unix).
+                        [Example]: <real-path>c:\web\images\</real-path>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="file-cachingType">         
+        <xs:sequence>             
+            <xs:element default="-1" minOccurs="0" name="max-idle-time" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: caching的静态资源在一定时间内不使用时，从caching中去除该资源时当作基准的时间。
+                        [Value Description]: Millisecond值.
+                        [Example]: <max-idle-time>1800</max-idle-time>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="-1" minOccurs="0" name="max-cache-memory" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 用于保存静态资源而分配的最大内存
+                        [Value Description]: Megabytes单位的数
+                        [Value Type Description]: Integer
+                        [Defined Value]: [-1]: cache size上不设定限制
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="directory" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定静态Content被caching的一个目录路径。
+                                为了指定多个cache目录，多添加几个该element。
+                        [Value Description]: Content要被cache的Context docbase有关的URL目录路径。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="role-mappingType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="role-permission" type="rolePermissionType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="ejb-refType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="jndi-info" type="jndi-infoType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 各个<jndi-info>element在一个参照上连接一个JNDI名称。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="res-env-refType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="jndi-info" type="jndi-infoType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 各个<jndi-info>element在一个参照上连接一个JNDI名称。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="servletType">         
+        <xs:sequence>             
+            <xs:element name="servlet-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:表示web.xml上指定的servlet-name。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="run-as-identity" type="run-as-identityType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: 该element将web.xml上定义的run-as-specified-identity role名称，映射到实际用户名(principal)。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>          
+    <xs:complexType name="jsp-resourceType">      
+        <xs:sequence>       
+            <xs:element maxOccurs="1" minOccurs="0" name="provider-class" type="xs:string">                 
+                <xs:annotation>                  
+                    <xs:documentation><![CDATA[
+                	[Description]: 为了将JSP resource提供给输入流，对实现JspResourceProvider接口的class进行指定。
+                	]]>
+                    </xs:documentation>                 
+                </xs:annotation>       
+            </xs:element>           
+        </xs:sequence>          
+    </xs:complexType>          
+    <xs:complexType name="jndi-propertiesType">      
+        <xs:sequence>       
+            <xs:element default="false" maxOccurs="1" minOccurs="0" name="local-bindings" type="xs:boolean">                 
+                <xs:annotation>                  
+                    <xs:documentation><![CDATA[
+                        [Description] : 决定是否使用local binding .
+                	    [Value Description]: 用Boolean值 活性化或非活性化该设置.
+                	]]>
+                    </xs:documentation>                 
+                </xs:annotation>       
+            </xs:element>           
+        </xs:sequence>          
+    </xs:complexType> 
+</xs:schema>

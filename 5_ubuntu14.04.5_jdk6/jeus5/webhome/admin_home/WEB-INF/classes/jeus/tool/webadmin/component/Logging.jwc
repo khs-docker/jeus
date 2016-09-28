@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  $Id: Logging.jwc,v 1.4 2005/02/02 11:01:33 enrique Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://tapestry.apache.org/dtd/Tapestry_4_0.dtd">
+
+<component-specification
+    class="org.apache.tapestry.BaseComponent"
+    allow-body="yes" allow-informal-parameters="yes">
+
+    <parameter name="logging" required="yes"/>
+	<parameter name="modify"/>
+    <parameter name="webAccessLog"/>
+    <parameter name="model" default-value="@jeus.tool.webadmin.page.EnumerationSet@LOG_LEVELS"/>
+	
+    <component id="name" type="Field">
+        <binding name="field" value="components.nameField"/>
+    </component>
+
+    <component id="nameField" type="JAXBTextField">
+        <binding name="parentElement" value="logging"/>
+        <binding name="elementName" value="literal:name"/>
+    </component>
+
+    <component id="level" type="Field">
+        <binding name="field" value="components.levelField"/>
+    </component>
+
+    <component id="levelField" type="JAXBPropertySelection">
+        <binding name="parentElement" value="logging"/>
+        <binding name="elementName" value="literal:level"/>
+        <inherited-binding name="model" parameter-name="model"/>
+        <binding name="uppercase" value="true"/>
+    </component>
+
+    <component id="logging_blind" type="Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="use_parent_handlers" type="Field">
+        <binding name="field" value="components.use_parent_handlersField"/>
+    </component>
+
+    <component id="use_parent_handlersField" type="DojoJAXBCheckbox">
+        <binding name="parentElement" value="logging"/>
+        <binding name="elementName" value="literal:useParentHandlers"/>
+    </component>
+
+    <component id="filter_class" type="Field">
+        <binding name="field" value="components.filter_classField"/>
+    </component>
+
+    <component id="filter_classField" type="JAXBTextField">
+        <binding name="parentElement" value="logging"/>
+        <binding name="elementName" value="literal:filterClass"/>
+    </component>
+
+    <component id="condNotWeb" type="If">
+        <binding name="condition" value="!webAccessLog"/>
+    </component>
+
+    <component id="condCreate" type="If">
+        <binding name="condition" value="modify == null"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="condModify" type="If">
+		<binding name="condition" value="modify != null"/>
+	    <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="readOnlyName" type="ReadOnlyTextField">   
+    	<binding name="value" value="logging.name == null ? @jeus.tool.webadmin.page.SystemLogger.SystemLoggerConstants@DEFAULT_LOGGER_NAME : null"/>
+        <binding name="parentElement" value="logging"/>
+        <binding name="elementName" value="literal:name"/>
+    </component>
+</component-specification>

@@ -1,0 +1,41 @@
+.login_bg{
+	background-color:#e3e3e3;
+}
+
+.left_ar{
+	width:426px;
+	height:154;
+	float:left;
+}
+
+.right_ar{
+	width:243px;
+	height:154;
+	float:left;
+}
+
+.right_ar .login_area{
+    height:61px ;
+    background-color:#c8c8c8 ;
+    margin-top:60px
+}
+
+.loginstyle{
+	text-align:center;
+	height:100%;
+	padding-top:117px;
+}
+
+.inputText-loginClass {
+	font:11px dotum;
+	color:#5b5b5b;
+	border:1px solid #a2a2a2;
+	background-color:#e9e9e9;
+	height:18px;
+	padding:2px 5px;
+}
+
+.login_remember{
+	font:10px tahoma;
+	color:#646464;
+}

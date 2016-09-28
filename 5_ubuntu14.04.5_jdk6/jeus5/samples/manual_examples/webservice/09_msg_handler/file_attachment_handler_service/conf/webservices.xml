@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<webservices version="1.1" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <webservice-description>
+        <webservice-description-name>FileAttachmentService</webservice-description-name>
+        <wsdl-file>WEB-INF/wsdl/FileAttachmentService.wsdl</wsdl-file>
+        <jaxrpc-mapping-file>WEB-INF/FileAttachmentService-mapping.xml</jaxrpc-mapping-file>
+        <port-component>
+            <port-component-name>FileAttPort</port-component-name>
+            <wsdl-port xmlns:ns2="urn:FileAttachmentService">ns2:FileTransferIFPort</wsdl-port>
+            <service-endpoint-interface>filetransfer.FileTransferIF</service-endpoint-interface>
+            <service-impl-bean>
+                <servlet-link>FileTransferServlet</servlet-link>
+            </service-impl-bean>      
+            <handler>
+                <handler-name>ServerAttachmentHandler</handler-name>    
+                <handler-class>filetransfer.ServerAttachmentHandler</handler-class>
+                <init-param>
+                    <param-name>directory</param-name>
+                    <param-value>/tmp</param-value>
+                </init-param>
+            </handler> 
+        </port-component>
+    </webservice-description>
+</webservices>
+

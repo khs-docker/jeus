@@ -1,0 +1,446 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - A tmonitor.xml XML 요소 참조 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('A tmonitor.xml XML 요소 참조', 'wm-30.htm', 'wm-32.htm');
+		 
+</SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left"><A NAME="appendix_a"></A>A tmonitor.xml XML 요소 참조
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMHeading2">A.1소개
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMNormalText">본 부록의 참조는 장애 모니터링 설정 파일인 tmonitor.xml의모든 태그에 대해서 설명하고 있다. 이 파일의 Schema파일은 &ldquo;JEUS_HOME\config\xsds&rdquo; 
+디렉토리의 &ldquo;trouble-monitor.xsd&rdquo; 파일이다.
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMNormalText">본 레퍼런스는 3부분으로 나눠져있다.
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMNormalText">1. XML Schema/XML 트리: XML 설정 파일의 모든 태그 리스트를 정리했다. 각 노드의 형식은 다음과 갈다.
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMNormalText">a. 태그 레퍼런스로 빨리 찾아보기위해서 각 태그마다 인덱스 번호( 예: (11) )를붙여놓았다. 태그 레퍼런스에서는 이 번호 순서로 설명한다.
+ 
+</P>
+<A NAME="1006"></A>
+<P CLASS="JMNormalText">b. XML Schema에서 정의한 XML 태그명을 &lt;tag name&gt; 형식으로 표시한다.
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMNormalText">c. XML Schema에서 정의한 Cardinality를 표시한다. &ldquo;?&rdquo; = 0개나 1개의 element, &ldquo;+&rdquo; 
+= 1개 이상의 element, &ldquo;*&rdquo; = 0개 이상의 element, (기호가 없음) = 정확히 1개의 element
+ 
+</P>
+<A NAME="1008"></A>
+<P CLASS="JMNormalText">d. 몇몇 태그에는 &ldquo;P&rdquo; 문자를 붙여놓았는데, 해당 태그는 성능에 관계되는 태그라는 것을 뜻한다. 이 태그는 설정을 튜닝할 
+때 사용된다.
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMNormalText">2. 태그 레퍼런스: 트리에 있는 각 XML 태그를 설명한다.
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMNormalText">a. Description: 태그에 대한 간단한 설명.
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMNormalText">b. Value Description: 입력하는 값과 타입.
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMNormalText">c. Value Type: 값의 데이터 타입. 예) String
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMNormalText">d. Default Value: 해당 XML을사용하지 않았을 때 기본적으로 사용되는 값
+ </P>
+<A NAME="1014"></A>
+<P CLASS="JMNormalText">e. Defined values: 이미 정해져 있는 값.
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMNormalText">f. Example: 해당 XML 태그에 대한 예.
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMNormalText">g. Performance Recommendation: 성능 향상을 위해서 추천하는 값.
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMNormalText">h. Child Elements: 자신의 태그 안에 사용하는 태그.
+ </P>
+<A NAME="1018"></A>
+<P CLASS="JMNormalText">3. Example XML 파일: &ldquo;tmonitor.xml&rdquo;에 대한 완전한 예제.
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMHeading2">A.2 XML Schema/XML 트리
+ </P>
+
+<PRE CLASS="JMXML">(1) &lt;trouble-monitor&gt; 
+      (2) &lt;mbean&gt;* 
+            (3) &lt;j2ee-type&gt; 
+            (4) &lt;jeus-type&gt;? 
+            (5) &lt;property&gt;* 
+                  (6) &lt;key&gt; 
+                  (7) &lt;value&gt; 
+            (8) &lt;constraint&gt;* 
+                  (9) &lt;key&gt; 
+                  (10) &lt;value&gt;
+</PRE>
+<A NAME="1020"></A>
+<P CLASS="JMHeading2">A.3 Element Reference 
+ </P>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CLASS="normal">
+	<TR>
+		<TD COLSPAN="2" CLASS="thead">(1) &lt;trouble-monitor&gt; 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Description 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">장애 모니터링 설정 파일의 루트 요소. 장애 모니터링에 관한 모든 설정을 이 요소 아래에 설정한다. 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Child Elements 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">(2)mbean* 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CLASS="normal">
+	<TR>
+		<TD COLSPAN="2" CLASS="thead">(2) &lt;trouble-monitor&gt; &lt;mbean&gt; 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Description 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">장애 모니터링 대상이 되는 MBean과 제약 값들을 설정하는 요소이다. 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Child Elements 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">(3)j2ee-type
+ <BR>(4)jeus-type?
+ <BR>(5)property*
+ <BR>(8)constraint* 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CLASS="normal">
+	<TR>
+		<TD COLSPAN="2" CLASS="thead">(3) &lt;trouble-monitor&gt; &lt;mbean&gt; &lt;j2ee-type&gt; 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Description 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">MBean의 j2eeType 키값을 입력한다. 모든 MBean은 j2eeType을 가지고 있다. 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Value Type 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">token 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CLASS="normal">
+	<TR>
+		<TD COLSPAN="2" CLASS="thead">(4) &lt;trouble-monitor&gt; &lt;mbean&gt; &lt;jeus-type&gt; 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Description 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">MBean의 jeusType 키값을 입력한다. 보통 j2eeType이 JeusService일 경우 jeusType이 반드시 존재한다. 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Value Type 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">token 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CLASS="normal">
+	<TR>
+		<TD COLSPAN="2" CLASS="thead">(5) &lt;trouble-monitor&gt; &lt;mbean&gt; &lt;property&gt; 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Description 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">MBean의 j2eeType과 jeusType을 제외한 추가 속성을 지정한다. 이 값을 설정하면 특정 MBean에 대한 설정이 가능하다. 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Example 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">이 예제는 tmax_servlet_engine1이라는 WebEngine에만 적용되는 설정이다. &lt;j2ee-type&gt;JeusService&lt;/j2ee-type&gt; 
+&lt;j2ee-type&gt;WebEngine&lt;/j2ee-type&gt; &lt;property&gt; &lt;key&gt;name&lt;/key&gt; 
+&lt;value&gt;tmax_servlet_engine1&lt;/value&gt; &lt;/property&gt; 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Child Elements 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">(6)key
+ <BR>(7)value 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CLASS="normal">
+	<TR>
+		<TD COLSPAN="2" CLASS="thead">(6) &lt;trouble-monitor&gt; &lt;mbean&gt; &lt;property&gt; &lt;key&gt; 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Description 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">property의 key값이다. 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Value Type 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">token 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CLASS="normal">
+	<TR>
+		<TD COLSPAN="2" CLASS="thead">(7) &lt;trouble-monitor&gt; &lt;mbean&gt; &lt;property&gt; &lt;value&gt; 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Description 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">property의 value값이다. 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Value Type 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">token 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CLASS="normal">
+	<TR>
+		<TD COLSPAN="2" CLASS="thead">(8) &lt;trouble-monitor&gt; &lt;mbean&gt; &lt;constraint&gt; 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Description 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">모니터링할 제약사항을 입력한다. 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Example 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">&lt;constraint&gt; &lt;key&gt;servlet-session-session-count&lt;/key&gt; &lt;value&gt;10000&lt;/value&gt; 
+&lt;/constraint&gt; 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Child Elements 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">(9)key
+ <BR>(10)value 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CLASS="normal">
+	<TR>
+		<TD COLSPAN="2" CLASS="thead">(9) &lt;trouble-monitor&gt; &lt;mbean&gt; &lt;constraint&gt; &lt;key&gt; 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Description 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">property의 key값이다. 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Value Type 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">token 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="0" CLASS="normal">
+	<TR>
+		<TD COLSPAN="2" CLASS="thead">(10) &lt;trouble-monitor&gt; &lt;mbean&gt; &lt;constraint&gt; &lt;value&gt; 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Description 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">property의 value값이다. 
+ </TD>
+	</TR>
+	<TR>
+		<TD WIDTH="30%" CLASS="normal">Value Type 
+ </TD>
+		<TD WIDTH="70%" CLASS="normal">token 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+<A NAME="1021"></A>
+<P CLASS="JMHeading2">A.4 tmonitor.xml 예제
+ </P>
+
+<P CLASS="JMFileNameReference">&lt;&lt;tmonitor.xml&gt;&gt;
+ </P>
+
+<PRE CLASS="JMXML">&lt;?xml version=&quot;1.0&quot; encoding=&quot;EUC-KR&quot; standalone=&quot;yes&quot;?&gt;
+&lt;trouble-monitor xmlns=&quot;http://www.tmaxsoft.com/xml/ns/jeus&quot;&gt;
+   &lt;mbean&gt;
+      &lt;j2ee-type&gt;JeusService&lt;/j2ee-type&gt;
+      &lt;jeus-type&gt;EjbEngine&lt;/jeus-type&gt;
+      &lt;constraint&gt;
+         &lt;!-- EJB Engine의 active manager에서block되는 thread가
+              전체 thread중에 차지하는 비율이 이 값 이상이면
+              WARNING이 발생한다. --&gt;
+         &lt;key&gt;ejb-active-management-ratio&lt;/key&gt;
+         &lt;value&gt;0.8&lt;/value&gt;
+      &lt;/constraint&gt;
+   &lt;/mbean&gt;
+   &lt;mbean&gt;
+      &lt;j2ee-type&gt;EntityBean&lt;/j2ee-type&gt;
+      &lt;constraint&gt;
+         &lt;!-- EJB의 thread-max 설정에 대해 현재 운영되는
+              thread의 갯수가 차지하는 비율이 이 값 이상이면
+              WARNING이 발생한다. --&gt;
+         &lt;key&gt;thread-max-warning-ratio&lt;/key&gt;
+         &lt;value&gt;0.9&lt;/value&gt;
+      &lt;/constraint&gt;
+      &lt;constraint&gt;
+         &lt;!-- EJB의 thread-max 설정에 대해 현재 운영되는 
+              thread의 갯수가 차지하는 비율이 이 값 이상이면 
+              FATAL이 발생한다. --&gt;
+         &lt;key&gt;thread-max-fatal-ratio&lt;/key&gt;
+         &lt;value&gt;0.95&lt;/value&gt;
+      &lt;/constraint&gt;
+   &lt;/mbean&gt;
+   &lt;mbean&gt;
+      &lt;j2ee-type&gt;StatelessSessionBean&lt;/j2ee-type&gt;
+      &lt;constraint&gt;
+         &lt;!-- EJB의 thread-max 설정에 대해 현재 운영되는 
+              thread의 갯수가 차지하는 비율이 이 값 이상이면 
+              WARNING이 발생한다. --&gt;
+         &lt;key&gt;thread-max-warning-ratio&lt;/key&gt;
+         &lt;value&gt;0.9&lt;/value&gt;
+      &lt;/constraint&gt;
+      &lt;constraint&gt;
+         &lt;!-- EJB의 thread-max 설정에 대해 현재 운영되는 
+              thread의 갯수가 차지하는 비율이 이 값 이상이면 
+              FATAL이 발생한다. --&gt;
+         &lt;key&gt;thread-max-fatal-ratio&lt;/key&gt;
+         &lt;value&gt;0.95&lt;/value&gt;
+      &lt;/constraint&gt;
+   &lt;/mbean&gt;
+   &lt;mbean&gt;
+      &lt;j2ee-type&gt;StatefulSessionBean&lt;/j2ee-type&gt;
+      &lt;constraint&gt;
+         &lt;!-- EJB의 thread-max 설정에 대해 현재 운영되는 
+              thread의 갯수가 차지하는 비율이 이 값 이상이면 
+              WARNING이 발생한다. --&gt;
+         &lt;key&gt;thread-max-warning-ratio&lt;/key&gt;
+         &lt;value&gt;0.9&lt;/value&gt;
+      &lt;/constraint&gt;
+      &lt;constraint&gt;
+         &lt;!-- EJB의 thread-max 설정에 대해 현재 운영되는 
+              thread의 갯수가 차지하는 비율이 이 값 이상이면 
+              FATAL이 발생한다. --&gt;
+         &lt;key&gt;thread-max-fatal-ratio&lt;/key&gt;
+         &lt;value&gt;0.95&lt;/value&gt;
+      &lt;/constraint&gt;
+   &lt;/mbean&gt;
+   &lt;mbean&gt;
+      &lt;j2ee-type&gt;MessageDrivenBean&lt;/j2ee-type&gt;
+      &lt;constraint&gt;
+         &lt;!-- EJB의 thread-max 설정에 대해 현재 운영되는 
+              thread의 갯수가 차지하는 비율이 이 값 이상이면 
+              WARNING이 발생한다. --&gt;
+         &lt;key&gt;thread-max-warning-ratio&lt;/key&gt;
+         &lt;value&gt;0.9&lt;/value&gt;
+      &lt;/constraint&gt;
+      &lt;constraint&gt;
+         &lt;!-- EJB의 thread-max 설정에 대해 현재 운영되는 
+              thread의 갯수가 차지하는 비율이 이 값 이상이면 
+              FATAL이 발생한다. --&gt;
+         &lt;key&gt;thread-max-fatal-ratio&lt;/key&gt;
+         &lt;value&gt;0.95&lt;/value&gt;
+      &lt;/constraint&gt;
+   &lt;/mbean&gt;
+   &lt;mbean&gt;
+      &lt;j2ee-type&gt;JDBCDataSource&lt;/j2ee-type&gt;
+      &lt;constraint&gt;
+         &lt;!-- DataSource에서 connection을 얻을 때 waiting하고 
+              있는 thread가 connection pool의크기에 비해 
+              이 값 이상이 되면 WARNING이 발생한다. --&gt;
+         &lt;key&gt;connection-waiting-warning-ratio&lt;/key&gt;
+         &lt;value&gt;0.8&lt;/value&gt;
+      &lt;/constraint&gt;
+      &lt;constraint&gt;
+         &lt;!-- DataSource에서 connection을 얻을 때 waiting하고
+              있는 thread가 connection pool의 크기에 비해 
+              이 값 이상이 되면 FATAL이 발생한다. --&gt;
+         &lt;key&gt;connection-waiting-fatal-ratio&lt;/key&gt;
+         &lt;value&gt;0.9&lt;/value&gt;
+      &lt;/constraint&gt;
+   &lt;/mbean&gt;
+&lt;/trouble-monitor&gt;
+
+</PRE>
+<!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

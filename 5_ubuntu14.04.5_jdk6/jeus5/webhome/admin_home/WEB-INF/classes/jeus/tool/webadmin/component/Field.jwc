@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://tapestry.apache.org/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="jeus.tool.webadmin.component.Field" allow-body="yes" allow-informal-parameters="yes">
+
+    <inject property="XMLSchemaResourceSource" type="state" object="XMLSchemaResourceSource"/>
+
+    <parameter name="label" property="labelbinding"/>
+    <parameter name="description" property="descriptionbinding"/>
+
+    <parameter name="enabledDescription" default-value="true" />
+    <parameter name="layout" default-value="@jeus.tool.webadmin.component.Field@STANDARD_LAYOUT"/>
+
+    <parameter name="renderBottom"/>
+    <parameter name="parentElement"/>
+    <parameter name="elementName"/>
+
+    <inject property="externalService" object="engine-service:external" />
+
+    <parameter name="field"/>
+
+    <parameter name="prerender" default-value="true"/>
+    <parameter name="unit"/>
+    <parameter name="usage"/>
+
+    <inject property="settings" type="state" object="Settings"/>
+
+<!--
+    <component id="elemdocLink" type="Any">
+    	<binding name="href" value="literal:#"/>
+        <binding name="onclick" value="'javascript:field_popup_layer()'"/>
+    </component>
+    
+    <component id="script" type="Script">
+    	<binding name="script" value="literal:Field2.script"/>
+    </component>
+ 
+    <component id="elemdocLink" type="Any">
+    	<binding name="href" value="literal:#"/>
+        <binding name="onclick" value="'javascript:window.open(\''+elemdocHref+'\', \'elemdoc\', \'width=600,height=480,toolbars=no,resizable=yes,scrollbars=yes\');'"/>
+    </component>
+
+    <component id="elemdocLink" type="ExternalLink">
+       	<binding name="page" value="literal:Etc_ElementDocument"/>
+     	<binding name="parameters" value="elemdocHref"/>
+     	<binding name="renderer" value="bean:popupElementDocLink"/>
+    </component>
+    
+    <bean name="popupElementDocLink" class="org.apache.tapestry.contrib.link.PopupLinkRenderer" lifecycle="none">
+    	<set name="windowName" value="literal:elemdoc"/>
+    	<set name="features" value="literal:width=600,height=480,toolbars=no,resizable=yes,scrollbars=yes"/>
+    </bean>
+ -->
+
+
+</component-specification>

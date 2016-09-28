@@ -1,0 +1,22 @@
+<html jwcid="shell">
+    <span jwcid="condAvailable">
+        <body jwcid="@Body" class="tundra">
+            <script type="text/javascript" src="/webadmin/js/JeusDojo/release/dojo/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+            <script type="text/javascript" src="/webadmin/js/JeusDojo/release/dojo/dojo/jeus.js"/>
+            <script type="text/javascript">
+                dojo.require("dojo.parser");
+                dojo.require("dijit.layout.ContentPane");
+                dojo.require("dijit.layout.SplitContainer");
+            </script>
+            <iframe jwcid="handler" id="handler" name="main" frameborder="0"></iframe>
+        </body>
+    </span>
+    <span jwcid="condUnavailable">
+        <body style="margin:0px;">
+            <div class="accessTime">
+                <span jwcid="@Insert" value="message:MainBorder.lastAccessTime"/>:<span jwcid="@Insert" value="ognl:time"/>
+            </div>
+            <img jwcid="logo"/>
+        </body>
+    </span>
+</html>

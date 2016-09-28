@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="GB2312"?>
+<description>                                                
+    <text key="jeus-beanType.service-ref"><![CDATA[
+                 [Description]: JEUS web服务客户端设定文件的根元素(root element).
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="persistence-optimizeType.update-delay-till-tx"><![CDATA[
+                        [Description]: 如果将该选项设定为“false”的话，在EJB setXXX()被呼叫时执行所生成EJB数据库的插入和更新。一般将该选项设定为“true”，设定为“true”时，在transaction commit时更新EJB数据的插入和更新。开发人员需要的事项有如下几种。
+                            1. 开始transaction
+                            2. 进行EJB数据更新
+                            3. 读取EJB数据
+                            4. Transaction commit
+                        如果设定的值为“false”的话，在步骤3.读取的数据将是步骤2.中记录的数据。如果设定的值为“true”的话，不是步骤3，而是读取在步骤4.进行commit后显示的值，记录在步骤2.的数据。该选项只在CMP2.0中使用。
+                        [Performance Recommendation]: 设定为“false”的话，EJB的insert、update作业将对性能造成恶劣的影响。所有insert、update作业都各自执行，所以造成性能降低。为了性能考虑，设定成“true”为好。
+                        [Example]: <update-delay-till-tx>true</update-delay-till-tx>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="auto-key-generatorType.sequence-column"><![CDATA[
+                        [Description]: 只在USER_KEY_TABLE时使用。该element明示，具有Primary Key的column name。
+                        [Value Description]: column name.
+                        [Example]: <sequence-column>PRIMARYKEYCOLUMN</sequence-column>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="durable-timer-serviceType.ignore-durable-timers-at-deploy"><![CDATA[
+                    [Description]: 指定该EJB被deploy时，是否要忽视以前没有去除的persistence timer。如果设定为true被忽视的话，该timer将在deploy时被去除。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="find-methodType.query-method"><![CDATA[
+                        [Description]: Find method的名称和参数
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="clusteringType.ejb-remote-idempotent-exclude-method"><![CDATA[
+                        [Description]: 该element指定将从"idempotent" home method中除外的method。优先于上述的<ejb-remote-idempotent-method>。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.database-insert-delay"><![CDATA[
+                    [Description]: 该选项决定，生成EJB时，新的EJB数据什么时候保存到数据库。目前有两个方法。完成ejbCreate() method之后和完成ejbPostCreate() method之后两种。
+                    [Example]: <database-insert-delay>ejbCreate</database-insert-delay>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="object-managementType.connect-pool"><![CDATA[
+                        [Description]: connection pool具有，在客户端和bean pool中取出的EJB instance之间起到中介作用的EJB远程接口体现class(EJB objects)。从该pool中呼叫connection instance，与客户端的请求建立连接。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="security-interopType.integrity-confidentiality"><![CDATA[
+                        [Description]: 该element映射CSI spec上定义的"Integrity" 比特和"Confidentiality"比特。两个比特上都适用这里定义的设定。
+                        [Defined Value]:
+                            [NotSupported]:
+                            "TLS_SEC_TRANS.target_supports" 比特序列的"Integrity" 和"Confidentiality" 比特设定为0。(disable).
+                            [Supports]:
+                            "TLS_SEC_TRANS.target_supports"  比特序列的"Integrity"和"Confidentiality" 比特设定为1。(enable).
+                            [Requires]:
+                            "TLS_SEC_TRANS.target_requires"  比特序列的"Integrity"和"Confidentiality" bit设定为1(enable)。还将"TLS_SEC_TRANS. target_supports" 比特序列的"Integrity"和"Confidentiality" 比特设定为1(enable)。
+                        [Example]: <integrity-confidentiality>Requires</integrity-confidentiality>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.msg-selector"><![CDATA[
+                    [Description]: 作为只在EJB 2.0 style的Message-Driven Bean中使用的element，设定该MDB要使用的message selector。具体内容，请参照JEUS JMS 手册以及JMS spec。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="auto-key-generatorType.key-cache-size"><![CDATA[
+                        [Description]: 该element设定，将分配给EJB引擎的唯一key的数量。该element从Primary Key 数据库接收key后，将Primary Key的值增加为这里声明的值。这相应地减少访问Primary Key的必要，所以有助于性能的提高。
+                        [Value Description]: 要分配到本地EJB引擎的Primary Key数量。Oracle数据库时，该值必须与SEQUENCE的SEQUENCE INCREMENT值一致。
+                      [Performance Recommendation]: 为了性能最优化，适当提高该值。
+                        [Example]: <key-cache-size>20</key-cache-size>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-ejb-ddType.module-info"><![CDATA[
+                    [Description]: 设定适用到整个EJB模块的囊括性信息。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jndi-spiType.mq-vendor"><![CDATA[
+                    [Description]: 要通过下一个element中设定的JNDI名称服务，与MDB建立连接的MQ/JMS vender名称。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="schema-infoType.table-name"><![CDATA[
+                        [Description]:  与EJB映射的关系型数据库的talbe name。
+                        Default Value: EJB模块名 + EJB bean名称的最后15个文字.
+                        [Example]: <table-name>ACCOUNT</table-name>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="cm-persistence-optimizeType.init-caching"><![CDATA[
+                        [Description]: 该element设定为"true"时，EJB引擎对于映射的DB table列，事先进行EJB Entity Bean的初始化。该作业在booting引擎时执行。该element设定为"false"时，通过create()、findByPrimaryKey()或起到类似功能的home instance method生成EJB instance。
+                        [Performance Recommendation]: 该值设定为"true"的话，需要更多的系统内存，但是整体的性能将会得到提高。如果认为系统内存不够的话，将该值设定为"false"。
+                        [Example]: <init-caching>true</init-caching>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="persistence-optimizeType.non-modifying-method"><![CDATA[
+                        [Description]: Non-modifying method指，对连接在bean的数据库不产生任何变化的method(例如：non-modifying methods = "getter"/"read only" method)。为了更加有效地使用ejbStore() method呼叫，该element上明示Bean的所有只读method。
+                        [Performance Recommendation]: 如果bean未被集群，也没有要访问数据库列的其他要素的话，请一直使用EXCLUSIVE_ACCESS。
+                        [Performance Recommendation]: 为了保证最佳的性能，所有只读method最好登录到该列表。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.max-message"><![CDATA[
+                    [Description]: 作为只在EJB 2.0 style的Message-Driven Bean中使用的element，指定该MDB所使用的JMS Session上给出的最大message数量。具体内容，请参照JEUS JMS手册以及JMS spec。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="column-mapType.foreign-key-column"><![CDATA[
+                        [Description]: 声明该<column-map>的EJB的DB table上存在的外键(Foreign Key)DB Column name。target-primary-key-column element上定义的对象EJB的Primary Key DB Column值映射到该值。如果是多对多关系(many-to-many relation)的话，就是存在于关系表上的外键(foreign key)column name。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="security-interopType.trust-in-client"><![CDATA[
+                        [Description]: 该element映射CSI spec上定义的"Trust in client"比特。
+                        [Defined Value]:
+                            [NotSupported]:
+                            "TLS_SEC_TRANS.target_supports" 比特序列的"Client authentication"比特设定为0(disable)。
+                            [Supports]:
+                            "TLS_SEC_TRANS.target_supports" 比特序列的"Client authentication"比特设定为1(enable)。
+                            [Requires]:
+                            "TLS_SEC_TRANS.target_requires" 比特序列的"Client authentication"比特设定为1(enable)。还将"TLS_SEC_TRANS.target _supports" 比特序列的"Client authentication"比特设定为1(enable)。
+                        [Example]: <trust-in-client>Requires</trust-in-client>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.res-ref"><![CDATA[
+                    [Description]: 该element可以声明，在源代码上可使用的外部资源(例如:数据库)参照名称。
+                    [Dependency]: res-ref/jndi-info/ref-name = ejb-jar/enterprise-beans/ * /resource-ref/res-ref-name
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="object-managementType.bean-pool"><![CDATA[
+                        [Description]: bean pool具有EJB bean的体现class instance。为了处理客户端的请求，连接到EJB Context和bean skeleton 体现class时，instance将从pool中出来开始服务。Pool内再也没有剩下instance时，生成新的instance，并添加到bean pool内。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="local-file-dbType.min-hole"><![CDATA[
+                        [Description]: 再次激活File DB内的bean时，该bean所使用的File DB上生成"hole"。存在过多的"hole"时，该File DB有可能被重新构成。如果min-hole和packing-rate状态一致的话，File DB将被重新构成。该element上明示的值，表示重新构成要求的最低限度的"hole"数量。
+                        [Value Description]: "hole"的最低数量
+                        [Performance Recommendation]: File DB的重新构成可能造成系统资源的浪费。因此，尽量设定大的值。
+                        [Example]: <min-hole>5000</min-hole>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="schema-infoType.data-source-name"><![CDATA[
+                        [Description]: 与数据库连接时使用的数据库connection pool的JNDI名称。该connection pool一般设定在JEUSMain.xml，通过JEUS manager JVM执行。
+                        [Value Description]: JEUS DB connection pool的JNDI名称
+                        [Example]: <data-source-name>MYDB</data-source-name>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="find-methodType.include-updates"><![CDATA[
+                        [Description]: “true”时，在呼叫finder method的途中生成的update被commit，所以执行finder method时可以查看更新的信息。
+                        Default Value: <persistence-optimize>的<include-update>上指定的值为默认值。
+                        [Example]: <include-updates>true</include-updates>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="schema-infoType.db-vendor"><![CDATA[
+                        [Description]: 设定Container生成SQL时要符合什么样的DBMS生成。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="schema-infoType.find-method"><![CDATA[
+                        [Description]: CMP 1.1 Entity Bean的情况下，必须对finder method明示必要的SQL句。CMP 2.0的情况下，可以对ejb-jar.xml上指定的EJB-QL进行overriding。其适用与jeus-query相同。
+                        [Deprecated]: 请使用<jeus-query>。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.invoke-http"><![CDATA[
+                    [Description]: 设定该功能时，客户端的EJB stub和远程地的RMI执行环境之间是通过HTTP-RMI请求(Request)进行通信。这是在中间隔着防火墙访问EJB时使用。使用该模式(HTTP呼叫模式)时，如果客户端在 EJB stub中呼叫method的话，HTTP-RMI请求(Request )被发送到，将该呼叫发送到web container的web服务器。然后，这个请求再被发送到RMI Handler Servlet(jeus. rmi.http.ServletHandler)，在这里Handler Servlet从请求(Request)中去除HTTP header后，传送到RMI执行环境。设定该element之前，jeus.rmi.http. ServletHandler Servlet必须depoly在JEUS web container才行。(进一步的信息，请参照JEUS web服务器指南。)
+                    [Performance Recommendation]: 使用HTTP呼叫模式，可以期待若干的性能提高。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.jndi-spi"><![CDATA[
+                    [Description]: 作为只在EJB 2.0 style的Message-Driven Bean中使用的element，当MDB使用非默认值(jeus.jndi.JEUSContextFactory)的其他JNDI name service上登录的JMS service时，使用该element。将JEUS MDB连接到IBM MQ或SONIC MQ等JEUS JMS服务之外的MQ时，使用该element。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="schema-infoType.creating-table"><![CDATA[
+                        [Description]: 如果激活这个的话，在EJB引擎booting时数据库上没有table的话，生成table。 如果该element的值为"false"的话，特别激活"schema check"。这在EJB引擎booting时工作，检查schema-info element上定义的DB schema是否正确。通过明示Engine Container的JVM参数，还可以进行Override(例如：-Djeus.ejb.checktable=false" ) 根据不同的下级element，生成table的方式有所不同。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.ejb-ref"><![CDATA[
+                    [Description]: 该element将code中使用的EJB参照，绑定到实际EJB JNDI名称。
+                    [Dependency]: ejb-ref/jndi-info/ref-name = ejb-jar/enterprise-beans/ * /ejb-ref/ejb-ref-name
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="cm-fieldType.exclude-field"><![CDATA[
+             [Description]:  该element设定为"true"时，上述指定字段相关的accessor method(set, get method)不会出现在，EJB server生成的concrete bean class内。即，使用该bean的客户端不能使用field。这等于是忽视ejb-jar.xml上指定的cmp-field。该设定只在CMP 2.0 EntityBean中适用。
+                        [Example]: <exclude-field>true</exclude-field>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="file-db-infoType.local-file-db"><![CDATA[
+                        [Description]: 该element明示，保存非激活状态维持session bean的本地文件数据库。
+                        [Performance Recommendation]: 如果不使用集群的话，代替远程文件DB使用该element，将对性能更有利。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="schema-infoType.cm-field"><![CDATA[
+                        [Description]: 明示与Container所管理的数据库各个column映射的字段。
+                        [Dependency]: cm-filed/field = enterprise-beans/entity/cmp-field/field-name
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.security-interop"><![CDATA[
+                    [Description]: 使用IIOP/CSI，并且能在EJB引擎中使用时，即enable-interop element为true时，声明该element。如果需要下一步设定相关的信息，请参照CSI spec。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="schema-infoType.deleting-table"><![CDATA[
+                        [Description]: 激活的话，删除在EJB引擎结束时命名的数据库table。为了防止未意图的DB table删除，只在设定有系统属性，存在<creating-table>设定时删除table。
+                        [Example]: <deleting-table>true</deleting-table>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.use-access-control"><![CDATA[
+                    [Description]: 呼叫EJB method的过程中，针对呼叫method的principal，指定EJB method使用的资源上是否要使用J2SE Security提供的access-control。为了使用该功能，需要在启动JEUS时设定-Djava.security.manager，激活security manager才行。
+                    [Performance Recommendation]: 如果不想勾选(check)access control，指定为false有助于性能。
+                    [Example]: <use-access-control>false</use-access-control>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="beanlistType.jeus-bean"><![CDATA[
+                    [Description]:进行对各个bean的jeus specific设定。ejb-jar.xml的每个bean都应被设定。根据bean种类，要设定的element不同，设定时请参照JEUS EJB手册。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="creating-tableType.use-existing-table"><![CDATA[
+                        [Description]:  如果数据库内已经存在指定名称的table时，直接使用该table，只有在没有table时生成。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.clustering"><![CDATA[
+                    [Description]: 集群设定提供故障应付和负载分散功能。这基本上，在其他多个EJB引擎上都安装一个EJB时都可以使用。这个设定方法与JEUS节点之间的集群方法类似。参与到集群的所有EJB应具有相同的export-name。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.mdb-resource-adapter"><![CDATA[
+                    [Description]: 作为只在与Connector连动的Message-Driven Bean中使用的element，设定该MDB要使用的资源适配器。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="ejb-module-infoType.unspecified-container-transaction"><![CDATA[
+                    [Description]: 对于在ejb-jar.xml未指定container transaction的method，进行设定。该值的默认值可以设定为-Djeus.ejb.transaction.attribute.default。没有指定该值时，作为默认值使用Supports。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="schema-infoType.prim-key-field"><![CDATA[
+                        [Description]: 只有在ejb-jar.xml上明示着<prim-key-class>时使用。明示<prim-key-class>的字段当中，在EJB bean和DB table的列中构成Primary Key而使用的所有EJB字段名称。下级element中只需指定<field>。
+                        Default Value: 如果没有明示该值的话，使用<prim-key-class>的所有public字段构成Primary Key。
+                        [Example]: <prim-key-field>id</prim-key-field>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="export-iiopType.only-iiop"><![CDATA[
+                    [Description]: 决定是否将该EJB的Home同时登录到IIOP之外的RMI Stub。如果登录的话，CosNaming上登录IIOP stub，JEUS JNDI上登录RMI stub。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.local-export-name"><![CDATA[
+                   [Description]: bean为local bean interface时，使用的JNDI名称。
+                    [Value Description]: 可以任意指定，并且在JNDI Naming System中必须具有唯一性。
+                    [Example]: <local-export-name>LOCALTELLEREJB</local-export-name>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="unspecified-method-permissionType.excluded"><![CDATA[
+                [Description]: 排斥(exclude)在ejb-jar.xml中未指定method permission的method。因此，有些principal不能获得呼叫该method的permission。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="auto-key-generatorType.generator-name"><![CDATA[
+                        [Description]: 在Oracle和使用USER_KEY_TABLE值的情况下使用。Oracle时，明示SEQUENCE名称。USER_KEY_TABLE时，明示具有Primary Key的table name。
+                        [Value Description]: Oracle时SEQUENCE名称，USER_KEY_TABLE时table名称。
+                        [Example]: <generator-name>MYKEYTABLE</generator-name>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="cm-persistence-optimizeType.fetch-size"><![CDATA[
+                        [Description]: 该element明示，DB被返还尺寸非常大的ResultSet时，一次性要带多少列。
+                        [Performance Recommendation]: 该值设定较高值时，可能需要更多的系统内存，但是更有效执行数据库的"select"请求。
+                        [Example]: <fetch-size>80</fetch-size>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="activation-config-propertyType.activation-config-property-name"><![CDATA[
+                        [Description]: 要指定的activation config property名称。JMS MDB的话，基本识别acknowledgeMode, messageSelector, destinationType, subscriptionDurability。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="activation-configType.activation-config-property"><![CDATA[
+                        [Description]: 指定各个activation config property。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="local-file-dbType.file-db-path"><![CDATA[
+                        [Description]: 该element明示，要保存状态维持session bean状态之File DB的生成目录路径。
+                        [Value Description]: 路径使用绝对路径。
+                        [Example]: <file-db-path>c:\temp</file-db-path>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-ejb-ddType.message-destination"><![CDATA[
+                    [Description]: 映射ejb-jar.xml的 <message-destination>中声明的message destination和登录在JNDI的实际Destination对象。
+                    [Dependency]: message-destination/jndi-info/ref = ejb-jar/enterprise-beans/ * /message-destination-ref/message-destination-ref-name
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.env"><![CDATA[
+                    [Description]: 添加到标准EJB DD中定义的<env-entry>tag或被Override。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.connection-factory-name"><![CDATA[
+                    [Description]: 作为只在EJB 2.0 style的Message-Driven Bean中使用的element，设定该MDB要使用之JMS connection factory的JNDI名称。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.object-management"><![CDATA[
+                    [Description]: 只适用于状态维持session bean和entity bean的对象管理功能，控制对该bean的bean instance pooling作业。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="cm-fieldType.column-name"><![CDATA[
+                        [Description]:将映射到<field>tag上明示之EJB字段的数据库table的column名称。
+                        [Example]: <column-name>ID</column-name>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="creating-tableType.force-creating-table"><![CDATA[
+                        [Description]:  如果数据库内已经存在指定名称的table时，删除后再次生成table。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="clusteringType.ejb-home-idempotent-exclude-method"><![CDATA[
+                        [Description]: 该element指定要从"idempotent" home method中除外的method。优先于上述的<ejb-home-idempotent-method>。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="local-file-dbType.packing-rate"><![CDATA[
+                        [Description]: 这是0和1之间的值。min-hole状态一致，并且"hole"使用的File DB的总比率与该值一致时，File DB将被重新构成。
+                        [Performance Recommendation]: File DB的重新构成，可能造成系统资源的浪费。因此，尽量设定大的值。
+                        [Example]: <packing-rate>0.4</packing-rate>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.export-iiop"><![CDATA[
+                    [Description]: 设定该element时，bean的interface能通过IIOP stub和skeleton，export到COS Naming Server。这使可访问IIOP的所有客户端，都能访问bean。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.destination"><![CDATA[
+                    [Description]: 作为只在EJB 2.0 style的Message-Driven Bean中使用的element，设定该MDB要使用的JMS Destination的JNDI名称。具体内容，请参照JEUS JMS手册以及JMS spec。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="ejb-relation-mapType.table-name"><![CDATA[
+                        [Description]: 如果EJB Relation为多对多( M:M )关系时，该数据库内存在表现多对多( M:M )关系的"join-table"。该element明示，表现多对多( M:M )关系的"join-table"名称。
+                        [Example]: <table-name>studentcoursejoin</table-name>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="mdb-resource-adapterType.activation-config"><![CDATA[
+                        [Description]: 记录要设定资源适配器的activation config。该设定可以对ejb-jar.xml的activation config进行override。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="file-db-infoType.remote-file-db"><![CDATA[
+                        [Description]: 该element是本地文件数据库的替代方案。如果设定该值的话，bean的状态将保存到JEUSMain.xml上设定的session manager，并通过JEUS manager执行。如果希望状态维持session bean被集群的话，必须要设定该element。非集群的环境中，就没有理由使用该值。
+                        [Performance Recommendation]: 处于性能上的原因，不进行集群的话，建议不要使用该值。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.enable-instant-ql"><![CDATA[
+                    [Description]: 该值设定为"true"时，该bean的home interface将附加体现，JEUS特定的interface( "jeus.ejb.bean.objectbase.EJBInstanceFinder" )。该interface包括以下的method。findWithInstantQL(java.lang.String qlSentence). 该method支持，可以在客户端的源代码中直接明示任意的EJB QL query。这在finder method不够时，可以成为临时的解决对策。参考：请注意，"qlSentence"字符串参数只支持没有参数的，即没有"?"的EJB QL句。这只在CMP 2.0  Entity Bean中动作。
+                    [Performance Recommendation]: "findWithInstantQL(java.lang.String qlSentence)" method的使用是非效率的。除了非常特殊的情况，请不要使用。
+                    [Example]: <enable-instant-ql>true</enable-instant-ql>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.schema-info"><![CDATA[
+                    [Description]: 该element定义数据库的column和EJB field的映射。该element只用于CMP Entity Bean。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.durable"><![CDATA[
+                    [Description]: 作为只在EJB 2.0 style的Message-Driven Bean中使用的element，决定将该MDB指定为JMS的durable subscriber。具体内容，请参照JEUS JMS手册以及JMS spec。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.ack-mode"><![CDATA[
+                    [Description]: 作为只在EJB 2.0 style的Message-Driven Bean中使用的element，设定该MDB所使用的JMS Session的Ackndowledge mode。具体内容请参照JEUS JMS手册以及JMS spec。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="ejb-module-infoType.keep-generated"><![CDATA[
+                    [Description]: 设定是否要保留针对该module生成的java source file。该设定为true时，优先于jeus-application-dd.xml的设定。False时，遵照jeus-application-dd.xml的keep-generated设定。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="cm-persistence-optimizeType.subengine-type"><![CDATA[
+                        [Description]: 该element声明，访问数据库的table列时，ejbLoad()method的数据库锁(lock)的类型。该设定可以根据bean的性质而决定(例如：bean的read多于write，或write多于read的情况)。对Oracle DB采用WriteLock时，可以得到DB Isolation设定为Serialization的效果。
+                        [Performance Recommendation]: 如果EJB bean对DB table的列read多于write的话，使用"ReadLocking"。相反，write比read更多的话，使用"WriteLocking"。
+                        [Example]: <subengine-type>WriteLocking</subengine-type>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="local-file-dbType.file-db-name"><![CDATA[
+                        [Description]: 在这里明示File DB的名称。该名称后附加数字，使用.fdb扩展名。数字是为了区别实际File DB和备份File DB而使用。例如，File DB名称为"teller"时，生成"teller1.fdb"和"teller2.fdb"。
+                        [Value Description]: 没有扩展名的任意文件名。
+                        [Example]: <file-db-name>teller</file-db-name>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="object-managementType.capacity"><![CDATA[
+                        [Description]: 这意味着预计要生成的bean instance的最大数量。为了有效构成连接到EJB的内部客户端session数据，使用该值。
+                        [Value Description]: bean的数量
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="durable-timer-serviceType.delete-durable-timers-at-undeploy"><![CDATA[
+                    [Description]: 除非在code上明确呼叫remove()，否则timer一般不会被去除。当该EJB被undeploy时还存在未去除的persistence timer的话，去除该timer的选项。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="object-managementType.disconnect-timeout"><![CDATA[
+                        [Description]:在这里设定的时间内不能接到客户端的请求时，该element用来取消客户端和bean instance之间的连接。这样的话，connection instance(EJB object)将永远地从runtime memory中去除。
+                        [Value Description]: 毫秒单位
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="bean-poolType.pool-min"><![CDATA[
+                        [Description]: pool内可以装的bean instance的最低数量。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-ejb-ddType.ejb-relation-map"><![CDATA[
+                    [Description]: 该element在定义CMP 2.0 Entity Bean之间的关系(Relation)时使用。ejb-jar.xml中声明的各个Relation上都存在一个ejb-relation-map element。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.thread-max"><![CDATA[
+                    [Description]: 设定EJB引擎接收和处理客户端请求的thread最大数量。如果已经在使用相当于该值数量的thread时，之后的请求需要等待，直到能使用其他thread为止。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="remote-file-dbType.remote-primary-file-db"><![CDATA[
+                        [Description]: 该element选择，为了状态的永续性而使用的Main Session Manager。
+                        [Value Description]: Session Manager的JNDI名称
+                        [Example]: <remote-primary-file-db>MYSESSIONSERVER</remote-primary-file-db>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.run-as-identity"><![CDATA[
+                    [Description]: 该element将ejb-jar.xml上定义的run-as-specified-identity role名称映射到实际的用户名(principal)。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.file-db-info"><![CDATA[
+                    [Description]: EJB引擎在状态维持session bean处于非激活状态时，将bean的状态保存到File DB，日后再需要时恢复其状态值。设定此时使用的File DB。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="security-interopType.client-auth"><![CDATA[
+                        [Description]: 该element映射CSI spec上定义的"Client authentication"比特。
+                        [Defined Value]:
+                            [NotSupported]:
+                            "AS_ContextSec.target_supports" 比特序列的"Client authentication"比特设定为0(disable)。
+                            [Supports]:
+                            "AS_ContextSec.target_supports" 比列序列的"Client authentication"比特设定为1(enable)。
+                            [Requires]:
+                            "AS_ContextSec.target_requires" 比特序列的"Client authentication"比特设定为1(enable)。还将"AS_ContextSec.target_supports" 比特序列的"Client authentication"比特设定为1(enable)。
+                        [Example]: <client-auth>Requires</client-auth>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="persistence-optimizeType.engine-type"><![CDATA[
+                        [Description]: 这决定和优化，通过EJB引擎发生ejbLoad()呼叫时所发生的行为。
+                        [Performance Recommendation]: 如果bean未被集群，也没有要访问数据库列的其他要素的话，请一直使用EXCLUSIVE_ACCESS。
+                        [Example]: <engine-type>SINGLE_OBJECT</engine-type>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="column-mapType.target-primary-key-column"><![CDATA[
+                        [Description]: 要映射到Foreign Key column的对方EJB的Primary Key DB Column名称。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="durable-timer-serviceType.enable-durable-timers"><![CDATA[
+                    [Description]: 决定是否让该EJB继续(persistence)管理timer。即使该值为true，但是EJBMain.xml上没有设定durable timer的话，无法使用persistence timer。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="find-methodType.sql"><![CDATA[
+                        [Description]: 在EJB 1.1 生成finder method时使用的SQL句的一部分。EJB 2.0不使用该element。使用特殊字符时( “<”等)，应该使用<![CDATA[sql]]&amp;gt;。
+                        [Value Description]: 这只是表示，where 节的keyword。在该SQL句中，呼叫finder method时，?"依次被finder method的参数值代替。可以在?后加数字表示第几个参数。即，"?1"是第一个参数的位置。此时，?后加数字的形式和只使用?的形式不可能混淆。
+                        [Example]: <sql>customer_address=?</sql>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="cm-fieldType.field"><![CDATA[
+                        [Description]: 要映射到数据库column的EJB字段名称。
+                        [Example]: <field>id</field>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="unspecified-method-permissionType.unchecked"><![CDATA[
+                [Description]: 在ejb-jar.xml中未指定method permission的method，当作是unchecked method。因此，所有principal可以获得呼叫该method的permission。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="ejb-module-infoType.fast-deploy"><![CDATA[
+                    [Description]: 该模块在deploy之前通过ejb module compiler进行编译，可进行fast deploy时设定。该设定为true时，优先于jeus-application-dd.xml的设定。False时，遵照jeus-application-dd.xml的fast deploy设定。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-relationship-roleType.column-map"><![CDATA[
+                            [Description]: 该element将一个table的Foreign Key映射到其他EJB的Primary Key。该映射单向定义Relation。如果Foreign Key或Primary Key复合使用多个column或EJB字段时，这些都应在column-map element中被定义。
+                        ]]>                                                
+    </text>
+                                                         
+    <text key="persistence-optimizeType.entity-cache-size"><![CDATA[
+                        [Description]: 该element明示，留在内部cache内存内的Entity Bean Instance的最大数量。为了最佳的性能，在cache memory内具有非激活的bean instance。
+                        [Value Description]: 该element是留在内部cache内存内的Entity Bean Instance的最大数量。
+                        [Defined Value]:
+                            [0]:
+                            不会对非激活的Entity Bean进行caching。
+                        [Performance Recommendation]: 如果能承受较高的系统内存使用的话，设定足够高的值时，可以期待最佳的性能。相反，没有足够的系统内存时，要设定较低的值。
+                        [Example]: <entity-cache-size>100</entity-cache-size>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="cm-fieldType.type"><![CDATA[
+                        [Description]:  从数据库立场来看，这表示table column的数据类型(例如："VARCHAR(20)", "NUMERIC")。如果没有明示该element的话，使用默认值。Oracle DB还可以使用"CLOB"和"BLOB"类型。"CLOB"类型对应于EJB的java.lang.String字段，"BLOB"对应于串联化的对象字段。
+                        [Example]: <type>NUMERIC</type>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-ejb-dd"><![CDATA[
+			[Description]: 单一JEUS EJB模块的最上级element。各个jeus-ejb-dd.xml文件上必须存在该tag。
+            ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.local-invoke-optimize"><![CDATA[
+                    [Description]:两个EJB在相互通信的JVM内执行的话，该element决定要进行method呼叫还是进行RMI通信。当该选项被激活时，通过method呼叫进行通信(call-by-reference)。建议不要利用这个事实进行EJB编程。请将所有method呼叫当作call-by-value。
+                    [Performance Recommendation]: 为了提高性能，两个EJB存在于相同的JVM内时，将该值设定为true。
+                    [Example]: <local-invoke-optimize>true</local-invoke-optimize>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.single-vm-only"><![CDATA[
+                    [Description]: 设定为“true”时，JNDI服务器将范围限定在，只有正在执行bean的JVM中才能export bean 名称。这表示，可访问该bean的客户端只有，在相同的JVM内运营的Servlet和bean(即，其bean只能在当前的Engine Container中看到)。该选项在，相同的bean同样deploy到其他Engine Container时非常有用。一般来说，bean具有相同的JNDI export名称时，该名称在export时在JNDI Naming Server中相互覆盖（overwrite）。使用该选项的话，各个bean只在运营bean的JVM中被识别和限制范围，所以不会覆盖export名称。
+                    [Example]: <single-vm-only>true</single-vm-only>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="ejb-relation-mapType.jeus-relationship-role"><![CDATA[
+                        [Description]: 该element明示一个EJB和其他EJB之间的Relation。各个element意味着单向Relation。多对多关系( M:M )时，必须需要两个jeus-relationship-role element。各个element各映射到"join-table"的Foreign Key和 EJB 的实际Primary Key。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="ejb-relation-mapType.relation-name"><![CDATA[
+                        [Description]: 该element明示，标准ejb-jar.xml上定义的EJB 2.0 Relation名称。
+                        [Example]: <relation-name>student-course</relation-name>
+                        [Dependency]: ejb-jar/relationships/ejb-relation/ejb-relation-name
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.cm-persistence-optimize"><![CDATA[
+                    [Description]: 该element定义，为了提高通过EJB引擎生成的ejbLoad()和ejbStore() method的性能而使用的某些属性。该element只用于CMP Entity Bean。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.export-port"><![CDATA[
+                    [Description]: 该element明示bean要提供服务的RMI Listener Port。该设定还在客户端和EJB之间存在防火墙时使用。该element只有在管理员提供允许RMI通信的端口编号时使用。
+                    [Value Description]: 端口编号
+                    [Example]: <export-port>7654</export-port>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.export-name"><![CDATA[
+                    [Description]:将登录到JNDI Naming System的唯一名称。参与到集群的所有bean都应具有相同的export-name。
+                    [Value Description]: 可以任意指定，并且在JNDI Naming System中必须具有唯一性。
+                    [Example]: <export-name>TELLEREJB</export-name>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="unspecified-method-permissionType.role"><![CDATA[
+                  [Description]: 在ejb-jar.xml中未被指定method permission之method的permission，赋予这里设定的role。其他role的principal不能获得呼叫该method的permission。
+                  [Value Description]:在ejb-jar.xml的<assembler-description>中指定的role name。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.pooling-bean"><![CDATA[
+                    [Description]: 只对stateful session bean适用的element。如果将该element设定为true时，非激活状态维持session bean instance(全部处理完客户端请求，instance返还到bean pool的状态)后再使用。
+                    [Performance Recommendation]: 如果没有特别的理由禁止再使用状态维持session bean的话，为了整体的性能最优化，将该功能设定为true。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="schema-infoType.jeus-query"><![CDATA[
+                        [Description]: jeus-query tag支持，在query method(findXXX)中使用EJB-QL和JEUS EJB-QL扩展。这类似于ejb-jar.xml的query tag。该tag的主要目的在于，将BEA WebLogic 应用服务器移植(migration)到JEUS 4.2时更加容易。其适用与find-method相同。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="clusteringType.ejb-home-idempotent-method"><![CDATA[
+                        [Description]: 该element声明"idempotent" home method。该method保证，在执行当中某种状态，即，bean本身或数据库的字段内容不会变更。idempotent method基本上是未经某种更新或设定的变化，返还结果值的getter method。明示这种method的原因在于，某个method为Idempotent method的话，就算第一次尝试的method呼叫在执行过程中失败，也能再次安全地呼叫。但是，如果该method不是Idempotent method的话，这时就没有解决对策。具有这种副作用的两次连续重复的method呼叫中，要承受达到不一致状态的风险。此时，更加合理的操作为抛出exception。因此，Idempotent method的使用越多，EJB failover就越有效。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="mdb-resource-adapterType.resource-adapter-name"><![CDATA[
+                        [Description]: 设定MDB要使用的资源适配器名称。该名称是该资源适配器的jeus-connector-dd.xml上指定的模块名称。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="bean-poolType.resizing-period"><![CDATA[
+                        [Description]: 重新调整bean pool尺寸的时间间隔。每隔这个时间，从pool中去除不使用的instance。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.ejb-name"><![CDATA[
+                    [Description]: 表示ejb-jar.xml上指定的ejb-name。
+                    [Example]: <ejb-name>teller</ejb-name>
+					[Dependency]: ejb-jar/enterprise-beans/ * /ejb-name
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="schema-infoType.auto-key-generator"><![CDATA[
+                        [Description]:该element指定，不设定Primary Key的状态下呼叫create()时，自动生成Primary Key的外部资源。该外部资源必须是，有必要生成单一Primary Key的多个EJB引擎共享的一个数据库。EJB引擎从数据库获取Primary Key之后，数据库内的Primary Key的值要永远具有唯一性，并且为了让其他EJB引擎使用，Primary Key的值将增加。Primary Key值在数据库内永远是"int"型，在bean内必须是java.lang.Integer型。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="clusteringType.ejb-remote-idempotent-method"><![CDATA[
+                        [Description]: 该element声明"idempotent" remote method。该method保证，在执行当中某种状态，即，bean本身或数据库的字段内容不会变更。idempotent method基本上是未经某种更新或设定的变化，返还结果值的getter method。明示这种method的原因在于，假如某种method为Idempotent method的话，就算第一次尝试的method呼叫在执行过程中失败，也可以再次安全地呼叫。但是，如果该method不是Idempotent method地话，此时就没有解决对策。具有这种副作用的两次连续重复的method呼叫中，要承受达到不一致状态的风险。此时，更加合理的操作为抛出exception。因此，Idempotent method的使用越多，EJB failover将越有效。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jndi-spiType.provider-url"><![CDATA[
+                [Description]: 连接JNDI naming service时使用的URL地址和端口编号。
+                    [Example]: <provider-url> protocol://localhost:2345</provider-url>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="auto-key-generatorType.generator-type"><![CDATA[
+                        [Description]: 该element明示，具有Primary Key的数据库类型和vender。
+                        [Example]: <generator-type>USER_KEY_TABLE</generator-type>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="clusteringType.enable-clustering"><![CDATA[[Description]: 此element设置为 true，激活clustering功能。                        [Example]: <enable-clustering>true</enable-clustering>]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.res-env-ref"><![CDATA[
+                    [Description]: 该element将code中使用的外部资源引用绑定（bind）到实际JNDI名称。该element对应于标准EJB DD的<resource-env-ref>。
+                    [Dependency]: res-env-ref/jndi-info/ref-name = ejb-jar/enterprise-beans/ * /resource-env-ref/resource-env-ref-name
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="activation-configType.description"><![CDATA[
+                        [Description]: 可以记录对该activation config相关的说明。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.persistence-optimize"><![CDATA[
+                  [Description]: 该element包括决定和优化，决定entity bean中呼叫ejbLoad和ejbStore method之时期的EJB引擎规则相关的设定。呼叫的method数越少，对性能越有利。
+                  [Performance Recommendation]: 该element的下级element对性能产生很大的影响，所以必须要正确设定。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="ejb-module-infoType.role-permission"><![CDATA[
+                    [Description]: 设定该EJB模块中的user principal和ejb-jar.xml中使用的role之间的关系。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="activation-config-propertyType.activation-config-property-value"><![CDATA[                             [Description]: 设定要指定的activation config property值。                     
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="object-managementType.passivation-timeout"><![CDATA[
+                        [Description]: 对于在该element中明示的特定期间内未接到客户端请求的bean，从EJB引擎中置于非激活状态。被非激活的bean将从内存中去除，其状态将保存到文件或数据库。
+                        [Value Description]: 毫秒单位
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="remote-file-dbType.conn-pool-size"><![CDATA[
+                        [Description]: 设定对远程session服务器之间的连接进行cache时使用的pool size。
+                        [Example]: <conn-pool-size>50</conn-pool-size>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="bean-poolType.pool-max"><![CDATA[
+                        [Description]: pool内bean instance的最大数量。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="ejb-module-infoType.unspecified-method-permission"><![CDATA[
+                    [Description]: 对于在ejb-jar.xml未指定method permission的method，进行设定。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="remote-file-dbType.remote-backup-file-db"><![CDATA[
+                        [Description]: 该element选择，为了状态的永续性而使用的备份Session Manager。Primary Session Manager因为down等原因无法使用时，使用Backup Session Manager。
+                        [Value Description]: Session Manager的JNDI名称.
+                        [Example]: <remote-backup-file-db>MYSESSIONBACKUP</remote-backup-file-db>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="security-interopType.identity-assertion"><![CDATA[
+                        [Description]: 该element映射CSI spec上定义的"Identity assertion"比特。
+                        [Defined Value]:
+                            [NotSupported]:
+                            "SAS_ContextSec.target_supports" 比特序列的"Client authentication"比特设定为0(disable)。
+                            [Supports]:
+                            "SAS_ContextSec.target_supports" 比特序列的"Client authentication"比特设定为1(enable)。
+                        [Example]: <integrity-confidentiality>Requires</integrity-confidentiality>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="persistence-optimizeType.include-update"><![CDATA[
+                        [Description]: 在这里可以指定，<schema-info>的每个<find-method>上设定的<include-updates>值的默认值。即，<find-method>上没有指定<include-update>的情况下，设定这里指定的值。“true”时，在呼叫finder method的过程中生成的update被commit，所以在执行finder method的过程中可以查看更新的信息。
+                        [Performance Recommendation]: 如果find method不需要在自己被执行的transaction中反映变更的内容时，设定成false将有助于性能。
+                        [Example]: <include-updates>true</include-updates>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-beanType.durable-timer-service"><![CDATA[
+                    [Description]: 该EJB使用Timer Service时，设定对persistence timer的动作。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-ejb-ddType.beanlist"><![CDATA[
+                    [Description]: 设定各bean的element。
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jndi-spiType.initial-context-factory"><![CDATA[
+                    [Description]: 连接到JMS服务时，利用JEUS Naming Service所需的initial context factory的类名。
+                    [Example]: <initial-context-factory>acme.jndi.ACMEContextFactory</initial-context-factory>
+                    ]]>                                                
+    </text>
+                                                         
+    <text key="jeus-relationship-roleType.relationship-role-name"><![CDATA[
+                        [Description]: 这是ejb-jar.xml文件的ejb-relationship-role-name element上定义的relationship role名称。
+                        [Example]: <relationship-role-name>student-to-course</relationship-role-name>
+                        [Dependency]: ejb-jar/relationships/ejb-relation/ejb-relationship-role/ejb-relationship-role-name
+                    ]]>                                                
+    </text>
+    <text key="generator-typeType.ORACLE"><![CDATA[
+                        [Description]: Oracle DB的情况
+                    ]]>               
+    </text>
+                 
+    <text key="generator-typeType.MSSQL"><![CDATA[
+                        [Description]: MS SQL DB 的情况
+                    ]]>               
+    </text>
+                 
+    <text key="generator-typeType.USER_KEY_TABLE"><![CDATA[
+                        [Description]: 除Oracle和MSSQL的其他DB的情况
+                    ]]>               
+    </text>
+                 
+    <text key="database-insert-delayType.ejbCreate"><![CDATA[
+                        [Description]: 在ejbCreate method之后，将EJB数据添加到DB table。
+                    ]]>               
+    </text>
+                 
+    <text key="database-insert-delayType.ejbPostCreate"><![CDATA[
+                        [Description]: 在ejbPostCreate method之后，将EJB数据添加到DB table。
+                    ]]>               
+    </text>
+                 
+    <text key="subengine-typeType.ReadLocking"><![CDATA[
+                    [Description]: 生成的ejbLoad()对数据库table的列，永远具有"shared lock"。
+                    ]]>               
+    </text>
+                 
+    <text key="subengine-typeType.WriteLocking"><![CDATA[
+                    [Description]: 生成的ejbLoad()对数据库table的列，永远具有"exclusive lock"。
+                    ]]>               
+    </text>
+                 
+    <text key="subengine-typeType.WriteLockingFind"><![CDATA[
+                    [Description]: 生成的ejbLoad()和ejbFind()对数据库table的列， 永远具有"exclusive lock"。
+                    ]]>               
+    </text>
+                 
+    <text key="mq-vendorType.SONICMQ"><![CDATA[
+                        [Description]: 使用Sonic MQ的情况
+                    ]]>               
+    </text>
+                 
+    <text key="mq-vendorType.IBMMQ"><![CDATA[
+                        [Description]: 使用IBM MQ的情况
+                    ]]>               
+    </text>    
+    <text key="trans-attributeType"><![CDATA[
+	The trans-attributeType specifies how the container must
+	manage the transaction boundaries when delegating a method
+	invocation to an enterprise bean's business method.
+	The value must be one of the following:
+	    NotSupported
+	    Supports
+	    Required
+	    RequiresNew
+	    Mandatory
+	    Never
+            ]]>
+    </text>    
+ </description>

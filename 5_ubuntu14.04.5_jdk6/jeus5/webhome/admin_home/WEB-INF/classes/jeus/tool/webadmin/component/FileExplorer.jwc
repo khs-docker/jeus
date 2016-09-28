@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="jeus.tool.webadmin.component.FileExplorer" allow-body="no" allow-informal-parameters="no">
+
+	<inject property="webadminVisit" type="state" object="visit"/>
+    <parameter name="model" required="yes" property="modelbinding"/>
+
+    <parameter name="selected" required="yes"/>
+
+    <parameter name="currentPath" required="yes"/>
+
+    <parameter name="viewClass" default-value="'fe_view'"/>
+
+    <parameter name="pathClass" default-value="'fe_path'"/>
+
+    <parameter name="currentClass" default-value="'fe_current'"/>
+
+    <parameter name="radioClass" default-value="'fe_radio'"/>
+
+    <parameter name="fileClass" default-value="'fe_file'"/>
+
+    <component id="node" type="Insert">
+        <binding name="value" value="model.nodeName"/>
+    </component>
+
+    <component id="eachDirectory" type="Foreach">
+        <binding name="source" value="getParentDirectories(model.currentDirectory)"/>
+        <binding name="value" value="fileview"/>
+    </component>
+
+    <component id="rootLink" type="DirectLink">
+        <binding name="listener" value="listeners.onChangeDirectory"/>
+        <binding name="parameters" value="literal:/"/>
+    </component>
+
+    <component id="directoryLink" type="DirectLink">
+        <binding name="listener" value="listener:onChangeDirectory"/>
+        <binding name="parameters" value="fileview.path"/>
+    </component>
+
+    <component id="directory" type="Insert">
+        <binding name="value" value="(fileview.name == null or fileview.name.length() == 0) and !fileview.path.startsWith('/') ? fileview.path.substring(0, 2) :  fileview.name"/>
+    </component>
+
+    <component id="currentDirectory" type="Insert">
+        <binding name="value" value="model.currentDirectory.name == null || model.currentDirectory.name.length() == 0 ? (model.currentDirectory.path == null || model.currentDirectory.path.length() == 0 || model.currentDirectory.path.length() ==1?  null :model.currentDirectory.path.substring(0,2) ) : model.currentDirectory.name"/>
+    </component>
+
+    <component id="eachFile" type="Foreach">
+        <binding name="source" value="model.listFiles()"/>
+        <binding name="value" value="fileview"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="condNotDeployable" type="If">
+        <binding name="condition" value="fileview.deployable == false"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="fileLink" copy-of="directoryLink"/>
+
+    <component id="icon" type="Image">
+        <binding name="image" value="assets.icon"/>
+    </component>
+
+    <component id="file" copy-of="directory"/>
+
+    <property name="fileview" />
+    <property name="nodeName" persist="session"/>
+
+    <asset name="icon" path="context:/image/folder1.gif"/>
+    <asset name="file_explorer_css" path="context:/css/file_explorer.css"/>
+</component-specification>

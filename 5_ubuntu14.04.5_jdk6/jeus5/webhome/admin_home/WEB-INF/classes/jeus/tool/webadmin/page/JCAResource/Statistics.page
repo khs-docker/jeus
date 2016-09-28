@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JCAResource.StatisticsPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JCAResource Statistics"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@JCARESOURCE_NAMES"/>
+        <binding name="subtabNames" value="ognl:{'connection', 'connectionPool'}"/>
+    </component>
+
+    <component id="connection" type="Block"/>
+    <component id="connectionPool" type="Block"/>
+
+    <component id="connectionForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jca.statistics.connection.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="refreshButton" type="Any">
+        <binding name="element" value="literal:input"/>
+        <binding name="value" value="message:common.label.refresh"/>
+    </component>
+
+    <component id="connectionTable" type="jeus:JEUSTable">
+        <binding name="source" value="ognl:connections"/>
+        <binding name="columns" value="literal:jca.statistics.cf_name.label:connectionFactoryName, jca.statistics.mcf_name.label:managedConnectionFactoryName, jca.statistics.average_wait_time.label:averageWaitTime, jca.statistics.average_use_time.label:averageUseTime"/>
+        <binding name="row" value="ognl:currentConnectionView"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+    </component>
+
+    <component id="connectionPoolForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jca.statistics.connection_pool.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="refreshButton2" copy-of="refreshButton"/>
+
+    <component id="connectionPoolTable" type="jeus:JEUSTable">
+        <binding name="source" value="ognl:connectionPools"/>
+        <binding name="columns" value="literal:jca.statistics.cf_name.label:connectionFactoryName, jca.statistics.mcf_name.label:managedConnectionFactoryName, jca.statistics.average_wait_time.label:averageWaitTime, jca.statistics.average_use_time.label:averageUseTime, jca.statistics.create_count.label:createCount, jca.statistics.close_count.label:closeCount, jca.statistics.free_pool_size.label:freePoolSize, jca.statistics.pool_size.label:poolSize, jca.statistics.waiting_thread_count.label:waitingThreadCount"/>
+        <binding name="row" value="ognl:currentConnectionPoolView"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+    </component>
+
+    <property name="currentConnectionView"/>
+    <property name="currentConnectionPoolView"/>
+</page-specification>

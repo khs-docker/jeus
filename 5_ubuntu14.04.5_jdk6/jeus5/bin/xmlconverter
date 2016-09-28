@@ -1,0 +1,16 @@
+#!/bin/sh
+
+. jeus.properties
+
+BOOT_PARAMETER=$*
+
+${JAVA_HOME}/bin/java -classpath ${BOOTSTRAP_CLASSPATH} ${TOOL_OPTION}   \
+     -Djeus.home=${JEUS_HOME}                                            \
+     -Djeus4.home=${JEUS4_HOME}                                          \
+     -Djava.naming.factory.initial=jeus.jndi.JEUSContextFactory          \
+     -Djava.naming.factory.url.pkgs=jeus.jndi.jns.url                    \
+     -Djeus.baseport=${JEUS_BASEPORT}                                    \
+     -Djava.util.logging.config.file=${JEUS_HOME}/bin/logging.properties \
+     ${JAVA_ARGS}                                                        \
+     ${BOOTSTRAPPER}                                                     \
+	  jeus.tool.converter.version.XMLVersionConverter ${BOOT_PARAMETER}

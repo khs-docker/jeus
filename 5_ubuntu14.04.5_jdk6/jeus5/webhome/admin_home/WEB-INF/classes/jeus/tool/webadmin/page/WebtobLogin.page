@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.WebtobLoginPage">
+
+	<inject property="homeService" object="engine-service:home"/>
+	<inject property="webadminVisit" type="state" object="visit"/>
+	<inject property="settings" type="state" object="Settings"/>
+	<inject property="userAgent" type="state" object="UserAgent"/>
+	<inject property="restartService" object="engine-service:restart"/>
+	
+    <component id="loginForm" type="Form">
+      <binding name="delegate" value="beans.delegate"/>
+      <inherited-binding name="direct" parameter-name="direct"/>
+      <binding name="stateful" value="false"/>
+    </component>
+
+    <component id="dynamite" type="jeus:Dynamite"/>
+
+    <component id="condFailed" type="If">
+        <binding name="condition" value="failed"/>
+    </component>
+
+    <component id="alertScript" type="Script">
+        <binding name="script" value="literal:/jeus/tool/webadmin/script/Alert.script"/>
+        <binding name="message" value="message:common.exception.login_fail"/>
+    </component>
+
+    <component id="wrapper" type="Any">
+        <binding name="element" value="literal:table"/>
+        <binding name="height" value="userAgent != null and userAgent.msie ? '100%' : ''"/>
+    </component>
+
+    <component id="usernameField" type="TextField">
+        <binding name="value" value="userName"/>
+        <binding name="displayName" value="message:Login.username.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="passwordField" type="TextField">
+        <binding name="hidden" value="true"/>
+        <binding name="value" value="password"/>
+        <binding name="displayName" value="message:Login.password.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="tmax_logo" type="Image">
+        <binding name="image" value="assets.tmax_logo"/>
+    </component>
+ 
+    <component id="L_bg_01" type="Any">
+        <binding name="element" value="literal:td"/>
+        <binding name="background" value="assets.L_bg_01.buildURL()"/>
+    </component>
+
+    <component id="L_bg_02" type="Any">
+        <binding name="element" value="literal:td"/>
+        <binding name="background" value="assets.L_bg_02.buildURL()"/>
+    </component>
+
+    <component id="L_bg_03" type="Any">
+        <binding name="element" value="literal:td"/>
+        <binding name="background" value="assets.L_bg_03.buildURL()"/>
+    </component>
+
+    <component id="L_bg_04" type="Any">
+        <binding name="element" value="literal:td"/>
+        <binding name="background" value="assets.L_bg_04.buildURL()"/>
+    </component>
+
+    <component id="L_bg_01_1" copy-of="L_bg_01"/>
+    <component id="L_bg_02_1" copy-of="L_bg_02"/>
+    <component id="L_bg_03_1" copy-of="L_bg_03"/>
+    <component id="L_bg_04_1" copy-of="L_bg_04"/>
+
+    <component id="L_bg_01_2" copy-of="L_bg_01"/>
+    <component id="L_bg_02_2" copy-of="L_bg_02"/>
+    <component id="L_bg_03_2" copy-of="L_bg_03"/>
+    <component id="L_bg_04_2" copy-of="L_bg_04"/>
+
+
+    <component id="L_bg_webtob" type="Any">
+        <binding name="element" value="literal:td"/>
+        <binding name="background" value="assets.L_bg_webtob.buildURL()"/>
+    </component>
+
+    <component id="L_copy" type="Image">
+            <binding name="image" value="assets.L_copy"/>
+    </component>
+
+    <component id="b_ok" type="ImageSubmit">
+        <binding name="image" value="assets.b_ok"/>
+        <binding name="listener" value="listener:onLoginOk"/>
+    </component>
+
+    <component id="b_cancel" type="Image">
+        <binding name="image" value="assets.b_cancel"/>
+    </component>
+
+    <bean name="delegate" class="jeus.tool.webadmin.form.JEUSValidationDelegate"/>
+
+    <bean name="requiredValidator" class="org.apache.tapestry.valid.StringValidator">
+        <set name="required" value="true"/>
+    </bean>
+
+    <asset name="tmax_logo" path="context:/image/login/tmax_logo.gif"/>
+    
+    <asset name="L_bg_01" path="context:/image/login/L_bg_01.gif"/>
+    <asset name="L_bg_02" path="context:/image/login/L_bg_02.gif"/>
+    <asset name="L_bg_03" path="context:/image/login/L_bg_03.gif"/>
+    <asset name="L_bg_04" path="context:/image/login/L_bg_04.gif"/>
+    <asset name="L_bg_webtob" path="context:/image/login/L_bg_webtob.gif"/>
+
+    <asset name="L_copy" path="context:/image/login/L_copy.gif"/>
+    <asset name="b_ok" path="context:/image/login/b_ok.gif"/>
+    <asset name="b_cancel" path="context:/image/login/b_cancel.gif"/>
+</page-specification>

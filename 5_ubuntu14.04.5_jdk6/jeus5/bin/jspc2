@@ -1,0 +1,14 @@
+#!/bin/sh
+
+. jeus.properties
+
+BOOT_PARAMETER=$*
+
+${JAVA_HOME}/bin/java -classpath ${BOOTSTRAP_CLASSPATH} ${TOOL_OPTION} \
+     -Djeus.home=${JEUS_HOME}                                          \
+     -Djava.naming.factory.initial=jeus.jndi.JEUSContextFactory        \
+     -Djava.naming.factory.url.pkgs=jeus.jndi.jns.url                  \
+     -Djeus.baseport=${JEUS_BASEPORT}                                  \
+     ${JAVA_ARGS}                                                      \
+     ${BOOTSTRAPPER} jeus.servlet.jsp.compiler.batch.BatchCompiler2    \
+	  ${BOOT_PARAMETER}

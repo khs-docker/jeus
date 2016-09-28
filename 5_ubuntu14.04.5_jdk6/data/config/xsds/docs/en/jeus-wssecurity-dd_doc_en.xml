@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description>        
+    <text key="security-receiverType.timeStamp"><![CDATA[
+                        [Description]: This element configures available time period of recieved message(Unit in second).
+                                    The default value is 300 seconds from generated time.
+                    ]]>        
+    </text>
+         
+    <text key="security-senderType.encryption-infos"><![CDATA[
+                        [Description]: This element is configuration for encoding message.
+                    ]]>        
+    </text>
+         
+    <text key="security-receiverType.password-callback-class"><![CDATA[
+                            [Description]:Password Callback class name is entered as full package name. 
+                        ]]>        
+    </text>
+         
+    <text key="security-senderType.action-list"><![CDATA[
+                        [Description]: This enumerates security type to be applied in String type.
+                            One of Timestamp, Encrypt, Signature or UsernameToken can be entered.
+                            Each field is classfied as blank.(Ex) UsernameToken Signature Encrypt)
+                    ]]>        
+    </text>
+         
+    <text key="signature-infoType.signatureParts"><![CDATA[
+                        [Description]: This is used for signaturing certain part of message.
+                            "{}{http://schemas.xmlsoap.org/soap/envelope/}Body; It can be arranaged
+				            as mode such as "Token" If it has not been configured, it will write signaure for entire SOAP body.
+                    ]]>        
+    </text>
+         
+    <text key="security-senderType.timeStamp"><![CDATA[
+                        [Description]: Available time period of message to be sent is configured as second unit.
+			                        The default value is 300 seconds.
+                    ]]>        
+    </text>
+         
+    <text key="decryptionType.keystore"><![CDATA[
+                        [Description]: This elemnt is configuration on key store
+                    ]]>        
+    </text>
+         
+    <text key="timeStampType.timeToLive"><![CDATA[
+                        [Description]: This element is time period meaning message freshness in seconds.
+                    ]]>        
+    </text>
+         
+    <text key="security-senderType.userNameToken"><![CDATA[
+                        [Description]: This element configures UsernameToken.
+                    ]]>        
+    </text>
+         
+    <text key="security-receiverType.action-list"><![CDATA[
+                            [Description]: This element configures on any of security types applied to message
+                                Any of Timestamp, Encrypt, Signature and UsernameToken can be entered for this feild. 
+                                Each field is classified by blank.(Ex)UsernameToken Signature Encrypt) 
+                        ]]>        
+    </text>
+         
+    <text key="encryption-infosType.encryption-info"><![CDATA[
+                            [Description]:  Settings for Web Service Client to be batched are specified for this field. 
+                        ]]>        
+    </text>
+         
+    <text key="security-senderType.signature-infos"><![CDATA[
+                        [Description]: This element is configuration for making signature on message.
+                    ]]>        
+    </text>
+         
+    <text key="signature-infoType.keystore"><![CDATA[
+                        [Description]: This element is configuration of keysotre which stores individual key for signature of message.
+                    ]]>        
+    </text>
+         
+    <text key="embeddedKeyType.key-name"><![CDATA[
+                        [Description]: This element configures name of session key.
+                    ]]>        
+    </text>
+
+    <text key="passwordTypeType.PasswordDigest"><![CDATA[
+			[Description]: Password configured in UsernameToken includes base64 encoded status.
+		]]>                                        
+    </text>
+                                               
+    <text key="passwordTypeType.PasswordText"><![CDATA[
+			[Description]: Password in configured in UsernameToken is included in message as plain text.
+		]]>                                        
+    </text>
+
+    <text key="sigKeyIdentifierType.IssuerSerial"><![CDATA[
+			[Description]: This element configures certificate for examining signature through including issued number in message.
+		]]>                                        
+    </text>
+                                               
+    <text key="sigKeyIdentifierType.DirectReference"><![CDATA[
+			[Description]: This includes X509 Certificate in message and refers it within message.
+		]]>                                        
+    </text>
+                                               
+    <text key="sigKeyIdentifierType.SKIKeyIdentifier"><![CDATA[
+			[Description]:This is Subject Key Idenfication mode.
+                                      Version of X509 Certificate should be over 3. 
+		]]>                                        
+    </text>
+                                               
+    <text key="sigKeyIdentifierType.X509KeyIdentifier"><![CDATA[
+                        [Description]: This element includes X509 certificate in message and is used for examining signature.
+					]]>                                        
+    </text>
+    <text key="encKeyIdentifierType.IssuerSerial"><![CDATA[
+	 		[Description]: This element configures certificate for examining signature
+                                through including issued number of message X509 certificate in the message.
+		]]>                
+    </text>
+                       
+    <text key="encKeyIdentifierType.DirectReference"><![CDATA[
+			[Description]: This element is method of referencing it within message and includes X509 Certificate.
+		]]>                
+    </text>
+                       
+    <text key="encKeyIdentifierType.SKIKeyIdentifier"><![CDATA[
+			[Description]: This element is Subject Key Idenfication method.
+                                 The version of X509 Certificate should be over 3.
+		]]>                
+    </text>
+                       
+    <text key="encKeyIdentifierType.X509KeyIdentifier"><![CDATA[
+			[Description]: This message includes X509 certificate used for being encoded in message.
+		]]>                
+    </text>
+                       
+    <text key="encKeyIdentifierType.EmbeddedKeyName"><![CDATA[
+			[Description]: This element is used when using session key shared by web service and web service client.
+			                   WebService and Client gives and recieves only key name. Used key can be determined.
+		]]>                
+    </text>                 
+    <text key="encryption-infoType.encryptionAlgorithm"><![CDATA[
+                        [Description]: This is algorithm used for encryption.
+									It supports AES_128, AES_256, TRIPLE_DES and AES_192.
+                ]]>        
+    </text>
+         
+    <text key="encryption-infoType.keyTransportAlogrithm"><![CDATA[						
+      			[Description]: Specify algorithm used in Message Digest.						
+      					Use one among RSA1.5. 					
+      		]]>        
+    </text>
+         
+    <text key="security-senderType.user"><![CDATA[
+                        [Description]: This element configures name to be enetered into UsernameToken.
+                    ]]>        
+    </text>
+         
+    <text key="userNameTokenSenderType.userTokenElements"><![CDATA[
+                        [Description]:This element is the list of elements to be addded in UsernameToken.
+                                Each field is classfied with blank. Either of "nonce" or "created" can be used.
+                                passwordType can be used when it is "PasswordText".
+                    ]]>        
+    </text>
+         
+    <text key="signature-infoType.messageDigestAlogrithm"><![CDATA[
+                        [Description]: Specify Algorithm to be used in Message Digest. Use one out of SHA1. 
+                    ]]>        
+    </text>
+         
+    <text key="encryption-infoType.encryptionUser"><![CDATA[
+                        [Description]: Name of key used for encoding.
+                    ]]>        
+    </text>
+         
+    <text key="encryption-infoType.encryptionParts"><![CDATA[
+                        [Description]: This is configuration for encoding certain part.
+                                This is the format such as "{mode}{ns}{localname};{mode}{ns}{localname};…".
+                                Default mode value is content
+                        [Example]: {Content}{http://example.org/payment}CreCard;{Element}{}UserName
+                    ]]>        
+    </text>
+         
+    <text key="signature-infoType.signatureAlgorithm"><![CDATA[						[Description]: Specify algorithm used for signature. 										Specify one among SHA1withRSA,SHA1WithDSA,HMACSHA1.					]]>        
+    </text>
+         
+    <text key="timeStampType.requireSignature"><![CDATA[
+                        [Description]: This element is whether timestamp element require signature. default value is 'true'.
+                    ]]>        
+    </text>
+         
+    <text key="signature-infoType.keyIdentifier"><![CDATA[
+                        [Description]: This element is mode expressing key information to be used in signature.
+                            One of IssuerSerial, DirectReference, SKIKeyIdentifier or X509KeyIdentifier is used.
+                    ]]>        
+    </text>
+         
+    <text key="signature-infoType.canonicalization"><![CDATA[
+                        [Description]: Specify canonicalization method to be used.
+						    Use one among 	Exclusive XML Canonicalization omit comments,
+									Exclusive XML Canonicalization with comments,
+									Inclusive XML Canonicalization omit comments, and Inclusive XML Canonicalization with comments .
+                    ]]>        
+    </text>
+         
+    <text key="timeStampType.aberration"><![CDATA[
+                        [Description]: This element is aberration against UTC. default value is '0'.
+                    ]]>        
+    </text>
+         
+    <text key="timeStampType.precision"><![CDATA[
+						[Description]: This element sets the time is concerned about system environments(network, delay ..)
+					]]>        
+    </text>
+         
+    <text key="security-senderType.password-callback-class"><![CDATA[
+                        [Description]: This element is full package name of callback class for configuring password.
+                    ]]>        
+    </text>
+         
+    <text key="encryption-infoType.keyIdentifier"><![CDATA[
+                        [Description]: This element is mode of expressing information on key used for encoding.
+                                One of IssuerSerial, DirectReference, SKIKeyIdentifier, X509KeyIdentifier and EmbeddedKeyName is used.
+                    ]]>        
+    </text>
+         
+    <text key="embeddedKeyType.embeddedKeyCallbackClass"><![CDATA[
+                        [Description]: In case of using session key, it configures callback class containing byte information.
+                    ]]>        
+    </text>
+         
+    <text key="keystoreType.key-type"><![CDATA[
+                        [Description]: This element is key type storing in key store . (JKS or pkcs12)
+                    ]]>        
+    </text>
+         
+    <text key="encryption-infoType.embeddedKey"><![CDATA[
+                        [Description]: This element configures key shared by WebService and WebService Client.
+			                    keyIdentifier can be used after being set as "EmbeddedKeyName".
+                    ]]>        
+    </text>
+         
+    <text key="security-receiverType.observeActionOrder"><![CDATA[
+                        [Description]: This element configures on whether check the matching between results's action order and action-list's order
+                    ]]>        
+    </text>
+         
+    <text key="encryption-infoType.keystore"><![CDATA[
+                        [Description]: This element is configruation for storage of key used for encoding.
+                    ]]>        
+    </text>
+         
+    <text key="security-receiverType.signature-verification"><![CDATA[
+                        [Description]: This element is configuration for inspecting signature of recieved message.
+                    ]]>        
+    </text>
+         
+    <text key="keystoreType.keystore-password"><![CDATA[
+                        [Description]: This element is configuration for password for getting access to key store.
+                    ]]>        
+    </text>
+         
+    <text key="userNameTokenSenderType.password"><![CDATA[
+                        [Description]: Configure password to be used
+                    ]]>        
+    </text>
+         
+    <text key="signature-verificationType.keystore"><![CDATA[
+                        [Description]: This element is key store configuration for examining signature.
+                    ]]>        
+    </text>
+         
+    <text key="userNameTokenSenderType.passwordType"><![CDATA[
+                        [Description]: This element configures password type to be used in UsernameToken.
+                         Either of  "PasswordDigest" and "PasswordText" can be used.
+                    ]]>        
+    </text>
+         
+    <text key="keystoreType.keystore-filename"><![CDATA[
+                        [Description]: This element is file name of key store. It writes file name or file name including absolute path including
+			                        In case where only file name is written, it will be found in class path.
+                    ]]>        
+    </text>
+         
+    <text key="security-receiverType.decryption"><![CDATA[
+                        [Description]: This element is configuration for decoding encoded part of received message.
+                    ]]>        
+    </text>
+         
+    <text key="signature-infosType.signature-info"><![CDATA[
+                        [Description]: This is configuration for message signature. It enables to have multiple congurations.
+                    ]]>        
+    </text>
+    <text key="signatureAlgorithmType.http://www.w3.org/2000/09/xmldsig#dsa-sha1"><![CDATA[
+						[Description]: DSS(DSAWithSHA1)
+					]]>                                        
+    </text>
+                                               
+    <text key="signatureAlgorithmType.http://www.w3.org/2000/09/xmldsig#rsa-sha1"><![CDATA[
+						[Description]: RSAWithSHA1
+					]]>                                        
+    </text>
+                                               
+    <text key="signatureAlgorithmType.http://www.w3.org/2000/09/xmldsig#hmac-sha1"><![CDATA[
+		[Description]: HMACSHA1
+    	]]>                
+    </text>
+                       
+    <text key="messageDigestAlgorithmType.http://www.w3.org/2000/09/xmldsig#sha1"><![CDATA[
+						[Description]: SHA1
+					]]>                
+    </text>
+                       
+    <text key="canonicalizationType.http://www.w3.org/2001/10/xml-exc-c14n#"><![CDATA[
+						[Description]: Exclusive XML Canonicalization omit comments
+					]]>                
+    </text>
+                       
+    <text key="canonicalizationType.http://www.w3.org/2001/10/xml-exc-c14n#WithComments"><![CDATA[
+						[Description]: Exclusive XML Canonicalization with comments
+					]]>                
+    </text>
+                       
+    <text key="canonicalizationType.http://www.w3.org/TR/2001/REC-xml-c14n-20010315"><![CDATA[
+						[Description]: Inclusive XML Canonicalization omit comments
+					]]>                
+    </text>
+                       
+    <text key="canonicalizationType.http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"><![CDATA[
+						[Description]: Inclusive XML Canonicalization with comments
+					]]>                
+    </text>
+                       
+    <text key="encryptionAlgorithmType.http://www.w3.org/2001/04/xmlenc#tripledes-cbc"><![CDATA[
+						[Description]: DESEDE-CBC
+					]]>                
+    </text>
+                       
+    <text key="encryptionAlgorithmType.http://www.w3.org/2001/04/xmlenc#aes128-cbc"><![CDATA[
+						[Description]: AES128-CBC
+					]]>                
+    </text>
+                       
+    <text key="encryptionAlgorithmType.http://www.w3.org/2001/04/xmlenc#aes192-cbc"><![CDATA[
+						[Description]: AES192-CBC
+					]]>                
+    </text>
+                       
+    <text key="encryptionAlgorithmType.http://www.w3.org/2001/04/xmlenc#aes256-cbc"><![CDATA[
+						[Description]: AES256-CBC
+					]]>                
+    </text>
+                       
+    <text key="encryptionAlgorithmType.http://www.tmaxsoft.com/xml/algorithms/xmlenc#seed-cbc"><![CDATA[
+						[Description]: SEED-CBC
+					]]>                
+    </text>
+                       
+    <text key="keyTransportAlogrithmType.http://www.w3.org/2001/04/xmlenc#rsa-1"><![CDATA[
+						[Description]: RSA1.5
+					]]>                
+    </text>    
+ </description>

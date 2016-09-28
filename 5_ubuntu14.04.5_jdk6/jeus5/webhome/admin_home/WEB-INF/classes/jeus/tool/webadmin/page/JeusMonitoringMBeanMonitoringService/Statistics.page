@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusMonitoringMBeanMonitoringService.StatisticsPage">
+    <inject property="webadminVisit" type="state" object="visit"/>
+    <inject property="settings" type="state" object="Settings"/>
+
+    <component id="popupMainBorder" type="jeus:PopupMainBorder">
+        <binding name="title" value="literal:Result"/>
+        <binding name="refresh" value="settings.mbeanInterval"/>        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@JEUSMONITORING_MBEANMONITORINGSERVICE_NAMES"/>
+    </component>
+
+    <component id="statisticsForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:mmo.statistics"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="interval" type="jeus:Field">
+        <binding name="field" value="component:intervalField"/>
+        <binding name="unit" value="message:common.unit.sec"/>
+        <binding name="description" value="message:settings.mbean_interval.description"/>
+    </component>
+
+    <component id="intervalField" type="TextField">
+        <binding name="value" value="settings.mbeanInterval"/>
+        <binding name="displayName" value="message:settings.mbean_interval.label"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="condBoundedRange" type="If">
+        <binding name="condition" value="boundedRange"/>
+    </component>
+
+    <component id="boundedRangeForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:mmo.statistics.boundedRange"/>
+        <binding name="subform" value="ognl:true"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="boundedRange_name_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.name"/>
+    </component>
+
+    <component id="boundedRange_highWaterMark_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.boundedRange.highWaterMark"/>
+    </component>
+
+    <component id="boundedRange_lowWaterMark_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.boundedRange.lowWaterMark"/>
+    </component>
+
+    <component id="boundedRange_current_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.boundedRange.current"/>
+    </component>
+
+    <component id="boundedRange_upperBound_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.boundedRange.upperBound"/>
+    </component>
+
+    <component id="boundedRange_lowerBound_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.boundedRange.lowerBound"/>
+    </component>
+
+    <component id="boundedRange_graph_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.graph"/>
+    </component>
+
+    <component id="eachBoundedRange" type="Foreach">
+        <binding name="source" value="boundedRangeList"/>
+        <binding name="value" value="eBoundedRangeList"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="boundedRange_name" type="Insert">
+        <binding name="value" value="eBoundedRangeList.name"/>
+    </component>
+
+    <component id="boundedRange_highWaterMark" type="Insert">
+        <binding name="value" value="eBoundedRangeList.highWaterMark"/>
+    </component>
+
+    <component id="boundedRange_lowWaterMark" type="Insert">
+        <binding name="value" value="eBoundedRangeList.lowWaterMark"/>
+    </component>
+
+    <component id="boundedRange_current" type="Insert">
+        <binding name="value" value="eBoundedRangeList.current"/>
+    </component>
+
+    <component id="boundedRange_upperBound" type="Insert">
+        <binding name="value" value="eBoundedRangeList.upperBound"/>
+    </component>
+
+    <component id="boundedRange_lowerBound" type="Insert">
+        <binding name="value" value="eBoundedRangeList.lowerBound"/>
+    </component>
+
+    <component id="boundedRangeLink" type="DirectLink">
+        <binding name="listener" value="listeners.onBoundedRangeChart"/>
+        <binding name="parameters" value="eBoundedRangeList.name"/>
+    </component>
+
+    <component id="condBoundedRangeChart" type="If">
+        <binding name="condition" value="boundedRangeCheck"/>
+    </component>
+
+    <component id="boundedRangeChart_script" type="Script">
+        <binding name="script" value="literal:/jeus/tool/webadmin/script/ChartData.script"/>
+        <binding name="chartData" value="chartDataList"/>
+        <binding name="boundedRangeCheck" value="boundedRangeCheck"/>
+    </component>
+
+    <component id="condRange" type="If">
+        <binding name="condition" value="range"/>
+    </component>
+
+    <component id="rangeForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:mmo.statistics.range"/>
+        <binding name="subform" value="ognl:true"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="range_name_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.name"/>
+    </component>
+
+    <component id="range_highWaterMark_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.range.highWaterMark"/>
+    </component>
+
+    <component id="range_lowWaterMark_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.range.lowWaterMark"/>
+    </component>
+
+    <component id="range_current_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.range.current"/>
+    </component>
+
+    <component id="range_graph_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.graph"/>
+    </component>
+
+    <component id="eachRange" type="Foreach">
+        <binding name="source" value="rangeList"/>
+        <binding name="value" value="eRangeList"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="range_name" type="Insert">
+        <binding name="value" value="eRangeList.name"/>
+    </component>
+
+    <component id="range_highWaterMark" type="Insert">
+        <binding name="value" value="eRangeList.highWaterMark"/>
+    </component>
+
+    <component id="range_lowWaterMark" type="Insert">
+        <binding name="value" value="eRangeList.lowWaterMark"/>
+    </component>
+
+    <component id="range_current" type="Insert">
+        <binding name="value" value="eRangeList.current"/>
+    </component>
+
+    <component id="rangeLink" type="DirectLink">
+        <binding name="listener" value="listeners.onRangeChart"/>
+        <binding name="parameters" value="eRangeList.name"/>
+    </component>
+
+    <component id="rangeChart_script" type="Script">
+        <binding name="script" value="literal:/jeus/tool/webadmin/script/ChartData.script"/>
+        <binding name="chartData" value="chartDataList"/>
+        <binding name="rangeCheck" value="rangeCheck"/>
+    </component>
+
+    <component id="condRangeChart" type="If">
+        <binding name="condition" value="rangeCheck"/>
+    </component>
+
+    <component id="condBoundary" type="If">
+        <binding name="condition" value="boundary"/>
+    </component>
+
+    <component id="boundaryForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:mmo.statistics.boundary"/>
+        <binding name="subform" value="ognl:true"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="boundary_name_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.name"/>
+    </component>
+
+    <component id="boundary_upperBound_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.boundary.upperBound"/>
+    </component>
+
+    <component id="boundary_lowerBound_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.boundary.lowerBound"/>
+    </component>
+
+    <component id="boundary_graph_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.graph"/>
+    </component>
+
+    <component id="eachBoundary" type="Foreach">
+        <binding name="source" value="boundaryList"/>
+        <binding name="value" value="eBoundaryList"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="boundary_name" type="Insert">
+        <binding name="value" value="eBoundaryList.name"/>
+    </component>
+
+    <component id="boundary_upperBound" type="Insert">
+        <binding name="value" value="eBoundaryList.upperBound"/>
+    </component>
+
+    <component id="boundary_lowerBound" type="Insert">
+        <binding name="value" value="eBoundaryList.lowerBound"/>
+    </component>
+
+    <component id="boundaryLink" type="DirectLink">
+        <binding name="listener" value="listeners.onBoundaryChart"/>
+        <binding name="parameters" value="eBoundaryList.name"/>
+    </component>
+
+    <component id="boundaryChart_script" type="Script">
+        <binding name="script" value="literal:/jeus/tool/webadmin/script/ChartData.script"/>
+        <binding name="chartData" value="chartDataList"/>
+        <binding name="boundaryCheck" value="boundaryCheck"/>
+    </component>
+
+    <component id="condBoundaryChart" type="If">
+        <binding name="condition" value="boundaryCheck"/>
+    </component>
+
+    <component id="condCount" type="If">
+        <binding name="condition" value="count"/>
+    </component>
+
+    <component id="countForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:mmo.statistics.count"/>
+        <binding name="subform" value="ognl:true"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="count_name_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.name"/>
+    </component>
+
+    <component id="count_count_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.count.count"/>
+    </component>
+
+    <component id="count_graph_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.graph"/>
+    </component>
+
+    <component id="eachCount" type="Foreach">
+        <binding name="source" value="countList"/>
+        <binding name="value" value="eCountList"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="count_name" type="Insert">
+        <binding name="value" value="eCountList.name"/>
+    </component>
+
+    <component id="count_count" type="Insert">
+        <binding name="value" value="eCountList.count"/>
+    </component>
+
+    <component id="countLink" type="DirectLink">
+        <binding name="listener" value="listeners.onCountChart"/>
+        <binding name="parameters" value="eCountList.name"/>
+    </component>
+
+    <component id="condCountChart" type="If">
+        <binding name="condition" value="countCheck"/>
+    </component>
+
+    <component id="countChart_script" type="Script">
+        <binding name="script" value="literal:/jeus/tool/webadmin/script/ChartData.script"/>
+        <binding name="chartData" value="chartDataList"/>
+        <binding name="countCheck" value="countCheck"/>
+    </component>
+
+    <component id="condTime" type="If">
+        <binding name="condition" value="time"/>
+    </component>
+
+    <component id="timeForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:mmo.statistics.time"/>
+        <binding name="subform" value="ognl:true"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="time_name_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.name"/>
+    </component>
+
+    <component id="time_count_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.time.count"/>
+    </component>
+
+    <component id="time_maxTime_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.time.maxTime"/>
+    </component>
+
+    <component id="time_minTime_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.time.minTime"/>
+    </component>
+
+    <component id="time_totalTime_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.time.totalTime"/>
+    </component>
+
+    <component id="time_graph_column" type="Insert">
+        <binding name="value" value="message:mmo.statistics.graph"/>
+    </component>
+
+    <component id="eachTime" type="Foreach">
+        <binding name="source" value="timeList"/>
+        <binding name="value" value="eTimeList"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="time_name" type="Insert">
+        <binding name="value" value="eTimeList.name"/>
+    </component>
+
+    <component id="time_count" type="Insert">
+        <binding name="value" value="eTimeList.count"/>
+    </component>
+
+    <component id="time_maxTime" type="Insert">
+        <binding name="value" value="eTimeList.maxTime"/>
+    </component>
+
+    <component id="time_minTime" type="Insert">
+        <binding name="value" value="eTimeList.minTime"/>
+    </component>
+
+    <component id="time_totalTime" type="Insert">
+        <binding name="value" value="eTimeList.totalTime"/>
+    </component>
+
+    <component id="timeLink" type="DirectLink">
+        <binding name="listener" value="listeners.onTimeChart"/>
+        <binding name="parameters" value="eTimeList.name"/>
+    </component>
+
+    <component id="condTimeChart" type="If">
+        <binding name="condition" value="timeCheck"/>
+    </component>
+
+    <component id="timeChart_script" type="Script">
+        <binding name="script" value="literal:/jeus/tool/webadmin/script/ChartData.script"/>
+        <binding name="chartData" value="chartDataList"/>
+        <binding name="timeCheck" value="timeCheck"/>
+    </component>
+
+    <component id="BoundedRangeForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:mmo.statistics.info.boundedRange"/>
+        <binding name="subform" value="ognl:true"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="boundedRange_eachName" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.configure.mbean.name"/>
+        <binding name="value" value="boundedRangeStats.name"/>
+    </component>
+
+    <component id="boundedRange_descriptioin" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.description"/>
+        <binding name="value" value="boundedRangeStats.description"/>
+    </component>
+
+    <component id="boundedRange_unit" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.unit"/>
+        <binding name="value" value="boundedRangeStats.unit"/>
+    </component>
+
+    <component id="boundedRange_startTime" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.startTime"/>
+        <binding name="value" value="boundedRangeStats.startTime"/>
+    </component>
+
+    <component id="boundedRange_lastSampleTime" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.lastSampleTime"/>
+        <binding name="value" value="boundedRangeStats.lastSampleTime"/>
+    </component>
+
+    <component id="RangeForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:mmo.statistics.info.range"/>
+        <binding name="subform" value="ognl:true"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="range_eachName" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.configure.mbean.name"/>
+        <binding name="value" value="rangeStats.name"/>
+    </component>
+
+    <component id="range_descriptioin" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.description"/>
+        <binding name="value" value="rangeStats.description"/>
+    </component>
+
+    <component id="range_unit" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.unit"/>
+        <binding name="value" value="rangeStats.unit"/>
+    </component>
+
+    <component id="range_startTime" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.startTime"/>
+        <binding name="value" value="rangeStats.startTime"/>
+    </component>
+
+    <component id="range_lastSampleTime" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.lastSampleTime"/>
+        <binding name="value" value="rangeStats.lastSampleTime"/>
+    </component>
+
+    <component id="BoundaryForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:mmo.statistics.info.boundary"/>
+        <binding name="subform" value="ognl:true"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="boundary_eachName" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.configure.mbean.name"/>
+        <binding name="value" value="boundaryStats.name"/>
+    </component>
+
+    <component id="boundary_descriptioin" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.description"/>
+        <binding name="value" value="boundaryStats.description"/>
+    </component>
+
+    <component id="boundary_unit" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.unit"/>
+        <binding name="value" value="boundaryStats.unit"/>
+    </component>
+
+    <component id="boundary_startTime" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.startTime"/>
+        <binding name="value" value="boundaryStats.startTime"/>
+    </component>
+
+    <component id="boundary_lastSampleTime" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.lastSampleTime"/>
+        <binding name="value" value="boundaryStats.lastSampleTime"/>
+    </component>
+
+    <component id="CountForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:mmo.statistics.info.count"/>
+        <binding name="subform" value="ognl:true"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="count_eachName" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.configure.mbean.name"/>
+        <binding name="value" value="countStats.name"/>
+    </component>
+
+    <component id="count_descriptioin" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.description"/>
+        <binding name="value" value="countStats.description"/>
+    </component>
+
+    <component id="count_unit" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.unit"/>
+        <binding name="value" value="countStats.unit"/>
+    </component>
+
+    <component id="count_startTime" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.startTime"/>
+        <binding name="value" value="countStats.startTime"/>
+    </component>
+
+    <component id="count_lastSampleTime" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.lastSampleTime"/>
+        <binding name="value" value="countStats.lastSampleTime"/>
+    </component>
+
+    <component id="TimeForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:mmo.statistics.info.time"/>
+        <binding name="subform" value="ognl:true"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="time_eachName" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.configure.mbean.name"/>
+        <binding name="value" value="timeStats.name"/>
+    </component>
+
+    <component id="time_descriptioin" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.description"/>
+        <binding name="value" value="timeStats.description"/>
+    </component>
+
+    <component id="time_unit" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.unit"/>
+        <binding name="value" value="timeStats.unit"/>
+    </component>
+
+    <component id="time_startTime" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.startTime"/>
+        <binding name="value" value="timeStats.startTime"/>
+    </component>
+
+    <component id="time_lastSampleTime" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.statistics.info.lastSampleTime"/>
+        <binding name="value" value="timeStats.lastSampleTime"/>
+    </component>
+
+    <component id="refreshForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="condShowGraph" type="If">
+        <binding name="condition" value="boundedRangeCheck or rangeCheck or boundaryCheck or countCheck or timeCheck"/>
+    </component>
+
+    <component id="table_refresh" type="Submit">
+        <binding name="value" value="message:common.label.back"/>
+        <binding name="listener" value="ognl:listeners.onBack"/>
+    </component>
+
+    <property name="eBoundedRangeList"/>
+    <property name="eRangeList"/>
+    <property name="eBoundaryList"/>
+    <property name="eCountList"/>
+    <property name="eTimeList"/>
+
+    <property name="chartDataList" persist="session"/>
+    <property name="timeDataList" persist="session"/>
+    <property name="boundedRange"/>
+    <property name="range"/>
+    <property name="boundary"/>
+    <property name="count"/>
+    <property name="time"/>
+
+    <component id="chart" type="Image">
+        <binding name="image" value="assets.chart"/>
+    </component>
+
+    <component id="chart2" copy-of="chart"/>
+    <component id="chart3" copy-of="chart"/>
+    <component id="chart4" copy-of="chart"/>
+    <component id="chart5" copy-of="chart"/>
+
+    <asset name="form_css" path="context:/css/form.css"/>
+    <asset name="chart" path="context:/image/duplicate.gif"/>
+
+</page-specification>

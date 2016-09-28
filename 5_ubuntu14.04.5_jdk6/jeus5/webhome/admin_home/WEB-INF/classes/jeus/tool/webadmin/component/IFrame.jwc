@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://tapestry.apache.org/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="jeus.tool.webadmin.component.IFrame" allow-body="yes" allow-informal-parameters="yes">
+	<parameter name="page" property="targetPage" required="yes"/>
+	<inject property="pageService" object="engine-service:page"/>
+    <reserved-parameter name="src"/>
+</component-specification>

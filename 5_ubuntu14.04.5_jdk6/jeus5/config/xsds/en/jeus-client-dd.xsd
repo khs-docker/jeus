@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    attributeFormDefault="unqualified" 
+    elementFormDefault="qualified" 
+    targetNamespace="http://www.tmaxsoft.com/xml/ns/jeus" version="5.0" 
+    xmlns="http://www.tmaxsoft.com/xml/ns/jeus" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">          
+    <xs:include schemaLocation="jeus-common.xsd"/>  
+    <xs:include schemaLocation="jeus-webservices-client-dd.xsd"/>       
+    <xs:element name="jeus-client-dd" type="jeus-client-ddType">         
+        <xs:annotation>             
+            <xs:documentation><![CDATA[
+			[Description]: The top level element of JEUS Client module. For each jeus-client-dd.xml, this tag should exist. 
+            ]]>
+            </xs:documentation>         
+        </xs:annotation>     
+    </xs:element>         
+    <xs:complexType name="jeus-client-ddType">             
+        <xs:sequence>             
+            <xs:element name="module-info" type="client-module-infoType">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+				[Description]: Information on Client Application 
+				]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>              
+            <xs:element minOccurs="0" name="system-logging" type="system-loggingType">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+				[Description]: Configuring logger used by client application container. 
+				]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>              
+            <xs:element minOccurs="0" name="security-info" type="security-infoType">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+				[Description]: Configuring various types of information for security authentication when executing client application.
+				]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>              
+            <xs:element minOccurs="0" name="scheduler" type="schedulerType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Configuration of scheduler to be used in Client Container.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>                
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="env" type="envType">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+				[Description]: Information on environment entry
+				]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>               
+            <xs:element minOccurs="0" name="ejb-ref" type="jndi-refType">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+				[Description]: Information on EJB reference 
+				]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>               
+            <xs:element minOccurs="0" name="res-ref" type="jndi-refType">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+				[Description]: resource related information 
+				]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>               
+            <xs:element minOccurs="0" name="res-env-ref" type="jndi-refType">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+				[Description]: resource environment related information
+				]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>      
+            <xs:element minOccurs="0" name="service-ref" type="jeus-webservices-client-ddType">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+                    [Description]: Root element on configuration documentation of JEUS Web Service Client (root element).
+                        ]]>     
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>          
+        </xs:sequence>     
+    </xs:complexType>     
+    <xs:complexType name="client-module-infoType">   
+        <xs:sequence>    
+            <xs:element name="module-name" type="xs:token">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+				[Description]: Module name to be set in client applciation.
+				]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>     
+            <xs:element minOccurs="0" name="app-main-class" type="xs:token">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+				[Description]: Fully qualified class name of Main class of Client Application.
+				]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>      
+            <xs:element minOccurs="0" name="app-argument" type="xs:token">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+				[Description]: Configuring application argument to be used when client application is being executed. 
+				]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>   
+        </xs:sequence>  
+    </xs:complexType>    
+    <xs:complexType name="security-infoType">      
+        <xs:sequence>          
+            <xs:element name="provider-node-name" type="xs:token">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+				[Description]: Configuring server to execute security authentication when client applicaiton is being executed. 
+				]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>           
+            <xs:element name="user" type="xs:token">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+				[Description]: Configuring user name of security context when client applicaiton is being executed. 
+				]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>           
+            <xs:element name="passwd" type="xs:token">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+				[Description]: Configuring password of security context to be used when client application is being executed. 
+				For this field, encoded value is set as base64.
+				]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>       
+        </xs:sequence>  
+    </xs:complexType> 
+</xs:schema>

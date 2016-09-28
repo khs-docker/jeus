@@ -1,0 +1,37 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="threadPoolForm">
+            <span jwcid="threadPoolLabel" class="field_label"/>
+            <br/>
+            <input jwcid="filterTextField" style="width:450px"/>
+            &nbsp;
+            <input jwcid="filterButton" style="width:100px" class="form_button"/>
+            <br/>
+            <br/>
+            <span jwcid="condExist">
+                <table width="100%" cellpadding="0" cellspacing="0" class="table" border="1">
+                    <tr>
+                        <td class="table_columns"><span jwcid="name_column"/></td>
+                        <td class="table_columns"><span jwcid="keepAliveTime_column"/></td>
+                        <td class="table_columns"><span jwcid="activeCount_column"/></td>
+                        <td class="table_columns"><span jwcid="poolSize_column"/></td>
+                        <td class="table_columns"><span jwcid="largestPoolSize_column"/></td>
+                        <td class="table_columns"><span jwcid="taskCount_column"/></td>
+                    </tr>
+                    <tr jwcid="eachThreadPool">
+                        <td class="table_values"><a jwcid="threadLink"><span jwcid="name_value"/></a></td>
+                        <td class="table_values" align="center"><span jwcid="keepAliveTime_value"/></td>
+                        <td class="table_values" align="center"><span jwcid="activeCount_value"/></td>
+                        <td class="table_values" align="center"><span jwcid="poolSize_value"/></td>
+                        <td class="table_values" align="center"><span jwcid="largestPoolSize_value"/></td>
+                        <td class="table_values" align="center"><span jwcid="taskCount_value"/></td>
+                    </tr>
+                </table>
+            </span>
+            <span jwcid="condNotExist">
+                <input jwcid="filterText" class="field_label"/>&nbsp;
+                <input jwcid="notFoundMessage" class="field_description"/>
+            </span>
+        </form>
+    </span>
+</html>

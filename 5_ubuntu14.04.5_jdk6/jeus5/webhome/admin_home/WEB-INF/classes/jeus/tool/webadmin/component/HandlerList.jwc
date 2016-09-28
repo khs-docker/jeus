@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  $Id: HandlerList.jwc,v 1.6 2004/11/01 08:07:10 sebong Exp $ -->
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="jeus.tool.webadmin.component.HandlerList" allow-body="yes" allow-informal-parameters="yes">
+
+    <parameter name="handlers" required="yes" />
+    <parameter name="createPage" required="yes"/>
+    <parameter name="editPage" required="yes"/>
+    <parameter name="deleteListener" required="yes"/>
+    <parameter name="objectName" required="yes"/>
+    <parameter name="jeusType" required="yes"/>
+	<parameter name="loggerName"/>
+    <parameter name="loggerType"/>
+
+    <component id="name_column" type="Insert">
+        <binding name="value" value="message:Logging.handler.name.label"/>
+    </component>
+
+    <component id="type_column" type="Insert">
+        <binding name="value" value="message:Logging.handler.type.label"/>
+    </component>
+
+    <component id="level_column" type="Insert">
+        <binding name="value" value="message:Logging.handler.level.label"/>
+    </component>
+
+    <component id="encoding_column" type="Insert">
+        <binding name="value" value="message:Logging.handler.encoding.label"/>
+    </component>
+
+    <component id="filter_class_column" type="Insert">
+        <binding name="value" value="message:Logging.handler.filter_class.label"/>
+    </component>
+
+    <component id="delete" type="Image">
+        <binding name="image" value="asset:delete"/>
+    </component>
+
+    <component id="deleteLink" type="DirectLink">
+        <binding name="listener" value="deleteListener"/>
+        <binding name="parameters" value="handler.name"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.delete.confirm', handler.name)"/>
+    </component>
+
+    <component id="eachHandler" type="For">
+        <binding name="source" value="handlers"/>
+        <binding name="value" value="handler"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="handlerLink" type="ExternalLink">
+        <binding name="page" value="editPage"/>
+        <binding name="parameters" value="{getHandlerObjectName(objectName, jeusType, handler.name).canonicalName, objectName.canonicalName, loggerName, loggerType}"/>
+    </component>
+
+    <component id="create_consoleLink" type="ExternalLink">
+        <binding name="page" value="createPage"/>
+        <binding name="parameters" value="{objectName.canonicalName,'Console', loggerName, loggerType}"/>
+    </component>
+
+    <component id="create_console_label" type="Insert">
+        <binding name="value" value="message:Logging.handler.create_console.label"/>
+    </component>
+
+    <component id="create_fileLink" type="ExternalLink">
+        <binding name="page" value="createPage"/>
+        <binding name="parameters" value="{objectName.canonicalName,'File', loggerName, loggerType}"/>
+    </component>
+
+    <component id="create_file_label" type="Insert">
+        <binding name="value" value="message:Logging.handler.create_file.label"/>
+    </component>
+
+    <component id="create_smtpLink" type="ExternalLink">
+        <binding name="page" value="createPage"/>
+        <binding name="parameters" value="{objectName.canonicalName,'Smtp', loggerName,loggerType}"/>
+    </component>
+
+    <component id="create_smtp_label" type="Insert">
+        <binding name="value" value="message:Logging.handler.create_smtp.label"/>
+    </component>
+
+    <component id="create_userLink" type="ExternalLink">
+        <binding name="page" value="createPage"/>
+        <binding name="parameters" value="{objectName.canonicalName,'User', loggerName,loggerType}"/>
+    </component>
+
+    <component id="create_user_label" type="Insert">
+        <binding name="value" value="message:Logging.handler.create_user.label"/>
+    </component>
+
+    <component id="create_socketLink" type="ExternalLink">
+        <binding name="page" value="createPage"/>
+        <binding name="parameters" value="{objectName.canonicalName,'Socket', loggerName, loggerType}"/>
+    </component>
+
+    <component id="create_socket_label" type="Insert">
+        <binding name="value" value="message:Logging.handler.create_socket.label"/>
+    </component>
+
+    <component id="name_value" type="Insert">
+        <binding name="value" value="handler.name"/>
+    </component>
+
+    <component id="level_value" type="Insert">
+        <binding name="value" value="handler.SetLevel ? handler.level : handler.defaultLevel"/>
+    </component>
+
+    <component id="type_value" type="Insert">
+        <binding name="value" value="type"/>
+    </component>
+
+    <component id="encoding_value" type="Insert">
+        <binding name="value" value="handler.encoding"/>
+    </component>
+
+    <component id="filter_class_value" type="Insert">
+        <binding name="value" value="handler.filterClass"/>
+    </component>
+
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+
+
+    <property name="handler"/>
+</component-specification>

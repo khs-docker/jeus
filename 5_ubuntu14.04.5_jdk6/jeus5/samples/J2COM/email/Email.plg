@@ -1,0 +1,58 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Email - Win32 Release MinSize--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9E1.tmp" with contents
+[
+/nologo /MD /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "_ATL_DLL" /Fp"ReleaseMinSize/Email.pch" /Yu"stdafx.h" /Fo"ReleaseMinSize/" /Fd"ReleaseMinSize/" /FD /c 
+"E:\Jeus4053\samples\J2COM\src\email\Email.cpp"
+"E:\Jeus4053\samples\J2COM\src\email\msword9.cpp"
+"E:\Jeus4053\samples\J2COM\src\email\newMail.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9E1.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9E2.tmp" with contents
+[
+/nologo /MD /W3 /GX /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "_ATL_DLL" /Fp"ReleaseMinSize/Email.pch" /Yc"stdafx.h" /Fo"ReleaseMinSize/" /Fd"ReleaseMinSize/" /FD /c 
+"E:\Jeus4053\samples\J2COM\src\email\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9E2.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9E3.tmp" with contents
+[
+/nologo /subsystem:windows /dll /incremental:no /pdb:"ReleaseMinSize/Email.pdb" /machine:I386 /def:".\Email.def" /out:"ReleaseMinSize/Email.dll" /implib:"ReleaseMinSize/Email.lib" 
+.\ReleaseMinSize\Email.obj
+.\ReleaseMinSize\msword9.obj
+.\ReleaseMinSize\newMail.obj
+.\ReleaseMinSize\StdAfx.obj
+.\ReleaseMinSize\Email.res
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9E3.tmp"
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9E4.bat" with contents
+[
+@echo off
+regsvr32 /s /c ".\ReleaseMinSize\Email.dll"
+echo regsvr32 exec. time > ".\ReleaseMinSize\regsvr32.trg"
+]
+Creating command line "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9E4.bat"
+Compiling...
+StdAfx.cpp
+Compiling...
+Email.cpp
+msword9.cpp
+newMail.cpp
+Generating Code...
+Linking...
+   Creating library ReleaseMinSize/Email.lib and object ReleaseMinSize/Email.exp
+<h3>Output Window</h3>
+Performing registration
+
+
+
+<h3>Results</h3>
+Email.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

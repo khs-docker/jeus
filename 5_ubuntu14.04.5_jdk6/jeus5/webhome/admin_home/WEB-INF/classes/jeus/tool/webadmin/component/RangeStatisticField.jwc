@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC 
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="jeus.tool.webadmin.component.RangeStatisticField" allow-body="no" allow-informal-parameters="yes">
+	<parameter name="label" required="yes"/>
+
+	<parameter name="description"/>
+
+    <parameter name="range" required="yes"/>
+
+    <parameter name="cssClass" default-value="'field_range_statistic'"/>
+
+    <parameter name="lowBar" default-value="asset:low"/>
+
+    <parameter name="highBar" default-value="asset:high"/>
+
+    <parameter name="currentBar" default-value="asset:current"/>
+
+    <parameter name="renderBottom" default-value="false"/>
+
+    <parameter name="renderUnderline" default-value="false"/>
+
+    <component id="wrapper" type="Field">
+        <binding name="label" value="label"/>
+        <binding name="descriptioin" value="description"/>
+        <binding name="renderBottom" value="renderBottom"/>
+        <binding name="renderUnderline" value="renderUnderline"/>
+    </component>
+
+    <component id="delegate" type="Delegator">
+        <binding name="delegate" value="delegate"/>
+    </component>
+
+    <asset name="low" path="context:/image/range_low.gif"/>
+    <asset name="high" path="context:/image/range_high.gif"/>
+    <asset name="current" path="context:/image/range_current.gif"/>
+</component-specification>

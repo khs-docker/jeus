@@ -1,0 +1,191 @@
+// Created by Microsoft (R) C/C++ Compiler Version 12.00.8168.0 (8a05764c).
+//
+// d:\tmaxsoft\jeus5\samples\cas\examples\vc\debug\comaccount_Account.tli
+//
+// Wrapper implementations for Win32 type library D:\j2ee-cas-com-bridge\doc\guide\examples\typelib\comaccount_Account.tlb
+// compiler-generated file created 04/04/05 at 15:36:54 - DO NOT EDIT!
+
+#pragma once
+
+//
+// dispinterface comaccount_Account wrapper method implementations
+//
+
+inline HRESULT comaccount_Account::credit ( double param1 ) {
+    return _com_dispatch_method(this, 0x13, DISPATCH_METHOD, VT_EMPTY, NULL, 
+        L"\x0005", param1);
+}
+
+inline HRESULT comaccount_Account::debit ( double param1 ) {
+    return _com_dispatch_method(this, 0x14, DISPATCH_METHOD, VT_EMPTY, NULL, 
+        L"\x0005", param1);
+}
+
+inline _bstr_t comaccount_Account::getAccountId ( ) {
+    BSTR _result;
+    _com_dispatch_method(this, 0x15, DISPATCH_METHOD, VT_BSTR, (void*)&_result, NULL);
+    return _bstr_t(_result, false);
+}
+
+inline double comaccount_Account::getBalance ( ) {
+    double _result;
+    _com_dispatch_method(this, 0x16, DISPATCH_METHOD, VT_R8, (void*)&_result, NULL);
+    return _result;
+}
+
+inline double comaccount_Account::getCreditLimit ( ) {
+    double _result;
+    _com_dispatch_method(this, 0x17, DISPATCH_METHOD, VT_R8, (void*)&_result, NULL);
+    return _result;
+}
+
+inline IDispatchPtr comaccount_Account::getEJBHome ( ) {
+    IDispatch * _result;
+    _com_dispatch_method(this, 0x18, DISPATCH_METHOD, VT_DISPATCH, (void*)&_result, NULL);
+    return IDispatchPtr(_result, false);
+}
+
+inline _bstr_t comaccount_Account::getFirstName ( ) {
+    BSTR _result;
+    _com_dispatch_method(this, 0x19, DISPATCH_METHOD, VT_BSTR, (void*)&_result, NULL);
+    return _bstr_t(_result, false);
+}
+
+inline IDispatchPtr comaccount_Account::getHandle ( ) {
+    IDispatch * _result;
+    _com_dispatch_method(this, 0x1a, DISPATCH_METHOD, VT_DISPATCH, (void*)&_result, NULL);
+    return IDispatchPtr(_result, false);
+}
+
+inline _bstr_t comaccount_Account::getLastName ( ) {
+    BSTR _result;
+    _com_dispatch_method(this, 0x1b, DISPATCH_METHOD, VT_BSTR, (void*)&_result, NULL);
+    return _bstr_t(_result, false);
+}
+
+inline _variant_t comaccount_Account::getPrimaryKey ( ) {
+    VARIANT _result;
+    _com_dispatch_method(this, 0x1c, DISPATCH_METHOD, VT_VARIANT, (void*)&_result, NULL);
+    return _variant_t(_result, false);
+}
+
+inline _bstr_t comaccount_Account::getType ( ) {
+    BSTR _result;
+    _com_dispatch_method(this, 0x1d, DISPATCH_METHOD, VT_BSTR, (void*)&_result, NULL);
+    return _bstr_t(_result, false);
+}
+
+inline VARIANT_BOOL comaccount_Account::isIdentical ( IDispatch * EJBObject1 ) {
+    VARIANT_BOOL _result;
+    _com_dispatch_method(this, 0x1e, DISPATCH_METHOD, VT_BOOL, (void*)&_result, 
+        L"\x0009", EJBObject1);
+    return _result;
+}
+
+inline HRESULT comaccount_Account::remove ( ) {
+    return _com_dispatch_method(this, 0x1f, DISPATCH_METHOD, VT_EMPTY, NULL, NULL);
+}
+
+inline HRESULT comaccount_Account::setBalance ( double param1 ) {
+    return _com_dispatch_method(this, 0x20, DISPATCH_METHOD, VT_EMPTY, NULL, 
+        L"\x0005", param1);
+}
+
+inline HRESULT comaccount_Account::setCreditLimit ( double param1 ) {
+    return _com_dispatch_method(this, 0x21, DISPATCH_METHOD, VT_EMPTY, NULL, 
+        L"\x0005", param1);
+}
+
+inline HRESULT comaccount_Account::setFirstName ( _bstr_t String1 ) {
+    return _com_dispatch_method(this, 0x22, DISPATCH_METHOD, VT_EMPTY, NULL, 
+        L"\x0008", (BSTR)String1);
+}
+
+inline HRESULT comaccount_Account::setLastName ( _bstr_t String1 ) {
+    return _com_dispatch_method(this, 0x23, DISPATCH_METHOD, VT_EMPTY, NULL, 
+        L"\x0008", (BSTR)String1);
+}
+
+inline HRESULT comaccount_Account::setType ( _bstr_t String1 ) {
+    return _com_dispatch_method(this, 0x24, DISPATCH_METHOD, VT_EMPTY, NULL, 
+        L"\x0008", (BSTR)String1);
+}
+
+inline void comaccount_Account::PutBalance ( double _arg1 ) {
+    _com_dispatch_method(this, 0xc, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, 
+        L"\x0005", _arg1);
+}
+
+inline void comaccount_Account::PutCreditLimit ( double _arg1 ) {
+    _com_dispatch_method(this, 0xd, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, 
+        L"\x0005", _arg1);
+}
+
+inline void comaccount_Account::PutFirstName ( _bstr_t _arg1 ) {
+    _com_dispatch_method(this, 0xe, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, 
+        L"\x0008", (BSTR)_arg1);
+}
+
+inline void comaccount_Account::PutLastName ( _bstr_t _arg1 ) {
+    _com_dispatch_method(this, 0x10, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, 
+        L"\x0008", (BSTR)_arg1);
+}
+
+inline void comaccount_Account::PutType ( _bstr_t _arg1 ) {
+    _com_dispatch_method(this, 0x12, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, 
+        L"\x0008", (BSTR)_arg1);
+}
+
+inline _bstr_t comaccount_Account::GetType ( ) {
+    BSTR _result;
+    _com_dispatch_method(this, 0x12, DISPATCH_PROPERTYGET, VT_BSTR, (void*)&_result, NULL);
+    return _bstr_t(_result, false);
+}
+
+inline _variant_t comaccount_Account::GetPrimaryKey ( ) {
+    VARIANT _result;
+    _com_dispatch_method(this, 0x11, DISPATCH_PROPERTYGET, VT_VARIANT, (void*)&_result, NULL);
+    return _variant_t(_result, false);
+}
+
+inline _bstr_t comaccount_Account::GetLastName ( ) {
+    BSTR _result;
+    _com_dispatch_method(this, 0x10, DISPATCH_PROPERTYGET, VT_BSTR, (void*)&_result, NULL);
+    return _bstr_t(_result, false);
+}
+
+inline IDispatchPtr comaccount_Account::GetHandle ( ) {
+    IDispatch * _result;
+    _com_dispatch_method(this, 0xf, DISPATCH_PROPERTYGET, VT_DISPATCH, (void*)&_result, NULL);
+    return IDispatchPtr(_result, false);
+}
+
+inline _bstr_t comaccount_Account::GetFirstName ( ) {
+    BSTR _result;
+    _com_dispatch_method(this, 0xe, DISPATCH_PROPERTYGET, VT_BSTR, (void*)&_result, NULL);
+    return _bstr_t(_result, false);
+}
+
+inline double comaccount_Account::GetCreditLimit ( ) {
+    double _result;
+    _com_dispatch_method(this, 0xd, DISPATCH_PROPERTYGET, VT_R8, (void*)&_result, NULL);
+    return _result;
+}
+
+inline double comaccount_Account::GetBalance ( ) {
+    double _result;
+    _com_dispatch_method(this, 0xc, DISPATCH_PROPERTYGET, VT_R8, (void*)&_result, NULL);
+    return _result;
+}
+
+inline _bstr_t comaccount_Account::GetAccountId ( ) {
+    BSTR _result;
+    _com_dispatch_method(this, 0xb, DISPATCH_PROPERTYGET, VT_BSTR, (void*)&_result, NULL);
+    return _bstr_t(_result, false);
+}
+
+inline IDispatchPtr comaccount_Account::GetEJBHome ( ) {
+    IDispatch * _result;
+    _com_dispatch_method(this, 0xa, DISPATCH_PROPERTYGET, VT_DISPATCH, (void*)&_result, NULL);
+    return IDispatchPtr(_result, false);
+}

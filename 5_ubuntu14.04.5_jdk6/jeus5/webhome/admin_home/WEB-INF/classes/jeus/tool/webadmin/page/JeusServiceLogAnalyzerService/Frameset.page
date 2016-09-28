@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceLogAnalyzerService.FramesetPage">
+
+    <inject property="settings" type="state" object="Settings"/>
+
+    <component id="shell" type="Shell">
+        <binding name="title" value="message:la.title"/>
+        <binding name="refresh" value="settings.lastatusInterval"/>
+        <binding name="stylesheets" value="{assets.monitor_css, assets.tundra_css, assets.dojo_css, assets.jeusDojoTree_css, assets.jeus_css}"/>
+    </component>
+
+    <component id="analysis" type="Any">
+        <binding name="element" value="literal:iframe"/>
+        <binding name="src" value="analysisURL"/>
+    </component>
+
+    <component id="status" type="Any">
+        <binding name="element" value="literal:iframe"/>
+        <binding name="src" value="statusURL"/>
+    </component>
+
+    <component id="main" type="Frame">
+        <binding name="page" value="literal:JeusServiceLogAnalyzerService_Analysis"/>
+    </component>
+
+    <asset name="refresh" path="context:/image/refresh_out.gif"/>
+
+    <component id="tree" type="jeus:DojoXTree">
+        <binding name="rootNode" value="ognl:rootNode"/>
+    </component>
+
+    <asset name="monitor_css" path="context:/css/monitor.css"/>
+    <asset name="jeusDojoTree_css" path="context:/js/JeusDojo/release/dojo/dijit/tests/css/jeusDojoTree.css"/>
+    <asset name="jeus_css" path="context:/css/jeus.css"/>
+    <asset name="tundra_css" path="context:/js/JeusDojo/release/dojo/dijit/themes/tundra/tundra.css"/>
+    <asset name="dojo_css" path="context:/js/JeusDojo/release/dojo/dojo/resources/dojo.css"/>
+    
+</page-specification>

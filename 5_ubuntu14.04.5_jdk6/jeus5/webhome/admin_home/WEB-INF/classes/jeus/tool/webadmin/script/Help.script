@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+
+<input-symbol key="helpURL"   class="java.lang.String" required="no"/>
+<initialization>
+        <if expression="helpURL != null">
+            document.helpURL = "${helpURL}";
+        </if>
+</initialization>
+</script>

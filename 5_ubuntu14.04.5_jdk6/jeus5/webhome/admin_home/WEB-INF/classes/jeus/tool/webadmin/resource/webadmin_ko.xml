@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+
+<catalog>
+	<text key="Home.title">JEUS 웹 관리 도구</text>
+    <text key="main.title">메인</text>
+    <text key="clusterview.title">클러스터 정보</text>
+    <text key="nodeview.title">노드 정보</text>
+    <text key="messageview.title">메시지</text>
+
+    <text key="main.utility.home">홈</text>
+    <text key="main.utility.settings">선택사항</text>
+    <text key="main.utility.forum">포럼</text>
+    <text key="main.utility.logout">로그아웃</text>
+    <text key="main.utility.help">도움말</text>
+
+    <!-- MainBorder labels -->
+    <text key="MainBorder.nodeName">노드</text>
+    <text key="MainBorder.userName">사용자</text>
+    <text key="MainBorder.startTime">시작 시간</text>
+
+    <!-- navigation labels -->
+    <text key="Main.navigation">{0} 서버</text>
+    <text key="MessageView.navigation">{0} 어플리케이션</text>
+    <text key="ClusterView.navigation">{0} 서블릿</text>
+    <text key="Servlet.navigation">{0} 서버</text>
+
+    <!-- Frameset -->
+    <text key="Frameset.title">제우스 웹 관리 도구</text>
+
+    <!-- NodeTree -->
+    <text key="NodeTree.JeusService.JeusManager">제우스 매니저 [{0}]</text>
+        <!-- functions -->
+        <text key="NodeTree.JeusService.JeusManager.boot">부트</text>
+        <text key="NodeTree.JeusService.JeusManager.down">다운</text>
+        <text key="NodeTree.JeusService.JeusManager.servlet">서블릿</text>
+        <text key="NodeTree.JeusService.JeusManager.jnditree">JNDI 트리</text>
+
+        <!--///////////-->
+
+    <text key="NodeTree.J2EEServer">컨테이너 [{0}]</text>
+    <text key="NodeTree.Folder.Resource">자원</text>
+    <text key="NodeTree.Folder.JeusService">제우스 서비스</text>
+    <text key="NodeTree.Folder.Engine">엔진</text>
+    <text key="NodeTree.JeusService.EJBEngine">EJB 엔진</text>
+    <text key="NodeTree.Folder.ApplicationModule">어플리케이션 모듈</text>
+    <text key="NodeTree.JTAResource">트랜잭션</text>
+    <text key="NodeTree.JDBCResource">데이터소스</text>
+    <text key="NodeTree.J2EEApplication">{0}</text>
+    <text key="NodeTree.EJBModule">{0}</text>
+    <text key="NodeTree.StatelessSessionBean">{0}</text>
+    <text key="NodeTree.StatefulSessionBean">{0}</text>
+    <text key="NodeTree.EntityBean">{0}</text>
+    <text key="NodeTree.MessageDrivenBean">{0}</text>
+    <text key="NodeTree.WebModule">{0}</text>
+    <text key="NodeTree.Servlet">{0}</text>
+
+    <text key="NodeTree.JeusService.ClassFTPService">클래스 FTP 서비스</text>
+    <text key="NodeTree.JeusService.EmailNotificationService">전자우편 통지 서비스</text>
+    <text key="NodeTree.JeusService.ClusterService">클러스터 서비스</text>
+    <text key="NodeTree.JeusService.ContainerManagerService">컨테이너 매니저 서비스</text>
+    <text key="NodeTree.JeusService.ExternalResourceService">외부 리소스 서비스</text>
+    <text key="NodeTree.JeusService.JavaMailResourceService">자바 메일 리소스 서비스</text>
+    <text key="NodeTree.JeusService.JDBCResourceService">JDBC 리소스 서비스</text>
+    <text key="NodeTree.JeusService.JMXExportService">JMX Export 서비스</text>
+    <text key="NodeTree.JeusService.JNDIResourceService">JDNI 리소스 서비스</text>
+    <text key="NodeTree.JeusService.LogAnalyzerService">로그 분석 서비스</text>
+    <text key="NodeTree.JeusService.NodeControllerService">노드 제어 서비스</text>
+    <text key="NodeTree.JeusService.SchedulerService">스케줄러 서비스</text>
+    <text key="NodeTree.JeusService.SecurityService">보안 서비스</text>
+    <text key="NodeTree.JeusService.SessionServerService">세션 서버 서비스</text>
+    <text key="NodeTree.JeusService.SystemEngineService">시스템 엔진 서비스</text>
+    <text key="NodeTree.JeusService.URLResourceService">URL 리소스 서비스</text>
+    <text key="NodeTree.JeusService.ContainerMonitorService">컨테이너 모니터 서비스</text>
+
+    <!-- NodeView labels-->
+    <text key="NodeView.refresh">노드 정보 갱신</text>
+
+    <!-- ClusterView labels -->
+    <text key="ClusterView.refresh">클러스터 정보 갱신</text>
+    <text key="ClusterView.plus">노드 추가</text>
+    <text key="ClusterView.minus">노드 삭제</text>
+
+    <!-- Form Component -->
+    <text key="Form.fail.label">오류</text>
+    <text key="Form.fail.guideLine.label">오류 해결 방법</text>
+    <text key="Form.fail.showDetail.label">자세히 보기</text>
+    <text key="Form.fail.hideDetail.label">숨기기</text>
+    <text key="Form.fail.detail.label">상세 정보</text>
+    <text key="Form.success.label">완료</text>
+    <text key="JEUSForm.fail.field">입력 오류입니다.</text>
+    <text key="JEUSForm.ok.label">확인</text>
+    <text key="JEUSForm.cancel.label">취소</text>
+    <text key="JEUSForm.revert.label">복원</text>
+
+
+    <!-- tab labels -->
+    <text key="Servlet">서블릿</text>
+    <text key="Message">메시지 설정</text>
+    <text key="NodeTree">노드 트리</text>
+    <text key="NodeList">노드 리스트</text>
+
+
+
+</catalog>

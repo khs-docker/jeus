@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jeus-client-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <module-info>
+        <module-name>HelloWorldClient</module-name>
+        <app-main-class>hello.HelloClient</app-main-class>
+    </module-info>
+<!--
+    <scheduler>false</scheduler>
+-->
+</jeus-client-dd>

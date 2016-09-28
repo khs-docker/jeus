@@ -1,0 +1,188 @@
+<script language="javascript" type="text/javascript" src="/webadmin/js/jquery.js"></script>
+<script language="javascript" type="text/javascript" src="/webadmin/js/jquery.flot.js"></script>
+<!--[if IE]><script language="javascript" type="text/javascript" src="/webadmin/js/excanvas.js"></script><![endif]-->
+<html jwcid="popupMainBorder">
+  <span jwcid="tabPanel">
+        <form jwcid="statisticsForm">
+            <span jwcid="interval" style="margin-left: 220px;">
+                <input jwcid="intervalField"/>
+            </span>
+        </form>
+        <span jwcid="condBoundedRange">
+            <br/>
+            <form jwcid="boundedRangeForm">
+                <table class="table" style="width:680px;">
+                    <tr>
+                        <th><span jwcid="boundedRange_name_column"/></th>
+                        <th><span jwcid="boundedRange_highWaterMark_column"/></th>
+                        <th><span jwcid="boundedRange_lowWaterMark_column"/></th>
+                        <th><span jwcid="boundedRange_current_column"/></th>
+                        <th><span jwcid="boundedRange_upperBound_column"/></th>
+                        <th><span jwcid="boundedRange_lowerBound_column"/></th>
+                        <th><span jwcid="boundedRange_graph_column"/></th>
+                    </tr>
+                    <tr jwcid="eachBoundedRange">
+                        <td align="center"><span jwcid="boundedRange_name"/></td>
+                        <td align="center"><span jwcid="boundedRange_highWaterMark"/></td>
+                        <td align="center"><span jwcid="boundedRange_lowWaterMark"/></td>
+                        <td align="center"><span jwcid="boundedRange_current"/></td>
+                        <td align="center"><span jwcid="boundedRange_upperBound"/></td>
+                        <td align="center"><span jwcid="boundedRange_lowerBound"/></td>
+                        <td width="40" align="center">
+                            <a jwcid="boundedRangeLink"><img jwcid="chart" align="middle" alt="chart"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </span>
+        <span jwcid="condRange">
+            <br/>
+            <form jwcid="rangeForm">
+                <table class="table" style="width:680px;">
+                    <tr>
+                        <th><span jwcid="range_name_column"/></th>
+                        <th><span jwcid="range_highWaterMark_column"/></th>
+                        <th><span jwcid="range_lowWaterMark_column"/></th>
+                        <th><span jwcid="range_current_column"/></th>
+                        <th><span jwcid="range_graph_column"/></th>
+                    </tr>
+                    <tr jwcid="eachRange">
+                        <td align="center"><span jwcid="range_name"/></td>
+                        <td align="center"><span jwcid="range_highWaterMark"/></td>
+                        <td align="center"><span jwcid="range_lowWaterMark"/></td>
+                        <td align="center"><span jwcid="range_current"/></td>
+                        <td width="40" align="center">
+                            <a jwcid="rangeLink"><img jwcid="chart2" align="middle" alt="chart"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </span>
+        <span jwcid="condBoundary">
+            <br/>
+            <form jwcid="boundaryForm">
+                <table class="table" style="width:680px;">
+                    <tr>
+                        <th><span jwcid="boundary_name_column"/></th>
+                        <th><span jwcid="boundary_upperBound_column"/></th>
+                        <th><span jwcid="boundary_lowerBound_column"/></th>
+                        <th><span jwcid="boundary_graph_column"/></th>
+                    </tr>
+                    <tr jwcid="eachBoundary">
+                        <td align="center"><span jwcid="boundary_name"/></td>
+                        <td align="center"><span jwcid="boundary_upperBound"/></td>
+                        <td align="center"><span jwcid="boundary_lowerBound"/></td>
+                        <td width="40" align="center">
+                            <a jwcid="boundaryLink"><img jwcid="chart3" align="middle" alt="chart"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </span>
+        <span jwcid="condCount">
+            <br/>
+            <form jwcid="countForm">
+                <table class="table" style="width:680px;">
+                    <tr>
+                        <th><span jwcid="count_name_column"/></th>
+                        <th><span jwcid="count_count_column"/></th>
+                        <th><span jwcid="count_graph_column"/></th>
+                    </tr>
+                    <tr jwcid="eachCount">
+                        <td align="center"><span jwcid="count_name"/></td>
+                        <td align="center"><span jwcid="count_count"/></td>
+                        <td width="40" align="center">
+                            <a jwcid="countLink"><img jwcid="chart4" align="middle" alt="chart"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </span>
+        <span jwcid="condTime">
+            <br/>
+            <form jwcid="timeForm">
+                <table class="table" style="width:680px;">
+                    <tr>
+                        <th><span jwcid="time_name_column"/></th>
+                        <th><span jwcid="time_count_column"/></th>
+                        <th><span jwcid="time_maxTime_column"/></th>
+                        <th><span jwcid="time_minTime_column"/></th>
+                        <th><span jwcid="time_totalTime_column"/></th>
+                        <th><span jwcid="time_graph_column"/></th>
+                    </tr>
+                    <tr jwcid="eachTime">
+                        <td align="center"><span jwcid="time_name"/></td>
+                        <td align="center"><span jwcid="time_count"/></td>
+                        <td align="center"><span jwcid="time_maxTime"/></td>
+                        <td align="center"><span jwcid="time_minTime"/></td>
+                        <td align="center"><span jwcid="time_totalTime"/></td>
+                        <td width="40" align="center">
+                            <a jwcid="timeLink"><img jwcid="chart5" align="middle" alt="chart"/></a>
+                        </td>
+                   </tr>
+               </table>
+            </form>
+        </span>
+        <br/>
+        <br/>
+        <span jwcid="condBoundedRangeChart">
+            <form jwcid="BoundedRangeForm">
+                <span jwcid="boundedRange_eachName"/>
+                <span jwcid="boundedRange_descriptioin"/>
+                <span jwcid="boundedRange_unit"/>
+                <span jwcid="boundedRange_startTime"/>
+                <span jwcid="boundedRange_lastSampleTime"/>
+                <span jwcid="boundedRangeChart_script"/>
+            </form>
+        </span>
+        <span jwcid="condRangeChart">
+            <form jwcid="RangeForm">
+                <span jwcid="range_eachName"/>
+                <span jwcid="range_descriptioin"/>
+                <span jwcid="range_unit"/>
+                <span jwcid="range_startTime"/>
+                <span jwcid="range_lastSampleTime"/>
+                <span jwcid="rangeChart_script"/>
+            </form>
+        </span>
+        <span jwcid="condBoundaryChart">
+            <form jwcid="BoundaryForm">
+                <span jwcid="boundary_eachName"/>
+                <span jwcid="boundary_descriptioin"/>
+                <span jwcid="boundary_unit"/>
+                <span jwcid="boundary_startTime"/>
+                <span jwcid="boundary_lastSampleTime"/>
+                <span jwcid="boundaryChart_script"/>
+            </form>
+        </span>
+        <span jwcid="condCountChart">
+            <form jwcid="CountForm">
+                <span jwcid="count_eachName"/>
+                <span jwcid="count_descriptioin"/>
+                <span jwcid="count_unit"/>
+                <span jwcid="count_startTime"/>
+                <span jwcid="count_lastSampleTime"/>
+                <span jwcid="countChart_script"/>
+            </form>
+        </span>
+        <span jwcid="condTimeChart">
+            <form jwcid="TimeForm">
+                <span jwcid="time_eachName"/>
+                <span jwcid="time_descriptioin"/>
+                <span jwcid="time_unit"/>
+                <span jwcid="time_startTime"/>
+                <span jwcid="time_lastSampleTime"/>
+                <span jwcid="timeChart_script"/>
+            </form>
+        </span>
+        <span jwcid="condShowGraph">
+             <form jwcid="refreshForm">
+                 <div id="graphHolder" style="width:550px; height:225px; font-size:11px; color:#ffffff;"></div>
+                 <div id="graphChoices" style="font-size:12px;">Select:</div>
+                 <div class="form_button_layer">
+                     <input jwcid="table_refresh" class="form_button" style="width:100px;"/>
+                 </div>
+             </form>
+        </span>
+    </span>
+</html>

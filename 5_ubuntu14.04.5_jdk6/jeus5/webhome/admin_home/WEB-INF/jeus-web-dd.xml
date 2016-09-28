@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jeus-web-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+	<context-path>/webadmin</context-path>
+	<auto-reload>
+		<enable-reload>true</enable-reload>
+		<check-on-demand>true</check-on-demand>
+	</auto-reload>
+	<jsp-engine>
+		<compile-option>-g</compile-option>
+	</jsp-engine>
+	<fast-deploy>false</fast-deploy>
+	<webinf-first>true</webinf-first>
+</jeus-web-dd>

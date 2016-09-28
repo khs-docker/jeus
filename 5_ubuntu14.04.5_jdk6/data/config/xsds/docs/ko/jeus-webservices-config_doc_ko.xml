@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+<description>          
+    <text key="web-services-config"><![CDATA[
+                [Description]: 웹 서비스 설정 문서의 루트 엘리먼트(root element).
+            ]]>          
+    </text>
+           
+    <text key="web-services-configType.service"><![CDATA[
+                        [Description]: WSDL과 매핑(JARX-RPC Mapping) 파일을 만들기 위하여
+                            endpoing interface와 메시징 스타일(messaging style) 등의 서비스 정보를 기술한다.
+                    ]]>          
+    </text>
+           
+    <text key="service-configType.service-name"><![CDATA[
+                        [Description]: 만들고자 하는 서비스의 이름을 기술한다.
+                    ]]>          
+    </text>
+           
+    <text key="service-configType.target-namespace"><![CDATA[
+                        [Description]: 서비스가 가지게 되는 타겟 네임 스페이스이다.
+                            서비스 고유의 네임 스페이스를 설정하여 다른 서비스와의 논리적인 구별 기준이 된다.
+                    ]]>          
+    </text>
+           
+    <text key="service-configType.package-mapping"><![CDATA[
+                        [Description]: 어떤 자바 패키지를 특정한 네임 스페이스로 매핑하는 설정이다.
+                    ]]>          
+    </text>
+           
+    <text key="service-configType.output-wsdl-file"><![CDATA[
+                        [Description]: 생성하고자 하는 출력 WSDL파일의 이름이다.
+                    ]]>          
+    </text>
+           
+    <text key="service-configType.output-jaxrpc-mapping-file"><![CDATA[
+                        [Description]: 생성하고자 하는 출력 매핑 파일의 이름이다.
+                    ]]>          
+    </text>
+           
+    <text key="service-configType.style"><![CDATA[
+                        [Description]: 생성될 서비스의 메시징 스타일(messaging style)을 정의한다.
+                            'rpc', 'document', 'wrapped' 세 가지 중 하나를 선택한다.
+                            기본 설정은 'wrapped'이다.
+                    ]]>          
+    </text>
+           
+    <text key="service-configType.use"><![CDATA[
+                        [Description]: 인코딩 스타일을 정의한다. 'encoded' 혹은 'literal' 중 하나를 선택한다.
+                            기본 설정은 'literal'이다.
+                    ]]>          
+    </text>
+           
+    <text key="service-configType.map-mime-to-anytype"><![CDATA[
+                        [Description]: 사용자가 정의한 임의의 타입을 사용하는 것을 허용할 것인지에 대한 xs:boolean타입의 값을 가진다.
+                    ]]>          
+    </text>
+           
+    <text key="service-configType.interface"><![CDATA[
+                        [Description]: 서비스 엔드포인트 인터페이스(Service Endpoint Interface)를 설정한다.
+                    ]]>          
+    </text>
+           
+    <text key="interfaceType.endpoint-interface-class"><![CDATA[
+                        [Description]: 백엔드(back-end)로 동작하는 자바 클래스의 이름을 표시한다.
+                    ]]>          
+    </text>
+           
+    <text key="interfaceType.wsdl-port-type-name"><![CDATA[
+                        [Description]: WSDL에 나타나는 실제 포트 타입의 이름을 임의로 설정할 수 있다.
+                    ]]>          
+    </text>
+           
+    <text key="interfaceType.wsdl-binding-name"><![CDATA[
+                        [Description]: WSDL에 나타나는 실제 바인딩의 이름을 임의로 설정할 수 있다.
+                    ]]>          
+    </text>
+           
+    <text key="interfaceType.wsdl-port-name"><![CDATA[
+                        [Description]: WSDL에 나타나는 실제 포트 이름을 임의로 설정할 수 있다.
+                    ]]>          
+    </text>
+           
+    <text key="interfaceType.operation"><![CDATA[
+                        [Description]: 서비스로 공개하는 오퍼레이션들 각각의 추가적인 설정을 기술한다.
+                    ]]>          
+    </text>
+           
+    <text key="interfaceType.service-impl-bean"><![CDATA[
+                        [Description]: 서비스 구현(service-implementation)에 필요한 추가적인 설정을 기술한다.
+                    ]]>          
+    </text>
+           
+    <text key="operationType.java-method-name"><![CDATA[
+                        [Description]: 설정 하고자 하는 오퍼레이션 이름을 값으로 가진다.
+                    ]]>          
+    </text>
+           
+    <text key="operationType.wsdl-name"><![CDATA[
+                        [Description]: WSDL에 공개되는 오퍼레이션 이름을 설정한다.
+                    ]]>          
+    </text>
+           
+    <text key="operationType.soap-action"><![CDATA[
+                        [Description]: 오퍼레이선의 SOAP-ACTION을 설정한다.
+                    ]]>          
+    </text>
+           
+    <text key="operationType.one-way"><![CDATA[
+                        [Description]: 요청-응답 메커니즘이 아닌 원-웨이(one-way) 호출을 허용하는 설정이다.
+                            비동기 원-웨이 호출은 클라이언트가 SOAP 응답을 받지 않으며,
+                            결함(fault)이나 예외 상황(exception)이 발생했을 경우에도 마찬가지로 응답을 받지 않는다.
+                            기본값은 'false'이다.
+                    ]]>          
+    </text>
+           
+    <text key="operationType.parameter"><![CDATA[
+                        [Description]: <parameter>엘리먼트는 한 오퍼레이션의 하나의 파라미터를 정의한다.
+                            이 엘리먼트는 오퍼레이션을 구현한 메쏘드 안에 정의된 순서대로 나열 되어야 한다.
+                            <parameter>엘리먼트의 수는 메쏘드에 정의된 파라미터의 수와 일치해야 한다.
+                    ]]>          
+    </text>
+           
+    <text key="operationType.return"><![CDATA[
+                        [Description]: <return>엘리먼트는 웹 서비스 오퍼레이션의 리턴 되는 값을 정의한다.
+                            한 오퍼레이션 당 하나의 <return>엘리먼트만 정의 가능하다.
+                    ]]>          
+    </text>
+           
+    <text key="parameterType.class-name"><![CDATA[
+                        [Description]: 입력 파라미터 데이터 타입이 자바 클래스로 매핑될 때의 자바 클래스 이름이다.
+                    ]]>          
+    </text>
+           
+    <text key="parameterType.wsdl-name"><![CDATA[
+                        [Description]: 생성될 WSDL에 사용될 입력 파라미터의 이름이다.
+                            별도 입력하지 않았을때의 기본 값은 메쏘드의 시그너쳐의 파라미터 이름이다
+                    ]]>          
+    </text>
+           
+    <text key="parameterType.location"><![CDATA[
+                        [Description]: SOAP 메시지에서 입력 파라미터가 위치할 부분을 정의한다.
+                            'header', 'body', 'attachment' 중 하나의 값을 가진다. 기본 값은 'body'이다.
+                            'attachment'로 설정하면, 파라미터가 SOAP 엔벨로프가 아니라
+                            SOAP 메시지의 부착물(attachment)로부터 추출되며,
+                            JAX-RPC 스펙에서 지정하는 타입(java.awt.Image, java.lang.String,
+                            javax.mail.internet.MimeMultipart, javax.xml.transform.Source,
+                            javax.activation.DataHandler)만이 SOAP 메시지 부착물에서 추출될 수 있다.
+                    ]]>          
+    </text>
+           
+    <text key="parameterType.mime-type"><![CDATA[
+                        [Description]: 생성될 WSDL에 표시될 파라미터의 MIME 타입을 정의한다.
+                    ]]>          
+    </text>
+           
+    <text key="parameterType.mode"><![CDATA[
+                        [Description]: 입력 파라미터가 표준 입력 파라미터인지, 리턴 값으로 사용되는 출력 파라미터인지,
+                            아니면 입력과 출력 모두를 위한 입력-출력(in-out)파라미터인지를 지정한다.
+                            'IN', 'INOUT', 'OUT' 세 값 중의 하나의 값을 가진다.
+                    ]]>          
+    </text>
+           
+    <text key="returnType.wsdl-name"><![CDATA[
+                        [Description]: 생성될 WSDL에 사용될 리턴 파라미터의 이름이다.
+                    ]]>          
+    </text>
+           
+    <text key="returnType.location"><![CDATA[
+                        [Description]: SOAP 메시지에서 리턴 파라미터가 위치할 부분을 정의한다.
+                            'header', 'body', 'attachment' 중 하나의 값을 가진다. 기본 값은 'body'이다.
+                            'attachment'로 설정하면, 파라미터가 SOAP 엔벨로프가 아니라
+                            SOAP 메시지의 부착물(attachment)로부터 추출되며,
+                            JAX-RPC 스펙에서 지정하는 타입(java.awt.Image, java.lang.String,
+                            javax.mail.internet.MimeMultipart, javax.xml.transform.Source,
+                            javax.activation.DataHandler)만이 SOAP 메시지 부착물에서 추출될 수 있다.
+                    ]]>          
+    </text>
+           
+    <text key="returnType.mime-type"><![CDATA[
+                        [Description]: 생성될 WSDL에 표시될 파라미터의 MIME 타입을 정의한다.
+                    ]]>          
+    </text>
+           
+    <text key="package-mappingType.package-name"><![CDATA[
+                        [Description]: 네임 스페이스로 매핑을 자바 패키지의 이름이다.
+                    ]]>          
+    </text>
+           
+    <text key="package-mappingType.namespace-uri"><![CDATA[
+                        [Description]: 자바 패키지 이름에 상응하는 네임 스페이스를 설정한다.
+                    ]]>          
+    </text>
+           
+    <text key="service-impl-beanType.endpoint-implementation-class"><![CDATA[
+                        [Description]: 서비스를 구현한 빈 클래스 이름을 설정한다.
+                    ]]>          
+    </text>
+           
+    <text key="service-impl-beanType.context-path"><![CDATA[
+                            [Description]: 서비스가 배치될 컨텍스트 이름을 설정한다.
+                        ]]>          
+    </text>
+           
+    <text key="service-impl-beanType.endpoint-url"><![CDATA[
+                        [Description]: 서비스에 접근하기 위한 url을 설정한다.
+                    ]]>          
+    </text>
+           
+    <text key="service-impl-beanType.servlet-name"><![CDATA[
+                            [Description]: 서비스 엔드포인트가 서블릿인 경우, 서블릿의 이름을 설정한다.
+                        ]]>          
+    </text>
+           
+    <text key="service-impl-beanType.ejb-name"><![CDATA[
+                            [Description]: 서비스 엔드포인트가 EJB인 경우, EJB의 이름을 설정한다.
+                        ]]>          
+    </text>
+</description>

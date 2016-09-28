@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="GB2312"?>
+<xs:schema 
+    attributeFormDefault="unqualified" 
+    elementFormDefault="qualified" 
+    targetNamespace="http://www.tmaxsoft.com/xml/ns/jeus" version="5.0" 
+    xmlns="http://www.tmaxsoft.com/xml/ns/jeus" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">          
+    <xs:include schemaLocation="jeus-common.xsd"/>  
+    <xs:include schemaLocation="jeus-webservices-client-dd.xsd"/>       
+    <xs:element name="jeus-client-dd" type="jeus-client-ddType">         
+        <xs:annotation>             
+            <xs:documentation><![CDATA[
+    	        [Description]: 是JEUS Client模块的最上级element。各个jeus-client-dd.xml文件中必须存在tag。
+            ]]>
+            </xs:documentation>         
+        </xs:annotation>     
+    </xs:element>         
+    <xs:complexType name="jeus-client-ddType">             
+        <xs:sequence>             
+            <xs:element name="module-info" type="client-module-infoType">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+	                    [Description]:与客户端应用程序（application）有关的信息
+                    ]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>              
+            <xs:element minOccurs="0" name="system-logging" type="system-loggingType">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+	                    [Description]: 设置客户端应用程序container使用的logger。
+                    ]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>              
+            <xs:element minOccurs="0" name="security-info" type="security-infoType">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+	                    [Description]: 设置运行客户端应用程序时认证security 所需明的各种信息。
+                    ]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>              
+            <xs:element minOccurs="0" name="scheduler" type="schedulerType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 设置Client Container中使用的scheduler。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>                
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="env" type="envType">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+	                    [Description]: 与environment entry有关信息
+	                ]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>               
+            <xs:element minOccurs="0" name="ejb-ref" type="jndi-refType">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+	                    [Description]: 与EJB reference有关的信息
+                    ]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>               
+            <xs:element minOccurs="0" name="res-ref" type="jndi-refType">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+	                    [Description]: resource 相关信息
+	                ]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>               
+            <xs:element minOccurs="0" name="res-env-ref" type="jndi-refType">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+	                    [Description]: resource environment相关信息
+                    ]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>      
+            <xs:element minOccurs="0" name="service-ref" type="jeus-webservices-client-ddType">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+                 [Description]: JEUS web服务客户端设定文件的根元素(root element).
+                        ]]>     
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>          
+        </xs:sequence>     
+    </xs:complexType>     
+    <xs:complexType name="client-module-infoType">   
+        <xs:sequence>    
+            <xs:element name="module-name" type="xs:token">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+	 	               [Description]: 客户端应用程序中指定的module名称
+                    ]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>     
+            <xs:element minOccurs="0" name="app-main-class" type="xs:token">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+	 	               [Description]: 客户端应用程序的Main class的fully qualified class name。
+                    ]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>      
+            <xs:element minOccurs="0" name="app-argument" type="xs:token">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+	                    [Description]: 指定运行客户端应用程序时使用的application argument。
+                    ]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>   
+        </xs:sequence>  
+    </xs:complexType>    
+    <xs:complexType name="security-infoType">      
+        <xs:sequence>          
+            <xs:element name="provider-node-name" type="xs:token">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+	                    [Description]: 指定运行客户端应用程序时认证security所需的server。
+                    ]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>           
+            <xs:element name="user" type="xs:token">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+	                    [Description]: 指定运行客户端应用程序时使用的security context的 user name。
+                    ]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>           
+            <xs:element name="passwd" type="xs:token">      
+                <xs:annotation>     
+                    <xs:documentation><![CDATA[
+			[Description]: 指定客户端应用程序运行时使用的security context密码。
+			               在此指定以base64编码的值。
+                    ]]>
+                    </xs:documentation>      
+                </xs:annotation>    
+            </xs:element>       
+        </xs:sequence>  
+    </xs:complexType> 
+</xs:schema>

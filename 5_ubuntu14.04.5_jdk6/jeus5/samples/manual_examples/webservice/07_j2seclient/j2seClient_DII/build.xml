@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<project name="Echo" default="all" basedir=".">	
+    <property file="../../../../sample.properties"/>
+    <import file="${jeus.home}/samples/common.xml"/>
+    <path id="jeus.classpath">
+        <path refid="jeus.libraries"/>
+        <pathelement location="${java.home}/lib/tools.jar"/>
+    </path>
+	
+	<taskdef name="java2wsdl" classname="jeus.util.ant.webservices.Java2WsdlTask"/>
+	<taskdef name="wsdl2java" classname="jeus.util.ant.webservices.Wsdl2JavaTask"/>
+	
+
+  <property name="work.home" value="."/>
+
+  <!-- The destination directory for the build -->
+  <property name="build.dir" value="${work.home}/build"/>
+  <property name="classes.dir" value="${build.dir}/classes"/>
+
+  <property name="src" value="${work.home}/src"/>
+
+  <property name="jaxrpc.mapping" value="${build.dir}/DocLitEchoService-mapping.xml"/>
+  
+  <path id="build.classpath">
+    <path refid="jeus.classpath"/>
+    <pathelement location="${classes.dir}"/>
+    <pathelement location="${build.dir}/client"/>    
+  </path>
+  
+  <target name="clean">
+    <delete dir="${build.dir}"/>
+  </target>
+   
+  <target name="compile">
+    <mkdir dir="${build.dir}/client"/> 
+    <javac srcdir="${src}" destdir="${build.dir}/client" debug="on">
+       <classpath refid="build.classpath"/>
+       <include name="**/*.java"/>
+    </javac>
+  </target>
+ 
+  <target name="run" depends="compile">
+    <java classname="j2se.DIIClient" fork="yes">
+      <classpath refid="build.classpath"/>
+    </java>
+  </target>
+    
+  <target name="all" depends="clean, run" />
+</project>

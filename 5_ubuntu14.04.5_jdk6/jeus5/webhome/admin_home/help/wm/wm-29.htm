@@ -1,0 +1,192 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 29 가상 호스트 서비스 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('29 가상 호스트 서비스', 'wm-28.htm', 'wm-30.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left"><A NAME="vnode"></A>29 가상 호스트 서비스
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMNormalText">JEUS 4.x 이전 버전에서는 하나의 IP Address에 하나의 노드만이 있을 수 있었다. 보통 하나의 머신에 하나의 JEUS 서버가 있었다고 
+할 수 있다. 그러나JEUS 5에서는 하나의 머신 혹은 하나의 IP Address에서 가상 호스트를 이용하여 여러 JEUS 서버를 운영 할 수 있다.
+ 
+</P>
+<A NAME="1002"></A>
+<P CLASS="JMNormalText">가상 호스트 서비스는 서블릿 엔진의 가상 호스트와 다른 것이므로 주의해야한다. 여기서 가상 호스트란 가상 노드라고 보면 된다.
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMNormalText">가상 호스트의 보다 자세한 설명은 JEUS Server 안내서를 참고하기 바란다.
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMHeading2"><A NAME="vnode_conf"></A>29.1 가상 호스트 설정
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMHeading3">29.1.1 가상 호스트 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-29.htm#vnode">가상 호스트
+ </A>&gt; 설정
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">가상 
+ </SPAN><SPAN CLASS="JMGUIWidget">호스트 
+ </SPAN>를 클릭한다.
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMNormalText">2. <SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1008"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">Enable Virtual Host
+ </SPAN>를 선택한다. 이 값을 &rdquo;true&rdquo;로 설정하면 가상 호스트가 동작하며 그렇지 않은 경우는 동작하지 않는다. 이 설정은 다음 
+부트시에 적용된다.
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMNormalText">4. 입력을 완료하면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMHeading2">29.2 가상 호스트 구성
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMHeading3"><A NAME="vnode_create"></A>29.2.1 가상 호스트 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-29.htm#vnode">가상 호스트
+ </A>&gt; 
+ <A HREF="wm-29.htm#vnode_conf">설정
+ </A>&gt; 새가상 호스트 추가
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMNormalText">가상호스트를 추가하기 위해서는 JEUS_BASEPORT와 가상의 호스트 이름을 정해야 한다. JEUS_BASEPORT는 같은 머신에 위치한 다른 
+노드에서 사용하는 포트 범위(JEUS_BASEPORT + 14)를제외한 포트를 사용하여야 한다. 추가된 값은 바로 사용가능하다.
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">가상 
+ </SPAN><SPAN CLASS="JMGUIWidget">호스트
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1014"></A>
+<P CLASS="JMNormalText">2. <SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">가상 
+ </SPAN><SPAN CLASS="JMGUIWidget">호스트
+ </SPAN>에가상 호스트의 목록을 입력한다. 입력 포멧은 &ldquo;실제이름: 포트 $WHITE_SPACE$ 가상이름&rdquo; 이다. $WHITE_SPACE$는 
+공백이나 탭이다.
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMGUIWidget"><IMG BORDER="0" WIDTH="459" SRC="images/image286.jpg" HEIGHT="337"></SPAN></P>
+
+<P CLASS="JMCaption">그림 249 가상 호스트 설정
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMHeading3"><A NAME="vnode_remove"></A>29.2.2 가상 호스트 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-29.htm#vnode">가상 호스트
+ </A>&gt; 
+ <A HREF="wm-29.htm#vnode_conf">설정
+ </A>&gt; 가상 호스트 삭제
+ </P>
+<A NAME="1018"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">가상 
+ </SPAN><SPAN CLASS="JMGUIWidget">호스트
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMNormalText">2. <SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1020"></A>
+<P CLASS="JMNormalText">3. 삭제하고자 하는 가상 호스트의 줄을 삭제한다.
+ </P>
+<A NAME="1021"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1022"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMNoteWarningChar">참고
+ </SPAN><SPAN CLASS="JMNoteWarningChar">:
+ </SPAN>삭제된 값은 바로 영향을 미친다.
+ </P>
+<A NAME="1023"></A>
+<P CLASS="JMHeading2"><A NAME="vnode_distribute"></A>29.3 가상 호스트 분배
+ </P>
+<A NAME="1024"></A>
+<P CLASS="JMNormalText">가상 호스트는 주로 클러스터링 환경에서 사용된다. 따라서 클러스터링내의 모든 노드들은 동일한 가상 호스트 목록을 가지고 있어야 한다. 가상 호스트의 
+분배는 가상 호스트 파일 &ndash; 
+ <SPAN CLASS="JMFileNameReferenceChar">JEUS_HOME/config/vhosts.xml
+ </SPAN>&ndash; 을 클러스트내의 모든 노드에 전송하여 동일한 설정을 갖게하는 기능이다.
+ </P>
+<A NAME="1025"></A>
+<P CLASS="JMHeading3">29.3.1 가상 호스트 분배
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-24.htm#jeusmanager_service">JEUS 매니저 서비스
+ </A>&gt; 
+ <A HREF="wm-29.htm#vnode">가상 호스트
+ </A>&gt; 
+ <A HREF="wm-29.htm#vnode_conf">설정
+ </A>&gt; 가상 호스트 분배
+ </P>
+<A NAME="1026"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">가상 
+ </SPAN><SPAN CLASS="JMGUIWidget">호스트
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1027"></A>
+<P CLASS="JMNormalText">2. <SPAN CLASS="JMGUIWidget">분배
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1028"></A>
+<P CLASS="JMNormalText">3. 분배를 하고자 하는 노드를 선택한다. 가능하면 모든 노드를 선택하는 것이 좋다.
+ </P>
+<A NAME="1029"></A>
+<P CLASS="JMNormalText">4. 선택이 완료되면 
+ <SPAN CLASS="JMGUIWidget">분배
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="482" SRC="images/image287.jpg" HEIGHT="172"></P>
+
+<P CLASS="JMCaption">그림 250 가상 호스트 분배
+ </P>
+<BR><!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

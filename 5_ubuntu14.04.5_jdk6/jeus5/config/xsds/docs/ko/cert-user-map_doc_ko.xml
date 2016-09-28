@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+<description>          
+    <text key="cert-user-map"><![CDATA[
+                        [Description]: user와 certificate간의 mapping정보를 정의한다.
+            ]]>          
+    </text>
+           
+    <text key="CertUserMapType.cert-user"><![CDATA[
+                                [Description]: group들을 정의한다.
+                    ]]>          
+    </text>
+           
+    <text key="CertUserType.username"><![CDATA[
+                        [Description]: keystore내의 certificate에 대한 user name을 정의한다. "primary" identify로서 유일해야 한다.
+                    ]]>          
+    </text>
+           
+    <text key="CertUserType.cert"><![CDATA[
+                            [Description]:  keystore내의 certificate에 대한 정보들을 정의한다.
+                    ]]>          
+    </text>
+           
+    <text key="CertType.alias"><![CDATA[
+                            [Description]:  keystore내의 certificate에 대한 alias를 정의한다.
+                    ]]>          
+    </text>
+           
+    <text key="CertType.subjectDN"><![CDATA[
+                       [Description]:  keystore내의 certificate에 대한 subjectDN을 정의한다.
+                    ]]>          
+    </text>
+           
+    <text key="CertType.SKI"><![CDATA[
+                         [Description]:  keystore내의 certificate에 대한 SKI를 정의한다.
+                    ]]>          
+    </text>
+           
+    <text key="CertType.issuer"><![CDATA[
+                        [Description]:  keystore내의 certificate에 대한 issuer를 정의한다.
+                   ]]>          
+    </text>
+           
+    <text key="CertType.serialNo"><![CDATA[
+                         [Description]:  keystore내의 certificate에 대한 serial number를 정의한다.
+                    ]]>          
+    </text>
+</description>

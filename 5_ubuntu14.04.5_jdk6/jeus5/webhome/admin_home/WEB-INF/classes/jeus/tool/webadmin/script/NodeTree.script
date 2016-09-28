@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+
+<input-symbol key="nodeSpec"  class="jeus.tool.webadmin.nimodel.JeusTreeNodeSpec" required="yes"/>
+<input-symbol key="messages"  class="org.apache.hivemind.Messages" required="yes"/>
+<input-symbol key="cssFile"   class="java.lang.String" required="yes"/>
+<input-symbol key="servletPath" class="java.lang.String" required="yes"/>
+<input-symbol key="contextPath" class="java.lang.String" required="yes"/>
+
+<let key="path">
+    ${contextPath}${servletPath}
+</let>
+
+<body>
+    var menus = new Object();
+
+    <foreach key="node" expression="nodeSpec.nodeList">
+        menus["${node.type}"] = [
+
+        <if expression="node.functionList.size > 0">
+            <foreach key="function" expression="node.functionList">
+            	{
+                <if expression="function.key.equals('separator')">
+                    separator: true
+                </if>
+                <if-not expression="function.key.equals('separator')">
+                	label: "${messages.getMessage(function.key)}",
+                	enableStates: "${function.enableStates}",
+                	onClick: function(){
+                		var objectName = this.objectName;
+                        <if expression="function.popup != null">
+	                        window.open("${path}?page=${function.page}&amp;service=external&amp;sp=S"+objectName+"${function.parameters}", "${function.popupName}", "${function.popup}");
+	                    </if>
+	                    <if expression="function.popup == null">
+		                    <if expression="function.target == null">
+		                    document.location.href = "${path}?page=${function.page}&amp;service=external&amp;sp=S"+objectName+"${function.parameters}";
+		                    </if>
+		                    <if-not expression="function.target == null">
+							window.open("${path}?page=${function.page}&amp;service=external&amp;sp=S"+objectName+"${function.parameters}", "${function.target}");
+		                    </if-not>
+	                    </if>
+                	}
+                </if-not>
+                },
+            </foreach>
+        </if>
+        <if-not expression="node.functionList.empty">
+	           	{
+	           		separator: true
+	           	},
+        </if-not>
+        		{
+        			label: "${messages.getMessage('NodeTree.refresh')}",
+        			onClick: function(){
+        				var objectName = this.objectName;
+            			nodeTree.location.href = "${path}?page=NodeTree&amp;service=external&amp;sp=S"+objectName;
+        			}
+        		}
+        ];
+    </foreach>
+</body>
+
+</script>

@@ -1,0 +1,71 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="infosForm">
+            <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td colspan="2">
+                        <span jwcid="poolName"/>
+                        <span jwcid="threadExecutionTime"/>
+                        <span jwcid="queueWaitingTime"/>
+                        <span jwcid="waitingQueueSize"/>
+                        <span jwcid="poolSize"/>
+                        <span jwcid="largestPoolSize"/>
+                        <span jwcid="taskCount"/>
+                        <span jwcid="keepAliveTime">
+                            <input jwcid="keepAliveTimeField"/>
+                        </span>
+                        <span jwcid="maxPoolSize">
+                            <input jwcid="maxPoolSizeField"/>
+                        </span>
+                        <span jwcid="corePoolSize">
+                            <input jwcid="corePoolSizeField"/>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="right">
+                        <input jwcid="poolConfigOk" type="button" class="form_button" style="width:100px"/>
+                        <input jwcid="poolConfigCancel" type="button" class="form_button" style="width:100px"/>
+                    </td>
+                </tr>
+                <span jwcid="condActive">
+                    <tr>
+                        <td colspan="2">
+                            <span jwcid="workerThreadLabel" class="field_label"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <span jwcid="activeCount"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" width="100%">
+                            <table class="table">
+                                <tr>
+                                    <th><span jwcid="name_column"/></th>
+                                    <th><span jwcid="beginTime_column"/></th>
+                                    <th><span jwcid="runningTime_column"/></th>
+                                </tr>
+                                <tr jwcid="eachThread">
+                                    <td><span jwcid="name_value"/></td>
+                                    <td align="center"><span jwcid="beginTime_value"/></td>
+                                    <td align="center"><span jwcid="runningTime_value"/></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="right">
+                            <br/>
+                            <input jwcid="refreshButton" type="button" class="form_button" onclick="window.location.reload();"/>
+                        </td>
+                    </tr>
+                </span>
+            </table>
+        </form>
+    </span>
+</html>

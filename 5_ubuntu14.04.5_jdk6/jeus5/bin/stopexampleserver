@@ -1,0 +1,22 @@
+#!/bin/sh
+
+. jeus-example.properties
+
+if [ ! -z "${USERNAME}" ]
+then
+    BOOT_PARAMETER="-U${USERNAME} -P${PASSWORD}"
+else
+    echo "Administrator ID and password is not set in jeus-example.properties file."
+    exit 0
+fi
+
+
+${JAVA_HOME}/bin/java -classpath ${BOOTSTRAP_CLASSPATH} ${TOOL_OPTION}   \
+     -Djeus.home=${JEUS_HOME}                                            \
+     -Djava.naming.factory.initial=jeus.jndi.JEUSContextFactory          \
+     -Djava.naming.factory.url.pkgs=jeus.jndi.jns.url                    \
+     -Djeus.baseport=${JEUS_BASEPORT}                                    \
+     -Djava.util.logging.config.file=${JEUS_HOME}/bin/logging.properties \
+     ${JAVA_ARGS}                                                        \
+     ${BOOTSTRAPPER}                                                     \
+	 jeus.server.manager.JeusCommander example ${BOOT_PARAMETER} jeusexit

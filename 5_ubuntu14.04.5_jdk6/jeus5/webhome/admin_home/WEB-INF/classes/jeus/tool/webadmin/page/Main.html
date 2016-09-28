@@ -1,0 +1,31 @@
+<html jwcid="mainBorder">
+	<!--style jwcid="@Style" href="asset:introduction_css"/-->
+    <link jwcid="@Any" rel="stylesheet" type="text/css" href="ognl:assets.introduction_css.buildURL()" />
+    <div id="introduction">
+		<dl>
+			<dt><span jwcid="@Insert" value="message:main.node.title"/></dt>
+			<dd class="img"><img jwcid="@Image" image="asset:node" alt="node"/></dd>
+			<dd class="description"><span jwcid="@Insert" value="message:main.node.description" renderTag="ognl:true"/></dd>
+		</dl>
+		<dl>
+			<dt><span jwcid="@Insert" value="message:main.engine_container.title"/></dt>
+			<dd class="img"><img jwcid="@Image" image="asset:engine_container" alt="engine"/></dd>
+			<dd class="description"><span jwcid="@Insert" value="message:main.engine_container.description" renderTag="ognl:true"/></dd>
+		</dl>
+		<dl>
+			<dt><span jwcid="@Insert" value="message:main.resource.title"/></dt>
+			<dd class="img"><img jwcid="@Image" image="asset:resource" alt="resource"/></dd>
+			<dd class="description"><span jwcid="@Insert" value="message:main.resource.description" renderTag="ognl:true"/></dd>
+		</dl>
+		<dl>
+			<dt><span jwcid="@Insert" value="message:main.service.title"/></dt>
+			<dd class="img"><img jwcid="@Image" image="asset:service" alt="service"/></dd>
+			<dd class="description"><span jwcid="@Insert" value="message:main.service.description" renderTag="ognl:true"/></dd>
+		</dl>
+		<dl>
+			<dt><span jwcid="@Insert" value="message:main.deployment.title"/></dt>
+			<dd class="img"><img jwcid="@Image" image="asset:deployment" alt="deployment"/></dd>
+			<dd class="description"><span jwcid="@Insert" value="message:main.deployment.description" renderTag="ognl:true"/></dd>
+		</dl>							
+	</div>
+</html>

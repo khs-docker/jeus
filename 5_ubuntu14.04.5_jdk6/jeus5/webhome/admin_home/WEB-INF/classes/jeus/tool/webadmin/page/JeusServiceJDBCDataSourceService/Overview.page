@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceJDBCDataSourceService.OverviewPage">
+
+	<inject property="visit" type="state" object="visit"/>
+	
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JDBC Data Source Service Configuration"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:new java.lang.String[]{'JeusServiceJDBCDataSourceService_Overview'}"/>
+    </component>
+
+    <component id="dsForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jdss.overview.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="export_name_column" type="Insert">
+        <binding name="value" value="message:jds.export_name.label"/>
+    </component>
+
+    <component id="export_name_column2" copy-of="export_name_column"/>
+
+    <component id="vendor_column" type="Insert">
+        <binding name="value" value="message:jds.vendor.label"/>
+    </component>
+
+    <component id="vendor_column2" copy-of="vendor_column"/>
+
+    <component id="class_name_column" type="Insert">
+        <binding name="value" value="message:jds.class_name.label"/>
+    </component>
+
+    <component id="class_name_column2" copy-of="class_name_column"/>
+
+    <component id="datasource_type_column" type="Insert">
+        <binding name="value" value="message:jds.datasource_type.label"/>
+    </component>
+
+    <component id="datasource_type_column2" copy-of="datasource_type_column"/>
+
+    <component id="actions_column" type="Insert">
+        <binding name="value" value="message:jds.actions.label"/>
+    </component>
+
+    <component id="eachDatabase" type="Foreach">
+        <binding name="source" value="ognl:databases"/>
+        <binding name="value" value="ognl:database"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="export_name_value" type="Insert">
+        <binding name="value" value="ognl:database.exportName"/>
+    </component>
+
+    <component id="vendor_value" type="Insert">
+        <binding name="value" value="ognl:database.vendor"/>
+    </component>
+
+    <component id="datasource_type_value" type="Insert">
+        <binding name="value" value="ognl:database.datasourceType"/>
+    </component>
+
+    <component id="class_name_value" type="Insert">
+        <binding name="value" value="ognl:database.className"/>
+    </component>
+
+    <component id="datasourceLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceJDBCDataSourceService_Configuration"/>
+        <binding name="parameters" value="ognl:database.objectName.canonicalName"/>
+    </component>
+
+    <component id="bind" type="Button">
+        <binding name="label" value="message:jds.bind.label"/>
+        <binding name="disabled" value="ognl:!@jeus.tool.webadmin.util.NodeUtils@isBooted(visit) or database.binded"/>
+    </component>
+
+    <component id="bindLink" type="DirectLink">
+        <binding name="listener" value="ognl:listeners.onBind"/>
+        <binding name="parameters" value="ognl:database.exportName"/>
+    </component>
+
+    <component id="test" type="Button">
+        <binding name="label" value="message:jds.test.label"/>
+        <binding name="disabled" value="ognl:!@jeus.tool.webadmin.util.NodeUtils@isBooted(visit)"/>
+    </component>
+
+    <component id="testLink" type="DirectLink">
+        <binding name="listener" value="ognl:listeners.onTest"/>
+        <binding name="parameters" value="ognl:database.exportName"/>
+    </component>
+
+    <component id="deleteLink" type="DirectLink">
+        <binding name="listener" value="listener:onDeleteDatabase"/>
+        <binding name="parameters" value="database.exportName"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.resource.delete.confirm', database.exportName)"/>
+    </component>
+
+    <component id="delete" type="Image">
+        <binding name="image" value="ognl:assets.delete"/>
+    </component>
+
+    <component id="eachDuplicatedDatabase" type="Foreach">
+        <binding name="source" value="ognl:duplicatedDatabases"/>
+        <binding name="value" value="ognl:duplicatedDatabase"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="export_name_value2" type="Insert">
+        <binding name="value" value="ognl:duplicatedDatabase.exportName"/>
+    </component>
+
+    <component id="vendor_value2" type="Insert">
+        <binding name="value" value="ognl:duplicatedDatabase.vendor"/>
+    </component>
+
+    <component id="datasource_type_value2" type="Insert">
+        <binding name="value" value="ognl:duplicatedDatabase.datasourceType"/>
+    </component>
+
+    <component id="class_name_value2" type="Insert">
+        <binding name="value" value="ognl:duplicatedDatabase.className"/>
+    </component>
+
+    <component id="condDuplicate" type="If">
+        <binding name="condition" value="ognl:duplicated == true"/>
+    </component>
+
+    <component id="duplicate_message" type="Insert">
+        <binding name="value" value="message:dsc.export_name.duplicate"/>
+    </component>
+
+    <component id="createLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceJDBCDataSourceService_Create"/>
+        <binding name="parameters" value="ognl:{objectName.canonicalName, 'New'}"/>
+    </component>
+
+    <component id="create" type="Image">
+        <binding name="image" value="ognl:assets.create"/>
+    </component>
+
+    <component id="create_label" type="Insert">
+        <binding name="value" value="message:jds.create.label"/>
+    </component>
+
+    <component id="cdsForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jdss.overview.cds.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="cds_export_name_column" copy-of="export_name_column"/>
+    <component id="is_pre_conn_column" type="Insert">
+        <binding name="value" value="message:jdss.overview.cds.is_pre_conn.label"/>
+    </component>
+    <component id="count_column" type="Insert">
+        <binding name="value" value="message:jdss.overview.cds.count.label"/>
+    </component>
+    <component id="cds_actions_column" copy-of="actions_column"/>
+
+    <component id="eachClusterDs" type="Foreach">
+        <binding name="source" value="ognl:clusterDses"/>
+        <binding name="value" value="ognl:clusterDs"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="cds_export_name_value" type="Insert">
+        <binding name="value" value="ognl:clusterDs.exportName"/>
+    </component>
+
+    <component id="is_pre_conn_value" type="Insert">
+        <binding name="value" value="ognl:clusterDs.isPreConn"/>
+    </component>
+
+    <component id="count_value" type="Insert">
+        <binding name="value" value="ognl:clusterDs.count"/>
+    </component>
+
+    <component id="cds_datasourceLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceJDBCClusterDataSourceService_Configuration"/>
+        <binding name="parameters" value="ognl:clusterDs.objectName.canonicalName"/>
+    </component>
+
+    <component id="cds_bind" type="Button">
+        <binding name="label" value="message:jds.bind.label"/>
+        <binding name="disabled" value="clusterDs.binded or !@jeus.tool.webadmin.util.NodeUtils@isBooted(visit)"/>
+    </component>
+
+    <component id="cds_bindLink" type="DirectLink">
+        <binding name="listener" value="ognl:listeners.onBind"/>
+        <binding name="parameters" value="ognl:{clusterDs.exportName, 'Cluster'}"/>
+    </component>
+
+    <component id="cds_deleteLink" type="DirectLink">
+        <binding name="listener" value="ognl:listeners.onDeleteClusterDs"/>
+        <binding name="parameters" value="clusterDs.exportName"/>
+    </component>
+
+    <component id="delete2" copy-of="delete"/>
+
+    <component id="cds_createLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceJDBCClusterDataSourceService_Create"/>
+        <binding name="parameters" value="{objectName.canonicalName, 'New'}"/>
+    </component>
+
+    <component id="condCDS" type="If">
+        <binding name="condition" value="ognl:databases.size &gt; 1 || clusterDses.size &gt;= 1"/>
+    </component>
+
+    <component id="create2" copy-of="create"/>
+
+    <component id="cds_create_label" type="Insert">
+        <binding name="value" value="message:jdss.overview.cds.create.label"/>
+    </component>
+
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+    <asset name="create" path="context:/image/create.gif"/>
+
+    <property name="database"/>
+    <property name="duplicatedDatabase"/>
+    <property name="clusterDs"/>
+</page-specification>

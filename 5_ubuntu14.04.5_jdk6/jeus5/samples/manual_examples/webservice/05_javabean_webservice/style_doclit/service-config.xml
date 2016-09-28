@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-services-config xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+	<service>
+		<service-name>DocLitEchoService</service-name>
+		<target-namespace>urn:DocLitService</target-namespace>
+		<output-wsdl-file>DocLitEchoService.wsdl</output-wsdl-file>
+		<output-jaxrpc-mapping-file>DocLitEchoService-mapping.xml</output-jaxrpc-mapping-file>
+		<style>wrapped</style>
+		<interface>
+			<endpoint-interface-class>jeustest.webservices.java2wsdl.doclit.Echo</endpoint-interface-class>
+			<operation>
+			    <java-method-name>echoString</java-method-name>
+			    <!--wsdl-name>echoWsdlString</wsdl-name-->
+                <soap-action>hokeAction</soap-action>
+			    <one-way>false</one-way>
+			</operation>
+		</interface>
+	</service>
+</web-services-config>

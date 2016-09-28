@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.PermanentModule.ConfigurationPage">
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Permanent Module Configuration"/>        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="{'PermanentModule_Overview', 'PermanentModule_Configuration'}"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:pm.configuration.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+        <binding name="useForm" value="false"/>
+    </component>
+
+	<component id="applicationsFor" type="For">
+		<binding name="source" value="applications"/>
+		<binding name="value" value="application"/>
+		<binding name="renderTag" value="false"/>
+	</component>
+	
+	<component id="applicationFor" type="For">
+		<binding name="source" value="modules"/>
+		<binding name="value" value="module"/>
+	</component>
+	
+	<component id="moduleImg" type="Image">
+		<binding name="image" value="moduleImage"/>
+	</component>
+	
+	<component id="desLink" type="Any">
+		<binding name="element" value="literal:span"/>
+		<binding name="href" value="literal:#"/>
+    </component>
+	
+	<component id="descriptor" type="Any">
+		<binding name="element" value="literal:div"/>
+	</component>
+	
+	<component id="descriptorScript" type="Script">
+		<binding name="script" value="literal:/jeus/tool/webadmin/script/ShowDescriptor.script"/>
+		<binding name="link" value="component:desLink"/>
+		<binding name="target" value="component:descriptor"/>
+	</component>
+	
+	<component id="deleteImg" type="Image">
+		<binding name="image" value="asset:delete"/>
+	</component>
+	
+	<component id="deleteImg2" copy-of="deleteImg"/>
+	
+	<component id="editImg" type="Image">
+		<binding name="image" value="asset:edit"/>
+	</component>
+	
+	<component id="editImg2" copy-of="editImg"/>
+	
+	<component id="docImg" type="Image">
+		<binding name="image" value="asset:doc"/>
+	</component>
+	
+	<component id="deleteAppLink" type="DirectLink">
+		<binding name="listener" value="listener:onDeleteApp"/>
+		<binding name="parameters" value="application.index"/>
+		<binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.delete.confirm', 'application')"/>
+	</component>
+	
+	<component id="deleteModuleLink" type="DirectLink">
+		<binding name="listener" value="listener:onDeleteModule"/>
+		<binding name="parameters" value="{application.index, module}"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.delete.confirm', module.name == null ? module.path : module.name)"/>
+	</component>
+	
+	<component id="configAppLink" type="ExternalLink">
+		<binding name="page" value="literal:PermanentModule_AppConfiguration"/>
+		<binding name="parameters" value="{objectName, application.index}"/>
+	</component>
+	
+	<component id="configModuleLink" type="ExternalLink">
+		<binding name="page" value="literal:PermanentModule_ModuleConfiguration"/>
+		<binding name="parameters" value="{objectName, application.index, module}"/>
+	</component>
+	
+	<component id="desLink2" copy-of="desLink"/>
+	<component id="descriptor2" copy-of="descriptor"/>
+	<component id="descriptorScript2" type="Script">
+		<binding name="script" value="literal:/jeus/tool/webadmin/script/ShowDescriptor.script"/>
+		<binding name="link" value="component:desLink2"/>
+		<binding name="target" value="component:descriptor2"/>
+	</component>
+	
+	<component id="deleteImg3" copy-of="deleteImg"/>
+	<component id="editImg3" copy-of="editImg"/>
+	<component id="docImg2" copy-of="docImg"/>	
+	<component id="deleteAppLink2" copy-of="deleteAppLink"/>	
+	<component id="configAppLink2" copy-of="configAppLink"/>	
+		
+	
+	<asset name="ear" path="context:/image/mbean/ear_running.gif"/>
+	<asset name="ejb" path="context:/image/mbean/ejb_module_running.gif"/>
+	<asset name="ca" path="context:/image/mbean/ca_module_running.gif"/>
+	<asset name="ra" path="context:/image/mbean/ra_module_running.gif"/>
+	<asset name="war" path="context:/image/mbean/web_module_running.gif"/>			
+	<asset name="empty" path="context:/image/table/delete.gif"/>
+	
+	<asset name="delete" path="context:/image/table/delete.gif"/>
+	<asset name="edit" path="context:/image/but_edit.gif"/>
+	<asset name="doc" path="context:/image/doc.gif"/>	
+</page-specification>

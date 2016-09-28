@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceSchedulerJob.CreatePage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Create Scheduler Job"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:new java.lang.String[]{pageName}"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:job.create.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="enabled" type="jeus:Field">
+        <binding name="field" value="ognl:components.enabledField"/>
+    </component>
+
+    <component id="enabledField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:scheduler"/>
+        <binding name="elementName" value="literal:enabled"/>
+    </component>
+
+    <component id="class_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.class_nameField"/>
+    </component>
+
+    <component id="class_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="job"/>
+        <binding name="elementName" value="literal:className"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="name" type="jeus:Field">
+        <binding name="field" value="ognl:components.nameField"/>
+    </component>
+
+    <component id="nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:job"/>
+        <binding name="elementName" value="literal:name"/>
+    </component>
+
+    <component id="begin_time" type="jeus:Field">
+        <binding name="field" value="ognl:components.begin_timeField"/>
+        <binding name="label" value="message:job.begin_time.label"/>
+    </component>
+
+    <component id="begin_timeField" type="jeus:DojoTextField">
+        <binding name="value" value="ognl:beginTime"/>
+        <binding name="translator" value="translator:date,pattern=yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"/>
+        <binding name="displayName" value="message:job.begin_time.label"/>
+    </component>
+
+    <component id="end_time" type="jeus:Field">
+        <binding name="field" value="ognl:components.end_timeField"/>
+        <binding name="label" value="message:job.end_time.label"/>
+    </component>
+
+    <component id="end_timeField" type="jeus:DojoTextField">
+        <binding name="value" value="ognl:endTime"/>
+        <binding name="translator" value="translator:date,pattern=yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"/>
+        <binding name="displayName" value="message:job.end_time.label"/>
+    </component>
+
+    <component id="count" type="jeus:Field">
+        <binding name="field" value="ognl:components.countField"/>
+    </component>
+
+    <component id="countField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="job"/>
+        <binding name="elementName" value="literal:count"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="interval" type="jeus:Field">
+        <binding name="field" value="ognl:components.intervalField"/>
+    </component>
+
+    <component id="intervalField" type="jeus:DojoTextField">
+        <binding name="value" value="interval"/>
+        <binding name="displayName" value="message:job.interval.label"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:required,min=1"/>
+    </component>
+
+    <component id="interval_unitField" type="jeus:PropertySelection">
+        <binding name="value" value="ognl:unit"/>
+        <binding name="model" value="ognl:@jeus.tool.webadmin.page.EnumerationSet@INTERVAL_TYPES"/>
+    </component>
+
+    <component id="job_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="description" type="jeus:Field">
+        <binding name="field" value="ognl:components.descriptionField"/>
+    </component>
+
+    <component id="descriptionField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:job"/>
+        <binding name="elementName" value="literal:description"/>
+    </component>
+
+    <component id="createOk" type="Submit">
+        <binding name="value" value="message:common.label.create"/>
+        <binding name="listener" value="ognl:listeners.onCreateOk"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+    <property name="beginTime"/>
+    <property name="endTime"/>
+    <property name="interval"/>
+    <property name="unit"/>
+</page-specification>

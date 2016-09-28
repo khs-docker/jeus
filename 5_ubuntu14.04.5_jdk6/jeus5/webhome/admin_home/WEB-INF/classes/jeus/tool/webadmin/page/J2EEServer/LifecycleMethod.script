@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+
+<input-symbol key="lifecycles"  class="java.util.List" required="yes"/>
+<input-symbol key="id"  class="java.lang.String" required="yes"/>
+
+<let key="init">
+    ${id}_initLifecycles
+</let>
+<let key="onchange">
+    ${id}_onchange
+</let>
+
+<body>
+    var lifecycleMethods = new Object();
+    ${init}();
+
+    function ${init}(){
+        var methods = null;
+        var method = null;
+        <foreach key="lifecycle" expression="lifecycles">
+            methods = new Array();
+            <foreach key="invocation" expression="lifecycle.invocation"  index="ii">
+                method = new Object();
+                method.name = "${invocation.invocationMethod.methodName}";
+                method.params = new Array();
+                <foreach key="methodParam" expression="invocation.invocationMethod.setMethodParams ? invocation.invocationMethod.methodParams.methodParam : @java.util.Collections@EMPTY_LIST" index="mi">
+                    method.params[${mi}] = "${methodParam}";
+                </foreach>
+                method.invocationType = "${invocation.invocationType}";
+                method.label = method.name+"(";
+
+                for(var i = 0; i &lt; method.params.length; i++){
+                    method.label += method.params[i];
+                    if(i &lt; method.params.length - 1)
+                        method.label += ", ";
+                }
+
+                method.label = method.label + "):"+method.invocationType;
+                methods[${ii}] = method;
+            </foreach>
+            lifecycleMethods["${lifecycle.className}"] = methods;
+       </foreach>
+   }
+
+    function ${onchange}(list, classname){
+        var methods = lifecycleMethods[classname];
+        var length = list.length;
+        for(var i = length - 1; i >= 0; i--)
+            list.options[i] = null;
+
+        if( !methods )
+            return;
+
+        for(var i = 0; i &lt; methods.length; i++){
+            list.options[i] = new Option(methods[i].label, methods[i].label);
+        }
+    }
+</body>
+
+</script>

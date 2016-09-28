@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceLogAnalyzerService.StackTracePage">
+    <component id="link" type="Any">
+        <binding name="element" value="literal:input"/>
+        <binding name="value" value="ognl:link"/>
+    </component>
+
+    <component id="optionForm" type="Form">
+    </component>
+
+    <component id="form_title" type="Image">
+        <binding name="image" value="ognl:assets.form_title"/>
+    </component>
+
+    <component id="title" type="Insert">
+        <binding name="value" value="message:la.stack_trace.title"/>
+    </component>
+
+    <component id="file_pattern_label" type="Insert">
+        <binding name="value" value="message:la.rule.file_pattern.label"/>
+    </component>
+
+    <component id="file_pattern" type="jeus:DojoTextField">
+        <binding name="value" value="ognl:pattern"/>
+        <binding name="disabled" value="ognl:false"/>
+    </component>
+
+    <component id="refresh_label" type="Insert">
+        <binding name="value" value="message:la.stack_trace.refresh.label"/>
+    </component>
+
+    <component id="buffer_label" type="Insert">
+        <binding name="value" value="message:la.stack_trace.buffer.label"/>
+    </component>
+
+    <component id="cssLink" type="Any">
+      <binding name="element" value="literal:link"/>
+      <binding name="href" value="ognl:assets.form_css.buildURL()"/>
+      <binding name="type" value="literal:text/css"/>
+      <binding name="rel" value="literal:stylesheet"/>
+    </component>
+
+    <asset name="form_css" path="context:/css/form.css"/>
+    <asset name="form_title" path="context:/image/form_title.gif"/>
+</page-specification>

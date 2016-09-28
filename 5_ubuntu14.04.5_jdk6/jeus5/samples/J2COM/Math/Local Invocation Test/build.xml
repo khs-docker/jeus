@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<project name="SumTester" default="all" basedir=".">
+
+  <!-- set global properties for this build -->
+	<property file="../../../sample.properties"/>
+	
+	<property name="source" value="."/>
+	<property name="build" value="${source}/build"/>
+	<property name="dist" value="${source}/dist"/>
+	
+	<path id="classpath">  
+		<pathelement location="${JEUS_HOME}/lib/system/j2com.jar"/>
+		<pathelement location="${JEUS_HOME}/lib/system/jeus.jar"/>
+		<pathelement location="${JEUS_HOME}/lib/system/jmxri.jar"/>
+		<pathelement location="${JEUS_CLASS}"/>
+	</path>
+  <target name="all" depends="clean, init, compile,run"/>
+ 
+  <!-- Create the build directory structure used by compile
+    and copy the deployment descriptors into it-->
+  <target name="init">
+    <mkdir dir="${build}"/>
+  </target>
+
+  <!-- Compile ejb classes into the build directory (jar preparation) -->
+  <target name="compile" depends="init">
+    <javac srcdir="./" destdir="${build}"
+       includes="*.java" >
+			<classpath refid="classpath" />
+		</javac>
+  </target>
+
+  <!-- Run the example -->
+  <target name="run" depends="compile">
+    <java dir="${build}" classname="sample.SumTester" fork="yes" failonerror="true">
+		<classpath refid="classpath" />
+		<classpath>
+			<pathelement path="${build}"/>
+			<pathelement path="${JEUS_CLASS}"/>
+		</classpath>
+	</java>
+  </target>
+
+  <target name="clean">
+    <delete dir="${build}"/>
+ </target>
+</project>

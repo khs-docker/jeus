@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusServiceJEUSManager.DistributePage">
+	<inject property="webadminStateObject" type="state" object="WebadminStateObject"/>
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Distribute JEUSMain.xml"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@JEUSSERVICE_JEUSMANAGER_NAMES"/>
+    </component>
+
+    <component id="distributeForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jm.distribute.title"/>
+        <binding name="listener" value="listeners.onOk"/>
+        <binding name="useDefaultButtons" value="model.nodeNames.length > 0"/>
+    </component>
+
+    <component id="targets" type="jeus:Field">
+        <binding name="layout" value="@jeus.tool.webadmin.component.Field@EXTENDED_LAYOUT"/>
+        <binding name="label" value="message:jm.distribute.targets.label"/>
+    </component>
+
+    <component id="targetsField" type="jeus:TargetExplorer">
+        <binding name="model" value="model"/>
+        <binding name="selectionModel" value="selectionModel"/>
+        <binding name="renderUnderline" value="false"/>
+    </component>
+
+    <component id="distribute_all" type="jeus:Field">
+        <binding name="field" value="components.distribute_allField"/>
+        <binding name="label" value="message:jm.distribute.distribute_all.label"/>
+        <binding name="description" value="message:jm.distribute.distribute_all.description"/>
+    </component>
+
+    <component id="distribute_allField" type="jeus:DojoCheckbox">
+        <binding name="value" value="distributeAll"/>
+    </component>
+
+    <component id="condHasTargets" type="If">
+        <binding name="condition" value="model.nodeNames.length > 0"/>
+    </component>
+
+    <component id="condHasNoTargets" type="If">
+        <binding name="condition" value="model.nodeNames.length == 0"/>
+    </component>
+
+    <component id="unavailable_message" type="Insert">
+        <binding name="value" value="message:jm.control.no_targets.label"/>
+    </component>
+
+    <property name="distributeAll"/>
+</page-specification>

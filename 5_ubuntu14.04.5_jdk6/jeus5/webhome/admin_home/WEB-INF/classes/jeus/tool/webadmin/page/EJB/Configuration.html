@@ -1,0 +1,29 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+            <form jwcid="generalForm">
+                <span jwcid="ejbName"/>
+                <span jwcid="moduleName"/>
+                <span jwcid="beanType"/>
+                <span jwcid="exportName"/>
+                <span jwcid="localExportName"/>
+                <span jwcid="@RenderBlock" block="ognl:ejbTypeBlock"/>
+            </form>
+
+            <span jwcid="StatefulSessionBean">
+            </span>
+            <span jwcid="StatelessSessionBean">
+            </span>
+            <span jwcid="EntityBean">
+                <!--
+                <span jwcid="tableName"/>
+                <span jwcid="dbVendor"/>
+                <span jwcid="dataSourceName"/>
+                -->
+            </span>
+
+            <span jwcid="MessageDrivenBean">
+                <span jwcid="connectionFactoryName"/>
+                <span jwcid="destination"/>
+            </span>
+        </span>
+</html>

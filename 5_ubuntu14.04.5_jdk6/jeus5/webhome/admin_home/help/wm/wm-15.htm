@@ -1,0 +1,615 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 15 J2EE 모듈 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('15 J2EE 모듈', 'wm-14.htm', 'wm-16.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left"><A NAME="j2eemodule"></A>15 J2EE 모듈
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMNormalText">J2EE 표준 모듈에는 5가지 타입이 있다. 어플리케이션 모듈, EJB 모듈, 웹모듈, 리소스 아답터 모듈, 어플리케이션 클라이언트 모듈.
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMNormalText">이번 장에서는 이들 각 모듈의 설정과 설정에 대해서 알아 볼 것이다.
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMHeading2"><A NAME="j2eemodule_ear"></A>15.1 어플리케이션 모듈
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMNormalText">어플리케이션 모듈은 EJB JAR, WAR, CAR, RAR 모듈 파일들을 하나의 파일에 묶어 놓은 모듈 이다.
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMHeading3"><A NAME="j2eemodule_ear_conf"></A>15.1.1 어플리케이션 모듈 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈 &gt; 
+ <A HREF="wm-15.htm#j2eemodule_ear">어플리케이션 모듈 
+ </A>&gt; 설정
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">J2EE 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더에서 설정을 볼 어플리케이션 모듈을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMNormalText">2. &ldquo;
+ <SPAN CLASS="JMFileNameReferenceChar">application.xml
+ </SPAN>&rdquo;설정 파일의 내용이 출력된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="472" SRC="images/image161.jpg" HEIGHT="140"></P>
+
+<P CLASS="JMCaption">그림 140 어플리케이션 배치 기술자
+ </P>
+<A NAME="1008"></A>
+<P CLASS="JMHeading2"><A NAME="ejbmodule"></A>15.2 EJB 모듈
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMHeading3"><A NAME="ejbmodule_conf"></A>15.2.1 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈 &gt; 
+ <A HREF="wm-15.htm#j2eemodule_ear">어플리케이션 모듈 
+ </A>&gt; 
+ <A HREF="wm-15.htm#ejbmodule_conf">EJB 모듈
+ </A>&gt;설정
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">J2EE 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더에서 설정을 볼 EJB 모듈을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 &ldquo;
+ <SPAN CLASS="JMFileNameReferenceChar">ejb-jar.xml
+ </SPAN>&rdquo;이나 &ldquo;
+ <SPAN CLASS="JMFileNameReferenceChar">jeus-ejb-dd.xml
+ </SPAN>&rdquo;을 선택한다.
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMNormalText">3. 선택된 설정 파일의 내용이 출력된다.
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMHeading3"><A NAME="ejbmodule_stats"></A>15.2.2 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈 &gt; 
+ <A HREF="wm-15.htm#j2eemodule_ear">어플리케이션 모듈 
+ </A>&gt; 
+ <A HREF="wm-15.htm#ejbmodule_conf">EJB 모듈
+ </A>&gt; 통계
+ </P>
+<A NAME="1014"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">J2EE 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더에서 통계 정보를 볼 EJB 모듈을 선택한 후 
+ <SPAN CLASS="JMGUIWidget">통계
+ </SPAN>탭을 선택하거나 모니터링 하고자 하는EJB 모듈의 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">EJB
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈이름의
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">통계
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMNormalText">2. EJB 목록과 모니터링 정보가 출력된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="482" SRC="images/image162.jpg" HEIGHT="214"></P>
+
+<P CLASS="JMCaption">그림 141EJB 모듈 통계
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMHeading3"><A NAME="ejb_stats"></A>15.2.3 EJB 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈 &gt; 
+ <A HREF="wm-15.htm#j2eemodule_ear">어플리케이션 모듈 
+ </A>&gt; 
+ <A HREF="wm-15.htm#ejbmodule_conf">EJB 모듈
+ </A>&gt; EJB &gt; 통계
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 모니터링 하고자 하는 EJB를 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">통계
+ </SPAN>탭을 선택하거나 모니터링 하고자 하는EJB의 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">EJB 
+ </SPAN><SPAN CLASS="JMGUIWidget">이름의 
+ </SPAN><SPAN CLASS="JMGUIWidget">통계
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1018"></A>
+<P CLASS="JMNormalText">2. EJB통계 정보가 출력된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="442" SRC="images/image163.jpg" HEIGHT="512"></P>
+
+<P CLASS="JMCaption">그림 142EJB 통계
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMHeading2"><A NAME="webmodule"></A>15.3 웹모듈
+ </P>
+<A NAME="1020"></A>
+<P CLASS="JMHeading3"><A NAME="webmodule_conf"></A>15.3.1 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈 &gt; 
+ <A HREF="wm-15.htm#j2eemodule_ear">어플리케이션 모듈 
+ </A>&gt; 
+ <A HREF="wm-15.htm#webmodule">웹 모듈
+ </A>&gt; 설정
+ </P>
+<A NAME="1021"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">J2EE 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더에서 설정을 볼 웹 모듈을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1022"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 &ldquo;
+ <SPAN CLASS="JMFileNameReferenceChar">web.xml
+ </SPAN>&rdquo;이나 &ldquo;
+ <SPAN CLASS="JMFileNameReferenceChar">jeus-web-dd.xml
+ </SPAN>&rdquo;을 선택한다.
+ </P>
+<A NAME="1023"></A>
+<P CLASS="JMNormalText">3. 선택된 설정 파일의 내용이 출력된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="506" SRC="images/image164.jpg" HEIGHT="189"></P>
+
+<P CLASS="JMCaption">그림 143 웹 모듈의 배치 기술자
+ </P>
+<A NAME="1024"></A>
+<P CLASS="JMHeading3"><A NAME="webmodule_stats"></A>15.3.2 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈 &gt; 
+ <A HREF="wm-15.htm#j2eemodule_ear">어플리케이션 모듈 
+ </A>&gt; 
+ <A HREF="wm-15.htm#webmodule">웹 모듈
+ </A>&gt; 통계
+ </P>
+<A NAME="1025"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">J2EE 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더에서 설정을 볼 웹 모듈을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">통계
+ </SPAN>탭을 선택하거나 컨택스트 메뉴에서 웹 모듈 이름의
+ <SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">통계
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1026"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">기본 
+ </SPAN><SPAN CLASS="JMGUIWidget">정보
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1027"></A>
+<P CLASS="JMNormalText">3. 웹 모듈의통계 정보가 출력된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="449" SRC="images/image165.jpg" HEIGHT="219"></P>
+
+<P CLASS="JMCaption">그림 144 웹모듈 기본 통계
+ </P>
+<A NAME="1028"></A>
+<P CLASS="JMHeading3"><A NAME="servlet_stats"></A>15.3.3 서블릿 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈 &gt; 
+ <A HREF="wm-15.htm#j2eemodule_ear">어플리케이션 모듈 
+ </A>&gt; 
+ <A HREF="wm-15.htm#webmodule">웹 모듈
+ </A>&gt; 
+ <A HREF="wm-15.htm#webmodule_stats">통계
+ </A>&gt; 서블릿
+ </P>
+<A NAME="1029"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">J2EE 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더에서 설정을 볼 웹 모듈을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">통계
+ </SPAN>탭을 선택하거나 컨택스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈 
+ </SPAN><SPAN CLASS="JMGUIWidget">이름의 
+ </SPAN><SPAN CLASS="JMGUIWidget">통계
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1030"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">서블릿
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1031"></A>
+<P CLASS="JMNormalText">3. 서블릿의 모니터링 정보가 출력된다. 서블릿 상태에는 다음의 3가지가 있다.
+ </P>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" CLASS="normal">
+	<TR>
+		<TD CLASS="thead">상태 
+ </TD>
+		<TD CLASS="thead">설명 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Ready 
+ </TD>
+		<TD CLASS="normal">서블릿 클래스가 로드 되어서 서비스 할수 있게 준비된 상태 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Not Loaded 
+ </TD>
+		<TD CLASS="normal">서블릿 클래스가 로드 되지 않은 상태 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">Suspend 
+ </TD>
+		<TD CLASS="normal">서블릿이 중단된 상태 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+<A NAME="1032"></A>
+<P CLASS="JMHeading3"><A NAME="servlet_suspend"></A>15.3.4 서블릿 일시 정지(Suspend)
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈 &gt; 
+ <A HREF="wm-15.htm#j2eemodule_ear">어플리케이션 모듈 
+ </A>&gt; 
+ <A HREF="wm-15.htm#webmodule">웹 모듈
+ </A>&gt; 
+ <A HREF="wm-15.htm#webmodule_stats">통계
+ </A>&gt; 
+ <A HREF="wm-15.htm#servlet_stats">서블릿
+ </A>&gt; 일시 정지
+ </P>
+<A NAME="1033"></A>
+<P CLASS="JMNormalText">임시적으로 서블릿 종료한다. 임시 종료된 서블릿은 클라이언트 요청을 서비스하지 못한다.
+ </P>
+<A NAME="1034"></A>
+<P CLASS="JMNormalText">1. 노드 트리의
+ <SPAN CLASS="JMGUIWidget">J2EE 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더에서 제어를 할 서블릿이 포함된 웹 모듈을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">통계
+ </SPAN>탭을 선택하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈 
+ </SPAN><SPAN CLASS="JMGUIWidget">이름의 
+ </SPAN><SPAN CLASS="JMGUIWidget">통계
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1035"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">서블릿
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1036"></A>
+<P CLASS="JMNormalText">3. 서블릿 목록에서 정지하고자 하는 서블릿의 
+ <SPAN CLASS="JMGUIWidget">정지
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1037"></A>
+<P CLASS="JMNormalText">4. 정지가 실행되고 
+ <SPAN CLASS="JMGUIWidget">해제
+ </SPAN>버튼이 활성화 된다.
+ </P>
+<A NAME="1038"></A>
+<P CLASS="JMHeading3"><A NAME="servlet_resume"></A>15.3.5 서블릿 정지 해제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈 &gt; 
+ <A HREF="wm-15.htm#j2eemodule_ear">어플리케이션 모듈 
+ </A>&gt; 
+ <A HREF="wm-15.htm#webmodule">웹 모듈
+ </A>&gt; 
+ <A HREF="wm-15.htm#webmodule_stats">통계
+ </A>&gt; 
+ <A HREF="wm-15.htm#servlet_stats">서블릿
+ </A>&gt; 정지 해제
+ </P>
+<A NAME="1039"></A>
+<P CLASS="JMNormalText">임시적으로 종료된 서블릿 을 다시 서비스 상태로 돌린다.
+ </P>
+<A NAME="1040"></A>
+<P CLASS="JMNormalText">1. 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">J2EE 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더에서 제어를 할 서블릿이 포함된 웹 모듈을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">통계
+ </SPAN>탭을 선택하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈 
+ </SPAN><SPAN CLASS="JMGUIWidget">이름의 
+ </SPAN><SPAN CLASS="JMGUIWidget">통계
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1041"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">서블릿
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1042"></A>
+<P CLASS="JMNormalText">3. 서블릿 목록에서 정지 해제할 서블릿 의 
+ <SPAN CLASS="JMGUIWidget">해제
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1043"></A>
+<P CLASS="JMNormalText">4. 정지 해제가 실행되고 
+ <SPAN CLASS="JMGUIWidget">정지
+ </SPAN>버튼이 활성화 된다.
+ </P>
+<A NAME="1044"></A>
+<P CLASS="JMHeading3"><A NAME="servlet_terminate"></A>15.3.6 서블릿 종료
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈 &gt; 
+ <A HREF="wm-15.htm#j2eemodule_ear">어플리케이션 모듈 
+ </A>&gt; 
+ <A HREF="wm-15.htm#webmodule">웹 모듈
+ </A>&gt; 
+ <A HREF="wm-15.htm#webmodule_stats">통계
+ </A>&gt; 
+ <A HREF="wm-15.htm#servlet_stats">서블릿
+ </A>&gt; 종료
+ </P>
+<A NAME="1045"></A>
+<P CLASS="JMNormalText">웹 모듈에서 서블릿 제거한다. 모든 파일들과 설정들은 그대로 보존 된다.
+ </P>
+<A NAME="1046"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">J2EE 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더에서 제어를 할 서블릿이 포함된 웹 모듈을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">통계
+ </SPAN>탭을 선택하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈 
+ </SPAN><SPAN CLASS="JMGUIWidget">이름의 
+ </SPAN><SPAN CLASS="JMGUIWidget">통계
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1047"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">서블릿
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1048"></A>
+<P CLASS="JMNormalText">3. 서블릿 목록에서 종료하고자 하는 서블릿의 
+ <SPAN CLASS="JMGUIWidget">종료
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1049"></A>
+<P CLASS="JMHeading3"><A NAME="servlet_restart"></A>15.3.7 서블릿 재시작
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈 &gt; 
+ <A HREF="wm-15.htm#j2eemodule_ear">어플리케이션 모듈 
+ </A>&gt; 
+ <A HREF="wm-15.htm#webmodule">웹 모듈
+ </A>&gt; 
+ <A HREF="wm-15.htm#webmodule_stats">통계
+ </A>&gt; 
+ <A HREF="wm-15.htm#servlet_stats">서블릿
+ </A>&gt; 재시작
+ </P>
+<A NAME="1050"></A>
+<P CLASS="JMNormalText">서블릿을 재시작 한다. 
+ </P>
+<A NAME="1051"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">J2EE 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더에서 설정을 볼 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>을클릭한 후 
+ <SPAN CLASS="JMGUIWidget">통계
+ </SPAN>탭을 선택하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈 
+ </SPAN><SPAN CLASS="JMGUIWidget">이름의 
+ </SPAN><SPAN CLASS="JMGUIWidget">정지
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1052"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">서블릿
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1053"></A>
+<P CLASS="JMNormalText">3. 서블릿 목록에서 재시작하고자 하는 서블릿 의 
+ <SPAN CLASS="JMGUIWidget">재시작
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1054"></A>
+<P CLASS="JMHeading2"><A NAME="ramodule"></A>15.4 리소스 아답터 모듈
+ </P>
+<A NAME="1055"></A>
+<P CLASS="JMHeading3"><A NAME="ramodule_conf"></A>15.4.1 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈 &gt; 
+ <A HREF="wm-15.htm#j2eemodule_ear">어플리케이션 모듈 
+ </A>&gt; 
+ <A HREF="wm-15.htm#ramodule">리소스 아답터 모듈
+ </A>&gt; 설정
+ </P>
+<A NAME="1056"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">J2EE 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더에서 설정을 볼 리소스 아답터 모듈을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1057"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 &ldquo;
+ <SPAN CLASS="JMFileNameReferenceChar">ra.xml
+ </SPAN>&rdquo;이나 &ldquo;
+ <SPAN CLASS="JMFileNameReferenceChar">jeus-connector-dd.xml
+ </SPAN>&rdquo;을 선택한다.
+ </P>
+<A NAME="1058"></A>
+<P CLASS="JMNormalText">3. 선택된 설정 파일의 내용이 출력된다.
+ </P>
+<A NAME="1059"></A>
+<P CLASS="JMHeading3"><A NAME="ramodule_stats"></A>15.4.2 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈 &gt; 
+ <A HREF="wm-15.htm#j2eemodule_ear">어플리케이션 모듈 
+ </A>&gt; 
+ <A HREF="wm-15.htm#ramodule">리소스 아답터 모듈
+ </A>&gt; 통계
+ </P>
+<A NAME="1060"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">J2EE 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더에서 모니터링할 리소스 아답터 모듈을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">통계
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1061"></A>
+<P CLASS="JMNormalText">2. 모니터링 정보가 출력된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="397" SRC="images/image166.jpg" HEIGHT="325"></P>
+
+<P CLASS="JMCaption">그림 145 리소스 아답터 모듈 모니터링
+ </P>
+<A NAME="1062"></A>
+<P CLASS="JMHeading2"><A NAME="camodule"></A>15.5 어플리케이션 클라이언트 모듈
+ </P>
+<A NAME="1063"></A>
+<P CLASS="JMHeading3"><A NAME="camodule_conf"></A>15.5.1 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈 &gt; 
+ <A HREF="wm-15.htm#j2eemodule_ear">어플리케이션 모듈 
+ </A>&gt; 
+ <A HREF="wm-15.htm#camodule">어플리케이션 클라이언트 모듈
+ </A>&gt; 설정
+ </P>
+<A NAME="1064"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">J2EE 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더에서 설정을 볼 어플리케이션 클라이언트모듈을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1065"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 &ldquo;
+ <SPAN CLASS="JMFileNameReferenceChar">application-client.xml
+ </SPAN><SPAN CLASS="JMFileNameReferenceChar">&rdquo;
+ </SPAN>이나 &ldquo;
+ <SPAN CLASS="JMFileNameReferenceChar">jeus-client-dd.xml
+ </SPAN>&rdquo;을 선택한다.
+ </P>
+<A NAME="1066"></A>
+<P CLASS="JMNormalText">3. 선택된 설정 파일의 내용이 출력된다.
+ </P>
+<!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

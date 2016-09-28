@@ -1,0 +1,597 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 19 JMS 리소스 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('19 JMS 리소스', 'wm-18.htm', 'wm-20.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left"><A NAME="jmsresource"></A>19 JMS 리소스
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMNormalText">JMS리소스에는 컨넥션 팩토리, 토픽/큐 데스터네이션, 클라이언트가 있다. 
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMNoteWarningChar">참고
+ </SPAN><SPAN CLASS="JMNoteWarningChar">:
+ </SPAN>JMS 리소스를 사용하기 위해서는 JMS 엔진이 엔진 컨테이너에 포함되어야 한다. 
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMHeading2">19.1 JMS 리소스 구성
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMNormalText">컨넥션 팩토리는클라이언트 어플리케이션 사용을 편리하게 하기 위해서 JEUS JMS 서버에서 연결을 만들고 저장하는데 사용이 된다.
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMNormalText">데스터네이션은 JMS 클라이언트 어플리케이션들이 메시지들을 보내고 받는 장소이다.
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMHeading3"><A NAME="cf_create"></A><A NAME="confact_create"></A>19.1.1 컨넥션 팩토리 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-19.htm#jmsresource">JMS 리소스
+ </A>&gt; 새 컨넥션 팩토리 생성
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">컨넥션
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">팩토리
+ </SPAN>폴더를 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">컨넥션 
+ </SPAN><SPAN CLASS="JMGUIWidget">팩토리 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성 
+ </SPAN>링크를 클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">컨넥션 
+ </SPAN><SPAN CLASS="JMGUIWidget">팩토리 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>을선택한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="270" SRC="images/image189.jpg" HEIGHT="332"></P>
+
+<P CLASS="JMCaption">그림 166 새 컨넥션 팩토리 생성 선택
+ </P>
+<A NAME="1008"></A>
+<P CLASS="JMNormalText">2. 기본 설정을 입력한다. 여기서는 컨텍션 팩토리 타입을 설정한다. 타입에는 총 6가지(nonxa, xa, queue, topic, xaqueue, 
+xatopic)가있다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image190.jpg" HEIGHT="354"></P>
+
+<P CLASS="JMCaption">그림 167 새 컨넥션 팩토리 생성 - 1단계 기본 설정
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMNormalText">3. 쓰레드 풀 설정을 한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="512" SRC="images/image191.jpg" HEIGHT="267"></P>
+
+<P CLASS="JMCaption">그림 168 새 컨넥션 팩토리 생성 -2단계 쓰레드 풀 설정
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMNormalText">4. 추가할 컨넥션 팩토리를 생성과 동시에 바인딩 하고 싶다면 바인딩 선택 항목을 선택한 후
+ <SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="512" SRC="images/image192.jpg" HEIGHT="124"></P>
+
+<P CLASS="JMCaption">그림 169 새 컨넥션 팩토리 생성 -3단계 생성
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMNormalText">5. 컨넥션 팩토리가 추가되면 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">컨넥션 
+ </SPAN><SPAN CLASS="JMGUIWidget">팩토리 
+ </SPAN>폴더에 컨넥션 팩토리의 아이콘(
+ <IMG BORDER="0" WIDTH="16" SRC="images/image193.gif" HEIGHT="16">)이 나타난다.
+ <A NAME="qcf_create"></A>.
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMHeading3"><A NAME="dest_create"></A>19.1.2 토픽 데스터네이션 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-19.htm#jmsresource">JMS 리소스
+ </A>&gt; 새토픽 데스터네이션 생성
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">데스터네이션
+ </SPAN>폴더를 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">토픽 
+ </SPAN><SPAN CLASS="JMGUIWidget">데스터네이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>링크를 클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">토픽 
+ </SPAN><SPAN CLASS="JMGUIWidget">데스터네이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1014"></A>
+<P CLASS="JMNormalText">2. 기본 설정을 입력한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image194.jpg" HEIGHT="389"></P>
+
+<P CLASS="JMCaption">그림 170 새 토픽 데스터네이션 생성 -1단계 기본 설정
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMNormalText">3. 추가할 토픽 데스터네이션 생성과 동시에 바인딩 하고 싶다면 바인딩 선택 항목을 선택한 후 
+ <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다. 
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image195.jpg" HEIGHT="129"></P>
+
+<P CLASS="JMCaption">그림 171 토픽 데스터네이션 생성 - 2단계 생성
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMNormalText">4. 토픽 데스터네이션이추가되면 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">데스터네이션
+ </SPAN>폴더에 토픽 데스터네이션 아이콘(
+ <IMG BORDER="0" WIDTH="19" SRC="images/image196.gif" HEIGHT="16">또는 
+ <IMG BORDER="0" WIDTH="19" SRC="images/image197.gif" HEIGHT="16">)이 나타난다.
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMHeading3"><A NAME="qdest_create"></A>19.1.3 큐 데스터네이션 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-19.htm#jmsresource">JMS 리소스
+ </A>&gt; 새 큐 데스터네이션 생성
+ </P>
+<A NAME="1018"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 데스터네이션 폴더를 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">큐 
+ </SPAN><SPAN CLASS="JMGUIWidget">데스터네이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성 
+ </SPAN>링크를 클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">큐 
+ </SPAN><SPAN CLASS="JMGUIWidget">데스터네이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">생성
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMNormalText">2. 기본 설정을 입력한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image198.jpg" HEIGHT="420"></P>
+
+<P CLASS="JMCaption">그림172 새 큐 데스터네이션 생성 -1단계 기본 설정
+ </P>
+<A NAME="1020"></A>
+<P CLASS="JMNormalText">3. 추가할 큐 데스터네이션의 생성과 동시에 바인딩 하고 싶다면 바인딩 선택 항목을 선택한 후 
+ <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다. 
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image199.jpg" HEIGHT="128"></P>
+
+<P CLASS="JMCaption">그림173 큐 데스터네이션 생성 - 2단계 생성
+ </P>
+<A NAME="1021"></A>
+<P CLASS="JMNormalText">4. 큐 데스터네이션이 추가되면 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">데스터네이션
+ </SPAN>폴더에 큐 데스터네이션의 아이콘(
+ <IMG BORDER="0" WIDTH="19" SRC="images/image200.gif" HEIGHT="16">또는 
+ <IMG BORDER="0" WIDTH="19" SRC="images/image201.gif" HEIGHT="16">)이나타난다.
+ </P>
+<A NAME="1022"></A>
+<P CLASS="JMHeading2"><A NAME="jmsresource_conf"></A>19.2 JMS 리소스 설정
+ </P>
+<A NAME="1023"></A>
+<P CLASS="JMHeading3"><A NAME="ct_conf_general"></A>19.2.1 컨넥션 팩토리기본 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-19.htm#jmsresource">JMS 리소스
+ </A>&gt; 
+ <A HREF="wm-19.htm#jmsresource_conf">설정
+ </A>&gt; 컨넥션 팩토리 기본 설정
+ </P>
+<A NAME="1024"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 변경하고자 하는 
+ <SPAN CLASS="JMGUIWidget">컨넥션 
+ </SPAN><SPAN CLASS="JMGUIWidget">팩토리
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1025"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">기본 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 선택한다. 
+ </P>
+<A NAME="1026"></A>
+<P CLASS="JMNormalText">3. 각 항목의 값을 입력한다. 설정된 값은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1027"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1028"></A>
+<P CLASS="JMHeading3"><A NAME="cf_conf_thrdpool"></A>19.2.2 컨넥션 팩토리 쓰레드 풀 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-19.htm#jmsresource">JMS 리소스
+ </A>&gt; 
+ <A HREF="wm-19.htm#jmsresource_conf">설정
+ </A>&gt; 컨넥션 팩토리 쓰레드 풀
+ </P>
+<A NAME="1029"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 변경하고자 하는 
+ <SPAN CLASS="JMGUIWidget">컨넥션 
+ </SPAN><SPAN CLASS="JMGUIWidget">팩토리
+ </SPAN>를클릭한다.
+ </P>
+<A NAME="1030"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">쓰레드 
+ </SPAN><SPAN CLASS="JMGUIWidget">풀
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1031"></A>
+<P CLASS="JMNormalText">3. 각 항목의 값을 입력한다. 설정된 값은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1032"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1033"></A>
+<P CLASS="JMHeading3"><A NAME="dest_conf_general"></A>19.2.3 데스터네이션 기본 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-19.htm#jmsresource">JMS 리소스
+ </A>&gt; 
+ <A HREF="wm-19.htm#jmsresource_conf">설정
+ </A>&gt; 데스터네이션 기본 설정
+ </P>
+<A NAME="1034"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 변경하고자 하는 
+ <SPAN CLASS="JMGUIWidget">데스터네이션
+ </SPAN>을클릭한다.
+ </P>
+<A NAME="1035"></A>
+<P CLASS="JMNormalText">2. 각 항목의 값을 입력한다. 설정된 값은 다음 부트시에 적용된다.
+ </P>
+<A NAME="1036"></A>
+<P CLASS="JMNormalText">3. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1037"></A>
+<P CLASS="JMHeading2"><A NAME="jmsresource_control"></A>19.3 JMS 리소스 제어
+ </P>
+<A NAME="1038"></A>
+<P CLASS="JMHeading3"><A NAME="cf_control_bind"></A>19.3.1 컨넥션팩토리 바인드
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-19.htm#jmsresource">JMS 리소스
+ </A>&gt; 
+ <A HREF="wm-19.htm#jmsresource_control">제어
+ </A>&gt; 컨넥션 팩토리 바인드
+ </P>
+<A NAME="1039"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 JMS의 
+ <SPAN CLASS="JMGUIWidget">컨넥션 
+ </SPAN><SPAN CLASS="JMGUIWidget">팩토리 
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1040"></A>
+<P CLASS="JMNormalText">2. 컨넥션 팩토리 목록에서 바인딩하고자 하는 컨넥션 팩토리를 선택한 후 
+ <SPAN CLASS="JMGUIWidget">바인드
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1041"></A>
+<P CLASS="JMNormalText">3. 컨넥션 팩토리목록에서 해당 컨넥션 팩토리의 
+ <SPAN CLASS="JMGUIWidget">바인드
+ </SPAN>버튼이 비활성화 되며 노드트리에는 활성화된 아이콘(
+ <IMG BORDER="0" WIDTH="16" SRC="images/image202.gif" HEIGHT="16">)이 나타난다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="520" SRC="images/image203.jpg" HEIGHT="146"></P>
+
+<P CLASS="JMCaption">그림 174 컨넥션 팩토리 바인드
+ </P>
+<A NAME="1042"></A>
+<P CLASS="JMHeading3"><A NAME="dest_control_bind"></A>19.3.2 데스터 네이션 바인드
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-19.htm#jmsresource">JMS 리소스
+ </A>&gt; 
+ <A HREF="wm-19.htm#jmsresource_control">제어
+ </A>&gt; 데스터네이션 바인드
+ </P>
+<A NAME="1043"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 JMS의 
+ <SPAN CLASS="JMGUIWidget">데스터네이션 
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1044"></A>
+<P CLASS="JMNormalText">2. 데스터네이션 목록에서 바인딩하고자 하는 데스터네이션을 선택한 후 
+ <SPAN CLASS="JMGUIWidget">바인드
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1045"></A>
+<P CLASS="JMNormalText">3. 데스터네이션 목록에서 해당 데스터네이션의 
+ <SPAN CLASS="JMGUIWidget">바인드 
+ </SPAN>버튼이 비활성화 되며 노드트리에는 활성화된 아이콘(
+ <IMG BORDER="0" WIDTH="18" SRC="images/image204.gif" HEIGHT="15">)이 나타난다.
+ </P>
+<A NAME="1046"></A>
+<P CLASS="JMHeading3"><A NAME="qdest_message_remove"></A>19.3.3 듀러블 서브스크라이버(Durable Subscriber) 에서 메시지 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-19.htm#jmsresource">JMS 리소스
+ </A>&gt; 
+ <A HREF="#tdest_create">토픽데스터네이션
+ </A>&gt; 듀러블 서브스크라이버 &gt; 메시지 삭제
+ </P>
+<A NAME="1047"></A>
+<P CLASS="JMNormalText" ALIGN="left">듀러블 서브스크라이버 메시지의 경우 각각의 듀러블 서브스크라이버의 메시들 정보(생성시간, 전송여부, 타입)에따라 관리자가 삭제할 수가 있다.
+ 
+</P>
+<A NAME="1048"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 메시지를 삭제하고자 하는 
+ <SPAN CLASS="JMGUIWidget">듀러블 
+ </SPAN><SPAN CLASS="JMGUIWidget">서브스크라이버
+ </SPAN>를가지는 
+ <SPAN CLASS="JMCaptionChar">토픽
+ </SPAN><SPAN CLASS="JMCaptionChar"></SPAN><SPAN CLASS="JMCaptionChar">데스터네이션
+ </SPAN>을클릭한다.
+ </P>
+<A NAME="1049"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">듀러블 
+ </SPAN><SPAN CLASS="JMGUIWidget">서브스크라이버
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1050"></A>
+<P CLASS="JMNormalText">3. 듀러블 서브스크라이버 목록에서 메시지를 삭제하고자 하는 듀러블 서브스크라이버를 선택한다.
+ </P>
+<A NAME="1051"></A>
+<P CLASS="JMNormalText">4. <SPAN CLASS="JMGUIWidget">메시지
+ </SPAN>탭을 클릭한다.
+ </P>
+<A NAME="1052"></A>
+<P CLASS="JMNormalText">5. 메시지 정보를 보고 삭제할 메시지를 선택한다.
+ </P>
+<A NAME="1053"></A>
+<P CLASS="JMNormalText">6. <SPAN CLASS="JMGUIWidget">삭제
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1054"></A>
+<P CLASS="JMHeading2">19.4 JMS 리소스 통계
+ </P>
+<A NAME="1055"></A>
+<P CLASS="JMHeading3"><A NAME="durablesubscriber_stats"></A>19.4.1 듀러블 서브스크라이버 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-19.htm#jmsresource">JMS 리소스
+ </A>&gt; 
+ <A HREF="#tdest_create">토픽데스터네이션
+ </A>&gt; 듀러블 서브스크라이버 &gt; 통계
+ </P>
+<A NAME="1056"></A>
+<P CLASS="JMNormalText">듀러블 서브스크립숀은 클라이언트에 메시지를 발송하는 것을 보장하는 토픽 데스터네이션에서 사용된다. 듀러블 서브스크립숀은 수신자가 연결을 종결할때 
+때, 비활성화된 것으로 간주하여 클라이언트가 비활성화된 동안 메시지를 저장해 두었다가, 활성화 상태일 때 듀러블 서브스크라이버에 메시지를 발송 한다.
+ 
+</P>
+<A NAME="1057"></A>
+<P CLASS="JMNormalText">듀러블 서브스크라이버는 토픽 데스터네이션일 경우만 사용된다.
+ </P>
+<A NAME="1058"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 모니터링 하고자 하는 
+ <SPAN CLASS="JMGUIWidget">토픽 
+ </SPAN><SPAN CLASS="JMGUIWidget">데스터네이션
+ </SPAN>을클릭한다.
+ </P>
+<A NAME="1059"></A>
+<P CLASS="JMNormalText">2. <SPAN CLASS="JMGUIWidget">듀러블 
+ </SPAN><SPAN CLASS="JMGUIWidget">서브스크라이버 
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1060"></A>
+<P CLASS="JMNormalText">3. 통계 정보가 출력된다.
+ </P>
+<A NAME="1061"></A>
+<P CLASS="JMHeading3"><A NAME="consumer_stats"></A>19.4.2 소비자(Cusumer) 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-19.htm#jmsresource">JMS 리소스
+ </A>&gt; 
+ <A HREF="wm-19.htm#dest_conf_general">데스터네이션
+ </A>&gt;소비자 &gt; 통계
+ </P>
+<A NAME="1062"></A>
+<P CLASS="JMNormalText">데스터네이션으로부터 메시지를 수신하는 클라이언트에 대한 정보를 보여준다.
+ </P>
+<A NAME="1063"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 모니터링 하고자 하는 
+ <SPAN CLASS="JMGUIWidget">데스터네이션
+ </SPAN>을클릭한다.
+ </P>
+<A NAME="1064"></A>
+<P CLASS="JMNormalText">2. <SPAN CLASS="JMGUIWidget">소비자 
+ </SPAN>탭을 클릭한다.
+ </P>
+<A NAME="1065"></A>
+<P CLASS="JMNormalText">3. 통계 정보가 출력된다.
+ </P>
+<A NAME="1066"></A>
+<P CLASS="JMHeading3"><A NAME="client_stats"></A>19.4.3 클라이언트 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-19.htm#jmsresource">JMS 리소스
+ </A>&gt; 클라이언트 &gt; 통계
+ </P>
+<A NAME="1067"></A>
+<P CLASS="JMNormalText">현재 JMS 엔진에 등록된 모든 클라이언트에 대한 정보를 볼 수 있다.
+ </P>
+<A NAME="1068"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">JMS
+ </SPAN>밑의 
+ <SPAN CLASS="JMGUIWidget">Client
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1069"></A>
+<P CLASS="JMNormalText">2. 통계 정보가 출력된다.
+ </P>
+<A NAME="1070"></A>
+<P CLASS="JMHeading3">19.4.4 클라이언트 연결 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-19.htm#jmsresource">JMS 리소스
+ </A>&gt; 클라이언트 &gt; 연결 &gt; 통계
+ </P>
+<A NAME="1071"></A>
+<P CLASS="JMNormalText">클라이언트에서 사용하는 연결에 관한 정보를 볼 수 있다.
+ </P>
+<A NAME="1072"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 JMS 밑의 
+ <SPAN CLASS="JMGUIWidget">클라이언트 
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1073"></A>
+<P CLASS="JMNormalText">2. 클라이언트 목록에서 
+ <SPAN CLASS="JMGUIWidget">클라이언트 
+ </SPAN><SPAN CLASS="JMGUIWidget">이름
+ </SPAN>을클릭한다.
+ </P>
+<A NAME="1074"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">연결
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1075"></A>
+<P CLASS="JMNormalText">4. 통계 정보가 출력된다.
+ </P>
+<A NAME="1076"></A>
+<P CLASS="JMHeading3">19.4.5 클라이언트 연결 세션 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-19.htm#jmsresource">JMS 리소스
+ </A>&gt; 클라이언트 &gt; 연결 &gt; 세션 &gt; 통계
+ </P>
+<A NAME="1077"></A>
+<P CLASS="JMNormalText">연결에서 사용하고 있는 세션정보를 볼수 있다.
+ </P>
+<A NAME="1078"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 JMS 밑의
+ <SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">클라이언트 
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1079"></A>
+<P CLASS="JMNormalText">2. 클라이언트목록에서 
+ <SPAN CLASS="JMGUIWidget">클라이언트 
+ </SPAN><SPAN CLASS="JMGUIWidget">이름
+ </SPAN>을클릭한다.
+ </P>
+<A NAME="1080"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">세션
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1081"></A>
+<P CLASS="JMNormalText">4. 세션목록에서 통계를 보고자하는 세션을 클릭한다.
+ </P>
+<A NAME="1082"></A>
+<P CLASS="JMNormalText">5. 통계 정보가 출력된다.
+ </P>
+<BR><!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

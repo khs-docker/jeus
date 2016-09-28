@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JavaMailResource.OverviewPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:URL Resource Service Configuration"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:new java.lang.String[]{pageName}"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:mail.title"/>
+        <binding name="useForm" value="ognl:false"/>
+    </component>
+
+    <component id="export_name_column" type="Insert">
+        <binding name="value" value="message:mail.export_name.label"/>
+    </component>
+
+    <component id="eachMailEntry" type="Foreach">
+        <binding name="source" value="ognl:mailEntries"/>
+        <binding name="value" value="ognl:mailView"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="export_name_value" type="Insert">
+        <binding name="value" value="ognl:mailView.exportName"/>
+    </component>
+
+    <component id="mailLink" type="ExternalLink">
+        <binding name="page" value="literal:JavaMailResource_Configuration"/>
+        <binding name="parameters" value="ognl:mailView.objectName.canonicalName"/>
+    </component>
+
+    <component id="deleteLink" type="DirectLink">
+        <binding name="listener" value="listener:onDelete"/>
+        <binding name="parameters" value="mailView.exportName"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.resource.delete.confirm', mailView.exportName)"/>
+    </component>
+
+    <component id="delete" type="Image">
+        <binding name="image" value="ognl:assets.delete"/>
+    </component>
+
+    <component id="mailForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="export_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.export_nameField"/>
+
+    </component>
+
+    <component id="export_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="mailEntry"/>
+        <binding name="elementName" value="literal:exportName"/>
+        <binding name="displayName" value="message:mail.export_name.label"/>
+        <binding name="validators" value="validators:required,$exportNameValidator"/>
+    </component>
+
+    <component id="properties" type="jeus:Field">
+        <binding name="field" value="ognl:components.propertiesField"/>
+        <binding name="label" value="message:mail.properties.label"/>
+    </component>
+
+    <component id="propertiesField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:mailEntry"/>
+        <binding name="elementName" value="literal:mailProperty"/>
+        <binding name="translator" value="bean:mailPropertyTranslator"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="add" type="Submit">
+        <binding name="value" value="message:common.label.add"/>
+        <binding name="listener" value="ognl:listeners.onAdd"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+    <bean name="exportNameValidator" class="jeus.tool.webadmin.page.JavaMailResource.ExportNameValidator">
+        <set name="mailEntries" value="mailEntryList"/>
+    </bean>
+
+    <bean name="mailPropertyTranslator" class="jeus.tool.webadmin.component.translator.MailPropertyTranslator"/>
+
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+    <property name="mailView"/>
+</page-specification>

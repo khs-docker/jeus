@@ -1,0 +1,925 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 13 웹 서버 엔진 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('13 웹 서버 엔진', 'wm-12.htm', 'wm-14.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left"><A NAME="wseng"></A>13 웹 서버 엔진
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMNormalText">웹 서버 엔진은 JEUS의 앞단에 위치하며, HTTP 클라이언트들과 JEUS 시스템을 연동시키기 위해서 서블릿 엔진과 연결되어 있다.
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMNormalText">웹 서버 엔진을 설정할 때 사용되는 웹 서버는 JEUS 웹 서버이다. JEUS 웹 서버는 WebtoB 웹 서버(표준 version)의 기능인 클러스터링 
+같은 일부기능이 제외된 웹 서버이다. 
+ </P>
+<A NAME="1003"></A>
+<P CLASS="JMNormalText">이번 장에서는 웹 서버 엔진의 구성 및 설정, 모니터링에 대해서 알아볼 것이다.
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMHeading2">13.1 웹 서버 엔진 구성
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMHeading3"><A NAME="wseng_create"></A>13.1.1 웹서버 엔진 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 새 웹 서버 엔진 추가
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">컨테이너
+ </SPAN>밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMNormalText">2. 하단의 
+ <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">추가
+ </SPAN>를클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="489" SRC="images/image127.jpg" HEIGHT="204"></P>
+
+<P CLASS="JMCaption">그림 109 웹서버 엔진 추가 링크
+ </P>
+<A NAME="1008"></A>
+<P CLASS="JMNormalText">3. 웹 서버 엔진생성 페이지가 나타나면 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>이름 필드에 추가하고자 웹 서버 엔진의 이름을 입력하고 기존에 같은 이름으로 존재하는 설정파일을 그대로 사용하고 싶을 경우는 
+ <SPAN CLASS="JMGUIWidget">기존 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정 
+ </SPAN><SPAN CLASS="JMGUIWidget">사용
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">생성
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="478" SRC="images/image128.gif" HEIGHT="239"></P>
+
+<P CLASS="JMCaption">그림 110 웹 서버 엔진 추가
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMNormalText">5. 웹 서버 엔진이 생성되면 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 웹 서버 엔진 아이콘(
+ <IMG BORDER="0" WIDTH="17" SRC="images/image129.gif" HEIGHT="16">)이 비활성 상태로 추가되며 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>페이지에 웹 서버 엔진이 추가되어 나타난다.
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMHeading3"><A NAME="wseng_remove"></A>13.1.2 웹서버 엔진 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 웹 서버 엔진 삭제
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">컨테이너
+ </SPAN>밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMNormalText">2. 엔진 목록에서 &ldquo;ws&rdquo; 타입의 엔진에서 
+ <A HREF="http://localhost:9744/webadmin/application?service=direct/1/JeusServiceEngine_Overview/deleteLink&amp;sp=Stmax_ws_engine1"><IMG BORDER="0" WIDTH="11" SRC="images/image033.gif" HEIGHT="13"></A>를 클릭한다.
+ </P>
+<A NAME="1014"></A>
+<P CLASS="JMNormalText">3. 웹 서버 엔진이 제거되면 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 웹 서버 엔진 아이콘이 삭제되고 엔진 개요 페이지의 엔진 목록에서도 삭제된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="493" SRC="images/image130.jpg" HEIGHT="212"></P>
+
+<P CLASS="JMCaption">그림 111 웹서버 엔진 삭제
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMHeading2"><A NAME="wseng_conf"></A>13.2 웹서버 엔진 설정
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMHeading3"><A NAME="wseng_conf_node"></A>13.2.1 노드 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng">웹 서버 엔진
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng_conf">설정
+ </A>&gt; 노드
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="261" SRC="images/image131.jpg" HEIGHT="286"></P>
+
+<P CLASS="JMCaption">그림 112 웹서버 엔진 설정 선택
+ </P>
+<A NAME="1018"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">노드
+ </SPAN><SPAN CLASS="JMGUIWidget">를
+ </SPAN>선택한다.
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMNormalText">3. 각 항목의 값을 입력한다. 변경된 항목은 다시 부트시에 적용된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="491" SRC="images/image132.jpg" HEIGHT="571"></P>
+
+<P CLASS="JMCaption">그림 113 웹서버 엔진 노드 설정
+ </P>
+<A NAME="1020"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1021"></A>
+<P CLASS="JMHeading3"><A NAME="wseng_conf_svrgrp"></A>13.2.2 서버 그룹 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng">웹 서버 엔진
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng_conf">설정
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng_conf_svrgrp">서버 그룹
+ </A>&gt; 새 서버 그룹 생성
+ </P>
+<A NAME="1022"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1023"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">그룹
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1024"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">그룹 
+ </SPAN><SPAN CLASS="JMGUIWidget">이름과
+ </SPAN>과
+ <SPAN CLASS="JMGUIWidget">서버 
+ </SPAN>타입을 입력한다. Server Type에는 HTML, CGI, SSI, PHP, JSV가있다. 서블릿 엔진과 연동하기위해서는 
+ <SPAN CLASS="JMEmphasizeChar">JSV
+ </SPAN>를선택해야한다.
+ </P>
+<A NAME="1025"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">추가
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMGUIWidget"><IMG BORDER="0" WIDTH="481" SRC="images/image133.jpg" HEIGHT="265"></SPAN></P>
+
+<P CLASS="JMCaption">그림 114 서버 그룹 추가
+ </P>
+<A NAME="1026"></A>
+<P CLASS="JMHeading3">13.2.3 서버 그룹 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng">웹 서버 엔진
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng_conf">설정
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng_conf_svrgrp">서버 그룹
+ </A>&gt; 서버 그룹 삭제
+ </P>
+<A NAME="1027"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1028"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">그룹
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1029"></A>
+<P CLASS="JMNormalText">3. 서버 그룹 목록에서 삭제하고자 하는 서버 그룹을 선택한 후 
+ <A HREF="http://localhost:9744/webadmin/application?service=direct/1/JeusServiceEngine_Overview/deleteLink&amp;sp=Stmax_jms_engine1"><IMG BORDER="0" WIDTH="11" SRC="images/image033.gif" HEIGHT="13"></A>을 클릭한다.
+ </P>
+<A NAME="1030"></A>
+<P CLASS="JMNormalText">4. 서버 그룹 목록에서 선택한 서버 그룹이 사라진다.
+ </P>
+<A NAME="1031"></A>
+<P CLASS="JMHeading3"><A NAME="wseng_conf_server"></A>13.2.4 서버 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng">웹 서버 엔진
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng_conf">설정
+ </A>&gt;
+ <A HREF="wm-13.htm#wseng_conf_server">서버
+ </A>&gt; 새서버 생성
+ </P>
+<A NAME="1032"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">설정 
+ </SPAN><SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1033"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">서버
+ </SPAN>를 선택한다.
+ </P>
+<A NAME="1034"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">이름
+ </SPAN>과 
+ <SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">그룹
+ </SPAN>을입력한다. 
+ </P>
+<A NAME="1035"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">추가
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMGUIWidget"><IMG BORDER="0" WIDTH="472" SRC="images/image134.jpg" HEIGHT="585"></SPAN></P>
+
+<P CLASS="JMCaption">그림 115 서버 추가
+ </P>
+<A NAME="1036"></A>
+<P CLASS="JMHeading3">13.2.5 서버 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng">웹 서버 엔진
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng_conf">설정
+ </A>&gt;
+ <A HREF="wm-13.htm#wseng_conf_server">서버
+ </A>&gt; 서버 삭제
+ </P>
+<A NAME="1037"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1038"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">서버
+ </SPAN>를 선택한다.
+ </P>
+<A NAME="1039"></A>
+<P CLASS="JMNormalText">3. 서버목록에서 삭제하고자 하는 서버를 선택한 후 
+ <A HREF="http://localhost:9744/webadmin/application?service=direct/1/JeusServiceWSEngine_Configuration/svg_deleteLink&amp;sp=Sphpg"><IMG BORDER="0" WIDTH="11" SRC="images/image033.gif" HEIGHT="13"></A>을 클릭한다.
+ </P>
+<A NAME="1040"></A>
+<P CLASS="JMNormalText">4. 서버목록에서 선택한 서버가 사라진다.
+ </P>
+<A NAME="1041"></A>
+<P CLASS="JMHeading3"><A NAME="wseng_conf_uri"></A>13.2.6 URI 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng">웹 서버 엔진
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng_conf">설정
+ </A>&gt;
+ <A HREF="wm-13.htm#wseng_conf_uri">URI
+ </A>&gt; 새 URI 생성
+ </P>
+<A NAME="1042"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1043"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">URI 
+ </SPAN>를 선택한다.
+ </P>
+<A NAME="1044"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">이름
+ </SPAN>과 
+ <SPAN CLASS="JMGUIWidget">정의
+ </SPAN><SPAN CLASS="JMGUIWidget">, 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">타입
+ </SPAN>을입력한다. 
+ </P>
+<A NAME="1045"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">추가
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMGUIWidget"><IMG BORDER="0" WIDTH="524" SRC="images/image135.jpg" HEIGHT="298"></SPAN></P>
+
+<P CLASS="JMCaption">그림 116 URI추가
+ </P>
+<A NAME="1046"></A>
+<P CLASS="JMHeading3">13.2.7 URI삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng">웹 서버 엔진
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng_conf">설정
+ </A>&gt;
+ <A HREF="wm-13.htm#wseng_conf_uri">URI
+ </A>&gt; 새 URI 생성
+ </P>
+<A NAME="1047"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1048"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">URI
+ </SPAN>를 선택한다.
+ </P>
+<A NAME="1049"></A>
+<P CLASS="JMNormalText">3. URI 목록에서 삭제하고자 하는 URI를 선택한 후 
+ <A HREF="http://localhost:9744/webadmin/application?service=direct/1/JeusServiceWSEngine_Configuration/svg_deleteLink&amp;sp=Sphpg"><IMG BORDER="0" WIDTH="11" SRC="images/image033.gif" HEIGHT="13"></A>을 클릭한다.
+ </P>
+<A NAME="1050"></A>
+<P CLASS="JMNormalText">4. URI목록에서 선택한 URI가 사라진다.
+ </P>
+<A NAME="1051"></A>
+<P CLASS="JMHeading3"><A NAME="wseng_conf_alias"></A>13.2.8 별칭(Alias) 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng">웹 서버 엔진
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng_conf">설정
+ </A>&gt;
+ <A HREF="wm-13.htm#wseng_conf_alias">별칭
+ </A>&gt; 새별칭 생성
+ </P>
+<A NAME="1052"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1053"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">별칭 
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1054"></A>
+<P CLASS="JMNormalText">3. 입력 항목들을 입력한다.
+ </P>
+<A NAME="1055"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">추가
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="524" SRC="images/image136.jpg" HEIGHT="293"></P>
+
+<P CLASS="JMCaption">그림 117 별칭 추가
+ </P>
+<A NAME="1056"></A>
+<P CLASS="JMHeading3">13.2.9 별칭 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng">웹 서버 엔진
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng_conf">설정
+ </A>&gt;
+ <A HREF="wm-13.htm#wseng_conf_alias">별칭
+ </A>&gt; 별칭 삭제
+ </P>
+<A NAME="1057"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1058"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">별칭
+ </SPAN>을 선택한다.
+ </P>
+<A NAME="1059"></A>
+<P CLASS="JMNormalText">3. 별칭목록에서 삭제하고자 하는 별칭을 선택한 후 
+ <A HREF="http://localhost:9744/webadmin/application?service=direct/1/JeusServiceWSEngine_Configuration/svg_deleteLink&amp;sp=Sphpg"><IMG BORDER="0" WIDTH="11" SRC="images/image033.gif" HEIGHT="13"></A>을 클릭한다.
+ </P>
+<A NAME="1060"></A>
+<P CLASS="JMNormalText">4. 별칭목록에서 선택한 별칭이 사라진다.
+ </P>
+<A NAME="1061"></A>
+<P CLASS="JMHeading3"><A NAME="wseng_conf_extension"></A>13.2.10 확장(Extension)추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng">웹 서버 엔진
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng_conf">설정
+ </A>&gt;
+ <A HREF="wm-13.htm#wseng_conf_extension">확장
+ </A>&gt; 새확장 추가
+ </P>
+<A NAME="1062"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">설정 
+ </SPAN><SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1063"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">확장
+ </SPAN>을 선택한다.
+ </P>
+<A NAME="1064"></A>
+<P CLASS="JMNormalText">3. 입력 항목들을 입력한다.
+ </P>
+<A NAME="1065"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">추가
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="493" SRC="images/image137.jpg" HEIGHT="270"></P>
+
+<P CLASS="JMCaption">그림 118 새확장 추가
+ </P>
+<A NAME="1066"></A>
+<P CLASS="JMHeading3">13.2.11 확장(Extension) 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng">웹 서버 엔진
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng_conf">설정
+ </A>&gt;
+ <A HREF="wm-13.htm#wseng_conf_extension">확장
+ </A>&gt; 확장 삭제
+ </P>
+<A NAME="1067"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1068"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">확장
+ </SPAN>을 선택한다.
+ </P>
+<A NAME="1069"></A>
+<P CLASS="JMNormalText">3. 확장목록에서 삭제하고자 하는 확장을 선택한 후 
+ <A HREF="http://localhost:9744/webadmin/application?service=direct/1/JeusServiceWSEngine_Configuration/svg_deleteLink&amp;sp=Sphpg"><IMG BORDER="0" WIDTH="11" SRC="images/image033.gif" HEIGHT="13"></A>을 클릭한다.
+ </P>
+<A NAME="1070"></A>
+<P CLASS="JMNormalText">4. 확장 목록에서 선택한 확장이 사라진다.
+ </P>
+<A NAME="1071"></A>
+<P CLASS="JMHeading3"><A NAME="wseng_conf_logging"></A>13.2.12 로깅 추가
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng">웹 서버 엔진
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng_conf">설정
+ </A>&gt;
+ <A HREF="wm-13.htm#wseng_conf_logging">로깅
+ </A>&gt; 새로깅 추가
+ </P>
+<A NAME="1072"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1073"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">로깅
+ </SPAN>을 선택한다.
+ </P>
+<A NAME="1074"></A>
+<P CLASS="JMNormalText">3. 입력 항목들을 입력한다.
+ </P>
+<A NAME="1075"></A>
+<P CLASS="JMNormalText">4. 입력이 완료되면 
+ <SPAN CLASS="JMGUIWidget">추가
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="509" SRC="images/image138.jpg" HEIGHT="332"></P>
+
+<P CLASS="JMCaption">그림 119 로깅 추가
+ </P>
+<A NAME="1076"></A>
+<P CLASS="JMHeading3">13.2.13 로깅 삭제
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng">웹 서버 엔진
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng_conf">설정
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng_conf_logging">로깅
+ </A>&gt; 로깅 삭제
+ </P>
+<A NAME="1077"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더 밑에 존재하는 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1078"></A>
+<P CLASS="JMNormalText">2. 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">로깅
+ </SPAN>을 선택한다.
+ </P>
+<A NAME="1079"></A>
+<P CLASS="JMNormalText">3. 로깅 목록에서 삭제하고자 하는 로깅을 선택한 후 
+ <A HREF="http://localhost:9744/webadmin/application?service=direct/1/JeusServiceWSEngine_Configuration/svg_deleteLink&amp;sp=Sphpg"><IMG BORDER="0" WIDTH="11" SRC="images/image033.gif" HEIGHT="13"></A>을 클릭한다.
+ </P>
+<A NAME="1080"></A>
+<P CLASS="JMNormalText">4. 로깅목록에서 선택한 로깅이 사라진다.
+ </P>
+<A NAME="1081"></A>
+<P CLASS="JMHeading2"><A NAME="wseng_control"></A>13.3 웹 서버 엔진 제어
+ </P>
+<A NAME="1082"></A>
+<P CLASS="JMHeading3"><A NAME="wseng_control_start"></A>13.3.1 시작
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng">웹 서버 엔진
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng_control">제어
+ </A>&gt; 시작
+ </P>
+<A NAME="1083"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1084"></A>
+<P CLASS="JMNormalText">2. 엔진 목록에서 타입이 &ldquo;ws&rdquo;인 엔진의 
+ <SPAN CLASS="JMGUIWidget">시작
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1085"></A>
+<P CLASS="JMNormalText">3. 잠시 후 웹 서버 엔진이 시작되고 노드 트리의 웹 서버 엔진의 아이콘(
+ <IMG BORDER="0" WIDTH="17" SRC="images/image139.gif" HEIGHT="16">)이 활성화 된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="465" SRC="images/image140.jpg" HEIGHT="229"></P>
+
+<P CLASS="JMCaption">그림 120 웹서버 엔진 시작
+ </P>
+<A NAME="1086"></A>
+<P CLASS="JMHeading3"><A NAME="wseng_control_down"></A>13.3.2 다운
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng">웹 서버 엔진
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng_control">제어
+ </A>&gt; 다운
+ </P>
+<A NAME="1087"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>폴더를 클릭한다.
+ </P>
+<A NAME="1088"></A>
+<P CLASS="JMNormalText">2. 엔진 목록에서 타입이 &ldquo;ws&rdquo;인 엔진의 
+ <SPAN CLASS="JMGUIWidget">다운
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1089"></A>
+<P CLASS="JMNormalText">3. 잠시 후 웹 서버 엔진이 다운되고 노드 트리의 웹 서버 엔진아이콘(
+ <IMG BORDER="0" WIDTH="17" SRC="images/image129.gif" HEIGHT="16">)이 비활성화 된다.
+ </P>
+<A NAME="1090"></A>
+<P CLASS="JMHeading2"><A NAME="wseng_stats"></A>13.4 웹 서버 엔진 통계
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; 
+ <A HREF="wm-07.htm#eng_overview">엔진 개요
+ </A>&gt; 
+ <A HREF="wm-13.htm#wseng">웹 서버 엔진
+ </A>&gt; 통계
+ </P>
+<A NAME="1091"></A>
+<P CLASS="JMNormalText">1. 노드트리에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진
+ </SPAN>을선택한 후 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">통계
+ </SPAN>를 선택하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">웹 
+ </SPAN><SPAN CLASS="JMGUIWidget">서버 
+ </SPAN><SPAN CLASS="JMGUIWidget">엔진 
+ </SPAN><SPAN CLASS="JMGUIWidget">통계
+ </SPAN>를선택한다.
+ </P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMGUIWidget"><IMG BORDER="0" WIDTH="276" SRC="images/image141.jpg" HEIGHT="299"></SPAN></P>
+
+<P CLASS="JMCaption">그림 121 웹서버 엔진 통계 선택
+ </P>
+<A NAME="1092"></A>
+<P CLASS="JMNormalText">2. 웹 서버 엔진의 모니터링 정보가 출력된다. 서버 상태에는 다음의 3가지가 존재한다.
+ </P>
+
+<DIV STYLE="width:100%;padding:0px;">
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" CLASS="normal">
+	<TR>
+		<TD CLASS="thead">상태 
+ </TD>
+		<TD CLASS="thead">설명 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">READY 
+ </TD>
+		<TD CLASS="normal">서버가 요청 대기중 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">NOTREADY 
+ </TD>
+		<TD CLASS="normal">서버가 요청을 대기 하지 않음 
+ </TD>
+	</TR>
+	<TR>
+		<TD CLASS="normal">FAIL 
+ </TD>
+		<TD CLASS="normal">서버 기동이 실패됨 
+ </TD>
+	</TR>
+</DIV>
+</TABLE>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="517" SRC="images/image142.jpg" HEIGHT="200"></P>
+
+<P CLASS="JMCaption">그림 122 웹서버 엔진 통계
+ </P>
+<BR><!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

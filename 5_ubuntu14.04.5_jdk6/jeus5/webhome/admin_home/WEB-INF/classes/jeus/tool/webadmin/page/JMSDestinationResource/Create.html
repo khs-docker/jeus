@@ -1,0 +1,78 @@
+<html jwcid="mainBorder" >
+    <span jwcid="choose">
+    <span jwcid="condHasNoJMSEngine">
+        <br/>
+        <span jwcid="no_jms_engine" class="message"/>
+    </span>
+    <span jwcid="condHasJMSEngine">
+    <span jwcid="wizTabPanel">
+        <span jwcid="general">
+            <form jwcid="generalForm">
+                <span jwcid="name">
+                    <input jwcid="nameField" style="width:400px;"/>
+                </span>
+                <span jwcid="general_blind">
+                    <span jwcid="broker_name">
+	                    <input jwcid="broker_nameField"/>
+	                </span>                
+                    <span jwcid="export_name">
+                        <input jwcid="export_nameField"/>
+                    </span>
+                    <span jwcid="condTopicDestination">
+                        <span jwcid="topic_cluster_name">
+                            <input jwcid="topic_cluster_nameField"/>
+                        </span>
+                    </span>
+                    <span jwcid="condQueueDestination">
+                        <span jwcid="multiple_receiver">
+                            <input jwcid="multiple_receiverField"/>
+                        </span>
+                        <span jwcid="queue_cluster_name">
+                            <input jwcid="queue_cluster_nameField"/>
+                        </span>
+                        <span jwcid="local_distribute">
+                            <input jwcid="local_distributeField"/>
+                        </span>
+                    </span>
+                    <span jwcid="consumer_limit">
+                        <input jwcid="consumer_limitField"/>
+                    </span>
+                    <span jwcid="limit">
+                        <input jwcid="limitField"/>
+                    </span>
+                    <span jwcid="high_mark">
+                        <input jwcid="high_markField"/>
+                    </span>
+                    <span jwcid="low_mark">
+                        <input jwcid="low_markField"/>
+                    </span>
+                    <span jwcid="max_pending_limit">
+                        <input jwcid="max_pending_limitField"/>
+                    </span>
+                    <span jwcid="resume_dispatch_factor">
+                        <input jwcid="resume_dispatch_factorField"/>
+                    </span>   
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="generalNext" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+        </span>
+  
+        <span jwcid="create">
+            <form jwcid="createForm">
+                <span jwcid="condHasRunningJMS">
+                    <span jwcid="bind_now">
+                        <input jwcid="bind_nowField"/>
+                    </span>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="createOk" class="form_button" style="width:100px; float:right;"/>
+                    <input jwcid="createPrevious" class="form_button" style="width:100px; float:left;"/>
+                </div>
+            </form>
+        </span>
+    </span>
+    </span>
+    </span>
+</html>

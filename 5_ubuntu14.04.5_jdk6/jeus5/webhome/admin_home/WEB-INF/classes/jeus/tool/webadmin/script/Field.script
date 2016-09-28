@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+<input-symbol key="title"/>
+<set key="titleBar" expression="title == null ? 'Element Document' : title"/>
+<body>
+<unique>
+dojo.require("dojo.widget.FloatingPane");
+
+function showElementDocument(href){
+	var panel = dojo.widget.byId("ElementDocument");
+	if(panel == undefined){
+		var node = document.createElement("div");
+		node.style.position ="absolute";
+		node.style.width = "600px";
+		node.style.height = "480px";
+		node.style.left = "250px";
+		node.style.top = "150px";
+		node.style.display = "none";
+		
+		document.body.appendChild(node);
+		var params = {
+			id : "ElementDocument",
+			title : "${titleBar}",
+			constrainToContainer : false,
+			hasShadow : false,
+			resizable : false ,
+			windowState : "normal",
+			displayCloseAction : true,
+			displayMinimizeAction : false,
+			displayMaximizeAction : false
+		}
+		
+		panel = dojo.widget.createWidget("FloatingPane", params, node);
+		panel.closeWindow = panel.minimizeWindow;
+	}
+	panel.setUrl(href);
+	panel.show();
+
+	return false;
+}
+</unique>
+</body>
+</script>

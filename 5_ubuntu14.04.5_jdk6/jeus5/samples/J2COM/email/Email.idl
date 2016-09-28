@@ -1,0 +1,39 @@
+// Email.idl : IDL source for Email.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (Email.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(2434BC8E-56C9-4B47-9884-703300A3AB27),
+		dual,
+		helpstring("InewMail Interface"),
+		pointer_default(unique)
+	]
+	interface InewMail : IDispatch
+	{
+		[id(1), helpstring("method mail")] HRESULT mail([in] BSTR company, [in] BSTR name);
+	};
+
+[
+	uuid(F757774E-C679-4673-916A-73DD9EED1FE3),
+	version(1.0),
+	helpstring("Email 1.0 Type Library")
+]
+library EMAILLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(16B17112-D1A1-4971-93CC-5D42D77F95F3),
+		helpstring("newMail Class")
+	]
+	coclass newMail
+	{
+		[default] interface InewMail;
+	};
+};

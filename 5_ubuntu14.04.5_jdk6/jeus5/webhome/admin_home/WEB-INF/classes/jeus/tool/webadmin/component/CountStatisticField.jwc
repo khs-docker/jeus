@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC 
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="org.apache.tapestry.BaseComponent" allow-body="no" allow-informal-parameters="yes">
+	<parameter name="label" required="yes"/>
+
+	<parameter name="description"/>
+
+    <parameter name="count" required="yes"/>
+
+    <parameter name="unit"/>
+
+    <parameter name="renderUnderline" default-value="false"/>
+
+    <component id="wrapper" type="Field" inherit-informal-parameters="yes">
+        <binding name="label" value="label"/>
+        <binding name="descriptioin" value="description"/>
+        <binding name="renderBottom" value="false"/>
+        <binding name="renderUnderline" value="renderUnderline"/>
+        <binding name="unit" value="unit"/>
+    </component>
+
+    <component id="wrapped" type="Insert">
+        <binding name="value" value="count == null ? 0 : count.count"/>
+    </component>
+
+</component-specification>

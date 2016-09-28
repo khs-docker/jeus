@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+<xs:schema
+        xmlns="http://www.tmaxsoft.com/xml/ns/jeus"
+        targetNamespace="http://www.tmaxsoft.com/xml/ns/jeus"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified"
+        version="5.0">
+
+    <xs:include schemaLocation="jeus-common.xsd"/>
+
+    <xs:element name="policies" type="PoliciesType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[
+                        [Description]: JEUS의 권한 체크와 관련된 Policy들을 정의한다.
+            ]]></xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="PoliciesType">
+        <xs:sequence>
+            <xs:element name="policy" type="PolicyType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Description]: JEUS의 Policy를 정의한다.
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PolicyType">
+        <xs:sequence>
+            <xs:element name="role-permissions" type="RolePermissionsType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Description]: 해당 Policy에 대한 principal-role 매핑들을 정의한다.
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="resource-permissions" type="ResourcePermissionsType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Description]: 해당 Policy에 대한 role-resource 매핑들을 정의한다.
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="RolePermissionsType">
+        <xs:sequence>
+            <xs:element name="role-permission" type="rolePermissionType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Description]: 해당 Policy에 대한 principal-role 매핑을 정의한다.
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ResourcePermissionsType">
+        <xs:sequence>
+            <xs:element name="context-id" type="xs:token" minOccurs="0" maxOccurs="1" default="default">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Description]: role-resource 매핑이 적용 되는 context id(보통 이 태그는 사용되지 않는다).
+                        [Value Description]: context id 값
+                        [Example]: <context-id>MyContext</context-id>
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="resource-permission" type="ResourcePermissionType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Description]: 해당 Policy에 대한 role-resource 매핑을 정의한다.
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ResourcePermissionType">
+        <xs:sequence>
+            <xs:element name="role" type="xs:token" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Description]: 해당 Resource에 매핑되는 Role
+                        [Value Description]: Role명
+                        [Example]: <role>Administrator</role>
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="resource" type="xs:token" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Description]: Role을 맵핑하는 Resource.
+                        [Value Description]: Resource명.
+                        [Example]: <resource>jeus.server.*</resource>
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="actions" type="xs:token" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Description]: 선택적인 값으로 resource permission클래스의 생성자에 넘길 actions 값
+                        [Value Description]: resource permission class에 넘길 actions 데이터 값.
+                        [Example]: <actions>boot,down</actions>
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="classname" type="xs:token" minOccurs="0" maxOccurs="1" default="jeus.security.resource.ResourcePermission">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Description]: java.security.Permission을 상속한 Java 클래스명.
+                                       이 클래스는 resource permission에 사용된다.
+                        [Value Description]: Java 클래스명
+                        [Example]: <classname>jeus.security.resource.TimeConstrainedResourcePermission</classname>
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="excluded" minOccurs="0" maxOccurs="1" type="emptyType">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Description]: 만약 이 태그가 있으면, 해당 Resource는 배제된다(누구도 해당 Resource에 접근할 수 없다).
+                        [Value Description]: 어떤  값도 설정되지 않는다. empty  타입.
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="unchecked" minOccurs="0" maxOccurs="1" type="emptyType">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[
+                        [Description]: 만약 이 태그가 있으면, 해당 Resource는 체크되지 않는다(누구나 이 Resource에 접근할 수 있다).
+                        [Value Description]: 어떤 값도 설정되지 않는다. empty  타입.
+                    ]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

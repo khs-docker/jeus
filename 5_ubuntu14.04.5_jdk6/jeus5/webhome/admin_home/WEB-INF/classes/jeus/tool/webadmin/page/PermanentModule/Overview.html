@@ -1,0 +1,12 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="applicationForm">
+           	<span jwcid="@If" condition="ognl:!application.equals('')">
+                <pre><span jwcid="applicationContent"/></pre>
+			</span>
+			<span jwcid="@Else">
+				<span jwcid="@Insert" value="message:pmd.not.exist.application" class="field_label"/>
+			</span>	 
+        </form>
+    </span>
+</html>

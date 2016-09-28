@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="Shift-JIS"?>
+<xs:schema 
+    attributeFormDefault="unqualified" 
+    elementFormDefault="qualified" 
+    targetNamespace="http://www.tmaxsoft.com/xml/ns/jeus" version="5.0" 
+    xmlns="http://www.tmaxsoft.com/xml/ns/jeus" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">      
+    <xs:include schemaLocation="jeus-common.xsd"/>      
+    <xs:element name="ejb-engine" type="ejb-engineType">         
+        <xs:annotation>             
+            <xs:documentation><![CDATA[
+                [Description]: これは、EJBMain.xmlでEJB絵印人設定部分の最上位 elementです。
+                このelementとその下位elementは正確に1つのEJBエンジンに対応します。
+                [Example]: &lt;ejb-engine> ... &lt;/ejb-engine>
+            ]]>
+            </xs:documentation>         
+        </xs:annotation>     
+    </xs:element>      
+    <xs:complexType name="ejb-engineType">         
+        <xs:sequence>             
+            <xs:element default="300000" minOccurs="0" name="resolution" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                      [Description]: EJBの非活性かとGarbage Collectionは、この elementで定義されて時間間隔に試みされます。
+                      EJBエンジンでサービス中のあるBeanがクライアントからの要求が無い場合、EJBエンジンはこのBeanを非活性化します。この作業の実行周期を設定します。
+                      [Value Description]: millisecond
+                      [Example]: &lt;resolution>100000&lt;/resolution>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element default="false" minOccurs="0" name="enable-user-notify" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                      [Description]: この特性が活性化されたらEJB exceptionは JEUSMain.xmlのエンジンコンテナーに定義されたuser logに記録されます。
+                      [Example]: &lt;enable-user-notify>true&lt;/enable-user-notify>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element minOccurs="0" name="active-management" type="active-managementType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                      [Description]: EJBエンジンをモニタリングしてエラーを処理し、その結果をメールを通じて管理者に知らせます。
+                      [Value Description]: millisecond
+                      [Example]: &lt;resolution>100000&lt;/resolution>
+                      [Performace Recommendation]:一般的にユーザはEJBMain.xmlの active-managementよりはServletエンジンに含まれた
+                      active-managementを使用します。（ JEUSウェブサーバガイドを参照する)
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <default-element>true</default-element>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element minOccurs="0" name="invoke-http" type="invoke-httpType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                      [Description]: この機能を設定すると、クライアントの方のEJB stub と遠隔地のRMIの実行環境は
+            HTTP-RMIのリクエストで通信します。これは、ファイヤーウォールを超えてEJBにアクセスするときに
+            使用されます。このモード( HTTP呼び出しモード)を使用するときにクライアントがEJB stubでメソッドを呼び出すと、
+            HTTP-RMIリクエストはこれをウェブコンテナーに送るウェブサーバに伝送されます。
+           その後、RMI Handler Servlet (jeus. rmi.http.ServletHandler )へ送られ、ここで
+            Handler ServletはリクエストからHTTPヘッダーを除去してからこれをRMIの実行環境に伝送します。
+            このelementが設定される前にjeus.rmi.http. ServletHandler Servletは必ず
+            JEUSウェブコンテナーにDeployされている必要があります。（ JEUSウェブガイドを参照する )
+            [Performance Recommendation]: HTTP呼び出しモードを使用することで若干の性能向上が期待できます。
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element minOccurs="0" name="timer-service" type="timer-serviceType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                      [Description]: このEJBエンジンが提供するTimer serviceに対する設定を行います。Timer Serviceを
+                      persistence管理するためには、この設定が必要です。
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <default-element>true</default-element>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="active-managementType">         
+        <xs:sequence>             
+            <xs:element default="-1" minOccurs="0" name="max-blocked-thread" type="off-intType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                      [Description]: このelementは、ブロックされたスレッドの最大数を設定します。この設定値よりEJBにブロックされたスレッドの数が多い場合は、                      コンテナーをリスタートさせます。小さい値が設定されていると、EJBエンジンがかなり頻繁にリスタートされることもあるため注意を要します。
+                      [Value Description]: スレッド数
+                      [Defined Value]:
+                        [-1]:
+                        この値は、ブロックされたスレッド数に対する制限が無いことを意味します。すなわち、このように設定するとEJBエンジンは、絶対にブロックされたスレッドのためにリスタートされません。
+                      [Example]: &lt;max-blocked-thread>200&lt;/max-blocked-thread>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element default="300000" minOccurs="0" name="max-idle-time" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                      [Description]: このelementは、EJBスレッドがブロックされたと見なされる状態を定義します。このelementの値は、時間を意味し、
+                      もしあるスレッドがこの時間を超過するようにadがこの時間を超過するようにidle状態を保つと、このスレッドはブロックされたと見なされます。
+                      [Value Description]: millisecond
+                      [Example]: &lt;max-idle-time>180000&lt;/max-idle-time>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element minOccurs="0" name="email-notify" type="smtp-senderType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                      [Description]: active managementや或いは他の非正常的な状態によってエンジンがリスタートされると、このelementで定義された箇所にメールを送って状況を知らせます。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>          
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="timer-serviceType">         
+        <xs:sequence>             
+            <xs:element default="7000" minOccurs="0" name="min-delivery-interval" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: この値は、特定タイマーが生成された後にタイマーイベントが発生するまでの最初時間です。
+                    [Value Description]: millisecondの単位
+                    [Performance Recommendation]: この値が小さいほどEJBエンジンに付加を与えるため、
+                    タイマーのインターバルに合わせて大きく設定します。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="1" minOccurs="0" name="max-redelivery-count" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: この値は、timer callback関数でexceptionが発生したり、transactionがrollbackされ、
+                    再伝送が発生する状況で最大再伝送の回数を示します。
+                    [Value Description]: 再伝送回数
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="4000" minOccurs="0" name="redelivery-interval" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: この値は、再伝送する状況が発生してから再伝送するまでの時間です。
+                    [Value Description]: millisecondの単位
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="thread-pool" type="poolingType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Timer serviceがtimeout() methodを実行するときに使用するthread poolに対する設定です。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="durable-setting" type="durable-settingType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Timer serviceがタイマーをpersistenceに管理するのに必要な設定です。
+                    この設定をしないと、タイマーがpersistenceに管理できません。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="durable-settingType">         
+        <xs:sequence>             
+            <xs:element name="db-vendor" type="db-vendorType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Timer serviceが永続性のために使用するDBのvendor の設定です。値は
+                    jeus-ejb-dd.xmlの&lt;schema-info>の&lt;db-vendor>と同一です。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="data-source-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Timer serviceがpersistenceのために使用するDBの datasourceのexport nameの設定です。
+                    値はjeus-ejb-dd.xmlの&lt;schema-info>の&lt;data-source-name>と同一です。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="engine-type" type="engineType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Timer serviceがDBにアクセスする方式を設定します。
+                    値はjeus-ejb-dd.xmlの&lt;persistence-optimize>の&lt;engine-type>と同一です。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="Jeus_Timer" minOccurs="0" name="table-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Timer serviceが使用するDBのテーブルの名前を設定します。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>  
+</xs:schema>

@@ -1,0 +1,33 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="statisticsForm"/>
+        <form jwcid="totalSessionStatistics">
+            <span jwcid="@Insert" value="message:cgs.valid_session.label" class="field_label"/>
+            <table border="1" cellpadding="3" style="width:550px;" jwcid="validSessionTable"/>
+            <br/>
+            <span jwcid="@Insert" value="message:cgs.invalid_session.label" class="field_label"/>
+            <table border="1" cellpadding="3" style="width:350px;" jwcid="invalidSessionTable"/>
+        </form>
+        <br/>
+        <form jwcid="localSessionStatistics">
+            <table border="1" cellpadding="3" style="width:150px;" jwcid="localSessionTable"/>
+        </form>
+        <br/>
+        <form jwcid="moduleSection">
+            <table border="1" cellpadding="3" style="width:550px;" jwcid="moduleTable"/>
+            <span jwcid="cgs_webmodule_name_labelColumnValue@Block">
+                <a jwcid="webmoduleLink"><span jwcid="webmoduleName"/></a>
+            </span>
+            <span jwcid="cgs_webmodule_actions_labelColumnValue@Block">
+                <a jwcid="reloadLink"></a><input jwcid="reload" class="form_button" onclick="window.location.href=previousSibling.href;"/>
+                <a jwcid="suspendLink"></a><input jwcid="suspend" class="form_button" onclick="window.location.href=previousSibling.href;"/>
+                <a jwcid="resumeLink"></a><input jwcid="resume" class="form_button" onclick="window.location.href=previousSibling.href;"/>
+                <a jwcid="terminateLink"></a><input jwcid="terminate" class="form_button" onclick="window.location.href=previousSibling.href;"/>
+                <a jwcid="restartLink"></a><input jwcid="restart" class="form_button" onclick="window.location.href=previousSibling.href;"/>
+            </span>
+            <div class="form_button_layer">
+                <input jwcid="refreshButton" type="button" class="form_button" onclick="window.location.reload();"/>
+            </div>
+        </form>
+    </span>
+</html>

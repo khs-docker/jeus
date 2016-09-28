@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JMSDestinationResource.MessagesPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Queue Destination Messages"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@getJMSDestinationResourceNames(objectName)"/>
+    </component>
+
+    <component id="messagesForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:dnc.messages.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="refreshButton" type="Any">
+        <binding name="element" value="literal:input"/>
+        <binding name="value" value="message:common.label.refresh"/>
+    </component>
+
+    <component id="removeButton" type="Any">
+        <binding name="element" value="literal:input"/>
+        <binding name="value" value="message:common.label.remove"/>
+    </component>
+
+    <component id="removeLink" type="DirectLink">
+        <binding name="listener" value="ognl:listeners.onRemove"/>
+    </component>
+
+    <component id="messagesTable" type="jeus:CheckboxTable">
+        <binding name="source" value="ognl:messageInfos"/>
+        <binding name="columns" value="literal:dnc.messages.id.label:messageId, dnc.messages.created_time.label:createdTime, dnc.messages.delivered.label:delivered, dnc.messages.type.label:messageType"/>
+        <binding name="row" value="ognl:currentView"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+        <binding name="convertor" value="ognl:beans.convertor"/>
+    </component>
+
+    <bean name="convertor" class="jeus.tool.webadmin.page.JMSDestinationResource.MessagePrimaryKeyConvertor"/>
+    <property name="currentView"/>
+</page-specification>

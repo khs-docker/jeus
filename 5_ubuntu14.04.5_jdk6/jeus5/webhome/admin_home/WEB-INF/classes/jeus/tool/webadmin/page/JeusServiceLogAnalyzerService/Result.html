@@ -1,0 +1,28 @@
+<html jwcid="popupMainBorder">
+    <span jwcid="condHasTask">
+        <form jwcid="resultForm">
+            <input jwcid="hiddenResult"/>
+            <input jwcid="hiddenTask"/>
+            <input jwcid="hiddenPageSize"/>
+            <tr>
+                <td align="left">
+                    <input jwcid="resultField"/>
+                </td>
+                <td align="right">
+                <!--<span jwcid="condHasRows">-->
+                    <span jwcid="pageSize" class="field_label"/> : <input jwcid="pageSizeField"/>&nbsp;
+                    <span jwcid="totalRows" class="field_label"/> : <span jwcid="totalRowsValue"/>&nbsp;
+                    <span jwcid="condResult">
+                        <a jwcid="download"><img jwcid="excel" align="absmiddle"/></a>
+                    </span>
+                <!--</span>-->
+                </td>
+            </tr>
+        </form>
+        <tr jwcid="condHasResult">
+            <td colspan="2">
+                <table border="1" cellpadding="3" width="100%" jwcid="resultTable" style="margin-top:5px;"/>
+            </td>
+        </tr>
+    </span>
+</html>

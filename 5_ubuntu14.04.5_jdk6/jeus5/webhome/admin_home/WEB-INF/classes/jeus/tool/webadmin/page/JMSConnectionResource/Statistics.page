@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JMSConnectionResource.StatisticsPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JMSConnectionResource Statistics"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@JMSCONNECTIONRESOURCE_NAMES"/>
+    </component>
+
+    <component id="refreshButton" type="Any">
+        <binding name="element" value="literal:input"/>
+        <binding name="value" value="message:common.label.refresh"/>
+    </component>
+
+    <component id="form" type="jeus:JEUSForm">
+        <binding name="title" value="message:cnr.statistics.title"/>
+        
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="name" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:cnr.statistics.name.label"/>
+        <binding name="value" value="ognl:connection.name"/>
+    </component>
+
+    <component id="transactional" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:cnr.statistics.transactional.label"/>
+        <binding name="value" value="ognl:connection.transactional"/>
+    </component>
+</page-specification>

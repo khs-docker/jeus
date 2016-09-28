@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: JAXBTextArea.jwc,v 1.3 2004/05/27 12:59:49 sebong Exp $ -->
+<!DOCTYPE component-specification PUBLIC 
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="jeus.tool.webadmin.component.JAXBTextArea" allow-body="no">
+
+  <parameter name="disabled">
+      <description>
+      If true, then the disabled attribute will be written on render, and the
+      TextArea will not update its value parameter when the form is submitted.
+      </description>
+  </parameter>
+
+  <parameter name="elementName" required="yes"/>
+  <parameter name="parentElement" required="yes"/>
+  <parameter name="checkDefault"  default-value="true"/>
+
+  <parameter name="MBeanAttributeName" default-value="elementName"/>
+  <inject property="XMLSchemaResourceSource" type="state" object="XMLSchemaResourceSource"/>
+
+  <parameter name="translator" default-value="translator:string"/>
+  <parameter name="validators"/>
+  <parameter name="id" property="idParameter" default-value="id"/>
+  		
+  <reserved-parameter name="name"/>
+
+  <inject property="validatableFieldSupport" object="service:tapestry.form.ValidatableFieldSupport"/>
+  <inject property="translatedFieldSupport" object="service:tapestry.form.TranslatedFieldSupport"/>
+
+</component-specification>

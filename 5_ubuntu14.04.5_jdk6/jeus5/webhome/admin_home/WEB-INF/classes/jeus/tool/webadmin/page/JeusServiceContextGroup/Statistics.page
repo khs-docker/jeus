@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceContextGroup.StatisticsPage">
+    <meta key="alternative.page.name" value="JeusServiceContextGroup_Configuration"/>
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:WebModule Statistics"/>
+
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@getCONTEXT_GROUP_NAMES(objectName)"/>
+    </component>
+
+    <component id="statisticsForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgs.webmodule.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="totalSessionStatistics" type="jeus:JEUSForm">
+        <binding name="title" value="message:wms.webmodule.total_session_statistics.label"/>
+        <binding name="subform" value="ognl:true"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="validSessionTable" type="jeus:JEUSTable">
+        <binding name="source" value="statsListOnlyOne"/>
+        <binding name="columns" value="literal:!cgs.all_session_size.label:allSessionSize.count, !cgs.active_session_size.label:activeSessionSize.count, !cgs.passivate_session_size.label:passivateSessionSize.count"/>
+        <binding name="row" value="ognl:currentStats"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+        <binding name="showCustomize" value="false"/>
+    </component>
+
+    <component id="invalidSessionTable" type="jeus:JEUSTable">
+        <binding name="source" value="statsListOnlyOne"/>
+        <binding name="columns" value="literal:!cgs.expired_session_size.label:expiredSessionsSize.count, !cgs.invalidated_session_size.label:invalidatedSessionsSize.count"/>
+        <binding name="row" value="ognl:currentStats"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+        <binding name="showCustomize" value="false"/>
+    </component>
+
+    <component id="localSessionStatistics" type="jeus:JEUSForm">
+        <binding name="title" value="message:wms.webmodule.local_session_statistics.label"/>
+        <binding name="subform" value="ognl:true"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="localSessionTable" type="jeus:JEUSTable">
+        <binding name="source" value="statsListOnlyOne"/>
+        <binding name="columns" value="literal:!cgs.local_session_size.label:localSessionSize.count"/>
+        <binding name="row" value="ognl:currentStats"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+        <binding name="showCustomize" value="false"/>
+    </component>
+
+    <component id="moduleSection" type="jeus:JEUSForm">
+        <binding name="title" value="message:wms.webmodule.title"/>
+        <binding name="subform" value="ognl:true"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="moduleTable" type="jeus:JEUSTable">
+        <binding name="source" value="ognl:statsList"/>
+        <binding name="columns" value="literal:!cgs_webmodule_name_label:name, !cgs.request_count.label:requestCount.count, !cgs.processing_time.label:processingTime.count, !cgs_webmodule_actions_label"/>
+        <binding name="row" value="ognl:currentStats"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+        <binding name="showCustomize" value="false"/>
+    </component>
+
+    <component id="webmoduleLink" type="ExternalLink">
+        <binding name="page" value="literal:WebModule_Statistics"/>
+        <binding name="parameters" value="ognl:currentStats.objectName.canonicalName"/>
+    </component>
+
+    <component id="webmoduleName" type="Insert">
+        <binding name="value" value="ognl:currentStats.name"/>
+    </component>
+
+    <component id="reloadLink" type="DirectLink">
+        <binding name="listener" value="ognl:listeners.onContextControl"/>
+        <binding name="parameters" value="ognl:{'reloadContext', currentStats.objectName}"/>
+    </component>
+
+    <component id="reload" type="Button">
+        <binding name="label" value="message:wms.reload.label"/>
+        <binding name="disabled" value="ognl:currentStats.terminated == true or currentStats.objectName.getKeyProperty('J2EEApplication') != 'null'"/>
+    </component>
+
+    <component id="suspendLink" type="DirectLink">
+        <binding name="listener" value="ognl:listeners.onContextControl"/>
+        <binding name="parameters" value="ognl:{'suspendContext',currentStats.objectName}"/>
+    </component>
+
+    <component id="suspend" type="Button">
+        <binding name="label" value="message:wms.suspend.label"/>
+        <binding name="disabled" value="ognl:currentStats.state != @jeus.management.j2ee.StateManageable@RUNNING or currentStats.terminated == true or currentStats.objectName.getKeyProperty('J2EEApplication') != 'null'"/>
+    </component>
+
+    <component id="resumeLink" type="DirectLink">
+        <binding name="listener" value="ognl:listeners.onContextControl"/>
+        <binding name="parameters" value="ognl:{'resumeContext',currentStats.objectName}"/>
+    </component>
+
+    <component id="resume" type="Button">
+        <binding name="label" value="message:wms.resume.label"/>
+        <binding name="disabled" value="ognl:currentStats.state != @jeus.management.j2ee.StateManageable@STOPPED or currentStats.terminated == true or currentStats.objectName.getKeyProperty('J2EEApplication') != 'null'"/>
+    </component>
+
+    <component id="terminateLink" type="DirectLink">
+        <binding name="listener" value="ognl:listeners.onContextControl"/>
+        <binding name="parameters" value="ognl:{'terminateContext',currentStats.objectName}"/>
+    </component>
+
+    <component id="terminate" type="Button">
+        <binding name="label" value="message:wms.terminate.label"/>
+        <binding name="disabled" value="ognl:currentStats.runtimeDeploy == true or currentStats.terminated == true or currentStats.objectName.getKeyProperty('J2EEApplication') != 'null'"/>
+    </component>
+
+    <component id="restartLink" type="DirectLink">
+        <binding name="listener" value="ognl:listeners.onContextControl"/>
+        <binding name="parameters" value="ognl:{'restartContext',currentStats.objectName}"/>
+    </component>
+
+    <component id="restart" type="Button">
+        <binding name="label" value="message:wms.restart.label"/>
+        <binding name="disabled" value="ognl:currentStats.runtimeDeploy == true  or currentStats.objectName.getKeyProperty('J2EEApplication') != 'null'"/>
+    </component>
+
+    <component id="refreshButton" type="Submit">
+        <binding name="value" value="message:common.label.refresh"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+    <property name="currentStats"/>
+
+</page-specification>

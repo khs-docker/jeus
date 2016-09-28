@@ -1,0 +1,185 @@
+<html jwcid="mainBorder">
+    <span jwcid="condNotXML">
+        <div style="margin:0px;width:100%;text-align:right;">
+            <img jwcid="link_icon" align="absmiddle"/>&nbsp;<a jwcid="jnditreeLink" class="link"><span jwcid="jnditree" /></a>
+        </div>
+    </span>
+    <span jwcid="tabPanel">
+        <span jwcid="general">
+            <form jwcid="generalForm">
+                <span jwcid="name"/>
+                <span jwcid="general_blind">
+                    <span jwcid="id">
+                        <input jwcid="idField"/>
+                    </span>
+                    <span jwcid="baseport">
+                        <input jwcid="baseportField"/>
+                    </span>
+                    <span jwcid="command_option">
+                        <input jwcid="command_optionField" style="width:98%" rows="6"/>
+                    </span>
+                    <span jwcid="user_classpath">
+                        <input jwcid="user_classpathField" style="width:98%" rows="6"/>
+                    </span>
+                    <span jwcid="note">
+                        <input jwcid="noteField" style="width:98%; font-size:12px;" rows="3"/>
+                    </span>
+                </span>
+				<div class="form_button_layer">
+	                <input jwcid="general_ok" class="form_button"/>
+	                <input jwcid="general_cancel" class="form_button"/>
+	                <input jwcid="general_reset" class="form_button"/>
+                </div>
+            </form>
+        </span>
+        <span jwcid="system_logging">
+            <form jwcid="system_loggingForm">
+                <table class="table">
+                    <tr>
+                        <th><span jwcid="logging_table_name_column"/></th>
+                        <th><span jwcid="logging_table_level_column"/></th>
+                        <th width="20">&nbsp;</th>
+                    </tr>
+                    <tr jwcid="eachLogging">
+                        <td>
+                            <a jwcid="loggingLink">
+                                <span jwcid="logging_table_name"/>
+                            </a>
+                        </td>
+                        <!--<td><span jwcid="accounts_value"/></td>-->
+                        <td><span jwcid="logging_table_level"/></td>
+                        <td align="center">
+                            <a jwcid="logging_table_deleteLink">
+                                <img jwcid="logging_table_delete" alt="delete"/>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+				<div class="form_button_layer">
+					<a jwcid="create_loggerLink" class="create_link"><span jwcid="create_logger_label"/></a>
+                </div>
+
+            </form>
+        </span>
+        <span jwcid="user_logging">
+            <form jwcid="user_loggingForm">
+                <span jwcid="user_logging_panel"/>
+            </form>
+            <form jwcid="user_handlerForm">
+                <span jwcid="user_handler_panel"/>
+            </form>
+        </span>
+        <span jwcid="interop">
+            <form jwcid="interopForm">
+                <span jwcid="use_OTS">
+                    <input jwcid="use_OTSField"/>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="interop_ok" class="form_button"/>
+                    <input jwcid="interop_cancel" class="form_button"/>
+                    <input jwcid="interop_reset" class="form_button"/>
+                </div>
+            </form>
+        </span>
+
+        <span jwcid="lifecycle">
+            <form jwcid="lifecycleInvocationForm">
+                <span jwcid="methods_script">
+                    <span jwcid="classname">
+                        <input jwcid="classnameField" style="width:99%"/>
+                    </span>
+                    <span jwcid="methods">
+                        <input jwcid="methodsField" style="width:99%" size="6"/>
+                    </span>
+                </span>
+                <div class="form_button_layer">
+                        <input jwcid="lifecycle_create" class="form_button" style="width:100px;"/>
+                        <input jwcid="lifecycle_modify" class="form_button" style="width:100px;"/>
+                        <input jwcid="lifecycle_remove" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+            <span jwcid="condMethodCreateModify">
+                <form jwcid="lifecycle_createModifyForm">
+                    <input jwcid="hiddenMethodCreate"/>
+                    <input jwcid="hiddenMethodModify"/>
+                    <span jwcid="condMethodCreate">
+                        <span jwcid="create_classname">
+                            <span jwcid="condHasLifecycles">
+                            <input jwcid="create_classname_selectionField" style="width:400px;display: block;" onchange="create_classnameField.value = this.options[selectedIndex].value"/>
+                            </span>
+                            <input jwcid="create_classnameField" style="width:400px;"/>
+                        </span>
+                    </span>
+                    <span jwcid="condMethodModify">
+                        <input jwcid="hiddenMethod"/>
+                        <span jwcid="modify_classname">
+                            <input jwcid="modify_classnameField"/>
+                        </span>
+                    </span>
+                    <span jwcid="methodName">
+                        <input jwcid="methodNameField" style="width:400px;"/>
+                    </span>
+                    <span jwcid="signature">
+                        <input jwcid="signatureField" style="width:400px;" rows="6"/>
+                    </span>
+                    <span jwcid="invocationType">
+                        <input jwcid="invocationTypeField"/>
+                    </span>
+                </form>         				
+            </span>
+        </span>
+
+        <span jwcid="res_ref">
+            <form jwcid="res_refForm"/>
+            <table class="table">
+                <tr>
+                    <th><span jwcid="ref_name_column"/></th>
+                    <th><span jwcid="export_name_column"/></th>
+                    <th width="20">&nbsp;</th>
+                </tr>
+                <tr jwcid="eachJndiInfo">
+                    <td><a jwcid="refLink"><span jwcid="ref_name_value"/></a></td>
+                    <td><span jwcid="export_name_value"/></td>
+                    <td align="center"><a jwcid="deleteLink"><img jwcid="delete" border="0"/></a></td>
+                </tr>
+            </table>
+            <br/>
+            <form jwcid="jndi_infoForm">
+                <span jwcid="ref_name">
+                    <input jwcid="ref_nameField" style="width:400px;"/>
+                </span>
+                <span jwcid="export_name">
+                    <input jwcid="export_nameField" style="width:400px;"/>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="add" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+        </span>
+
+        <span jwcid="miscellaneous">
+            <form jwcid="miscellaneousForm">
+                <span jwcid="start_on_boot">
+                    <input jwcid="start_on_bootField"/>
+                </span>
+                <span jwcid="sequential_start">
+                    <input jwcid="sequential_startField"/>
+                </span>
+                <span jwcid="invocation_manager_action">
+                    <input jwcid="invocation_manager_actionField"/>
+                </span>
+                <span jwcid="use_MEJB">
+                    <input jwcid="use_MEJBField"/>
+                </span>
+                <span jwcid="application_path">
+                    <input jwcid="application_pathField" style="width:98%" rows="6"/>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="miscellaneous_ok" class="form_button"/>
+                    <input jwcid="miscellaneous_cancel" class="form_button"/>
+                    <input jwcid="miscellaneous_reset" class="form_button"/>
+                </div>
+            </form>
+        </span>
+    </span>
+</html>

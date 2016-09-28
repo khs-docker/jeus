@@ -1,0 +1,206 @@
+<html jwcid="mainBorder">
+    <span jwcid="condFound">
+        <span jwcid="tabPanel">
+            <!-- general, storage, thread_pool, cluster, backup, primary -->
+            <span jwcid="notFound">
+                &nbsp;
+            </span>
+            <span jwcid="properties">
+                <form jwcid="propertiesForm">
+                <!-- always required -->
+                <span jwcid="vendor"/>
+                <span jwcid="data_source_class_name"/>
+                <span jwcid="data_source_type"/>
+                <span jwcid="export_name"/>
+                    <span jwcid="condDatabaseName">
+                        <span jwcid="database_name">
+                            <input jwcid="database_nameField"/>
+                        </span>
+                    </span>
+                    <span jwcid="condRequiredDatabaseName">
+                        <span jwcid="required_database_name">
+                            <input jwcid="required_database_nameField"/>
+                        </span>
+                    </span>
+                    <span jwcid="condDataSourceName">
+                        <span jwcid="data_source_name">
+                            <input jwcid="data_source_nameField"/>
+                        </span>
+                    </span>
+                    <span jwcid="condRequiredDataSourceName">
+                        <span jwcid="required_data_source_name">
+                            <input jwcid="required_data_source_nameField"/>
+                        </span>
+                    </span>
+                    <span jwcid="condServiceName">
+                        <span jwcid="service_name">
+                            <input jwcid="service_nameField"/>
+                        </span>
+                    </span>
+                    <span jwcid="condRequiredServiceName">
+                        <span jwcid="required_service_name">
+                            <input jwcid="required_service_nameField"/>
+                        </span>
+                    </span>
+                    <span jwcid="condNetworkProtocol">
+                        <span jwcid="network_protocol">
+                            <input jwcid="network_protocolField"/>
+                        </span>
+                    </span>
+                    <span jwcid="condRequiredNetworkProtocol">
+                        <span jwcid="required_network_protocol">
+                            <input jwcid="required_network_protocolField"/>
+                        </span>
+                    </span>
+                    <span jwcid="condPortNumber">
+                        <span jwcid="port_number">
+                            <input jwcid="port_numberField"/>
+                        </span>
+                    </span>
+                    <span jwcid="condRequiredPortNumber">
+                        <span jwcid="required_port_number">
+                            <input jwcid="required_port_numberField"/>
+                        </span>
+                    </span>
+
+                    <span jwcid="condServerName">
+                        <span jwcid="server_name">
+                            <input jwcid="server_nameField"/>
+                        </span>
+                    </span>
+                    <span jwcid="condRequiredServerName">
+                        <span jwcid="required_server_name">
+                            <input jwcid="required_server_nameField"/>
+                        </span>
+                    </span>
+                    <span jwcid="query_timeout">
+                        <input jwcid="query_timeoutField"/>
+                    </span>
+                    <span jwcid="condUser">
+                        <span jwcid="user">
+                            <input jwcid="userField"/>
+                        </span>
+                    </span>
+                    <span jwcid="condRequiredUser">
+                        <span jwcid="required_user">
+                            <input jwcid="required_userField"/>
+                        </span>
+                    </span>
+                    <span jwcid="condPassword">
+                        <span jwcid="password">
+                            <input jwcid="algorithmField"/>
+                            <input jwcid="passwordField"/>
+                        </span>
+                    </span>
+                    <span jwcid="condRequiredPassword">
+                        <span jwcid="required_password">
+                            <input jwcid="required_algorithmField"/>
+                            <!--<input jwcid="cipher_algorithmField"/>-->
+                            <input jwcid="required_passwordField"/>
+                        </span>
+                    </span>
+                <!--
+                                    <span jwcid="condOtherVendor">
+                                        <span jwcid="other_cipher_algorithm">
+                                            <input jwcid="other_cipher_algorithmField"/>
+                                        </span>
+                                    </span>
+                -->
+                    <span jwcid="condDriverType">
+                        <span jwcid="driver_type">
+                            <input jwcid="driver_typeField"/>
+                        </span>
+                    </span>
+                    <span jwcid="condRequiredDriverType">
+                        <span jwcid="required_driver_type">
+                            <input jwcid="required_driver_typeField"/>
+                        </span>
+                    </span>
+                    <span jwcid="additional_properties">
+                        <input jwcid="additional_propertiesField" style="width:98%;" rows="4"/>
+                    </span>
+                    <span jwcid="description">
+                        <input jwcid="descriptionField" style="width:98%;"/>
+                    </span>
+                </form>
+            </span>
+            <span jwcid="pool">
+                <form jwcid="poolForm">
+                    <span jwcid="condPool">
+                        <span jwcid="poolingSection"/>
+                        <span jwcid="min">
+                            <input jwcid="minField"/>
+                        </span>
+                        <span jwcid="max">
+                            <input jwcid="maxField"/>
+                        </span>
+                        <span jwcid="step">
+                            <input jwcid="stepField"/>
+                        </span>
+                        <span jwcid="period">
+                            <input jwcid="periodField"/>
+                        </span>
+
+                        <span jwcid="pool_blind">
+
+                            <span jwcid="condXA">
+                                <span jwcid="delegation_datasource">
+                                    <input jwcid="delegation_datasourceField"/>
+                                </span>
+                            </span>
+
+                            <span jwcid="max_use_count">
+                                <input jwcid="max_use_countField"/>
+                            </span>
+
+                            <span jwcid="condDba">
+                                <span jwcid="delegation_dba">
+                                    <input jwcid="delegation_dbaField"/>
+                                </span>
+                                <span jwcid="dba_timeout">
+                                    <input jwcid="dba_timeoutField"/>
+                                </span>
+                            </span>
+
+                            <span jwcid="check_query">
+                                <input jwcid="check_queryField" style="width:90%"/>
+                            </span>
+
+                            <span jwcid="check_query_period">
+                                <input jwcid="check_query_periodField"/>
+                            </span>
+
+                            <span jwcid="check_query_class">
+                                <input jwcid="check_query_classField" style="width:90%"/>
+                            </span>
+
+                            <span jwcid="stmt_caching_size">
+                                <input jwcid="stmt_caching_sizeField"/>
+                            </span>
+
+                            <span jwcid="stmt_fetch_size">
+                                <input jwcid="stmt_fetch_sizeField"/>
+                            </span>
+
+                            <span jwcid="wait_free_connectionSection"/>
+                            <span jwcid="enable_wait">
+                                <input jwcid="enable_waitField"/>
+                            </span>
+
+                            <span jwcid="wait_time">
+                                <input jwcid="wait_timeField"/>
+                            </span>
+                        </span>
+                    </span>
+                </form>
+            </span>
+        </span>
+    </span>
+    <span jwcid="condNotFound">
+        <span jwcid="tabPanel2">
+            <form jwcid="dsForm">
+            </form>
+            <span jwcid="no_datasource" class="field_label"/>
+        </span>
+    </span>
+</html>

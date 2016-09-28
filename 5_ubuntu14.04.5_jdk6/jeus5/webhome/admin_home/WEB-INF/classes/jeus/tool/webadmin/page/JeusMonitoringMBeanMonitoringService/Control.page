@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusMonitoringMBeanMonitoringService.ControlPage">
+
+	<inject property="userAgent" type="state" object="UserAgent"/>
+    <inject property="webadminVisit" type="state" object="visit"/>
+    <inject property="externalService" object="engine-service:external"/>
+
+    <component id="dynamite" type="jeus:Dynamite"/>
+
+    <component id="popupMainBorder" type="jeus:PopupMainBorder">
+        <binding name="title" value="message:la.handler"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="new java.lang.String[]{pageName}"/>
+    </component>
+
+    <component id="controlForm" type="jeus:JEUSForm">
+        <binding name="title" value="ognl:messages.format('mmo.configure.mbean.info.detail', name)"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="name" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.configure.mbean.name"/>
+        <binding name="value" value="name"/>
+    </component>
+
+    <component id="mbeanName" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.overview.mbean.objectname"/>
+        <binding name="value" value="mBeanName"/>
+    </component>
+
+    <component id="description" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.configure.mbean.description"/>
+        <binding name="value" value="description"/>
+    </component>
+
+    <component id="attributeType" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.configure.mbean.attributeType"/>
+        <binding name="value" value="type"/>
+    </component>
+
+    <component id="type" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.configure.mbean.type"/>
+        <binding name="value" value="type"/>
+    </component>
+
+    <component id="access" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.configure.mbean.access"/>
+        <binding name="value" value="access"/>
+    </component>
+
+    <component id="impact" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.configure.mbean.impact"/>
+        <binding name="value" value="impact"/>
+    </component>
+
+    <component id="condAttribute" type="If">
+        <binding name="condition" value="attributeCheck"/>
+    </component>
+
+    <component id="condNotAttribute" type="If">
+        <binding name="condition" value="!attributeCheck"/>
+    </component>
+
+    <component id="condParameter" type="If">
+        <binding name="condition" value="parameterCheck"/>
+    </component>
+
+    <component id="value" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.configure.mbean.value"/>
+        <binding name="value" value="value"/>
+    </component>
+
+    <component id="attribute_value" type="jeus:Field">
+        <binding name="field" value="components.attribute_valueField"/>
+    </component>
+
+    <component id="attribute_valueField" type="jeus:DojoTextField">
+        <binding name="value" value="attributeValue"/>
+        <binding name="displayName" value="message:mmo.configure.mbean.value"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="condReadWrite" type="If">
+        <binding name="condition" value="readWriteCheck"/>
+    </component>
+
+    <component id="condNotReadWrite" type="If">
+        <binding name="condition" value="!readWriteCheck"/>
+    </component>
+
+    <component id="attributeButton" type="Submit">
+        <binding name="value" value="message:mmo.control.mbean.execute"/>
+        <binding name="listener" value="ognl:listeners.onAttribute"/>
+    </component>
+
+    <component id="parameterSectioin" type="jeus:FormSection">
+        <binding name="title" value="message:mmo.configure.mbean.parameter"/>
+    </component>
+
+    <component id="parameterTable" type="jeus:JEUSTable">
+        <binding name="source" value="ognl:parameterList"/>
+        <binding name="columns" value="literal:!mmo.configure.mbean.name:name, !mmo.control.mbean.paramType:type, !mmo_configure_mbean_value:value"/>
+        <binding name="row" value="ognl:currentParameterStats"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+        <binding name="showCustomize" value="false"/>
+    </component>
+
+    <component id="parameter_value" type="jeus:ErrorField">
+        <binding name="field" value="components.parameter_valueField"/>
+    </component>
+
+    <component id="parameter_valueField" type="jeus:DojoTextField">
+        <binding name="value" value="currentParameterStats.value"/>
+        <binding name="displayName" value="literal:"/>
+    </component>
+
+    <component id="condReturn" type="If">
+        <binding name="condition" value="returnState"/>
+    </component>
+
+    <component id="returnSectioin" type="jeus:FormSection">
+        <binding name="title" value="message:mmo.configure.mbean.return"/>
+    </component>
+
+    <component id="returnForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:mmo.configure.mbean.return"/>
+        <binding name="subform" value="ognl:true"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="return" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:mmo.configure.mbean.result"/>
+        <binding name="value" value="return"/>
+    </component>
+
+    <component id="goBackButton" type="Submit">
+        <binding name="value" value="message:common.label.back"/>
+        <binding name="listener" value="ognl:listeners.onGoBack"/>
+    </component>
+
+    <component id="mbeanCallButton" type="Submit">
+        <binding name="value" value="message:mmo.control.mbean.execute"/>
+        <binding name="listener" value="ognl:listeners.onMBeanCall"/>
+    </component>
+
+    <component id="condReadWrite2" copy-of="condReadWrite"/>
+    <component id="condNotAttribute2" copy-of="condNotAttribute"/>
+
+    <property name="currentParameterStats"/>
+
+    <property name="attributeCheck"/>
+    <property name="readWriteCheck"/>
+    <property name="parameterCheck"/>
+
+    <property name="attributeValue"/>
+    <property name="returnValue"/>
+
+    <asset name="form_css" path="context:/css/form.css"/>
+
+</page-specification>

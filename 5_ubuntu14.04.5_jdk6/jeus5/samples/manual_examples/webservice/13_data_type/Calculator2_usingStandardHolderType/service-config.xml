@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-services-config xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+	<service>
+		<service-name>Calculator2Service</service-name>
+		<target-namespace>urn:Calculator2Service</target-namespace>
+		<output-wsdl-file>Calculator2Service.wsdl</output-wsdl-file>
+		<output-jaxrpc-mapping-file>Calculator2Service-mapping.xml</output-jaxrpc-mapping-file>
+		<style>wrapped</style>
+		<interface>
+			<endpoint-interface-class>calc.CalculatorIF</endpoint-interface-class>			
+		</interface>
+	</service>
+</web-services-config>

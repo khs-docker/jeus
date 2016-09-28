@@ -1,0 +1,501 @@
+<HTML>
+<HEAD>
+	<TITLE>JEUS 웹관리자 안내서 - 14 배치 </TITLE>
+	<LINK HREF="../styles/jm.css" REL="stylesheet" TYPE="text/css">
+	<META CONTENT="text/html; charset=EUC-KR" HTTP-EQUIV="Content-Type">
+<SCRIPT LANGUAGE="javascript">			parent.setProperties('14 배치', 'wm-13.htm', 'wm-15.htm');
+		 </SCRIPT></HEAD>
+<BODY>
+<!------------------------------ START OF HEADER ------------------------------>
+<!------------------------------   END OF HEADER ------------------------------>
+<A NAME="1000"></A>
+<P CLASS="JMHeading1" ALIGN="left"><A NAME="deploy"></A>14 배치
+ </P>
+<A NAME="1001"></A>
+<P CLASS="JMNormalText">배치는 어플리케이션의 서비스들을 시작하기 위해서 JEUS에 모듈 파일을 올리고 제어하는 모든 동작을 말한다.
+ </P>
+<A NAME="1002"></A>
+<P CLASS="JMNormalText">JEUS에서 제공하는 배치에는 
+ <SPAN CLASS="JMEmphasizeChar">표준
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">배치
+ </SPAN><SPAN CLASS="JMEmphasizeChar">, 
+ </SPAN><SPAN CLASS="JMEmphasizeChar">영구적인
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">배치와
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">자동
+ </SPAN><SPAN CLASS="JMEmphasizeChar"></SPAN><SPAN CLASS="JMEmphasizeChar">배치
+ </SPAN>3가지가 있다. </P>
+<A NAME="1003"></A>
+<P CLASS="JMNormalText">표준 배치는 운영중인 서버에서 배치를 하는 것으로 일반적으로 배치라 함은 표준를 말한다. 
+ </P>
+<A NAME="1004"></A>
+<P CLASS="JMNormalText">영구 디플로이는 서버가 부트되기 전에
+ <SPAN CLASS="JMFileNameReferenceChar">JEUSMain.xml
+ </SPAN>에미리 등록해 두었다가 부트되면서 배치를 하는 것으로 서비스 내용에 변경이 없을 시에 이 배치방법을 사용하면 서버가 부트할 때 마다 새로이 배치를 
+할 필요가 없다.
+ </P>
+<A NAME="1005"></A>
+<P CLASS="JMNormalText">자동 배치는 JEUS가 지정된 디렉토리나 파일을 주기적으로 검사하면서 만일 새로운 어플리케이션 모듈 파일이 생기거나 갱신되었을 경우 자동으로 배치를 
+하는 것을 말한다. 이 배치를 사용하면 모듈 파일이 바뀔 때 마다 배치를 하는 번거로움이 없어 진다. 
+ </P>
+<A NAME="1006"></A>
+<P CLASS="JMHeading2">14.1 표준 배치
+ </P>
+<A NAME="1007"></A>
+<P CLASS="JMNormalText">일반적으로 배치라 함은 표준 배치를 말한다. JEUS 5은 배치 API를 구현하였으며 표준 배치는 이 API를 이용하여 동작한다. 
+ </P>
+<A NAME="1008"></A>
+<P CLASS="JMNormalText">배치 명령에는 분배, 시작, 정지, 제거(Distribute, Start, Stop, Un배치)가 있으며 보통 배치라 함은 배치와 시작을 같이 실행하는 
+경우를 말한다. JEUS의 배치는 기본적으로 소스 자동 분배 방식으로 동작하며 2 단계 배치를 선택적으로 사용할 수 있다. 2단계 배치 옵션을 사용하면 
+배치 대상중 하나라도 배치가 실패하면 모든 배치가 실패되는 선택 사항으로 모든 서버에서 동시에 서비스를 시작할 필요가 있을 때 유용하다.
+ </P>
+<A NAME="1009"></A>
+<P CLASS="JMHeading3"><A NAME="deploy_module"></A>14.1.1 J2EE 어플리케이션 모듈 배치
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈
+ </P>
+<A NAME="1010"></A>
+<P CLASS="JMNormalText">배치가 가능한 모듈의 종류에는 EAR, JAR, WAR, RAR, CAR 5가지 종류가 있다. 모든 모듈에 대해서 배치 방법은 동일하며 모듈 선택사항에 
+있어서 몇가지 차이가 있으므로 이것에 대해서는 해당 단계를 설명할 때 자세히 알아 볼 것이다.
+ </P>
+<A NAME="1011"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">J2EE 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더를 클릭하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈 
+ </SPAN><SPAN CLASS="JMGUIWidget">배치
+ </SPAN>를선택한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="297" SRC="images/image143.jpg" HEIGHT="300"></P>
+
+<P CLASS="JMCaption">그림 123 새 어플리케이션 모듈 배치 선택
+ </P>
+<A NAME="1012"></A>
+<P CLASS="JMNormalText">2. 배치할 모듈을 선택한다. 어플리 케이션 모듈파일을 선택하는 방법에는 3가지가 있다.
+ </P>
+<A NAME="1013"></A>
+<P CLASS="JMNormalText">&middot; 모듈 파일 선택: 어플리케이션 모듈 파일이 JEUS 서버의JEUS_HOME/webhome/app_home에 존재할 경우 사용한다.
+ 
+</P>
+<A NAME="1014"></A>
+<P CLASS="JMNormalText">&middot; 파일 업로드: 클라이언트에 존재하는 모듈 파일을 서버에 전송하는 경우 사용한다. 어플리케이션 홈 선택 사항에서는 파일을 업로드할 
+어플리케이션 홈 디렉토리를 선택한다.
+ </P>
+<A NAME="1015"></A>
+<P CLASS="JMNormalText">&middot; 절대 경로: 모듈 파일이 서버측에 존재하나 JEUS_HOME/webhome/app_home에존재 하지 않을 경우 사용한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="506" SRC="images/image144.jpg" HEIGHT="297"></P>
+
+<P CLASS="JMCaption">그림 124 어플리케이션 모듈 배치 - 1단계 모듈 선택
+ </P>
+<A NAME="1016"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMGUIWidget">배치 
+ </SPAN><SPAN CLASS="JMGUIWidget">대상 
+ </SPAN><SPAN CLASS="JMGUIWidget">탐색기
+ </SPAN>에서 모듈을 배치할 대상들을 선택한다. 최소한 하나이상의 대상이 선택되어야 한다. 만일 모듈이 파일이 아닌 디렉토리인 경우(EXPLODED_COMPONENT나 
+EXPLODED_EAR)라면 모듈파일을 소유하고 있는 엔진 컨테이너만이 대상이 될 수 있다. 또한 WAR를포함하는EAR이거나WAR 모듈일 경우는 
+컨텍스트 그룹을선택적으로 입력할 수 있게 되어있다. 보통 클러스터링 내의 컨텍스트 그룹은 거의 대부분 같은 이름을 사용하나 만일 이름이 다를 경우라면 
+이곳에 컨텍스트 그룹이름을 입력해 주어야 한다. 그렇지 않으면 배치가 실패한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="495" SRC="images/image145.jpg" HEIGHT="240"></P>
+
+<P CLASS="JMCaption">그림 125어플리케이션 모듈 배치 - 2단계 대상 선택
+ </P>
+<A NAME="1017"></A>
+<P CLASS="JMNormalText">3. 각 어플리케이션 모듈별로 선택사항을 입력한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="495" SRC="images/image146.jpg" HEIGHT="377"></P>
+
+<P CLASS="JMCaption">그림 126 J2EE 어플리케이션 모듈 배치 - 3단계 컴포넌트별 선택사항 입력
+ </P>
+<A NAME="1018"></A>
+<P CLASS="JMNormalText">4. 일반적인 선택 사항을 입력한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="483" SRC="images/image147.jpg" HEIGHT="512"></P>
+
+<P CLASS="JMCaption">그림 127J2EE 어플리케이션 모듈 배치 - 3단계 일반 선택 사항 입력
+ </P>
+<A NAME="1019"></A>
+<P CLASS="JMNormalText">5. 2 단계 배치를할 것인지 여부를 선택한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="506" SRC="images/image148.jpg" HEIGHT="202"></P>
+
+<P CLASS="JMCaption">그림 128J2EE 어플리케이션 모듈 배치 - 4단계 배치
+ </P>
+<A NAME="1020"></A>
+<P CLASS="JMNormalText">6. <SPAN CLASS="JMGUIWidget">배치
+ </SPAN>버튼을 클릭한다.
+ </P>
+<A NAME="1021"></A>
+<P CLASS="JMNormalText">7. 배치가 모두 완료되면 완료된 모듈이 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">J2EE 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더 밑에 나타나면 초기 페이지로 이동한다.
+ </P>
+<A NAME="1022"></A>
+<P CLASS="JMNormalText">8. 배치가 일부 실패하면 
+ <SPAN CLASS="JMGUIWidget">결과
+ </SPAN>탭이 나타나며 실패한 대상과 실패 원인을 볼 수있다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="513" SRC="images/image149.jpg" HEIGHT="254"></P>
+
+<P CLASS="JMCaption">그림 129 J2EE 어플리케이션 모듈 배치 &ndash;배치 실패
+ </P>
+<A NAME="1023"></A>
+<P CLASS="JMHeading3"><A NAME="deploy_webctx"></A>14.1.2 웹컨텍스트 배치
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈
+ </P>
+<A NAME="1024"></A>
+<P CLASS="JMNormalText">이 배치는 웹 컨텍스트 디렉토리를 배치할 경우 사용한다. 다시말해 예전의 방식대로 서블릿 컨텍스트를 배치하고 싶을 경우 사용한다. 그러나, 가능 
+하면 WAR파일을 만들어서 배치하는 것을 적극 권장한다. 배치방식은 위의 일반적인 배치와 같으나 모듈 파일을 선택하는 것에 있어서 약간의 차이가 
+있다. 
+ </P>
+<A NAME="1025"></A>
+<P CLASS="JMNormalText">1. 웹 컨텍스트의 배치를 위해선 노드 트리의
+ <SPAN CLASS="JMGUIWidget">J2EE 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더의 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">새 
+ </SPAN><SPAN CLASS="JMGUIWidget">배치 
+ </SPAN><SPAN CLASS="JMGUIWidget">웹
+ </SPAN><SPAN CLASS="JMGUIWidget">컨텍스트
+ </SPAN>를선택한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="301" SRC="images/image150.jpg" HEIGHT="299"></P>
+
+<P CLASS="JMCaption">그림 130 웹 컨텍스트 배치 선택
+ </P>
+<A NAME="1026"></A>
+<P CLASS="JMNormalText">2. 파일을 브라우징 할 수 있는 화면이 나타나면 
+ <IMG BORDER="0" WIDTH="16" SRC="images/image151.gif" HEIGHT="17">아이콘으로 표시된 파일을 선택한 후 
+ <SPAN CLASS="JMGUIWidget">다음
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="501" SRC="images/image152.jpg" HEIGHT="147"></P>
+
+<P CLASS="JMCaption">그림 131 웹 컨텍스트 배치 - 1단계 배치 디렉토리 선택
+ </P>
+<A NAME="1027"></A>
+<P CLASS="JMNormalText">3. 이 후 과정은 일반적인 배치와 동일하므로 생략한다.
+ </P>
+<A NAME="1028"></A>
+<P CLASS="JMNormalText"><SPAN CLASS="JMNoteWarningChar">참고
+ </SPAN><SPAN CLASS="JMNoteWarningChar">1 :
+ </SPAN>이방법으로 배치를 사용할 경우에 배치 대상을 여럿 선택하면 다른 대상으로는 해당 컨텍스트를 WAR파일로 생성하여 전송하게 된다.
+ </P>
+<A NAME="1029"></A>
+<P CLASS="JMNormalText">참고2 : 배치된 후에는 일반 웹 모듈과 동일하게 관리된다.
+ </P>
+<A NAME="1030"></A>
+<P CLASS="JMHeading3"><A NAME="deploy_start"></A>14.1.3 시작
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈 &gt; 모듈 &gt; 시작
+ </P>
+<A NAME="1031"></A>
+<P CLASS="JMNormalText">일시적으로 멈춰져 있는 모듈을 시작할 때 사용하는 명령이다.
+ </P>
+<A NAME="1032"></A>
+<P CLASS="JMNormalText">1. 노드 트리의
+ <SPAN CLASS="JMGUIWidget">J2EE 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더에서 시작할 모듈을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">배치
+ </SPAN>탭을 선택한 후 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">시작
+ </SPAN>탭을 선택한다.
+ </P>
+<A NAME="1033"></A>
+<P CLASS="JMNormalText">2. 현재 이 모듈이 배치되고 상태가 
+ <SPAN CLASS="JMEmphasizeChar">stopped
+ </SPAN>인모듈이 
+ <SPAN CLASS="JMGUIWidget">대상 
+ </SPAN><SPAN CLASS="JMGUIWidget">탐색기
+ </SPAN>에나타난다.
+ </P>
+<A NAME="1034"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">대상 
+ </SPAN><SPAN CLASS="JMGUIWidget">탐색기
+ </SPAN>에서 시작하고자 하는 대상들을 선택한다.
+ </P>
+<A NAME="1035"></A>
+<P CLASS="JMNormalText">4. <SPAN CLASS="JMGUIWidget">시작
+ </SPAN>버튼을 클릭한다
+ </P>
+<A NAME="1036"></A>
+<P CLASS="JMNormalText">5. 모듈들이 시작되면 노드 트리에서 해당 모듈들의 상태가 변경된다.
+ </P>
+<A NAME="1037"></A>
+<P CLASS="JMHeading3"><A NAME="deploy_stop"></A>14.1.4 정지
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈 &gt; 모듈 &gt; 정지
+ </P>
+<A NAME="1038"></A>
+<P CLASS="JMNormalText">현재 서비스 중인 모듈의 동작을 일시적으로 정지 시킬 때 사용하는 명령이다.
+ </P>
+<A NAME="1039"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">J2EE 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더에서 정지할 할 모듈을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">배치
+ </SPAN>탭을 선택한 후 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">정지
+ </SPAN>탭을 선택하거나 선택한 모듈의 컨텍스트 메뉴에서 해당 모듈 이름의 
+ <SPAN CLASS="JMGUIWidget">정지
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">항목을
+ </SPAN>선택한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="281" SRC="images/image153.jpg" HEIGHT="269"></P>
+
+<P CLASS="JMCaption">그림 132 모듈 정지 선택
+ </P>
+<A NAME="1040"></A>
+<P CLASS="JMNormalText">2. 현재 이 모듈이 배치되고 상태가 running 이거나failed인 모듈들의 엔진 컨테이너들이 
+ <SPAN CLASS="JMGUIWidget">대상 
+ </SPAN><SPAN CLASS="JMGUIWidget">탐색기
+ </SPAN>에나타난다.
+ </P>
+<A NAME="1041"></A>
+<P CLASS="JMNormalText">3. 대상 탐색기에서 정지하고자 하는 대상들을 선택한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="457" SRC="images/image154.jpg" HEIGHT="201"></P>
+
+<P CLASS="JMCaption">그림 133 모듈 정지
+ </P>
+<A NAME="1042"></A>
+<P CLASS="JMNormalText">4. <SPAN CLASS="JMGUIWidget">정지
+ </SPAN>버튼을 클릭한다
+ </P>
+<A NAME="1043"></A>
+<P CLASS="JMNormalText">5. 모듈들이 정지되면 노드 트리에서 해당 모듈들의 아이콘의 상태가 변경된다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="177" SRC="images/image155.jpg" HEIGHT="80"></P>
+
+<P CLASS="JMCaption">그림 134Module Stop후 Module들의 상태
+ </P>
+<A NAME="1044"></A>
+<P CLASS="JMHeading3"><A NAME="deploy_undeploy"></A>14.1.5 제거
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈 &gt; 모듈 &gt; 제거
+ </P>
+<A NAME="1045"></A>
+<P CLASS="JMNormalText">배치된 모듈을 제거시킬 때 사용하는 명령이다. EAR에 포함된 모듈들(JAR, WAR, CAR, RAR)의경우는 따로 제거 되지 않는다.
+ </P>
+<A NAME="1046"></A>
+<P CLASS="JMNormalText">1. <SPAN CLASS="JMGUIWidget">J2EE 
+ </SPAN><SPAN CLASS="JMGUIWidget">어플리케이션 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더에서 제거할 할 모듈을 클릭한 후 
+ <SPAN CLASS="JMGUIWidget">배치
+ </SPAN>탭을 선택한 후 하위 탭에서 
+ <SPAN CLASS="JMGUIWidget">제거
+ </SPAN>탭을 선택하거나 선택한 모듈의 컨텍스트 메뉴에서
+ <SPAN CLASS="JMGUIWidget">eartest 
+ </SPAN><SPAN CLASS="JMGUIWidget">제거
+ </SPAN>를선택한다.
+ </P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMGUIWidget"><IMG BORDER="0" WIDTH="264" SRC="images/image156.jpg" HEIGHT="284"></SPAN></P>
+
+<P CLASS="JMCaption">그림 135 모듈 제거 선택
+ </P>
+<A NAME="1047"></A>
+<P CLASS="JMNormalText">2. 현재 이 모듈이 배치된 모든 대상들이 
+ <SPAN CLASS="JMGUIWidget">대상 
+ </SPAN><SPAN CLASS="JMGUIWidget">탐색기
+ </SPAN>에나타난다.
+ </P>
+<A NAME="1048"></A>
+<P CLASS="JMNormalText">3. <SPAN CLASS="JMGUIWidget">대상 
+ </SPAN><SPAN CLASS="JMGUIWidget">탐색기
+ </SPAN>에서 제거하고자 하는 모듈이 배치된 대상들을 선택한다.
+ </P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMGUIWidget"><IMG BORDER="0" WIDTH="444" SRC="images/image157.jpg" HEIGHT="194"></SPAN></P>
+
+<P CLASS="JMCaption">그림 136 모듈 제거
+ </P>
+<A NAME="1049"></A>
+<P CLASS="JMNormalText">4. <SPAN CLASS="JMGUIWidget">제거
+ </SPAN>버튼을 클릭한다
+ </P>
+<A NAME="1050"></A>
+<P CLASS="JMNormalText">5. 모듈들이 제거되면 노드 트리에서 해당 모듈들이 사라진다.
+ </P>
+<A NAME="1051"></A>
+<P CLASS="JMHeading2"><A NAME="perdeploy"></A>14.2 영구(Permanent) 배치
+ </P>
+<A NAME="1052"></A>
+<P CLASS="JMNormalText">영구 배치는 
+ <SPAN CLASS="JMFileNameReferenceChar">JEUSMain.xml
+ </SPAN>에어플리케이션을 등록한 후 JEUS가 부트할 때 배치하는 방법을 말한다.
+ </P>
+<A NAME="1053"></A>
+<P CLASS="JMHeading3"><A NAME="perdeploy_deploy"></A>14.2.1 배치
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec_overview">엔진 컨테이너 개요
+ </A>&gt; 
+ <A HREF="wm-06.htm#ec">엔진 컨테이너
+ </A>&gt; J2EE 어플리케이션 모듈 
+ </P>
+<A NAME="1054"></A>
+<P CLASS="JMNormalText">영구 배치는 일반적인 배치에서 추가적인 선택 사항을 입력함으로서 수행된다. 배치 과정중 마지막 단계에서 
+ <SPAN CLASS="JMGUIWidget">영구 
+ </SPAN><SPAN CLASS="JMGUIWidget">배치
+ </SPAN>를선택하게 되면 영구 배치가 실행된다.
+ </P>
+<A NAME="1055"></A>
+<P CLASS="JMNormalText">배치가 완료되면 
+ <SPAN CLASS="JMGUIWidget">영구 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈폴더
+ </SPAN>에배치된 모듈 아이콘이 나타난다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="262" SRC="images/image158.jpg" HEIGHT="156"></P>
+
+<P CLASS="JMCaption">그림 137 영구 배치 후 모듈이추가된 모습
+ </P>
+<A NAME="1056"></A>
+<P CLASS="JMHeading3"><A NAME="perdeploy_conf"></A>14.2.2 Application 설정
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 영구 모듈 &gt; 모듈 &gt; 설정
+ </P>
+<A NAME="1057"></A>
+<P CLASS="JMNormalText">보통 한번 배치가 되면 JEUSMain.xml 등록된 설정을 변경하는 경우는 거의 없으나 변경하고 싶은 경우라면 이 기능을 사용하여 변경할 수 있다.
+ 
+</P>
+<A NAME="1058"></A>
+<P CLASS="JMNormalText">단순히 XML을 직접 편집하는 것이므로 Application의 요소에 대해서 잘 알고 있어야 한다.
+ </P>
+<A NAME="1059"></A>
+<P CLASS="JMNormalText">1. 노드 트리에서 
+ <SPAN CLASS="JMGUIWidget">영구 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈 
+ </SPAN><SPAN CLASS="JMGUIWidget">폴더
+ </SPAN>의하위 디렉토리에서 설정을 변경하고자 하는 모듈을 선택하고 
+ <SPAN CLASS="JMGUIWidget">설정
+ </SPAN>탭을 선택하거나 컨텍스트 메뉴에서 
+ <SPAN CLASS="JMGUIWidget">해당
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">이름의
+ </SPAN><SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">설정
+ </SPAN>을선택한다.
+ </P>
+<A NAME="1060"></A>
+<P CLASS="JMNormalText">2. 설정을 편집한 후 
+ <SPAN CLASS="JMGUIWidget">확인
+ </SPAN>버튼을 클릭한다.
+ </P>
+
+<P CLASS="JMFigure"><IMG BORDER="0" WIDTH="488" SRC="images/image159.jpg" HEIGHT="216"></P>
+
+<P CLASS="JMCaption">그림 138 영구 모듈의설정
+ </P>
+<A NAME="1061"></A>
+<P CLASS="JMHeading3"><A NAME="perdeploy_remove"></A>14.2.3 제거
+ </P>
+
+<P CLASS="JMPath"><A HREF="wm-04.htm#jm">JEUS 매니저
+ </A>&gt; 영구 모듈 &gt; 모듈 &gt; 제거
+ </P>
+<A NAME="1062"></A>
+<P CLASS="JMNormalText">영구 모듈의 제거는 단순히 JEUSMain.xml에서 해당 모듈의 설정을 삭제하는 것이다. 이 명령을 실행하면 모든 Node로부터 해당 모듈 설정이 
+삭제된다.
+ </P>
+<A NAME="1063"></A>
+<P CLASS="JMNormalText">1. 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">영구 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>폴더의의하위 디렉토리에서 모듈을 선택하고 
+ <SPAN CLASS="JMGUIWidget">제거
+ </SPAN>탭을 선택하거나 컨택스트 메뉴에서 모듈의
+ <SPAN CLASS="JMGUIWidget"></SPAN><SPAN CLASS="JMGUIWidget">제거
+ </SPAN>를선택한다.
+ </P>
+<A NAME="1064"></A>
+<P CLASS="JMNormalText">2. <SPAN CLASS="JMGUIWidget">제거
+ </SPAN>를 클릭한다.
+ </P>
+<A NAME="1065"></A>
+<P CLASS="JMNormalText">3. 노드 트리의 
+ <SPAN CLASS="JMGUIWidget">영구 
+ </SPAN><SPAN CLASS="JMGUIWidget">모듈
+ </SPAN>디렉토리에서 해당 모듈이 삭제된다.
+ </P>
+
+<P CLASS="JMFigure"><SPAN CLASS="JMGUIWidget"><IMG BORDER="0" WIDTH="423" SRC="images/image160.jpg" HEIGHT="102"></SPAN></P>
+
+<P CLASS="JMCaption">그림 139 영구 모듈의제거
+ </P>
+<A NAME="1066"></A>
+<P CLASS="JMHeading2">14.3 자동 배치
+ </P>
+<A NAME="1067"></A>
+<P CLASS="JMNormalText">자동 배치는 엔진 컨테이너의 자동 배치 설정이나 모듈 배치시 Application설정에서 주기 적인 검사 시간을 지정함으로써 수행된다.
+ </P>
+<A NAME="1068"></A>
+<P CLASS="JMNormalText">좀더 자세한 설명은 
+ <A HREF="wm-06.htm#ec_conf_autodeploy">6.2.4 자동 배치 설정
+ </A>을참조하기 바란다.
+ </P>
+<!------------------------------ START OF FOOTER ------------------------------>
+
+<P ALIGN="center">Copyright &copy; Since 2000 Tmax Soft co.,Ltd All rights reserved. </P>
+<!------------------------------   END OF FOOTER ------------------------------>
+
+</BODY>
+</HTML>

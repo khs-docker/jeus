@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description>                  
+    <text key="CertUserType.username"><![CDATA[           
+                       [Description]: Define user name for certificate within keystore. This should be unique as "primary" identify.
+                    ]]>                  
+    </text>
+                     
+    <text key="CertType.alias"><![CDATA[
+                       [Description]:  Define alias for certificate within keystore.                   
+                    ]]>                  
+    </text>
+                     
+    <text key="CertUserType.cert"><![CDATA[          
+                       [Description]:  Define informations of certificate within keystore.
+                    ]]>                  
+    </text>
+                     
+    <text key="cert-user-map"><![CDATA[       
+                       [Description]: Define mapping information between user and certificate.
+                    ]]>                  
+    </text>
+                     
+    <text key="CertUserMapType.cert-user"><![CDATA[
+                       [Description]: Define Groups.
+                    ]]>                  
+    </text>
+            
+    <text key="CertType.subjectDN"><![CDATA[
+                       [Description]:  Specify subjectDN for the certificate in keystore.
+                    ]]>                              
+    </text>
+                                   
+    <text key="CertType.SKI"><![CDATA[
+                         [Description]:  Specify SKI for the certificate in keystore.
+                    ]]>                              
+    </text>
+                                   
+    <text key="CertType.issuer"><![CDATA[
+                        [Description]:  Specify issuer for the certificate in keystore.
+                   ]]>                              
+    </text>
+                                   
+    <text key="CertType.serialNo"><![CDATA[
+                         [Description]:  Specify serial number for the certificate in keystore.
+                    ]]>                              
+    </text>
+        
+</description>

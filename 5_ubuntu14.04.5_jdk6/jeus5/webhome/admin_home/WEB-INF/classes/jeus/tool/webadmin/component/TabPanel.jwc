@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://tapestry.apache.org/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="jeus.tool.webadmin.component.TabPanel" allow-body="yes" allow-informal-parameters="yes">
+
+	<inject property="helpURLsSource" type="state" object="HelpURLsSource"/>
+    <parameter name="pageNames"/>
+
+    <parameter name="subtabNames"/>
+
+    <parameter name="notFound" default-value="false"/>
+
+    <parameter name="notFoundBlock"/>
+
+    <component id="subtabs" type="Subtabs">
+        <binding name="subtabNames" value="subtabNames"/>
+    </component>
+
+    <component id="help_script" type="Script">
+        <binding name="script" value="literal:/jeus/tool/webadmin/script/Help.script"/>
+        <binding name="helpURL" value="helpURL"/>
+    </component>
+
+    <property name="pageName"/>
+    <property name="index"/>
+
+    <asset name="selected_tab_left" path="context:/image/selected_tab_left.gif"/>
+    <asset name="unselected_tab_left" path="context:/image/unselected_tab_left.gif"/>
+
+    <asset name="empty" path="context:/image/empty.gif"/>
+
+    <asset name="tabpanel_css" path="context:/css/tabpanel.css"/>
+</component-specification>

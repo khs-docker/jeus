@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jeus-webservices-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <service>
+        <webservice-description-name>Calculator3Service</webservice-description-name>
+        <port>
+            <port-component-name>CalculatorIFPort</port-component-name>
+        </port>
+    </service>
+</jeus-webservices-dd>
+

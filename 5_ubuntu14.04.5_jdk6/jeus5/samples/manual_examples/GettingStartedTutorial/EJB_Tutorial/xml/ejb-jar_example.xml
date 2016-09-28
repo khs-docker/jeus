@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar version="2.1" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <display-name>example</display-name>
+    <enterprise-beans>     
+        <session>
+            <ejb-name>hello</ejb-name>
+            <home>hello.HelloHome</home>
+            <remote>hello.Hello</remote>
+            <ejb-class>hello.HelloEJB</ejb-class>
+            <session-type>Stateless</session-type>
+            <transaction-type>Container</transaction-type>
+        </session>
+        <entity>
+            <ejb-name>pkproduct</ejb-name>
+            <home>pkproduct.ProductHome</home>
+            <remote>pkproduct.Product</remote>
+            <ejb-class>pkproduct.ProductEJB</ejb-class>
+            <persistence-type>Container</persistence-type>
+            <prim-key-class>pkproduct.Pid</prim-key-class>
+            <reentrant>false</reentrant>
+            <cmp-version>1.x</cmp-version>
+            <cmp-field>
+                <field-name>productID</field-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>description</field-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>price</field-name>
+            </cmp-field>
+        </entity>
+    </enterprise-beans>
+</ejb-jar>

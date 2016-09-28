@@ -1,0 +1,41 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <form jwcid="context_groupForm">
+            <table width="100%" cellpadding="0" cellspacing="5">
+                <tr>
+                    <td width="100%">
+                        <table width="100%" cellpadding="0" cellspacing="0" class="table">
+                            <tr>
+                                <td class="table_columns"><span jwcid="group_name_column"/></td>
+                                <!--<td class="table_columns"><span jwcid="group_docbase_column"/></td>-->
+                                <td class="table_columns"><span jwcid="actions_column"/></td>
+                                <td class="table_columns" width="20" >&nbsp;</td>
+                            </tr>
+                            <tr jwcid="eachContextGroup">
+                                <td class="table_values"><a jwcid="contextGroupLink"><span jwcid="group_name_value"/></a></td>
+                                <!--<td class="table_values"><span jwcid="group_docbase_value"/></td>-->
+                                <td class="table_values" align="center" >
+                                    <a jwcid="suspendLink"></a><input jwcid="suspend" class="form_button" onclick="window.location.href=previousSibling.href;"/><a jwcid="resumeLink"></a><input jwcid="resume" class="form_button" onclick="window.location.href=previousSibling.href;"/><a jwcid="terminateLink"></a><input jwcid="terminate" class="form_button" onclick="window.location.href=previousSibling.href;"/><a jwcid="restartLink"></a><input jwcid="restart" class="form_button" onclick="window.location.href=previousSibling.href;"/>
+                                </td>
+                                <td class="table_values" width="20" align="center">
+                                    <span jwcid="condStopped">
+                                        <a jwcid="deleteContextGroupLink"><img jwcid="delete" align="absmiddle"/></a>
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+<!--
+                <tr>
+                    <td width="100%" align="right">
+                        <input jwcid="refreshButton" type="button" class="form_button" onclick="window.location.reload();"/>
+                    </td>
+                </tr>
+-->
+            </table>
+            <p style="text-align:right;">
+            <a jwcid="createContextGroupLink"><img jwcid="create" align="absmiddle"/>&nbsp;<span jwcid="createContextGroup"/></a></p>
+        </form>
+    </span>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.ExceptionPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Exception"/>
+        <!--<binding name="helpURL" value="literal:"/>-->
+        <binding name="showHeader" value="false"/>
+    </component>
+
+    <component id="stackTrace" type="jeus:ErrorMessageBox">
+        <binding name="message" value="message"/>
+        <binding name="messageClass" value="literal:normal_text"/>
+        <binding name="position" value="literal:bottom"/>
+        <binding name="detailMessage" value="description"/>
+        <binding name="detailMessageClass" value="literal:form_fail_detail_message"/>
+        <binding name="buttonClass" value="literal:form_button"/>
+        <binding name="rows" value="20"/>
+    </component>
+
+<!--    <component id="condStackTrace" type="If">
+        <binding name="condition" expression="description != null"/>
+    </component>-->
+</page-specification>

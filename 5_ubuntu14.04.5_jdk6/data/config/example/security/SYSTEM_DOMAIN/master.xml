@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<security-services xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <security-service>
+        <classname>jeus.security.impl.atnrep.XMLPersistedDistributedMemoryAuthenticationRepositoryService</classname>
+    </security-service>
+    <security-service>
+        <classname>jeus.security.impl.azn.DefaultAuthorizationService</classname>
+    </security-service>
+    <security-service>
+        <classname>jeus.security.impl.aznrep.XMLPersistedDistributedMemoryAuthorizationRepositoryService</classname>
+    </security-service>
+    <security-service>
+        <classname>jeus.security.impl.verification.PasswordVerificationService</classname>
+    </security-service>
+    <security-service>
+        <classname>jeus.security.impl.login.ServerLoginService</classname>
+    </security-service>
+    <security-service>
+        <classname>jeus.security.impl.atn.DefaultAuthenticationService</classname>
+    </security-service>
+</security-services>
+

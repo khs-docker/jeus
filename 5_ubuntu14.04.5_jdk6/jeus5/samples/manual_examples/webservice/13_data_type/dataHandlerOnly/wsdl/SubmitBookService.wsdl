@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+             xmlns:tns="http://www.tmaxsoft.com/j2eews/SubmitBook"
+             targetNamespace="http://www.tmaxsoft.com/j2eews/SubmitBook">
+             
+    <message name="submission">
+        <part name="title" type="xsd:string" />
+        <part name="price" type="xsd:float" />
+        <part name="attachment" type="xsd:hexBinary" />
+    </message>
+    <message name="submissionResponse">
+        <part name="result" type="xsd:string" />
+    </message>
+    
+    <portType name="SubmitBook">
+        <operation name="submit">
+            <input  message="tns:submission" />
+            <output message="tns:submissionResponse" />
+        </operation>
+    </portType>
+    
+    <binding name="SubmitBookMimeBinding" type="tns:SubmitBook">
+        <soap:binding style="rpc"
+                      transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="submit">
+            <soap:operation soapAction="" style="rpc" />
+            <input>
+                <mime:multipartRelated>
+                    <mime:part>
+	                    <soap:body part="title price" use="literal"
+	                               namespace="http://www.tmaxsoft.com/j2eews/SubmitBook" />
+                    </mime:part>
+                    <mime:part>
+                        <mime:content part="attachment" type="application/xml" />
+                    </mime:part>
+                </mime:multipartRelated>
+            </input>
+            <output>
+                <soap:body use="literal" 
+                           namespace="http://www.tmaxsoft.com/j2eews/SubmitBook"/>
+            </output>
+        </operation>
+    </binding>
+    
+    <service name="SubmitBookService">
+        <port name="SubmitBookPort" binding="tns:SubmitBookMimeBinding">
+            <soap:address location="http://localhost:8088/sample/SubmitBookService" />
+        </port>
+    </service>
+
+</definitions>

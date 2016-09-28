@@ -1,0 +1,128 @@
+body{
+	background-color: #FCFCFC;
+	margin: 0px 0px 20px 0px;
+}
+
+.JMHeading1{
+	font-family: "Verdana";
+	font-size:14px;
+	font-weight: bold;
+	color: #000000;
+	text-indent: 0px;
+	margin-left: 10px;
+	line-height: 30px;
+
+}
+.JMHeading2{
+	font-family: "Verdana";
+	font-size: 14px;
+        font-weight: bold;
+	color: #000000;
+	text-indent: 11pt;
+	white-space: nowrap;
+	line-height: 30px;
+	margin-left: 13px;
+
+
+
+}
+
+.JMHeading3 {
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 14px;
+	color: 666666;
+	text-indent: 10pt;
+	white-space: normal;
+	font-weight: bold;
+
+
+}
+
+.JMHeading4 {
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 14px;
+	color: 666666;
+	margin-left: 25px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	line-height: 20px;
+
+
+
+}
+
+.JMTitleHeading {
+	font-family: "Times New Roman", "Times", "serif";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	margin-bottom: 20px;
+	white-space: nowrap;
+	background-color: #5686BE;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: none;
+	border-bottom-style: solid;
+	border-top-color: #333333;
+	border-bottom-color: #000000;
+	padding-left: 10px;
+	height: 24px;
+	line-height: 24px;
+	margin-left: 15px;
+
+
+
+
+
+}
+
+a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+a:link {
+	color: #000000;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #1E5388;
+	text-decoration: underline;
+}a:active {
+	color: #1E5388;
+}
+.JMHeading5 {
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 14px;
+	color: #1E5388;
+	text-indent: 10pt;
+	white-space: nowrap;
+	margin-left: 10px;
+	font-weight: bold;
+
+}
+.JMHeading6 {
+	font-family: "Verdana";
+	font-size: 14px;
+	color: 597FBF;
+	text-indent: 11pt;
+	white-space: nowrap;
+	line-height: 25px;
+	margin-left: 13px;
+	font-weight: bold;
+
+}
+
+.JMHeading7 {
+	font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	color: 666666;
+	white-space: normal;
+	margin-left: 25px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	line-height: 20px;
+
+
+
+}

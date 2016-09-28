@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <servlet>
+        <servlet-name>BookQuoteService</servlet-name>
+        <servlet-class>sample.nodatabinding.service.BookQuoteImpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BookQuoteService</servlet-name>
+        <url-pattern>/BookQuoteService</url-pattern>
+    </servlet-mapping>
+</web-app>
+

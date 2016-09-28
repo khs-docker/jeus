@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusServiceSecurityDomain.CachePage">
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Security domain Overview"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@JEUSSERVICE_SECURITYDOMAIN_NAMES"/>
+    </component>
+
+    <component id="cacheForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:domain.cache.title"/>
+        <binding name="listener" value="listener:onCacheOk"/>
+        <binding name="refresh" value="listener:resetCache"/>
+    </component>
+
+    <component id="cache_min" type="jeus:Field">
+        <binding name="field" value="component:cache_minField"/>
+        <binding name="label" value="message:domain.cache.min"/>
+
+    </component>
+
+    <component id="cache_minField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="cacheConfig"/>
+        <binding name="elementName" value="literal:min"/>
+        <binding name="validators" value="validators:required,$minValidator"/>
+        <binding name="displayName" value="message:domain.cache.min"/>
+    </component>
+
+    <component id="cache_max" type="jeus:Field">
+        <binding name="field" value="component:cache_maxField"/>
+
+    </component>
+
+    <component id="cache_maxField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="cacheConfig"/>
+        <binding name="elementName" value="literal:max"/>
+        <binding name="validators" value="validators:required,$maxValidator"/>
+        <binding name="displayName" value="message:domain.cache.max"/>
+    </component>
+
+    <component id="cache_timeout" type="jeus:Field">
+        <binding name="field" value="component:cache_timeoutField"/>
+        <binding name="label" value="message:domain.cache.timeout"/>        
+    </component>
+
+    <component id="cache_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="cacheConfig"/>
+        <binding name="elementName" value="literal:timeout"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:required,min=-1"/>
+        <binding name="displayName" value="message:domain.cache.timeout"/>
+    </component>
+    
+    <bean name="minValidator" class="jeus.tool.webadmin.validator.FieldMinMaxValidator">
+        <set name="maxField" value="component:cache_maxField"/>
+        <set name="min" value="0"/>
+    </bean>
+    
+	<bean name="maxValidator" class="jeus.tool.webadmin.validator.FieldMinMaxValidator">
+        <set name="minField" value="component:cache_minField"/>
+        <set name="min" value="0"/>
+    </bean>
+    
+
+</page-specification>

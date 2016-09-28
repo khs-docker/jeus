@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <display-name>HelloWorldServlet</display-name>
+    <servlet>
+        <servlet-name>HelloWorldServlet</servlet-name>
+        <servlet-class>HelloWorldServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>snoop</servlet-name>
+        <jsp-file>snoop.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelloWorldServlet</servlet-name>
+        <url-pattern>/HelloWorldServlet/*</url-pattern>
+    </servlet-mapping>
+</web-app>

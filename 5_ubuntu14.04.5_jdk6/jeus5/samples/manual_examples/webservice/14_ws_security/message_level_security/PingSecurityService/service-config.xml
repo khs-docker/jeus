@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-services-config xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+	<service>
+		<service-name>PingSecurityService</service-name>
+		<target-namespace>urn:PingSecurityService</target-namespace>
+		<output-wsdl-file>PingSecurityService.wsdl</output-wsdl-file>
+		<output-jaxrpc-mapping-file>PingSecurityService-mapping.xml</output-jaxrpc-mapping-file>
+		<style>rpc</style>
+		<interface>
+			<endpoint-interface-class>ping.Ping</endpoint-interface-class>			
+		</interface>
+	</service>
+</web-services-config>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN"
+                         "http://www.tmaxsoft.com/tmax/forum/DTD/3.1/ejb-jar_2_0.dtd">
+<ejb-jar>
+    <enterprise-beans>
+        <entity>
+            <ejb-name>comaccount</ejb-name>
+            <home>comaccount.AccountHome</home>
+            <remote>comaccount.Account</remote>
+            <ejb-class>comaccount.AccountBean</ejb-class>
+            <persistence-type>Bean</persistence-type>
+            <prim-key-class>java.lang.Object</prim-key-class>
+            <reentrant>False</reentrant>
+        </entity>
+    </enterprise-beans>
+    <assembly-descriptor>
+        <container-transaction>
+            <method>
+                <ejb-name>comaccount</ejb-name>
+                <method-name>*</method-name>
+                <method-params/>
+            </method>
+            <trans-attribute>Supports</trans-attribute>
+        </container-transaction>
+    </assembly-descriptor>
+    <ejb-client-jar>comaccountClient.jar</ejb-client-jar>
+</ejb-jar>

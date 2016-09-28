@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://tapestry.apache.org/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="jeus.tool.webadmin.component.JEUSTablePages"
+	allow-body="no" allow-informal-parameters="yes">
+
+	<parameter name="pagesDisplayed" default-value="10"/>
+    <parameter name="pagesLinkClass"/>
+    <parameter name="currentPageClass"/>
+    <parameter name="additionalParameters"/>
+
+	<component id="informal" type="Any" inherit-informal-parameters="yes"/>
+  
+	<component id="condCurrent" type="If">
+		<binding name="condition" value="condCurrent"/>
+	</component>
+  
+	<component id="condOther" type="Else">
+	</component>
+	
+	<component id="iterPage" type="For">
+		<binding name="source" value="pageList"/>
+		<binding name="value" value="displayPage"/>
+	</component>
+
+	<component id="insertCurrentPage" type="Insert">
+	    <binding name="value" value="displayPage"/>
+	    <inherited-binding name="class" parameter-name="currentPageClass"/>
+	</component>
+
+	<component id="insertOtherPage" type="Insert">
+	    <binding name="value" value="displayPage"/>
+	</component>
+
+	<component id="linkPage" type="DirectLink">
+	    <binding name="listener" value="listeners.changePage"/>
+	    <binding name="parameters" value="displayPageContext"/>
+	    <binding name="class" value="pagesLinkClass"/>
+	</component>
+
+	<component id="cond_back_disabled" type="If">
+        <binding name="condition" value="!condBack"/>
+	</component>
+	<component id="cond_back_enabled" type="Else">
+	</component>
+
+	<component id="cond_fwd_disabled" type="If">
+        <binding name="condition" value="!condFwd"/>
+	</component>
+	<component id="cond_fwd_enabled" type="Else">
+	</component>
+
+	<component id="linkFirst" type="DirectLink">
+	    <binding name="listener" value="listeners.changePage"/>
+	    <binding name="parameters" value="firstPageContext"/>
+	    <binding name="disabled" value="!condBack"/>
+	</component>
+	<component id="linkFirst2" copy-of="linkFirst"/>
+
+
+	<component id="linkBack" type="DirectLink">
+	    <binding name="listener" value="listeners.changePage"/>
+	    <binding name="parameters" value="backPageContext"/>
+	    <binding name="disabled" value="!condBack"/>
+	</component>
+    <component id="linkBack2" copy-of="linkBack"/>
+
+	<component id="linkFwd" type="DirectLink">
+	    <binding name="listener" value="listeners.changePage"/>
+	    <binding name="parameters" value="fwdPageContext"/>
+	    <binding name="disabled" value="!condFwd"/>
+	</component>
+    <component id="linkFwd2" copy-of="linkFwd"/>
+
+	<component id="linkLast" type="DirectLink">
+	    <binding name="listener" value="listeners.changePage"/>
+	    <binding name="parameters" value="lastPageContext"/>
+	    <binding name="disabled" value="!condFwd"/>
+	</component>
+    <component id="linkLast2" copy-of="linkLast"/>
+
+	<component id="first" type="Image">
+	    <binding name="image" value="asset:pages_first"/>
+	</component>
+	<component id="first_disabled" type="Image">
+	    <binding name="image" value="asset:pages_first_disabled"/>
+	</component>
+
+	<component id="back" type="Image">
+	    <binding name="image" value="asset:pages_back"/>
+	</component>
+	<component id="back_disabled" type="Image">
+	    <binding name="image" value="asset:pages_back_disabled"/>
+	</component>
+
+	<component id="next" type="Image">
+	    <binding name="image" value="asset:pages_next"/>
+	</component>
+	<component id="next_disabled" type="Image">
+	    <binding name="image" value="asset:pages_next_disabled"/>
+	</component>
+
+	<component id="last" type="Image">
+	    <binding name="image" value="asset:pages_last"/>
+	</component>
+	<component id="last_disabled" type="Image">
+	    <binding name="image" value="asset:pages_last_disabled"/>
+	</component>
+
+	<asset name="pages_first" path="context:/image/table/pages_first.gif"/>
+	<asset name="pages_back" path="context:/image/table/pages_back.gif"/>
+	<asset name="pages_first_disabled" path="context:/image/table/pages_first_disabled.gif"/>
+	<asset name="pages_back_disabled" path="context:/image/table/pages_back_disabled.gif"/>
+
+	<asset name="pages_next" path="context:/image/table/pages_next.gif"/>
+	<asset name="pages_last" path="context:/image/table/pages_last.gif"/>
+	<asset name="pages_next_disabled" path="context:/image/table/pages_next_disabled.gif"/>
+	<asset name="pages_last_disabled" path="context:/image/table/pages_last_disabled.gif"/>
+
+</component-specification>

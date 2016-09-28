@@ -1,0 +1,145 @@
+<html jwcid="popupMainBorder">
+    <span jwcid="wizTabPanel">
+        <span jwcid="type">
+            <form jwcid="typeForm">
+                <table width="100%" cellpadding="0" cellspacing="15">
+                    <tr>
+                        <td width="100%">
+                            <input jwcid="handlerRadioGroup">
+                                <table width="50%" border="1" cellspacing="0" cellpadding="0" class="table">
+                                    <tr>
+                                        <td class="table_columns" width="20">&nbsp;</td>
+                                        <td class="table_columns"><span jwcid="handler_type_column"/></td>
+                                        <!--<td class="table_columns"><span jwcid="description_column"></td>-->
+                                    </tr>
+                                    <tr jwcid="eachType">
+                                        <td class="table_columns"><span jwcid="handler_radio"/></td>
+                                        <td class="table_columns"><span jwcid="handler_type_value"/></td>
+                                        <!--<td class="table_columns"><span jwcid="handler_description_value"></td>-->
+                                    </tr>
+                                </table>
+                            </input>
+                        </td>
+                    </tr>
+                </table>
+                <div class="form_button_layer">
+                    <input jwcid="typeNext" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+        </span>
+        <span jwcid="general">
+            <form jwcid="generalForm">
+                <span jwcid="chooseHandler">
+                    <span jwcid="whenConsole">
+                        <span jwcid="@RenderBlock" block="ognl:components.handlerCommon"/>
+                        <span jwcid="console_blind">
+                            <span jwcid="@RenderBlock" block="ognl:components.handlerBlind"/>
+                        </span>
+                    </span>
+                    <span jwcid="whenFile">
+                        <span jwcid="@RenderBlock" block="ognl:components.handlerCommon"/>
+                        <span jwcid="valid">
+                            <input jwcid="valid_unitField"/>&nbsp;<input jwcid="validField"/>
+                        </span>
+                        <span jwcid="buffer_size">
+                            <input jwcid="buffer_sizeField"/>
+                        </span>
+                        <span jwcid="file_blind">
+                            <span jwcid="@RenderBlock" block="ognl:components.handlerBlind"/>
+                            <span jwcid="file_name">
+                                <input jwcid="file_nameField" style="width:98%;"/>
+                            </span>
+                            <span jwcid="append">
+                                <input jwcid="appendField"/>
+                            </span>
+                        </span>
+                    </span>
+                    <span jwcid="whenSmtp">
+                        <span jwcid="@RenderBlock" block="ognl:components.handlerCommon"/>
+                        <span jwcid="smtp_host_address">
+                            <input jwcid="smtp_host_addressField" style="width:98%;"/>
+                        </span>
+                        <span jwcid="from_address">
+                            <input jwcid="from_addressField" style="width:98%;"/>
+                        </span>
+                        <span jwcid="to_address">
+                            <input jwcid="to_addressField" style="width:98%;"/>
+                        </span>
+                        <span jwcid="send_for_all_messages">
+                            <input jwcid="send_for_all_messagesField"/>
+                        </span>
+                        <span jwcid="smtp_blind">
+                            <span jwcid="@RenderBlock" block="ognl:components.handlerBlind"/>
+                            <span jwcid="cc_address">
+                                <input jwcid="cc_addressField" style="width:98%"/>
+                            </span>
+                            <span jwcid="bcc_address">
+                                <input jwcid="bcc_addressField" style="width:98%"/>
+                            </span>
+                        </span>
+                    </span>
+                    <span jwcid="whenSocket">
+                        <span jwcid="@RenderBlock" block="ognl:components.handlerCommon"/>
+                        <span jwcid="address">
+                            <input jwcid="addressField"/>
+                        </span>
+                        <span jwcid="port">
+                            <input jwcid="portField"/>
+                        </span>
+                        <span jwcid="socket_blind">
+                            <span jwcid="@RenderBlock" block="ognl:components.handlerBlind"/>
+                        </span>
+                    </span>
+                    <span jwcid="whenUser">
+                        <span jwcid="@RenderBlock" block="ognl:components.handlerCommon"/>
+                        <span jwcid="handler_class">
+                            <input jwcid="handler_classField" style="width:98%;"/>
+                        </span>
+                        <span jwcid="formatter_class">
+                            <input jwcid="formatter_classField" style="width:98%;"/>
+                        </span>
+                        <span jwcid="user_blind">
+                            <span jwcid="@RenderBlock" block="ognl:components.handlerBlind"/>
+                            <span jwcid="handler_property">
+                                <input jwcid="handler_propertyField" style="width:98%;" rows="6"/>
+                            </span>
+                            <span jwcid="formatter_property">
+                                <input jwcid="formatter_propertyField" style="width:98%;" rows="6"/>
+                            </span>
+                        </span>
+                    </span>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="generalNext" class="form_button" style="width:100px; float:right;"/>
+                    <input jwcid="generalPrevious" class="form_button" style="width:100px; float:left;"/>
+                </div>
+            </form>
+            <span jwcid="handlerCommon@Block">
+                <span jwcid="logger_name"/>
+                <span jwcid="handler_type"/>
+                <span jwcid="handler_name">
+                    <input jwcid="handler_nameField"/>
+                </span>
+                <span jwcid="handler_level">
+                    <input jwcid="handler_levelField"/>
+                </span>
+            </span>
+            <span jwcid="handlerBlind@Block">
+                <span jwcid="encoding">
+                    <input jwcid="encodingField"/>
+                </span>
+                <span jwcid="filter_class">
+                    <input jwcid="filter_classField" style="width:98%;"/>
+                </span>
+            </span>
+        </span>
+        <span jwcid="create">
+            <form jwcid="createForm">
+                <div class="form_button_layer">
+                    <input jwcid="createOk" class="form_button" style="width:100px; float:right;"/>
+                    <input jwcid="createPrevious" class="form_button" style="width:100px; float:left;"/>
+                </div>
+            </form>
+        </span>
+    </span>
+</html>

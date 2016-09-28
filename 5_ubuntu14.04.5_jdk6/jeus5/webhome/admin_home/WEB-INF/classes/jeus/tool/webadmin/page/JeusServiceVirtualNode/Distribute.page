@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceVirtualNode.DistributePage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Distribute vhost.xml"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@JEUSSERVICE_VIRTUALNODE_NAMES"/>
+    </component>
+
+    <component id="distributeForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:vnode.distribute.title"/>
+        <binding name="listener" value="ognl:listeners.onOk"/>
+        <binding name="useDefaultButtons" value="ognl:model.nodeNames.length &gt; 0"/>
+    </component>
+
+    <component id="targets" type="jeus:Field">
+        <binding name="layout" value="ognl:@jeus.tool.webadmin.component.Field@EXTENDED_LAYOUT"/>
+        <binding name="label" value="message:jm.distribute.targets.label"/>
+    </component>
+
+    <component id="targetsField" type="jeus:TargetExplorer">
+        <binding name="model" value="ognl:model"/>
+        <binding name="selectionModel" value="ognl:selectionModel"/>
+    </component>
+
+    <component id="condHasTargets" type="If">
+        <binding name="condition" value="ognl:model.nodeNames.length &gt; 0"/>
+    </component>
+
+    <component id="condHasNoTargets" type="If">
+        <binding name="condition" value="ognl:model.nodeNames.length == 0"/>
+    </component>
+
+    <component id="unavailable_message" type="Insert">
+        <binding name="value" value="message:dwc.unavailable.label"/>
+    </component>
+
+</page-specification>

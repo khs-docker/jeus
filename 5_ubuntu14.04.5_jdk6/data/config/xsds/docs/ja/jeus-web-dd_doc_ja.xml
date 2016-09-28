@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="Shift-JIS"?>
+<description>        
+    <text key="contextType.properties"><![CDATA[                        [Description]: context-wideのプロパティを指定します。                    ]]>        
+    </text>
+         
+    <text key="res-env-refType.jndi-info"><![CDATA[
+                        [Description]: 各&lt;jndi-info>elementは、一つのレファレンスに一つのJNDIの名前を連結します。
+                    ]]>        
+    </text>
+         
+    <text key="file-cachingType.directory"><![CDATA[
+                        [Description]: 静的Contentがキャッシュされる一つのディレクトリ経路を設定します。                                                複数個のキャッシュディレクトリを指定するためにこの elementをいくつか追加します。
+                        [Value Description]: ContentがキャッシュされるContext docbaseと関係のあるURLディレクトリ経路
+                    ]]>        
+    </text>
+         
+    <text key="contextType.service-ref"><![CDATA[
+                    [Description]: JEUSウェブサービスクライアントの設定文書のルートエレメント(root element).
+                        ]]>        
+    </text>
+         
+    <text key="contextType.res-env-ref"><![CDATA[
+                        [Description]: この elementは、web.xmlのリソース環境レファレンスと実際システムで使うJNDI名前に連結します。
+                        [Dependency]:
+                                    ref-name : /web-app/resource-env-ref/resource-env-ref-name
+                    ]]>        
+    </text>
+         
+    <text key="contextType.auto-reload"><![CDATA[
+                        [Description]: クラスが変更されればServletクラスとcustom tag クラスを自動で reloadするかを決定します。
+                                                この設定は、変更可否の点検とreloadを実行するかにおいて余分のソースを要求するため、開発運営環境でのみ活性化します。
+                    ]]>        
+    </text>
+         
+    <text key="contextType.deny-download"><![CDATA[
+                        [Description]: このelementは、ダウンが不可能なファイルを指定します。例えば、secret.dat名前のファイルが www.foo.comドメインに/customers context 経路にdataというディレクトリに存在して、クライアントが URL 
+www.foo.com/customers/data/secret.datを要求すると普通secret.datのファイルがダウンロードされます。これを防止するためには、secret.datファイルのダウンロードを防ぐためにはXML elementを使用します。
+                  ]]>        
+    </text>
+         
+    <text key="contextType.role-mapping"><![CDATA[
+                        [Description]: この elementは実際システムユーザの名前を該当の Contextの web.xmlの &lt;security-role>elementに使う J2EE role名前とマッピングします。
+                                                web.xmlファイルは、該当Contextのドキュメント・ベース・ディレクトリの“\WEB-INF\”の下に位置します。
+                        [Dependency]:
+                                    role : /web-app/security-role/role-name
+                    ]]>        
+    </text>
+         
+    <text key="role-mappingType.role-permission"><![CDATA[
+                        [Description]:
+                    ]]>        
+    </text>
+         
+    <text key="servletType.run-as-identity"><![CDATA[
+                    [Description]: このelementは、web.xmlに定義されたrun-as-specified-identity roleの名前を実際の
+                    ユーザ名(principal)にマッピングします。
+                    ]]>        
+    </text>
+         
+    <text key="contextType.user-log"><![CDATA[
+                        [Description]: この elementは、プログラマーがServlet内にServletContext.log()メソッド使用を通じて正義されたメッセージのハンドリングを設定します。&lt;context-group>&lt;logging>&lt;user-log>elementの設定値とContextの名前で適用されます。(例.”Examples.log”). このelementを使用することでContextに対するそれぞれのログファイルが得られます。
+                    ]]>        
+    </text>
+         
+    <text key="contextType.docbase"><![CDATA[
+                        [Description]: この elementは、Web applicationのすべてのファイルが保存されるContextのドキュメント・ベース・ディレクトリを設定します。                                                このディレクトリは、Context groupのドキュメント・ベース・ディレクトリに含まれて追加されます。(context-group>&lt;group-docbase>elementに設定されたように)
+                                                これは、絶対経路でも指定が可能です。
+                                                もしこのelementを設定しなければ  Contextは、デフォルト Contextディレクトリに保存されます。(Context groupディレクトリの下を意味)
+                        [Value Description]: このContextに対して絶対または相手パス。もし相手経路が指定されれば, その経路はContext groupのドキュメント・ベースに付け加えられます。
+                                                          (ディレクトリ分離者 “\”または "/"では始めない)
+                    ]]>        
+    </text>
+         
+    <text key="jsp-resourceType.provider-class"><![CDATA[                	[Description]: JSPリソースをInputStreamで提供するためにJspResourceProvider                 	インタフェースを実現したクラスを指定します。                	]]>        
+    </text>
+         
+    <text key="ejb-refType.jndi-info"><![CDATA[
+                        [Description]: 各&lt;jndi-info>elementは、一つのレファレンスに一つのJNDIの名前を連結します。
+                    ]]>            
+    </text>
+             
+    <text key="contextType.aliasing"><![CDATA[
+                        [Description]: Aliasingは、要求URL経路を実際ファイルシステムディレクトリでシンボリックリンクを生成するのに使われます。デフォルトでContextパスの下にそれぞれのURLパスは、Contextの文書ベースディレクトリの下位ディレクトリを反映します。しかし、URL経路が違うディレクトリなら、このelementは、デフォルト設定をオボライドすることに使われます。
+                    ]]>            
+    </text>
+             
+    <text key="contextType.enable-jsp"><![CDATA[
+                        [Description]: JSPエンジンの使用可否を設定します。
+                        [Value Description]: Boolean値でこの設定を活性化または非活性化します。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: Web ContainerでJSPの提供を活性化します。
+                                                [false]: Web ContainerでJSPの提供を非活性化します。
+                                                             設定すると、この値はすべてのJSPファイルのアクセス不可を引き起こします。(Service Unavailable メッセージがブラウザーに返還されるはずです。)
+                    ]]>            
+    </text>
+             
+    <text key="contextType.jsp-resource"><![CDATA[	                	[Description]: このelementはリポジトリに保存された JSPリソースをJspEngineに提供するためにprovider-classを指定します。                	]]>            
+    </text>
+             
+    <text key="contextType.fast-deploy"><![CDATA[
+                        [Description]: このweb componentがウェブサービスであるか或いはウェブサービスクライアントを含んでいるときに
+						ウェブサービスのTie及びウェブサービスクライアントのStubを新しく生成してコンパイルせずに既存に生成されて
+						web componentのように設置されたクラスファイルを使用するかの可否を指定します。
+                    ]]>            
+    </text>
+             
+    <text key="deny-downloadType.directory"><![CDATA[
+                        [Description]: 特定ディレクトリにすべてのファイルに対してダウンロードを防ぐためにこのelementを使います。(contextのURLパスと関係あり).
+                        [Value Description]: 始めと終りが "/"のディレクトリ
+ ContextのURL経路と関係のあるディレクトリ
+                        [Example]: &lt;directory>/data/&lt;/directory>
+                    ]]>            
+    </text>
+             
+    <text key="file-cachingType.max-idle-time"><![CDATA[
+                        [Description]: キャッシングされた静的資源が日程時間の間使われない場合は、該当の資源をキャッシングから除くのに基準になる時間
+                        [Value Description]: Millisecond値
+                        [Example]: &lt;max-idle-time>1800&lt;/max-idle-time>
+                    ]]>            
+    </text>
+             
+    <text key="deny-downloadType.extension"><![CDATA[
+                        [Description]: このelementの値で与えられた拡張子を持つContext内のあらゆるファイルのダウンロードを拒否します。
+                        [Value Description]:ファイル拡張子
+                        [Example]: &lt;extension>dat&lt;/extension>
+                    ]]>            
+    </text>
+             
+    <text key="auto-reloadType.enable-reload"><![CDATA[
+                        [Description]: Servlet auto-reloadを活性化または非活性化するかを決定します。
+                        [Value Description]: Boolean値でこの設定を活性化または非活性化します。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: 該当の設定を活性化する
+                                                [false]: 該当の設定を非活性化する
+                    ]]>            
+    </text>
+             
+    <text key="auto-reloadType.check-on-demand"><![CDATA[
+                        [Description]: このelementは、Servletクラス reloadをそれぞれのリクエストが来るたびに点検するかどうかを指定します。
+                        [Value Description]: Boolean値でこの設定を活性化または非活性化します。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: 該当の設定を活性化する.
+                                                [false]: 該当の設定を非活性化する.
+                    ]]>            
+    </text>
+             
+    <text key="contextType.allow-indexing"><![CDATA[
+                        [Description]: このelementの下位 elementは、URL経路に文書を検索できるように設定します。インデクシングは URL経路の下にあるディレクトリの Contentがウェブブラウザー窓に羅列されることを意味します。三つの条件が充足されればインデクシングは発生します。1.ユーザが明白なファイルや資源名をURL経路に指定しない。(例えば index.html 指定しない). 2.Web applicationの web.xmlディスクリプタファイルに default welcome fileが指定されない。 3.インデクシングは要請したディレクトリを許容する(許容したディレクトリは、このelementの下位 elementを並べる) もしこのすべての条件が充足されればディレクトリリストがクライアントに送られます。
+                   ]]>            
+    </text>
+             
+    <text key="file-cachingType.max-cache-memory"><![CDATA[
+                        [Description]: 静的資源を保存するのに置いて割り当て最大メモリー
+                        [Value Description]: Megabytes単位の数
+                        [Value Type Description]: Integer
+                        [Defined Value]: [-1]: キャッシュサイズに制限を置かない
+                    ]]>            
+    </text>
+             
+    <text key="added-classpathType.class-path"><![CDATA[
+                        [Description]: Servletをコンパイルして実行するときに追加するための1つのユーザ定義のlasspathを宣言します。
+                        [Value Description]: ディレクトリあるいはJARファイルが指定できます。
+                                                           ディレクトリで指定する時は ディレクトリ分離子で終わらなければなりません。(“\”ウィンドウ ,"/" ユニックス)
+                        [Example]: &lt;class-path>c:\mylib\subdir\&lt;/class-path>
+                    ]]>            
+    </text>
+             
+    <text key="contextType.added-classpath"><![CDATA[
+                        [Description]: このelementは、Servletがコンパイルされるとき或いは実行される時にクラス経路に加えられて追加的なクラスを指定します。デフォルトで “\WEB-INF\classes”ディレクトリ下にクラスとパッケージだけではなく“\WEB-INF\lib”の下にJARファイルもクラスパスに含まれます。\WEB-INF\ディレクトリは、Contextの文書ベースディレクトリの下にのみ位置されます。
+                   ]]>            
+    </text>
+             
+    <text key="deny-downloadType.file"><![CDATA[
+                        [Description]: この elementは、指定したファイルがダウンロードできないようにします。
+                        [Value Description]: URL context経路に対してファイル名が後に付く経路
+                        [Example]: &lt;file>/data/secret.dat&lt;/file>
+                    ]]>            
+    </text>
+             
+    <text key="contextType.keep-generated"><![CDATA[
+                        [Description]: このweb componentがウェブサ?[ビス或いはウェブサ?[ビスクライアントを含んでいる場合に
+						生成したウェブサ?[ビスのTie及びウェブサ?[ビスクライアントのStubのjava source fileを残すかどうかを指定します。この設定がなければ&lt;application>の設定を使用します。
+                    ]]>            
+    </text>
+             
+    <text key="allow-indexingType.directory"><![CDATA[
+                        [Description]: この elementは、指定したURLパスにディレクトリインデックシングを活性化します。
+                        [Value Description]: 始めと終りが "/"のURL経路
+                    ]]>            
+    </text>
+             
+    <text key="contextType.jsp-engine"><![CDATA[
+                     [Description]: このelementは　本Contextに対してJSPに連結された設定を作ります。この設定は、該当ContextのすべてのJSPページに適用されます。                ]]>            
+    </text>
+             
+    <text key="aliasingType.alias"><![CDATA[
+                        [Description]: 格&lt;alias>elementは要請URLと唯一のディレクトリの間に一つのマッピングを定義します。
+                                                例えば、ユーザ要求URLが www.foo.com/examples/images/hello.gifならデフォルトでContainerは 、Contextの
+                                                ベースディレクトリである"Examples"の下にある"/images/” ディレクトリで"hello.gif"を捜します。
+                                                “hello.gif"ファイルが "c:\web\images"ディレクトリに位置して Contextにはない場合 &lt;alias>elementが必要になります。
+                                                複数のマッピングが必要ならば、このelementを複数個設定して使います。
+                    ]]>                
+    </text>
+                 
+    <text key="contextType.res-ref"><![CDATA[
+                        [Description]: この elementは、web.xmlのリソースレファレンス(例えば、datasource レファレンス)と実際システムで使うJNDI名前に連結します。
+                        [Dependency]:
+                                    ref-name : /web-app/resource-ref/res-ref-name
+                    ]]>                
+    </text>
+                 
+    <text key="contextType.ejb-ref"><![CDATA[
+                        [Description]: このelementは、web.xmlで設定したEJB レファレンスを実際システムで使うJNDIの名前に連結する.
+                        [Dependency]:
+                                    ref-name : /web-app/ejb-ref/ejb-ref-name
+                    ]]>                
+    </text>
+                 
+    <text key="contextType.servlet"><![CDATA[
+                        [Description]: このelementは、context内のjeusのみのservletに対する情報を含みます。
+                    ]]>                
+    </text>
+                 
+    <text key="contextType.webinf-first"><![CDATA[
+                        [Description]: classをローディングするときにweb-infディレクトリの下から探し始めるかの可否を設定します。
+                        Trueで設定すると、web-infの下からまず探してfalseで設定されれば上位のclassloaderから探し始めます。
+                        Trueで設定時に重複されたclassによるClassCastExceptionを注意しなければなりません。
+                    ]]>                
+    </text>
+                 
+    <text key="servletType.servlet-name"><![CDATA[
+                        [Description]: web.xmlに指定されたservlet-nameを示します。                    ]]>                
+    </text>
+                 
+    <text key="aliasType.real-path"><![CDATA[
+                        [Description]: &lt;alias-name>elementのURL経路がマッピングされる実際ディレクトリを定義します。
+                        [Value Description]: 相応しいディレクトリ分離子で終わる絶対ディレクトリ経路("\"ウィンドウ,"/" ユニックス)
+                        [Example]: &lt;real-path>c:\web\images\&lt;/real-path>
+                    ]]>                
+    </text>
+                 
+    <text key="contextType.url-rewriting"><![CDATA[
+                        [Description]: デフォルトで Web Containerは、多くの要請に関してクライアントのセッションidを維持するためにクッキーを使います。1つの問題としては、リクエストが、クッキーが元々生成されてあった場合に対してのドメイン名前とリクエストが他のドメインの名前をもっていると、大部分のウェブブラウザーは新しい要求に対してはドンナセッションidクッキー情報も送りません。もし該当のオプションを trueで設定すれば、ウェブブラウザーがクッキーを支援してもクッキーに依存する代わりにURL rewritingの使用を強制に実行します。この場合に、セッショントラッキングは、他のドメイン名前を通じて呼び出しが使われても実行されるはずです。これは、すべてのURLのゆ唯一なJSESSIONID URLパラメーターを添付して該当の Contextに要求されるようにします。もしfalseに設定されれば該当の設定は使用されずにデフォルトクッキーが基準として使われます。
+                        [Value Description]: Boolean値でこの設定を活性化または非活性化します。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: 該当の設定を活性化します。
+                                         [false]: 該当の設定を非活性化します。
+                   ]]>                
+    </text>
+                 
+    <text key="jeus-web-dd"><![CDATA[
+                [Description]: JEUS Application(Servlet Application) Deployment Descriptor
+                                        このelement(&lt;context>)の下位elementは、 deploymentと
+                                        Contextの登録(Web application)に適合な情報を含んでいます。
+            ]]>                
+    </text>
+                 
+    <text key="contextType.file-caching"><![CDATA[
+                        [Description]: この elementは、イメージファイルとHTMLファイルのような静的資源のキャッシュを構成します。キャッシュは頻繁な要請ファイルを補助記憶装置(例: ハードディスク) の代わりにメインメモリーに一時的に保存して取得ことを意味します。これは、静的資源を取得する性能を向上させます。
+                    ]]>                
+    </text>
+                 
+    <text key="aliasType.alias-name"><![CDATA[
+                        [Description]: 指定したディレクトリにマッピングされるURLパス
+                        [Value Description]: 始めと終りが "/"のディレクトリ。ContextのURL経路と関係があるディレクトリ
+                        [Example]: &lt;alias-name>/images/&lt;/alias-name>
+                    ]]>                
+    </text>
+                 
+    <text key="contextType.max-instance-pool-size"><![CDATA[
+                        [Description]: single thread modelが使われれば(このように SingleThreadedModelインターフェースを相続するServletに対してのみ) Servlet instanceの最大数を設定します。もしsingle threaded Servletに対する要請がここに設定している値を超過すると、要求はsingle threaded Servlet instanceが使用可能となるまで待機します。                        [Value Description]: このContext groupのために生成するsingle threaded Servlet instanceの最大数
+                        [Value Type Description]: Integer
+                        [Defined Value]: [-1]:  この値段が使われればsingle threaded Servletsに対するinstanceの数に限界がなくなります。
+                    ]]>                
+    </text>
+                 
+    <text key="contextType.enable-default-login"><![CDATA[
+                        [Description]: この要素は使用されません。
+                    ]]>
+    </text>
+                 
+    <text key="contextType.context-path"><![CDATA[
+                        [Description]: コンテクストのURL pathです。このpathは、ドメインの名前(とポート番号)の後ろに付け加えます。
+                                                例: 例えば、Aというコンテクストのcontext pathが “/examples”であれば、“http://www.foo.com/examples/index.html” URLは、
+                                                A コンテクストの index.htmlファイルを実行します。
+                                                注意: もしこの elementがWEBMain.xmlに設定されていなければこちらに設定をしなければなりません。
+                        [Value Description]: URLは“/”でスタートしなければなりません。該当パスは、Virtual Host内でユニックである必要があります。
+                    ]]>                
+    </text>
+    <text key="jndi-propertiesType.local-bindings"><![CDATA[
+
+                        [Description] : local bindingを使用するかどうかを決定します。
+                	    [Value Description]: Boolean値でこの設定を活性化または非活性化します。
+                	
+                    ]]>   
+    </text>
+    <text key="contextType.jndi-properties"><![CDATA[
+
+	                	[Description]: jndi関連プロパティを設定します。
+                	
+                    ]]>   
+    </text>       
+</description>

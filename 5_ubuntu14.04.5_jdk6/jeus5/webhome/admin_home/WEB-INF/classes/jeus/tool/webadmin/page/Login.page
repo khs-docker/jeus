@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.LoginPage">
+    <component id="shell" type="Shell">
+        <binding name="title" value="message:Home.title"/>
+        <binding name="stylesheet" value="asset:login_css"/>
+    </component>
+
+    <inject property="homeService" object="engine-service:home"/>
+	<inject property="webadminVisit" type="state" object="visit"/>
+	<inject property="settings" type="state" object="Settings"/>
+	<inject property="userAgent" type="state" object="UserAgent"/>
+	<inject property="restartService" object="engine-service:restart"/>
+	
+    <component id="loginForm" type="Form">
+	   <binding name="stateful" value="false"/>
+    </component>
+
+    <component id="dynamite" type="jeus:Dynamite"/>
+
+    <component id="condFailed" type="If">
+        <binding name="condition" value="failed"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="alertScript" type="Script">
+        <binding name="script" value="literal:/jeus/tool/webadmin/script/Alert.script"/>
+        <binding name="message" value="message:common.exception.login_fail"/>
+    </component>
+
+    <component id="usernameField" type="TextField">
+        <binding name="value" value="userName"/>
+        <binding name="displayName" value="message:Login.username.label"/>
+        <binding name="validator" value="validators:required"/>
+    </component>
+
+    <component id="passwordField" type="TextField">
+        <binding name="hidden" value="true"/>
+        <binding name="value" value="password"/>
+        <binding name="displayName" value="message:Login.password.label"/>
+        <binding name="validator" value="validators:required"/>
+    </component>
+
+    <component id="login_top" type="Image">
+        <binding name="image" value="asset:login_top"/>
+    </component>
+
+    <component id="logo_JEUS" type="Image">
+        <binding name="image" value="asset:logo_JEUS"/>
+    </component>
+
+    <component id="img_idpw" type="Image">
+        <binding name="image" value="asset:img_idpw"/>
+    </component>
+
+    <component id="b_login" type="ImageSubmit">
+        <binding name="image" value="asset:b_login"/>
+        <binding name="listener" value="listener:onLoginOk"/>
+    </component>
+
+    <component id="logo_tmaxSoft" type="Image">
+        <binding name="image" value="asset:logo_tmaxSoft"/>
+    </component>
+
+    <asset name="login_css" path="context:/css/login.css"/>
+    <asset name="login_top" path="context:/image/new_login/login_top.gif"/>
+    <asset name="logo_JEUS" path="context:/image/new_login/logo_JEUS.gif"/>
+    <asset name="img_idpw" path="context:/image/new_login/img_idpw.gif"/>
+    <asset name="b_login" path="context:/image/new_login/b_login.gif"/>
+    <asset name="logo_tmaxSoft" path="context:/image/new_login/logo_tmaxSoft.gif"/>
+
+</page-specification>

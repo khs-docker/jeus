@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JMSConnectionFactoryResource.CreatePage">
+
+	<inject property="stateObject" type="state" object="WebadminStateObject"/>
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Create Connection Factory"/>
+    </component>
+
+    <component id="wizTabPanel" type="jeus:WizardTabPanel">
+        <binding name="tabNames" value="ognl:new java.lang.String[]{'general', 'thread_pool', 'create'}"/>
+    </component>
+
+    <component id="general" type="Block"/>
+    <component id="thread_pool" type="Block"/>
+    <component id="create" type="Block"/>
+
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cfc.general.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="generalNext" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="ognl:listeners.onGeneralNext"/>
+    </component>
+
+    <component id="thread_poolSkip" type="Submit">
+        <binding name="value" value="message:common.label.skip"/>
+        <binding name="listener" value="ognl:listeners.onThreadPoolSkip"/>
+    </component>
+
+    <component id="type" type="jeus:Field">
+        <binding name="field" value="ognl:components.typeField"/>
+    </component>
+
+    <component id="typeField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="ognl:connectionFactory"/>
+        <binding name="elementName" value="literal:type"/>
+        <binding name="model" value="ognl:@jeus.tool.webadmin.page.EnumerationSet@getPropertySelectionModel(connectionFactory.typeEnumeration)"/>
+    </component>
+
+    <component id="name" type="jeus:Field">
+        <binding name="field" value="ognl:components.nameField"/>
+    </component>
+
+    <component id="nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="connectionFactory"/>
+        <binding name="elementName" value="literal:name"/>
+        <binding name="validators" value="validators:required,$pattern,$exportNameValidator"/>
+    </component>
+
+    <component id="general_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>                        
+
+    <component id="service" type="jeus:Field">
+        <binding name="field" value="ognl:components.serviceField"/>
+    </component>
+
+    <component id="serviceField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:connectionFactory"/>
+        <binding name="elementName" value="literal:service"/>
+    </component>
+
+    <component id="export_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.export_nameField"/>
+    </component>
+
+    <component id="export_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="connectionFactory"/>
+        <binding name="elementName" value="literal:exportName"/>
+        <binding name="validators" value="validators:$exportNameValidator"/>
+    </component>
+
+    <component id="clustered_factory" type="jeus:Field">
+        <binding name="field" value="ognl:components.clustered_factoryField"/>
+    </component>
+
+    <component id="clustered_factoryField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:connectionFactory"/>
+        <binding name="elementName" value="literal:clusteredFactory"/>
+    </component>    
+
+
+    <component id="choose" type="contrib:Choose"/>
+
+    <component id="condHasNoJMSEngine" type="contrib:When">
+        <binding name="condition" value="ognl:@jeus.tool.webadmin.util.EngineUtils@getEngines(objectName, stateObject).jms == null"/>
+    </component>
+    <component id="condHasJMSEngine" type="contrib:Otherwise"/>
+
+    <component id="no_jms_engine" type="Insert">
+        <binding name="value" value="message:cfc.no_jms_engine.label"/>
+    </component>
+
+    <component id="fixed_client_id" type="jeus:Field">
+        <binding name="field" value="ognl:components.fixed_client_idField"/>
+    </component>
+
+    <component id="fixed_client_idField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:connectionFactory"/>
+        <binding name="elementName" value="literal:fixedClientId"/>
+    </component>
+
+    <component id="broker_selection_policy" type="jeus:Field">
+        <binding name="field" value="component:broker_selection_policyField"/>
+    </component>
+
+    <component id="broker_selection_policyField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="connectionFactory"/>
+        <binding name="elementName" value="literal:brokerSelectionPolicy"/>
+        <binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@getPropertySelectionModel(connectionFactory.brokerSelectionPolicyEnumeration)"/>
+    </component>
+
+    <component id="client_id" type="jeus:Field">
+        <binding name="field" value="ognl:components.client_idField"/>
+    </component>
+
+    <component id="client_idField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="connectionFactory"/>
+        <binding name="elementName" value="literal:clientId"/>
+        <binding name="validators" value="validators:$clientIdValidator"/>
+    </component>
+
+
+    <component id="thread_poolForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cfc.thread_pool.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+   <component id="thread_poolPrevious" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="ognl:listeners.onThreadPoolPrevious"/>
+    </component>
+
+   <component id="thread_poolNext" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="ognl:listeners.onThreadPoolNext"/>
+    </component>
+
+    <component id="max" type="jeus:Field">
+        <binding name="field" value="ognl:components.maxField"/>
+    </component>
+
+    <component id="maxField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="threadPool"/>
+        <binding name="elementName" value="literal:max"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:required,min=1"/>
+    </component>
+
+    <component id="thread_pool_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="min" type="jeus:Field">
+        <binding name="field" value="ognl:components.minField"/>
+    </component>
+
+    <component id="minField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="threadPool"/>
+        <binding name="elementName" value="literal:min"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="keep_alive_time" type="jeus:Field">
+        <binding name="field" value="ognl:components.keep_alive_timeField"/>
+    </component>
+
+    <component id="keep_alive_timeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="threadPool"/>
+        <binding name="elementName" value="literal:keepAliveTime"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    
+    <component id="createForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cfc.create.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="condHasRunningJMS" type="If">
+        <binding name="condition" value="ognl:@jeus.tool.webadmin.util.EngineUtils@getRunningEngines(objectName, stateObject).jms != null"/>
+    </component>
+
+    <component id="bind_now" type="jeus:Field">
+        <binding name="field" value="ognl:components.bind_nowField"/>
+        <binding name="label" value="message:cfc.create.bind_now.label"/>
+    </component>
+
+    <component id="bind_nowField" type="jeus:DojoCheckbox">
+        <binding name="value" value="ognl:createNow"/>
+    </component>
+
+
+    <component id="createPrevious" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="ognl:listeners.onCreatePrevious"/>
+    </component>
+
+   <component id="createOk" type="Submit">
+        <binding name="value" value="message:common.label.create"/>
+        <binding name="listener" value="ognl:listeners.onCreateOk"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+   </component>
+
+    <bean name="pattern" class="org.apache.tapestry.form.validator.Pattern">
+    	<set name="pattern" value="literal:[a-zA-Z0-9]*"/>
+    	<set name="message" value="message:common.exception.0066"/>
+    </bean>
+
+    <bean name="exportNameValidator" class="jeus.tool.webadmin.page.JMSConnectionFactoryResource.NameValidator">
+        <set name="jmsServer" value="jmsServer"/>
+    </bean>
+
+    <bean name="clientIdValidator" class="jeus.tool.webadmin.page.JMSConnectionFactoryResource.ClientIdValidator">
+        <set name="jmsServer" value="jmsServer"/>
+    </bean>
+
+    <property name="connectionFactory" persist="session"/>
+    <property name="typeLabel"/>
+    <property name="type"/>
+    <property name="createNow"/>
+</page-specification>

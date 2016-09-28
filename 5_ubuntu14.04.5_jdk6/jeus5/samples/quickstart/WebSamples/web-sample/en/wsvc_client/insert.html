@@ -1,0 +1,67 @@
+<html>
+<body>
+<table>
+	<form action="./insertAction.jsp" method="post">
+<tr>
+	<td>Employee No(ex:1234)</td>
+	<td>
+		<input type="text" name=no size=4 maxlength=4>
+	</td>
+<tr>
+	<td>Name(ex:Peter)</td>
+	<td>
+		<input type="text" name=name size=10 maxlength=16>
+	</td>
+</tr>
+<tr>
+	<td>Job(ex:SALESMAN)</td>
+	<td>
+		<input type="text" name=job size=12 maxlength=12>
+	</td>
+</tr>
+<tr>
+	<td>MANAGER(ex:7272)</td>
+	<td>
+		<input type="text" name=mgr size=4 maxlength=4>
+	</td>
+</tr>
+<tr>
+	<td>HIREDATE(ex :2005-01-11)</td>
+	<td>
+		<input type="text" name=hiredate size=10 maxlength=10>
+	</td>
+</tr>
+<tr>
+	<td>SALARY(ex: 2500)</td>
+	<td>
+		<input type="text" name=sal size=10 maxlength=10>
+	</td>
+</tr>
+<tr>
+	<td>COMMISSION(ex: 500)</td>
+	<td>
+		<input type="text" name=comm size=10 maxlength=10>
+	</td>
+</tr>
+<tr>
+	<td>DEPARTMENT</td>
+	<td>
+		<select name=deptno>
+			<option value="10">QA</option>
+			<option value="20">RESEARCH</option>
+			<option value="30">SALES</option>
+			<option value="40">OPERATIONS</option>
+		</select>
+	</td>
+</tr>
+<tr>
+	<td colspan=2>
+		<input type="submit" name="submit" value="Add" size=12>
+		<input type="button" name="list" size=12 onClick='javascript:window.location="./employeeList.jsp"' value="Employee List">
+		<input type="button" name="home" size=12 onClick='javascript:window.location="./index.html"' value="HOME">
+	</td>
+</tr>
+	</form>
+</table>
+</body>
+</html>

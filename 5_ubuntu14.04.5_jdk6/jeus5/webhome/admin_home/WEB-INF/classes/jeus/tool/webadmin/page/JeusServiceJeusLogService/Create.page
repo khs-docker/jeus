@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceJeusLogService.CreatePage">
+
+    <component id="popupMainBorder" type="jeus:PopupMainBorder">
+        <binding name="title" value="message:la.handler"/>
+    </component>
+
+    <component id="wizTabPanel" type="jeus:WizardTabPanel">
+        <binding name="tabNames" value="ognl:new java.lang.String[]{'type', 'general', 'create'}"/>
+    </component>
+
+    <component id="type" type="Block"/>
+    <component id="general" type="Block"/>
+    <component id="create" type="Block"/>
+
+    <component id="dynamite" type="jeus:Dynamite"/>
+
+    <component id="typeNext" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="ognl:listeners.onTypeNext"/>
+    </component>
+
+    <component id="generalPrevious" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="ognl:listeners.onGeneralPrevious"/>
+    </component>
+
+    <component id="generalNext" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="ognl:listeners.onGeneralNext"/>
+    </component>
+
+    <component id="createOk" type="Submit">
+        <binding name="value" value="message:common.label.create"/>
+        <binding name="listener" value="ognl:listeners.onCreateOk"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+    <component id="createPrevious" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="ognl:listeners.onCreatePrevious"/>
+    </component>
+
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:log.handler.create.general.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+        <binding name="description" value="message:log.handler.create.general.description"/>
+    </component>
+
+    <component id="handlerRadioGroup" type="RadioGroup">
+        <binding name="selected" value="ognl:selectedType"/>
+    </component>
+
+    <component id="handler_type_column" type="Insert">
+        <binding name="value" value="message:log.control.handler.handler_type.label"/>
+    </component>
+
+    <component id="eachType" type="Foreach">
+        <binding name="source" value="ognl:@jeus.tool.webadmin.page.EnumerationSet@HANDLER_TYPE_LABELS"/>
+        <binding name="value" value="ognl:typeLabel"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="handler_radio" type="jeus:DojoRadio">
+        <binding name="value" value="ognl:typeLabel"/>
+    </component>
+
+    <component id="handler_type_value" type="Insert">
+        <binding name="value" value="ognl:typeLabel"/>
+    </component>
+
+    <component id="typeForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:log.handler.create.type.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+        <binding name="description" value="message:log.handler.create.type.description"/>
+    </component>
+
+    <component id="chooseHandler" type="contrib:Choose"/>
+
+    <component id="whenConsole" type="contrib:When">
+        <binding name="condition" value="ognl:console"/>
+    </component>
+
+    <component id="whenFile" type="contrib:When">
+        <binding name="condition" value="ognl:file"/>
+    </component>
+
+    <component id="whenSmtp" type="contrib:When">
+        <binding name="condition" value="ognl:smtp"/>
+    </component>
+
+    <component id="whenSocket" type="contrib:When">
+        <binding name="condition" value="ognl:socket"/>
+    </component>
+
+    <component id="whenUser" type="contrib:When">
+        <binding name="condition" value="ognl:user"/>
+    </component>
+
+    <component id="console_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="file_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="smtp_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="socket_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="user_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="logger_name" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:log.handler.create.logger_name.label"/>
+        <binding name="value" value="ognl:loggerName"/>
+    </component>
+
+    <component id="handler_type" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:log.handler.create.handler_type.label"/>
+        <binding name="value" value="ognl:selectedType"/>
+    </component>
+
+    <component id="handler_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.handler_nameField"/>
+        <binding name="label" value="message:log.handler.create.handler_name.label"/>
+        <binding name="description" value="message:log.handler.create.handler_name.description"/>
+    </component>
+
+    <component id="handler_nameField" type="jeus:DojoTextField">
+        <binding name="value" value="ognl:handlerName"/>
+        <binding name="displayName" value="message:log.handler.create.handler_name.label"/>
+    </component>
+
+    <component id="handler_level" type="jeus:Field">
+        <binding name="field" value="ognl:components.handler_levelField"/>
+        <binding name="label" value="message:log.handler.create.handler_level.label"/>
+        <binding name="description" value="message:log.handler.create.handler_level.description"/>
+    </component>
+
+    <component id="handler_levelField" type="jeus:PropertySelection">
+        <binding name="value" value="ognl:handlerLevel"/>
+        <binding name="model" value="ognl:@jeus.tool.webadmin.page.EnumerationSet@JAVA_LOG_LEVELS"/>
+    </component>
+
+    <component id="encoding" type="jeus:Field">
+        <binding name="field" value="ognl:components.encodingField"/>
+        <binding name="label" value="message:log.handler.create.encoding.label"/>
+        <binding name="description" value="message:log.handler.create.encoding.description"/>
+    </component>
+
+    <component id="encodingField" type="jeus:DojoTextField">
+        <binding name="value" value="ognl:encoding"/>
+        <binding name="displayName" value="message:log.handler.create.encoding.label"/>
+    </component>
+
+    <component id="filter_class" type="jeus:Field">
+        <binding name="field" value="ognl:components.filter_classField"/>
+        <binding name="label" value="message:log.handler.create.filter_class.label"/>
+        <binding name="description" value="message:log.handler.create.filter_class.description"/>
+    </component>
+
+    <component id="filter_classField" type="jeus:DojoTextField">
+        <binding name="value" value="ognl:filterClass"/>
+        <binding name="displayName" value="message:log.handler.create.filter_class.label"/>
+    </component>
+
+    <component id="file_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.file_nameField"/>
+        <binding name="label" value="message:log.handler.create.file_name.label"/>
+        <binding name="description" value="message:log.handler.create.file_name.description"/>
+    </component>
+
+    <component id="file_nameField" type="jeus:DojoTextField">
+        <binding name="value" value="ognl:fileName"/>
+        <binding name="displayName" value="message:log.handler.create.file_name.label"/>
+    </component>
+
+    <component id="valid" type="jeus:Field">
+        <binding name="field" value="ognl:components.validField"/>
+        <binding name="label" value="message:log.handler.create.valid.label"/>
+        <binding name="description" value="message:log.handler.create.valid.description"/>
+    </component>
+
+    <component id="validField" type="jeus:DojoTextField">
+        <binding name="value" value="valid"/>
+        <binding name="displayName" value="message:log.handler.create.valid.label"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="valid_unitField" type="jeus:PropertySelection">
+        <binding name="value" value="ognl:validUnit"/>
+        <binding name="model" value="ognl:@jeus.tool.webadmin.page.EnumerationSet@getPropertySelectionModel({'Days','Hours'})"/>
+    </component>
+
+    <component id="buffer_size" type="jeus:Field">
+        <binding name="field" value="ognl:components.buffer_sizeField"/>
+        <binding name="label" value="message:log.handler.create.buffer_size.label"/>
+        <binding name="description" value="message:log.handler.create.buffer_size.description"/>
+        <binding name="unit" value="message:common.unit.bytes"/>
+    </component>
+
+    <component id="buffer_sizeField" type="jeus:DojoTextField">
+        <binding name="value" value="bufferSize"/>
+        <binding name="displayName" value="message:log.handler.create.buffer_size.label"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="append" type="jeus:Field">
+        <binding name="field" value="ognl:components.appendField"/>
+        <binding name="label" value="message:log.handler.create.append.label"/>
+        <binding name="description" value="message:log.handler.create.append.description"/>
+    </component>
+
+    <component id="appendField" type="jeus:DojoCheckbox">
+        <binding name="value" value="ognl:append"/>
+        <binding name="displayName" value="message:log.handler.create.append.label"/>
+    </component>
+
+    <component id="handler_class" type="jeus:Field">
+        <binding name="field" value="ognl:components.handler_classField"/>
+        <binding name="label" value="message:log.handler.create.handler_class.label"/>
+        <binding name="description" value="message:log.handler.create.handler_class.description"/>
+    </component>
+
+    <component id="handler_classField" type="jeus:DojoTextField">
+        <binding name="value" value="handlerClass"/>
+        <binding name="displayName" value="message:log.handler.create.handler_class.label"/>
+		<binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="handler_property" type="jeus:Field">
+        <binding name="label" value="message:log.handler.create.handler_property.label"/>
+        <binding name="description" value="message:log.handler.create.handler_property.description"/>
+        <binding name="usage" value="message:common.usage.property"/>
+        <binding name="field" value="ognl:components.handler_propertyField"/>
+    </component>
+
+    <component id="handler_propertyField" type="jeus:DojoTextArea">
+        <binding name="value" value="ognl:handlerProperty"/>
+        <binding name="displayName" value="message:log.handler.create.handler_property.label"/>
+    </component>
+
+    <component id="formatter_class" type="jeus:Field">
+        <binding name="field" value="ognl:components.formatter_classField"/>
+        <binding name="label" value="message:log.handler.create.formatter_class.label"/>
+        <binding name="description" value="message:log.handler.create.formatter_class.description"/>
+    </component>
+
+    <component id="formatter_classField" type="jeus:DojoTextField">
+        <binding name="value" value="ognl:formatterClass"/>
+        <binding name="displayName" value="message:log.handler.create.formatter_class.label"/>
+    </component>
+
+    <component id="formatter_property" type="jeus:Field">
+        <binding name="label" value="message:log.handler.create.formatter_property.label"/>
+        <binding name="description" value="message:log.handler.create.formatter_property.description"/>
+        <binding name="usage" value="message:common.usage.property"/>
+        <binding name="field" value="ognl:components.formatter_propertyField"/>
+    </component>
+
+    <component id="formatter_propertyField" type="jeus:DojoTextArea">
+        <binding name="value" value="ognl:formatterProperty"/>
+        <binding name="displayName" value="message:log.handler.create.formatter_property.label"/>
+    </component>
+
+    <component id="smtp_host_address" type="jeus:Field">
+        <binding name="field" value="ognl:components.smtp_host_addressField"/>
+        <binding name="label" value="message:log.handler.create.smtp_host_address.label"/>
+        <binding name="description" value="message:log.handler.create.smtp_host_address.description"/>
+    </component>
+
+    <component id="smtp_host_addressField" type="jeus:DojoTextField">
+        <binding name="value" value="smtpHostAddress"/>
+        <binding name="displayName" value="message:log.handler.create.smtp_host_address.label"/>
+		<binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="from_address" type="jeus:Field">
+        <binding name="field" value="ognl:components.from_addressField"/>
+        <binding name="label" value="message:log.handler.create.from_address.label"/>
+        <binding name="description" value="message:log.handler.create.from_address.description"/>
+    </component>
+
+    <component id="from_addressField" type="jeus:DojoTextField">
+        <binding name="value" value="fromAddress"/>
+        <binding name="displayName" value="message:log.handler.create.from_address.label"/>
+		<binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="to_address" type="jeus:Field">
+        <binding name="field" value="ognl:components.to_addressField"/>
+        <binding name="label" value="message:log.handler.create.to_address.label"/>
+        <binding name="description" value="message:log.handler.create.to_address.description"/>
+    </component>
+
+    <component id="to_addressField" type="jeus:DojoTextField">
+        <binding name="value" value="toAddress"/>
+        <binding name="displayName" value="message:log.handler.create.to_address.label"/>
+		<binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="cc_address" type="jeus:Field">
+        <binding name="field" value="ognl:components.cc_addressField"/>
+        <binding name="label" value="message:log.handler.create.cc_address.label"/>
+        <binding name="description" value="message:log.handler.create.cc_address.description"/>
+    </component>
+
+    <component id="cc_addressField" type="jeus:DojoTextField">
+        <binding name="value" value="ognl:ccAddress"/>
+        <binding name="label" value="message:log.handler.create.cc_address.label"/>
+    </component>
+
+    <component id="bcc_address" type="jeus:Field">
+        <binding name="field" value="ognl:components.bcc_addressField"/>
+        <binding name="label" value="message:log.handler.create.bcc_address.label"/>
+        <binding name="description" value="message:log.handler.create.bcc_address.description"/>
+    </component>
+
+    <component id="bcc_addressField" type="jeus:DojoTextField">
+        <binding name="value" value="ognl:bccAddress"/>
+        <binding name="label" value="message:log.handler.create.bcc_address.label"/>
+    </component>
+
+    <component id="send_for_all_messages" type="jeus:Field">
+        <binding name="field" value="ognl:components.send_for_all_messagesField"/>
+        <binding name="label" value="message:log.handler.create.send_for_all_messages.label"/>
+        <binding name="description" value="message:log.handler.create.send_for_all_messages.description"/>
+    </component>
+
+    <component id="send_for_all_messagesField" type="jeus:DojoCheckbox">
+        <binding name="value" value="ognl:sendForAllMessages"/>
+    </component>
+
+    <component id="address" type="jeus:Field">
+        <binding name="field" value="ognl:components.addressField"/>
+        <binding name="label" value="message:log.handler.create.address.label"/>
+        <binding name="description" value="message:log.handler.create.address.description"/>
+    </component>
+
+    <component id="addressField" type="jeus:DojoTextField">
+        <binding name="value" value="address"/>
+        <binding name="displayName" value="message:log.handler.create.address.label"/>
+		<binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="port" type="jeus:Field">
+        <binding name="field" value="ognl:components.portField"/>
+        <binding name="label" value="message:log.handler.create.port.label"/>
+        <binding name="description" value="message:log.handler.create.port.description"/>
+    </component>
+
+    <component id="portField" type="jeus:DojoTextField">
+        <binding name="value" value="port"/>
+        <binding name="displayName" value="message:log.handler.create.port.label"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:required,min=1"/>
+    </component>
+
+    <component id="createForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:log.handler.create.create.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+        <binding name="description" value="message:log.handler.create.create.description"/>
+    </component>
+
+    <bean name="requiredValidator" class="org.apache.tapestry.valid.StringValidator">
+        <set name="required" value="ognl:true"/>
+    </bean>
+
+    <bean name="nameValidator" class="jeus.tool.webadmin.page.Handler.NameValidator">
+        <set name="required" value="true"/>
+        <set name="handlers" value="handlers"/>
+    </bean>
+
+    <asset name="form_css" path="context:/css/form.css"/>
+    <asset name="jeus_css" path="context:/css/jeus.css"/>
+
+    <property name="loggerName" persist="session"/>
+    <property name="systemLogging" persist="session"/>
+    <property name="type"/>
+    <property name="typeValue"/>
+    <property name="typeLabel"/>
+    <property name="handlerName"/>
+    <property name="handlerLevel"/>
+    <property name="encoding"/>
+    <property name="filterClass"/>
+    <property name="selectedType" persist="session"/>
+    <property name="fileName"/>
+    <property name="valid"/>
+    <property name="validUnit"/>
+    <property name="bufferSize" initial-value="1024"/>
+    <property name="append" initial-value="true"/>
+    <property name="smtpHostAddress"/>
+    <property name="fromAddress"/>
+    <property name="toAddress"/>
+    <property name="ccAddress"/>
+    <property name="bccAddress"/>
+    <property name="sendForAllMessages" initial-value="true"/>
+    <property name="address"/>
+    <property name="port"/>
+    <property name="handlerClass"/>
+    <property name="handlerProperty"/>
+    <property name="formatterClass"/>
+    <property name="formatterProperty"/>
+</page-specification>

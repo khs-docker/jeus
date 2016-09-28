@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceContextGroup.ConfigurationPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Context Group Configuration"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@getCONTEXT_GROUP_NAMES(objectName)"/>
+        <binding name="subtabNames" value="ognl:{'general', 'virtual_host','encoding', 'access_log', 'user_log', 'jsp_engine', 'session_config', 'response_header'}"/>
+        <binding name="notFound" value="ognl:contextGroup == null"/>
+        <binding name="notFoundBlock" value="ognl:components.notFound"/>
+    </component>
+
+    <component id="general" type="Block"/>
+    <component id="virtual_host" type="Block"/>
+    <component id="encoding" type="Block"/>
+    <component id="access_log" type="Block"/>
+    <component id="user_log" type="Block"/>
+    <component id="session_config" type="Block"/>
+    <component id="jsp_engine" type="Block"/>
+    <component id="response_header" type="Block"/>
+    <component id="notFound" type="Block"/>
+
+
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.general.title2"/>
+        <binding name="listener" value="ognl:listeners.onGeneralOk"/>
+        <binding name="parentElement" value="ognl:webContainer"/>
+        <binding name="elementName" value="literal:contextGroup"/>
+    </component>
+
+    <component id="group_name" type="jeus:ReadOnlyTextField">
+        <binding name="parentElement" value="ognl:contextGroup"/>
+        <binding name="elementName" value="literal:groupName"/>
+    </component>
+
+    <component id="general_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="print_error_to_browser" type="jeus:Field">
+        <binding name="field" value="ognl:components.print_error_to_browserField"/>
+    </component>
+
+    <component id="print_error_to_browserField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:contextGroup"/>
+        <binding name="elementName" value="literal:printErrorToBrowser"/>
+    </component>
+
+    <component id="note" type="jeus:Field">
+        <binding name="field" value="components.noteField"/>
+        <binding name="label" value="message:common.message.note.label"/>
+    </component>
+
+    <component id="noteField" type="jeus:NoteIO">
+        <binding name="parent" value="ognl:contextGroup"/>
+        <binding name="element" value="literal:groupName"/>
+        <binding name="pageName" value="literal:JeusServiceContextGroup_Configure"/>
+        <binding name="value" value="note"/>
+        <binding name="displayName" value="literal:"/>
+    </component>
+
+    <component id="virtual_hostForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.virtual_host.title"/>
+        <binding name="useForm" value="ognl:false"/>
+        <binding name="parentElement" value="ognl:contextGroup"/>
+        <binding name="elementName" value="literal:virtualHost"/>
+    </component>
+
+    <component id="virtual_host_name_column" type="Insert">
+        <binding name="value" value="message:cgc.virtual_host.name.label"/>
+    </component>
+
+    <component id="eachVirtualHost" type="Foreach">
+        <binding name="source" value="ognl:virtualHosts"/>
+        <binding name="value" value="ognl:virtualHost"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="virtual_host_name_value" type="Insert">
+        <binding name="value" value="ognl:virtualHost.virtualHostName"/>
+    </component>
+
+    <component id="virtual_hostLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceVirtualHost_Configuration"/>
+        <binding name="parameters" value="ognl:getVirtualHostObjectName(virtualHost.virtualHostName)"/>
+    </component>
+   
+    <component id="deleteVirtualHostLink" type="DirectLink">
+        <binding name="listener" value="listener:onDeleteVirtualHost"/>
+        <binding name="parameters" value="virtualHost.virtualHostName"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.delete.confirm', virtualHost.virtualHostName)"/>
+    </component>
+
+    <component id="deleteVirtualHost" type="Image">
+        <binding name="image" value="ognl:assets.delete"/>
+    </component>
+
+
+    <component id="createVirtualHostLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceVirtualHost_Create"/>
+        <binding name="parameters" value="ognl:{objectName.canonicalName, 'New'}"/>
+    </component>
+
+    <component id="createVirtualHost" type="Insert">
+        <binding name="value" value="message:cgc.virtual_host.create.label"/>
+    </component>
+
+
+   <component id="access_logForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.access_log.title"/>
+        <binding name="listener" value="ognl:listeners.onAccessLogOk"/>
+    </component>
+
+    <component id="enable_access_log" type="jeus:Field">
+        <binding name="field" value="ognl:components.enable_access_logField"/>
+    </component>
+
+    <component id="enable_access_logField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:accessLog"/>
+        <binding name="elementName" value="literal:enable"/>
+    </component>
+
+    <component id="access_log_format" type="jeus:Field">
+        <binding name="field" value="ognl:components.access_log_formatField"/>
+    </component>
+
+    <component id="access_log_formatField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:accessLog"/>
+        <binding name="elementName" value="literal:format"/>
+    </component>
+
+    <component id="access_log_logging_panel" type="jeus:Logging">
+        <binding name="logging" value="ognl:accessLog"/>
+        <binding name="webAccessLog" value="ognl:true"/>
+    </component>
+
+    <component id="access_log_handlerForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.handler.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+        <binding name="subform" value="ognl:true"/>
+    </component>
+
+    <component id="access_log_handler_panel" type="jeus:HandlerList">
+        <binding name="handlers" value="ognl:accessLogHandlers"/>
+        <binding name="createPage" value="literal:JeusServiceContextGroup_CreateAccessLogHandler"/>
+        <binding name="editPage" value="literal:JeusServiceContextGroup_EditAccessLogHandler"/>
+        <binding name="deleteListener" value="ognl:listeners.onDeleteAccessLogHandler"/>
+        <binding name="objectName" value="ognl:objectName"/>
+        <binding name="jeusType" value="literal:ContextGroupAccessLog"/>
+    </component>
+
+
+   <component id="user_logForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.user_log.title"/>
+        <binding name="listener" value="ognl:listeners.onUserLogOk"/>
+    </component>
+
+    <component id="user_log_logging_panel" type="jeus:Logging">
+        <binding name="logging" value="ognl:userLog"/>
+    </component>
+
+    <component id="user_log_handlerForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.handler.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+        <binding name="subform" value="ognl:true"/>
+    </component>
+
+    <component id="user_log_handler_panel" type="jeus:HandlerList">
+        <binding name="handlers" value="ognl:userLogHandlers"/>
+        <binding name="createPage" value="literal:JeusServiceContextGroup_CreateUserLogHandler"/>
+        <binding name="editPage" value="literal:JeusServiceContextGroup_EditUserLogHandler"/>
+        <binding name="deleteListener" value="ognl:listeners.onDeleteUserLogHandler"/>
+        <binding name="objectName" value="ognl:objectName"/>
+        <binding name="jeusType" value="literal:ContextGroupUserLog"/>
+    </component>
+
+    <component id="encodingForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.encoding.title"/>
+        <binding name="listener" value="ognl:listeners.onEncodingOk"/>
+    </component>
+
+    <component id="request_encodingSection" type="jeus:FormSection">
+        <binding name="title" value="message:cgc.encoding.request.title"/>
+    </component>
+
+    <component id="req_default" type="jeus:Field">
+        <binding name="field" value="ognl:components.req_defaultField"/>
+    </component>
+
+    <component id="req_defaultField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:requestEncoding"/>
+        <binding name="elementName" value="literal:default"/>
+    </component>
+
+    <component id="req_forced" type="jeus:Field">
+        <binding name="field" value="ognl:components.req_forcedField"/>
+    </component>
+
+    <component id="req_forcedField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:requestEncoding"/>
+        <binding name="elementName" value="literal:forced"/>
+    </component>
+
+
+    <component id="response_encodingSection" type="jeus:FormSection">
+        <binding name="title" value="message:cgc.encoding.response.title"/>
+    </component>
+
+    <component id="res_default" type="jeus:Field">
+        <binding name="field" value="ognl:components.res_defaultField"/>
+    </component>
+
+    <component id="res_defaultField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:responseEncoding"/>
+        <binding name="elementName" value="literal:default"/>
+    </component>
+
+    <component id="res_forced" type="jeus:Field">
+        <binding name="field" value="ognl:components.res_forcedField"/>
+    </component>
+
+    <component id="res_forcedField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:responseEncoding"/>
+        <binding name="elementName" value="literal:forced"/>
+    </component>
+
+    <component id="postdata_encodingSection" type="jeus:FormSection">
+        <binding name="title" value="message:cgc.encoding.postdata.title"/>
+    </component>
+
+    <component id="pd_default" type="jeus:Field">
+        <binding name="field" value="ognl:components.pd_defaultField"/>
+    </component>
+
+    <component id="pd_defaultField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:postdataEncoding"/>
+        <binding name="elementName" value="literal:default"/>
+    </component>
+
+    <component id="pd_forced" type="jeus:Field">
+        <binding name="field" value="ognl:components.pd_forcedField"/>
+    </component>
+
+    <component id="pd_forcedField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:postdataEncoding"/>
+        <binding name="elementName" value="literal:forced"/>
+    </component>
+
+    <component id="jsp_engineForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.jsp_engine.title"/>
+        <binding name="listener" value="ognl:listeners.onJspEngineOk"/>
+        <binding name="parentElement" value="ognl:contextGroup"/>
+        <binding name="elementName" value="literal:jspEngine"/>
+    </component>
+
+    <component id="keep_generated" type="jeus:Field">
+        <binding name="field" value="ognl:components.keep_generatedField"/>
+    </component>
+
+    <component id="keep_generatedField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:jspEngine"/>
+        <binding name="elementName" value="literal:keepGenerated"/>
+    </component>
+
+    <component id="java_compiler" type="jeus:Field">
+        <binding name="field" value="ognl:components.java_compilerField"/>
+    </component>
+
+    <component id="java_compilerField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:jspEngine"/>
+        <binding name="elementName" value="literal:javaCompiler"/>
+    </component>
+
+    <component id="jsp_engine_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+   <component id="jsp_work_dir" type="jeus:Field">
+        <binding name="field" value="ognl:components.jsp_work_dirField"/>
+    </component>
+
+    <component id="jsp_work_dirField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:jspEngine"/>
+        <binding name="elementName" value="literal:jspWorkDir"/>
+    </component>
+
+   <component id="compile_output_dir" type="jeus:Field">
+        <binding name="field" value="ognl:components.compile_output_dirField"/>
+    </component>
+
+    <component id="compile_output_dirField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:jspEngine"/>
+        <binding name="elementName" value="literal:compileOutputDir"/>
+    </component>
+
+   <component id="compile_option" type="jeus:Field">
+        <binding name="field" value="ognl:components.compile_optionField"/>
+    </component>
+
+    <component id="compile_optionField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:jspEngine"/>
+        <binding name="elementName" value="literal:compileOption"/>
+    </component>
+
+   <component id="compile_encoding" type="jeus:Field">
+        <binding name="field" value="ognl:components.compile_encodingField"/>
+    </component>
+
+    <component id="compile_encodingField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:jspEngine"/>
+        <binding name="elementName" value="literal:compileEncoding"/>
+    </component>
+
+    <component id="check_included_jspfile" type="jeus:Field">
+        <binding name="field" value="ognl:components.check_included_jspfileField"/>
+    </component>
+
+    <component id="check_included_jspfileField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:jspEngine"/>
+        <binding name="elementName" value="literal:checkIncludedJspfile"/>
+    </component>
+
+    <component id="session_configForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.session_config.title"/>
+        <binding name="listener" value="ognl:listeners.onSessionConfigOk"/>
+        <binding name="parentElement" value="ognl:contextGroup"/>
+        <binding name="elementName" value="literal:sessionCluster"/>
+    </component>
+
+   <component id="timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.timeoutField"/>
+        <binding name="unit" value="message:common.unit.minutes"/>
+    </component>
+
+    <component id="timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="sessionConfig"/>
+        <binding name="elementName" value="literal:timeout"/>
+		<binding name="translator" value="translator:number2"/>
+    </component>
+
+    <component id="shared" type="jeus:Field">
+        <binding name="field" value="ognl:components.sharedField"/>
+    </component>
+
+    <component id="sharedField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:sessionConfig"/>
+        <binding name="elementName" value="literal:shared"/>
+    </component>
+
+    <component id="persistent" type="jeus:Field">
+        <binding name="field" value="ognl:components.persistentField"/>
+    </component>
+
+    <component id="persistentField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:sessionConfig"/>
+        <binding name="elementName" value="literal:persistent"/>
+    </component>
+    
+
+    <component id="response_headerForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:cgc.response_header.title"/>
+        <binding name="listener" value="ognl:listeners.onResponseHeaderOk"/>
+        <binding name="parentElement" value="ognl:contextGroup"/>
+        <binding name="elementName" value="literal:responseHeader"/>
+    </component>
+
+    <component id="session_id_cookieSection" type="jeus:FormSection">
+        <binding name="title" value="message:cgc.response_header.cookie.title"/>
+    </component>
+
+   <component id="version" type="jeus:Field">
+        <binding name="field" value="ognl:components.versionField"/>
+    </component>
+
+    <component id="versionField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="sessionIdCookie"/>
+        <binding name="elementName" value="literal:version"/>
+    </component>
+
+   <component id="domain" type="jeus:Field">
+        <binding name="field" value="ognl:components.domainField"/>
+    </component>
+
+    <component id="domainField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionIdCookie"/>
+        <binding name="elementName" value="literal:domain"/>
+    </component>
+
+   <component id="path" type="jeus:Field">
+        <binding name="field" value="ognl:components.pathField"/>
+    </component>
+
+    <component id="pathField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:sessionIdCookie"/>
+        <binding name="elementName" value="literal:path"/>
+    </component>
+
+   <component id="max_age" type="jeus:Field">
+        <binding name="field" value="ognl:components.max_ageField"/>
+        <binding name="unit" value="message:common.unit.sec"/>
+    </component>
+
+    <component id="max_ageField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="sessionIdCookie"/>
+        <binding name="elementName" value="literal:maxAge"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="secure" type="jeus:Field">
+        <binding name="field" value="ognl:components.secureField"/>
+    </component>
+
+    <component id="secureField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:sessionIdCookie"/>
+        <binding name="elementName" value="literal:secure"/>
+    </component>
+
+    <component id="custom_headerSection" type="jeus:FormSection">
+        <binding name="title" value="message:cgc.response_header.custom_header.title"/>
+    </component>
+
+    <component id="custom_header" type="jeus:Field">
+        <binding name="field" value="ognl:components.custom_headerField"/>
+        <binding name="layout" value="ognl:@jeus.tool.webadmin.component.Field@EXTENDED_LAYOUT"/>
+    </component>
+
+    <component id="custom_headerField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:customHeader"/>
+        <binding name="elementName" value="literal:headerField"/>
+        <binding name="translator" value="bean:customHeaderTranslator"/>
+    </component>
+
+
+    <component id="create" type="Image">
+        <binding name="image" value="ognl:assets.create"/>
+    </component>
+
+
+    <bean name="customHeaderTranslator" class="jeus.tool.webadmin.component.translator.CustomHeaderTranslator"/>
+
+    <bean name="noteValidator" class="jeus.tool.webadmin.validator.NoteSizeValidator"/>
+
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+    <asset name="create" path="context:/image/create.gif"/>
+
+    <property name="virtualHost"/>
+    <property name="note"/>
+
+</page-specification>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="GB2312"?>
+<description>                                           
+    <text key="SubjectType.group-principal"><![CDATA[
+                        [Description]: 对相应Subject有关的group identify进行定义。对 Subject所属group进行定义。
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="SubjectType.principal"><![CDATA[
+                        [Description]: 对相应Subject有关的user identify进行定义。作为"primary" identify应该是唯一的。
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="CredentialType.classname"><![CDATA[
+                        [Description]: 实现jeus.security.base.CredentialFactory 接口的Java class名。
+                                       应提供无任何参数的public生成者。
+                        [Value Description]: Java class名
+                        [Example]: <classname>mypackage.MyPasswordFactory</classname>
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="SubjectType.credential"><![CDATA[
+                        [Description]: 对Subject有关Credential进行定义。
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="CredentialType.property"><![CDATA[
+                        [Description]: 对作为选项转到Credential Factory的name-value的属性进行定义。与属性有关的详细信息请参考Credential Factory相关class文档。
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="subjects"><![CDATA[
+                        [Description]: 对Subject(users)进行定义。
+            ]]>                                           
+    </text>
+                                                   
+    <text key="SubjectType.description"><![CDATA[
+                        [Description]: 与Subject相关说明
+                        [Value Description]: 任意的说明文
+                        [Example]: <description>A really nide guy!</description>
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="credential-propertyType.value"><![CDATA[
+                        [Description]: 作为选项，与属性有关的具体值
+                        [Value Description]: 属性。"password"属性值应以Base 64进行编码。
+                        [Example]: <value>bXlwYXNzd29yZA==</value>
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="PrincipalType.classname"><![CDATA[
+                        [Description]: java.security.Principal接口有关的Java class名。但是，该class必须拥有String类型的Principal命令有关的public 生成者。
+                        [Value Description]: Java class名
+                        [Example]: <classname>mypackage.MyPrincipalImpl</classname>
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="PrincipalType.name"><![CDATA[
+                        [Description]: 相关Principal名 (例如，用户名或群组名)
+                        [Value Description]: A String id.
+                        [Example]: <name>johan</name>
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="credential-propertyType.name"><![CDATA[
+                        [Description]: 属性名
+                        [Value Description]: 属性名
+                        [Example]: <name>password</name>
+                    ]]>                                           
+    </text>
+                                                   
+    <text key="SubjectsType.subject"><![CDATA[
+                        [Description]: 对Subject进行定义。
+                    ]]>                                           
+    </text>
+</description>

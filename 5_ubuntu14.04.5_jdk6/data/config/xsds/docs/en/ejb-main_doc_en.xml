@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description>                  
+    <text key="timer-serviceType.thread-pool"><![CDATA[
+                    [Description]: This element is used for setting thread pool used for executing timeout() method for Timer service.
+                    ]]>                  
+    </text>
+                     
+    <text key="ejb-engineType.invoke-http"><![CDATA[
+                      [Description]: If this element is configured, all communication between EJB stubs on the client side and the remote RMI runtime will 
+                       be carried out using RMI requests embedded in HTTP requests. This enables access to EJBs across firewalls.
+                       When using this mode (HTTP invoke mode), when the client invokes a method in an EJB stub, the stub sends the RMI request 
+                       embedded in an HTTP request to a Web server who dispatches the request to a Web container, which in turn dispatches it 
+                        to a special RMI handler servlet (jeus.rmi.http.ServletHandler). The handler servlet removes the HTTP header from the request 
+                        and then dispatches the embedded RMI request to the RMI runtime. Prior to configuring this element, the jeus.rmi.http.ServletHandler 
+                        servlet must be deployed to the JEUS Web container (refer the JEUS Web Guide).
+		 [Performance Recommendation]: Through using HTTP call mode, the improvement on performance can be expected.
+                    ]]>                  
+    </text>
+                     
+    <text key="timer-serviceType.durable-setting"><![CDATA[
+                    [Description]: Configuration needed for Timer service to manage timers in persistence. 
+                    ]]>                  
+    </text>
+                     
+    <text key="durable-settingType.table-name"><![CDATA[
+                    [Description]: Configuring Table name of DB used by Timer service.
+                    ]]>                  
+    </text>
+                     
+    <text key="ejb-engineType.active-management"><![CDATA[
+                      [Description]:This element contains settings pertaining to monitoring the EJB engine, handling errors and sending out email-notifications.
+                      [Value Description]: millisecond
+                      [Example]: &lt;resolution>100000&lt;/resolution>
+                      [Performace Recommendation]: Generally, user uses active-management included in Servlet engine rather than active-management
+                      of EJBMain.xml ( Please refer to JEUS Web Server ).
+                    ]]>                  
+    </text>
+                     
+    <text key="timer-serviceType.redelivery-interval"><![CDATA[
+                    [Description]: This element is the time period from starting to retransmit until actual retransmittion.  
+                    [Value Description]: millisecond unit.
+                    ]]>                  
+    </text>
+                     
+    <text key="active-managementType.max-blocked-thread"><![CDATA[
+                      [Description]: This element sets the maximum number of blocked thread. It will restart
+                        the Container when the number of blocked Thread in EJB is greater than the set value.
+                       Please consider on the fact in which EJB Engine is frequently restarted if the small value has been set.
+                      [Value Description]: The number of  threads 
+                      [Defined Value]:
+                        [-1]:
+                        When value type is unsigned short form and the value is -1, it is considered as off and restart the system.
+                      [Example]: &lt;max-blocked-thread>200&lt;/max-blocked-thread>
+                    ]]>                  
+    </text>
+                     
+    <text key="ejb-engineType.timer-service"><![CDATA[
+                      [Description]: Set the Timer service in which EJB engine provides. For managing Timer 
+                      Service in persistence way, this setting is needed. 
+                    ]]>                  
+    </text>
+                     
+    <text key="active-managementType.email-notify"><![CDATA[
+                      [Description]:An email notification is sent to the location specified in this element if the engine restarts under the conditions 
+                       specified in the active management settings or because of some other abnormal event.
+                    ]]>                  
+    </text>
+                     
+    <text key="durable-settingType.db-vendor"><![CDATA[
+                    [Description]: This element is vender specific setting for Timer service to be in persistence using DB. 
+                     The value is identical with &lt;db-vendor> of &lt;schema-info> of jeus-ejb-dd.xml.
+                    ]]>                  
+    </text>
+                     
+    <text key="ejb-engineType.enable-user-notify"><![CDATA[
+                      [Description]: When this element is activated, EJB exception is recorded in user log defined in Engine Container.
+                      [Example]: &lt;enable-user-notify>true&lt;/enable-user-notify>
+                    ]]>                  
+    </text>
+                     
+    <text key="ejb-engineType.resolution"><![CDATA[
+                      [Description]: EJB passivation and garbage collection will be attempted at the time interval specified in this element. 
+                      When a bean in service in the EJB engine no longer receives a request from the client, the engine passivates the bean. 
+                       In addition, the engine periodically runs garbage collection to consolidate unused resources. The resolution element 
+                      sets the frequency at which the JEUS EJB engine processes these tasks, in units of 1/1000 second.
+                       This element may thus be seen as the main system check "tick" setting ("heart beat").
+                      [Value Description]: millisecond
+                      [Example]: &lt;resolution>100000&lt;/resolution>
+                    ]]>                  
+    </text>
+                     
+    <text key="durable-settingType.data-source-name"><![CDATA[
+                     [Description]: This element is used for setting export name of DB for Timer service to be in persistence.
+                     The value is identical with &lt;data-source-name> of &lt;schema-info> in jeus-ejb-dd.xml.
+                    ]]>                  
+    </text>
+                     
+    <text key="timer-serviceType.min-delivery-interval"><![CDATA[
+                    [Description]: This element is the minimum time period until timer event occurs after generating a certain timer.
+                    [Value Description]: millisecond unit
+                    [Performance Recommendation]: As this value is smaller, it can reduce the traffic on EJB engine.
+                    It is recommended to set it with a large number in relation to interval. 
+                    ]]>                  
+    </text>
+                     
+    <text key="active-managementType.max-idle-time"><![CDATA[
+                      [Description]: This element defines the condition that most hold in order for an EJB thread to be considered blocked. 
+                      The value specified here is a time period. If a thread stays idle for this amount of time, the thread is considered blocked.
+                      [Value Description]: millisecond
+                      [Example]: &lt;max-idle-time>180000&lt;/max-idle-time>
+                    ]]>                  
+    </text>
+                     
+    <text key="ejb-engine"><![CDATA[
+                [Description]: This is the top-level element of the EJB engine configuration file, EJBMain.xml. 
+                 This element and its sub-elements correpsonds to exactly one EJB engine.
+                [Description]:[en] This is the root element of EJBMain.xml.
+                [Example]: &lt;ejb-engine> ... &lt;/ejb-engine>
+            ]]>                  
+    </text>
+                     
+    <text key="timer-serviceType.max-redelivery-count"><![CDATA[
+                    [Description]: This element represents the maximum number of retransmission in case of occurring for 
+                    retransmission when exception happens or transaction is in rollback status in timer callback function. 
+                    [Value Description]: The numer of retransmission
+                    ]]>                  
+    </text>
+                     
+    <text key="durable-settingType.engine-type"><![CDATA[
+                    [Description]: Configuring the method for DBTimer to have an access to DB.
+                    The value is identical with &lt;engine-type> of &lt;persistence-optimize> in jeus-ejb-dd.xml .
+                    ]]>                  
+    </text>
+ </description>

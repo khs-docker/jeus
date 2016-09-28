@@ -1,0 +1,32 @@
+<html jwcid="shell">
+    <body jwcid="@Body" class="tundra">
+        <script type="text/javascript" src="/webadmin/js/JeusDojo/release/dojo/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+        <script type="text/javascript" src="/webadmin/js/JeusDojo/release/dojo/dojo/jeus.js"></script>
+        <script type="text/javascript">
+            dojo.require("dojo.parser");
+            dojo.require("dijit.layout.AccordionContainer");
+            dojo.require("dijit.Tooltip");
+        </script>
+        <script jwcid="@Script" script="/jeus/tool/webadmin/script/NodeTree.script"
+            nodeSpec="ognl:treeNodeSpecSource.spec" messages="ognl:messages"
+            contextPath="ognl:requestCycle.infrastructure.contextPath"
+            servletPath="ognl:requestCycle.infrastructure.applicationPropertySource.getPropertyValue('org.apache.tapestry.servlet-path')"
+            cssFile="ognl:assets.menuCss.buildURL()"/>
+        <div dojoType="dijit.layout.AccordionContainer" style="height:100%;">
+            <!-- content inline -->
+            <div jwcid="@Any" dojoType="dijit.layout.AccordionPane" title="JEUS Cluster" selected="ognl:selected">
+                <ul jwcid="nodelist@Any" id="nodelist">
+                    <li jwcid="node@For" source="ognl:nodeList" value="ognl:node" class="ognl:nodestate" element="li">
+                        <a id="ognl:node.name" jwcid="@ExternalLink" parameters="ognl:node.objectName" target="nodeTree" page="NodeTree"  disabled="ognl:nodestate == 'exited'">
+                            <span jwcid="@Insert" value="ognl:node.name"/>
+                        </a>
+                        <div dojoType="dijit.Tooltip" connectId="ognl:node.name" label="ognl:node.name" jwcid="@Any"></div>
+                    </li>
+                </ul>
+            </div>
+            <div jwcid="@Any" dojoType="dijit.layout.AccordionPane" selected="ognl:!selected" title="JEUS Node Tree"  scrolling="no" style="overflow-x: hidden;">
+                <iframe jwcid="@jeus:IFrame" id="nodeTree" page="NodeTree" name="nodeTree" frameborder="0"></iframe>
+            </div>
+        </div>
+    </body>
+</html>

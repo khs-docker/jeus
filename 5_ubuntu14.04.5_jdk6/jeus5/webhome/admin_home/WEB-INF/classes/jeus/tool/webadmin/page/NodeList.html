@@ -1,0 +1,61 @@
+<html jwcid="shell">
+    <body jwcid="@Body">
+        <table border="0" cellspacing="0" cellpadding="2" width="100%">
+            <span jwcid="eachNode">
+            <tr>
+                <span jwcid="choose">
+                    <span jwcid="whenRunning">
+                        <td width="20" align="center">
+                            <img jwcid="runningIcon" align="absmiddle"/>
+                        </td>
+                        <td >
+                            <a jwcid="updateLink" style="cursor:pointer" class="running_node"><span jwcid="runningNodeName"/></a>
+                        </td>
+                    </span>
+                    <span jwcid="whenStopped">
+                        <td width="20" align="center">
+                            <img jwcid="stoppedIcon" align="absmiddle"/>
+                        </td>
+                        <td >
+                            <a jwcid="updateLink2" style="cursor:pointer" class="running_node"><span jwcid="stoppedNodeName" /></a>
+                        </td>
+                    </span>
+                    <span jwcid="whenFailed">
+                        <td width="20" align="center">
+                            <img jwcid="failedIcon" align="absmiddle"/>
+                        </td>
+                        <td >
+                            <a jwcid="updateLink3"  style="cursor:pointer" class="running_node"><span jwcid="failedNodeName" /></a>
+                        </td>
+                    </span>
+                    <span jwcid="otherwise">
+                        <td width="20" align="center">
+                            <img jwcid="exitedIcon" align="absmiddle"/>
+                        </td>
+                        <td >
+                            <span jwcid="exitedNodeName" class="exited_node"/>
+                        </td>
+                        <!--
+                        <td width="20" align="center">
+                            <img jwcid="@Image" image="ognl:assets.disabled_boot_button" align="absmiddle" alt="message:NodeList.boot"/>
+                        </td>
+                        <td width="20" align="center">
+                            <img jwcid="@Image" image="ognl:assets.disabled_down_button" align="absmiddle" alt="message:NodeList.down"/>
+                        </td>
+                        <td width="20" align="center">
+                            <img jwcid="@Image" image="ognl:assets.disabled_remove_button" align="absmiddle" alt="message:NodeList.remove"/>
+                        </td>
+                        -->
+                    </span>
+
+                </span>
+            </tr>
+            <span jwcid="condHasNext">
+                <tr>
+                    <td jwcid="@Any" element="td" background="ognl:assets.dot" colspan="5" height="3"></td>
+                </tr>
+            </span>
+            </span>
+        </table>
+    </body>
+</html>

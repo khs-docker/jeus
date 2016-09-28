@@ -1,0 +1,894 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceJMSEngine.ConfigurationPage">
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:JMS Engine Configuration"/>
+        
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="ognl:@jeus.tool.webadmin.page.PageNames@JEUSSERVICE_JMSENGINE_NAMES"/>
+        <binding name="subtabNames" value="ognl:{'general', 'server_channel', 'logging', 'access_log', 'storageBlock', 'thread_pool', 'cluster', 'durable_subscriber', 'queue_cluster', 'topic_cluster'}"/>
+    </component>
+
+    <component id="general" type="Block"/>
+    <component id="server_channel" type="Block"/>
+    <component id="logging" type="Block"/>
+    <component id="access_log" type="Block"/>
+    <component id="storageBlock" type="Block"/>
+    <component id="thread_pool" type="Block"/>
+    <component id="cluster" type="Block"/>
+    <component id="durable_subscriber" type="Block"/>
+    <component id="queue_cluster" type="Block"/>
+    <component id="topic_cluster" type="Block"/>
+
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jmsc.general.title"/>
+        <binding name="listener" value="ognl:listeners.onGeneralOk"/>
+        <binding name="parentElement" value="ognl:jmsServer"/>
+    </component>
+
+    <component id="engine_name" type="jeus:ReadOnlyTextField">
+        <binding name="label" value="message:jmsc.general.name.label"/>
+        <binding name="value" value="ognl:objectName.keyPropertyList.name"/>
+    </component>
+
+    <component id="general_broker_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.general_broker_nameField"/>
+    </component>
+
+    <component id="general_broker_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="jmsServer"/>
+        <binding name="elementName" value="literal:brokerName"/>
+        <binding name="validators" value="validators:$broker_namePatternValidator"/>
+    </component>
+
+    <component id="note" type="jeus:Field">
+        <binding name="field" value="components.noteField"/>
+        <binding name="label" value="message:common.message.note.label"/>
+    </component>
+
+    <component id="noteField" type="jeus:NoteIO">
+        <binding name="directName" value="ognl:objectName.keyPropertyList.name"/>
+        <binding name="pageName" value="literal:JeusServiceJMSEngine_Configure"/>
+        <binding name="value" value="note"/>
+        <binding name="displayName" value="literal:"/>
+        <binding name="validators" value="validators:$noteValidator"/>
+    </component>
+    
+    <component id="server_channel_titleForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jmsc.server_channel.title"/>
+        <binding name="useForm" value="ognl:false"/>
+        <binding name="parentElement" value="ognl:jmsServer"/>
+        <binding name="elementName" value="literal:serviceConfig"/>
+    </component>
+
+    <component id="sc_name_column" type="Insert">
+        <binding name="value" value="message:rdc.service_config.name.label"/>
+    </component>
+
+    <component id="server_url_column" type="Insert">
+        <binding name="value" value="message:rdc.service_config.server_url.label"/>
+    </component>
+
+    <component id="eachServiceConfig" type="Foreach">
+        <binding name="source" value="ognl:serverChannels"/>
+        <binding name="value" value="ognl:sc"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="channelLink" type="ExternalLink">
+        <binding name="page" value="ognl:'JeusServiceServerChannel_Configuration'"/>
+        <binding name="parameters" value="ognl:{sc.objectName, objectName}"/>
+    </component>
+
+    <component id="sc_name_value" type="Insert">
+        <binding name="value" value="ognl:sc.name"/>
+    </component>
+
+    <component id="server_url_value" type="Insert">
+        <binding name="value" value="ognl:sc.serverURL"/>
+    </component>
+
+    <component id="delete" type="Image">
+        <binding name="image" value="ognl:assets.delete"/>
+    </component>
+
+    <component id="deleteServerChannelLink" type="DirectLink">
+        <binding name="listener" value="listener:onDeleteServerChannel"/>
+        <binding name="parameters" value="{sc.name}"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.delete.confirm', sc.name)"/>
+    </component>
+
+    <component id="create_server_channelLink" type="ExternalLink">
+        <binding name="page" value="literal:JeusServiceServerChannel_Create"/>
+        <binding name="parameters" value="ognl:{objectName.canonicalName, 'New'}"/>
+    </component>
+
+    <component id="create_server_channel" type="Image">
+        <binding name="image" value="ognl:assets.create"/>
+    </component>
+
+    <component id="create_server_channel_label" type="Insert">
+        <binding name="value" value="message:channel.create.label"/>
+    </component>
+
+
+   <component id="loggingForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jmsc.logging.title"/>
+        <binding name="listener" value="ognl:listeners.onLoggingOk"/>
+        <binding name="parentElement" value="ognl:engineCommand"/>
+        <binding name="elementName" value="literal:systemLogging"/>
+    </component>
+
+    <component id="logging_panel" type="jeus:Logging">
+        <binding name="logging" value="ognl:logging"/>
+    </component>
+
+    <component id="handlerForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jmsc.handler.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+        <binding name="subform" value="ognl:true"/>
+        <binding name="parentElement" value="ognl:logging"/>
+        <binding name="elementName" value="literal:handler"/>
+    </component>
+
+    <component id="handler_panel" type="jeus:HandlerList">
+        <binding name="handlers" value="ognl:handlers"/>
+        <binding name="createPage" value="literal:JeusServiceJMSEngine_CreateErrorLogHandler"/>
+        <binding name="editPage" value="literal:JeusServiceJMSEngine_EditErrorLogHandler"/>
+        <binding name="deleteListener" value="ognl:listeners.onDeleteHandler"/>
+        <binding name="objectName" value="ognl:objectName"/>
+        <binding name="jeusType" value="literal:JMSEngineErrorLog"/>
+    </component>
+
+   <component id="access_logForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jmsc.access_log.title"/>
+        <binding name="listener" value="ognl:listeners.onAccessLogOk"/>
+        <binding name="parentElement" value="ognl:jmsServer"/>
+        <binding name="elementName" value="literal:accessLog"/>
+    </component>
+
+    <component id="access_log_panel" type="jeus:Logging">
+        <binding name="logging" value="ognl:accessLog"/>
+    </component>
+
+    <component id="access_log_handlerForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jmsc.handler.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+        <binding name="subform" value="ognl:true"/>
+        <binding name="parentElement" value="ognl:accessLog"/>
+        <binding name="elementName" value="literal:handler"/>
+    </component>
+
+
+    <component id="access_log_handler_panel" type="jeus:HandlerList">
+        <binding name="handlers" value="ognl:accessLogHandlers"/>
+        <binding name="createPage" value="literal:JeusServiceJMSEngine_CreateAccessLogHandler"/>
+        <binding name="editPage" value="literal:JeusServiceJMSEngine_EditAccessLogHandler"/>
+        <binding name="deleteListener" value="ognl:listeners.onDeleteAccessLogHandler"/>
+        <binding name="objectName" value="ognl:objectName"/>
+        <binding name="jeusType" value="literal:JMSEngineAccessLog"/>
+    </component>
+
+    
+	<component id="deleteInvalidDestinations" type="jeus:Field">
+		<binding name="field" value="component:deleteInvalidDestinationsField"/>
+	</component>
+	
+	<component id="deleteInvalidDestinationsField" type="jeus:DojoJAXBCheckbox">
+		<binding name="parentElement" value="storage"/>
+		<binding name="elementName" value="literal:deleteInvalidDestinations"/>
+	</component>
+	
+	<component id="hiddenCheckboxScript" type="Script">
+		<binding name="script" value="literal:HiddenCheckbox.script"/>
+		<binding name="source" value="component:deleteInvalidDestinationsField"/>
+		<binding name="target" value="component:hiddenDeleteInvalidDestinations"/>
+	</component>
+	
+    <component id="typeField" type="jeus:ReadOnlyTextField">
+        <binding name="value" value="storageType"/>
+        <binding name="label" value="message:cdn.storage.select_type.label"/>
+<!--        <binding name="onChange" value="literal:this.form.submit()"/>
+        <binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@JMS_MAIN_STORAGE_TYPES"/>-->
+    </component>
+                    
+	<component id="reliabilityLevel" type="jeus:Field">
+		<binding name="field" value="component:reliabilityLevelField"/>
+	</component>
+	
+	<component id="reliabilityLevelField" type="jeus:JAXBPropertySelection">
+		<binding name="parentElement" value="storage"/>
+		<binding name="elementName" value="literal:reliabilityLevel"/>
+		<binding name="model" value="ognl:@jeus.tool.webadmin.page.EnumerationSet@getPropertySelectionModel({'produce','consume','complete'})"/>
+	</component>
+
+    <component id="storageForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jmsc.storage.title"/>
+        <binding name="listener" value="ognl:listeners.onStorageOk"/>
+        <binding name="resetListener" value="ognl:listeners.onResetStorage"/>
+        <binding name="parentElement" value="storageType == 'DBStorage' || storageType == 'FileStorage' ? storage : null"/>
+        <binding name="elementName" value="ognl:storageType != null and  storageType == 'DBStorage' ? 'dbStorage' : 'fileStorage' "/>
+    </component>
+
+
+    <component id="data_sourceFormSection" type="jeus:FormSection">
+        <binding name="title" value="message:cdn.storage.data_source.title"/>
+    </component>
+
+    <component id="choice_data_source_and_embedded" type="jeus:ExtendedSelection">
+		<binding name="value" value="choiceDSAEmbedded"/>
+		<binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@getPropertySelectionModel({'data-source-name','embedded'})"/>
+	</component>
+
+    <component id="data_source_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.data_source_nameField"/>
+    </component>
+  
+    <component id="data_source_nameField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="ognl:dbStorage"/>
+        <binding name="elementName" value="literal:dataSourceName"/>
+        <binding name="model" value="ognl:dataSourceModel"/>
+    </component>
+
+    <component id="embedded_path" type="jeus:Field">
+        <binding name="field" value="component:embedded_pathField"/>
+    </component>
+
+    <component id="embedded_pathField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="embedded"/>
+        <binding name="elementName" value="literal:path"/>
+    </component>
+
+    <component id="destination_table_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.destination_table_nameField"/>
+    </component>
+
+    <component id="destination_table_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:dbStorage"/>
+        <binding name="elementName" value="literal:destinationTableName"/>
+    </component>
+
+    <component id="message_table_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.message_table_nameField"/>
+    </component>
+
+    <component id="message_table_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:dbStorage"/>
+        <binding name="elementName" value="literal:messageTableName"/>
+    </component>
+
+    <component id="durable_subscriber_table_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.durable_subscriber_table_nameField"/>
+    </component>
+
+    <component id="durable_subscriber_table_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:dbStorage"/>
+        <binding name="elementName" value="literal:durableSubscriberTableName"/>
+    </component>
+
+    <component id="user_property_table_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.user_property_table_nameField"/>
+    </component>
+
+    <component id="user_property_table_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:dbStorage"/>
+        <binding name="elementName" value="literal:userPropertyTableName"/>
+    </component>
+
+    <component id="durable_message_table_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.durable_message_table_nameField"/>
+    </component>
+
+    <component id="durable_message_table_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:dbStorage"/>
+        <binding name="elementName" value="literal:durableMessageTableName"/>
+    </component>
+    
+    <component id="xa_table_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.xa_table_nameField"/>
+    </component>
+
+    <component id="xa_table_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:dbStorage"/>
+        <binding name="elementName" value="literal:xaTableName"/>
+    </component>    
+
+    <component id="wait_sql_executor" type="jeus:Field">
+        <binding name="field" value="ognl:components.wait_sql_executorField"/>
+    </component>
+
+    <component id="wait_sql_executorField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:dbStorage"/>
+        <binding name="elementName" value="literal:waitSqlExecutor"/>
+    </component>
+
+    <component id="cluster_titleForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jmsc.cluster.title"/>
+        <binding name="listener" value="listener:onClusterServiceOK"/>
+        <binding name="parentElement" value="ognl:jmsServer"/>
+        <binding name="elementName" value="literal:jmsServerCluster"/>
+    </component>
+
+    <component id="broker_name_column" type="Insert">
+        <binding name="value" value="message:rdc.jms_server_info.broker_name.label"/>
+    </component>
+
+    <component id="broker_id_column" type="Insert">
+        <binding name="value" value="message:rdc.jms_server_info.broker_id.label"/>
+    </component>
+
+    <component id="ip_address_column" type="Insert">
+        <binding name="value" value="message:rdc.jms_server_info.ip_address.label"/>
+    </component>
+
+    <component id="jms_port_column" type="Insert">
+        <binding name="value" value="message:rdc.jms_server_info.jms_port.label"/>
+    </component>
+
+    <component id="connection_interval_column" type="Insert">
+        <binding name="value" value="message:rdc.jms_server_info.connection_interval.label"/>
+    </component>
+
+    <component id="established_column" type="Insert">
+        <binding name="value" value="message:rdc.jms_server_info.established_column.label"/>
+    </component>
+
+    <component id="eachJmsServer" type="Foreach">
+        <binding name="source" value="ognl:jmsServerInfos"/>
+        <binding name="value" value="ognl:js"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="broker_name_value" type="Insert">
+        <binding name="value" value="ognl:js.brokerName"/>
+    </component>
+
+    <component id="broker_id_value" type="Insert">
+        <binding name="value" value="ognl:js.brokerId"/>
+    </component>
+
+    <component id="ip_address_value" type="Insert">
+        <binding name="value" value="ognl:js.ipAddress"/>
+    </component>
+
+    
+
+    <component id="jms_port_value" type="Insert">
+        <binding name="value" value="ognl:js.jmsPort == 0 ? '' : js.jmsPort"/>
+    </component>
+
+    <component id="connection_interval_value" type="Insert">
+        <binding name="value" value="ognl:js.connectionInterval == 0 ? 60000 : js.connectionInterval"/>
+    </component>
+
+    <component id="established_value" type="Insert">
+        <binding name="value" value="ognl:isEstablished(js.brokerId)"/>
+    </component>
+    
+
+    <component id="deleteJmsServerLink" type="DirectLink">
+        <binding name="listener" value="listener:onDeleteJmsServer"/>
+        <binding name="parameters" value="{js.brokerName}"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.delete.confirm', js.brokerName)"/>
+    </component>
+
+    <component id="delete1" copy-of="delete"/>
+    <component id="delete2" copy-of="delete"/>
+    <component id="delete3" copy-of="delete"/>
+    <component id="delete4" copy-of="delete"/>
+
+
+    <component id="jms_server_addForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="broker_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.broker_nameField"/>
+
+    </component>
+
+    <component id="broker_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="jmsServerInfo"/>
+        <binding name="elementName" value="literal:brokerName"/>
+        <binding name="displayName" value="message:rdc.jms_server_info.broker_name.label"/>
+		<binding name="validators" value="validators:required,$broker_namePatternValidator"/>
+    </component>
+
+    <component id="broker_id" type="jeus:Field">
+        <binding name="field" value="ognl:components.broker_idField"/>
+
+    </component>
+
+    <component id="broker_idField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="jmsServerInfo"/>
+        <binding name="elementName" value="literal:brokerId"/>
+        <binding name="displayName" value="message:rdc.jms_server_info.broker_id.label"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:required,min=0"/>
+    </component>
+
+    <component id="oneport" type="jeus:Field">
+        <binding name="field" value="component:oneportField"/>
+    </component>
+
+    <component id="oneportField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="jmsServerInfo"/>
+        <binding name="elementName" value="literal:oneport"/>
+    </component>
+
+    <component id="ip_address" type="jeus:Field">
+        <binding name="field" value="ognl:components.ip_addressField"/>
+
+    </component>
+
+    <component id="ip_addressField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="jmsServerInfo"/>
+        <binding name="elementName" value="literal:ipAddress"/>
+        <binding name="displayName" value="message:rdc.jms_server_info.ip_address.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="cluster_service" type="jeus:Field">
+        <binding name="field" value="ognl:components.cluster_serviceField"/>
+    </component>
+
+    <component id="cluster_serviceField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:jmsServerCluster"/>
+        <binding name="elementName" value="literal:clusterService"/>
+    </component>
+
+    <component id="jms_port" type="jeus:Field">
+        <binding name="field" value="ognl:components.jms_portField"/>
+    </component>
+
+    <component id="jms_portField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="jmsServerInfo"/>
+        <binding name="elementName" value="literal:jmsPort"/>
+        <binding name="displayName" value="message:rdc.jms_server_info.jms_port.label"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="connection_interval" type="jeus:Field">
+        <binding name="field" value="ognl:components.connection_intervalField"/>
+    </component>
+
+    <component id="connection_intervalField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="jmsServerInfo"/>
+        <binding name="elementName" value="literal:connectionInterval"/>
+        <binding name="displayName" value="message:rdc.jms_server_info.connection_interva.label"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <!--
+    ?쁽?옱 援ы쁽?뿉?꽌 ?궗?슜?븯吏? ?븡?쑝誘?濡? ?쎒愿?由ъ옄?뿉?꽌 ?샃?뀡?쓣 ?젣怨듯븷 ?븘?슂媛? ?뾾?떎. ( by anvatar, 2007. 5. 7)
+        <component id="weight" type="jeus:Field">
+            <binding name="field" value="component:weightField"/>
+        </component>
+
+        <component id="weightField" type="jeus:JAXBTextField">
+            <binding name="parentElement" value="jmsServerInfo"/>
+            <binding name="elementName" value="literal:weight"/>
+            <binding name="displayName" value="message:rdc.jms_server_info.weight.label"/>
+            <binding name="translator" value="translator:number"/>
+            <binding name="validators" value="validators:min=1"/>
+        </component>
+    -->
+
+    <component id="jms_server_info_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="jms_server_add" type="Submit">
+        <binding name="value" value="message:common.label.add"/>
+        <binding name="listener" value="ognl:listeners.onAddJmsServer"/>
+    </component>
+
+    <component id="durable_subscriberForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jmsc.durable_subscriber.title"/>
+        <binding name="useForm" value="ognl:false"/>
+        <binding name="parentElement" value="ognl:jmsServer"/>
+        <binding name="elementName" value="literal:durableSubscriber"/>
+    </component>
+
+    <component id="client_id_column" type="Insert">
+        <binding name="value" value="message:rdc.durable_subscriber.client_id.label"/>
+    </component>
+
+    <component id="name_column" type="Insert">
+        <binding name="value" value="message:rdc.durable_subscriber.name.label"/>
+    </component>
+
+    <component id="destination_name_column" type="Insert">
+        <binding name="value" value="message:rdc.durable_subscriber.destination_name.label"/>
+    </component>
+
+    <component id="message_selector_column" type="Insert">
+        <binding name="value" value="message:rdc.durable_subscriber.message_selector.label"/>
+    </component>
+
+    <component id="eachDurableSubscriber" type="Foreach">
+        <binding name="source" value="ognl:durableSubscribers"/>
+        <binding name="value" value="ognl:ds"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="client_id_value" type="Insert">
+        <binding name="value" value="ognl:ds.clientId"/>
+    </component>
+
+    <component id="name_value" type="Insert">
+        <binding name="value" value="ognl:ds.name"/>
+    </component>
+
+    <component id="destination_name_value" type="Insert">
+        <binding name="value" value="ognl:ds.destinationName"/>
+    </component>
+
+    <component id="message_selector_value" type="Insert">
+        <binding name="value" value="ognl:ds.messageSelector"/>
+    </component>
+
+    <component id="deleteDurableSubscriber" type="DirectLink">
+        <binding name="listener" value="listener:onDeleteDurableSubscriber"/>
+        <binding name="parameters" value="{ds.clientId, ds.name, ds.destinationName}"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.delete.confirm', ds.clientId+':'+ ds.name+':'+ ds.destinationName)"/>
+    </component>
+
+    <component id="durable_subscriber_addForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="client_id" type="jeus:Field">
+        <binding name="field" value="ognl:components.client_idField"/>
+        
+    </component>
+
+    <component id="client_idField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="durableSubscriber"/>
+        <binding name="elementName" value="literal:clientId"/>
+        <binding name="displayName" value="message:rdc.durable_subscriber.client_id.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="subscriber_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.subscriber_nameField"/>
+
+    </component>
+
+    <component id="subscriber_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="durableSubscriber"/>
+        <binding name="elementName" value="literal:name"/>
+        <binding name="displayName" value="message:rdc.durable_subscriber.name.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="destination_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.destination_nameField"/>
+
+    </component>
+
+    <component id="destination_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="durableSubscriber"/>
+        <binding name="elementName" value="literal:destinationName"/>
+        <binding name="displayName" value="message:rdc.durable_subscriber.destiname_name.label"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="message_selector" type="jeus:Field">
+        <binding name="field" value="ognl:components.message_selectorField"/>
+    </component>
+
+    <component id="message_selectorField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="durableSubscriber"/>
+        <binding name="elementName" value="literal:messageSelector"/>
+        <binding name="displayName" value="message:rdc.durable_subscriber.message_selector.label"/>
+    </component>
+
+    <component id="durable_subscriber_add" type="Submit">
+        <binding name="value" value="message:common.label.add"/>
+        <binding name="listener" value="ognl:listeners.onAddDurableSubscriber"/>
+    </component>
+
+    <component id="queue_clusterForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jmsc.queue_cluster.title"/>
+        <binding name="useForm" value="ognl:false"/>
+        <binding name="parentElement" value="ognl:jmsServer"/>
+        <binding name="elementName" value="literal:queueCluster"/>
+    </component>
+
+    <component id="queue_cluster_addForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+
+
+    <component id="queue_cluster_name_column" type="Insert">
+        <binding name="value" value="message:rdc.queue_cluster.queue_cluster_name.label"/>
+    </component>
+
+    <component id="cluster_distribute_column" type="Insert">
+        <binding name="value" value="message:rdc.queue_cluster.cluster_distribute.label"/>
+    </component>
+
+    <!--
+    ?쁽?옱 援ы쁽?뿉?꽌 ?궗?슜?븯吏? ?븡?쑝誘?濡? ?쎒愿?由ъ옄?뿉?꽌 ?샃?뀡?쓣 ?젣怨듯븷 ?븘?슂媛? ?뾾?떎. ( by anvatar, 2007. 5. 7)
+        <component id="local_preference_column" type="Insert">
+            <binding name="value" value="message:rdc.queue_cluster.local_preference.label"/>
+        </component>
+    -->
+
+    <component id="queue_target_column" type="Insert">
+        <binding name="value" value="message:rdc.queue_cluster.queue_target.label"/>
+    </component>
+
+    <component id="eachQueueCluster" type="Foreach">
+        <binding name="source" value="ognl:queueClusters"/>
+        <binding name="value" value="ognl:qc"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="queue_cluster_name_value" type="Insert">
+        <binding name="value" value="ognl:qc.queueClusterName"/>
+    </component>
+
+    <component id="cluster_distribute_value" type="Insert">
+        <binding name="value" value="ognl:qc.clusterDistribute == null ? qc.defaultClusterDistribute : qc.clusterDistribute"/>
+    </component>
+
+    <!--
+    ?쁽?옱 援ы쁽?뿉?꽌 ?궗?슜?븯吏? ?븡?쑝誘?濡? ?쎒愿?由ъ옄?뿉?꽌 ?샃?뀡?쓣 ?젣怨듯븷 ?븘?슂媛? ?뾾?떎. ( by anvatar, 2007. 5. 7)
+        <component id="local_preference_value" type="Insert">
+            <binding name="value" value="qc.localPreference == 0 ? qc.defaultLocalPreference : qc.localPreference"/>
+        </component>
+    -->
+
+    <component id="queue_target_value" type="Insert">
+        <binding name="value" value="ognl:queueTarget"/>
+    </component>
+
+    <component id="deleteQueueCluster" type="DirectLink">
+        <binding name="listener" value="listener:onDeleteQueueCluster"/>
+        <binding name="parameters" value="{qc.queueClusterName}"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.delete.confirm', qc.queueClusterName)"/>
+    </component>
+
+    <component id="queue_cluster_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.queue_cluster_nameField"/>
+
+    </component>
+
+    <component id="queue_cluster_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="queueCluster"/>
+        <binding name="elementName" value="literal:queueClusterName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+    
+    <component id="cluster_distribute" type="jeus:Field">
+        <binding name="field" value="ognl:components.cluster_distributeField"/>
+    </component>
+    
+    <component id="cluster_distributeField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="ognl:queueCluster"/>
+        <binding name="elementName" value="literal:clusterDistribute"/>
+        <binding name="model" value="ognl:@jeus.tool.webadmin.page.EnumerationSet@getPropertySelectionModel(queueCluster.clusterDistributeEnumeration)"/>
+    </component>
+    
+    <component id="local_preference" type="jeus:Field">
+        <binding name="field" value="ognl:components.local_preferenceField"/>
+    </component>
+
+    <!--
+    ?쁽?옱 援ы쁽?뿉?꽌 ?궗?슜?븯吏? ?븡?쑝誘?濡? ?쎒愿?由ъ옄?뿉?꽌 ?샃?뀡?쓣 ?젣怨듯븷 ?븘?슂媛? ?뾾?떎. ( by anvatar, 2007. 5. 7)
+        <component id="local_preference" type="jeus:Field">
+            <binding name="field" value="component:local_preferenceField"/>
+        </component>
+
+        <component id="local_preferenceField" type="jeus:JAXBTextField">
+            <binding name="parentElement" value="queueCluster"/>
+            <binding name="elementName" value="literal:localPreference"/>
+            <binding name="translator" value="translator:number"/>
+            <binding name="validators" value="validators:min=1"/>
+        </component>
+    -->
+
+    <component id="queue_target" type="jeus:Field">
+        <binding name="field" value="ognl:components.queue_targetField"/>
+
+    </component>
+
+    <component id="queue_targetField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:queueCluster"/>
+        <binding name="elementName" value="literal:target"/>
+        <binding name="translator" value="bean:listTranslator"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+
+
+
+
+    <component id="queue_cluster_add" type="Submit">
+        <binding name="value" value="message:common.label.add"/>
+        <binding name="listener" value="ognl:listeners.onAddQueueCluster"/>
+    </component>
+
+    <component id="topic_clusterForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jmsc.topic_cluster.title"/>
+        <binding name="useForm" value="ognl:false"/>
+        <binding name="parentElement" value="ognl:jmsServer"/>
+        <binding name="elementName" value="literal:topicCluster"/>
+    </component>
+
+    <component id="topic_cluster_addForm" type="jeus:JEUSForm">
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+
+
+    <component id="topic_cluster_name_column" type="Insert">
+        <binding name="value" value="message:rdc.topic_cluster.topic_cluster_name.label"/>
+    </component>
+
+    <!--
+    ?쁽?옱 援ы쁽?뿉?꽌 ?궗?슜?븯吏? ?븡?쑝誘?濡? ?쎒愿?由ъ옄?뿉?꽌 ?샃?뀡?쓣 ?젣怨듯븷 ?븘?슂媛? ?뾾?떎. ( by anvatar, 2007. 5. 7)
+        <component id="relay_type_column" type="Insert">
+            <binding name="value" value="message:rdc.topic_cluster.relay_type.label"/>
+        </component>
+    -->
+
+    <component id="topic_target_column" type="Insert">
+        <binding name="value" value="message:rdc.topic_cluster.topic_target.label"/>
+    </component>
+
+    <component id="eachTopicCluster" type="Foreach">
+        <binding name="source" value="ognl:topicClusters"/>
+        <binding name="value" value="ognl:tc"/>
+        <binding name="element" value="literal:tr"/>
+    </component>
+
+    <component id="topic_cluster_name_value" type="Insert">
+        <binding name="value" value="ognl:tc.topicClusterName"/>
+    </component>
+
+    <!--
+    ?쁽?옱 援ы쁽?뿉?꽌 ?궗?슜?븯吏? ?븡?쑝誘?濡? ?쎒愿?由ъ옄?뿉?꽌 ?샃?뀡?쓣 ?젣怨듯븷 ?븘?슂媛? ?뾾?떎. ( by anvatar, 2007. 5. 7)
+        <component id="relay_type_value" type="Insert">
+            <binding name="value" value="tc.relayType == null ? tc.defaultRelayType : tc.relayType"/>
+        </component>
+    -->
+
+    <component id="topic_target_value" type="Insert">
+        <binding name="value" value="ognl:topicTarget"/>
+    </component>
+
+    <component id="deleteTopicCluster" type="DirectLink">
+        <binding name="listener" value="listener:onDeleteTopicCluster"/>
+        <binding name="parameters" value="{tc.topicClusterName}"/>
+        <binding name="renderer" value="@jeus.tool.webadmin.component.render.ConfirmLinkRenderer@INSTANCE"/>
+        <binding name="message" value="messages.format('common.message.delete.confirm', tc.topicClusterName)"/>
+    </component>
+
+    <component id="topic_cluster_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.topic_cluster_nameField"/>
+
+    </component>
+
+    <component id="topic_cluster_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="topicCluster"/>
+        <binding name="elementName" value="literal:topicClusterName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <!--
+    ?쁽?옱 援ы쁽?뿉?꽌 ?궗?슜?븯吏? ?븡?쑝誘?濡? ?쎒愿?由ъ옄?뿉?꽌 ?샃?뀡?쓣 ?젣怨듯븷 ?븘?슂媛? ?뾾?떎. ( by anvatar, 2007. 5. 7)
+        <component id="relay_type" type="jeus:Field">
+            <binding name="field" value="component:relay_typeField"/>
+        </component>
+
+        <component id="relay_typeField" type="jeus:JAXBPropertySelection">
+            <binding name="parentElement" value="topicCluster"/>
+            <binding name="elementName" value="literal:relayType"/>
+            <binding name="model" value="@jeus.tool.webadmin.page.EnumerationSet@getPropertySelectionModel(topicCluster.relayTypeEnumeration)"/>
+        </component>
+    -->
+
+    <component id="topic_target" type="jeus:Field">
+        <binding name="field" value="ognl:components.topic_targetField"/>
+
+    </component>
+
+    <component id="topic_targetField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:topicCluster"/>
+        <binding name="elementName" value="literal:target"/>
+        <binding name="translator" value="bean:listTranslator"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+
+
+    <component id="topic_cluster_add" type="Submit">
+        <binding name="value" value="message:common.label.add"/>
+        <binding name="listener" value="ognl:listeners.onAddTopicCluster"/>
+    </component>
+
+    <component id="thread_poolForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:jmsc.thread_pool.title"/>
+        <binding name="listener" value="ognl:listeners.onThreadPoolOk"/>
+        
+        <binding name="parentElement" value="ognl:jmsServer"/>
+        <binding name="elementName" value="literal:threadPool"/>
+    </component>
+
+    <component id="max" type="jeus:Field">
+        <binding name="field" value="ognl:components.maxField"/>
+    </component>
+
+    <component id="maxField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="threadPool"/>
+        <binding name="elementName" value="literal:max"/>
+        <binding name="validators" value="validators:required,$maxValidator"/>
+    </component>
+
+	<component id="min" type="jeus:Field">
+        <binding name="field" value="component:minField"/>
+    </component>
+
+    <component id="minField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="threadPool"/>
+        <binding name="elementName" value="literal:min"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+    
+    <bean name="maxValidator" class="jeus.tool.webadmin.validator.FieldMinMaxValidator">
+    	<set name="minField" value="component:minField"/>
+    	<set name="min" value="0"/>
+    </bean>
+
+    <component id="keep_alive_time" type="jeus:Field">
+        <binding name="field" value="ognl:components.keep_alive_timeField"/>
+    </component>
+
+    <component id="keep_alive_timeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="threadPool"/>
+        <binding name="elementName" value="literal:keepAliveTime"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <bean name="broker_namePatternValidator"
+		class="org.apache.tapestry.form.validator.Pattern">
+		<set name="pattern" value="literal:[a-zA-Z_\d]+" />
+		<set name="message" value="message:common.exception.0066" />
+	</bean>
+
+    <bean name="noteValidator" class="jeus.tool.webadmin.validator.NoteSizeValidator"/>
+
+	<bean name="listTranslator" class="jeus.tool.webadmin.component.translator.ListTranslator"/>
+
+    <asset name="delete" path="context:/image/table/delete.gif"/>
+    <asset name="create" path="context:/image/create.gif"/>
+    
+    <property name="cf"/>
+    <property name="dn"/>
+    <property name="sc"/>
+    <property name="js"/>
+    <property name="ds"/>
+    <property name="qc"/>
+    <property name="tc"/>
+
+    <property name="note"/>
+
+    <property name="storageType" initial-value="objectName == null? '' : (storage != null and storage.setDbStorage ? 'DBStorage' : (storage != null and storage.setFileStorage ? 'FileStorage' : ''))"/>
+    <property name="deleteInvalidDestinations"/>
+    <property name="choiceDSAEmbedded" persist="session"/>
+
+</page-specification>

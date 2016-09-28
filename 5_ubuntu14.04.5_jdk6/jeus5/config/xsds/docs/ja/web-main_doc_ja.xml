@@ -1,0 +1,1221 @@
+<?xml version="1.0" encoding="Shift-JIS"?>
+<description>        
+    <text key="udp-listenerType.port"><![CDATA[
+                        [Description]: クライアントからリクエストを受けるのに使われる ポート
+                        [Value Description]: 0より大きいポート値
+                        [Value Type Description]: Integer
+                    ]]>        
+    </text>
+         
+    <text key="tcp-listenerType.scheme"><![CDATA[
+                        [Description]: Javax.servlet.http.HttpServletRequest.getScheme() メソッド・プロトコル識別字のリターン値をここに設定します。WebtoBまたはApacheでSSL機能を使用したりsecure listenerを使用する時に "https"値で設定しなければなりません。
+                        [Value Description]: httpまたはhttps
+                        [Defined Value]: [http]: もしSSLが使われないと該当値を使用します。
+                                                [https]: secure listenerとウェブサーバーーでSSLを使用する時に該当値を使用します。
+                        [Example]: &lt;scheme>https&lt;/scheme>
+                    ]]>        
+    </text>
+         
+    <text key="tcp-listenerType.listener-id"><![CDATA[
+                        [Description]: 該当listenerを職別するユニークな名前を意味します。この名前は、構成ファイルのほかの箇所からListenerを呼び出すときに使用されます                        [Value Description]: 任意のユニークな名前
+                    ]]>        
+    </text>
+         
+    <text key="webtob-listenerType.registration-id"><![CDATA[
+                        [Description]: WebtoB サーバーーと連結する時使用する registration ID 名前を意味します。
+                        [Value Description]: Registration ID名前はWebtoB設定ファイルに *SERVER節の下にある値と同じでなければいけません。
+                        [Example]: &lt;registration-id>MyGroup&lt;/registration-id>
+                    ]]>        
+    </text>
+         
+    <text key="tcp-listenerType.dispatcher-config-class"><![CDATA[
+                        [Description]: dispatcherの設定クラスを指定します。このとき、クラスは必ずclasspathに設定された箇所にあり、クラスの名前はfull qualified class nameでなければなりません。
+                    ]]>        
+    </text>
+         
+    <text key="tmax-listenerType.xaresource-class"><![CDATA[                        [Description]: XAResourceクラスの名前です。トランザクションリカバリー機能を使用する際に設定しま。                        [Value Description]: XAResourceクラスの名前です。                    ]]>        
+    </text>
+         
+    <text key="udp-listenerType.dispatcher-config-class"><![CDATA[
+                        [Description]: dispatcherの設定クラスを指定します。このとき クラスは必ずclasspathにされている箇所にある必要があり、クラスの名前はfull qualified class nameでないといけません。
+                    ]]>        
+    </text>
+         
+    <text key="ajp13-listenerType.scheme"><![CDATA[
+                        [Description]: Javax.servlet.http.HttpServletRequest.getScheme() メソッド・プロトコル識別字のリターン値をここに設定します。WebtoBまたはApacheでSSL機能を使用したりsecure listenerを使用する時に "https"値で設定しなければなりません。
+                        [Value Description]: httpまたはhttps
+                        [Defined Value]: [http]: もしSSLが使われないと該当値を使用します。
+                                                [https]: secure listenerとウェブサーバーーでSSLを使用する時に該当値を使用します。
+                        [Example]: &lt;scheme>https&lt;/scheme>
+                    ]]>        
+    </text>
+         
+    <text key="ssl-configType.trust-management-algorithm"><![CDATA[                        [Description]: truststoreに保存するtrustに対する管理アルゴリズムを設定します。                        [Value Description]: Sun JVMを使用する場合にはSunX509を、                                             IBM JVMを使用する場合にはIbmX509を使用します。                                             この設定は、JVMでssl.TrustManagerFactory.algorithmを使用して設定できます。                                             優先順位はwebmain > javaxです。                                             デフォルト値は、SunX509です。                    ]]>        
+    </text>
+         
+    <text key="webserver-connectionType.http-listener"><![CDATA[
+                [Description]:HTTP　listenerは、Jeus　Web Containerのデフォルト内部 ウェブ サーバーーを提供します。
+                                        この内部ウェブ サーバーーは、基本的に、開発時または小規模の運営環境でのみ適合なものです。
+                                        大規模の運営環境では、WebtoBまたはApache ウェブ サーバーーを使用するほうが好ましいです。
+                                       HTTP  Listenerを設定すれば、Web Containerは簡単なHTTPリクエストを受けることができ、自体的にリクエストを処理できます。
+                    ]]>        
+    </text>
+         
+    <text key="session-serverType.server-name"><![CDATA[
+[Description]: このelementは、このContext groupでSession Serverを使用するためにSession Serverの名前(JNDI export name)を設定します。
+そのexportの名前は、JEUSMain.xmlの&lt;session-manager>&lt; name>にある値を設定します。
+                        [Value Description]: JNDI export nameは、このContext groupで使用されるPrimary Session Serverで識別します。
+                    ]]>        
+    </text>
+         
+    <text key="web-containerType.redirect-stderr"><![CDATA[
+                        [Description]: Web Containerの出力内容を標準エラー(stderr)からJEUS_HOME\logs\JeusSystem\[nodename]_[container name]\stderr_[date].logファイルに再伝送するかを決定します。
+                    ]]>        
+    </text>
+         
+    <text key="tmax-listenerType.server-group-name"><![CDATA[
+                        [Description]: 連結しようとするtmax serverが含まれているグループを意味します。
+                        [Value Description]: tmax server groupの名前
+                    ]]>        
+    </text>
+         
+    <text key="session-configType.timeout"><![CDATA[
+                        [Description]: このelementは、セッション客体が除去されるべき 時間を決定します。しかし、web.xmlにセッションタイムアウトの設定は、ここで設定した値に優先します。
+                        [Value Description]: 時間周期は共有セッションが除去される分単位で表示されます。                        [Value Type Description]: Integer
+                        [Defined Value]: [-1]: この値を設定したら、セッションのタイムアウト検査は実行されません。セッションはweb.xmlに他の設定がなければ引き続き維持されます。
+                    ]]>        
+    </text>
+         
+    <text key="udp-listenerType.postdata-read-timeout"><![CDATA[
+                        [Description]: ウェブ サーバーー/ウェブ クライアントから post-dataを読んでくるまで待機する最大時間を設定します。request.getInputStream().read()メソッドを通して実行します。
+                        [Value Description]: Millisecond時間間隔
+                        [Value Type Description]: Long
+                        [Example]: &lt;postdata-read-timeout>40000&lt;/postdata-read-timeout>
+                    ]]>        
+    </text>
+         
+    <text key="web-containerType.context-group"><![CDATA[
+                        [Description]: このelementは“Context group”と呼ばれるJEUS 特有の構造を持ちます。
+                                                Context groupはあらゆるContext(Web applications)を管理する仮想サーバーーです。
+                                                このelementに置かれる設定はあらゆる Contextによって使われます。
+                    ]]>        
+    </text>
+         
+    <text key="web-containerType.monitoring"><![CDATA[
+                        [Description]: Web Containerのさまざまなモニターリングthreadの環境設定のためのelementです。モニターリングthreadは、日程に複数のpoolやリソースの状態を点検するthreadです。チェックする時にコネクション・プールからコネクションが除去されたりまたは他のアクションが取られるかがが決められます。このelementの下位elementは、4つの異なるpoolの状態を点検のための時間を必須的に設定します。
+                   ]]>        
+    </text>
+         
+    <text key="http-listenerType.ssl-config"><![CDATA[
+                        TRANSLATE
+                    ]]>        
+    </text>
+         
+    <text key="webtob-listenerType.webtob-home"><![CDATA[
+                        [Description]: Web Containerとウェブ サーバーー間に効率的なパイプ通信を可能にするWebtoBサーバーーのホーム・ディレクトリを設定します。該当値は、WebtoBホーム・ディレクトリを含んでいる環境変数値をOverrideします。このelementは、同じマシンで一つ以上のWebtoBサーバーーが存在したり、環境変数に登録されていないWebtoBと連動しようとする場合に該当のWebtoBサーバーーが設置された経路を入力します。
+                        [Value Description]: 最後にパス分離子がつく絶対ディレクトリ 経路("\" Windows,"/" ユニックス).
+                        [Example]: &lt;webtob-home>c:\WebtoB\&lt;/webtob-home>
+                    ]]>        
+    </text>
+         
+    <text key="tmax-listenerType.tmax-address"><![CDATA[
+                        [Description]: tmax serverのIP addressを設定します。
+                        [Value Description]: tmax serverのIP address
+                    ]]>        
+    </text>
+         
+    <text key="tmax-listenerType.dispatcher-config-class"><![CDATA[
+                        [Description]: dispatcherの設定クラスを指定します。このとき クラスは必ずclasspathにされている箇所にある必要があり、クラスの名前はfull qualified class nameでないといけません。
+                    ]]>        
+    </text>
+         
+    <text key="webtob-backupType.scheme"><![CDATA[
+                        [Description]: Javax.servlet.http.HttpServletRequest.getScheme() メソッド・プロトコル識別字のリターン値をここに設定します。WebtoBまたはApacheでSSL機能を使用したりsecure listenerを使用する時に "https"値で設定しなければなりません。
+                        [Value Description]: httpまたはhttps
+                        [Defined Value]: [http]: もしSSLが使われないと該当値を使用します。
+                                                [https]: secure listenerとウェブサーバーーでSSLを使用する時に該当値を使用します。
+                        [Example]: &lt;scheme>https&lt;/scheme>
+                    ]]>        
+    </text>
+         
+    <text key="udp-listenerType.input-buffer-size"><![CDATA[
+                        [Description]: inputを読むときにDatagramPacketの最大値を設定します。
+                        [Value Description]: 0より大きい値
+                        [Value Type Description]: Integer
+                    ]]>        
+    </text>
+         
+    <text key="thread-state-notifyType.max-thread-active-time"><![CDATA[
+                        [Description]: Threadがblockに見なされる時間値を設定します。Threadが決まっている時間まで実行されていると、blockされたことに見なします。
+                        [Value Description]: Millisecond値。最も長く実行されるthreadの実行時間の大体1.5倍程度の値に設定します。
+                        [Value Type Description]: Integer
+                    ]]>        
+    </text>
+         
+    <text key="webtob-backupType.reconnect-timeout"><![CDATA[
+                        [Description]: WebtoBサーバーーとwebtob-listener間のコネクションが作業中に連結が切れる場合もあります。
+こういう場合には再連結を試みるようになるが、このelementは、再連結のtimeout値で（に） 使われます。
+もし最近のすべての切られたWebtoBコネクションが該当値を過ぎても連結できずにWebtoBバックアップサーバーーが定義されていれば
+                                                Web Containerは WebtoBバックアップサーバーーにfail-overを試みます。
+ 最後のWebtoBバックアップサーバーーまで失敗すれば, またメーンwebtob-listenerと連結を試みます。
+                        [Value Description]: Millisecond単位のtimeout値
+                        [Value Type Description]: Long
+                        [Defined Value]: [-1]: 無限なtimeoutの周期(listenerは再び連結を試みる)
+                                                [0]: 再び連結を試みられません。
+                    ]]>        
+    </text>
+         
+    <text key="session-id-cookieType.domain"><![CDATA[
+                        [Description]: Session idクッキーを送るサーバーーのドメイン名を設定します。クッキーは、このドメインリクエストに対してのみ戻ってきます。
+                        [Value Description]: 1つの適合なドメインの名前。これは、“.”で始められ、hostnameを指定してはいけません。(RFC-2019スペックに従う)
+                    ]]>        
+    </text>
+         
+    <text key="ssl-configType.truststore-pass"><![CDATA[                        [Description]: truststoreファイルを開くためのパスワードです。                        [Value Description]: この設定は、JVMでjeus.ssl.trustpassとjavax.net.ssl.trustStorePasswordを使用して設定できます。                                             優先順位はwebmain > jeus > javaxです。                                             デフォルト値は、jeustrustpassです。                    ]]>            
+    </text>
+             
+    <text key="webtob-listenerType.scheme"><![CDATA[
+                        [Description]: Javax.servlet.http.HttpServletRequest.getScheme() メソッド・プロトコル識別字のリターン値をここに設定します。WebtoBまたはApacheでSSL機能を使用したりsecure listenerを使用する時に "https"値で設定しなければなりません。
+                        [Value Description]: httpまたはhttps
+                        [Defined Value]: [http]: もしSSLが使われないと該当値を使用します。
+                                                [https]: secure listenerとウェブサーバーーでSSLを使用する時に該当値を使用します。
+                        [Example]: &lt;scheme>https&lt;/scheme>
+                    ]]>            
+    </text>
+             
+    <text key="http-listenerType.max-keep-alive-request"><![CDATA[
+                        TRANSLATE
+                    ]]>            
+    </text>
+             
+    <text key="tmax-listenerType.tmax-backup-port"><![CDATA[
+                        [Description]: backupで使用されるTmax serverのport
+                        [Value Description]: ポートナンバーは0より大きい値段でなければならない。
+                        [Value Type Description]: Integer
+                    ]]>            
+    </text>
+             
+    <text key="webserver-connectionType.webtob-listener"><![CDATA[
+                [Description]: このelementは、WebtoBウェブサーバーーのために設定するウェブ サーバーー listenerです。該当listenerの設定は、他のlistener類型と若干異なります。
+                    ]]>            
+    </text>
+             
+    <text key="tcp-listenerType.postdata-read-timeout"><![CDATA[
+                        [Description]: ウェブ サーバーー/ウェブ クライアントから post-dataを読んでくるまで待機する最大時間を設定します。request.getInputStream().read()メソッドを通して実行します。
+                        [Value Description]: Millisecond時間間隔
+                        [Value Type Description]: Long
+                        [Example]: &lt;postdata-read-timeout>40000&lt;/postdata-read-timeout>
+                    ]]>            
+    </text>
+             
+    <text key="tmax-listenerType.postdata-read-timeout"><![CDATA[
+                        [Description]: ウェブ サーバーー/ウェブ クライアントから post-dataを読んでくるまで待機する最大時間を設定します。request.getInputStream().read()メソッドを通して実行します。
+                        [Value Description]: Millisecond時間間隔
+                        [Value Type Description]: Long
+                        [Example]: &lt;postdata-read-timeout>40000&lt;/postdata-read-timeout>
+                    ]]>            
+    </text>
+             
+    <text key="session-serverType.backup-server-name"><![CDATA[
+                        [Description]: Primary Session Serverに問題が生じた場合に使用するBackup Session Serverの名前
+                        [Value Description]: Backup Session Serverで使用するSession ServerのJNDI export name
+                    ]]>            
+    </text>
+             
+    <text key="thread-state-notifyType.notify-subject"><![CDATA[
+                        [Description]: Notify-tresholdが超過するときに送られるe-mailの題目を設定します。
+                        [Value Description]: 受信者(管理者)が該当e-mailの内容を直ちに確認可能なメッセージ
+                    ]]>            
+    </text>
+             
+    <text key="web-containerType.shutdown-timeout"><![CDATA[
+                        [Description]: Web  Containerが終了になる前に実行中のworker threadが待機する時間を千分の1に当たる値。このオプションは、Containerをダウンさせる前にworker thread等の作業完了を強制的に待たせるものです。仮りに、down命令時に作業を実行するworker threadが無ければ、該当の周期を無視して直ちにコンテナをダウンさせます。
+                    ]]>            
+    </text>
+             
+    <text key="ajp13-listenerType.listener-id"><![CDATA[
+                        [Description]: 該当listenerを職別するユニークな名前を意味します。この名前は、構成ファイルのほかの箇所からListenerを呼び出すときに使用されます                        [Value Description]: 任意のユニークな名前
+                    ]]>            
+    </text>
+             
+    <text key="session-id-cookieType.path"><![CDATA[
+                        [Description]: 1つのsession idクッキーが送られるドメイン内にURLのパスを設定します。                                                 クッキーはドメインが適合なときまで該当URLにあるリクエストに加えられて送られます。(&lt;domain>elementを参照)
+                                                例えば、もし “/examples”というパスが設定され、ドメインは“.foo.com”に設定され、
+                                               クライアントのリクエストはwww.foo.com/examplesであれば、クライアントのクッキーはリクエストに加えられて送られます。
+                        [Value Description]: ドメインの下に1つの適合なURLパス/
+                        [Defined Value]: [/]: ドメインが適合な間、リクエスト経路に関係なくクッキーは送られます。
+                    ]]>            
+    </text>
+             
+    <text key="ssl-configType.truststore-type"><![CDATA[                        [Description]: truststoreのタイプを指定します。                        [Value Description]: Sunのkeytoolによりkeystoreを生成する場合はJKS(Java’s Key Store)を、OpenSSLやMicrosoft KeyManagerで keystoreを生成する場合はPKCS12を使用します。                                             この設定は、JVMでjavax.net.ssl.trustStoreTypeを使用して設定できます。                                             優先順位はwebmain > javaxです。                                             デフォルト値は、JKSです。                    ]]>            
+    </text>
+             
+    <text key="ajp13-listenerType.port"><![CDATA[
+                        [Description]: ポートはウェブ サーバーーからリクエストを受ける時に使われます。
+                                                このポートは前述したjeus-apache.conf ファイルのApJServDefaultPort値と同じでなければなりません。
+                        [Value Description]:  0より大きいポート値
+                        [Value Type Description]: Integer
+                    ]]>            
+    </text>
+             
+    <text key="tcp-listenerType.output-buffer-size"><![CDATA[
+                        [Description]: out.write()メソッドから出力されるJSP/Servletの出力物を一時的に保存する出力バッファーのサイズを設定します。このバッファーがいっぱいになるとウェブブラウザーにflushとなります。
+                        [Value Description]: Byte単位のバッファーサイズ
+                        [Value Type Description]: Integer
+                        [Example]: &lt;output-buffer-size>16384&lt;/output-buffer-size>
+                    ]]>            
+    </text>
+             
+    <text key="ajp13-listenerType.busy-notify-page"><![CDATA[
+                        [Description]: キューがいっぱいになった場合にリクエストが入ってくると、リクエストは&lt;busy-notify-page> elementに設定したページをクライアントに送ります。                        [Value Description]: 0より大きい値
+                        [Value Type Description]:静的なコンテンツファイル(例えば、 HTMLファイル)を絶対経路に含めて設定します。
+                        [Example]: &lt;busy-notify-page>c:\web\errorpages\busypage.html&lt;/busy-notify-page>
+                    ]]>            
+    </text>
+             
+    <text key="webtob-listenerType.request-prefetch"><![CDATA[
+                        [Description]: webtob request prefetch機能です。この機能が
+                        trueならば、現在処理するwebtob requestの他に1つの次のwebtob
+                        requestをあらかじめ受けてrequest queueに保存し、処理速度を
+                        向上させることができます。ただ、web containerがabnormalにdownされる場合にはprefetchされたwebtob requestがなくなる場合があります。
+                        [Value Description]: true or false
+                        [Value Type Description]: Boolean
+                    ]]>            
+    </text>
+             
+    <text key="encodingSubType.default"><![CDATA[
+                        [Description]: もしユーザがServlet APIを通じてエンコーディングを設定せずそして&lt;forced>属性も使用しなくてHTTPリクエスト・ヘッダーに指定されたエンコーディングがない場合には、この属性のエンコーディングを使用します。
+                        [Value Description]: 標準キャラクターエンコーディング                    ]]>            
+    </text>
+             
+    <text key="ajp13-listenerType.postdata-read-timeout"><![CDATA[
+                        [Description]: ウェブ サーバーー/ウェブ クライアントから post-dataを読んでくるまで待機する最大時間を設定します。request.getInputStream().read()メソッドを通して実行します。
+                        [Value Description]: Millisecond時間間隔
+                        [Value Type Description]: Long
+                        [Example]: &lt;postdata-read-timeout>40000&lt;/postdata-read-timeout>
+                    ]]>            
+    </text>
+             
+    <text key="header-fieldType.field-name"><![CDATA[
+                        [Description]: HTTP応答フィールドの名前
+                        [Value Description]: フィールドの名前
+                    ]]>            
+    </text>
+             
+    <text key="access-logType.enable"><![CDATA[
+                        [Description]: アクセスロギングの機能の使用可否を設定します。
+                    ]]>            
+    </text>
+             
+    <text key="session-id-cookieType.version"><![CDATA[
+                        [Description]: クッキーIDバージョンを設定します。
+                        [Value Description]: Either 0 or 1
+                        [Value Type Description]: Integer
+                        [Defined Value]: [0]: ディフォルトNSのクッキー形式
+                                         [1]: RFCスペック。基本クッキー形式
+                    ]]>            
+    </text>
+             
+    <text key="tcp-listenerType.allowed-server"><![CDATA[
+                        [Description]: 格&lt;allowed-server>elementは、該当listenerに接続しようとする1つのサーバーIPアドレスを指定します。このelementは、&lt;server-access-control>elementの値がtrueの場合のみ使用されます。このelementに含まれていないサーバーーからのすべてのリクエストは拒否となります。
+                        [Value Description]: このlistenerに連結が許容されるサーバーーのIPアドレス
+                        [Example]: &lt;allowed-server>127.0.0.1&lt;/allowed-server>
+                    ]]>            
+    </text>
+             
+    <text key="udp-listenerType.server-access-control"><![CDATA[
+                        [Description]: サーバー・アクセス・コントロールを活性化または非活性化します。もしこのオプションが活性化さたら、許容されたサーバー(&lt;allowed-server> elementで指定された)のみこのlistenerにアクセスできます。
+                       [Value Description]: Millisecond時間間隔
+                        [Value Description]: Boolean値でこの設定を活性化または非活性化します。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: サーバー・アクセス・コントロールを活性化します。
+                                                [false]: サーバー・アクセス・コントロールを非活性化します。
+                        [Example]: &lt;server-access-control>true&lt;/server-access-control>
+                    ]]>            
+    </text>
+             
+    <text key="udp-listenerType.scheme"><![CDATA[
+                        [Description]: Javax.servlet.http.HttpServletRequest.getScheme() メソッド・プロトコル識別字のリターン値をここに設定します。WebtoBまたはApacheでSSL機能を使用したりsecure listenerを使用する時に "https"値で設定しなければなりません。
+                        [Value Description]: httpまたはhttps
+                        [Defined Value]: [http]: もしSSLが使われないと該当値を使用します。
+                                                [https]: secure listenerとウェブサーバーーでSSLを使用する時に該当値を使用します。
+                        [Example]: &lt;scheme>https&lt;/scheme>
+                    ]]>            
+    </text>
+             
+    <text key="monitoringType.check-class-reload"><![CDATA[
+                        [Description]: このelementは、&lt;auto-reload>&lt;enable-reload> elementを使用してクラスのリローディングの状態を点検するための時間間隔を設定します。
+                                                Check-class-reloadのためのモニターリングthreadは、&lt;check-on-demand>elementが(該当設定はjeus-web-ddファイルにいる)true値を持つContextは点検しません。
+                        [Value Description]: 時間間隔は、millisecond単位（最も近接した 秒の四捨五入されます。) 最も短い周期は1000 millisecondです。(1秒)
+                        [Value Type Description]: Integer
+                        [Defined Value]: [-1]: クラスリローディングのための点検を非活性化します。
+                    ]]>            
+    </text>
+             
+    <text key="tcp-listenerType.back-log"><![CDATA[
+                        [Description]:ソケットのbacklog値を設定します。(生成子 “java.net.ServerSocket(int port,int backlog)でソケットのリクエストを待つキューの最大サイズ)
+                        [Value Description]: 0より大きい値
+                        [Value Type Description]: Integer
+                    ]]>            
+    </text>
+             
+    <text key="http-listenerType.allowed-server"><![CDATA[
+                        [Description]: 格&lt;allowed-server>elementは、該当listenerに接続しようとする1つのサーバーIPアドレスを指定します。このelementは、&lt;server-access-control>elementの値がtrueの場合のみ使用されます。このelementに含まれていないサーバーーからのすべてのリクエストは拒否となります。
+                        [Value Description]: このlistenerに連結が許容されるサーバーーのIPアドレス
+                        [Example]: &lt;allowed-server>127.0.0.1&lt;/allowed-server>
+                    ]]>            
+    </text>
+             
+    <text key="http-listenerType.listener-id"><![CDATA[
+                        [Description]: 該当listenerを職別するユニークな名前。この名前は、構成ファイルの他の武運から該当listenerを呼び出すときに使用されます。
+                        [Value Description]: 任意のユニークな名前
+                    ]]>            
+    </text>
+             
+    <text key="tcp-listenerType.thread-pool"><![CDATA[
+                        [Description]: Thread poolは、Web Containerに入ってくるりくえすとをハンドリングするworker threadを維持するのに使われます。
+                                                指定したポートを通じて新しいリクエストを受信受すると、該当poolで新しいworker threadを割り当てられリクエストに対する業務を処理します。
+                    ]]>            
+    </text>
+             
+    <text key="session-configType.shared"><![CDATA[
+                        [Description]: このelementは、このContext group下位のあらゆるContextのセッション共有を活性化または非活性化させます。セッション共有は一つの HTTPSession客体を一つのContextで生成したときにほかのContextでも使用することが出来ることを意味します。(同ユーザーにより)
+                        [Value Description]: Boolean値でこの設定を活性化または非活性化します。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: セッションを共有します。
+                                                [false]: セッションを共有しません。
+                     ]]>            
+    </text>
+             
+    <text key="webtob-backupType.postdata-read-timeout"><![CDATA[
+                        [Description]: ウェブ サーバーー/ウェブ クライアントから post-dataを読んでくるまで待機する最大時間を設定します。request.getInputStream().read()メソッドを通して実行します。
+                        [Value Description]: Millisecond時間間隔
+                        [Value Type Description]: Long
+                        [Example]: &lt;postdata-read-timeout>40000&lt;/postdata-read-timeout>
+                    ]]>            
+    </text>
+             
+    <text key="thread-poolType.min"><![CDATA[
+                        [Description]: Poolからworker threadを維持しなければならない初期数あるいは最小数を意味します。
+                        [Value Description]: thread数
+                        [Value Type Description]: Integer
+                    ]]>            
+    </text>
+             
+    <text key="ssl-configType.keystore-file"><![CDATA[                        [Description]: キーと認証書を格納しているファイルを指定します。                        [Value Description]: 絶対パスと相対パスの両方を使用できます。 　　　　　　　　　　　　　　　　　　　　　　相対パスに設定されている場合は、jeus_home/config/nodenameの下で該当ファイルを捜します。                                             また、JVMでjeus.ssl.keystoreとjavax.net.ssl.keyStoreを使用して設定できます。 優先順位はwebmain > jeus > javaxです。                                             デフォルト値は、jeus_home/config/nodename/keystoreです。                    ]]>            
+    </text>
+             
+    <text key="access-logType.enable-analysis"><![CDATA[
+                        [Description]: アクセスロギングの分析の可否を設定します。
+                    ]]>            
+    </text>
+             
+    <text key="http-listenerType.read-timeout"><![CDATA[
+                        [Description]: Keep aliveをいじするためのRead time out
+                  ]]>            
+    </text>
+             
+    <text key="virtual-hostType.properties"><![CDATA[                        [Description]: virtual-host-wideのプロパティを指定します。                    ]]>            
+    </text>
+             
+    <text key="webserver-connectionType.tcp-listener"><![CDATA[
+                [Description]: TCP listenerはHTTP listenerのように動作するが、HTTPとは違ったカスタム・ネットワーク・プロトコルをサポートします。
+                    ]]>            
+    </text>
+             
+    <text key="webtob-backupType.webtob-home"><![CDATA[
+                        [Description]: Web Containerとウェブ サーバーー間に効率的なパイプ通信を可能にするWebtoBサーバーーのホーム・ディレクトリを設定します。該当値は、WebtoBホーム・ディレクトリを含んでいる環境変数値をOverrideします。このelementは、同じマシンで一つ以上のWebtoBサーバーーが存在したり、環境変数に登録されていないWebtoBと連動しようとする場合に該当のWebtoBサーバーーが設置された経路を入力します。
+                        [Value Description]: 最後にパス分離子がつく絶対ディレクトリ 経路("\" Windows,"/" ユニックス).
+                        [Example]: &lt;webtob-home>c:\WebtoB\&lt;/webtob-home>
+                    ]]>                
+    </text>
+                 
+    <text key="session-configType.persistent"><![CDATA[
+                        [Description]: もしこのelementが"false"(デフォルト）に設定されてSession Serverが構成されないと、(JEUSMain.xmlの &lt;session-cluster>element)セッション客体とServlet Context属性値は、クラスが変更になってreloadされるときに削除されます。しかし万一このelementを"true"に設定してSession Serverが定義されていないと、セッション客体とServlet Context属性値は、客体または属性クラスが修正になることの他にはreloadの時にも維持されます。もしSession Serverが定義されれば、このelementは、必要なくなります。(Servletエンジンに影響なし)。もしSession Serverが定義されれば、セッションオブジェクトとServlet Contextの属性は、このelement値に関係なく持続します。
+                        [Value Description]: Boolean値でこの設定を活性化または非活性化します。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: 該当設定を活性化します。
+                                                [false]: 該当設定を非活性化します。
+                    ]]>                
+    </text>
+                 
+    <text key="tmax-listenerType.reconnect-timeout"><![CDATA[
+                        [Description]: Tmaxとtmax-listener間のコネクションが作業中 間に連結が途切れる場合もあります。こういう場合に再び連結を試みるようになるが、このelementは再連結のtimeout値として使われます。
+                        [Value Description]: Millisecond単位のtimeout値
+                        [Value Type Description]: Long
+                        [Defined Value]: [-1]: 無限なtimeoutの周期(listenerは再び連結を続けて試みるはず)
+                                                [0]: 再び連結を試みません。
+                    ]]>                
+    </text>
+                 
+    <text key="webtob-backupType.hth-count"><![CDATA[
+                        [Description]: WebtoBサーバーーに指定されているHTHプロセス 数
+                        [Value Description]: WebtoBサーバーのHTHプロセスの数と同じく設定します。
+                        [Value Type Description]: Integer
+                    ]]>                
+    </text>
+                 
+    <text key="custom-headerType.header-field"><![CDATA[
+                        [Description]: このContext groupのあらゆるHTTPの応答に含まれているフィールドの名前と値
+                    ]]>                
+    </text>
+                 
+    <text key="access-logType.format"><![CDATA[
+                        [Description]: time-stampのためのフォーマットを設定します。この設定はアクセスログにのみ使用します。
+                    ]]>                
+    </text>
+                 
+    <text key="webtob-backupType.port"><![CDATA[
+                        [Description]: WebtoBサーバーーに接続するポート。このポートナンバーはWebtoBサーバーー設定ファイルに “JSVPORT”値と一致します。
+                        [Value Description]: ポートナンバーは0より大きい値であり、WebtoB設定ファイルのJSVPORT値と同じでなければなりません。
+                        [Value Type Description]: Integer
+                    ]]>                
+    </text>
+                 
+    <text key="webtob-backupType.thread-pool"><![CDATA[
+                        [Description]: Thread poolはWeb Containerに入ってくるリクエストをハンドリングするworker threadを維持するのに使われます。
+                                                指定したポートを通じて新しいリクエスト受ければ、該当 poolで新しいworker threadを与えられ、リクエストに対する業務を処理します。
+                                                WebtoB Listenerの場合、thread poolに対する設定は、WebtoBサーバーーにHTHプロセスと関係があることを注意してください。
+                                                もしHTHプロセスの数が3つのときにthread poolの最大数は10つに設定すれば、実際に生成される最大thread poolの数は30となります。
+                                                また、それぞれのworker threadはWebtoBサーバーーと実際に持続したコネクションを持ちます。
+                                                
+                    ]]>                
+    </text>
+                 
+    <text key="ajp13-listenerType.back-log"><![CDATA[
+                        [Description]:ソケットのbacklog値を設定します。(生成子 “java.net.ServerSocket(int port,int backlog)でソケットのリクエストを待つキューの最大サイズ)
+                        [Value Description]: 0より大きい値
+                        [Value Type Description]: Integer
+                    ]]>                
+    </text>
+                 
+    <text key="ssl-configType.key-management-algorithm"><![CDATA[                        [Description]: keystoreに格納するキーに対する管理アルゴリズムを設定します。                        [Value Description]: Sun JVMを使用する場合にはSunX509を、                                             IBM JVMを使用する場合にはIbmX509を使用します。                                             この設定は、JVMでssl.KeyManagerFactory.algorithmを使用して設定できます。                                             優先順位はwebmain > javaxです。                                             デフォルト値は、SunX509です。                    ]]>                
+    </text>
+                 
+    <text key="webtob-listenerType.listener-id"><![CDATA[
+                        [Description]: 該当listenerを識別するユニークな名前です。この 名前は構成ファイルの他の部分らからlistenerを言及する時に使われます。
+                        [Value Description]: 任意のユニークな名前
+                    ]]>                
+    </text>
+                 
+    <text key="thread-poolType.max-wait-queue"><![CDATA[
+                        [Description]: リクエストを扱うために新しいworker threadを生成する前にこのelementはrequest wait queueQに入れられるリクエストの最大数を設定します。
+                        [Value Description]: キューに入れられるリクエストの最大数
+                        [Value Type Description]: Integer
+                  ]]>                
+    </text>
+                 
+    <text key="webtob-listenerType.webtob-ipcbaseport"><![CDATA[                        [Description]: Webtobと内部プロセス間にIPC通信をするために該当ポートを設定します。現在、Windowsでのみサポートされており、 環境変数にWEBTOB_IPCBASEPORTを設定することで同じ機能を提供します。２つが同時に設定された場合にはここに設定されているポートが優先順位を持ちます。                        [Value Description]: ポート番号は0より大きい値である必要があります。                        [Value Type Description]: Integer                    ]]>                
+    </text>
+                 
+    <text key="tcp-listenerType.ssl-config"><![CDATA[
+                        TRANSLATE
+                    ]]>                
+    </text>
+                 
+    <text key="thread-state-notifyType.notifier-id"><![CDATA[
+                        [Description]: 使用するemailの通知者のID
+                    ]]>                
+    </text>
+                 
+    <text key="thread-state-notifyType.notify-threshold"><![CDATA[
+                        [Description]: Warning通知がe-mailを利用して通知者に送信される前まで存在するblocked threadの最大値を設定します。
+                        [Value Description]: Worker threadの数
+                        [Value Type Description]: Integer
+                    ]]>                
+    </text>
+                 
+    <text key="udp-listenerType.back-log"><![CDATA[
+                        [Description]:ソケットのbacklog値を設定します。(生成子 “java.net.ServerSocket(int port,int backlog)でソケットのリクエストを待つキューの最大サイズ)
+                        [Value Description]: 0より大きい値
+                        [Value Type Description]: Integer
+                    ]]>                
+    </text>
+                 
+    <text key="thread-state-notifyType.restart-subject"><![CDATA[
+                        [Description]: Restart-tresholdが超過されるとき送られるe-mailの題目を設定します。
+                        [Value Description]: 受信者(管理者)が該当のe-mailの内容を直ちに確認できるメッセージ
+                    ]]>                
+    </text>
+                 
+    <text key="thread-poolType.max-idle-time"><![CDATA[
+                        [Description]: Poolから除去される前にidle状態とどまっている worker threadの最大の時間。
+                        [Value Description]: Millisecond値
+                        [Value Type Description]: Long
+                    ]]>                
+    </text>
+                 
+    <text key="thread-state-notifyType.restart-threshold"><![CDATA[
+                        [Description]: Web Container restartが実行される前まで存在するblocked threadの最大値を設定します。
+                        [Value Description]: Worker threadの数
+                        [Value Type Description]: Integer
+                    ]]>                
+    </text>
+                 
+    <text key="ajp13-listenerType.server-access-control"><![CDATA[
+                        [Description]: サーバー・アクセス・コントロールを活性化または非活性化します。もしこのオプションが活性化さたら、許容されたサーバー(&lt;allowed-server> elementで指定された)のみこのlistenerにアクセスできます。
+                        [Value Description]: Millisecond時間間隔
+                        [Value Description]: Boolean値でこの設定を活性化または非活性化しあます。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: サーバー・アクセス・コントロールを活性化します。
+                                                [false] : サーバー・アクセス・コントロールを非活性化します。
+                        [Example]: &lt;server-access-control>true&lt;/server-access-control>
+                    ]]>                
+    </text>
+                 
+    <text key="http-listenerType.postdata-read-timeout"><![CDATA[
+                        [Description]: ウェブ サーバーー/ウェブ クライアントから post-dataを読んでくるまで待機する最大時間を設定します。request.getInputStream().read()メソッドを通して実行します。
+                        [Value Description]: Millisecond時間間隔
+                        [Value Type Description]: Long
+                        [Example]: &lt;postdata-read-timeout>40000&lt;/postdata-read-timeout>
+                    ]]>                
+    </text>
+                 
+    <text key="loggingType.access-log"><![CDATA[
+                        [Description]: このelementは、Containerのクライアントリクエスト・ログのハンドリングを設定します。
+                    ]]>                
+    </text>
+                 
+    <text key="tmax-listenerType.tmax-version"><![CDATA[                        [Description]: アクセスしようとするtmaxサーバのバージョンです。40、3xの２つのバージョンをサポートします。                        [Value Description]: tmaxサーババージョン                    ]]>                
+    </text>
+                 
+    <text key="http-listenerType.output-buffer-size"><![CDATA[
+                        [Description]: out.write()メソッドから出力されるJSP/Servletの出力物を一時的に保存する出力バッファーのサイズを設定します。このバッファーがいっぱいになるとウェブブラウザーにflushとなります。
+                        [Value Description]: Byte単位のバッファーサイズ
+                        [Value Type Description]: Integer
+                        [Example]: &lt;output-buffer-size>16384&lt;/output-buffer-size>
+                    ]]>                
+    </text>
+                 
+    <text key="webtob-listenerType.postdata-read-timeout"><![CDATA[
+                        [Description]: ウェブ サーバーー/ウェブ クライアントから post-dataを読んでくるまで待機する最大時間を設定します。request.getInputStream().read()メソッドを通して実行します。
+                        [Value Description]: Millisecond時間間隔
+                        [Value Type Description]: Long
+                        [Example]: &lt;postdata-read-timeout>40000&lt;/postdata-read-timeout>
+                    ]]>                
+    </text>
+                 
+    <text key="webtob-listenerType.port"><![CDATA[
+                        [Description]: WebtoBサーバーーに接続するポートです。このポートナンバーは、WebtoBサーバーー設定ファイルの"JSVPORT"値と一致しなければなりません。
+                        [Value Description]: ポートナンバーは 0より大きい値であり、WebtoB設定ファイルのJSVPORT値段と同じでなければなりません。
+                        [Value Type Description]: Integer
+                    ]]>                
+    </text>
+                 
+    <text key="ssl-configType.client-auth"><![CDATA[                        [Description]: クライアントを認証の可否を設定します。                        [Value Description]: trueであれば、サーバがクライアントに認証書を要求してクライアントに対する認証を行い、                                             Falseであれば、クライアントに対する認証を行いません。                                             一般的に、B2Bを除いた通常の場合にはクライアントの認証を行いません。                                             デフォルト値は、falseです。                     ]]>                
+    </text>
+                 
+    <text key="encodingType.postdata-encoding"><![CDATA[
+                        [Description]: HTTP POST methodを使用して送ったデータのエンコーディングを指定します。
+                    ]]>                
+    </text>
+                 
+    <text key="udp-listenerType.output-buffer-size"><![CDATA[
+                        [Description]: out.write()メソッドから出力されるJSP/Servletの出力物を一時的に保存する出力バッファーのサイズを設定します。このバッファーがいっぱいになるとウェブブラウザーにflushとなります。
+                        [Value Description]: Byte単位のバッファーサイズ
+                        [Value Type Description]: Integer
+                        [Example]: &lt;output-buffer-size>16384&lt;/output-buffer-size>
+                    ]]>                
+    </text>
+                 
+    <text key="response-headerType.custom-header"><![CDATA[
+                        [Description]: このelementは、HTTP応答メッセージに含むためにカスタムフィールドを定義します。
+                    ]]>                
+    </text>
+                 
+    <text key="session-id-cookieType.max-age"><![CDATA[
+                        [Description]: Session idクッキーの“expires”属性を設定します。この時間周期になると、クッキーはクライアントから除去され、これ以上送りません。
+                        [Value Description]: 秒単位の時間周期
+                        [Defined Value]: [-1]: 該当値は、クッキーの“expires”属性をしようしないことを示し、クッキーはユーザのセッションが終わると同時に終わります。（ブラウザ閉め）                    ]]>                
+    </text>
+                 
+    <text key="header-fieldType.field-value"><![CDATA[
+                        [Description]: フィールドのために使用する値
+                        [Value Description]: 値
+                    ]]>                
+    </text>
+                 
+    <text key="webserver-connectionType.ajp13-listener"><![CDATA[
+                [Description]: AJP 1.3 listenerは、Apache mod_jk moduleを使用するAJP 1.3 protocolをサポートすることを除いては &lt;apache-listener>と同じく動作します。
+                                        (apache-listenerは AJP12 protocolをサポートする.)
+                    ]]>                
+    </text>
+                 
+    <text key="web-containerType.properties"><![CDATA[
+                        [Description]: container-wide属性を指定します。
+                    ]]>                
+    </text>
+                 
+    <text key="session-clusterType.session-routing"><![CDATA[
+                        [Description]: セッション・ルーティングは、クラスターされたWeb Containerの間にセッションを管理する技術です。
+                                                これはWeb Containerの"ID number"という特別な情報をそれぞれのセッションに貼付することを意味します。
+このIDを使用すれば, ウェブ サーバーーはID(Web ContainerまたIDを貼付した実際のHTTPSession客体を維持する)を
+                                                発行した同一のWeb Containerにクライアントリクエストをリダイレクト(或いはリルート)します。
+この技術は、性能面では能率的だが、Web Containerがクライアントリクエストを処理する中で
+                                                セッション客体のデータを流失させる非正常的な場合が発生できうるため、完全に信頼できません。
+                                                よりよい信頼度のために&lt;session-server>elementに説明されたSession Serverの使用を併行することが必要です。
+セッション・ルーティングは、WebtoBまたはApacheウェブサーバーーで使われます。ウェブサーバーーはいろいろなWeb Container等と連結されます。
+ Apacheは、この特徴を使用するためにいくつの設定が必要だが、WebtoBは特別な設定無しでも セッション・ルーティングの機能を使用することができます。
+                        [Value Description]: Boolean値段でこの設定を活性化または非活性化します。
+                                               [Value Type Description]: Boolean
+                        [Defined Value]: [true]: クラスターWeb Containerの間にセッション共有を活性化します。
+                                                [false]: クラスターWeb Containerの間にセッション共有を非活性化します。
+                    ]]>                
+    </text>
+                 
+    <text key="tmax-listenerType.tmax-backup-address"><![CDATA[
+                        [Description]: backupで使用されるTmax serverのIP address
+                        [Value Description]: tmax serverのIP address
+                    ]]>                
+    </text>
+                 
+    <text key="context-groupType.webserver-connection"><![CDATA[
+                        [Description]: ウェブ サーバーーとのコネクション設定を構成します。通常これはウェブ サーバーーがWeb Containerの前に位置し、クライアントのHTTPリクエストを受け取ることを意味します。
+ウェブ サーバーーはリクエストを分析し、それがWeb Container(すなわち Servletに対するリクエスト)によって処理を要求するかを決定します。
+Web Containerのリクエストは、ウェブサーバーーから適合したWeb Containerにフォワードされます。
+このようなリクエストを受けて処理するWeb Containerのコンポーネントを“listener"と呼びます。
+この elementは、そういうlistenerをウェブ サーバーーとの連結を構成するのに使われます。
+                    複数のウェブサーバーーlistenerは同じマシンでユニークであり、使用しない&lt;port>を割り当てられる範囲内で構成される必要があります。
+いろいろな種類のウェブサーバーーに対してそれに合うlistenerの設定は、&lt;webserver-connection>の下位タッグである&lt;xxxxx-listener>elementを利用して設定することによって簡単に解決できます。
+                    ]]>                
+    </text>
+                 
+    <text key="response-headerType.session-id-cookie"><![CDATA[
+                        [Description]: このelementのクライアントセッションを維持するためにWeb Containerによって
+                                                クライアントに送られるsession id cookieの属性を構成します。
+                    ]]>                
+    </text>
+                 
+    <text key="tcp-listenerType.port"><![CDATA[
+                        [Description]: クライアントからリクエストを受けるのに使われる ポート
+                        [Value Description]: 0より大きいポート値
+                        [Value Type Description]: Integer
+                    ]]>                    
+    </text>
+                     
+    <text key="webtob-listenerType.hth-count"><![CDATA[
+                        [Description]: WebtoBサーバーーに指定されているHTHプロセス 数
+                        [Value Description]: WebtoBサーバーのHTHプロセスの数と同じく設定します。
+                        [Value Type Description]: Integer
+                    ]]>                    
+    </text>
+                     
+    <text key="ssl-configType.ssl-protocol"><![CDATA[                        [Description]: 暗号化/複号化に使用されるSSLプロトコルを指定します。                        [Value Description]: Sun JVMを使用する場合にはTLSを、                                             IBM JVMを使用する場合にはSSLを設定します。                                             デフォルト値は、TLSです。                     ]]>                    
+    </text>
+                     
+    <text key="http-listenerType.server-access-control"><![CDATA[
+                        [Description]: サーバー・アクセス・コントロールを活性化または非活性化します。もしこのオプションが活性化さたら、許容されたサーバー(&lt;allowed-server> elementで指定された)のみこのlistenerにアクセスできます。
+                       [Value Description]: Millisecond時間間隔
+                        [Value Description]: Boolean値でこの設定を活性化または非活性化します。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: サーバー・アクセス・コントロールを活性化します。
+                                                [false]: サーバー・アクセス・コントロールを非活性化します。
+                        [Example]: &lt;server-access-control>true&lt;/server-access-control>
+                    ]]>                    
+    </text>
+                     
+    <text key="webtob-backupType.read-timeout"><![CDATA[
+                        [Description]: WebtoBウェブサーバーーは、WebtoB設定ファイルの "svrchktime"変数に設定された間隔ごとにWeb Containerに持続に"ping"を送ります。Web Containerは、WebtoBが送った"ping"をチェックするためにこのelementに時間間隔を設定します。もしWebtoB pingがここで設定した時間間隔内に感知されなければ、通信リンクは途切れたことに見なされ、リセットされます。従って、このelement値は、通常"svrchktime"値より大きく設定する必要があります。
+                        [Value Description]: millisecond値。WebtoB設定ファイルに "svrchktime"値より大きく設定します。
+                        [Defined Value]: [0]:  Infinity
+                        [Example]:&lt;read-timeout>120000&lt;/read-timeout>
+                    ]]>                    
+    </text>
+                     
+    <text key="session-serverType.connect-timeout"><![CDATA[
+                        [Description]: コネクションが初めて生成される時、一つの新しい コネクションがSession Serverと連結されるまでの最大の待機時間。
+                  ]]>                    
+    </text>
+                     
+    <text key="encodingType.request-encoding"><![CDATA[
+                        [Description]: このelementはウェブブラウザーから受信された リクエストに適用されたエンコーディングを扱います。このエンコーディングは、HTTP byte arrayを(HTTP URI, query strings, cookies, postデータ含め) Web Container内部のjava.lang.String客体に変えるときに適用されます。
+                    ]]>                    
+    </text>
+                     
+    <text key="web-containerType.redirect-stdout"><![CDATA[
+                        [Description]: System出力をWeb Containerの出力の次ぎの経路のJEUS_HOME\logs\JeusSystem\[nodename]_[container name]\stdout_[date].log ファイルに再伝送するかを決定します。
+                    ]]>                    
+    </text>
+                     
+    <text key="session-serverType.read-timeout"><![CDATA[
+                        [Description]: Session Serverからデータを読み取ってくるために待つ最大時間。データを送った後に応答を最大限この時間だけ待ちます。
+                  ]]>                    
+    </text>
+                     
+    <text key="udp-listenerType.listener-id"><![CDATA[
+                        [Description]: 該当listenerを職別するユニークな名前を意味します。この名前は、構成ファイルのほかの箇所からListenerを呼び出すときに使用されます                        [Value Description]: 任意のユニークな名前
+                    ]]>                    
+    </text>
+                     
+    <text key="session-id-cookieType.jsessionid-name"><![CDATA[
+                        [Description]: セッションIDの名前で標準の名前の “JSESSIONID”を使用せずにほかの名前を使用しようとするときにこの設定を使用します。
+                    ]]>                    
+    </text>
+                     
+    <text key="webserver-connectionType.tmax-listener"><![CDATA[
+                [Description]: この elementは、Tmaxとの連結のために設定するlistenerです。Webtob listenerの設定と似ています。
+                    ]]>                    
+    </text>
+                     
+    <text key="session-clusterType.session-server"><![CDATA[
+[Description]: この elementは、セッション共有とバックアップ機能を使用するために活性化し、構成します。
+Session Serverは、Context groupで使用するために構成されるが、Web Containerで駆動せずにJEUSサーバーーで駆動します。
+従って、Session ServerはJEUSMain.xmlファイルで設定します。このelementは、そういうSession Serverに但しコネクションだけを構成します。
+Session Serverの使用は、本質的にあらゆるセッションデータがこのSession Serverに保存されるのを意味します。
+もしWeb Containerが非正常状態になってデータを流失しても、後でContainerが正常な状況
+(Session Serverからセッション情報を取得してきて該当Containerでセッション流失にならない)になるのを可能にします。
+また一つのWeb Containerで生成されたセッションをそのWeb Containerがダウンになっても他のWeb Containerからその セッション情報を取得してくるようにすることを可能にします。
+よりよい信頼度のためにそれぞれのWeb Containerは、Primary Session Serverがダウンになった場合に使用することができるBackup Session Serverを構成できます。
+                    ]]>                    
+    </text>
+                     
+    <text key="ajp13-listenerType.thread-pool"><![CDATA[
+                        [Description]: Thread poolは、Web Containerに入ってくるりくえすとをハンドリングするworker threadを維持するのに使われます。
+                                                指定したポートを通じて新しいリクエストを受信受すると、該当poolで新しいworker threadを割り当てられリクエストに対する業務を処理します。
+                    ]]>                    
+    </text>
+                     
+    <text key="ssl-configType.enable-secure"><![CDATA[                        [Description]: SSL(Secure Socket Layer) 通信サポートをするかどうかを決定します。                        [Value Description]: trueであれば、下に設定された値に従って SSL通信をサポートし、                                             falseであれば、サポートしません。                                             デフォルト値は、falseです。                     ]]>                    
+    </text>
+                     
+    <text key="web-containerType.session-cluster"><![CDATA[
+                        [Description]: このelementは、クラスターされた複数のWeb Containerの間にセッションを管理し、ルーティングします。
+                                                1)ルーティング 2)Session Server使用 3) 1と２の2つの技術を合わせた３つの技術が可能です。
+                                                このelementは、すべてのContext groupとその下位のContextのためのセッション管理を構成します。
+                                                一部のContext group内にセッション・クラスター設定は、このelementの設定をOverrideします。
+                    ]]>                        
+    </text>
+                         
+    <text key="tcp-listenerType.server-access-control"><![CDATA[
+                        [Description]: サーバー・アクセス・コントロールを活性化または非活性化します。もしこのオプションが活性化さたら、許容されたサーバー(&lt;allowed-server> elementで指定された)のみこのlistenerにアクセスできます。
+                       [Value Description]: Millisecond時間間隔
+                        [Value Description]: Boolean値でこの設定を活性化または非活性化します。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: サーバー・アクセス・コントロールを活性化します。
+                                                [false]: サーバー・アクセス・コントロールを非活性化します。
+                        [Example]: &lt;server-access-control>true&lt;/server-access-control>
+                    ]]>                        
+    </text>
+                         
+    <text key="webtob-backupType.disable-pipe"><![CDATA[
+                        [Description]: もしWebtoBサーバーーがlistenerと同じマシンで実行されれば、WebtoBとlistenerの間により効率的なパイプ通信を選択できます。このとき、該当 elementを“false"に設定します。もしlistenerと WebtoBサーバーーが異なるマシンで駆動されるときに該当オプションを常に"true"で設定してこそ、パイプ通信が非活性化され、ソケット通信を行います。
+                        [Value Description]: Boolean値段でこの設定を活性化または非活性化します。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: ソケット通信を行います。
+                                                [false]: パイプ通信を行います。
+                        [Example]: &lt;disable-pipe>true&lt;/disable-pipe>
+                    ]]>                        
+    </text>
+                         
+    <text key="thread-poolType.thread-state-notify"><![CDATA[
+                        [Description]: このelementは、Blockされるworker threadを定義し、どれくらい多くのthreadがblockされるまで通知されるかを決めます。
+                    ]]>                        
+    </text>
+                         
+    <text key="http-listenerType.port"><![CDATA[
+                        [Description]: クライアントからHTTPリクエストを受けるのに使用されるポート。 IANA(www.iana.org)によると、HTTPオートは80に割り当てられます。  
+                        	       secure listenerの場合は、HTTPSリクエストを受けるのに使用されるポートを意味します。
+                        [Value Description]: 0以上のポート数
+                        [Value Type Description]: Integer
+                    ]]>                        
+    </text>
+                         
+    <text key="ajp13-listenerType.allowed-server"><![CDATA[
+                        [Description]: 格&lt;allowed-server>elementは、該当listenerに接続しようとする1つのサーバーIPアドレスを指定します。このelementは、&lt;server-access-control>elementの値がtrueの場合のみ使用されます。このelementに含まれていないサーバーーからのすべてのリクエストは拒否となります。
+                        [Value Description]: このlistenerに連結が許容されるサーバーーのIPアドレス
+                        [Example]: &lt;allowed-server>127.0.0.1&lt;/allowed-server>
+                    ]]>                        
+    </text>
+                         
+    <text key="http-listenerType.thread-pool"><![CDATA[
+                        [Description]: Thread poolは、Web Containerに入ってくるりくえすとをハンドリングするworker threadを維持するのに使われます。
+                                                指定したポートを通じて新しいリクエストを受信受すると、該当poolで新しいworker threadを割り当てられリクエストに対する業務を処理します。
+                    ]]>                        
+    </text>
+                         
+    <text key="udp-listenerType.allowed-server"><![CDATA[
+                        [Description]: 格&lt;allowed-server>elementは、該当listenerに接続しようとする1つのサーバーIPアドレスを指定します。このelementは、&lt;server-access-control>elementの値がtrueの場合のみ使用されます。このelementに含まれていないサーバーーからのすべてのリクエストは拒否となります。
+                        [Value Description]: このlistenerに連結が許容されるサーバーーのIPアドレス
+                        [Example]: &lt;allowed-server>127.0.0.1&lt;/allowed-server>
+                    ]]>                        
+    </text>
+                         
+    <text key="http-listenerType.back-log"><![CDATA[
+                        [Description]: ソケットのbacklog値を設定します。(生成子 “java.net.ServerSocket(int port,int backlog)でソケットのリクエストを待つキューの最大サイズ)
+                        [Value Description]: 0より大きい値
+                        [Value Type Description]: Integer
+                    ]]>                        
+    </text>
+                         
+    <text key="session-clusterType.shared"><![CDATA[
+                        [Description]: セッション・ルーティングがfalseで、セッションサーバーーを使用すれば、あらゆるコンテクスト・グループとその中のコンテクストはセッションを共有できます。しかし、セッション・ルーティングがtrueまたはセッションサーバーーを使用しないと、コンテクスト・グループの間にはセッションを共有することができません。
+                                                このような 環境でコンテクスト
+グループの間にセッションを維持するためには、このオプションをtrueに設定しなければなりません。
+                    ]]>                        
+    </text>
+                         
+    <text key="encodingType.response-encoding"><![CDATA[
+                        [Description]: このelementは、PrintWriter.println()をbyte arrayに変換するときに使われ、HTTPヘッダー “Content-type:text/html:charset=XXX”の “XXX”部分を設定し、Web Containerの応答エンコーディングを決定するときに使用されます。
+                    ]]>                        
+    </text>
+                         
+    <text key="webserver-connectionType.udp-listener"><![CDATA[
+                [Description]: UDP listenerは、TCP listenerと同一だが、UDPプロトコルを使用します。
+                    ]]>                        
+    </text>
+                         
+    <text key="ssl-configType.keystore-type"><![CDATA[                        [Description]: keystoreのタイプを指定します。                        [Value Description]: Sunのkeytoolによりkeystoreを生成する場合はJKS(Java’s Key Store)を、OpenSSLやMicrosoft KeyManagerで keystoreを生成する場合はPKCS12を使用します。                                             この設定は、JVMで ssl.KeyManagerFactory.algorithmを使用して設定できます。                                             優先順位はwebmain > javaxです。                                             デフォルト値は、JKSです。                    ]]>                        
+    </text>
+                         
+    <text key="context-groupType.session-config"><![CDATA[
+                        [Description]: このelementの下位設定は、Context groupにある セッションの(HTTPSession客体)の内部管理に適しています。
+                    ]]>                        
+    </text>
+                         
+    <text key="ajp13-listenerType.output-buffer-size"><![CDATA[
+                        [Description]: out.write()メソッドから出力されるJSP/Servletの出力物を一時的に保存する出力バッファーのサイズを設定します。このバッファーがいっぱいになるとウェブブラウザーにflushとなります。
+                        [Value Description]: Byte単位のバッファーサイズ
+                        [Value Type Description]: Integer
+                        [Example]: &lt;output-buffer-size>16384&lt;/output-buffer-size>
+                    ]]>                        
+    </text>
+                         
+    <text key="tmax-listenerType.server-name"><![CDATA[
+                        [Description]: 連結しようとするtmax serverの名前です。
+                        [Value Description]: tmax serverの名前
+                    ]]>                        
+    </text>
+                         
+    <text key="webtob-listenerType.disable-pipe"><![CDATA[
+                        [Description]: もしWebtoBサーバーーがlistenerと同じマシンで実行されれば、WebtoBとlistenerの間により効率的なパイプ通信を選択できます。このとき、該当 elementを“false"に設定します。もしlistenerと WebtoBサーバーーが異なるマシンで駆動されるときに該当オプションを常に"true"で設定してこそ、パイプ通信が非活性化され、ソケット通信を行います。
+                        [Value Description]: Boolean値段でこの設定を活性化または非活性化します。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: ソケット通信を行います。
+                                                [false]: パイプ通信を行います。
+                        [Example]: &lt;disable-pipe>true&lt;/disable-pipe>
+                    ]]>                        
+    </text>
+                         
+    <text key="thread-poolType.max"><![CDATA[
+                        [Description]: Poolでworker threadを維持しないといけない最大の数を意味します。
+                        [Value Description]: thread数
+                        [Value Type Description]: Integer
+                    ]]>                        
+    </text>
+                         
+    <text key="tmax-listenerType.output-buffer-size"><![CDATA[
+                        [Description]: out.write()メソッドから出力されるJSP/Servletの出力物を一時的に保存する出力バッファーのサイズを設定します。このバッファーがいっぱいになるとウェブブラウザーにflushとなります。
+                        [Value Description]: Byte単位のバッファーサイズ
+                        [Value Type Description]: Integer
+                        [Example]: &lt;output-buffer-size>16384&lt;/output-buffer-size>
+                    ]]>                        
+    </text>
+                         
+    <text key="monitoringType.check-thread-pool"><![CDATA[
+                        [Description]: このelementは、worker thread poolにあるworker threadの状態を点検するために時間間隔を設定します。
+                                                Worker threadは、Containerに入ったクライアントのリクエストを処理するthreadです。
+                                                Worker threadは、worker thread poolに 存在し、各ウェブサーバーーとの連結のために存在します。
+                                                点検間隔の時間は、Container内にあるあらゆるworker threadに適用されます。時間になると、各thread poolを点検します。
+                                                仮りに、ある状態になると、(例えば 特定のthreadに対し、max idle timeが満期となった場合) 該当threadを除去するための作業が 実行されます。
+                                            
+                       [Value Description]: 時間間隔は、millisecond単位（最も近接した 秒の四捨五入されます。) 最も短い周期は1000 millisecondです。(1秒)
+                        [Value Type Description]: Integer
+                        [Defined Value]: [-1]: thread poolの点検を非活性化します。ただ、テストの目的でのみ使用します。
+                    ]]>                        
+    </text>
+                         
+    <text key="tmax-listenerType.listener-id"><![CDATA[
+                        [Description]: 該当listenerを識別するユニークな名前です。この 名前は構成ファイルの他の部分らからlistenerを言及する時に使われます。
+                        [Value Description]: 任意のユニークな名前
+                    ]]>                        
+    </text>
+                         
+    <text key="thread-poolType.step"><![CDATA[
+                        [Description]: Poolサイズが増加するときごとにpoolに加えられるworker threadの数を示します。
+                        [Value Description]: 追加されるthread数
+                        [Value Type Description]: Integer
+                        [Example] : &lt;step>4&lt;/step>
+                    ]]>                        
+    </text>
+                         
+    <text key="http-listenerType.scheme"><![CDATA[
+                        [Description]: Javax.servlet.http.HttpServletRequest.getScheme() メソッド・プロトコル識別字のリターン値をここに設定します。WebtoBまたはApacheでSSL機能を使用したりsecure listenerを使用する時に "https"値で設定しなければなりません。
+                        [Value Description]: httpまたはhttps
+                        [Defined Value]: [http]: もしSSLが使われないと該当値を使用します。
+                                                [https]: secure listenerとウェブサーバーーでSSLを使用する時に該当値を使用します。
+                        [Example]: &lt;scheme>https&lt;/scheme>
+                    ]]>                        
+    </text>
+                         
+    <text key="virtual-hostType.virtual-host-name"><![CDATA[
+                        [Description]: Virtual Hostの内部識別名前
+                        [Value Description]: 任意のユニークな名前
+                    ]]>                        
+    </text>
+                         
+    <text key="tmax-listenerType.port"><![CDATA[
+                        [Description]: tmaxサーバーにアクセスするポートです。
+                        [Value Description]: ポートナンバーは、0より大きい値でなければなりません。
+                        [Value Type Description]: Integer
+                    ]]>                        
+    </text>
+                         
+    <text key="ssl-configType.keystore-pass"><![CDATA[                        [Description]: keystoreファイルを開くためのパスワードです。                        [Value Description]: この設定は、JVMで jeus.ssl.keypassと javax.net.ssl.keyStorePasswordを使用して設定できます。 優先順位はwebmain > jeus > javaxです。                                             デフォルト値はjeuskeypassです。                    ]]>                        
+    </text>
+                         
+    <text key="ssl-configType.cipher-suite"><![CDATA[                        [Description]: SSL handshaking後、実際にデータを送るときに使用する暗号スイートを指定します。                        [Value Description]: 一般的にJDKで提供する暗号スイートを使用し、デフォルトで提供されない 暗号スイートを使用する際に使用します。                    ]]>                        
+    </text>
+                         
+    <text key="monitoringType.check-session"><![CDATA[
+                        [Description]: このが elementは、セッションのタイムアウトの状態をどれくらい頻繁に点検を行うかを設定します。
+                                                セッション・タイムアウト状態は &lt;context-group>&lt;session-timeout>elementまたは各contextのweb.xmlに定義されます。
+                                                また中央集中型のセッション・サーバーーを使用する場合、Primary Sessionサーバーーがalive状態なのかを点検します。
+                                                Primaryセッション・サーバーーがalive状態で現在Servlet ContainerがBackupセッション・サーバーーを使用しているならば、Primary セッション・サーバーーに再連結します。 
+                        [Value Description]:  時間間隔は、millisecond単位（最も近接した 秒の四捨五入されます。) 最も短い周期は1000 millisecondです。(1秒)
+                        [Value Type Description]: Integer
+                        [Defined Value]: [-1]: セッション・タイムアウトの点検を非活性化するということは、HTTPSession.invalidate()が発生する前まではすべてのセッションは 保存されることを意味します。
+                    ]]>                        
+    </text>
+                         
+    <text key="webtob-backupType.output-buffer-size"><![CDATA[
+                        [Description]: out.write()メソッドから出力されるJSP/Servletの出力物を一時的に保存する出力バッファーのサイズを設定します。このバッファーがいっぱいになるとウェブブラウザーにflushとなります。
+                        [Value Description]: Byte単位のバッファーサイズ
+                        [Value Type Description]: Integer
+                        [Example]: &lt;output-buffer-size>16384&lt;/output-buffer-size>
+                    ]]>                        
+    </text>
+                         
+    <text key="webtob-backupType.webtob-address"><![CDATA[
+                        [Description]: 該当Listenerと連結するWebtoBサーバーーのIPアドレスを意味します。ListenerがWebtoBサーバーーの位置を探して連結するために必ず設定されなければなりません。これはWeb Containerが受動的にウェブサーバーーからコネクションを待つ他の類型のウェブ サーバーーとは差があります。
+                        [Value Description]: バックアップで実行されるWebtoBサーバーーのIPアドレス
+                    ]]>                        
+    </text>
+                         
+    <text key="virtual-hostType.host-list"><![CDATA[
+                        [Description]: 各host-list　elementは、DNSの名前( 例、 "www.foo.com")またはIP アドレスを含みます。
+                                                この elementに明示されたDNS名前は、Virtual Hostに伝送されます。DNS名前とIPアドレスのようなContext group内で唯一でなければなければなりません。
+                                                (同じContext group内に2つのVirtual Hostがあれば、DNS名前を共有してはならない)
+                        [Value Description]: DNS名前またはIPアドレス
+                    ]]>                        
+    </text>
+                         
+    <text key="session-id-cookieType.secure"><![CDATA[
+                        [Description]: Session idクッキーの “secure”属性を設定します。
+                                                もしこのelementが“true”に設定されればsession idクッキーはsecure HTTPSコネクションにのみ送られます
+                        [Value Description]: クッキーをHTTPSに送るかを決定する Boolean値
+                        [Defined Value]: [true]: secure HTTPSコネクションにのみこの session idクッキーを送ります。
+                                                [false]: コネクションの類型に関係なしにsession idをクッキーを送ります。
+                    ]]>                        
+    </text>
+                         
+    <text key="udp-listenerType.thread-pool"><![CDATA[
+                        [Description]: Thread poolは、Web Containerに入ってくるりくえすとをハンドリングするworker threadを維持するのに使われます。
+                                                指定したポートを通じて新しいリクエストを受信受すると、該当poolで新しいworker threadを割り当てられリクエストに対する業務を処理します。
+                    ]]>                        
+    </text>
+                         
+    <text key="http-listenerType.keep-alive"><![CDATA[                        [Description]:  &lt;keep-alive> elementは該当listenerのkeep alive algorithmの使用の可否を示します。                        [Value Description]: boolean( true or false )                        [Example]: &lt;keep-alive>true&lt;/keep-alive>                    ]]>                        
+    </text>
+                         
+    <text key="tcp-listenerType.use-nio"><![CDATA[                        [Description]: TCP Listenerでnio方式の通信を使用するかどうかを決定します。persistent connectionを使用する際に、blocking modeの場合はpool数に比べて性能は向上しますが、nioを使用する場合はnonblocking modeであるため、pool数とは関係なくよい性能を実現できます。                    ]]>                        
+    </text>
+                         
+    <text key="thread-poolType.max-queue"><![CDATA[
+                        [Description]: キューに待機できる最大のリクエストの値を設定します。このキューがいっぱいになってからより多くのリクエストが入ってくるとbusyページが クライアントに返還されます。
+                                       このelementは、Tmax/WebtoB listenerでは使われます。WebtoB listenerのキューサイズは、WebtoBの設定ファイルにMaxQCount値で構成されます。
+                  ]]>                        
+    </text>
+                         
+    <text key="webtob-backupType.registration-id"><![CDATA[
+                        [Description]: WebtoB サーバーーと連結する時使用する registration ID 名前を意味します。
+                        [Value Description]: Registration ID名前はWebtoB設定ファイルに *SERVER節の下にある値と同じでなければいけません。
+                        [Example]: &lt;registration-id>MyGroup&lt;/registration-id>
+                    ]]>                        
+    </text>
+                         
+    <text key="webtob-listenerType.reconnect-timeout"><![CDATA[
+                        [Description]: WebtoBサーバーーとwebtob-listener間のコネクションが作業中に連結が切れる場合もあります。
+こういう場合には再連結を試みるようになるが、このelementは、再連結のtimeout値で（に） 使われます。
+もし最近のすべての切られたWebtoBコネクションが該当値を過ぎても連結できずにWebtoBバックアップサーバーーが定義されていれば
+                                                Web Containerは、 WebtoBバックアップサーバーーにfail-overを試みます。
+ 最後のWebtoBバックアップサーバーーまで失敗すれば, またメーンwebtob-listenerと連結を試みます。
+                        [Value Description]: Millisecond単位のtimeout値
+                        [Value Type Description]: Long
+                        [Defined Value]: [-1]: 無限なtimeoutの周期(listenerは続けて 再び連結を試みるはずです。)
+                                                [0]: 再び連結を試みられません。
+                    ]]>                        
+    </text>
+                         
+    <text key="webtob-listenerType.output-buffer-size"><![CDATA[
+                        [Description]: out.write()メソッドから出力されるJSP/Servletの出力物を一時的に保存する出力バッファーのサイズを設定します。このバッファーがいっぱいになるとウェブブラウザーにflushとなります。
+                        [Value Description]: Byte単位のバッファーサイズ
+                        [Value Type Description]: Integer
+                        [Example]: &lt;output-buffer-size>16384&lt;/output-buffer-size>
+                    ]]>                        
+    </text>
+                         
+    <text key="context-groupType.print-error-to-browser"><![CDATA[
+                        [Description]: JSPやServletを実行する場合、エラーが発生する時の詳細なエラー内容をブラウザーーに伝送するのかを決定します。
+                                                このメッセージは、 開発期間の間には 有用だが、運営環境では非活性化しなければなりません。
+                    ]]>                        
+    </text>
+                         
+    <text key="webtob-listenerType.webtob-address"><![CDATA[
+                        [Description]: 該当Listenerと連結するWebtoBサーバーーのIPアドレスを意味します。ListenerがWebtoBサーバーーの位置を探して連結するために必ず設定されなければなりません。 これはWeb Containerが受動的にウェブサーバーーからコネクションを待つ他の類型のウェブ サーバーーとは差があります。
+                        [Value Description]: WebtoBサーバーーのIPアドレス.
+                    ]]>                        
+    </text>
+                         
+    <text key="webtob-listenerType.read-timeout"><![CDATA[
+                        [Description]:WebtoBウェブサーバーーは、WebtoB設定ファイルの "svrchktime"変数に設定された間隔ごとにWeb Containerに持続に"ping"を送ります。Web Containerは、WebtoBが送った"ping"をチェックするためにこのelementに時間間隔を設定します。もしWebtoB pingがここで設定した時間間隔内に感知されなければ、通信リンクは途切れたことに見なされ、リセットされます。従って、このelement値は、通常"svrchktime"値より大きく設定する必要があります。
+                        [Value Description]: millisecond値。WebtoB設定ファイルに "svrchktime"値より大きく設定します。
+                        [Defined Value]: [0]: Infinity
+                        [Example]:&lt;read-timeout>120000&lt;/read-timeout>
+                    ]]>                        
+    </text>
+                         
+    <text key="context-groupType.group-name"><![CDATA[
+                        [Description]: このelementはContext groupの内部で使われます。
+                        [Value Description]: context groupの名前
+                    ]]>                        
+    </text>
+                         
+    <text key="context-groupType.properties"><![CDATA[                        [Description]: context-group-wideのプロパティを指定しまする                    ]]>                        
+    </text>
+                         
+    <text key="tmax-listenerType.server-type"><![CDATA[                        [Description]: アクセスしようとするtmaxサーバのタイプです。Tms、httpgwなど特集なサーバの場合に設定します。                        [Value Description]: tmaxサーバのタイプ                    ]]>                        
+    </text>
+                         
+    <text key="encodingSubType.forced"><![CDATA[
+                        [Description]: この属性が指定されれば、HTTPデーを java.lang.String 客体に変換するときに常にここに設定したエンコーディングで使用されます。従って、最も高い優先順位を持っています。                        [Value Description]: 標準キャラクター・エンコーディング
+                    ]]>                        
+    </text>
+                         
+    <text key="ssl-configType.truststore-file"><![CDATA[                        [Description]: クライアント認証書を格納しているファイルを指定します。                        [Value Description]: 絶対パスと相対パスの両方を使用できます。                                             相対パスに設定されている場合は、jeus_home/config/nodenameの下で該当ファイルを捜します。                                             また、JVMでjeus.ssl.truststoreとjavax.net.ssl.trustStoreと使用して設定できます。                                             優先順位はwebmain > jeus > javaxです。                                             デフォルト値は、jeus_home/config/nodename/truststoreです。                    ]]>                        
+    </text>
+                         
+    <text key="web-container"><![CDATA[
+                [Description]: JEUS WEBモジュールのあらゆる内容を構成するために使われる WEBMain.xmlの最上位のレベルタッグ
+            ]]>                        
+    </text>
+                         
+    <text key="loggingType.user-log"><![CDATA[
+                        [Description]: このelementはプログラマーが ServletContext.log()メソッド使用を通じて定義したメッセージのハンドリングを設定します。
+                    ]]>                        
+    </text>
+     
+    <text key="http-listenerType.use-nio"><![CDATA[
+
+                        [Description]: Httpリスナーでnio方式の通信を使用するかを決定します。persistent connectionを使用する時にblocking modeの場合、プール数に比例して性能がよくなるが、nio方式はnonblocking modeであるため、プールの数に関係なく、よい性能を発揮します。
+                    
+                    ]]>   
+    </text>
+
+    <text key="tmax-listenerType.backup-server-group-name"><![CDATA[
+
+                        [Description]: バックアップで使用されるtmax serverが含まれているグループを意味します。
+                        [Value Description]: backup tmax server groupの名前
+                    
+                    ]]>   
+    </text>
+
+    <text key="tcp-listenerType.connection-listener-class"><![CDATA[
+
+                        [Description]: Connection Listenerクラスを指定します。Connection ListenerはNIOを使用する場合のみ適用されます。クラスは必ずクラスパスで指定された場所に存在する必要があり、クラスの名前はfull qualified class nameでなければなりません。
+                    
+                    ]]>   
+    </text>
+
+    <text key="tmax-listenerType.use-nio"><![CDATA[
+
+                        [Description]: TmaxListenerでnio方式の通信を使用するかを決定します。
+                    
+                    ]]>   
+    </text>
+
+    <text key="tcp-listenerType.connection-handshaker-class"><![CDATA[
+
+                        [Description]: handshakerクラスを指定します。クラスは必ずクラスパスで指定された場所に存在する必要があり、クラスの名前はfull qualified class nameでなければなりません。
+                    
+                    ]]>   
+    </text>
+
+    <text key="schemeType.http"><![CDATA[
+                        [Description]: Hypertext Transfer Protocol. Webで使われる プロトコル
+                    ]]>                                        
+    </text>
+                                               
+    <text key="schemeType.https"><![CDATA[
+                        [Description]: HTTPの上に保安性が付け加えられたSSL連結を意味します。
+                    ]]>                                        
+    </text>
+                                               
+    <text key="targetType.stdout"><![CDATA[
+                        [Description]: 出力ログデータを標準出力ストリームに出力します。(普通のコンソール)
+                    ]]>                                        
+    </text>
+                                               
+    <text key="targetType.file"><![CDATA[
+                        [Description]: ロギングデータをディフォルトerror.logのファイルまたは<file-name>elementに指定したファイルに出力します。
+                    ]]>                                        
+    </text>
+                                               
+    <text key="levelType.fatal"><![CDATA[
+                        [Description]: 最も重要なメッセージのみが記録されます。
+                    ]]>                                        
+    </text>
+                                               
+    <text key="levelType.notice"><![CDATA[
+                        [Description]: 重要度が低いメッセージが“fatal”のメッセージに加えられ記録されます。
+                    ]]>                                        
+    </text>
+                                               
+    <text key="levelType.information"><![CDATA[
+                        [Description]: 重要ではないメッセージが“notice”と“fatal”のメッセージに加えられ記録されます。
+                    ]]>                                        
+    </text>
+                                               
+    <text key="levelType.debug"><![CDATA[
+                        [Description]: デバッグ・メッセージが記録されます。(以前の３つのメッセージの形を含む)デバッグの目的に使用されます。
+                    ]]>                                        
+    </text>
+                                               
+    <text key="levelType.test"><![CDATA[
+                        [Description]:
+                        [Hidden]: true
+                    ]]>                                        
+    </text>
+
+    <text key="webtob-listenerType.compression"><![CDATA[
+                        [Description]: 応答に対し圧縮設定を行います。このタグが設定されていると、圧縮を行います。
+                    ]]>
+    </text>
+
+    <text key="tmax-listenerType.read-timeout"><![CDATA[
+                        [Description]: Webサーバ/Webクライアントからリクエストを読み込むまでの最大待ち時間を設定します。keep-aliveアルゴリズムを使用すると(HTTP version 1.1)、このread-timeout設定値が0以外である場合、スレッドの状況によって再調整されることができます。
+                  ]]>
+    </text>
+
+    <text key="ajp13-listenerType.read-timeout"><![CDATA[
+                        [Description]: Webサーバ/Webクライアントからリクエストを読み込むまでの最大待ち時間を設定します。keep-aliveアルゴリズムを使用すると(HTTP version 1.1)、このread-timeout設定値が0以外である場合、スレッドの状況によって再調整されることができます。
+                  ]]>
+    </text>                    
+
+    <text key="http-listenerType.compression"><![CDATA[
+                        [Description]: 応答に対し圧縮設定を行います。このタグが設定されていると、圧縮を行います。
+                    ]]>
+    </text>
+
+    <text key="tcp-listenerType.read-timeout"><![CDATA[
+                        [Description]: Webサーバ/Webクライアントからリクエストを読み込むまでの最大待ち時間を設定します。keep-aliveアルゴリズムを使用すると(HTTP version 1.1)、このread-timeout設定値が0以外である場合、スレッドの状況によって再調整されることができます。
+                  ]]>
+    </text>
+
+    <text key="udp-listenerType.read-timeout"><![CDATA[
+                        [Description]: Webサーバ/Webクライアントからリクエストを読み込むまでの最大待ち時間を設定します。keep-aliveアルゴリズムを使用すると(HTTP version 1.1)、このread-timeout設定値が0以外である場合、スレッドの状況によって再調整されることができます。
+                  ]]>
+    </text>
+         
+    <ref key="access-logType">system-loggingType</ref>
+               
+</description>

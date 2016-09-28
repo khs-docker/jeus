@@ -1,0 +1,175 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <span jwcid="general">
+            <form jwcid="generalForm">
+                <span jwcid="name"/>
+                <span jwcid="general_blind">
+                    <span jwcid="resolution">
+                        <input jwcid="resolutionField"/>
+                    </span>
+                    <span jwcid="enable_user_notify">
+                        <input jwcid="enable_user_notifyField"/>
+                    </span>
+                    <span jwcid="note">
+                        <input jwcid="noteField" style="width:98%; font-size:12px;" rows="3"/>
+                    </span>
+                    <!--
+                    <span jwcid="user_classpath">
+                        <input jwcid="user_classpathField" style="width:98%" rows="4"/>
+                    </span>
+                    -->
+                </span>
+            </form>
+        </span>
+        <span jwcid="logging">
+            <form jwcid="loggingForm">
+                <span jwcid="logging_panel"/>
+            </form>
+            <form jwcid="handlerForm">
+                <span jwcid="handler_panel"/>
+            </form>
+        </span>
+
+        <!-- active management form -->
+        <span jwcid="active_mgmt">
+            <form jwcid="active_mgmtForm"/>
+
+            <span jwcid="active_mgmt_tab">
+                <span jwcid="active_mgmt_general">
+                    <br/>
+                    <form jwcid="active_mgmt_generalForm">
+                        <span jwcid="max_blocked_thread">
+                            <input jwcid="max_blocked_threadField"/>
+                        </span>
+                        <span jwcid="max_idle_time">
+                            <input jwcid="max_idle_timeField"/>
+                        </span>
+                    </form>
+                </span>
+                <span jwcid="active_mgmt_email_notify">
+                    <br/>
+                    <form jwcid="active_mgmt_email_notifyForm">
+                        <span jwcid="smtp_host_address">
+                            <input jwcid="smtp_host_addressField"/>
+                        </span>
+                        <span jwcid="from_address">
+                            <input jwcid="from_addressField"/>
+                        </span>
+                        <span jwcid="to_address">
+                            <input jwcid="to_addressField"/>
+                        </span>
+                        <span jwcid="cc_address">
+                            <input jwcid="cc_addressField" style="width:98%"/>
+                        </span>
+                        <span jwcid="bcc_address">
+                            <input jwcid="bcc_addressField" style="width:98%"/>
+                        </span>
+                    </form>
+                </span>
+            </span>
+        </span>
+
+        <!-- communication form -->
+        <span jwcid="invoke_http">
+            <form jwcid="invoke_httpForm">
+                <span jwcid="url">
+                    <span jwcid="urlField"/>
+                </span>
+                <span jwcid="http_port">
+                    <span jwcid="http_portField"/>
+                </span>
+            </form>
+        </span>
+        <!--
+        <span jwcid="communication">
+            <form jwcid="communicationForm"/>
+            <span jwcid="communication_tab">
+                <span jwcid="iiop">
+                    <br/>
+                    <form jwcid="iiopForm">
+                        <span jwcid="enable_interop">
+                            <input jwcid="enable_interopField"/>
+                        </span>
+                    </form>
+                </span>
+                <span jwcid="http">
+                    <br/>
+                    <form jwcid="invoke_httpForm">
+                        <span jwcid="url">
+                            <span jwcid="urlField"/>
+                        </span>
+                        <span jwcid="http_port">
+                            <span jwcid="http_portField"/>
+                        </span>
+                    </form>
+                </span>
+            </span>
+        </span>
+        -->
+
+        <!-- timer service -->
+        <span jwcid="timer_service">
+            <form jwcid="timer_service_titleForm"/>
+
+            <table jwcid="timer_service_tab"/>
+
+            <span jwcid="timer_service_general">
+                <br/>
+                <form jwcid="timer_serviceForm">
+                    <span jwcid="min_delivery_interval">
+                        <input jwcid="min_delivery_intervalField"/>
+                    </span>
+                    <span jwcid="max_redelivery_count">
+                        <input jwcid="max_redelivery_countField"/>
+                    </span>
+                    <span jwcid="redelivery_interval">
+                        <input jwcid="redelivery_intervalField"/>
+                    </span>
+                </form>
+            </span>
+
+            <span jwcid="timer_service_pooling">
+                <br/>
+                <form jwcid="poolingForm">
+                    <span jwcid="min">
+                        <input jwcid="minField"/>
+                    </span>
+                    <span jwcid="max">
+                        <input jwcid="maxField"/>
+                    </span>
+                    <!--
+                    <span jwcid="step">
+                        <input jwcid="stepField"/>
+                    </span>
+                    -->
+                    <span jwcid="period">
+                        <input jwcid="periodField"/>
+                    </span>
+                </form>
+            </span>
+
+            <span jwcid="timer_service_durable">
+                <br/>
+                <form jwcid="durable_settingForm">
+                    <span jwcid="db_vendor">
+                        <span jwcid="db_vendorField"/>
+                    </span>
+                    <span jwcid="data_source_name">
+                        <span jwcid="data_source_nameField"/>
+                    </span>
+                    <span jwcid="engine_type">
+                        <span jwcid="engine_typeField"/>
+                    </span>
+                    <!--
+                    <span jwcid="force_initialize_table">
+                        <span jwcid="force_initialize_tableField"/>
+                    </span>
+                    -->
+                    <span jwcid="table_name">
+                        <span jwcid="table_nameField"/>
+                    </span>
+                </form>
+            </span>
+        </span>
+    </span>
+</html>

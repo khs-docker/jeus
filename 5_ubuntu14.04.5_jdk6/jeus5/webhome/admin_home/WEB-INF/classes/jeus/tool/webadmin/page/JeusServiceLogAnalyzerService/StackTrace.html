@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <style type="text/css">
+            body {
+                margin:0px;
+                padding:0px;
+            }
+        </style>
+
+        <script language="JavaScript">
+        <!--
+            var trace;
+            var hiddenTrace;
+            var refresh;
+            var buffer;
+            var stopped = false;
+            var link;
+            var toID = null;
+
+            function clear(){
+                if(toID)
+                    clearTimeout(toID);
+                toID = null;
+            }
+
+            function stop(){
+                clear();
+                stopped = true;
+            }
+
+            function start(){
+                if(stopped && trace && trace.event.keyCode == 13){
+                    stopped = false;
+                    stackTrace();
+                }
+            }
+
+            function init(){
+                if(!trace){
+                    trace = document.getElementById("trace");
+                    trace = trace.contentWindow;
+                }
+
+                if( !hiddenTrace )
+                    hiddenTrace = document.getElementById("hiddenTrace");
+
+                if( !refresh )
+                    refresh = document.forms[0].refresh;
+
+                if(!buffer)
+                    buffer = document.forms[0].buffer;
+
+                if( !link ){
+                    link = document.forms[0].link;
+                }
+
+            	if( !trace.document.body ){
+            	    clear();
+          	        toID = setTimeout(init, 1000);
+            	    return;
+            	}
+
+            	with(trace.document.body.style){
+            		fontFamily = 'Tahoma';
+            		fontSize = '11px';
+            		color = 'black';
+            		backgroundColor = '#EEEEEE';
+            		border = 'solid 1px #AAAAAA';
+            	}
+
+            	trace.document.body.ondblclick = stop;
+            	trace.document.body.onkeypress = start;
+
+            	stackTrace();
+            }
+
+            function stackTrace(){
+                hiddenTrace.contentWindow.location.href = link.value;
+                trace.scrollTo(trace.document.body.scrollLeft, trace.document.body.scrollHeight);
+
+                clear();
+                toID = setTimeout(stackTrace, parseInt(refresh.value) * 1000);
+            }
+
+            function checkNumber(input){
+                var code = event.keyCode;
+                var ch = String.fromCharCode(code);
+
+                if( ( ch >= '0' && ch <= '9' ) ||
+                     code == 35 || code == 36 || code == 37 || code == 39 || code == 46 || code == 8 )
+                    event.returnValue = true;
+                else
+                    event.returnValue = false;
+            }
+        //-->
+        </script>
+        <link jwcid="cssLink"/>
+    </head>
+    <body>
+        <table id="wrapper" width="100%"  height="100%" border="0" cellspacing="5" cellpadding="0">
+            <form jwcid="optionForm" onsubmit="return false;">
+            <!-- title, optioin, buttons -->
+            <tr>
+                <!-- title -->
+                <td height="15">
+                    <div id="titleLayer" class="form_title"><img jwcid="form_title" border="0" align="absmiddle"/>&nbsp;<span jwcid="title"/></div>
+                    <!--<span jwcid="title"/>-->
+                </td>
+            </tr>
+            <tr>
+                <!-- options, buttons -->
+                <td  height="15">
+                    <div id="optionLayer">
+                    <!--<span jwcid="refresh"/>-->
+                    <span jwcid="file_pattern_label" class="field_label"/>
+                    <input jwcid="file_pattern" size="50"/><br/>
+                    <span jwcid="refresh_label" class="field_label" />
+                    <input type="text" size="10" name="refresh" value="10" onkeydown = "checkNumber(this);"/><br/>
+                    <span jwcid="buffer_label" class="field_label"/>
+                    <input type="text" size="10" name="buffer"  value="100" onkeydown ="checkNumber(this);"/>
+                    <input jwcid="link" type="hidden" name="link"/>
+                    </div>
+                </td>
+            </tr>
+            </form>
+            <!-- trace -->
+            <tr>
+                <td>
+                    <iframe name="hiddenTrace" width="0" height="0"></iframe>
+                    <iframe name="trace" width="100%" height="100%" id="trace">
+                    </iframe>
+                </td>
+            </tr>
+        </table>
+
+        <script language="javascript">
+            /*
+            function redraw(){
+                if(!document.all){
+                    var titleLayer = document.getElementById("titleLayer");
+                    var optionLayer = document.getElementById("optionLayer");
+                    var trace = document.getElementById("trace");
+                    alert(innerHeight - (titleLayer.offsetHeight + optionLayer.offsetHeight));
+                    trace.offsetHeight = innerHeight - (titleLayer.offsetHeight + optionLayer.offsetHeight)*2;
+                }
+            }
+            redraw();
+
+            if(!document.all)
+                window.onresize = redraw;
+             */
+            init();
+        </script>
+    </body>
+</html>

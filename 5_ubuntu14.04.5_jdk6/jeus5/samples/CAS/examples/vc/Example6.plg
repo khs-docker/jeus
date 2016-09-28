@@ -1,0 +1,32 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Example6 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "D:\DOCUME~1\SHGo\LOCALS~1\Temp\RSP221.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/Example6.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\TmaxSoft\JEUS5\samples\CAS\examples\vc\Example6.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\SHGo\LOCALS~1\Temp\RSP221.tmp" 
+Creating temporary file "D:\DOCUME~1\SHGo\LOCALS~1\Temp\RSP222.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/Example6.pdb" /debug /machine:I386 /out:"Debug/Example6.exe" /pdbtype:sept 
+.\Debug\Example6.obj
+]
+Creating command line "link.exe @D:\DOCUME~1\SHGo\LOCALS~1\Temp\RSP222.tmp"
+<h3>Output Window</h3>
+Compiling...
+Example6.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+Example6.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

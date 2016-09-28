@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://tapestry.apache.org/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="jeus.tool.webadmin.component.TargetExplorer" allow-body="no" allow-informal-parameters="yes">
+    <parameter name="model" required="yes"/>
+
+    <parameter name="selectionModel" required="yes"/>
+
+    <parameter name="useOption" default-value="false"/>
+    <parameter name="optionLabel" default-value="'Option'"/>
+    <parameter name="optionLabelClass"/>
+    <parameter name="optionClass"/>
+
+    <parameter name="renderUnderline" default-value="true"/>
+
+    <parameter name="useOption2" default-value="false"/>
+    <parameter name="optionLabel2" default-value="'Option'"/>
+    <parameter name="optionLabelClass2" />
+    <parameter name="optionClass2"/>
+
+    <component id="option_label" type="Insert">
+        <binding name="value" value="optionLabel"/>
+    </component>
+
+    <component id="option_label2" type="Insert">
+        <binding name="value" value="optionLabel2"/>
+    </component>
+
+    <component id="condOption" type="If">
+        <binding name="condition" value="useOption"/>
+    </component>
+
+    <component id="condOption1" copy-of="condOption"/>
+    <component id="condOption2" copy-of="condOption"/>
+    <component id="condOption3" copy-of="condOption">
+    	<binding name="renderTag" value="false"/>
+    </component>
+<!--
+    <component id="deployTargets" type="DeployTarget">
+        <binding name="model" value="model"/>
+        <binding name="selectionModel" value="selectionModel"/>
+        <binding name="optionClass" value="optionClass"/>
+        <binding name="optionLabel" value="optionLabel"/>
+        <binding name="optionLabel2" value="optionLabel2"/>
+        <binding name="nodeName" value="nodeName"/>
+        <binding name="containerName" value="containerName"/>
+    </component>
+-->
+
+    <component id="allCheck_label" type="Insert">
+        <binding name="value" value="message:TargetExplorer.all_check.label"/>
+    </component>
+
+    <component id="allCheck" type="Checkbox">
+        <binding name="value" value="selectionModel.allTargets"/>
+    </component>
+
+    <component id="eachNode" type="For">
+        <binding name="source" value="model.nodeNames"/>
+        <binding name="value" value="nodeName"/>
+        <binding name="index" value="ni"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="space" type="Image">
+        <binding name="image" value="asset:empty"/>
+    </component>
+
+    <component id="nodeIcon" type="Image">
+        <binding name="image" value="asset:node"/>
+    </component>
+
+    <component id="condHasNext" type="If">
+        <binding  name="condition" value="ni &lt; model.nodeNames.length - 1 and renderUnderline"/>
+    </component>
+
+    <component id="condHasTargets" type="If">
+        <binding  name="condition" value="model.nodeNames != null and model.nodeNames.length > 0"/>
+    </component>
+
+    <component id="containerIcon" type="Image">
+        <binding name="image" value="asset:container"/>
+    </component>
+
+    <component id="nodeName" type="Insert">
+        <binding name="value" value="nodeName"/>
+    </component>
+
+    <component id="nodeCheck" type="Checkbox">
+        <binding name="value" value="selectionModel.nodeSelected"/>
+    </component>
+
+    <component id="eachContainer" type="For">
+        <binding name="source" value="model.getContainerNames(nodeName)"/>
+        <binding name="value" value="containerName"/>
+    </component>
+
+    <component id="containerName" type="Insert">
+        <binding name="value" value="containerName"/>
+    </component>
+
+    <component id="containerCheck" type="Checkbox">
+        <binding name="value" value="selectionModel.containerSelected"/>
+    </component>
+
+    <component id="deployTargetScript" type="Script">
+        <binding name="script" value="literal:/jeus/tool/webadmin/script/DeployTargets.script"/>
+        <binding name="explorerModel" value="model"/>
+        <binding name="nodeName" value="nodeName"/>
+        <binding name="containerName" value="containerName"/>
+    </component>
+    
+    <component id="targetScript" type="Script">
+    	<binding name="script" value="literal:TargetExplorer.script"/>
+    	<binding name="symbols" value="symbols"/>
+    </component>
+
+    <component id="containerOption" type="PropertySelection">
+        <binding name="value" value="selectionModel.containerOption"/>
+        <binding name="model" value="contextGroupModel"/>
+    </component>
+
+    <component id="virtualHostSelect" type="Select">
+        <binding name="multiple" value="true"/>
+    </component>
+
+    <component id="eachVirtualHost" type="For">
+        <binding name="source" value="virtualHostModel"/>
+        <binding name="value" value="selectionModel.contextGroupOption"/>
+        <binding name="index" value="vi"/>
+        <binding name="renderTag" value="false"/>
+    </component>
+
+    <component id="virtualHostOption" type="Option">
+        <binding name="selected" value="selectionModel.virtualHostSelected"/>
+        <binding name="label" value="label"/>
+    </component>
+
+    <asset name="node" path="context:/image/mbean/node_running.gif"/>
+    <asset name="container" path="context:/image/mbean/container_running.gif"/>
+    <asset name="dot" path="context:/image/dot.gif"/>
+    <asset name="empty" path="context:/image/empty.gif"/>
+
+    <property name="nodeName"/>
+    <property name="containerName"/>
+    <property name="contextGroupName"/>
+    <property name="ni"/>
+    <property name="vi"/>
+</component-specification>

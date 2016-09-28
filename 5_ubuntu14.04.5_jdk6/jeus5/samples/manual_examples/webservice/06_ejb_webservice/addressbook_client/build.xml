@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<project name="AddressBook" default="all" basedir=".">	
+    <property file="../../../../sample.properties"/>
+    <import file="${jeus.home}/samples/common.xml"/>
+    <path id="jeus.classpath">
+        <path refid="jeus.libraries"/>
+	<pathelement location="./build/classes"/>
+        <pathelement location="${java.home}/lib/tools.jar"/>
+    </path>
+    <property name="path.string" refid="jeus.classpath"/>
+    <echo message="path = ${path.string}"/>
+
+	<taskdef name="wsdl2java" classname="jeus.util.ant.webservices.Wsdl2JavaTask"/>
+	
+
+  <property name="work.home" value="."/>
+
+  <!-- The destination directory for the build -->
+  <property name="build.dir" value="${work.home}/build"/>
+  <property name="classes.dir" value="${build.dir}/classes"/>
+
+  <property name="src" value="${work.home}/src"/>
+
+  <property name="jaxrpc.wsdl" value="http://localhost:8088/webservice/AddressBookService?wsdl"/>
+  
+  <path id="build.classpath">
+    <path refid="jeus.classpath"/>
+    <pathelement location="${classes.dir}"/>
+    <pathelement location="${build.dir}/client"/>    
+  </path>
+  
+  <target name="clean">
+    <delete dir="${build.dir}"/>
+  </target>
+   
+  <target name="wsdl2java">
+    <mkdir dir="${classes.dir}"/>    
+  	<wsdl2java destDir="${classes.dir}" 
+			   verbose="true"
+			   mode="gen:client"
+			   doCompile="true"
+			   package="AddressBook"
+			   wsdl="${jaxrpc.wsdl}">
+			   <classpath refid="build.classpath"/>
+    </wsdl2java>
+  </target>
+
+  <target name="compile">
+    <mkdir dir="${build.dir}/client"/> 
+    <javac srcdir="${src}" destdir="${build.dir}/client" debug="on">
+       <classpath refid="build.classpath"/>
+       <include name="**/*.java"/>
+    </javac>
+  </target>
+ 
+  <target name="run" depends="compile">
+    <java classname="com.tmaxsoft.webservice.AddressBook.AddressBookClient" fork="yes">
+      <classpath refid="build.classpath"/>
+    </java>
+  </target>
+    
+  <target name="all" depends="wsdl2java, run" />
+ 
+</project>

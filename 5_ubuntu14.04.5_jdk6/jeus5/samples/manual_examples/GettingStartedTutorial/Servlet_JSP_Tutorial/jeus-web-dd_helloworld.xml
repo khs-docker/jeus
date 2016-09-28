@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jeus-web-dd xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <context>
+        <context-name>helloworld</context-name>
+        <context-path>/helloworld</context-path>
+        <docbase>helloworld</docbase>
+    </context>
+</jeus-web-dd>

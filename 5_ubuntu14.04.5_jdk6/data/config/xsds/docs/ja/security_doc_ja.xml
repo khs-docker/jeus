@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="Shift-JIS"?>
+<description>        
+    <text key="security-services"><![CDATA[
+                        [Description]: 保安システムに使われる保安サービスを定義します。
+            ]]>        
+    </text>
+         
+    <text key="SecurityServicesType.security-service"><![CDATA[
+                        [Description]: 保安サービスを定義します。
+                    ]]>        
+    </text>
+ </description>

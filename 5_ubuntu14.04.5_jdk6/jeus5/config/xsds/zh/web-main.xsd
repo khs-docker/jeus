@@ -1,0 +1,2024 @@
+<?xml version="1.0" encoding="GB2312"?>
+<xs:schema 
+    attributeFormDefault="unqualified" 
+    elementFormDefault="qualified" 
+    targetNamespace="http://www.tmaxsoft.com/xml/ns/jeus" version="5.0" 
+    xmlns="http://www.tmaxsoft.com/xml/ns/jeus" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">       
+    <xs:include schemaLocation="jeus-common.xsd"/>      
+    <xs:element name="web-container" type="web-containerType">         
+        <xs:annotation>             
+            <xs:documentation><![CDATA[
+                [Description]: 为了构成JEUS WEB模块的所有内容而使用的WEBMain.xml的最上级level tag。
+            ]]>
+            </xs:documentation>         
+        </xs:annotation>     
+    </xs:element>      
+    <xs:complexType name="web-containerType">         
+        <xs:sequence>             
+            <xs:element minOccurs="0" name="monitoring" type="monitoringType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Web Container的多个监控thread的环境设置所需的element。监控thread是隔一段时间检查各个pool或资源状态的thread。对各个进行检查时，决定connection pool内的connection被去除或采取其他行动。该element的下级element必须设定4种不同pool的状态检查所需的时间。
+                   ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="redirect-stdout" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 做出将System输出再传送到以下Web Container输出路径JEUS_HOME\logs\JeusSystem\[nodename]_[container name]\stdout_[date].log 文件所需的决定。
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="redirect-stderr" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:做出将Web Container的输出内容从标准错误(stderr)再传送到JEUS_HOME\logs\JeusSystem\[nodename]_[container name]\stderr_[date].log文件所需的决定。
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="-1" minOccurs="0" name="shutdown-timeout" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 在Web  Container结束之前，正在执行的worker thread所等待的时间作为千分之一秒。本选项是在将Container down掉之前，强行等待worker thread的作业结束。如果在down指令时没有执行作业的worker thread的话，忽视该周期直接将container down掉。
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="1" name="context-group" type="context-groupType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element构成被称为“Context group”的JEUS特有的结构。
+                                                Context group可以看作是管理所有Context(Web applications)的虚拟服务器。
+                                                该element内的设定被所有Context所使用。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="session-cluster" type="session-clusterType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element管理和路由集群的多个Web Container之间的session对象。
+                                                可支持1)路由, 2) Session Server使用, 3) 1和2 两种技术加在一起的三种技术。
+                                                该element构成针对所有Context group及其下级Context的session管理。
+                                                一些Context group内的session集群设定，将强行替代（override）该element设定。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>                         
+            <xs:element minOccurs="0" name="logging" type="loggingType"/>             
+            <xs:element minOccurs="0" name="properties" type="propertiesType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 指定container-wide属性。
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="monitoringType">         
+        <xs:sequence>             
+            <xs:element default="300000" minOccurs="0" name="check-thread-pool" type="xs:long">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element为了检查worker thread pool内的worker thread的状态，设定时间间隔。
+                                                Worker thread是处理发送到Container之客户端请求的thread。
+                                                Worker thread存在于worker thread pool内，为了各web服务器之间的连接而存在。
+                                                检查间隔时间适用于Container内的所有worker thread。到时间周期后，检查各thread pool。
+                                                如果遇到什么情况(例如，对于特定thread，最大idle time超时时)，就执行去除该thread的作业。
+                        [Value Description]: 时间间隔以毫秒为单位(最接近秒的四舍五入)。可能的最短周期为1000毫秒。(1秒).
+                        [Value Type Description]: Integer
+                        [Defined Value]: [-1]: 使thread pool的检查处于非激活状态。只是用于测试目的。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="300000" minOccurs="0" name="check-class-reload" type="xs:long">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element设定，使用<auto-reload><enable-reload> element检查class reloading状态所需的时间间隔。
+                                                Check-class-reload所需的监控thread不检查<check-on-demand> element具有(该设定在jeus-web-dd文件) true值的Context。
+                        [Value Description]: 时间间隔以毫秒为单位(最接近秒的四舍五入)。可能的最短周期为1000毫秒(1秒)。
+                        [Value Type Description]: Integer
+                        [Defined Value]: [-1]: 使class reloading check处于非激活状态。.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="300000" minOccurs="0" name="check-session" type="xs:long">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element设定多么频繁地检查超时状态。
+                                                Session超时状态定义在<context-group><session-timeout>element或各个context的web.xml。
+                                                并且，使用中央集中式session服务器时，检查Primary Session服务器是否处于alive状态。
+                                                如果Primary session服务器处于alive状态，当前Servlet Container在使用Backup session服务器时，再与Primary session建立连接。
+                        [Value Description]: 时间间隔以毫秒为单位(最接近秒的四舍五入)。可能的最短周期为1000毫秒。(1秒).
+                        [Value Type Description]: Integer
+                        [Defined Value]: [-1]: 让session超时检查处于非激活状态，意味着HTTPSession.invalidate()发生之前为止，所有session都被保存。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="context-groupType">         
+        <xs:sequence>             
+            <xs:element name="group-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element用于Context group内部。
+                        [Value Description]: context group名称
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="virtual-host" type="virtual-hostType">                 
+                <xs:annotation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="webserver-connection" type="webserver-connectionType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 构成web服务器之间的connection设定。
+                                                这意味着通常web服务器位于Web Container的前端，接收客户端的HTTP请求。
+                                                Web服务器分析其请求，决定是否由Web Container(即，对Servlet的请求)来处理该请求。
+                                                Web Container请求被web服务器运送（forward）到合适的Web Container。
+                                                接收并处理这些请求的Web Container的component称为“listener”。
+                                            该element用于将这些listener连接到web服务器。
+                                                各个web服务器listener要在同一机器中具有唯一性，并应在可分配不使用<port>的范围内构成。
+                                                对于各个种类的web服务器，符合服务器的listener设定，可以通过<webserver-connection>的下级tag－ <xxxxx-listener> element来设定的方法轻松解决。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="session-config" type="session-configType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element内的设定，适合于Context group内session对象(HTTPSession对象)的内部管理。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="print-error-to-browser" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 执行JSP或Servlet时，决定当发生错误时是否将具体的错误内容传送到browser。
+                                                该message在开发期间内非常有用，但在操作环境中应设为非激活。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="encoding" type="encodingType">                 
+                <xs:annotation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="jsp-engine" type="jsp-engineType">                 
+                <xs:annotation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="logging" type="loggingType">                 
+                <xs:annotation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="session-cluster" type="session-clusterType">                 
+                <xs:annotation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="response-header" type="response-headerType">                 
+                <xs:annotation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="properties" type="propertiesType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 指定context-group-wide属性。
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="virtual-hostType">         
+        <xs:sequence>             
+            <xs:element name="virtual-host-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Virtual Host的内部识别名称。
+                        [Value Description]: 任意的唯一名称。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="1" name="host-list" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 各host-list element包含DNS名称(例如，"www.foo.com")或IP地址。
+                                                该element内明示的DNS名称被告知到Virtual Host。DNS名称和IP地址要在相同的Context group内具有唯一性。
+                                                (如果在相同Context group内存在两个Virtual Host的话，不能共享DNS名称。)
+                        [Value Description]: DNS名称或IP地址
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="properties" type="propertiesType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:指定 virtual-host-wide属性。
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="webserver-connectionType">         
+        <xs:choice maxOccurs="unbounded" minOccurs="1">             
+            <xs:element name="webtob-listener" type="webtob-listenerType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                [Description]: 该element是为了WebtoB web服务器而设定的web服务器listener。该listener的设定与其他listener类型有所不同。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="http-listener" type="http-listenerType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                [Description]: HTTP listener提供JEUS Web Container文件夹内部的默认web服务器。
+                                        该内部web服务器基本上用于开发或小规模操作环境。
+                                        在大规模操作环境应该使用WebtoB或Apache web服务器。
+                                        设定HTTP Listener后，Web Container可以接收简单的HTTP请求，也可以自己处理请求。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="tcp-listener" type="tcp-listenerType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                [Description]: TCP listener的动作就像HTTP listener，但支持与HTTP不同的custom网络协议。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="udp-listener" type="udp-listenerType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                [Description]: UDP listener与TCP listener相同，但使用UDP协议。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="ajp13-listener" type="ajp13-listenerType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                [Description]: AJP 1.3 listener是支持使用 Apache mod_jk module的 AJP 1.3 protocol的 listener
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="tmax-listener" type="tmax-listenerType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                [Description]: 该element是为了连接Tmax而设定的listener。类似于Webtob listener的设定。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>          
+        </xs:choice>     
+    </xs:complexType>      
+    <xs:complexType name="webtob-listenerType">         
+        <xs:sequence>             
+            <xs:element name="listener-id" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 识别该listener的唯一名称。该名称在从构成文件的其他部分提及listener时使用。
+                        [Value Description]: 任意的唯一名称。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="port" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 连接到WebtoB服务器的端口。该端口编号应与WebtoB服务器设定文件的“JSVPORT”值一致。
+                        [Value Description]: 端口编号应大于0，并与WebtoB 设定文件的JSVPORT值相同。
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="6666" minOccurs="0" name="webtob-ipcbaseport" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 为了Webtob与内部程序间进行IPC通信，设置相关端口。目前只有Windows支持，通过环境变量中设置WEBTOB_IPCBASEPORT的方法提供相同功能。同时设置两种方式时，在此设置的Port具有优先顺序。
+                        [Value Description]: 端口编号应该比0大。
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="8192" minOccurs="0" name="output-buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定暂时保存out.write() method所输出之JSP/Servlet输出物的输出buffer的大小。该buffer满后，流入(flush)到web browser。
+                        [Value Description]: Byte为单位的buffer size
+                        [Value Type Description]: Integer
+                        [Example]: <output-buffer-size>16384</output-buffer-size>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="thread-pool" type="thread-poolType"/>             
+            <xs:element default="30000" minOccurs="0" name="postdata-read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定从web服务器/web客户端读取post-data时等待的最长时间。通过request.getInputStream().read() method执行。
+                        [Value Description]: 毫秒时间间隔
+                        [Value Type Description]: Long
+                        [Example]: <postdata-read-timeout>40000</postdata-read-timeout>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="http" minOccurs="0" name="scheme" type="schemeType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 在这里设定Javax.servlet.http.HttpServletRequest.getScheme() method协议识别者的返还值。在WebtoB或在Apache使用SSL功能，或secure listener时，应设为"https"值。
+                        [Value Description]: http或https
+                        [Defined Value]: [http]: 如果不使用SSL，就使用该值。
+                                                [https]: 在secure listener和web服务器使用SSL时，使用该值。
+                        [Example]: <scheme>https</scheme>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="1" minOccurs="0" name="hth-count" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 指定在WebtoB服务器内的HTH进程数量。
+                        [Value Description]: 设定与WebtoB服务器的HTH进程数相同的数量。
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="true" minOccurs="0" name="request-prefetch" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: webtob request prefetch（请求预取）功能。如果该功能为true时，除了当前处理的webtob request之外，还预取下一个webtob request保存到请求队列(request queue)，提高处理速度。但是，web container不正常down时，可能丢失预取的webtob请求。
+                        [Value Description]: true or false
+                        [Value Type Description]: Boolean
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="disable-pipe" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 如果WebtoB服务器与listener在相同的机器上执行，就可以在WebtoB和listener之间选择更加有效的pipe通信。此时，将该element设为“false”。如果listener和WebtoB服务器在相互不同的机器上执行时，将该选项永远设为“true”才能让pipe通信处于非激活状态，实现socket通信。
+                        [Value Description]: 通过Boolean值，使该设定处于激活或非激活状态。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: 进行socket通信。
+                                                [false]: 进行pipe通信。
+                        [Example]: <disable-pipe>true</disable-pipe>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="127.0.0.1" minOccurs="0" name="webtob-address" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 与相关Listener连接的WebtoB服务器的IP地址。Listener寻找WebtoB服务器的位置来连接，所以必须要设定。
+                                                这区别于Web Container被动地等待web服务器connection的其他类型的web服务器。
+                        [Value Description]: WebtoB服务器的IP地址。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="default" minOccurs="0" name="registration-id" type="xs:token">                 
+                <xs:annotation>                       
+                    <xs:documentation><![CDATA[
+                        [Description]: 连接WebtoB服务器时要使用的registration ID名称。
+                        [Value Description]: Registration ID名称要与WebtoB设定文件的 *SERVER节内的值相同。
+                        [Example]: <registration-id>MyGroup</registration-id>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="webtob-home" type="xs:token">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]:设定Web Container和web服务器之间实现有效pipe通信的WebtoB服务器的主目录(home directory)。该值强行替代(override)包含WebtoB主目录的环境变量值。该element是相同机器内存在一个以上WebtoB服务器或，要与未登录在环境变量的WebtoB互动时，输入该WebtoB服务器的安装路径即可。
+                        [Value Description]: 后端有路径separator的绝对目录路径。(“\”windows,”/”unix).
+                        [Example]: <webtob-home>c:\WebtoB\</webtob-home>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="0" minOccurs="0" name="read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: WebtoB web服务器在WebtoB设定文件的"svrchktime"变量内设定的间隔，持续向Web Container发送"ping"。Web Container为了检查WebtoB发送的"ping"，在该element内设定时间间隔。如果在这里设定的时间间隔内未感应到WebtoB ping的话，被认为通信链接已被断开，并重置(reset)。因此，该element的值通常要大于"svrchktime"值。
+                        [Value Description]:毫秒值。设定值要大于WebtoB设定文件内的"svrchktime"值。
+                        [Defined Value]: [0]: Infinity
+                        [Example]:<read-timeout>120000</read-timeout>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="-1" minOccurs="0" name="reconnect-timeout" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: WebtoB服务器和webtob-listener之间的connenction，有时会在工作途中被断开。此时要尝试重新连接，这时element用于重新连接的超时值。如果最近所有被断开的WebtoB connection在超过该值后仍然未连接，并且定义有WebtoB备份服务器时，Web Container向WebtoB备份服务器尝试fail-over。如果对WebtoB备份服务器的连接也失败时，继续向下一个服务器尝试。到最后的WebtoB备份服务器也失败时，再次尝试与main webtob-listener连接。
+                        [Value Description]: 以毫秒为单位的超时值。
+                        [Value Type Description]: Long
+                        [Defined Value]: [-1]: 无限的超时周期(listener将继续尝试着重新连接)
+                                                [0]: 不尝试重新连接。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="webtob-backup" type="webtob-backupType">                 
+                <xs:annotation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="tmax-listenerType">         
+        <xs:sequence>             
+            <xs:element name="listener-id" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 识别该listener的唯一名称。该名称在从构成文件的其他部分提及listener时使用。
+                        [Value Description]: 任意的唯一名称。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="port" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 要连接到tmax服务器的端口。
+                        [Value Description]: 端口编号值要大于0。
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="8192" minOccurs="0" name="output-buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定暂时保存out.write() method所输出之JSP/Servlet输出物的输出buffer的大小。该buffer满后，流入(flush)到web browser。
+                        [Value Description]: Byte为单位的buffer size
+                        [Value Type Description]: Integer
+                        [Example]: <output-buffer-size>16384</output-buffer-size>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="thread-pool" type="thread-poolType"/>             
+            <xs:element default="30000" minOccurs="0" name="postdata-read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定从web服务器/web客户端读取post-data时等待的最长时间。通过request.getInputStream().read() method执行。
+                        [Value Description]: 毫秒时间间隔
+                        [Value Type Description]: Long
+                        [Example]: <postdata-read-timeout>40000</postdata-read-timeout>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="-1" minOccurs="0" name="reconnect-timeout" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Tmax和tmax-listener之间的connection有时会在工作途中被断开。
+                                                此时将尝试重新连接，该element用于重新连接的超时值。
+                        [Value Description]: 毫秒为单位的超时值
+                        [Value Type Description]: Long
+                        [Defined Value]: [-1]: 无限的超时周期(listener将继续尝试重新连接)
+                                                [0]: 不尝试重新连接。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="127.0.0.1" minOccurs="0" name="tmax-address" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定tmax server的IP地址。
+                        [Value Description]: tmax server的IP地址。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="tmax-version" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 要连接的tmax server版本。支持40, 3x两个版本。
+                        [Value Description]: tmax server 版本
+                  ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="server-type" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 要连接的tmax server种类。 tms, httpgw等特殊server时进行设置。
+                        [Value Description]: tmax server 种类
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="xaresource-class" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 要使用XAResource class Transaction Recovery功能时进行设置。
+                        [Value Description]: XAResource class名称
+                  ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="server-group-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 指要连接的tmax server被包括的group。
+                        [Value Description]: tmax server group名称
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="server-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 要连接的tmax server名称。
+                        [Value Description]: tmax server名称
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="127.0.0.1" minOccurs="0" name="tmax-backup-address" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 要用作备份的Tmax server的IP地址。
+                        [Value Description]: tmax server的IP address
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="tmax-backup-port" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 要用作备份的Tmax server的端口。
+                        [Value Description]: 端口编号值要大于0。
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="backup-server-group-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 指使用于backup的包括 tmax server的群
+                        [Value Description]: backup tmax server group 名字
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="dispatcher-config-class" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 指定dispatcher设定class。此时，class必须存在于被设为classpath的位置，class的名称应为full qualified class name。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="use-nio" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 决定TmaxListener里是否使用 nio方式进行通信。
+                    
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:simpleType name="schemeType">         
+        <xs:restriction base="xs:string">             
+            <xs:enumeration value="http">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Hypertext Transfer Protocol。Web所使用的协议。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:enumeration>             
+            <xs:enumeration value="https">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: HTTP上添加安全性的SSL连接。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:enumeration>         
+        </xs:restriction>     
+    </xs:simpleType>      
+    <xs:complexType name="webtob-backupType">         
+        <xs:sequence>             
+            <xs:element name="port" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 要访问WebtoB服务器的端口。该端口编号与WebtoB服务器设定文件内的“JSVPORT”值相同。
+                        [Value Description]: 端口编号值要大于0，并应与WebtoB设定文件的JSVPORT值相同。
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="8192" minOccurs="0" name="output-buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定暂时保存out.write() method所输出之JSP/Servlet输出物的输出buffer的大小。该buffer满后，流入(flush)到web browser。
+                        [Value Description]: Byte为单位的buffer size
+                        [Value Type Description]: Integer
+                        [Example]: <output-buffer-size>16384</output-buffer-size>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="thread-pool" type="thread-poolType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Thread pool用于维持，处理进入到Web Container之请求的worker thread。
+                                                通过指定的端口接收新的请求后，该pool被分配新的worker thread处理请求相关的业务。
+                                                WebtoB Listener时，要注意对thread pool的设定与WebtoB服务器的HTH进程有关。
+                                                所以，如果HTH进程数量为3个时，将thread pool的最大数量设为10个的话，实际生成的最多thread pool的个数为30个。
+                                                并且，该worker thread实际上与WebtoB服务器具有持续的connection。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="30000" minOccurs="0" name="postdata-read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定从web服务器/web客户端读取post-data时等待的最长时间。通过request.getInputStream().read() method执行。
+                        [Value Description]: 毫秒时间间隔
+                        [Value Type Description]: Long
+                        [Example]: <postdata-read-timeout>40000</postdata-read-timeout>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="http" minOccurs="0" name="scheme" type="schemeType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: 在这里设定Javax.servlet.http.HttpServletRequest.getScheme() method协议识别者返还值。在WebtoB或Apache使用secure listener或SSL功能时，应设为“https”值。
+                        [Value Description]: http 或https
+                        [Defined Value]: [http]: 如果SSL未被使用，就使用该值。
+                                                [https]: secure listener和web服务器中使用SSL时，使用该值。
+                        [Example]: <scheme>https</scheme>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="1" minOccurs="0" name="hth-count" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 指定在WebtoB服务器内的HTH进程数量。
+                        [Value Description]: 设定与WebtoB服务器的HTH进程数相同的数量。
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="disable-pipe" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 如果WebtoB服务器与listener在相同的机器上执行，就可以在WebtoB和listener之间选择更加有效的pipe通信。此时，将该element设为“false”。如果listener和WebtoB服务器在相互不同的机器上执行时，将该选项永远设为“true”才能让pipe通信处于非激活状态，实现socket通信。
+                        [Value Description]: 通过Boolean值，使该设定处于激活或非激活状态。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: 进行socket通信。
+                                                [false]: 进行pipe通信。
+                        [Example]: <disable-pipe>true</disable-pipe>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="127.0.0.1" minOccurs="0" name="webtob-address" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 指连接到该listener的WebtoB服务器的IP地址。Listener寻找WebtoB服务器的位置进行连接，所以必须要设定。
+                                                这区别于Web Container被动地等待web服务器connection的其他类型的web服务器。
+                        [Value Description]: 作为备份执行的WebtoB服务器的IP地址。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="default" minOccurs="0" name="registration-id" type="xs:token">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: 连接WebtoB服务器时要使用的registration ID名称。
+                        [Value Description]: Registration ID名称要与WebtoB设定文件的 *SERVER节内的值相同。
+                        [Example]: <registration-id>MyGroup</registration-id>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="webtob-home" type="xs:token">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]:设定Web Container和web服务器之间实现有效pipe通信的WebtoB服务器的主目录(home directory)。该值强行替代(override)包含WebtoB主目录的环境变量值。该element是相同机器内存在一个以上WebtoB服务器或，要与未登录在环境变量的WebtoB互动时，输入该WebtoB服务器的安装路径即可。
+                        [Value Description]: 后端有路径separator的绝对目录路径。(“\”windows,”/”unix).
+                        [Example]: <webtob-home>c:\WebtoB\</webtob-home>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="0" minOccurs="0" name="read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: WebtoB web服务器在WebtoB设定文件的"svrchktime"变量内设定的间隔，持续向Web Container发送"ping"。Web Container为了检查WebtoB发送的"ping"，在该element内设定时间间隔。如果在这里设定的时间间隔内未感应到WebtoB ping时，认为通信链接已被断开，并进行重置。因此，该element的值通常要大于"svrchktime"值。
+                        [Value Description]: 毫秒值。WebtoB设定文件的值要大于"svrchktime"值。
+                        [Defined Value]: [0]:  Infinity
+                        [Example]:<read-timeout>120000</read-timeout>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="-1" minOccurs="0" name="reconnect-timeout" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: WebtoB服务器和webtob-listener之间的connection有时会在工作途中被断开。
+                                                此时将尝试重新连接，该element用于重新连接的超时值。
+                                                如果最近所有被断开的WebtoB connection直到超过该值仍然未连接，并且定义有WebtoB备份服务器时，Web Container将向WebtoB备份服务器尝试fail-over。
+                                                如果针对WebtoB备份服务器的连接也失败时，继续向下一个服务器尝试。
+                                                到最后的WebtoB备份服务器为止都失败时，再次尝试与main webtob-listener进行连接。
+                        [Value Description]: 毫秒为单位的超时值
+                        [Value Type Description]: Long
+                        [Defined Value]: [-1]: 无限的超时周期(listener继续尝试重新连接)
+                                                [0]: 不尝试重新连接
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="ajp13-listenerType">         
+        <xs:sequence>             
+            <xs:element name="listener-id" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 识别相关listener的唯一名称。该名称在构成文件的其他部分提及listener时使用。
+                        [Value Description]: 任意的唯一名称.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="port" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: port是从web server 接收邀请时使用.
+                        [Value Description]:  比0大的port值
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="8192" minOccurs="0" name="output-buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定暂时保存out.write() method所输出之JSP/Servlet输出物的输出buffer的大小。该buffer满后，流入(flush)到web browser。
+                        [Value Description]: Byte为单位的buffer size
+                        [Value Type Description]: Integer
+                        [Example]: <output-buffer-size>16384</output-buffer-size>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="thread-pool" type="thread-poolType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Thread pool维持，用来处理进入到Web Container之请求的 worker thread。
+                                                通过指定的端口接收新的请求后，相关pool被分配新的worker thread，处理请求相关的业务。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="30000" minOccurs="0" name="postdata-read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定从web服务器/web客户端读取post-data时等待的最长时间。通过request.getInputStream().read() method执行。
+                        [Value Description]: 毫秒时间间隔
+                        [Value Type Description]: Long
+                        [Example]: <postdata-read-timeout>40000</postdata-read-timeout>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="http" minOccurs="0" name="scheme" type="schemeType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: 在这里设定Javax.servlet.http.HttpServletRequest.getScheme() method协议识别者返还值。在WebtoB或Apache使用secure listener或SSL功能时，应设为“https”值。
+                        [Value Description]: http 或https
+                        [Defined Value]: [http]: 如果SSL未被使用，就使用该值。
+                                                [https]: secure listener和web服务器中使用SSL时，使用该值。
+                        [Example]: <scheme>https</scheme>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="50" minOccurs="0" name="back-log" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定socket的backlog值。(生成者“java.net.ServerSocket(int port,int backlog)中等待socket请求的最大queue大小).
+                        [Value Description]: 大于0的值。
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="busy-notify-page" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 阵列已满时有发送来的请求时，之后的请求将<busy-notify-page> element内设定的page发送给客户端。
+　　　　　　　　　　[Value Description]: 大于0的值。
+                        [Value Type Description]: 将静态的contents文件(例如HTML文件)包括到绝对路径设定。
+                        [Example]: <busy-notify-page>c:\web\errorpages\busypage.html</busy-notify-page>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="server-access-control" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 使服务器访问控制处于激活或非激活状态。如果该选项被激活时，只有允许的服务器(<allowed-server> element中指定的)才能访问listener。              [Value Description]: 毫秒时间间隔
+                        [Value Description]: 通过Boolean值，使该设定处于激活或非激活状态。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: 激活服务器访问控制
+                                                [false] : 非激活服务器访问控制
+                        [Example]: <server-access-control>true</server-access-control>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="allowed-server" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 各<allowed-server> element指定要访问该listener的一个服务器IP地址。该element只在<server-access-control> element的值为true时使用。来自于未包括在该element之服务器的所有请求将被拒绝。
+                        [Value Description]: 允许连接本listener的服务器IP地址
+                        [Example]: <allowed-server>127.0.0.1</allowed-server>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="http-listenerType">         
+        <xs:sequence>             
+            <xs:element name="listener-id" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 识别该listener的唯一名称。该名称在构成文件的其他部分提及该listener时使用。
+                        [Value Description]: 任意的唯一名称
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="port" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 用于从客户端接收HTTP请求的端口。按照IANA(www.iana.org)，HTTP端口为80。
+                       	       secure listener意味着用于接收HTTPS请求的端口。
+                        [Value Description]: 0以上的端口数.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="8192" minOccurs="0" name="output-buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定暂时保存out.write() method所输出之JSP/Servlet输出物的输出buffer的大小。该buffer满后，流入(flush)到web browser。
+                        [Value Description]: Byte为单位的buffer size
+                        [Value Type Description]: Integer
+                        [Example]: <output-buffer-size>16384</output-buffer-size>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="thread-pool" type="thread-poolType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Thread pool维持，用来处理进入到Web Container之请求的 worker thread。
+                                                通过指定的端口接收新的请求后，相关pool被分配新的worker thread，处理请求相关的业务。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="300000" minOccurs="0" name="read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 维持Keep alive所需的read time out
+                  ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="30000" minOccurs="0" name="postdata-read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定从web服务器/web客户端读取post-data时等待的最长时间。通过request.getInputStream().read() method执行。
+                        [Value Description]: 毫秒时间间隔
+                        [Value Type Description]: Long
+                        [Example]: <postdata-read-timeout>40000</postdata-read-timeout>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="100" minOccurs="0" name="max-keep-alive-request" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:  <max-keep-alive-request> element表示相关listener使用keep-alive时的最大可用request数量。 0以下值时表示不限制request数量。
+                        [Value Description]: Integer
+                        [Example]: <max-keep-alive-request>256</max-keep-alive-request>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="true" minOccurs="0" name="keep-alive" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:  <keep-alive> element表示相关 listener的 keep alive algorithm使用与否。
+                        [Value Description]: boolean( true or false )
+                        [Example]: <keep-alive>true</keep-alive>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element default="http" minOccurs="0" name="scheme" type="schemeType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 在这里设定Javax.servlet.http.HttpServletRequest.getScheme() method协议识别者的返还值。在WebtoB或Apache使用secure listener或SSL功能时，应设为“https”值。
+                        [Value Description]: http 或 https
+                        [Defined Value]: [http]: 如果SSL未被使用时，使用该值。
+                                         [https]: 在secure listener和web服务器使用SSL时，使用该值。
+                        [Example]: <scheme>https</scheme>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="50" minOccurs="0" name="back-log" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定socket的backlog值。(生成者“java.net.ServerSocket(int port,int backlog)中等待socket请求的最大queue大小).
+                        [Value Description]: 大于0的值
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="server-access-control" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 使服务器访问控制处于激活或非激活状态。如果本选项被激活时，只有允许的服务器(<allowed-server> element中指定)才能访问该listener。                 [Value Description]: 毫秒时间间隔
+                        [Value Description]: 通过Boolean值，使该设定处于激活或非激活状态。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: 激活服务器访问控制
+                                                [false]: 非激活服务器访问控制
+                        [Example]: <server-access-control>true</server-access-control>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="allowed-server" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 各<allowed-server> element指定要访问该listener的一个服务器IP地址。该element只在<server-access-control> element的值为true时使用。来自于未包括在该element之服务器的所有请求将被拒绝。
+                        [Value Description]: 允许连接本listener的服务器IP地址
+                        [Example]: <allowed-server>127.0.0.1</allowed-server>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="ssl-config" type="ssl-configType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: 支持SSL通信所需的设定。                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="use-nio" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 决定Http Listener里是否使用nio方式的通信.  使用persistent connection的话， blocking mode时与 pool数量正比性能会变好，但使用 nio时，因 nonblocking mode， 所以与 pool数量无关性能也会很好。
+                    
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>          
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="tcp-listenerType">         
+        <xs:sequence>             
+            <xs:element name="listener-id" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 识别相关listener的唯一名称。该名称在构成文件的其他部分提及listener时使用。
+                        [Value Description]: 任意的唯一名称.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="port" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 用来接收来自于客户端请求的端口。
+                        [Value Description]: 大于0的端口值
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="8192" minOccurs="0" name="output-buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定暂时保存out.write() method所输出之JSP/Servlet输出物的输出buffer的大小。该buffer满后，流入(flush)到web browser。
+                        [Value Description]: Byte为单位的buffer size
+                        [Value Type Description]: Integer
+                        [Example]: <output-buffer-size>16384</output-buffer-size>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="thread-pool" type="thread-poolType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Thread pool维持，用来处理进入到Web Container之请求的 worker thread。
+                                                通过指定的端口接收新的请求后，相关pool被分配新的worker thread，处理请求相关的业务。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="30000" minOccurs="0" name="postdata-read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定从web服务器/web客户端读取post-data时等待的最长时间。通过request.getInputStream().read() method执行。
+                        [Value Description]: 毫秒时间间隔
+                        [Value Type Description]: Long
+                        [Example]: <postdata-read-timeout>40000</postdata-read-timeout>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="http" minOccurs="0" name="scheme" type="schemeType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 在这里设定Javax.servlet.http.HttpServletRequest.getScheme() method协议识别者返还值。在WebtoB或Apache使用secure listener或SSL功能时，应设为“https”值。
+                        [Value Description]: http 或https
+                        [Defined Value]: [http]: 如果SSL未被使用，就使用该值。
+                                                [https]: secure listener和web服务器中使用SSL时，使用该值。
+                        [Example]: <scheme>https</scheme>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="50" minOccurs="0" name="back-log" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定socket的backlog值。(生成者“java.net.ServerSocket(int port,int backlog)中等待socket请求的最大queue大小).
+                        [Value Description]: 大于0的值。
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="ssl-config" type="ssl-configType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: 支持SSL通信所需的设定。                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="server-access-control" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 使服务器访问控制处于激活或非激活状态。如果本选项被激活时，只有允许的服务器(<allowed-server> element中指定)才能访问该listener。                 [Value Description]: 毫秒时间间隔
+                        [Value Description]: 通过Boolean值，使该设定处于激活或非激活状态。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: 激活服务器访问控制
+                                                [false]: 非激活服务器访问控制
+                        [Example]: <server-access-control>true</server-access-control>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="allowed-server" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 各<allowed-server> element指定要访问该listener的一个服务器IP地址。该element只在<server-access-control> element的值为true时使用。来自于未包括在该element之服务器的所有请求将被拒绝。
+                        [Value Description]: 允许连接本listener的服务器IP地址
+                        [Example]: <allowed-server>127.0.0.1</allowed-server>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="dispatcher-config-class" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 指定dispatcher的设定class。此时，class必须存在于被设为classpath的位置，class的名称应为full qualified class name。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="connection-handshaker-class" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 指定handshaker 类。类必须在classpath 设置的文件里， 而且类名应该是full qualified class name。
+                    
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="use-nio" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 决定TCP Listener中是否使用 nio方式的通信。使用persistent connection的blocking mode时，根据pool数量改善性能，而使用nio时，由于是nonblocking mode，与pool数量无关，都会带来好的性能。
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="connection-listener-class" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 指定Connection Listener 类。 Connection Listener 只在使用 NIO时使用。 类必须在classpath设置的文件里， 而且类名应该是full qualified class name。
+                    
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="udp-listenerType">         
+        <xs:sequence>             
+            <xs:element name="listener-id" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 识别相关listener的唯一名称。该名称在构成文件的其他部分提及listener时使用。
+                        [Value Description]: 任意的唯一名称.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="port" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 用来接收来自于客户端请求的端口。
+                        [Value Description]: 大于0的端口值
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="8192" minOccurs="0" name="input-buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定读取input时DatagramPacket的最大值。
+                        [Value Description]: 大于0的值。
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="8192" minOccurs="0" name="output-buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定暂时保存out.write() method所输出之JSP/Servlet输出物的输出buffer的大小。该buffer满后，流入(flush)到web browser。
+                        [Value Description]: Byte为单位的buffer size
+                        [Value Type Description]: Integer
+                        [Example]: <output-buffer-size>16384</output-buffer-size>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="thread-pool" type="thread-poolType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Thread pool维持，用来处理进入到Web Container之请求的 worker thread。
+                                                通过指定的端口接收新的请求后，相关pool被分配新的worker thread，处理请求相关的业务。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="30000" minOccurs="0" name="postdata-read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                      
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定从web服务器/web客户端读取post-data时等待的最长时间。通过request.getInputStream().read() method执行。
+                        [Value Description]: 毫秒时间间隔
+                        [Value Type Description]: Long
+                        [Example]: <postdata-read-timeout>40000</postdata-read-timeout>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="http" minOccurs="0" name="scheme" type="schemeType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 在设立设定Javax.servlet.http.HttpServletRequest.getScheme() method协议识别者的返还值。在WebtoB或Apache中使用secure listener或SSL功能时，应设为“https”值。
+                        [Value Description]: http 或 https
+                        [Defined Value]: [http]: 如果SSL未被使用，就使用该值。
+                                                [https]: secure listener和web服务器使用SSL时，使用该值。
+                        [Example]: <scheme>https</scheme>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="50" minOccurs="0" name="back-log" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定socket的backlog值。(生成者“java.net.ServerSocket(int port,int backlog)中等待socket请求的最大queue大小).
+                        [Value Description]: 大于0的值。
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="server-access-control" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 使服务器访问控制处于激活或非激活状态。如果本选项被激活时，只有允许的服务器(<allowed-server> element中指定)才能访问该listener。                 [Value Description]: 毫秒时间间隔
+                        [Value Description]: 通过Boolean值，使该设定处于激活或非激活状态。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: 激活服务器访问控制
+                                                [false]: 非激活服务器访问控制
+                        [Example]: <server-access-control>true</server-access-control>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="allowed-server" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 各<allowed-server> element指定要访问该listener的一个服务器IP地址。该element只在<server-access-control> element的值为true时使用。来自于未包括在该element之服务器的所有请求将被拒绝。
+                        [Value Description]: 允许连接本listener的服务器IP地址
+                        [Example]: <allowed-server>127.0.0.1</allowed-server>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="dispatcher-config-class" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 指定dispatcher设定class。此时，class必须存在于被设为classpath的位置，class的名称应为full qualified class name。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>     
+    <xs:complexType name="ssl-configType">         
+        <xs:sequence>             
+            <xs:element default="false" minOccurs="0" name="enable-secure" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: 决定是否要支持SSL(Secure Socket Layer)通信。                        [Value Description]: true时，按以下的设定值支持SSL通信，                                             false时，不支持。                                             默认值为false。                     ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="client-auth" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: 设定客户端的认证与否。                        [Value Description]: 设定为true时，服务器向客户端请求认证书，进行对客户端的认证。                                             设定为false时，不进行对客户端的认证过程。                                             一般来说，除了B2B之外的通常情况下不进行对客户端的认证。                                             默认值为false。                     ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="TLS" minOccurs="0" name="ssl-protocol" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: 指定加密/解密时使用的SSL协议。                        [Value Description]: 如果使用Sun JVM，就应设定TLS，                                             使用IBM JVM时，应设定SSL。                                             默认值为TLS。                     ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="cipher-suite" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: 指定SSL handshaking后实际发送数据时使用的密码suite。                        [Value Description]: 一般使用JDK提供的cipher-suite，使用没有默认提供的cipher suite时使用。                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="keystore-file" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: 指定保存着key和认证书的文件。                        [Value Description]: 绝对路径、相对路径都被允许。                                             如果使用相对路径的话，在 jeus_home/config/nodename下查找相关文件。                                             然后作为JVM因子，可以利用 jeus.ssl.keystore和 javax.net.ssl.keyStore进行设定。                                            优先顺序为webmain > jeus > javax。                                            默认值为jeus_home/config/nodename/keystore 。                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="keystore-pass" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: 打开keystore文件的密码。                        [Value Description]: 该设定作为JVM因子，可以利用 jeus.ssl.keypass和javax.net.ssl.keyStorePassword进行设定。                                             优先顺序为webmain > jeus > javax 。                                             默认值为jeuskeypass。                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="keystore-type" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: 指定keystore的类型。                        [Value Description]: 通过Sun的keytool生成keystore时，应使用JKS(Java's Key Store)，                                             通过OpenSSL或Microsoft KeyManager生成keystore时，应使用PKCS12。                                             该设定作为JVM因子，可以利用 javax.net.ssl.keyStoreType进行设定。                                             优先顺序为webmain > javax。                                             默认值为JKS。                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="key-management-algorithm" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: 设定要保存到keystore的key相关管理算法。                        [Value Description]: 使用Sun JVM时，应使用SunX509，                                            使用IBM JVM时，应使用IbmX509。                                             该设定作为JVM因子，可以利用ssl.KeyManagerFactory.algorithm进行设定。                                             优先顺序为webmain > javax。                                             默认值为SunX509。                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="truststore-file" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: 指定保存着客户端认证书的文件。                        [Value Description]: 绝对路径、相对路径都被允许。                                             如果使用相对路径的话，在jeus_home/config/nodename 下查找相关文件。                                             然后作为JVM因子，利用jeus.ssl.truststore和javax.net.ssl.trustStore进行设定。                                             优先顺序为webmain > jeus > javax 。                                             默认值为jeus_home/config/nodename/truststore 。                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="truststore-pass" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: 打开truststore文件的密码。                        [Value Description]: 该设定作为JVM因子，可以利用jeus.ssl.trustpass和javax.net.ssl.trustStorePassword进行设定。                                             优先顺序为webmain > jeus > javax。                                             默认值为jeustrustpass 。                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="truststore-type" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: 指定truststore的类型。                        [Value Description]: 若通过Sun的keytool生成keystore的话，使用JKS(Java's Key Store)，                                             通过OpenSSL或Microsoft KeyManager来生成keystore的话，应使用PKCS12。                                             该设定作为JVM因子，可以利用javax.net.ssl.trustStoreType进行设定。                                             优先顺序为webmain > javax。                                             默认值为JKS。                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="trust-management-algorithm" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]:设定要保存到truststore的trust相关的管理算法。                        [Value Description]: 使用Sun JVM时，应使用SunX509，                                             使用IBM JVM时，应使用IbmX509。                                             该设定作为JVM因子，可以利用ssl.TrustManagerFactory.algorithm进行设定。                                             优先顺序为webmain > javax 。                                             默认值为SunX509。                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>     
+    <xs:complexType name="thread-poolType">         
+        <xs:sequence>             
+            <xs:element name="min" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Pool内维持worker thread的初始数量也是最少数量。
+                        [Value Description]: thread数.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="max" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Pool内维持worker thread的最大数量。
+                        [Value Description]: thread数.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="1" minOccurs="0" name="step" type="nonNegativeIntType">                 
+                <xs:annotation>                       
+                    <xs:documentation><![CDATA[
+                        [Description]: 每增加Pool的尺寸，pool内增加的worker thread数量。
+                        [Value Description]: 添加的thread数
+                        [Value Type Description]: Integer
+                        [Example] : <step>4</step>
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="300000" minOccurs="0" name="max-idle-time" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 从Pool中去除之前，以idle状态停留的worker thread的最长时间。
+                        [Value Description]: Millisecond 值.
+                        [Value Type Description]: Long
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="4" minOccurs="0" name="max-wait-queue" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 为了处理请求而生成新的worker thread之前，该element设定要放入request wait queue队列之请求的最大数量。
+                        [Value Description]: 要放入队列之请求的最大数
+                        [Value Type Description]: Integer
+                  ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="-1" minOccurs="0" name="max-queue" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定能在队列中等待的最多请求值。该队列满后，还到达更多请求时，向客户端返还busy page。
+                                       该element不在Tmax/WebtoB listener中使用。WebtoB listener的队列尺寸，在WebtoB设定文件中构成MaxQCount值。
+                  ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="thread-state-notify" type="thread-state-notifyType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element定义被block的worker thread，设定有多少thread被block时发出通知。
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="thread-state-notifyType">         
+        <xs:sequence>             
+            <xs:element minOccurs="0" name="max-thread-active-time" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定Thread被当作block的时间值。Thread执行到规定的时间，就当作是被block。
+                        [Value Description]: 毫秒值. 设定Thread最长执行时间的大约1.5倍左右的值。
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="notify-threshold" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定警告通知通过e-mail发送到通知人之前为止存在的blocked thread的最大值。
+                        [Value Description]: Worker thread的个数.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="restart-threshold" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定Web Container restart执行之前为止存在的blocked thread的最大值。
+                        [Value Description]: Worker thread的个数.
+                        [Value Type Description]: Integer
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="notifier-id" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 所使用email通知人的ID。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="notify-subject" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定超出Notify-treshold时发送的e-mail标题。
+                        [Value Description]: 收件人(管理员)立即看出该e-mail内容的message。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="restart-subject" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定超出Restart-treshold时发送的e-mail标题。
+                        [Value Description]: 收件人(管理员)立即看出该e-mail内容的message。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>       
+    <xs:complexType name="session-configType">         
+        <xs:sequence>             
+            <xs:element default="30" minOccurs="0" name="timeout" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element决定session对象应被去除的时间。但是web.xml上设定session超时设定优先于这里设定的值。
+                        [Value Description]: 时间周期以共享session被去除的分单位表示。
+                        [Value Type Description]: Integer
+                        [Defined Value]: [-1]: 如果设定本值，就不执行session超时检查。如果web.xml上没有其他设定，session将持续维持。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="shared" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element使该Context group内所有Context的session共享状态处于激活或非激活状态。Session共享意味着一个Context生成一个HTTPSession对象时，其他Context也可以使用。(被相同用户)
+                        [Value Description]: 通过Boolean值，使该设定处于激活或非激活状态。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: 共享session
+                                                [false]: 不共享session
+                     ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="persistent" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 如果该element设为“false”(默认)，也没有构成Session Server(JEUSMain.xml的<session-cluster>element)时，session对象和Servlet Context的属性值在class发生变更reload时被删除。但是，如果将该element设为“true”，没有定义Session Server时，session对象和Servlet Context属性值除了对象或属性class被修改外，在reload时也被维持。如果定义Session Server，该element就没有用处(不影响Servlet引擎)。如果定义Session Server，session对象和Servlet Context属性不管该element值如何将持续下去。
+                        [Value Description]: 通过Boolean值，使该设定处于激活或非激活状态。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: 激活该设定
+                                                [false]: 非激活该设定
+                    ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="encodingType">         
+        <xs:sequence>             
+            <xs:element minOccurs="0" name="request-encoding" type="encodingSubType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element处理，从web browser接收之请求上适用的encoding。该encoding适用于，将HTTP byte array替换为(包括HTTP URI, query strings, cookies, post data.) Web Container内部的java.lang.String对象。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="response-encoding" type="encodingSubType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element在将PrintWriter.println()变换为byte array时使用，然后设定HTTP header“Content-type:text/html:charset=XXX”的“XXX”部分，决定Web Container的应答encoding时使用。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="postdata-encoding" type="encodingSubType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 指定通过HTTP POST method发送之数据的encoding。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="encodingSubType">         
+        <xs:sequence>             
+            <xs:element minOccurs="0" name="default" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 如果用户没有通过Servlet API设定encoding，也没有使用<forced>属性，不存在对HTTP请求header上指定的encoding时，使用该属性的encoding。
+                        [Value Description]: 标准character encoding.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="forced" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 指定该属性时，将HTTP数据转换为java.lang.String 对象时，永远使用在此设定的encoding。因此，具有最高的优先顺序。
+                        [Value Description]: 标准character encoding.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="loggingType">         
+        <xs:sequence>             
+            <xs:element minOccurs="0" name="user-log" type="user-logType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element设定编程人员使用ServletContext.log() method定义的message处理。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="access-log" type="access-logType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element设定Container的客户端请求日志的处理。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:simpleType name="targetType">         
+        <xs:restriction base="xs:string">             
+            <xs:enumeration value="stdout">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 将输出日期数据输出到标准输出stream。(普通console)
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:enumeration>             
+            <xs:enumeration value="file">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 将logging data输出到默认的error.log文件或<file-name>element上指定的文件。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:enumeration>         
+        </xs:restriction>     
+    </xs:simpleType>       
+    <xs:simpleType name="levelType">         
+        <xs:restriction base="xs:string">             
+            <xs:enumeration value="fatal">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 但是只记录最重大的message。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:enumeration>             
+            <xs:enumeration value="notice">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 次要的message附加到“fatal”message记录。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:enumeration>             
+            <xs:enumeration value="information">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 不重大的message附加到“notice”和“fatal”message记录。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:enumeration>             
+            <xs:enumeration value="debug">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 记录调试性message。(包括以前的三种message类型).用于调试目的。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:enumeration>             
+            <xs:enumeration value="test">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:
+                        [Hidden]: true
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:enumeration>         
+        </xs:restriction>     
+    </xs:simpleType>      
+    <xs:complexType name="access-logType">      
+        <xs:complexContent>       
+            <xs:extension base="system-loggingType">         
+                <xs:sequence>             
+                    <xs:element default="true" minOccurs="0" name="enable" type="xs:boolean">                 
+                        <xs:annotation>                     
+                            <xs:documentation><![CDATA[
+                        [Description]: 设定access logging功能的使用与否。
+                    ]]>
+                            </xs:documentation>                 
+                        </xs:annotation>             
+                    </xs:element>             
+                    <xs:element default="false" minOccurs="0" name="enable-analysis" type="xs:boolean">                 
+                        <xs:annotation>                     
+                            <xs:documentation><![CDATA[
+                        [Description]: 设定对access logging的分析与否。
+                    ]]>
+                            </xs:documentation>                 
+                        </xs:annotation>             
+                    </xs:element>             
+                    <xs:element minOccurs="0" name="format" type="xs:token">                 
+                        <xs:annotation>                     
+                            <xs:documentation><![CDATA[
+                        [Description]: 设定time-stamp format。该设定只在access log中使用。
+                    ]]>
+                            </xs:documentation>                 
+                        </xs:annotation>             
+                    </xs:element>         
+                </xs:sequence>       
+            </xs:extension>      
+        </xs:complexContent>     
+    </xs:complexType>      
+    <xs:complexType name="session-clusterType">         
+        <xs:sequence>             
+            <xs:element default="true" minOccurs="0" name="session-routing" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: session routing是在集群的Web Container之间管理session的记录。
+                                                这意味着将Web Container的“ID number”这一特殊信息，附件到各个session对象。
+                                                使用该ID时，web服务器向发行ID(维持Web Container或附加ID的实际HTTPSession对象)的同一个Web Container redirect(或路由)客户端请求。
+                                                从性能方面来讲该技术更加有效，但是在Web Container处理客户端请求时，也有可能发生丢失session对象数据的非正常情况，所以不能完全信赖。
+                                                为了提高可靠性，应并行使用<session-server>element上介绍的Session Server。
+                                                Session routing在WebtoB或Apache web服务器中使用。Web服务器与多个Web Container形成连接。
+                                                Apache为了使用该特征需要设定几个项目，但WebtoB不需要特殊的设定，就可以使用session routing功能。
+                        [Value Description]: 通过Boolean值，使该设定处于激活或非激活状态。
+                        [Value Type Description]: Boolean
+                        [Defined Value]: [true]: 激活集群Web Container之间的session共享。
+                                                [false]: 非激活集群Web Container之间的session共享。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="shared" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: session routing为false，使用session服务器时，所有context group及其内部的context就可以共享session。
+                                                但是，session routing为true或不使用session服务器时，context group之间不能共享session。
+                                                在这种情况下，要在context group之间共享session，就应该将该选项设定为true。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="session-server" type="session-serverType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]:为了session共享和备份功能的使用，激活和构成该element。
+                                                Session Server是为了在Context group中使用而构成，但不是在Web Container内驱动，而是在JEUS服务器中驱动。
+                                                因此，在JEUSMain.xml文件中设定Session Server。该element在那样的Session Server内只构成connection。
+                                                Session Server的使用意味着本质上所有session data保存到该Session Server内。即使Web Container遇到非正常的情况丢失数据，也能使Container恢复到正常的状况。(从Session Server读取session信息，所以在该Container中不丢失session。) 并且，在一个Web Container中生成的session对象，即使该Web Container被瘫痪(down)，也能让其他Web Container获取该session信息。为了提高可靠性，各个Web Container可以构成，在Primary Session Server被死机(down)的情况下可以使用的Backup Session Server。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="session-serverType">         
+        <xs:sequence>             
+            <xs:element name="server-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element为了在该Context group中使用Session Server，设定Session Server名称(JNDI export name)。
+                                                该export名称设定JEUSMain.xml内的<session-manager>< name>值。
+                        [Value Description]: JNDI export name是要在该Context group内使用的Primary Session Server中进行识别。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="backup-server-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: Primary Session Server出现问题时使用的Backup Session Server名称。.
+                        [Value Description]: 当作Backup Session Server使用之Session Server的JNDI export name。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="5000" minOccurs="0" name="connect-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 初次生成connection时，一个新的connection要等待与Session Server连接的最长时间。
+                  ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="20000" minOccurs="0" name="read-timeout" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 为了从Session Server读取数据而等待的最长时间。发送数据后，等待应答的最长时间等于该时间。
+                  ]]>
+                    </xs:documentation>                     
+                    <xs:appinfo>                         <metadata>                             <element-level>ADVANCED</element-level>                         </metadata>                     
+                    </xs:appinfo>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="response-headerType">         
+        <xs:sequence>             
+            <xs:element minOccurs="0" name="session-id-cookie" type="session-id-cookieType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element为了维持客户端session，构成通过Web Container发送到客户端的session id cookie的属性。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="custom-header" type="custom-headerType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该element为了包括到HTTP应答message，定义custom field。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="session-id-cookieType">         
+        <xs:sequence>             
+            <xs:element default="JSESSIONID" minOccurs="0" name="jsessionid-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: session ID名称不使用标准的“JSESSIONID”，而要使用其他名称时，使用该设定。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="0" minOccurs="0" name="version" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定cookie ID版本。
+                        [Value Description]: Either 0 or 1
+                        [Value Type Description]: Integer
+                        [Defined Value]: [0]: 默认 NS cookie类型.
+                                         [1]: RFC spec.基本cookie类型
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="domain" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定发送Session id cookie的服务器域名。 Cookie只通过该domain请求返回。
+                        [Value Description]: 一个合适的域名。由“.”开头，不能指定hostname。(根据RFC-2019 spec.)
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="/" minOccurs="0" name="path" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 一个session id cookie即将发送到的domain内设定URL路径。直到domain适合为止，cookie与其他请求一起被发送到相关URL。(参照<domain>element)例如，设为“/examples”的路径，domain设为“.foo.com”，客户端请求为"www.foo.com/examples"时，客户端的cookie与请求一起被发送。
+                        [Value Description]: domain内一个合适的URL路径/
+                        [Defined Value]: [/]: 只要适合于domain，不管请求路径一直发送cookie。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="-1" minOccurs="0" name="max-age" type="xs:int">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定Session id cookie的“expires”属性。到达该时间周期后，cookie从客户端去除，不再发送。
+                        [Value Description]: 秒单位的时间周期
+                        [Defined Value]: [-1]: 该值表示不使用cookie的“expires”属性，因此，用户session结束的同时，cookie也结束(关闭browser)。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="secure" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 设定Session id cookie的“secure”属性。
+                                                如果本element设为“true”时，session id cookie只发送到secure HTTPS connection。
+                        [Value Description]: 决定cookie是否只发送到HTTPS上的Boolean值。
+                        [Defined Value]: [true]: 只向secure HTTPS connection发送本session id cookie。
+                                                [false]: 不管connecion类型，发送session id cookie。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="custom-headerType">         
+        <xs:sequence>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="header-field" type="header-fieldType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 该Context group的所有HTTP应答内包括的field名称和值。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="header-fieldType">         
+        <xs:sequence>             
+            <xs:element name="field-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: HTTP 应答field名称.
+                        [Value Description]: field名称
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element name="field-value" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                        [Description]: 为field而使用的值
+                        [Value Description]: 值.
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType> 
+</xs:schema>

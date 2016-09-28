@@ -1,0 +1,302 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <!-- general, storage, thread_pool, cluster, backup, primary -->
+        <span jwcid="general">
+            <form jwcid="generalForm">
+                <span jwcid="engine_name"/>
+                <span jwcid="general_broker_name">
+                    <input jwcid="general_broker_nameField"/>
+                </span>
+                <span jwcid="note">
+                    <input jwcid="noteField" style="width:98%; font-size:12px;" rows="3"/>
+                </span>
+            </form>
+        </span>
+        <span jwcid="server_channel">
+            <form jwcid="server_channel_titleForm">
+            </form>
+            <table width="100%" cellpadding="0" cellspacing="0" class="table">
+                <tr>
+                    <td class="table_columns"><span jwcid="sc_name_column"/></td>
+                    <td class="table_columns"><span jwcid="server_url_column"/></td>
+                    <td class="table_columns" width="20">&nbsp;</td>
+                </tr>
+                <tr jwcid="eachServiceConfig">
+                    <td class="table_values"><a jwcid="channelLink"><span jwcid="sc_name_value"/></a></td>
+                    <td class="table_values"><span jwcid="server_url_value"/></td>
+                    <td align="center" class="table_values" wdith="20"><a jwcid="deleteServerChannelLink"><img jwcid="delete"/></a></td>
+                </tr>
+            </table>
+            <p style="text-align:right;"><a jwcid="create_server_channelLink"><img jwcid="create_server_channel" align="absmiddle"/>&nbsp;<span jwcid="create_server_channel_label"/></a></p>
+
+        </span>
+        <span jwcid="logging">
+            <form jwcid="loggingForm">
+                <span jwcid="logging_panel"/>
+            </form>
+            <form jwcid="handlerForm">
+                <span jwcid="handler_panel"/>
+            </form>
+        </span>
+        <span jwcid="access_log">
+            <form jwcid="access_logForm">
+                <span jwcid="access_log_panel"/>
+            </form>
+            <form jwcid="access_log_handlerForm">
+                <span jwcid="access_log_handler_panel"/>
+            </form>
+        </span>
+        <!--
+        <span jwcid="durable_subscriber">
+            <form jwcid="durable_subscriberForm">
+            </form>
+        </span>
+        -->
+        <span jwcid="storageBlock">
+            <form jwcid="storageForm">
+                <span jwcid="typeField"/>
+                <span jwcid="deleteInvalidDestinations">
+            		<input jwcid="deleteInvalidDestinationsField"/>
+            	</span>
+                <span jwcid="reliabilityLevel">
+                	<input jwcid="reliabilityLevelField"/>
+                </span>            	
+                <span jwcid="data_sourceFormSection"/>
+                <span jwcid="choice_data_source_and_embedded">
+                	<span jwcid="@If" condition="ognl:choiceDSAEmbedded == 'embedded'" renderTag="ognl:false">
+		                <span jwcid="embedded_path">
+		                    <input jwcid="embedded_pathField"/>
+		                </span>                                	                	
+                	</span>
+                	<span jwcid="@Else" renderTag="ognl:false">
+		                <span jwcid="data_source_name">
+		                    <input jwcid="data_source_nameField"/>
+		                </span>                
+                	</span>
+                </span>
+
+                <span jwcid="destination_table_name">
+                    <input jwcid="destination_table_nameField"/>
+                </span>
+                <span jwcid="durable_subscriber_table_name">
+                    <span jwcid="durable_subscriber_table_nameField"/>
+                </span>
+                <span jwcid="message_table_name">
+                    <input jwcid="message_table_nameField"/>
+                </span>
+                <span jwcid="user_property_table_name">
+                    <span jwcid="user_property_table_nameField"/>
+                </span>
+                <span jwcid="durable_message_table_name">
+                    <span jwcid="durable_message_table_nameField"/>
+                </span>
+                <span jwcid="xa_table_name">
+                    <span jwcid="xa_table_nameField"/>
+                </span>                
+                <span jwcid="wait_sql_executor">
+                    <span jwcid="wait_sql_executorField"/>
+                </span>
+             </form>             
+        </span>
+
+        <span jwcid="cluster">
+            <form jwcid="cluster_titleForm">
+	            <span jwcid="cluster_service">
+	                <input jwcid="cluster_serviceField"/>
+	            </span>            
+            </form>
+            <table width="100%" cellpadding="0" cellspacing="0" class="table">
+                <tr>
+                    <td class="table_columns"><span jwcid="broker_name_column"/></td>
+                    <td class="table_columns"><span jwcid="broker_id_column"/></td>
+                    <td class="table_columns"><span jwcid="ip_address_column"/></td>
+                    <td class="table_columns"><span jwcid="jms_port_column"/></td>
+                    <td class="table_columns"><span jwcid="connection_interval_column"/></td>
+                    <td class="table_columns"><span jwcid="established_column"/></td>
+                    <td class="table_columns" width="20">&nbsp;</td>
+                </tr>
+                <tr jwcid="eachJmsServer">
+                    <td class="table_values"><span jwcid="broker_name_value"/></td>
+                    <td class="table_values"><span jwcid="broker_id_value"/></td>
+                    <td class="table_values"><span jwcid="ip_address_value"/></td>
+                    <td class="table_values"><span jwcid="jms_port_value"/></td>
+                    <td class="table_values"><span jwcid="connection_interval_value"/></td>
+					<td class="table_values"><span jwcid="established_value"/></td>
+                    <td align="center" class="table_values" wdith="20"><a jwcid="deleteJmsServerLink"><img jwcid="delete1"/></a></td>
+                </tr>
+            </table>
+            <br/>
+            <form jwcid="jms_server_addForm">
+                <span jwcid="broker_name">
+                    <input jwcid="broker_nameField"/>
+                </span>
+                <span jwcid="oneport">
+                    <input jwcid="oneportField"/>
+                </span>
+                <span jwcid="broker_id">
+                    <input jwcid="broker_idField"/>
+                </span>
+                <span jwcid="ip_address">
+                    <input jwcid="ip_addressField"/>
+                </span>
+                <span jwcid="jms_port">
+                    <input jwcid="jms_portField"/>
+                </span>
+                <span jwcid="connection_interval">
+                    <input jwcid="connection_intervalField"/>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="jms_server_add" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+            <br/>
+        </span>
+
+        <span jwcid="durable_subscriber">
+            <form jwcid="durable_subscriberForm">
+            </form>
+            <table width="100%" cellpadding="0" cellspacing="0" class="table">
+                <tr>
+                    <td class="table_columns"><span jwcid="client_id_column"/></td>
+                    <td class="table_columns"><span jwcid="name_column"/></td>
+                    <td class="table_columns"><span jwcid="destination_name_column"/></td>
+                    <td class="table_columns"><span jwcid="message_selector_column"/></td>
+                    <td class="table_columns" width="20">&nbsp;</td>
+                </tr>
+                <tr jwcid="eachDurableSubscriber">
+                    <td class="table_values"><span jwcid="client_id_value"/></td>
+                    <td class="table_values"><span jwcid="name_value"/></td>
+                    <td class="table_values"><span jwcid="destination_name_value"/></td>
+                    <td class="table_values"><span jwcid="message_selector_value"/></td>
+                    <td align="center" class="table_values" wdith="20"><a jwcid="deleteDurableSubscriber"><img jwcid="delete2"/></a></td>
+                </tr>
+            </table>
+            <br/>
+            <form jwcid="durable_subscriber_addForm">
+                <span jwcid="client_id">
+                    <input jwcid="client_idField"/>
+                </span>
+                <span jwcid="subscriber_name">
+                    <input jwcid="subscriber_nameField"/>
+                </span>
+                <span jwcid="destination_name">
+                    <input jwcid="destination_nameField"/>
+                </span>
+                <span jwcid="message_selector">
+                    <input jwcid="message_selectorField"/>
+                </span>
+                <div class="form_button_layer">
+                    <input jwcid="durable_subscriber_add" class="form_button" style="width:100px;"/>
+                </div>
+            </form>
+            <br/>
+        </span>
+
+        <span jwcid="thread_pool">
+            <form jwcid="thread_poolForm">
+                <span jwcid="max">
+                    <input jwcid="maxField"/>
+                </span>
+                <span jwcid="min">
+                    <input jwcid="minField"/>
+                </span>
+                <span jwcid="keep_alive_time">
+                    <input jwcid="keep_alive_timeField"/>
+                </span>
+            </form>
+        </span>
+    </span>
+
+    <span jwcid="queue_cluster">
+        <form jwcid="queue_clusterForm">
+        </form>
+        <table width="100%" cellpadding="0" cellspacing="0" class="table">
+            <tr>
+                <td class="table_columns"><span jwcid="queue_cluster_name_column"/></td>
+                <td class="table_columns"><span jwcid="cluster_distribute_column"/></td>
+<!--
+                현재 구현에서 사용하지 않으므로 웹관리자에서 옵션을 제공할 필요가 없다. ( by anvatar, 2007. 5. 7)
+                <td class="table_columns"><span jwcid="local_preference_column"/></td>
+-->
+                <td class="table_columns"><span jwcid="queue_target_column"/></td>
+                <td class="table_columns" width="20">&nbsp;</td>
+            </tr>
+            <tr jwcid="eachQueueCluster">
+                <td class="table_values"><span jwcid="queue_cluster_name_value"/></td>
+                <td class="table_values"><span jwcid="cluster_distribute_value"/></td>
+                <!--
+                현재 구현에서 사용하지 않으므로 웹관리자에서 옵션을 제공할 필요가 없다. ( by anvatar, 2007. 5. 7)
+                <td class="table_values"><span jwcid="local_preference_value"/></td>
+-->
+                <td class="table_values"><span jwcid="queue_target_value"/></td>
+                <td align="center" class="table_values" wdith="20"><a jwcid="deleteQueueCluster"><img jwcid="delete3"/></a></td>
+            </tr>
+        </table>
+        <br/>
+        <form jwcid="queue_cluster_addForm">
+            <span jwcid="queue_cluster_name">
+                <input jwcid="queue_cluster_nameField"/>
+            </span>
+            <span jwcid="cluster_distribute">
+                <input jwcid="cluster_distributeField"/>
+            </span>
+                <!--
+                현재 구현에서 사용하지 않으므로 웹관리자에서 옵션을 제공할 필요가 없다. ( by anvatar, 2007. 5. 7)            
+            <span jwcid="local_preference">
+                <input jwcid="local_preferenceField"/>
+            </span>
+-->            
+            <span jwcid="queue_target">
+                <input jwcid="queue_targetField"/>
+            </span>
+            <div class="form_button_layer">
+                <input jwcid="queue_cluster_add" class="form_button" style="width:100px;"/>
+            </div>
+        </form>
+        <br/>
+    </span>
+
+    <span jwcid="topic_cluster">
+        <form jwcid="topic_clusterForm">
+        </form>
+        <table width="100%" cellpadding="0" cellspacing="0" class="table">
+            <tr>
+                <td class="table_columns"><span jwcid="topic_cluster_name_column"/></td>
+                <!--
+                현재 구현에서 사용하지 않으므로 웹관리자에서 옵션을 제공할 필요가 없다. ( by anvatar, 2007. 5. 7)
+                <td class="table_columns"><span jwcid="relay_type_column"/></td>
+-->
+                <td class="table_columns"><span jwcid="topic_target_column"/></td>
+                <td class="table_columns" width="20">&nbsp;</td>
+            </tr>
+            <tr jwcid="eachTopicCluster">
+                <td class="table_values"><span jwcid="topic_cluster_name_value"/></td>
+                <!--
+                현재 구현에서 사용하지 않으므로 웹관리자에서 옵션을 제공할 필요가 없다. ( by anvatar, 2007. 5. 7)
+                <td class="table_values"><span jwcid="relay_type_value"/></td>
+-->
+                <td class="table_values"><span jwcid="topic_target_value"/></td>
+                <td align="center" class="table_values" wdith="20"><a jwcid="deleteTopicCluster"><img jwcid="delete4"/></a></td>
+            </tr>
+        </table>
+        <br/>
+        <form jwcid="topic_cluster_addForm">
+            <span jwcid="topic_cluster_name">
+                <input jwcid="topic_cluster_nameField"/>
+            </span>
+                <!--
+                현재 구현에서 사용하지 않으므로 웹관리자에서 옵션을 제공할 필요가 없다. ( by anvatar, 2007. 5. 7)
+            <span jwcid="relay_type">
+                <input jwcid="relay_typeField"/>
+            </span>
+-->
+            <span jwcid="topic_target">
+                <input jwcid="topic_targetField"/>
+            </span>
+            <div class="form_button_layer">
+                <input jwcid="topic_cluster_add" class="form_button" style="width:100px;"/>
+            </div>
+        </form>
+        <br/>
+    </span>
+</html>

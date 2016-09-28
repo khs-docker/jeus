@@ -1,0 +1,27 @@
+<span jwcid="$content$">
+    <table jwcid="wrapper" style="border-collapse: collapse; width: 100%; border: 0px;">
+        <tr style="border: 0px;">
+            <td style="border: 0px; width: 100%;">
+                <span jwcid="message"/>
+                <span jwcid="condLeft">
+                    &nbsp;<span jwcid="@RenderBlock" block="component:buttonBlock"/>
+                </span>
+            </td>
+        </tr>
+        <tr jwcid="condDetailMessage" style="border: 0px;">
+            <td jwcid="detailWrapper" style="border: 0px;">
+                <span jwcid="condBottom">
+                    <div style="text-align:right;">
+                        <span jwcid="@RenderBlock" block="component:buttonBlock"/>
+                    </div>
+                </span>
+                <textarea jwcid="detail" style="display:none;overflow:scroll;width: 100%;" wrap="off">
+                    <span jwcid="detailMessage"/>
+                </textarea>
+            </td>
+        </tr>
+     </table>
+     <span jwcid="buttonBlock@Block">
+        <input jwcid="button" style="width:100px;"/>
+     </span>
+</span>

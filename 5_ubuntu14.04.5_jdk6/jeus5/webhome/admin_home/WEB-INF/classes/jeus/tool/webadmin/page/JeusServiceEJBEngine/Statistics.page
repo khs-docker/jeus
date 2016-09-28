@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN" 
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification class="jeus.tool.webadmin.page.JeusServiceEJBEngine.StatisticsPage">
+	<inject property="webadminVisit" type="state" object="visit"/>
+    <meta key="alternative.page.name">JeusServiceEJBEngine_Configuration</meta>
+
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:EJBEngine Control"/>
+    </component>
+
+    <component id="tabPanel" type="jeus:TabPanel">
+        <binding name="pageNames" value="@jeus.tool.webadmin.page.PageNames@getJEUSSERVICE_EJBENGINE_NAMES(objectName)"/>
+    </component>
+
+    <component id="statisticsForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:ejm.statistics.title"/>
+        <binding name="useDefaultButtons" value="false"/>
+    </component>
+
+    <component id="statisticsTable" type="jeus:JEUSTable">
+        <binding name="source" value="statsList"/>
+        <binding name="columns" value="literal:ejm.statistics.application_name.label:applicationName, ejm_statistics_module_name_label:moduleName, ejm_statistics_bean_name_label:beanName, ejm.statistics.create.label:createCount, ejm.statistics.remove.label:removeCount, ejm.statistics.request.label:requestCount, ejm.statistics.committed.label:committedCount, ejm.statistics.rolledback.label:rolledbackCount"/>
+        <binding name="row" value="currentStats"/>
+        <binding name="currentPageClass" value="literal:table_current_page"/>
+        <binding name="columnsClass" value="literal:table_columns"/>
+        <binding name="valuesClass" value="literal:table_values"/>
+        <binding name="pagesLinkClass" value="literal:table_pages_link"/>
+        <binding name="tableClass" value="literal:table"/>
+    </component>
+
+    <component id="moduleLink2" type="ExternalLink">
+        <binding name="page" value="literal:EJBModule_Configuration"/>
+        <binding name="parameters" value="currentStats.moduleObjectName.canonicalName"/>
+    </component>
+
+    <component id="moduleName2" type="Insert">
+        <binding name="value" value="currentStats.moduleName"/>
+    </component>
+
+    <component id="beanLink" type="ExternalLink">
+        <binding name="page" value="literal:EJB_Statistics"/>
+        <binding name="parameters" value="currentStats.beanObjectName.canonicalName"/>
+    </component>
+
+    <component id="beanName" type="Insert">
+        <binding name="value" value="currentStats.beanName"/>
+    </component>
+
+    <component id="refreshButton" type="Any">
+        <binding name="element" value="literal:input"/>
+        <binding name="value" value="message:common.label.refresh"/>
+    </component>
+
+    <component id="condHasEJBModules" type="If">
+        <binding name="condition" value="statsList != null and statsList.size() &gt; 0"/>
+    </component>
+    <component id="condHasNoEJBModules" type="If">
+        <binding name="condition" value="statsList == null or statsList.empty"/>
+    </component>
+    <component id="no_modules" type="Insert">
+        <binding name="value" value="message:ejm.statistics.no_modules.label"/>
+    </component>
+
+    <property name="currentView"/>
+    <property name="currentStats"/>
+</page-specification>

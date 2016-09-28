@@ -1,0 +1,77 @@
+<html jwcid="mainBorder" >
+    <span jwcid="tabPanel">
+        <span jwcid="general">
+            <form jwcid="generalForm">
+                <span jwcid="name"/>
+                <span jwcid="general_blind">
+                    <span jwcid="redirect_stdout">
+                        <input jwcid="redirect_stdoutField"/>
+                    </span>
+                    <span jwcid="redirect_stderr">
+                        <input jwcid="redirect_stderrField"/>
+                    </span>
+
+                    <span jwcid="shutdown_timeout">
+                        <input jwcid="shutdown_timeoutField"/>
+                    </span>
+
+                    <!--
+                    <span jwcid="security_switch">
+                        <input jwcid="security_switchField"/>
+                    </span>
+                     -->
+
+                    <span jwcid="properties">
+                        <input jwcid="propertiesField" style="width:98%;" rows="5"/>
+                    </span>
+                    <span jwcid="note">
+                        <input jwcid="noteField" style="width:98%; font-size:12px;" rows="3"/>
+                    </span>
+                </span>
+            </form>
+        </span>
+        <span jwcid="error_log">
+            <form jwcid="error_logForm">
+                <span jwcid="error_log_logging_panel"/>
+            </form>
+            <form jwcid="error_log_handlerForm">
+                <span jwcid="error_log_handler_panel"/>
+            </form>
+        </span>
+        <span jwcid="access_log">
+            <form jwcid="access_logForm">
+                <span jwcid="enable_access_log">
+                    <input jwcid="enable_access_logField"/>
+                </span>
+                <span jwcid="access_log_format">
+                    <input jwcid="access_log_formatField" style="width:98%;"/>
+                </span>
+                <span jwcid="access_log_logging_panel"/>
+            </form>
+            <form jwcid="access_log_handlerForm">
+                <span jwcid="access_log_handler_panel"/>
+            </form>
+        </span>
+        <span jwcid="user_log">
+            <form jwcid="user_logForm">
+                <span jwcid="user_log_logging_panel"/>
+            </form>
+            <form jwcid="user_log_handlerForm">
+                <span jwcid="user_log_handler_panel"/>
+            </form>
+        </span>
+        <span jwcid="monitoring">
+            <form jwcid="monitoringForm">
+                <span jwcid="check_thread_pool">
+                    <input jwcid="check_thread_poolField"/>
+                </span>
+                <span jwcid="check_class_reload">
+                    <input jwcid="check_class_reloadField"/>
+                </span>
+                <span jwcid="check_session">
+                    <input jwcid="check_sessionField"/>
+                </span>
+            </form>
+        </span>
+    </span>
+</html>

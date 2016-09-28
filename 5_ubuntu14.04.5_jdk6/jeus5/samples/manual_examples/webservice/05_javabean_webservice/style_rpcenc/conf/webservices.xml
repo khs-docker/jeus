@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<webservices version="1.1" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <webservice-description>
+        <webservice-description-name>RpcEncEchoService</webservice-description-name>
+        <wsdl-file>WEB-INF/wsdl/RpcEncEchoService.wsdl</wsdl-file>
+        <jaxrpc-mapping-file>WEB-INF/RpcEncEchoService-mapping.xml</jaxrpc-mapping-file>
+        <port-component>
+            <port-component-name>EchoPort</port-component-name>
+            <wsdl-port xmlns:ns2="urn:RpcEncService">ns2:EchoPort</wsdl-port>
+            <service-endpoint-interface>jeustest.webservices.java2wsdl.rpcenc.Echo</service-endpoint-interface>
+            <service-impl-bean>
+                <servlet-link>EchoServlet</servlet-link>
+            </service-impl-bean>
+        </port-component>
+    </webservice-description>
+</webservices>
+

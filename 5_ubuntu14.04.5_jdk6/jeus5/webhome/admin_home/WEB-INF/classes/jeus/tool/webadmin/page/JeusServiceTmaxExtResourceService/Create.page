@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC "-//Apache Software Foundation//Tapestry Specification 4.0//EN" "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+<page-specification class="jeus.tool.webadmin.page.JeusServiceTmaxExtResourceService.CreatePage">
+
+	<inject property="visit" type="state" object="visit"/>
+	
+    <component id="mainBorder" type="jeus:MainBorder">
+        <binding name="title" value="literal:Create New WebtDataSource"/>
+        
+    </component>
+
+    <component id="wizTabPanel" type="jeus:WizardTabPanel">
+        <binding name="tabNames" value="ognl:new java.lang.String[]{'general', 'pool', 'logging', 'miscellaneous', 'create'}"/>
+    </component>
+
+    <component id="general" type="Block"/>
+    <component id="pool" type="Block"/>
+    <component id="logging" type="Block"/>
+    <component id="miscellaneous" type="Block"/>
+    <component id="create" type="Block"/>
+
+    <component id="generalForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:webtc.general.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="export_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.export_nameField"/>
+    </component>
+
+    <component id="export_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="webt"/>
+        <binding name="elementName" value="literal:exportName"/>
+		<binding name="translator" value="bean:exportNameTranslator"/>        
+        <binding name="validators" value="validators:required,$exportNameValidator"/>
+    </component>
+
+    <component id="host_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.host_nameField"/>
+
+    </component>
+
+    <component id="host_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:webt"/>
+        <binding name="elementName" value="literal:hostName"/>
+        <binding name="validators" value="validators:required"/>
+    </component>
+
+    <component id="port" type="jeus:Field">
+        <binding name="field" value="ognl:components.portField"/>
+
+    </component>
+
+    <component id="portField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:webt"/>
+        <binding name="elementName" value="literal:port"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:required,min=1"/>
+    </component>
+
+    <component id="general_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+    <component id="backup_host_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.backup_host_nameField"/>
+    </component>
+
+    <component id="backup_host_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:webt"/>
+        <binding name="elementName" value="literal:backupHostName"/>
+    </component>
+
+    <component id="backup_port" type="jeus:Field">
+        <binding name="field" value="ognl:components.backup_portField"/>
+    </component>
+
+    <component id="backup_portField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:webt"/>
+        <binding name="elementName" value="literal:backupPort"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="fdl_file" type="jeus:Field">
+        <binding name="field" value="ognl:components.fdl_fileField"/>
+    </component>
+
+    <component id="fdl_fileField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:webt"/>
+        <binding name="elementName" value="literal:fdlFile"/>
+    </component>
+
+   <component id="default_charset" type="jeus:Field">
+        <binding name="field" value="ognl:components.default_charsetField"/>
+    </component>
+
+    <component id="default_charsetField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:webt"/>
+        <binding name="elementName" value="literal:defaultCharset"/>
+    </component>
+
+    <component id="header_type" type="jeus:Field">
+        <binding name="field" value="ognl:components.header_typeField"/>
+    </component>
+
+    <component id="header_typeField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="ognl:webt"/>
+        <binding name="elementName" value="literal:headerType"/>
+        <binding name="model" value="ognl:@jeus.tool.webadmin.page.EnumerationSet@getPropertySelectionModel(webt.headerTypeEnumeration)"/>
+    </component>
+
+    <component id="support_xa" type="jeus:Field">
+        <binding name="field" value="ognl:components.support_xaField"/>
+    </component>
+
+    <component id="support_xaField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:webt"/>
+        <binding name="elementName" value="literal:supportXa"/>
+    </component>
+
+    <component id="fair_provision" type="jeus:Field">
+        <binding name="field" value="ognl:components.fair_provisionField"/>
+    </component>
+
+    <component id="fair_provisionField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:webt"/>
+        <binding name="elementName" value="literal:fairProvision"/>
+    </component>
+
+    <component id="check_acquired" type="jeus:Field">
+        <binding name="field" value="ognl:components.check_acquiredField"/>
+    </component>
+
+    <component id="check_acquiredField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:webt"/>
+        <binding name="elementName" value="literal:checkAcquired"/>
+    </component>
+
+    <component id="service_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.service_timeoutField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="service_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:webt"/>
+        <binding name="elementName" value="literal:serviceTimeout"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="transaction_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.transaction_timeoutField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="transaction_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:webt"/>
+        <binding name="elementName" value="literal:transactionTimeout"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="transaction_block_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.transaction_block_timeoutField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="transaction_block_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:webt"/>
+        <binding name="elementName" value="literal:transactionBlockTimeout"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="connect_timeout" type="jeus:Field">
+        <binding name="field" value="ognl:components.connect_timeoutField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="connect_timeoutField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:webt"/>
+        <binding name="elementName" value="literal:connectTimeout"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="properties" type="jeus:Field">
+        <binding name="field" value="ognl:components.propertiesField"/>
+    </component>
+
+    <component id="propertiesField" type="jeus:JAXBTextArea">
+        <binding name="parentElement" value="ognl:webt"/>
+        <binding name="elementName" value="literal:tmaxProperty"/>
+        <binding name="translator" value="ognl:beans.tmaxPropertyTranslator"/>
+    </component>
+
+    <component id="generalNext" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="ognl:listeners.onGeneralNext"/>
+    </component>
+
+    <component id="poolForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:webtc.pool.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="min" type="jeus:Field">
+        <binding name="field" value="ognl:components.minField"/>
+    </component>
+
+    <component id="minField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:pooling"/>
+        <binding name="elementName" value="literal:min"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="max" type="jeus:Field">
+        <binding name="field" value="ognl:components.maxField"/>
+    </component>
+
+    <component id="maxField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="pooling"/>
+        <binding name="elementName" value="literal:max"/>
+        <binding name="validators" value="validators:$maxValidator"/>
+    </component>
+
+    <component id="step" type="jeus:Field">
+        <binding name="field" value="ognl:components.stepField"/>
+    </component>
+
+    <component id="stepField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:pooling"/>
+        <binding name="elementName" value="literal:step"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="period" type="jeus:Field">
+        <binding name="field" value="ognl:components.periodField"/>
+        <binding name="unit" value="message:common.unit.msec"/>
+    </component>
+
+    <component id="periodField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:pooling"/>
+        <binding name="elementName" value="literal:period"/>
+        <binding name="translator" value="translator:number2,valueType=Long"/>
+        <binding name="validators" value="validators:min=1"/>
+    </component>
+
+    <component id="pool_blind" type="jeus:Blind">
+        <binding name="title" value="message:common.label.advanced"/>
+    </component>
+
+   <component id="poolPrevious" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="ognl:listeners.onPoolPrevious"/>
+    </component>
+
+    <component id="poolNext" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="ognl:listeners.onPoolNext"/>
+    </component>
+
+    <component id="loggingForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:webtc.logging.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="loggingPrevious" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="ognl:listeners.onLoggingPrevious"/>
+    </component>
+
+    <component id="loggingNext" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="ognl:listeners.onLoggingNext"/>
+    </component>
+
+    <component id="file_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.file_nameField"/>
+    </component>
+
+    <component id="file_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:logging"/>
+        <binding name="elementName" value="literal:fileName"/>
+    </component>
+
+    <component id="level" type="jeus:Field">
+        <binding name="field" value="ognl:components.levelField"/>
+    </component>
+
+    <component id="levelField" type="jeus:JAXBPropertySelection">
+        <binding name="parentElement" value="ognl:logging"/>
+        <binding name="elementName" value="literal:level"/>
+        <binding name="model" value="ognl:@jeus.tool.webadmin.page.EnumerationSet@getPropertySelectionModel(logging.levelEnumeration)"/>
+    </component>
+
+    <component id="valid_day" type="jeus:Field">
+        <binding name="field" value="ognl:components.valid_dayField"/>
+    </component>
+
+    <component id="valid_dayField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:logging"/>
+        <binding name="elementName" value="literal:validDay"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=-1"/>
+    </component>
+
+    <component id="buffer_size" type="jeus:Field">
+        <binding name="field" value="ognl:components.buffer_sizeField"/>
+    </component>
+
+    <component id="buffer_sizeField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:logging"/>
+        <binding name="elementName" value="literal:bufferSize"/>
+        <binding name="translator" value="translator:number2"/>
+        <binding name="validators" value="validators:min=0"/>
+    </component>
+
+    <component id="miscellaneousForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:webtc.miscellaneous.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="securitySection" type="jeus:FormSection">
+        <binding name="title" value="message:webtc.miscellaneous.security.title"/>
+    </component>
+
+    <component id="encryption" type="jeus:Field">
+        <binding name="field" value="ognl:components.encryptionField"/>
+    </component>
+
+    <component id="encryptionField" type="jeus:DojoJAXBCheckbox">
+        <binding name="parentElement" value="ognl:security"/>
+        <binding name="elementName" value="literal:encryption"/>
+    </component>
+
+    <component id="user_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.user_nameField"/>
+    </component>
+
+    <component id="user_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:security"/>
+        <binding name="elementName" value="literal:userName"/>
+    </component>
+
+    <component id="user_password" type="jeus:Field">
+        <binding name="field" value="ognl:components.user_passwordField"/>
+    </component>
+
+    <component id="user_passwordField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:security"/>
+        <binding name="elementName" value="literal:userPassword"/>
+    </component>
+
+    <component id="domain_name" type="jeus:Field">
+        <binding name="field" value="ognl:components.domain_nameField"/>
+    </component>
+
+    <component id="domain_nameField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:security"/>
+        <binding name="elementName" value="literal:domainName"/>
+    </component>
+
+    <component id="domain_password" type="jeus:Field">
+        <binding name="field" value="ognl:components.domain_passwordField"/>
+    </component>
+
+    <component id="domain_passwordField" type="jeus:JAXBTextField">
+        <binding name="parentElement" value="ognl:security"/>
+        <binding name="elementName" value="literal:domainPassword"/>
+    </component>
+
+    <component id="miscellaneousPrevious" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="ognl:listeners.onMiscellaneousPrevious"/>
+    </component>
+
+    <component id="miscellaneousNext" type="Submit">
+        <binding name="value" value="message:common.label.next"/>
+        <binding name="listener" value="ognl:listeners.onMiscellaneousNext"/>
+    </component>
+
+    <component id="createForm" type="jeus:JEUSForm">
+        <binding name="title" value="message:webtc.create.title"/>
+        <binding name="useDefaultButtons" value="ognl:false"/>
+    </component>
+
+    <component id="condBooted" type="If">
+        <binding name="condition" value="ognl:@jeus.tool.webadmin.util.NodeUtils@isBooted(visit)"/>
+    </component>
+
+    <component id="bind_now" type="jeus:Field">
+        <binding name="label" value="message:webtc.create.bind_now.label"/>
+        <binding name="field" value="ognl:components.bind_nowField"/>
+    </component>
+
+    <component id="bind_nowField" type="jeus:DojoCheckbox">
+        <binding name="value" value="ognl:bindNow"/>
+    </component>
+
+    <component id="createPrevious" type="Submit">
+        <binding name="value" value="message:common.label.previous"/>
+        <binding name="listener" value="ognl:listeners.onCreatePrevious"/>
+    </component>
+
+    <component id="createOk" type="Submit">
+        <binding name="value" value="message:common.label.create"/>
+        <binding name="listener" value="ognl:listeners.onCreateOk"/>
+        <binding name="onclick" value="literal:progress_bar();"/>
+    </component>
+
+    <bean name="exportNameValidator" class="jeus.tool.webadmin.page.JeusServiceTmaxExtResourceService.ExportNameValidator">
+        <set name="jeusSystem" value="jeusSystem"/>
+    </bean>
+
+	<bean name="exportNameTranslator" class="jeus.tool.webadmin.translator.DefaultStringTranslator">
+		<set name="default" value="beans.exportNameValidator.generateName()"/>
+	</bean>    
+
+    <bean name="maxValidator" class="jeus.tool.webadmin.validator.FieldMinMaxValidator">
+        <set name="minField" value="component:minField"/>
+        <set name="min" value="1"/>
+    </bean>
+    
+    <bean name="tmaxPropertyTranslator" class="jeus.tool.webadmin.component.translator.TmaxPropertyTranslator"/>
+
+    <property name="webt" persist="session"/>
+    <property name="tmaxCluster" persist="session"/>
+    <property name="bindNow" initial-value="false"/>
+</page-specification>

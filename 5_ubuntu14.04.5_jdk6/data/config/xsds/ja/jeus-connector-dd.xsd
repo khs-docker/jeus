@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="Shift-JIS"?>
+<xs:schema 
+    attributeFormDefault="unqualified" 
+    elementFormDefault="qualified" 
+    targetNamespace="http://www.tmaxsoft.com/xml/ns/jeus" version="5.0" 
+    xmlns="http://www.tmaxsoft.com/xml/ns/jeus" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">      
+    <xs:include schemaLocation="jeus-common.xsd"/>      
+    <xs:element name="jeus-connector-dd" type="jeus-connector-ddType">         
+        <xs:annotation>             
+            <xs:documentation><![CDATA[
+            [Description]: 単一JEUSコネクタモジュールの最上位element。それぞれの jeus-connector-dd.xmlファイルにはこのタッグが必ず存在します。
+		    ]]>
+            </xs:documentation>         
+        </xs:annotation>     
+    </xs:element>      
+    <xs:complexType name="jeus-connector-ddType">         
+        <xs:sequence>             
+            <xs:element minOccurs="1" name="module-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: コネクタモジュールの名前です。アプリケーション内のモジュールの場合はアプリケーション内でユニークであり、サーバモジュールの場合はJEUS システム内でユニークである必要があります。Message Driven Beanでinflowターゲットを指定するために使用されます。
+                    [Example]: &lt;module-name>whitebox-xa&lt;/module-name>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="use-workmanager" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Work Managerを使用するかを設定します。Trueの場合、リソースアダプタがスタートされる前に設定によって初期化されます。
+                    [Example]: &lt;use-workmanager>true&lt;/use-workmanager>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="worker-pool" type="worker-poolType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Work Manager関連の設定を行います。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="connection-pool" type="connection-poolType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Connection Poolに対する設定を行います。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="worker-poolType">         
+        <xs:sequence>             
+            <xs:element default="3" minOccurs="0" name="min" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Work Managerが管理するスレッドの数の最初値です。 
+                    この設定値より少ないスレッドが存在する場合にWork Managerはユーザの要求によって直ちにスレッドを増やします。
+                    この設定値より多いスレッドが存在する場合、一定時間の間、使用されないスレッドを減らし始め、min数のスレッドを維持ます。
+                    [Example]: &lt;min>3&lt;/min>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="10" minOccurs="0" name="max" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Work Managerが管理するスレッドの数の最大値です。スレッドの数はこの値を超えることはできません。
+                    [Example]: &lt;max>10&lt;/max>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="1" minOccurs="0" name="step" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: スレッドの数が増加する必要がある場合に一度に増加されるスレッドの数です。総スレッド数は上記で設定されたmax値を超えることはできません。
+                    [Example]: &lt;max>1&lt;/max>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="true" minOccurs="0" name="pre-allocation" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Work Managerが初期化されるときにmin値に設定された数だけのスレッドをすでに作っておきます。
+                    [Example]: &lt;pre-allocation>true&lt;/pre-allocation>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>              
+            <xs:element default="5000" minOccurs="0" name="submit-timeout" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: クライアントのリクエストに対して指定された時間の間作業ができない場合、作業は拒否されます。
+                    ユーザは、サービスのリクエストによってexceptionを取得したり、eventを取得します。
+                    [Value Description]: 時間値のmsec単位。0 に設定する場合、作業が始まるまで待機状態となります。
+                    [Example]: &lt;submit-timeout>5000&lt;/submit-timeout>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="60000" minOccurs="0" name="release-timeout" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: 作用が始まり、この時間が過ぎてからも作業が中止されなかったら、Work Managerは該当作業に対してrelease()メソッドを呼び出します。
+                    [Value Description]: 時間値のmsec単位。0に設定する場合、release()メソッドは呼び出されません。
+                    [Example]: &lt;release-timeout>60000&lt;/release-timeout>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="-1" minOccurs="0" name="shutdown-timeout" type="xs:long">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Work Managerが終了される瞬間進行中の作業がある場合、最大ここに設定されている時間だけ間待機します。
+                    [Value Description]: 時間値のmsec単位。0であれば待機せず、 -1 で設定する場合は作業が終了するまで待機します。作業中のスレッドは妨害されます。
+                    [Example]: &lt;shutdown-timeout>-1&lt;/shutdown-timeout>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="600000" minOccurs="0" name="pooled-timeout" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Work Managerにmin値を超過する数のスレッドがある場合、設定された時間の間使用されないスレッドをpoolから除去します。
+                    [Value Description]: 時間値のmsec単位。0であれば除去しません。
+                    [Example]: &lt;pooled-timeout>600000&lt;/pooled-timeout>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="connection-poolType">         
+        <xs:sequence>             
+            <xs:element minOccurs="0" name="export-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: 該当connection poolがJNDI Naming Systemにバインディングされる名前です。
+                    [Value Description]: 任意に指定でき、該当のモジュールの中でユニークな名前である必要があります。
+                    [Example]: &lt;export-name>datasource1&lt;/export-name>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="log-file" type="log-fileType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                    [Description]: 該当connection poolのmanaged connection factory が使用するログファイルに対する設定を指定します。                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="transaction-support" type="transaction-supportType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: 該当connection poolがサポートするトランザクションのタイプを設定します。ここで、設定された値は、ra.xmlに設定された値より優先されます。                    [Value Description]: NoTransaction, LocalTransaction, XATransaction, XATransactionOnlyの中で1つを設定します。
+                    [Example]: &lt;transaction-support>XATransaction&lt;/transaction-support>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="user" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: セキュリティをコンテナーで管理する場合、connection を生成するためにしようするユーザの名前です。
+                    [Example]: &lt;user>scott&lt;/user>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="password" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: セキュリティをコンテナーで管理する場合、connection を生成するために使用するパスワードです。
+                    [Example]: &lt;password>tiger&lt;/password>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="true" minOccurs="0" name="use-wrapper" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: 付加的な機能のためにconnection wrapperを利用します。詳しい内容はマニュアルを参照してください。
+                    [Example]: &lt;use-wrapper>true&lt;/use-wrapper>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="0" minOccurs="0" name="dissociation-timeout" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: dissociationを適用する時間値を設定します。該当リソースアダプタでこの機能をサポートしない場合は無視されます。 
+                    [Value Description]: 時間値のmsec単位。0であればdissociationを使用しません。
+                    [Example]: &lt;dissociation-timeout>0&lt;/dissociation-timeout>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="0" minOccurs="0" name="invalidation-timeout" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: invalidationを適用する時間値を設定します。この時間が過ぎてもconnnection poolに戻らないconnectionは強制に除去されます。
+                    [Value Description]: 時間値のmsec単位。0であればinvalidationを使用しません。
+                    [Example]: &lt;invalidation-timeout>0&lt;/invalidation-timeout>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="0" minOccurs="0" name="validation-timeout" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: リソースアダプタがConnection Poolにあるコネクションを検証する時間単位を設定します。リソースアダプタのManagedConnectionFactoryがValidatingManagedConnectionFactoryインタフェースを実現した場合、この時間単位でInvalid ConnectionはConnection Poolから除去されます。
+                    [Value Description]: 時間値msec単位。0であればvalidationは無効になる
+                    [Example]: <validation-timeout>0</validation-timeout>
+                    
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="false" minOccurs="0" name="skip-connection-matching" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: connectionの認証のためのconnection matchingの過程の省略します。 
+                    [Example]: &lt;skip-connection-matching>false&lt;/skip-connection-matching>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="pool-management" type="pool-managementType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: connection poolに関連された値を設定します。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="property" type="connectorPropertyType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: ManagedConnectionFactoryに適用するpropertyを追加します。ra.xmlに設定された値より優先されます。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="log-fileType">         
+        <xs:sequence>             
+            <xs:element name="file-name" type="xs:token">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: connection poolが使用するログファイル名を設定します。                        [Example]: <file-name>C:\logs\mylog.log</file-name>                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="512" minOccurs="0" name="buffer-size" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                        [Description]: connection poolがログファイルに出力する時に使用するバッファサイズを指定します。                        [Value Description]: byte単位です。                        [Performance Recommandation]: この値が大きいほどメッセージはファイルに遅れて出力されるが、ロギングの性能はよくなります。                        [Example]: <buffer-size>512</buffer-size>                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="valid-day" type="off-intType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[                      
+                    [Description]: 日付単位でログファイルを変更する時に使用します。1以上の値を指定すると、ログファイル名の後ろにファイルが使用された日付が自動に入力されます。                      
+                    [Value Description]: 日（day）                      
+                    [Example]: <valid-day>1</valid-day>                    
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:simpleType name="transaction-supportType">         
+        <xs:restriction base="xs:string">             
+            <xs:enumeration value="NoTransaction"/>             
+            <xs:enumeration value="LocalTransaction"/>             
+            <xs:enumeration value="XATransaction"/>             
+            <xs:enumeration value="XATransactionOnly"/>         
+        </xs:restriction>     
+    </xs:simpleType>      
+    <xs:complexType name="pool-managementType">         
+        <xs:sequence>             
+            <xs:element default="0" minOccurs="0" name="min" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Connection poolによって管理されるConnectionの数の最初値です。 
+                    この設定値より少ないconnectionが存在する場合、ユーザのリクエストによって直ちに新しいconnectionを生成します。
+                    これより多いconnectionが存在する場合、一定時間の間使用されないconnectionをpoolから除去します。
+                    [Example]: &lt;min>0&lt;/min>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="20" minOccurs="0" name="max" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Connection poolによって管理されるConnectionの数の最大値です。
+                    [Example]: &lt;max>20&lt;/max>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="600000" minOccurs="0" name="pooled-timeout" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Connection poolにmin値より多いConnectionがある場合、設定された時間の間使用されないConnectionをpoolから除去します。
+                    [Value Description]: 時間値のmsec単位。0に設定するとconnection は除去されません。
+                    [Example]: &lt;pooled-timeout>600000&lt;/pooled-timeout>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="wait-connection" type="wait-connectionType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Connection PoolからConnectionを取得するために待つ必要がある場合、これに対する設定です。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element minOccurs="0" name="disposable-connection" type="disposable-connectionType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Connectionを取得出来なかった場合、臨時のonnection を利用するかに対する設定です。
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="wait-connectionType">         
+        <xs:sequence>             
+            <xs:element default="true" minOccurs="0" name="wait-connection" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Connectionを取得するために待つかを設定します。 
+                    [Example]: &lt;wait-connection>true&lt;/wait-connection>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="5" minOccurs="0" name="max-waiter-count" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Connectionを取得するために待つクライアントの最大数です。これより多い場合は直ちに失敗したことに見なされます。
+                    [Example]: &lt;max-waiter-count>5&lt;/max-waiter-count>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="5" minOccurs="0" name="max-wait-trial" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: この数だけconnection matchingを失敗したなら、Connectionを取得するのに失敗したことに見なされます。
+                    [Example]: &lt;max-waiter-trial>5&lt;/max-waiter-trial>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="10000" minOccurs="0" name="wait-timeout" type="nonNegativeLongType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: この時間の間待ってもConnectionを取得出来なかった場合にはConnectionを取得するのに失敗したことに見なされます。
+                    [Example]: &lt;wait-timeout>10000&lt;/wait-timeout>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="disposable-connectionType">         
+        <xs:sequence>             
+            <xs:element default="true" minOccurs="0" name="allow-disposable-connection" type="xs:boolean">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: Connectionを取得出来なかった場合、臨時のConnectionを使用するかを設定します。
+                    [Example]: &lt;allow-disposable-connection>true&lt;/allow-disposable-connection>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>             
+            <xs:element default="3" minOccurs="0" name="max-disposable-count" type="nonNegativeIntType">                 
+                <xs:annotation>                     
+                    <xs:documentation><![CDATA[
+                    [Description]: 臨時のConnectionの最大値です。臨時のConnectionは使用が終わったら自動的に除去されます。           
+         [Example]: &lt;max-disposable-count>3&lt;/max-disposable-count>
+                    ]]>
+                    </xs:documentation>                 
+                </xs:annotation>             
+            </xs:element>         
+        </xs:sequence>     
+    </xs:complexType>      
+    <xs:complexType name="connectorPropertyType">         
+        <xs:sequence>             
+            <xs:element name="name" type="xs:token"/>             
+            <xs:element name="type" type="xs:token"/>             
+            <xs:element name="value" type="xs:token"/>         
+        </xs:sequence>     
+    </xs:complexType> 
+</xs:schema>
