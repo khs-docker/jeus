@@ -4,8 +4,8 @@ MAINTAINER khs <darkflash76@gmail.com>
 USER root
 
 # COPY jeus50-unix-generic.bin /
-ADD jeus5 /root/jeus5
-ADD jdk1.6 /usr/java/jdk1.6
+ADD ../modules/jeus5 /root/jeus5
+ADD ../modules/jdk1.6 /usr/java/jdk1.6
 ADD run.sh /run.sh
 
 ENV JAVA_HOME /usr/java/jdk1.6
