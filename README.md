@@ -1,1 +1,1 @@
-# jeus
+# khs/jeus:5_ubuntu14.04.5_jdk6
